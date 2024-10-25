@@ -219,7 +219,8 @@ const mouseDownHandler = function mouseDownHandler(e) {
     // $("mouseup", mouseUpHandler);
 }
 
-let  = 0, output = '';
+let = 0;
+// let output = '';
 const mouseMoveHandler = function (e, rowAbove, rowBelow) {
     let dy = yCord - e.clientY; // dy < 0, when cursor is moved down, dy > 0 when cursor is moved up
     // console.log("dy ", dy, " e.clientY: " , e.clientY);
@@ -229,13 +230,13 @@ const mouseMoveHandler = function (e, rowAbove, rowBelow) {
     bothRowHeightCombined = rowAbove.offsetHeight + rowBelow.offsetHeight;
 
     // Before modification
-    output+=`Before: yCord: ${yCord} dy: ${dy} bothRowHeightCombined: ${bothRowHeightCombined} rowAbove height: ${rowAbove.offsetHeight},  rowBelow height: ${rowBelow.offsetHeight}`;
-    console.log("Before: yCord: ", yCord, " dy: " , dy, " bothRowHeightCombined: ", bothRowHeightCombined, " rowAbove height: ", rowAbove.offsetHeight, " rowBelow height: ", rowBelow.offsetHeight);
+    // output+=`Before: yCord: ${yCord} dy: ${dy} bothRowHeightCombined: ${bothRowHeightCombined} rowAbove height: ${rowAbove.offsetHeight},  rowBelow height: ${rowBelow.offsetHeight}`;
+    // console.log("Before: yCord: ", yCord, " dy: " , dy, " bothRowHeightCombined: ", bothRowHeightCombined, " rowAbove height: ", rowAbove.offsetHeight, " rowBelow height: ", rowBelow.offsetHeight);
     let aboveHeight = rowAbove.offsetHeight - dy;
     rowAbove.style.height = (rowAbove.offsetHeight - dy) + 'px';
     rowBelow.style.height = (bothRowHeightCombined - aboveHeight) + 'px';
-    output+=`After: yCord: ${yCord} dy: ${dy} bothRowHeightCombined: ${bothRowHeightCombined} rowAbove height: ${rowAbove.offsetHeight},  rowBelow height: ${rowBelow.offsetHeight}`;
-    console.log("After:  yCord: ", yCord, " dy: " , dy, " bothRowHeightCombined: ", bothRowHeightCombined,  " rowAbove height: ", rowAbove.offsetHeight, " rowBelow height: ", rowBelow.offsetHeight);
+    // output+=`After: yCord: ${yCord} dy: ${dy} bothRowHeightCombined: ${bothRowHeightCombined} rowAbove height: ${rowAbove.offsetHeight},  rowBelow height: ${rowBelow.offsetHeight}`;
+    // console.log("After:  yCord: ", yCord, " dy: " , dy, " bothRowHeightCombined: ", bothRowHeightCombined,  " rowAbove height: ", rowAbove.offsetHeight, " rowBelow height: ", rowBelow.offsetHeight);
     // console.log("dy ", dy, " e.clientY: " , e.clientY);
     yCord = e.clientY;
     
