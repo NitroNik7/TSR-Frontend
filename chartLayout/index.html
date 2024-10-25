@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resizable Panels</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- For fullscreen icon -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+    .content-container {
+    background-color: #fff;
+    border-radius: 8px;
+    /* padding: 20px; */
+    /* max-width: 900px; */
+    margin: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+    height: 100%;
+}
+
+.content-container > * {
+    max-height: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #2a7b7f;
+    margin-bottom: 20px;
+}
+
+.company-info p, .company-info a {
+    font-size: 16px;
+    color: #555;
+}
+
+.company-info strong {
+    color: #2a7b7f;
+}
+
+a {
+    color: #2a7b7f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+.description ul {
+    list-style-type: disc;
+    margin: 10px 0 20px 20px;
+}
+
+.description ul li {
+    margin-bottom: 8px;
+}
+
+.description strong {
+    color: #2a7b7f;
+}
+
+        .table-container {
+            /* width: 100%; */
+            /* max-width: 800px; */
+            /* margin: 0 auto; */
+            /* overflow: auto; */
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            text-align: center;
+            /* margin-bottom: 20px; */
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            /* min-width: 600px; */
+        }
+
+        thead th {
+            /* position: sticky; */
+            /* top: 0; */
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        tbody td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        table th,
+        table td {
+            text-align: center;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="noOfDivs">Enter no. of divs</label>
+    <input id="noOfDivs" name="noOfDivs"></input>
+
+    <button id="fullScreenChart" class="full_screen_chart" onclick="launchFullScreenChart()">
+        <i class="material-icons">fullscreen</i>
+    </button>
+
+    <div id="chartPanel" class="chart_panel">
+        <div id="chartTopLayout" class="chart_top_layout">
+            <div id="chartTopLayoutLeft" class="chart_top_layout_left">
+
+            </div>
+            <div id="chartTopCenterDivider" class="chart_top_center_divider">
+                <button id="chartTopRightCollapseBtn" class="chart_top_right_collapse_btn"
+                    onclick="collapseChartTopRight()">></button>
+            </div>
+            <div id="chartTopLayoutRight" class="chart_top_layout_right">
+                <div class="container" id="container">
+                    <!-- newly generated divs will be populated here -->
+
+                </div>
+
+            </div>
+        </div>
+        <div id="chartMiddleDivider" class="chart_middle_divider">
+            <button id="chartBottomCollapse" class="chart_bottom_collapse"
+                onclick="collapseChartBottomLayout()">Collapse
+            </button>
+        </div>
+        <div id="chartBottomLayout" class="chart_bottom_layout">
+
+            <div class="chartBottomContent">
+                <p style="padding: 10px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio
+                    eveniet nam earum, fuga id labore ullam consequuntur repellat cum ea possimus optio ratione quam
+                    illo quibusdam? Quos repudiandae quidem quam veniam error sunt architecto adipisci natus
+                    reprehenderit. Velit, eligendi est doloremque ducimus assumenda, voluptatem quis magni porro atque,
+                    voluptas dolor enim accusamus. Itaque nemo saepe, fugiat odio minima ipsa iste quas accusantium
+                    culpa dolore recusandae fuga quam velit minus perferendis, praesentium reiciendis facilis earum,
+                    voluptas sequi rerum ad obcaecati incidunt harum. Maiores odio animi autem vero, voluptas accusamus
+                    magni minus reprehenderit architecto. Quidem consectetur illo adipisci nostrum sed. Sequi, quidem
+                    in. Quaerat nobis repellendus aliquam odio unde fuga. Eligendi rem itaque asperiores? Optio
+                    accusamus sit quia quo in dolor magnam praesentium facilis ad, autem accusantium, obcaecati odit
+                    iusto enim recusandae sapiente sed adipisci consequatur cum, iste cupiditate necessitatibus.
+                    Voluptatibus placeat incidunt quas suscipit corporis qui, corrupti minima molestiae accusamus et
+                    quibusdam exercitationem. Aliquid magnam quasi incidunt, quidem tempora commodi eaque, dolor beatae
+                    fugit fugiat optio esse blanditiis, mollitia quibusdam. Modi, inventore. Molestiae autem aliquid
+                    nam, labore corrupti ad est et, similique eius, magnam quas omnis cumque quasi dolores deleniti
+                    ipsum id tempore? Provident quod magni at voluptas possimus repellat nesciunt veritatis labore ipsa
+                    pariatur veniam sed atque, sit, eveniet facilis, totam perferendis voluptatem! Neque pariatur qui,
+                    tempora magni voluptas accusamus temporibus quaerat commodi, illum explicabo in itaque aut
+                    architecto! In praesentium excepturi magni. Dolores, adipisci esse! Sint explicabo sequi voluptate
+                    quas doloribus tempore, consequuntur suscipit, ab facilis id at quis commodi? Nisi necessitatibus
+                    autem at unde? Magnam omnis corporis eos quam, sit ad soluta! Fuga minima harum rerum dolor qui
+                    officiis, nisi facilis impedit quis sequi soluta accusamus voluptate ipsam non explicabo sint omnis
+                    dolore? Optio itaque, suscipit architecto assumenda sit odit, rem adipisci aliquid dolores sed
+                    eveniet cumque autem! Suscipit accusamus minima dignissimos at facilis, cumque autem ipsa numquam
+                    rerum exercitationem fugit iusto atque, tempora in mollitia dolorum sit aperiam ducimus nesciunt
+                    soluta! Consequuntur at possimus odio error cupiditate voluptatum quibusdam atque sunt fuga modi
+                    iure minima reprehenderit voluptate, debitis repellat libero deserunt! Architecto, vitae.
+                    Blanditiis, atque. Cupiditate, corporis reiciendis necessitatibus numquam enim fuga tempore
+                    voluptatum exercitationem architecto tempora maiores quibusdam expedita laborum, itaque non,
+                    asperiores natus. Necessitatibus aliquam, non explicabo perspiciatis corporis quo voluptatibus quae
+                    impedit, inventore dolor distinctio at. Obcaecati nulla natus reiciendis temporibus laudantium
+                    perferendis eveniet eos quasi accusantium nobis laborum necessitatibus inventore explicabo sit omnis
+                    voluptate neque consectetur facilis, cum placeat iure doloremque quisquam? Iste quidem suscipit
+                    aperiam excepturi dolorem. Culpa, perferendis qui, consequatur magni molestias alias quasi beatae
+                    neque deserunt sint quisquam amet quidem voluptates dolorum, repellat nobis tenetur accusantium
+                    sapiente magnam ullam? Quia rem officiis tenetur nobis, ullam distinctio, ipsam possimus voluptatum
+                    reiciendis, voluptate laudantium asperiores cupiditate et error illo dicta perferendis eveniet qui
+                    amet. Commodi totam similique iste sequi, eos alias voluptatibus dignissimos. Soluta suscipit nam
+                    ipsum? Rem quasi iusto autem illum animi, totam velit voluptatem nam veritatis ipsum quae ex, cum
+                    temporibus laboriosam, maiores accusantium hic ut? Possimus debitis voluptates eveniet consectetur
+                    beatae iusto officia laborum expedita fugiat fuga minima eligendi, dolores reprehenderit impedit
+                    nostrum ullam, rerum nisi sint necessitatibus iste aliquid deleniti dignissimos in accusamus.
+                    Laborum dolore aliquam id a. Aperiam, nesciunt iusto omnis consequatur pariatur quasi unde, ad illo
+                    laboriosam inventore reiciendis, officiis provident magnam. Beatae mollitia illo, laborum qui saepe
+                    doloribus nostrum fuga voluptatem delectus nobis, tempore labore fugiat expedita amet in maxime.
+                    Impedit, ratione rem pariatur laboriosam magnam accusantium saepe ab autem necessitatibus omnis
+                    deleniti facilis officia distinctio praesentium minus quis laudantium? Blanditiis ducimus laboriosam
+                    distinctio praesentium magnam excepturi minima, magni temporibus, sit soluta quam nulla sequi libero
+                    laudantium dolores. Inventore excepturi totam, minus voluptatem delectus autem ipsa quidem id
+                    dolorem recusandae illo soluta iure dolores optio quibusdam, magnam architecto? Magni a numquam nisi
+                    nihil veritatis. Error temporibus consectetur eligendi pariatur optio accusamus aut molestias
+                    veritatis repellendus dicta dolor, eveniet nesciunt voluptates maiores rerum tempore libero tenetur
+                    hic, unde suscipit nisi quasi. Consectetur praesentium deleniti accusamus, aperiam beatae quasi
+                    libero quod eos, laboriosam, provident omnis a sit ratione sed! Molestias mollitia voluptatum esse
+                    excepturi ratione doloremque a nostrum corporis earum explicabo modi sed inventore, cupiditate
+                    maiores voluptas ea consequuntur quo culpa quod sit fugiat laudantium, facilis perferendis?
+                    Provident corporis maxime praesentium, recusandae harum, fuga perspiciatis in, magni error delectus
+                    doloremque! Debitis qui magnam fugiat ex. Ducimus debitis ipsum repellat dignissimos facere officiis
+                    quaerat cum rem! Officia vitae magnam quos et in hic aspernatur praesentium soluta aliquam labore
+                    dolorem impedit eius accusamus facilis, ipsam voluptates atque repellendus minus officiis quaerat
+                    minima? Quis eligendi quas nam facere accusantium animi facilis tempora minus, modi dolorum quos
+                    blanditiis voluptates iste? Incidunt reprehenderit optio commodi ipsa? Cum qui, molestiae fugiat
+                    dolore aliquam voluptates similique earum exercitationem quos architecto unde, tenetur totam quam
+                    repellendus a corporis ea nihil doloremque rerum magnam? Dolore veritatis nihil ex architecto
+                    praesentium obcaecati quam, soluta molestias? Doloremque in consequuntur illum earum. Blanditiis,
+                    pariatur? Quasi similique vel quam laboriosam, eum, temporibus expedita quos, fuga quo nostrum
+                    necessitatibus laudantium debitis impedit veniam fugiat. Dicta, qui soluta beatae quos commodi
+                    repudiandae quaerat maxime. Rem maxime vero distinctio doloremque omnis repellendus velit at
+                    excepturi iusto reiciendis pariatur unde quaerat exercitationem quia, itaque magni repudiandae
+                    voluptas nisi esse. Magnam sit facere eveniet eligendi nostrum natus totam assumenda nulla
+                    consequuntur, accusantium impedit similique doloremque alias. Quis inventore accusamus, veritatis ab
+                    possimus sed vitae sequi nam similique maiores ut rerum natus totam architecto quia beatae culpa!
+                    Accusamus dolor quis provident, reprehenderit fugiat, eaque numquam suscipit, velit ut maxime
+                    voluptas a animi porro? Optio excepturi consequatur corrupti dolor? Error ullam nemo quae itaque
+                    laboriosam pariatur doloremque modi magni, asperiores possimus dolorum non molestias deleniti
+                    quibusdam iure fuga accusamus vel numquam. Doloremque libero consectetur impedit dignissimos, sed
+                    magni odio maiores, earum ullam quidem facere sequi, a itaque quam neque nobis provident similique
+                    fugit reprehenderit architecto dolorum quasi dicta? Maxime ipsa quibusdam itaque perspiciatis illo
+                    tempore assumenda doloremque rem libero quisquam laboriosam beatae sunt, laudantium enim nemo
+                    laborum quia cupiditate porro eveniet! Excepturi in molestias amet recusandae.</p>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

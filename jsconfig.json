@@ -1,0 +1,10 @@
+// For using jquery intellisense in VSCode
+// https://stackoverflow.com/questions/41777327/jquery-intellisense-in-vs-code
+
+{
+    "typeAcquisition": {
+        "include": [
+            "jquery"
+        ]
+    }
+}

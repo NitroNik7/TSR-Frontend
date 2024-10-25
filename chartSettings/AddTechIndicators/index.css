@@ -1,0 +1,108 @@
+body {
+    display: flex;
+    flex-direction: column;
+    /* justify-items: center; */
+    /* align-items: center; */
+}
+
+body > * {
+    margin: 10px 10px;
+}
+
+#notesList>*:hover {
+    border-radius: 10px;
+    list-style-type: none;
+    color: white;
+    font-size: larger;
+    transition: background-color 0.2s ease;
+    background-color: gray;
+    
+    /* text-overflow: clip; */
+    
+    /* text-overflow: ellipsis */
+
+}
+
+.noteDetails>*:hover {
+    white-space: wrap;
+    overflow: auto;
+    text-overflow: clip;
+}
+
+
+
+
+.search_select_indicator_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add_indicators_button {
+    height: 40px;
+    width: 200px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search_select_indicator {
+    display: none;
+    position: absolute;
+    top: 40px;
+    width: 300px;
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+#search_indicator {
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.indicator_list_filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.indicator_list {
+    width: 75%;
+    height: 300px; /* Set a fixed height for the select */
+    padding: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    overflow-y: auto; /* Allows scrolling within the select if needed */
+}
+
+
+#indicatorFilter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    max-height: 300px; /* Same height as the popup-select */
+    overflow-y: auto; /* Allows scrolling if the buttons exceed the available space */
+    overflow-x: hidden;
+}
+
+.filter-btn {
+    padding: 5px 10px;
+    border: 1px solid #4CAF50;
+    background-color: white;
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.filter-btn:focus {
+    outline: none;
+}

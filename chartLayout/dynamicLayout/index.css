@@ -1,0 +1,40 @@
+.container{
+    width: 1000px;
+    height: 600px;
+    
+}
+
+.column {
+    box-sizing: content-box;
+    width: 100%;
+    /* min-height: 90px; */
+  
+    /* flex: 1; */
+}
+
+.col_resizer {
+    justify-content: center;
+    /* align-items: baseline; */
+    box-sizing: content-box;
+    width: 7px;
+    height: 100%;
+    background-color: gold;
+    display: flex;
+    cursor: col-resize;
+}
+
+.collapse_btn{
+    /* align-content: baseline; */
+    /* width: auto; */
+    position: absolute;
+    top: 40%;
+    height: 5px;
+    z-index: 1;
+    background: none;
+    border: none;
+    color: antiquewhite;
+    padding: 0;
+    transform: scale(1.5,1.5);
+    /* margin: 50%; */
+    cursor: pointer;
+}

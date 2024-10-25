@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resizable Panels</title>
+    <style>
+        body {
+            margin: 0;
+            /* Remove default margin */
+        }
+
+        #container {
+            display: flex;
+            width: 100%;
+            height: 500px;
+            /* Full height */
+        }
+
+        #right {
+            background: lightblue;
+            min-width: 50px;
+            /* Minimum width */
+            transition: width 0.2s;
+            /* Smooth transition */
+        }
+
+        #resizer {
+            width: 10px;
+            cursor: ew-resize;
+            background: gray;
+            align-content: center;
+        }
+
+        #left {
+            background: lightcoral;
+            min-width: 50px;
+            /* Minimum width */
+            flex-grow: 1;
+            /* Allow it to grow */
+            transition: flex-basis 0.2s;
+            /* Smooth transition */
+        }
+
+        @media only screen and (max-width: 600px) {
+            #container {
+                flex-direction: column;
+                /* background-color: lightblue; */
+            }
+        }
+
+        #collapse-btn {
+        width: 20px;
+        height: 40px;
+        background-color: #f0f0f0;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        color: #555;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+        /* left: 4px; */
+        transition: all 0.3s ease;
+        
+    }
+
+    #collapse-btn:hover {
+        background: linear-gradient(135deg, #4caf50, #8bc34a);
+        color: white;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transform: scale(1.1); /* Slightly enlarges the button on hover */
+    }
+
+    #collapse-btn:active {
+        transform: scale(0.95); /* Shrinks the button slightly when clicked */
+    }
+
+
+
+    #collapse-btn:hover::before {
+        transform: rotate(90deg); /* Can rotate more if you'd like to make a dynamic effect */
+    }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="left"></div>
+        <div id="resizer">
+            <button style="margin-top: 50%;" id="collapse-btn" onclick="collapse()">></button>
+        </div>
+        <div id="right"></div>
+    </div>
+
+    <script>
+        const resizer = document.getElementById('resizer');
+        const leftPanel = document.getElementById('left');
+        const rightPanel = document.getElementById('right');
+        let startX;
+        let leftWidth;
+
+        resizer.addEventListener('mousedown', (e) => {
+            startX = e.clientX; // Initial mouse position
+            leftWidth = leftPanel.offsetWidth; // Current width of the left panel
+
+            const mouseMoveHandler = (e) => {
+                const dx = e.clientX - startX; // Change in mouse position
+                const newWidth = leftWidth + dx; // New width for the left panel
+
+                // Set the new width if it’s within bounds
+                if (newWidth > 50 && newWidth < (window.innerWidth - 60)) {
+                    leftPanel.style.width = newWidth + 'px';
+                    rightPanel.style.flexBasis = `calc(100% - ${newWidth}px)`; // Adjust right panel width
+                }
+            };
+
+            // Add mousemove event listener
+            document.addEventListener('mousemove', mouseMoveHandler);
+
+            // Add mouseup event listener to stop resizing
+            const mouseUpHandler = () => {
+                document.removeEventListener('mousemove', mouseMoveHandler);
+                document.removeEventListener('mouseup', mouseUpHandler);
+            };
+
+            document.addEventListener('mouseup', mouseUpHandler);
+        });
+
+        function collapse() {
+            const right = document.getElementById('right');
+            const collapseBtn = document.getElementById('collapse-btn');
+            if (right.style.display === 'none') {
+                right.style.display = 'block';
+                collapseBtn.style.right = '0px';
+                collapseBtn.style.left = '4px';
+                collapseBtn.innerText = '>';
+                
+            } else {
+                right.style.display = 'none';
+                collapseBtn.style.right = '8px';
+                // collapseBtn.style.left = '-8px';
+                collapseBtn.innerText = '<';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
