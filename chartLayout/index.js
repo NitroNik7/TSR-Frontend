@@ -201,14 +201,17 @@ const mouseDownHandler = function mouseDownHandler(e) {
         rowAbove = $(id).prev()[0];
         if (rowBelow.offsetHeight == 0) // when bottom div is collapsed, don't resize
             return;
-        let bothRowHeightCombined = rowAbove.offsetHeight + rowBelow.offsetHeight;
+        // let bothRowHeightCombined = rowAbove.offsetHeight + rowBelow.offsetHeight;
 
         if (!isEmptyOrUndefined(rowAbove) && !isEmptyOrUndefined(rowBelow)) {
-            console.log("mousedown at ", yCord);
+            // console.log("mousedown at ", yCord);
             $(document.body).on("mousemove", (e) => {
-                mouseMoveHandler(e, rowAbove, rowBelow, bothRowHeightCombined);
+                mouseMoveHandler(e, rowAbove, rowBelow);
             });
             $(document.body).on("mouseup", mouseUpHandler);
+        }
+        else{
+            return;
         }
     }
 
@@ -216,19 +219,26 @@ const mouseDownHandler = function mouseDownHandler(e) {
     // $("mouseup", mouseUpHandler);
 }
 
-
-const mouseMoveHandler = function (e, rowAbove, rowBelow, bothRowHeightCombined) {
+let  = 0, output = '';
+const mouseMoveHandler = function (e, rowAbove, rowBelow) {
     let dy = yCord - e.clientY; // dy < 0, when cursor is moved down, dy > 0 when cursor is moved up
     // console.log("dy ", dy, " e.clientY: " , e.clientY);
     // How to select divs to be resized
     rowAbove.style.transition = 'none';
     rowBelow.style.transition = 'none';
+    bothRowHeightCombined = rowAbove.offsetHeight + rowBelow.offsetHeight;
 
+    // Before modification
+    output+=`Before: yCord: ${yCord} dy: ${dy} bothRowHeightCombined: ${bothRowHeightCombined} rowAbove height: ${rowAbove.offsetHeight},  rowBelow height: ${rowBelow.offsetHeight}`;
+    console.log("Before: yCord: ", yCord, " dy: " , dy, " bothRowHeightCombined: ", bothRowHeightCombined, " rowAbove height: ", rowAbove.offsetHeight, " rowBelow height: ", rowBelow.offsetHeight);
+    let aboveHeight = rowAbove.offsetHeight - dy;
     rowAbove.style.height = (rowAbove.offsetHeight - dy) + 'px';
-    rowBelow.style.height = (bothRowHeightCombined - rowAbove.offsetHeight) + 'px';
-    // console.log("dy: ", dy, " rowAbove.offsetHeight: ", rowAbove.clientHeight, rowAboveHeight, " rowBelow.offsetHeight: ", rowBelow.clientHeight, rowBelowHeight );
+    rowBelow.style.height = (bothRowHeightCombined - aboveHeight) + 'px';
+    output+=`After: yCord: ${yCord} dy: ${dy} bothRowHeightCombined: ${bothRowHeightCombined} rowAbove height: ${rowAbove.offsetHeight},  rowBelow height: ${rowBelow.offsetHeight}`;
+    console.log("After:  yCord: ", yCord, " dy: " , dy, " bothRowHeightCombined: ", bothRowHeightCombined,  " rowAbove height: ", rowAbove.offsetHeight, " rowBelow height: ", rowBelow.offsetHeight);
     // console.log("dy ", dy, " e.clientY: " , e.clientY);
     yCord = e.clientY;
+    
 }
 
 const mouseUpHandler = () => {
@@ -242,13 +252,16 @@ function collapseDiv(currDiv, prevDiv) {
     // console.log(currDiv.height(), prevDiv.height());
     // If bottom div is collapsed, then expand it
     if (currDiv.height() == 0) {
+        // console.log(`"currDivHeight: ` + currDiv.height() + ` prevDivHeight: `+ prevDiv.height() + `"`);
+        $("#showHeights").html(`currDivHeight: ` + currDiv.height() + ` prevDivHeight: `+ prevDiv.height());
+
         prevDiv.css({
-            "transition": "height 0.2s ease",
+            // "transition": "height 0.2s ease",
             "height": (prevDiv.height() - prevDivHeight) + 'px'
         });
 
         currDiv.css({
-            "transition": "height 0.2s ease",
+            // "transition": "height 0.2s ease",
             "height": prevDivHeight + 'px'
         })
     }
@@ -283,31 +296,31 @@ function createDivs(layout, noOfDivs) {
                 container.append(`
                     <div class='row' id='row` + i + `' style='background-color:` + backgroundColors[i - 1] + `; height: ` + divHeight + `px;'>
                         <div class="table-container">
-        <h3>Stock Name: ADANI ENT</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Open</th>
-                    <th>High</th>
-                    <th>Low</th>
-                    <th>Close</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>2024-10-10</td><td>2000</td><td>2050</td><td>1980</td><td>2030</td></tr>
-                <tr><td>2024-10-09</td><td>1985</td><td>2015</td><td>1970</td><td>1990</td></tr>
-                <tr><td>2024-10-08</td><td>1990</td><td>2020</td><td>1950</td><td>2000</td></tr>
-                <tr><td>2024-10-07</td><td>1950</td><td>1980</td><td>1925</td><td>1960</td></tr>
-                <tr><td>2024-10-06</td><td>1930</td><td>1955</td><td>1905</td><td>1940</td></tr>
-                <tr><td>2024-10-05</td><td>1910</td><td>1935</td><td>1895</td><td>1920</td></tr>
-                <tr><td>2024-10-04</td><td>1920</td><td>1960</td><td>1910</td><td>1950</td></tr>
-                <tr><td>2024-10-03</td><td>1900</td><td>1925</td><td>1885</td><td>1915</td></tr>
-                <tr><td>2024-10-02</td><td>1890</td><td>1915</td><td>1870</td><td>1905</td></tr>
-                <tr><td>2024-10-01</td><td>1885</td><td>1900</td><td>1865</td><td>1895</td></tr>
-            </tbody>
-        </table>
-    </div>
+                            <h3>Stock Name: ADANI ENT</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Open</th>
+                                        <th>High</th>
+                                        <th>Low</th>
+                                        <th>Close</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>2024-10-10</td><td>2000</td><td>2050</td><td>1980</td><td>2030</td></tr>
+                                    <tr><td>2024-10-09</td><td>1985</td><td>2015</td><td>1970</td><td>1990</td></tr>
+                                    <tr><td>2024-10-08</td><td>1990</td><td>2020</td><td>1950</td><td>2000</td></tr>
+                                    <tr><td>2024-10-07</td><td>1950</td><td>1980</td><td>1925</td><td>1960</td></tr>
+                                    <tr><td>2024-10-06</td><td>1930</td><td>1955</td><td>1905</td><td>1940</td></tr>
+                                    <tr><td>2024-10-05</td><td>1910</td><td>1935</td><td>1895</td><td>1920</td></tr>
+                                    <tr><td>2024-10-04</td><td>1920</td><td>1960</td><td>1910</td><td>1950</td></tr>
+                                    <tr><td>2024-10-03</td><td>1900</td><td>1925</td><td>1885</td><td>1915</td></tr>
+                                    <tr><td>2024-10-02</td><td>1890</td><td>1915</td><td>1870</td><td>1905</td></tr>
+                                    <tr><td>2024-10-01</td><td>1885</td><td>1900</td><td>1865</td><td>1895</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 `);
             }
@@ -328,35 +341,35 @@ function createDivs(layout, noOfDivs) {
                 container.append(`
                     <div class='row' id='row` + i + `' style='background-color:` + backgroundColors[i - 1] + `; height: ` + divHeight + `px;'>
                         <div class="content-container">
-        <h3>About Adani Enterprises Limited</h3>
-        <div class="company-info">
-            <p><strong>Address:</strong> Adani Corporate House, Ahmedabad, India, 382421</p>
-            <p><strong>Tel:</strong> +91 79 2656 5555</p>
-            <p><strong>URL:</strong> <a href="https://www.adanienterprises.com" target="_blank">https://www.adanienterprises.com</a></p>
-            <p><strong>Code:</strong> ADANIENT, <strong>ISIN:</strong> INE423A01024, <strong>Exchange:</strong> NSE, <strong>Country:</strong> India</p>
-            <p><strong>Fiscal Year End:</strong> March</p>
-            <p><strong>Employee Count:</strong> 8676</p>
-        </div>
+                            <h3>About Adani Enterprises Limited</h3>
+                            <div class="company-info">
+                                <p><strong>Address:</strong> Adani Corporate House, Ahmedabad, India, 382421</p>
+                                <p><strong>Tel:</strong> +91 79 2656 5555</p>
+                                <p><strong>URL:</strong> <a href="https://www.adanienterprises.com" target="_blank">https://www.adanienterprises.com</a></p>
+                                <p><strong>Code:</strong> ADANIENT, <strong>ISIN:</strong> INE423A01024, <strong>Exchange:</strong> NSE, <strong>Country:</strong> India</p>
+                                <p><strong>Fiscal Year End:</strong> March</p>
+                                <p><strong>Employee Count:</strong> 8676</p>
+                            </div>
 
-        <div class="description">
-            <p>Adani Enterprises Limited, together with its subsidiaries, operates as a conglomerate company in India and internationally. It operates through the following segments:</p>
-            <ul>
-                <li>Integrated Resources Management</li>
-                <li>Mining Services</li>
-                <li>Commercial Mining</li>
-                <li>New Energy Ecosystem</li>
-                <li>Airport, Road, and Others</li>
-            </ul>
+                            <div class="description">
+                                <p>Adani Enterprises Limited, together with its subsidiaries, operates as a conglomerate company in India and internationally. It operates through the following segments:</p>
+                                <ul>
+                                    <li>Integrated Resources Management</li>
+                                    <li>Mining Services</li>
+                                    <li>Commercial Mining</li>
+                                    <li>New Energy Ecosystem</li>
+                                    <li>Airport, Road, and Others</li>
+                                </ul>
 
-            <p>The company offers transport and logistics services; manufactures cement, hydrogen and its derivatives, polysilicon, ingots, wafers, solar cells with modules, wind turbines, generators, electrolysers, and fuel cells, as well as ammonia and urea. It offers integrated coal management services; imports fruits including apples, pears, kiwis, oranges, grapes, and other fruits under the <strong>FARM-PIK</strong> brand; generates solar and wind energy; and manufactures solar panels.</p>
+                                <p>The company offers transport and logistics services; manufactures cement, hydrogen and its derivatives, polysilicon, ingots, wafers, solar cells with modules, wind turbines, generators, electrolysers, and fuel cells, as well as ammonia and urea. It offers integrated coal management services; imports fruits including apples, pears, kiwis, oranges, grapes, and other fruits under the <strong>FARM-PIK</strong> brand; generates solar and wind energy; and manufactures solar panels.</p>
 
-            <p>Adani Enterprises is involved in the mining of iron ore, copper, and aluminum properties; minerals such as limestone, chromite, diamond, bauxite, and graphite; and the mining and trading of coal. It also offers a variety of edible oils, rice, pulses, and wheat flour under brands like <strong>Fortune</strong>, <strong>King's</strong>, <strong>Bullet</strong>, <strong>Raag</strong>, <strong>Avsar</strong>, and more. In addition, the company manufactures polyvinyl chloride, caustic soda, tar, hydrated lime, etc.</p>
+                                <p>Adani Enterprises is involved in the mining of iron ore, copper, and aluminum properties; minerals such as limestone, chromite, diamond, bauxite, and graphite; and the mining and trading of coal. It also offers a variety of edible oils, rice, pulses, and wheat flour under brands like <strong>Fortune</strong>, <strong>King's</strong>, <strong>Bullet</strong>, <strong>Raag</strong>, <strong>Avsar</strong>, and more. In addition, the company manufactures polyvinyl chloride, caustic soda, tar, hydrated lime, etc.</p>
 
-            <p>The company is also active in defense manufacturing, producing fighter aircraft, unmanned aerial systems, helicopters, submarines, air defense guns, missiles, and small arms. It develops avionics and systems, opto-electronics, aerospace composites, radar and electronic warfare systems, and constructs highways, motorways, railways, and metro-rail systems.</p>
+                                <p>The company is also active in defense manufacturing, producing fighter aircraft, unmanned aerial systems, helicopters, submarines, air defense guns, missiles, and small arms. It develops avionics and systems, opto-electronics, aerospace composites, radar and electronic warfare systems, and constructs highways, motorways, railways, and metro-rail systems.</p>
 
-            <p>Additionally, it engages in sewage and wastewater treatment, operates airports, develops data centers, and more. Founded in 1988 and headquartered in Ahmedabad, India, Adani Enterprises Limited operates as a subsidiary of S.B. Adani Family Trust.</p>
-        </div>
-    </div>
+                                <p>Additionally, it engages in sewage and wastewater treatment, operates airports, develops data centers, and more. Founded in 1988 and headquartered in Ahmedabad, India, Adani Enterprises Limited operates as a subsidiary of S.B. Adani Family Trust.</p>
+                            </div>
+                        </div>
                     </div>
                 `);
 
