@@ -1,0 +1,39 @@
+package encryption;
+
+import java.util.Scanner;
+
+public class Encryption {
+	public static void main(String[] args) {
+		String plainText = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem ipsa vitae odio voluptatum cum eum possimus voluptate vel minima nisi molestiae expedita, enim, atque repudiandae.";
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter number of keys:");
+		int n = sc.nextInt();
+		
+		int[] key = new int[n];
+		System.out.println("Enter keys:");
+		for(int i=0; i<n; i++) {
+			key[i] = sc.nextInt();
+		}
+		System.out.println("Enter blocksize:");
+		int blockSize = sc.nextInt();
+		
+		encrypt(plainText, key, blockSize);
+		
+	}
+
+	public static String encrypt(String plainText, int key[], int blockSize) {
+		String cipherText = "";
+		int j = 0;
+		int asciiCode = 0;
+
+		for (int i = 0; i < plainText.length(); i++) {
+			j = (i / blockSize) % key.length;
+
+			asciiCode = (int) cipherText.charAt(i) + key[j];
+			cipherText += (char) asciiCode;
+		}
+
+		return cipherText;
+	}
+}
