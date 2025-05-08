@@ -1,6 +1,12 @@
 // TODO In syntax validation - add logic for comparing fields other than price fields
 // TODO Inserting metric which has a space in between
 
+// TODO User should be able to type in the advanced options for a field
+// TODO Add funda ratios
+// TODO Enter key should work as intended
+// ? Suggestions should not be shown on backspace ? i.e. it should be shown only when user types something...
+// TODO Suggestions div should consist of select/input box  
+
 // ! Issue #2: Should be able to show related fields when user types in an operator
 
 // ! Issue #3: Reentering keyword, using keyboard on suggestionsDiv, inserts keyword incorrectly  
