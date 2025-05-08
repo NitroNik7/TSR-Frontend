@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .box {
+            color: lightcoral;
+        }
+    </style>
+
+    <div class="box" id="boxDiv"></div>
+
+    <!-- <script src="index.js"></script> -->
+
+    <script>
+        let className = 'finish';
+
+        for (let sheet of document.styleSheets) {
+            if (sheet.ownerNode && sheet.ownerNode.tagName === 'STYLE') {
+
+                try {
+                    for (let rule of sheet.cssRules) {
+                        if (rule.selectorText && rule.selectorText.includes(`.${className}`)) {
+                            console.log(rule.selectorText, rule.style.cssText);
+                            
+                        }
+                        else {
+                            let style = document.createElement("style");
+                            style.innerHTML = `
+                            .circle.finish {
+                                border-color: #4070f4;
+                                color: #4070f4;
+                            }`;
+                            document.getElementsByTagName('head')[0].appendChild(style);
+                            
+                        }
+                    }
+                } catch (e) {
+                    
+                    // Some stylesheets might be from different origins and not accessible
+                    // console.warn('Cannot access stylesheet:', sheet.href);
+                }
+            }
+            break;
+        }
+
+    </script>
+</body>
+
+</html>

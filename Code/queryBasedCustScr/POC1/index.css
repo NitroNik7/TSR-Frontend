@@ -1,0 +1,20 @@
+
+.tsr_cs_query_box{
+    /* font-weight: 600; */
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    resize: none;
+}
+
+.tsr_cs_suggestions_div {
+    position: absolute;
+    background: white;
+    z-index: 999;
+}
+.tsr_cs_suggestions_div > div {
+    padding: 5px;
+} 
+.tsr_cs_suggestions_div > div:hover {
+    color: white;
+    background-color: grey;
+} 

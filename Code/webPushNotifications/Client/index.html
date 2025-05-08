@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+    
+
+    <!-- <h1>Test - Browser Notifications</h1> -->
+<!-- 
+    <label for="notificationCount" style="color: gray;">
+        Enter number of notifications you want to receive <br>
+    </label>
+    <input name="notificationCount" id="notificationCount" placeholder="50"> -->
+    <br><br> 
+    <label for="" style="color: gray;">
+        To enable notifications for current browser, please click on the bell icon
+    </label>
+    <button type="button" onclick="checkNotificationPermission()" style="border: none; background: none;">
+        <i class="fas fa-bell"></i>
+    </button>
+
+    <br><br>
+    <style>
+
+            * {
+            font-size: 24px !important;
+        }
+
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        th, td {
+          padding: 8px;
+          text-align: left;
+        }
+      </style>
+
+<h4>Browsers registered for Push Notifications</h4>
+<p style="font-size: 18px;">Note<span style="color: red;">*</span>: You can choose a <b>maximum of two browsers</b> on which you wish to recieve notifications</p>
+    <table style="width: 60%;">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Browser</th>
+            <th>Device</th>
+            <th>Enable</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Table rows go here -->
+          <tr>
+            <td>Office <i class="fas fa-pencil-alt" style="color: black; opacity: 60%;"></i></td>
+            <td>Chrome</td>
+            <td>Desktop</td>
+            <td><input type="checkbox" name="" id=""></td>
+            <td><i class="fas fa-trash"></i></td>
+          </tr>
+          <tr>
+            <td>Home <i class="fas fa-pencil-alt" style="color: black; opacity: 60%;"></i></td>
+            <td>Firefox</td>
+            <td>Desktop</td>
+            <td><input type="checkbox" name="" id=""></td>
+            <td><i class="fas fa-trash"></i></td>
+          </tr>
+          <tr>
+            <td>Pixel 7 <i class="fas fa-pencil-alt" style="color: black; opacity: 60%;"></i></td>
+            <td>Edge</td>
+            <td>Mobile</td>
+            <td><input type="checkbox" name="" id=""></td>
+            <td><i class="fas fa-trash"></i></td>
+          </tr>
+          <tr>
+            <td>Browser 4 <i class="fas fa-pencil-alt" style="color: black; opacity: 60%;"></i></td>
+            <td>Edge</td>
+            <td>Mobile</td>
+            <td><input type="checkbox" name="" id=""></td>
+            <td><i class="fas fa-trash"></i></td>
+          </tr>
+          <tr>
+            <td>Browser 5 <i class="fas fa-pencil-alt" style="color: black; opacity: 60%;"></i></td>
+            <td>Edge</td>
+            <td>Mobile</td>
+            <td><input type="checkbox" name="" id=""></td>
+            <td><i class="fas fa-trash"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    
+      <br>
+      <br>
+      
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

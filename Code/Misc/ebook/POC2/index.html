@@ -1,0 +1,306 @@
+
+<html>    <head>
+    <title>Heikin Ashi Bullish Initiation Screener on Daily (EOD) Tick</title>
+    <meta name="description" content="Heikin Ashi Bullish Initiation Screener on Daily (EOD) Tick. Heikin Ashi Patterns minimize market noise & provide clear trend direction.">
+    <meta name="keywords" content="Heikin Ashi, Heikin Ashi Screeners, HA, HeikinAshi, Heikin Ashi Bullish Initiation, Bullish Initiation, Heikin Ashi Candlestick, Heikin Ashi Chart, HA Screeners ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    <link rel="icon" href='https://www.tsrbt1.com/static/icon/TopStockResearch.ico' type="image/x-icon">    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- Font Awesome CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel='stylesheet' type='text/css' href='https://www.tsrbt1.com/static/mig/css/aioCmnV0.0.0.9.css'/>  <link rel='stylesheet' type='text/css' href='https://www.tsrbt1.com/static/mig/css/responsive.css'>
+
+    <link rel='stylesheet' type='text/css' href='https://www.tsrbt1.com/static/mig/css/mytsr_struct.css'>
+    <link rel='stylesheet' type='text/css' href='https://www.tsrbt1.com/static/css/v3/MintCommon.css'>        <link rel='stylesheet' type='text/css' href='https://www.tsrbt1.com/static/mig/css/my.css'>        <link rel='stylesheet' type='text/css' href='https://www.tsrbt1.com/static/css/v3/MintControls.css'>    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script  type='text/javascript' src='//code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script><script  src="https://www.tsrbt1.com/static/js/tsr/common/mint_cn_minV0.7.5.151.js"></script><script  src="https://www.tsrbt1.com/static/mig/js/aio_cmnV0.0.0.34.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/common/mintHtmlUtil.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/common/MintJsUtils.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/common/MintStkCommon.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/common/MintCommonValidator.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/utils.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/common/MintConstants.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/common/IndiField.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/common/MintTechIndiConstants.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/common/MintFundaIndiConstants.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/mipu/mintCore.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/mipu/miScreenerUtils.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/mipu/ActivityTracker.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/mipu/alertutils.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/mipu/DataInitializer.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/mipu/mintJsAds.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/mipl   /mintJsAds.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/common/MintDataTable.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/utils.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/common/StockBasketUtils.js"></script><script  src="https://www.tsrbt1.com/static/mig/js/migUi.js"></script><script  src="https://www.tsrbt1.com/static/mig/js/aioIcons.js"></script><script  src="https://www.tsrbt1.com/static/mig/js/search.js"></script></head><!-- Space for GA Tag --> <script>   var userProf={status : 'notSignedIn'};  </script>      <body class="scrollable">
+     <div  id="mainController">
+         
+         <div style="display: none;">
+                    <select class='selectpicker' id='userMkt' onchange="javascript:marketOnChange();">
+                        <option value="IN" selected="selected" label="India">India</option>
+                    </select>
+                </div>
+         
+         
+    <div class="app tsrsn-folded">
+        <div class="layout"><!--                <div id='dynHead'></div>-->
+           <div class="tsrhdr navbar">
+                <div class="tsrhdr-container"  >
+                    <div class="nav-logo" id='navLogoDiv'>
+                        <a href="javascript:void(0);" class="tsrsn-fold-toggler" title='TSR (TopStockResearch.com)' >
+                            <div class="logo logo-dark" style="background-image: url('https://www.tsrbt1.com/static/v21/img/tsr/TsrLogo.png')"></div>
+                        </a>
+                    </div> <div id='dynHead'></div>  
+                </div>
+            </div>
+            <!-- Header End--><div class="tsrsn expand-lg">
+                   <div class="tsrsn-inner">
+                      <div id="sideNavBarDiv">
+                         <ul class="tsrsn-menu scrollable"><li class='nav-item' style='margin-top:6px;' ><a href='https://www.tsrbt1.com/rt/Home'>  <span class='icon-holder' id='homeSbDiv' aria-hidden='true'>   </span>              <span class='title'>Home</span></a></li>  <li class="nav-item dropdown" style='margin-top:6px;'>
+                               <a href="javascript:void(0);" class="dropdown-toggle" ><span class='icon-holder' id='msSbDiv' aria-hidden='true'>   </span>              <span class='title'>Market Screener</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
+                               <ul class="dropdown-menu"><li><a href='https://www.tsrbt1.com/rt/Screener/Markets/PriceVolume'>Price / Volume</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Markets/HighsLows'>Highs / Lows</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Markets/Returns'>Returns</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Markets/IndexAnalysis'>Index Analysis</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Markets/SectorAnalysis'>Sector Analysis</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Markets/HeatMap'>Heat Map</a></li> </ul>
+</li>  <li class="nav-item dropdown" style='margin-top:6px;'>
+                               <a href="javascript:void(0);" class="dropdown-toggle" ><span class='icon-holder' id='strSbDiv' aria-hidden='true'>   </span>              <span class='title'>TSR Strength Index</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
+                               <ul class="dropdown-menu"><li><a href='https://www.tsrbt1.com/rt/Screener/TSRStrengthIndex/TechnicalStrength'>Technical Strength</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/TSRStrengthIndex/FinancialStrength'>Financial Strength</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/TSRStrengthIndex/EODBetaVolatile'>EOD Beta Volatile</a></li> </ul>
+</li>  <li class="nav-item dropdown open" style='margin-top:6px;'>
+                               <a href="javascript:void(0);" class="dropdown-toggle" ><span class='icon-holder' id='csSbDiv' aria-hidden='true'>   </span>              <span class='title'>Candlestick Screeners</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
+                               <ul class="dropdown-menu"><li class="active"><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener'>Bullish Screener</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BearishScreener'>Bearish Screener</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a></li> </ul>
+</li>  <li class="nav-item dropdown" style='margin-top:6px;'>
+                               <a href="javascript:void(0);" class="dropdown-toggle" ><span class='icon-holder' id='techSbDiv' aria-hidden='true'>   </span>              <span class='title'>Technical Screeners</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
+                               <ul class="dropdown-menu"><li><a href='https://www.tsrbt1.com/rt/Screener/Technical/OHLCScreeners'>OHLC Screeners</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Technical/OverboughtSold'>Overbought/Sold</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Technical/Overlays'>Overlays</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Technical/TrendIndicator'>Trend Indicator</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Technical/VolumeBasedIndicator'>Volume Based Indicator</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Technical/SMAScreener'>SMA Screener</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Technical/EMAScreener'>EMA Screener</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Technical/WMAScreener'>WMA Screener</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Technical/VwapScreener'>VWAP Screener</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Technical/PivotPoint'>Pivot Point</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Technical/EODFibonacci'>EOD Fibonacci</a></li> </ul>
+</li>  <li class="nav-item dropdown" style='margin-top:6px;'>
+                               <a href="javascript:void(0);" class="dropdown-toggle" ><span class='icon-holder' id='cpSbDiv' aria-hidden='true'>   </span>              <span class='title'>Chart Patterns</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
+                               <ul class="dropdown-menu"><li><a href='https://www.tsrbt1.com/rt/Screener/ChartPatterns/PopularChartPatterns'>Popular Chart Patterns</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/ChartPatterns/Triangle'>Triangle</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/ChartPatterns/Channel'>Channel</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/ChartPatterns/Trendlines'>Trendlines</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/ChartPatterns/NRWR'>NR / WR</a></li> </ul>
+</li>  <li class="nav-item dropdown" style='margin-top:6px;'>
+                               <a href="javascript:void(0);" class="dropdown-toggle" ><span class='icon-holder' id='fundaSbDiv' aria-hidden='true'>   </span>              <span class='title'>Financial Screener</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
+                               <ul class="dropdown-menu"><li><a href='https://www.tsrbt1.com/rt/Screener/Financial/FinHighlight'>Financial Highlight</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Financial/GuruRatios'>Guru Ratios</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Financial/ValuationRatios'>Valuation Ratios</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Financial/ProfitabilityRatios'>Profitability Ratios</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Financial/SolvencyRatios'>Solvency Ratios</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Financial/EfficiencyRatios'>Efficiency Ratios</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Financial/IncStatGrowthYr'>Income Statment Growth (Yr)</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Financial/BalSheetGrowthYr'>Balance Sheet Growth (Yr)</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Financial/CashFlowStatGrowthYr'>Cash Flow Stat Growth (Yr)</a></li> </ul>
+</li>  <li class="nav-item dropdown" style='margin-top:6px;'>
+                               <a href="javascript:void(0);" class="dropdown-toggle" ><span class='icon-holder' id='comboSbDiv' aria-hidden='true'>   </span>              <span class='title'>Combo Screener </span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
+                               <ul class="dropdown-menu"><li><a href='https://www.tsrbt1.com/rt/Screener/ComboScreener/PriceActionScreeners'>Price Action Screeners</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish Technical Screeners</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish Technical Screeners</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/ComboScreener/FundamentalScreener'>Fundamental Screeners</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/ComboScreener/MovingAverageScreeners'>Moving Average Screeners</a></li> </ul>
+</li><li class='nav-item' style='margin-top:6px;' ><a href='https://www.tsrbt1.com/rt/CustomStockScreener.tsr'>  <span class='icon-holder' id='diysSbDiv' aria-hidden='true'>   </span>              <span class='title'>Custom Screener</span></a></li>  <li class="nav-item dropdown" style='margin-top:6px;'>
+                               <a href="javascript:void(0);" class="dropdown-toggle" ><span class='icon-holder' id='expsSbDiv' aria-hidden='true'>   </span>              <span class='title'>Expert Screeners</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
+                               <ul class="dropdown-menu"><li><a href='https://www.tsrbt1.com/rt/Screener/ExpertScreener/PriceActionBased'>Price Action Strategies</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/ExpertScreener/TechIndiBased'>Technical Indicator Strategies</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/ExpertScreener/MovingAverageStrategies'>Moving Average Strategies</a></li> </ul>
+</li><li class='nav-item' style='margin-top:6px;' ><a href='https://www.tsrbt1.com/rt/InteractiveCharts.tsr'>  <span class='icon-holder' id='tcSbDiv' aria-hidden='true'>   </span>              <span class='title'>Technical Charts</span></a></li><li class='nav-item' style='margin-top:6px;' ><a href='https://www.tsrbt1.com/my/TsrPlans/'>  <span class='icon-holder' id='subsSbDiv' aria-hidden='true'>   </span>              <span class='title'>Premium Plans</span></a></li>  <li class="nav-item dropdown" style='margin-top:6px;'>
+                               <a href="javascript:void(0);" class="dropdown-toggle" ><span class='icon-holder' id='fnoSbDiv' aria-hidden='true'>   </span>              <span class='title'>Futures And Options</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
+                               <ul class="dropdown-menu"><li><a href='https://www.tsrbt1.com/rt/Screener/FuturesAndOptions/Futures'>Futures Screeners</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/FuturesAndOptions/CallOptions'>Call Option Screeners</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/FuturesAndOptions/PutOptions'>Put Option Screeners</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/FuturesAndOptions/PutCallRatio'>PCR Screeners</a></li> </ul>
+</li>  <li class="nav-item dropdown" style='margin-top:6px;'>
+                               <a href="javascript:void(0);" class="dropdown-toggle" ><span class='icon-holder' id='tutSbDiv' aria-hidden='true'>   </span>              <span class='title'>Learn </span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
+                               <ul class="dropdown-menu"><li><a href='https://tutorials.tsrbt1.com'>Tutorials</a></li><li><a href='https://www.tsrbt1.com/rt/Ebooks/CandlestickPart1'>E-Books</a></li> </ul>
+</li>                             </ul>
+                      </div>
+                   </div>
+                </div><script>var mcat ='csSb';</script>  <!-- Page Container Start -->
+            <div class="page-container">                    <!-- Quick View Start -->
+
+
+                <div class="tsrqv1" id='helpNav'>
+                    <ul class="tsrqv-tabs nav nav-tabs nav-justified" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" data-bs-target="#myTsrLinkstab" role="tab" data-bs-toggle="tab">
+                                MyTSR  Links
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link " data-bs-target="#myLinksTab" role="tab" data-bs-toggle="tab" onClick='migUi.myLinks()'  >
+                                My Links
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link " data-bs-target="#myRecentActTab" role="tab" data-bs-toggle="tab" onClick='migUi.myRecAct()'  >
+                                My Recent Activities
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content scrollable">
+                        <div id="myTsrLinksTab" role="tabpanel" class="tab-pane fade show active"><div id='myTsrLinks' > Loading</div></div>
+                        <div id="myLinksTab" role="tabpanel" class="tab-pane fade"><div id='myLinksDiv'> Loading ...</div></div>
+                        <div id="myRecentActTab" role="tabpanel" class="tab-pane fade"><div id='myRecentActivityDiv'> Loading ...</div></div>
+                    </div>
+                </div>
+                <!-- Quick View End -->                    <!-- Content Wrapper Start -->
+                <div class="main-content">
+                    <div class="container-fluid aioRowPad">
+                        <div class="row   ">
+                            <div class="col-md-12">
+                                <div id ="premServiceDiv" style="text-align:justify;" > </div>
+
+                                
+                            </div>
+
+                            <div class="col-md-12">
+                                <div id='dynSearch'>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+<div style="border: 1.5px solid #e9c748;border-radius:5px;border-color: #c39e16;margin:4px;padding:4px;text-align:justify;box-shadow: 3px 3px #db8f0e;">	 <div  style="margin:0px;text-align:center;font-weight:500;font-size:18;"><span style="color:#fe8686; font-size:24pt;" class="fas fa-bullhorn"></span> 1 Min, 2 Min , 3 Min Screener, Charts , Alerts .... Launched -  <i class='fa fa-rocket' style='color: #9c27b0; font-size:24pt;'></i><a href ='https://www.topstockresearch.com/my/UserManagement/?act=rfd'> Request For Demo</a></div> </div><br/><script>var mtppp=null;</script>
+<nav class="breadcrumb-custom"><span class="navdropdown"><a class="nav-link dropdown-toggle" role="button" id="cont" data-bs-toggle="dropdown" aria-expanded="false" href="#">Bullish Screener</a><ul class="dropdown-menu" aria-labelledby="cont"><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BearishScreener' class="dropdown-item">Bearish Screener</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/Consolidation' class="dropdown-item">Consolidation</a></li>  </ul></span><span class="navdropdown"><a class="nav-link dropdown-toggle" role="button" id="cont" data-bs-toggle="dropdown" aria-expanded="false" href="#">Bullish Heikin Ashi</a><ul class="dropdown-menu" aria-labelledby="cont"><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/Bullish1Day/Daily' class="dropdown-item">Bullish One Day Patterns</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/Bullish2Day/Daily' class="dropdown-item">Bullish Two Day Patterns</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/Bullish3Day/Daily' class="dropdown-item">Bullish Three Day Patterns</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishMultiDay/Daily' class="dropdown-item">Bullish Multi Day Patterns</a></li>  </ul></span><span class="navdropdown"><a class="nav-link dropdown-toggle" role="button" id="cont" data-bs-toggle="dropdown" aria-expanded="false" href="#">Screeners</a><ul class="dropdown-menu" aria-labelledby="cont"><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/Daily' class="dropdown-item"><b>Bullish Initiation</b></a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishContinuation/Daily' class="dropdown-item">Bullish Continuation</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishWithHighVolume/Daily' class="dropdown-item">Bullish With High Volume</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishTickFromRedToGreen/Daily' class="dropdown-item">Bullish Tick From Red To Green</a></li>  </ul></span><span class="navdropdown"><a class="nav-link dropdown-toggle" role="button" id="cont" data-bs-toggle="dropdown" aria-expanded="false" href="#">Daily (EOD)</a><ul class="dropdown-menu" aria-labelledby="cont"><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/Intraday' class="dropdown-item">Daily (Live)</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/Weekly' class="dropdown-item">Weekly</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/Monthly' class="dropdown-item">Monthly</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/Min5' class="dropdown-item">Min5</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/Min10' class="dropdown-item">Min10</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/Min15' class="dropdown-item">Min15</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/Min30' class="dropdown-item">Min30</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/Min45' class="dropdown-item">Min45</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/Hour1' class="dropdown-item">Hour1</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/Min75' class="dropdown-item">Min75</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/Hour2' class="dropdown-item">Hour2</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/Hour3' class="dropdown-item">Hour3</a></li><li><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/Hour4' class="dropdown-item">Hour4</a></li>  </ul></span></nav>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow-lg border border-1 border-success">
+            <div class="card-header text-center"><h4 class="card-title">Heikin Ashi Bullish Initiation, Tick - Daily (EOD)</h4><div align='left' id = 'custDiyWrapDiv'><script  src='https://www.tsrbt1.com/static/js/tsr/eDiyScr/eDiyScr_minV0.0.0.2.js'></script><script  src='https://www.tsrbt1.com/static/js/tsr/eDiyScr/EmbeddedDiyScreener.js'></script><div id='sbDiv' ><div class="text-start"><a href='https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation/DAILY/FuturesAndOptions' class='btn btn-primary btn-sm ms-2' >FuturesAndOptions</a></div></div><div style ='float: right;' >|  <a href="javascript:void(0)" onClick="eDiyScr.init();mintHtmlUtil.divHide('psSb');"><b>Fine Tune Filters</b></a> <a  onclick='eDiyScr.init()' title='Customize this settings' ><span style="color:#607d8b; font-size:16pt;" class="fas fa-tools"></span>  </a></div></div><script> var psklassi ='null'; </script><script>var eDiyId  ='BullishInitiation' ;  var eDiyType  ='mi' ; </script></div><div class="card-body">
+<div class="table-responsive-md sticky-header"  id='results' ><div id='premFeat' style ='float: right;' class='miCtrl' ></div><script>var isp=false;</script>
+<table id='results_table' style='width:100%;'  class='table table-striped' ><thead><tr><th>Code</th><th>Current Price</th><th>Previous Price</th><th>In Uptrend</th><th>In Downtrend</th><th>Volume Jump</th><th>Volume Fall</th><th>Volume</th><th> </th><th> </th><th> </th><th>Chart</th></tr></thead><tr><td ><a href='https://www.tsrbt1.com/rt/Stock/HAL/Candlestick' alt='Hindustan Aeronautics Ltd.'  title='Hindustan Aeronautics Ltd.' >HAL</a></td><td >4160.95</td><td >4128.30</td><td >true</td><td >false</td><td >false</td><td >true</td><td >2966.37 K</td><td><a onclick="misu.atc('HAL','pf','scr');" title='Add to Portfolio'> <span class='fa fa-solid fa-briefcase' style='font-size:14px;color:#708090;'></span></a></td><td><a onclick="misu.atc('HAL','wl','scr');" title='Add to Watchlist'> <span class='fa  fa-eye' style='font-size:10px;color:#708090;'></span></a></td><td><a onclick="misu.atc('HAL','alert','scr');" title='Add Alert'> <span class='fa  fa-bell' style='font-size:14px;color:#708090;'></span></a></td><td ><a href='javascript:cputl.chcp("Hindustan Aeronautics Ltd.","HAL","139","3297","gen=alpha&period=3M&cf=D&ct=ha&popSrc=ppc&rsId=0");'><span style="color:grey; font-size:12pt;" class="fa fa-chart-line"></span></a></td></tr><tr><td ><a href='https://www.tsrbt1.com/rt/Stock/LT/Candlestick' alt='Larsen & Toubro Ltd.'  title='Larsen & Toubro Ltd.' >LT</a></td><td >3501.60</td><td >3444.80</td><td >true</td><td >false</td><td >false</td><td >false</td><td >3467.86 K</td><td><a onclick="misu.atc('LT','pf','scr');" title='Add to Portfolio'> <span class='fa fa-solid fa-briefcase' style='font-size:14px;color:#708090;'></span></a></td><td><a onclick="misu.atc('LT','wl','scr');" title='Add to Watchlist'> <span class='fa  fa-eye' style='font-size:10px;color:#708090;'></span></a></td><td><a onclick="misu.atc('LT','alert','scr');" title='Add Alert'> <span class='fa  fa-bell' style='font-size:14px;color:#708090;'></span></a></td><td ><a href='javascript:cputl.chcp("Larsen & Toubro Ltd.","LT","144","140","gen=alpha&period=3M&cf=D&ct=ha&popSrc=ppc&rsId=1");'><span style="color:grey; font-size:12pt;" class="fa fa-chart-line"></span></a></td></tr><tr><td ><a href='https://www.tsrbt1.com/rt/Stock/RADICO/Candlestick' alt='Radico Khaitan Ltd'  title='Radico Khaitan Ltd' >RADICO</a></td><td >2375.30</td><td >2350.95</td><td >true</td><td >false</td><td >false</td><td >true</td><td >132.53 K</td><td><a onclick="misu.atc('RADICO','pf','scr');" title='Add to Portfolio'> <span class='fa fa-solid fa-briefcase' style='font-size:14px;color:#708090;'></span></a></td><td><a onclick="misu.atc('RADICO','wl','scr');" title='Add to Watchlist'> <span class='fa  fa-eye' style='font-size:10px;color:#708090;'></span></a></td><td><a onclick="misu.atc('RADICO','alert','scr');" title='Add Alert'> <span class='fa  fa-bell' style='font-size:14px;color:#708090;'></span></a></td><td ><a href='javascript:cputl.chcp("Radico Khaitan Ltd","RADICO","123","264","gen=alpha&period=3M&cf=D&ct=ha&popSrc=ppc&rsId=2");'><span style="color:grey; font-size:12pt;" class="fa fa-chart-line"></span></a></td></tr><tr><td ><a href='https://www.tsrbt1.com/rt/Stock/TRENT/Candlestick' alt='Trent Ltd.'  title='Trent Ltd.' >TRENT</a></td><td >5422.30</td><td >5321.95</td><td >true</td><td >false</td><td >true</td><td >false</td><td >1670.47 K</td><td><a onclick="misu.atc('TRENT','pf','scr');" title='Add to Portfolio'> <span class='fa fa-solid fa-briefcase' style='font-size:14px;color:#708090;'></span></a></td><td><a onclick="misu.atc('TRENT','wl','scr');" title='Add to Watchlist'> <span class='fa  fa-eye' style='font-size:10px;color:#708090;'></span></a></td><td><a onclick="misu.atc('TRENT','alert','scr');" title='Add Alert'> <span class='fa  fa-bell' style='font-size:14px;color:#708090;'></span></a></td><td ><a href='javascript:cputl.chcp("Trent Ltd.","TRENT","158","179","gen=alpha&period=3M&cf=D&ct=ha&popSrc=ppc&rsId=3");'><span style="color:grey; font-size:12pt;" class="fa fa-chart-line"></span></a></td></tr><tr><td ><a href='https://www.tsrbt1.com/rt/Stock/WIPRO/Candlestick' alt='Wipro Ltd.'  title='Wipro Ltd.' >WIPRO</a></td><td >272.20</td><td >267.40</td><td >false</td><td >false</td><td >false</td><td >false</td><td >14783.52 K</td><td><a onclick="misu.atc('WIPRO','pf','scr');" title='Add to Portfolio'> <span class='fa fa-solid fa-briefcase' style='font-size:14px;color:#708090;'></span></a></td><td><a onclick="misu.atc('WIPRO','wl','scr');" title='Add to Watchlist'> <span class='fa  fa-eye' style='font-size:10px;color:#708090;'></span></a></td><td><a onclick="misu.atc('WIPRO','alert','scr');" title='Add Alert'> <span class='fa  fa-bell' style='font-size:14px;color:#708090;'></span></a></td><td ><a href='javascript:cputl.chcp("Wipro Ltd.","WIPRO","133","73","gen=alpha&period=3M&cf=D&ct=ha&popSrc=ppc&rsId=4");'><span style="color:grey; font-size:12pt;" class="fa fa-chart-line"></span></a></td></tr></table>
+                   </div>
+            </div>
+        </div>
+    </div>
+    
+</div><img src='https://www.tsrbt1.com/static/img/GOOGLE_ADV_RESPONSIVE_BANNER.gif' /><br/>
+
+<a href='https://www.tsrbt1.com/static/Ebooks/CandlestickpatternPart1ByTSR.pdf'  target='_blank' >Download Free CandleStick Pattern PDF eBook&nbsp;&nbsp;&nbsp;<i class="fas fa-file-pdf fa-lg" style="color: #b91313;"></i></a>
+
+
+<br/><br/><b>About Screener : </b>Heikin Ashi Bullish Initiation Screener on ${TICK_TYPE} Tick. Heikin Ashi Patterns minimize market noise & provide clear trend direction.<br/><br/><span  style='font-size:10pt;color:grey;  ' ><b>Fine Tune : </b>You can customise these screeners by clicking on 'Fine Tune Filter'  Option</span><br/><br/><span  style='font-size:10pt;color:grey;  ' ><b>Caution : </b>All these screeners are crafted based on some historical scenarios  which may / may notbe applicable here. We recommend to fine tune them according to current market conditions or seek expert advise before taking any decision.</span><br/><div align='right' >
+<svg height="40" viewBox="0 0 100 100" fill="red" xmlns="http://www.w3.org/2000/svg">
+  <path d="M100 50.1562L86.875 39.5656L95.3125 24.925L77.5 23.3688L75.9375 6.23438L60.9375 13.4L50.625 0L40.9375 13.7063L25.3125 5.60625L24.375 23.3656L6.875 24.3L13.4375 41.1219L0 49.2219L13.75 59.5031L6.875 74.1437L24.0625 76.0125L25 93.4594L40.9375 85.9812L51.5625 100L60.9375 85.9812L75.625 93.1469L76.875 75.7L94.0625 75.3875L87.8125 61.0563L100 50.1562Z" />
+  <path d="M29.8812 63.3812L23.7125 45.7562L28.3656 44.1281L34.2875 49.3062C35.9844 50.7969 37.7969 52.6281 39.2812 54.3406L39.3594 54.3125C38.2812 52.075 37.3687 49.7219 36.4469 47.0844L34.6437 41.9312L38.3031 40.6531L44.4719 58.2781L40.2875 59.7437L34.1437 54.2625C32.4375 52.7469 30.4906 50.8719 28.9031 49.1125L28.8375 49.1656C29.7562 51.4562 30.6781 53.9219 31.6812 56.7969L33.5406 62.1062L29.8812 63.3812ZM48.9875 50.9437C49.6969 52.5469 51.5875 52.7625 53.45 52.1125C54.8094 51.6375 55.8437 51.0656 56.7937 50.3531L58.2594 52.8625C57.1375 53.8437 55.6312 54.6656 53.9062 55.2719C49.5656 56.7906 46.2031 55.15 44.8 51.15C43.6687 47.9094 44.4281 43.6219 48.8719 42.0656C53.0031 40.6187 55.7 43.2875 56.8062 46.45C57.0437 47.1281 57.1781 47.7594 57.2281 48.0656L48.9875 50.9437ZM52.7156 46.5875C52.3781 45.6187 51.3906 44.1469 49.5594 44.7875C47.8875 45.375 47.7375 47.125 48.0094 48.2375L52.7156 46.5875ZM59.6437 38.6156L62.4906 43.4875C63.2187 44.7281 63.9781 46.05 64.6969 47.4437L64.75 47.425C64.5 45.8687 64.35 44.275 64.2281 42.9125L63.7469 37.1812L66.8875 36.0812L69.95 40.7312C70.7937 42.05 71.6375 43.3719 72.4125 44.7406L72.4625 44.7219C72.1375 43.1969 71.8937 41.6625 71.6687 40.1L70.9906 34.6406L74.8906 33.275L75.4406 47.4344L71.7031 48.7437L68.925 44.6656C68.1719 43.5219 67.5312 42.4531 66.725 40.975L66.6687 40.9937C66.9937 42.6687 67.1406 43.9375 67.225 45.2594L67.5156 50.2062L63.7781 51.5156L55.5937 40.025L59.6437 38.6156Z" fill="white"/>
+</svg>
+<a class="btn btn-sm btn-light" style="border-radius: 999px;box-shadow: #0061ff 0 10px 20px -10px;font-size:16px" href='https://www.aioStag.com/US/ai/Screener/HeikinAshi/HeikinAshiScreener/BullishHeikinAshi/BullishInitiation' target="_blank"><span style="font-size:18px"><i class="fas fa-hand-point-right"></i></span><b> US Bullish Initiation Screener</b></a>
+</div><div class='col-lg-12 col-md-12 col-sm-12'><div class='card shadow-lg'><div class='card-header'>
+                    <h5 class="card-title">Concept & Strategies  of Bullish Heikin Ashi Explained</h5>
+                </div><div class="card-body"><div class='table-responsive'><iframe width='560' height='315' src='https://www.youtube.com/embed/6U0iwRHXGtU?start=4' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></div></div></div></div><div id='ytVideoDiv'></div><hr/><footer class=" text-light" style='background-color: #f2f2f2;text-decoration:underline'>
+                    <div class="container" style="margin-left: 10px;">
+                       <br>
+                       <div class="row" >
+                             <h3 style="color:black">Quick Links</h3>
+                          <div>
+                              <span style="color:black"><b>TSR Support</b><br/>                                    <span><a href='https://www.tsrbt1.com/my/UserManagement?act=rfd' style="color:black"> Request For Demo <i class="fas fa-pencil-alt"></i></a></span>
+                                 <span><a href='https://www.tsrbt1.com/my/UserManagement?act=contactUs' style="color:black"> | Contact Us  <i class="fas fa-envelope"></i></a></span>
+<br/>  For Support Call us @ +91 922 655 760 3/4/5 between 10 AM to 6 PM , Mon - Sat <i class="fas fa-phone-alt"></i>
+<br/><b>TSR Videos</b> <span style='font-size:27px;color:#f44336;'><i class="fab fa-youtube"></i> </span> <br/>                                              <a style='cursor : pointer ;color:black'   onClick = "mintHtmlUtil.sytv('ytVideoDiv',  'v4Hp02h_XXQ')"      ><span style=''>English (New)</span></a>&nbsp;&nbsp;&nbsp;                                              | <a style='cursor : pointer ;color:black' onClick = "mintHtmlUtil.sytv('ytVideoDiv',  'U4Epx5HvIfU')"     ><span style=''>हिंदी (New)</span> </a><br/>                                               <a style='cursor : pointer ;color:black'   onClick = "mintHtmlUtil.sytv('ytVideoDiv',  'Z8RFbA3w0yo')"      ><span style=''>English (Classic MyTSR)</span></a>&nbsp;&nbsp;&nbsp;                                              | <a style='cursor : pointer ;color:black' onClick = "mintHtmlUtil.sytv('ytVideoDiv',  'Uc-gJ__FM64')"     ><span style=' '>हिंदी  (Classic MyTSR)</span> </a> | 
+<br/><br/><b>Global Markets</b> <br/>      <a href='https://www.StockAio.com/US/ai/Home' style='cursor : pointer ;color:black'   ><span style=''>US Stock Screener & Analysis</span> <img src="//www.StockAIo.com/static/img/flags/USFlag.png" style="max-height:18px;">  </a><br/>       <a href='https://www.StockAio.com/UK/ai/Home' style='cursor : pointer ;color:black'   ><span style=''>UK Stock Screener & Analysis</span> <img src="//www.StockAIo.com/static/img/flags/UKFlag.png" style="max-height:18px;">  </a> 
+                          </div>
+                       <div class="row" >
+                          <div>
+<br/>                                     
+                                <span><a href='https://www.tsrbt1.com/rt/Home' style="color:black">Home</a></span>
+                                 
+                                <span class="ms-1"><a href="https://www.tsrbt1.com/Disclaimer.html" style="color:black">| Disclaimer</a></span>
+                                
+                               <span class="ms-1"><a href="https://www.tsrbt1.com/TermsAndConditions.html" style="color:black">| Terms &amp; Conditions </a></span>
+
+                               <span class="ms-1"><a href="https://www.tsrbt1.com/PrivacyPolicy.html" style="color:black">| Privacy </a></span>
+
+                 
+                          </div>
+                       
+                          <h7 style="text-align:center;line-height: 28px;color:#9E9E9E"> Happy to provide Premium Analytics Since 2010 @TopStockResearch</h7>
+                          <h7 style="color:#9E9E9E;text-align:center;line-height: 28px;">All rights reserved by Mintnovate Market Research Limited</h7>
+                       </div>
+                    </div>
+                 </footer>                        </div>
+                </div>
+                <!-- Content Wrapper End -->
+
+
+
+
+            </div>
+        </div> <!-- NG APP  align='center'-->
+
+
+
+
+
+</body>                   <script>   migUi.init(); </script><div id='alertDialog' class ='web_dialog'></div><script  src='https://www.tsrbt1.com/static/js/tsr/my/fav/mifav.js'></script><script  src='https://www.tsrbt1.com/static/js/tsr/my/fav_minV0.0.1.1.js'></script><script  src='https://www.tsrbt1.com/static/js/tsr/mipu/mipu_minV0.0.0.47.js'"></script><script> misu.iar('scr');   </script><div id='custDialog' class='cc_dialog'  > </div><div id='cs_dialog' class='cc_dialog'  > </div><div id="dialog" class="web_dialog"> </div>
+<div id="dialog" class="custDialog"> </div>
+<script  src='//cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js'></script> <link rel="stylesheet" href="https://www.tsrbt1.com/static/css/v1/tsrchartsNgV0.0.5.css"> <script  src="https://www.tsrbt1.com/static/js/chart/tsr_charts_minV0.9.2.159.js"></script><!-- CSS -->
+<link rel="stylesheet" href="https://www.tsrbt1.com/static/css/v1/chart_ng.css">
+<link rel="stylesheet" href="https://www.tsrbt1.com/static/css/v1/chart_setting.css">
+<link rel="stylesheet" href="https://www.tsrbt1.com/static/css/v1/chart_menubar.css">
+
+
+
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/constants/NgConstants.js"></script>	
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/constants/ColorConstants.js"></script>	
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/constants/customSettingsConstants.js"></script>	
+
+
+<!-- Remove css.js  	  -->
+
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/style/ChartSVGDef.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/ChartDef.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/style/css.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/style/cssDef.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/style/TechCssDef.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/style/CssUtils.js"></script>
+
+
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/init/initParams.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/init/StockInit.js"></script>
+
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/init/Indicators.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/init/IndiLabels.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/init/InitMenuBar.js"></script>
+
+
+
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/setting/ChangeHandler.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/setting/MultiFreq.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/setting/MultiStock.js"></script>
+
+
+<!-- Base control -->
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/draw/DrawUtils.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/draw/ChartBaseControl.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/draw/BottomIndiSetting.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/draw/OverlaysSettings.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/draw/DisplayValues.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/draw/ChartDimensions.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/draw/DomainHeight.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/integration/DrawIndicators.js"></script>	
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/integration/LinesAndShapes.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/integration/DrawCoreCharts.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/integration/DrawVolumeAndAxis.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/integration/DrawTechnicalCharts.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/custom/CustomBase.js"></script>	
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/custom/CusChartType.js"></script>	
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/custom/CustVol.js"></script>	
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/custom/CustStyle.js"></script>	
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/custom/CustDraw.js"></script>	
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/custom/CustDisplayVals.js"></script>	
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/custom/CustomUtils.js"></script>	
+
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/popsettings/IndicatorSettings.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/popsettings/BottomIndiSettings.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/popsettings/ColorSettings.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/popsettings/NgDropDown.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/popsettings/UserAddText.js"></script>
+
+<!-- Backward Compatible -->
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/backComp/BackwardCompatible.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/constants/NgConstants.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/data/DataLoaderUtil.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/data/FinDataLoader.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/data/NewDataLoader.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/data/DataLoadedChecker.js"></script>
+
+
+
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/data/DataHelper.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/temp/TempBottomPanels.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/temp/TempOverLays.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/temp/TempFibAndPivot.js"></script>
+
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/temp/TempShapes.js"></script>
+    <script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/temp/TempCompare.js"></script>	<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng//save/ManageSettings.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/save/SaveSettings.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/save/SaveManager.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/save/Share.js"></script>
+<script  src="https://www.tsrbt1.com/static/js/tsr/chart/ng/save/Download.js"></script><!--  Ankush Lib Starts -->
+
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/techan/financetime.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/techan/TechanCallBack.js"></script>
+
+
+
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/TrendLine/TrendLines.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/LineFiller.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/TrendLine/LineGraphics.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/SVGHandler.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/Layout/ResizeBar.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/Layout/SVG_Chart.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/SVG.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/Layout/IndicatorLayout.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/AxisAnnotation.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/BoundingBox.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/DataUtils.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/crosshair.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/fixed_line.js"></script>
+
+    <script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/txtComp.js"></script>
+
+
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/symbol.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/path.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/EventHandler.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/ClipPath.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/Utils.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/chart.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/ComparisonChart.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/axis.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/DateAxis.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/Indicators.js"></script>
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/main.js"></script>
+
+
+
+<script src="https://www.tsrbt1.com/static/js/tsr/chart/ng/core/ChartsV2_ankush/Properties/properties.js"></script>
+
+<!-- Ankush Code ends --><script  src="https://www.tsrbt1.com/static/js/tsr/chart/constants.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/chartUtils.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/init.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/utils.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/baseControls.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/htmlUtils.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/tsrCharts.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/datas.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/drawindicators.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/draw.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/ChartSettings.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/saveSvgAsPng.js"></script><script  src="https://www.tsrbt1.com/static/js/tsr/chart/DataLoader.js"></script> <script  src="https://www.tsrbt1.com/static/js/tsr/chart/ChartScrUtils/myTsrChartUtils.js"></script> <script  src="https://www.tsrbt1.com/static/js/tsr/chart/ChartScrUtils/ChartPopupUtils.js"></script> <script>var fineTune=false;</script>
+<script>mintHtmlUtil.divHide('psLoadingDiv')</script>
+<script src='https://www.tsrbt1.com/static/js/tsr/lc/tsr_simple_charts_minV0.3.3.js'></script> 	<link rel="stylesheet" href='https://www.tsrbt1.com/static/css/v1/sch_minV0.0.7.css'>
+<script src='https://www.tsrbt1.com/static/js/tsr/lc/lc.js'></script> 

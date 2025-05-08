@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Based CS</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <!-- <div  style="display: flex; flex-direction: row;"> -->
+        <div id="tsrQueryBasedCs" style="padding: 10px;">
+            <div class="tsr_cs_suggestions_div" id="tsrCsSuggestionsDiv"></div>
+            <textarea name="tsrCsQueryBox" id="tsrCsQueryBox" class="tsr_cs_query_box" rows="10" cols="50"></textarea>
+            <div class="tsrCsActions" style="margin-top: 10px;">
+                <button style="font-size: large;" onclick="runTsrCsQuery()">Run</button>
+                <button style="font-size: large;" onclick="resetTsrCsQueryBox()">Reset</button>
+            </div>
+        </div>
+        <div id="tsrCsAdvancedOptions" class="tsr_cs_advanced_options">
+            
+        </div>
+    <!-- </div> -->
+    
+    <script src="index.js"></script>
+</body>
+
+</html>
