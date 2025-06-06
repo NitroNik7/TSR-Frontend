@@ -1,990 +1,933 @@
 <html>
-   <head>
-      <title>Add Alert </title>
-      <meta name="description"
-         content="Custom Stock Screener with 100's of different Technical  and Financials filters well coupled with interactive charts and tutorials">
-      <meta name="keywords" content=" screener, diy screener, custom screener, technical screener, stock filters  ">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="icon" href='https://www.topstockresearch.com/static/icon/TopStockResearch.ico' type="image/x-icon">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-      <!-- Font Awesome CSS -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-         crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/aioCmnV0.0.0.9.css' />
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-      <script type='text/javascript' src='//code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-         crossorigin="anonymous"></script>
-      <script src="https://www.topstockresearch.com/static/js/tsr/common/mint_cn_minV0.7.5.150.js"></script>
-      <script src="https://www.topstockresearch.com/static/mig/js/aio_cmnV0.0.0.34.js"></script>
-   </head>
-   <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-20026022-1']);
-      _gaq.push(['_setDomainName', 'topstockresearch.com']);
-      _gaq.push(['_trackPageview']);
-      
-      (function () {
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-      
-   </script>
-   <!-- Google tag (gtag.js) -->
-   <script async src="https://www.googletagmanager.com/gtag/js?id=G-10KWGPV9XG"></script>
-   <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      
-      gtag('config', 'G-10KWGPV9XG');
-   </script>
-   <script>   var userProf = { status: 'signedIn', sal: 'Mr.', fName: 'email8', refCode: 'EM8_INT', expDt: '31_Dec_2025', sub: 'TRADER_PRO' };  </script>
-   <body class="scrollable">
-      <div id="mainController">
+
+<head>
+   <title>Add Alert </title>
+   <meta name="description"
+      content="Custom Stock Screener with 100's of different Technical  and Financials filters well coupled with interactive charts and tutorials">
+   <meta name="keywords" content=" screener, diy screener, custom screener, technical screener, stock filters  ">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" href='https://www.topstockresearch.com/static/icon/TopStockResearch.ico' type="image/x-icon">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+   <!-- Font Awesome CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/aioCmnV0.0.0.9.css' />
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   <script type='text/javascript' src='//code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"></script>
+   <script src="https://www.topstockresearch.com/static/js/tsr/common/mint_cn_minV0.7.5.150.js"></script>
+   <script src="https://www.topstockresearch.com/static/mig/js/aio_cmnV0.0.0.34.js"></script>
+</head>
+<script type="text/javascript">
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-20026022-1']);
+   _gaq.push(['_setDomainName', 'topstockresearch.com']);
+   _gaq.push(['_trackPageview']);
+
+   (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10KWGPV9XG"></script>
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() { dataLayer.push(arguments); }
+   gtag('js', new Date());
+
+   gtag('config', 'G-10KWGPV9XG');
+</script>
+<script>   var userProf = { status: 'signedIn', sal: 'Mr.', fName: 'email8', refCode: 'EM8_INT', expDt: '31_Dec_2025', sub: 'TRADER_PRO' };  </script>
+
+<body class="scrollable">
+   <div id="mainController">
       <div style="display: none;">
          <select class='selectpicker' id='userMkt' onchange="javascript:marketOnChange();">
             <option value="IN" selected="selected" label="India">India</option>
          </select>
       </div>
       <div class="app tsrsn-folded">
-      <div class="layout">
-         <!--                <div id='dynHead'></div>-->
-         <div class="tsrhdr navbar">
-            <div class="tsrhdr-container">
-               <div class="nav-logo" id='navLogoDiv'>
-                  <a href="javascript:void(0);" class="tsrsn-fold-toggler" title='TSR (TopStockResearch.com)'>
-                     <div class="logo logo-dark"
-                        style="background-image: url('https://www.topstockresearch.com/static/v21/img/tsr/TsrLogo.png')">
-                     </div>
-                  </a>
+         <div class="layout">
+            <!--                <div id='dynHead'></div>-->
+            <div class="tsrhdr navbar">
+               <div class="tsrhdr-container">
+                  <div class="nav-logo" id='navLogoDiv'>
+                     <a href="javascript:void(0);" class="tsrsn-fold-toggler" title='TSR (TopStockResearch.com)'>
+                        <div class="logo logo-dark"
+                           style="background-image: url('https://www.topstockresearch.com/static/v21/img/tsr/TsrLogo.png')">
+                        </div>
+                     </a>
+                  </div>
+                  <div id='dynHead'></div>
                </div>
-               <div id='dynHead'></div>
             </div>
-         </div>
-         <!-- Header End-->
-         <div class="tsrsn expand-lg">
-            <div class="tsrsn-inner">
-               <div id="sideNavBarDiv">
-                  <ul class="tsrsn-menu scrollable">
-                     <li class='nav-item' style='margin-top:6px;'><a
-                        href='https://www.TopStockResearch.com/rt/Home'> <span class='icon-holder'
-                        id='homeSbDiv' aria-hidden='true'> </span> <span
-                        class='title'>Home</span></a></li>
-                     <li class="nav-item dropdown" style='margin-top:6px;'>
-                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
-                           id='msSbDiv' aria-hidden='true'> </span> <span class='title'>Market
-                        Screener</span><span class="arrow"><i
-                           class="fa fa-solid fa-chevron-right"></i> </span></a>
-                        <ul class="dropdown-menu">
-                           <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/PriceVolume'>Price
-                              / Volume</a>
-                           </li>
-                           <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HighsLows'>Highs
-                              / Lows</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Markets/Returns'>Returns</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Markets/IndexAnalysis'>Index
-                              Analysis</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Markets/SectorAnalysis'>Sector
-                              Analysis</a>
-                           </li>
-                           <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HeatMap'>Heat
-                              Map</a>
-                           </li>
-                        </ul>
+            <!-- Header End-->
+            <div class="tsrsn expand-lg">
+               <div class="tsrsn-inner">
+                  <div id="sideNavBarDiv">
+                     <ul class="tsrsn-menu scrollable">
+                        <li class='nav-item' style='margin-top:6px;'><a href='https://www.TopStockResearch.com/rt/Home'>
+                              <span class='icon-holder' id='homeSbDiv' aria-hidden='true'> </span> <span
+                                 class='title'>Home</span></a></li>
+                        <li class="nav-item dropdown" style='margin-top:6px;'>
+                           <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='msSbDiv'
+                                 aria-hidden='true'> </span> <span class='title'>Market
+                                 Screener</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                              </span></a>
+                           <ul class="dropdown-menu">
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/PriceVolume'>Price
+                                    / Volume</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HighsLows'>Highs
+                                    / Lows</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/Returns'>Returns</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/IndexAnalysis'>Index
+                                    Analysis</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/SectorAnalysis'>Sector
+                                    Analysis</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HeatMap'>Heat
+                                    Map</a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="nav-item dropdown" style='margin-top:6px;'>
+                           <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='strSbDiv'
+                                 aria-hidden='true'> </span> <span class='title'>TSR Strength
+                                 Index</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                              </span></a>
+                           <ul class="dropdown-menu">
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/TechnicalStrength'>Technical
+                                    Strength</a>
+                              </li>
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/FinancialStrength'>Financial
+                                    Strength</a>
+                              </li>
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/EODBetaVolatile'>EOD
+                                    Beta Volatile</a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="nav-item dropdown" style='margin-top:6px;'>
+                           <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='csSbDiv'
+                                 aria-hidden='true'> </span> <span class='title'>Candlestick
+                                 Screeners</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                              </span></a>
+                           <ul class="dropdown-menu">
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
+                                    Screener</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
+                                    Screener</a>
+                              </li>
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="nav-item dropdown" style='margin-top:6px;'>
+                           <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                 id='techSbDiv' aria-hidden='true'> </span> <span class='title'>Technical
+                                 Screeners</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                              </span></a>
+                           <ul class="dropdown-menu">
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/OHLCScreeners'>OHLC
+                                    Screeners</a>
+                              </li>
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/Technical/OverboughtSold'>Overbought/Sold</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/Overlays'>Overlays</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/TrendIndicator'>Trend
+                                    Indicator</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/VolumeBasedIndicator'>Volume
+                                    Based Indicator</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/SMAScreener'>SMA
+                                    Screener</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/EMAScreener'>EMA
+                                    Screener</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/WMAScreener'>WMA
+                                    Screener</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/VwapScreener'>VWAP
+                                    Screener</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/PivotPoint'>Pivot
+                                    Point</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/EODFibonacci'>EOD
+                                    Fibonacci</a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="nav-item dropdown" style='margin-top:6px;'>
+                           <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='cpSbDiv'
+                                 aria-hidden='true'> </span> <span class='title'>Chart
+                                 Patterns</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                              </span></a>
+                           <ul class="dropdown-menu">
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/PopularChartPatterns'>Popular
+                                    Chart Patterns</a>
+                              </li>
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Triangle'>Triangle</a>
+                              </li>
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Channel'>Channel</a>
+                              </li>
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Trendlines'>Trendlines</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/NRWR'>NR
+                                    / WR</a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="nav-item dropdown" style='margin-top:6px;'>
+                           <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                 id='fundaSbDiv' aria-hidden='true'> </span> <span class='title'>Financial
+                                 Screener</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                              </span></a>
+                           <ul class="dropdown-menu">
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/FinHighlight'>Financial
+                                    Highlight</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/GuruRatios'>Guru
+                                    Ratios</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/ValuationRatios'>Valuation
+                                    Ratios</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/ProfitabilityRatios'>Profitability
+                                    Ratios</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/SolvencyRatios'>Solvency
+                                    Ratios</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/EfficiencyRatios'>Efficiency
+                                    Ratios</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/IncStatGrowthYr'>Income
+                                    Statment Growth (Yr)</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/BalSheetGrowthYr'>Balance
+                                    Sheet Growth (Yr)</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/CashFlowStatGrowthYr'>Cash
+                                    Flow Stat Growth (Yr)</a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="nav-item dropdown" style='margin-top:6px;'>
+                           <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                 id='comboSbDiv' aria-hidden='true'> </span> <span class='title'>Combo
+                                 Screener </span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                              </span></a>
+                           <ul class="dropdown-menu">
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/ComboScreener/PriceActionScreeners'>Price
+                                    Action Screeners</a>
+                              </li>
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish
+                                    Technical Screeners</a>
+                              </li>
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish
+                                    Technical Screeners</a>
+                              </li>
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/ComboScreener/FundamentalScreener'>Fundamental
+                                    Screeners</a>
+                              </li>
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/ComboScreener/MovingAverageScreeners'>Moving
+                                    Average Screeners</a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class='nav-item' style='margin-top:6px;'><a
+                              href='https://www.TopStockResearch.com/rt/CustomStockScreener.tsr'> <span
+                                 class='icon-holder' id='diysSbDiv' aria-hidden='true'> </span> <span
+                                 class='title'>Custom Screener</span></a></li>
+                        <li class="nav-item dropdown" style='margin-top:6px;'>
+                           <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                 id='expsSbDiv' aria-hidden='true'> </span> <span class='title'>Expert
+                                 Screeners</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                              </span></a>
+                           <ul class="dropdown-menu">
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/PriceActionBased'>Price
+                                    Action Strategies</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/TechIndiBased'>Technical
+                                    Indicator Strategies</a>
+                              </li>
+                              <li><a
+                                    href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/MovingAverageStrategies'>Moving
+                                    Average Strategies</a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class='nav-item' style='margin-top:6px;'><a
+                              href='https://www.TopStockResearch.com/rt/InteractiveCharts.tsr'> <span
+                                 class='icon-holder' id='tcSbDiv' aria-hidden='true'> </span> <span
+                                 class='title'>Technical Charts</span></a></li>
+                        <li class='nav-item' style='margin-top:6px;'><a
+                              href='https://www.TopStockResearch.com/my/TsrPlans/'> <span class='icon-holder'
+                                 id='subsSbDiv' aria-hidden='true'> </span> <span class='title'>Premium
+                                 Plans</span></a>
+                        </li>
+                        <li class="nav-item dropdown" style='margin-top:6px;'>
+                           <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='fnoSbDiv'
+                                 aria-hidden='true'> </span> <span class='title'>Futures And
+                                 Options</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                              </span></a>
+                           <ul class="dropdown-menu">
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures'>Futures
+                                    Screeners</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/CallOptions'>Call
+                                    Option Screeners</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutOptions'>Put
+                                    Option Screeners</a>
+                              </li>
+                              <li><a href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutCallRatio'>PCR
+                                    Screeners</a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class='nav-item' style='margin-top:6px;'><a href='https://tutorials.TopStockResearch.com'>
+                              <span class='icon-holder' id='tutSbDiv' aria-hidden='true'> </span> <span
+                                 class='title'>Learn
+                              </span></a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <script>var mcat = 'homeSb';</script> <!-- Page Container Start -->
+            <div class="page-container">
+               <!-- Quick View Start -->
+               <div class="tsrqv1" id='helpNav'>
+                  <ul class="tsrqv-tabs nav nav-tabs nav-justified" role="tablist">
+                     <li class="nav-item" role="presentation">
+                        <button class="nav-link active" data-bs-target="#myTsrLinkstab" role="tab" data-bs-toggle="tab">
+                           MyTSR Links
+                        </button>
                      </li>
-                     <li class="nav-item dropdown" style='margin-top:6px;'>
-                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
-                           id='strSbDiv' aria-hidden='true'> </span> <span class='title'>TSR Strength
-                        Index</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
-                        </span></a>
-                        <ul class="dropdown-menu">
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/TechnicalStrength'>Technical
-                              Strength</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/FinancialStrength'>Financial
-                              Strength</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/EODBetaVolatile'>EOD
-                              Beta Volatile</a>
-                           </li>
-                        </ul>
+                     <li class="nav-item" role="presentation">
+                        <button class="nav-link " data-bs-target="#myLinksTab" role="tab" data-bs-toggle="tab"
+                           onClick='migUi.myLinks()'>
+                           My Links
+                        </button>
                      </li>
-                     <li class="nav-item dropdown" style='margin-top:6px;'>
-                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
-                           id='csSbDiv' aria-hidden='true'> </span> <span class='title'>Candlestick
-                        Screeners</span><span class="arrow"><i
-                           class="fa fa-solid fa-chevron-right"></i> </span></a>
-                        <ul class="dropdown-menu">
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
-                              Screener</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
-                              Screener</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class="nav-item dropdown" style='margin-top:6px;'>
-                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
-                           id='techSbDiv' aria-hidden='true'> </span> <span class='title'>Technical
-                        Screeners</span><span class="arrow"><i
-                           class="fa fa-solid fa-chevron-right"></i> </span></a>
-                        <ul class="dropdown-menu">
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Technical/OHLCScreeners'>OHLC
-                              Screeners</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Technical/OverboughtSold'>Overbought/Sold</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Technical/Overlays'>Overlays</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Technical/TrendIndicator'>Trend
-                              Indicator</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Technical/VolumeBasedIndicator'>Volume
-                              Based Indicator</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Technical/SMAScreener'>SMA
-                              Screener</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Technical/EMAScreener'>EMA
-                              Screener</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Technical/WMAScreener'>WMA
-                              Screener</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Technical/VwapScreener'>VWAP
-                              Screener</a>
-                           </li>
-                           <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/PivotPoint'>Pivot
-                              Point</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Technical/EODFibonacci'>EOD
-                              Fibonacci</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class="nav-item dropdown" style='margin-top:6px;'>
-                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
-                           id='cpSbDiv' aria-hidden='true'> </span> <span class='title'>Chart
-                        Patterns</span><span class="arrow"><i
-                           class="fa fa-solid fa-chevron-right"></i> </span></a>
-                        <ul class="dropdown-menu">
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/PopularChartPatterns'>Popular
-                              Chart Patterns</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Triangle'>Triangle</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Channel'>Channel</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Trendlines'>Trendlines</a>
-                           </li>
-                           <li><a href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/NRWR'>NR
-                              / WR</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class="nav-item dropdown" style='margin-top:6px;'>
-                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
-                           id='fundaSbDiv' aria-hidden='true'> </span> <span class='title'>Financial
-                        Screener</span><span class="arrow"><i
-                           class="fa fa-solid fa-chevron-right"></i> </span></a>
-                        <ul class="dropdown-menu">
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Financial/FinHighlight'>Financial
-                              Highlight</a>
-                           </li>
-                           <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/GuruRatios'>Guru
-                              Ratios</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Financial/ValuationRatios'>Valuation
-                              Ratios</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Financial/ProfitabilityRatios'>Profitability
-                              Ratios</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Financial/SolvencyRatios'>Solvency
-                              Ratios</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Financial/EfficiencyRatios'>Efficiency
-                              Ratios</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Financial/IncStatGrowthYr'>Income
-                              Statment Growth (Yr)</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Financial/BalSheetGrowthYr'>Balance
-                              Sheet Growth (Yr)</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/Financial/CashFlowStatGrowthYr'>Cash
-                              Flow Stat Growth (Yr)</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class="nav-item dropdown" style='margin-top:6px;'>
-                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
-                           id='comboSbDiv' aria-hidden='true'> </span> <span class='title'>Combo
-                        Screener </span><span class="arrow"><i
-                           class="fa fa-solid fa-chevron-right"></i> </span></a>
-                        <ul class="dropdown-menu">
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/ComboScreener/PriceActionScreeners'>Price
-                              Action Screeners</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish
-                              Technical Screeners</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish
-                              Technical Screeners</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/ComboScreener/FundamentalScreener'>Fundamental
-                              Screeners</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/ComboScreener/MovingAverageScreeners'>Moving
-                              Average Screeners</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class='nav-item' style='margin-top:6px;'><a
-                        href='https://www.TopStockResearch.com/rt/CustomStockScreener.tsr'> <span
-                        class='icon-holder' id='diysSbDiv' aria-hidden='true'> </span> <span
-                        class='title'>Custom Screener</span></a></li>
-                     <li class="nav-item dropdown" style='margin-top:6px;'>
-                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
-                           id='expsSbDiv' aria-hidden='true'> </span> <span class='title'>Expert
-                        Screeners</span><span class="arrow"><i
-                           class="fa fa-solid fa-chevron-right"></i> </span></a>
-                        <ul class="dropdown-menu">
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/PriceActionBased'>Price
-                              Action Strategies</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/TechIndiBased'>Technical
-                              Indicator Strategies</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/MovingAverageStrategies'>Moving
-                              Average Strategies</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class='nav-item' style='margin-top:6px;'><a
-                        href='https://www.TopStockResearch.com/rt/InteractiveCharts.tsr'> <span
-                        class='icon-holder' id='tcSbDiv' aria-hidden='true'> </span> <span
-                        class='title'>Technical Charts</span></a></li>
-                     <li class='nav-item' style='margin-top:6px;'><a
-                        href='https://www.TopStockResearch.com/my/TsrPlans/'> <span class='icon-holder'
-                        id='subsSbDiv' aria-hidden='true'> </span> <span class='title'>Premium
-                        Plans</span></a>
-                     </li>
-                     <li class="nav-item dropdown" style='margin-top:6px;'>
-                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
-                           id='fnoSbDiv' aria-hidden='true'> </span> <span class='title'>Futures And
-                        Options</span><span class="arrow"><i
-                           class="fa fa-solid fa-chevron-right"></i> </span></a>
-                        <ul class="dropdown-menu">
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures'>Futures
-                              Screeners</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/CallOptions'>Call
-                              Option Screeners</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutOptions'>Put
-                              Option Screeners</a>
-                           </li>
-                           <li><a
-                              href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutCallRatio'>PCR
-                              Screeners</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class='nav-item' style='margin-top:6px;'><a
-                        href='https://tutorials.TopStockResearch.com'> <span class='icon-holder'
-                        id='tutSbDiv' aria-hidden='true'> </span> <span class='title'>Learn
-                        </span></a>
+                     <li class="nav-item" role="presentation">
+                        <button class="nav-link " data-bs-target="#myRecentActTab" role="tab" data-bs-toggle="tab"
+                           onClick='migUi.myRecAct()'>
+                           My Recent Activities
+                        </button>
                      </li>
                   </ul>
-               </div>
-            </div>
-         </div>
-         <script>var mcat = 'homeSb';</script> <!-- Page Container Start -->
-         <div class="page-container">
-            <!-- Quick View Start -->
-            <div class="tsrqv1" id='helpNav'>
-               <ul class="tsrqv-tabs nav nav-tabs nav-justified" role="tablist">
-                  <li class="nav-item" role="presentation">
-                     <button class="nav-link active" data-bs-target="#myTsrLinkstab" role="tab"
-                        data-bs-toggle="tab">
-                     MyTSR Links
-                     </button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                     <button class="nav-link " data-bs-target="#myLinksTab" role="tab" data-bs-toggle="tab"
-                        onClick='migUi.myLinks()'>
-                     My Links
-                     </button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                     <button class="nav-link " data-bs-target="#myRecentActTab" role="tab"
-                        data-bs-toggle="tab" onClick='migUi.myRecAct()'>
-                     My Recent Activities
-                     </button>
-                  </li>
-               </ul>
-               <div class="tab-content scrollable">
-                  <div id="myTsrLinksTab" role="tabpanel" class="tab-pane fade show active">
-                     <div id='myTsrLinks'> Loading</div>
-                  </div>
-                  <div id="myLinksTab" role="tabpanel" class="tab-pane fade">
-                     <div id='myLinksDiv'> Loading ...</div>
-                  </div>
-                  <div id="myRecentActTab" role="tabpanel" class="tab-pane fade">
-                     <div id='myRecentActivityDiv'> Loading ...</div>
+                  <div class="tab-content scrollable">
+                     <div id="myTsrLinksTab" role="tabpanel" class="tab-pane fade show active">
+                        <div id='myTsrLinks'> Loading</div>
+                     </div>
+                     <div id="myLinksTab" role="tabpanel" class="tab-pane fade">
+                        <div id='myLinksDiv'> Loading ...</div>
+                     </div>
+                     <div id="myRecentActTab" role="tabpanel" class="tab-pane fade">
+                        <div id='myRecentActivityDiv'> Loading ...</div>
+                     </div>
                   </div>
                </div>
-            </div>
-            <!-- Quick View End --> <!-- Content Wrapper Start -->
-            <div class="main-content">
-               <div class="container-fluid aioRowPad">
-                  <div class="row   ">
-                     <div class="col-md-12">
-                        <div id="premServiceDiv" style="text-align:justify;"> </div>
-                     </div>
-                     <div class="col-md-12">
-                        <div id='dynSearch'>
+               <!-- Quick View End --> <!-- Content Wrapper Start -->
+               <div class="main-content">
+                  <div class="container-fluid aioRowPad">
+                     <div class="row   ">
+                        <div class="col-md-12">
+                           <div id="premServiceDiv" style="text-align:justify;"> </div>
                         </div>
-                     </div>
-                  </div>
-                  <div
-                     style="border: 1.5px solid #e9c748;border-radius:5px;border-color: #c39e16;margin:4px;padding:4px;text-align:justify;box-shadow: 3px 3px #db8f0e;">
-                     <div style="margin:0px;text-align:center;font-weight:500;font-size:18;"><span
-                        style="color:#fe8686; font-size:24pt;" class="fas fa-bullhorn"></span> 1 Min, 2
-                        Min , 3 Min Screener, Charts , Alerts .... Launched - <i class='fa fa-rocket'
-                           style='color: #9c27b0; font-size:24pt;'></i><a
-                           href='https://www.topstockresearch.com/my/UserManagement/?act=rfd'> Request For
-                        Demo</a>
-                     </div>
-                  </div>
-                  <br />
-                  <style>
-                     @media only screen and (max-width: 1000px) {
-                     .tsrScPromoLa {
-                     display: none;
-                     }
-                     }
-                     @media only screen and (min-width: 999px) {
-                     .tsrScPromoSm {
-                     display: none;
-                     }
-                     }
-                     .lheight {
-                     line-height: 1.8;
-                     }
-                     .btn-style {
-                     border-radius: 999px;
-                     box-shadow: #0061ff 0 10px 20px -10px;
-                     padding: 6px;
-                     font-weight: bold;
-                     }
-                     .animate-charcter {
-                     background-image: linear-gradient(-225deg,
-                     #1F912A 0%,
-                     #00B050 29%,
-                     #5dba73 67%,
-                     #0a8d00 100%);
-                     background-size: auto auto;
-                     background-clip: border-box;
-                     background-size: 200% auto;
-                     background-clip: text;
-                     text-fill-color: transparent;
-                     -webkit-background-clip: text;
-                     -webkit-text-fill-color: transparent;
-                     animation: textclip 2s linear infinite;
-                     display: inline-block;
-                     font-weight: bold;
-                     }
-                     @keyframes textclip {
-                     to {
-                     background-position: 200% center;
-                     }
-                     }
-                  </style>
-                  <div class='tsrScPromoLa'>
-                     <div
-                        style="border: 1.5px solid  var(--bs-gray-300);border-radius:5px;border-color: #c5d1ff;margin:4px;padding:4px;text-align:center;box-shadow: 3px 3px #c5d1ff;background: #f5f9ff;">
-                        <div>
-                           <span style="color:#45464c;font-size: 17px;" class="animate-charcter">Build
-                           Powerful Strategies with Ease - </span>
-                           <span style="color:#45464c;font-size: 17px;font-weight: bold;">Scroll Down for
-                           Help Videos
-                           </span>
-                           <span style="color:#0041a1;font-size: 17px;font-weight: bold;">| Require Further
-                           Help? -
-                           </span><a class="btn btn-primary btn-style userEdit "
-                              style="border-radius: 999px;box-shadow: #0061ff 0 10px 20px -10px;font-size: 12px;padding: 5px;font-weight: bold;"
-                              href="https://www.topstockresearch.com/my/UserManagement/?act=rfd"><i
-                              class="fa fa-sign-in-alt"></i> Request For Demo</a>
-                           </span>
-                        </div>
-                     </div>
-                  </div>
-                  <div class='tsrScPromoSm'>
-                     <div
-                        style="border: 1.5px solid  var(--bs-gray-300);border-radius:5px;border-color: #c5d1ff;margin:4px;padding:4px;text-align:center;box-shadow: 3px 3px #c5d1ff;background: #f5f9ff;">
-                        <div>
-                           <span style="color:#45464c;font-size: 15px;font-weight: bold;">
-                           New To Screener? Happy to Help
-                           </span><br><a class="btn btn-primary btn-style userEdit "
-                              style="border-radius: 999px;box-shadow: #0061ff 0 10px 20px -10px;font-size: 12px;padding: 5px;font-weight: bold;"
-                              href="https://www.topstockresearch.com/my/UserManagement/?act=rfd"><i
-                              class="fa fa-sign-in-alt"></i> Request For Demo</a>
-                        </div>
-                     </div>
-                  </div>
-                  <br>
-                  <script>var mtppp = '1684496447413405542960';</script>
-                  <script
-                     src='https://www.topstockresearch.com/static/js/tsr/mipu/mipu_minV0.0.0.46.js'"></script><script  src='//cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js'></script> 
-                  <link rel="
-                     stylesheet"
-                     href="https://www.TopStockResearch.com/static/css/v1/tsrchartsNgV0.0.5.css">
-                  <script  src="https://www.TopStockResearch.com/static/js/chart/tsr_charts_minV0.9.2.159.js"></script>
-                  <h1 align='center'> Custom Stock Screener - Mix Tech & Funda Filter with ease </h1>
-                  <div id='SC_INIT_LD'>
-                     <font color='#5BC0DE'>Loading ...</font><img
-                        src='https://www.topstockresearch.com/static/img/LoadingMedium.gif' title='loading'>
-                  </div>
-                  <!-- Add alerts form code starts here -->
-                  <link rel="stylesheet" href="index.css">
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                     data-bs-target="#tsrAlertFormModal">
-                  Add Alert on CS
-                  </button>
-                  <!-- Alert on CS - Modal -->
-                  <div class="modal fade" id="tsrAlertFormModal" data-bs-backdrop="static"
-                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                     aria-hidden="true">
-                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                        <div class="modal-content">
-                           <div class="modal-header d-flex justify-content-between align-items-center">
-                              <h1 class="modal-title fs-4 mx-0 px-0" id="staticBackdropLabel">Add Alert
-                              </h1>
-                              <div>
-                                 <input type="checkbox" name="enableAddAlertInfo" id="enableAddAlertInfo"
-                                    onchange="showAddAlertInstructions(event)" checked>
-                                 <label for="enableAddAlertInfo" style="font-size: 18px;">Show instructions</label>
-                              </div>
-                              <button type="button" class="btn-close mx-0 px-0" data-bs-dismiss="modal"
-                                 aria-label="Close"></button>
+                        <div class="col-md-12">
+                           <div id='dynSearch'>
                            </div>
-                           <div class="modal-body">
-                              <form id="tsrAlertForm" class="tsr_alert_form" action="">
-                                 <div class="d-none d-sm-flex">
-                                    <h6 class="me-3">Steps</h6>
-                                    <div class="tsr_alert_form_steps">
-                                       <span class="tsr_af_circle active">1</span>
-                                       <span class="tsr_af_circle">2</span>
-                                       <span class="tsr_af_circle">3</span>
-                                       <div class="tsr_alert_form_progress_bar">
-                                          <span class="tsr_alert_form_indicator"></span>
+                        </div>
+                     </div>
+                     <div
+                        style="border: 1.5px solid #e9c748;border-radius:5px;border-color: #c39e16;margin:4px;padding:4px;text-align:justify;box-shadow: 3px 3px #db8f0e;">
+                        <div style="margin:0px;text-align:center;font-weight:500;font-size:18;"><span
+                              style="color:#fe8686; font-size:24pt;" class="fas fa-bullhorn"></span> 1 Min, 2
+                           Min , 3 Min Screener, Charts , Alerts .... Launched - <i class='fa fa-rocket'
+                              style='color: #9c27b0; font-size:24pt;'></i><a
+                              href='https://www.topstockresearch.com/my/UserManagement/?act=rfd'> Request For
+                              Demo</a>
+                        </div>
+                     </div>
+                     <br />
+                     <style>
+                        @media only screen and (max-width: 1000px) {
+                           .tsrScPromoLa {
+                              display: none;
+                           }
+                        }
+
+                        @media only screen and (min-width: 999px) {
+                           .tsrScPromoSm {
+                              display: none;
+                           }
+                        }
+
+                        .lheight {
+                           line-height: 1.8;
+                        }
+
+                        .btn-style {
+                           border-radius: 999px;
+                           box-shadow: #0061ff 0 10px 20px -10px;
+                           padding: 6px;
+                           font-weight: bold;
+                        }
+
+                        .animate-charcter {
+                           background-image: linear-gradient(-225deg,
+                                 #1F912A 0%,
+                                 #00B050 29%,
+                                 #5dba73 67%,
+                                 #0a8d00 100%);
+                           background-size: auto auto;
+                           background-clip: border-box;
+                           background-size: 200% auto;
+                           background-clip: text;
+                           text-fill-color: transparent;
+                           -webkit-background-clip: text;
+                           -webkit-text-fill-color: transparent;
+                           animation: textclip 2s linear infinite;
+                           display: inline-block;
+                           font-weight: bold;
+                        }
+
+                        @keyframes textclip {
+                           to {
+                              background-position: 200% center;
+                           }
+                        }
+                     </style>
+                     <div class='tsrScPromoLa'>
+                        <div
+                           style="border: 1.5px solid  var(--bs-gray-300);border-radius:5px;border-color: #c5d1ff;margin:4px;padding:4px;text-align:center;box-shadow: 3px 3px #c5d1ff;background: #f5f9ff;">
+                           <div>
+                              <span style="color:#45464c;font-size: 17px;" class="animate-charcter">Build
+                                 Powerful Strategies with Ease - </span>
+                              <span style="color:#45464c;font-size: 17px;font-weight: bold;">Scroll Down for
+                                 Help Videos
+                              </span>
+                              <span style="color:#0041a1;font-size: 17px;font-weight: bold;">| Require Further
+                                 Help? -
+                              </span><a class="btn btn-primary btn-style userEdit "
+                                 style="border-radius: 999px;box-shadow: #0061ff 0 10px 20px -10px;font-size: 12px;padding: 5px;font-weight: bold;"
+                                 href="https://www.topstockresearch.com/my/UserManagement/?act=rfd"><i
+                                    class="fa fa-sign-in-alt"></i> Request For Demo</a>
+                              </span>
+                           </div>
+                        </div>
+                     </div>
+                     <div class='tsrScPromoSm'>
+                        <div
+                           style="border: 1.5px solid  var(--bs-gray-300);border-radius:5px;border-color: #c5d1ff;margin:4px;padding:4px;text-align:center;box-shadow: 3px 3px #c5d1ff;background: #f5f9ff;">
+                           <div>
+                              <span style="color:#45464c;font-size: 15px;font-weight: bold;">
+                                 New To Screener? Happy to Help
+                              </span><br><a class="btn btn-primary btn-style userEdit "
+                                 style="border-radius: 999px;box-shadow: #0061ff 0 10px 20px -10px;font-size: 12px;padding: 5px;font-weight: bold;"
+                                 href="https://www.topstockresearch.com/my/UserManagement/?act=rfd"><i
+                                    class="fa fa-sign-in-alt"></i> Request For Demo</a>
+                           </div>
+                        </div>
+                     </div>
+                     <br>
+                     <script>var mtppp = '1684496447413405542960';</script>
+                     <script src='https://www.topstockresearch.com/static/js/tsr/mipu/mipu_minV0.0.0.46.js'"></script><script  src='//cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js'></script> 
+                  <link rel=" stylesheet" href="https://www.TopStockResearch.com/static/css/v1/tsrchartsNgV0.0.5.css">
+                  <script  src="https://www.TopStockResearch.com/static/js/chart/tsr_charts_minV0.9.2.159.js"></script>
+                     <h1 align='center'> Custom Stock Screener - Mix Tech & Funda Filter with ease </h1>
+                     <div id='SC_INIT_LD'>
+                        <font color='#5BC0DE'>Loading ...</font><img
+                           src='https://www.topstockresearch.com/static/img/LoadingMedium.gif' title='loading'>
+                     </div>
+                     <!-- Add alerts form code starts here -->
+                     <link rel="stylesheet" href="index.css">
+                     <!-- Button trigger modal -->
+                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#tsrAlertFormModal">
+                        Add Alert on CS
+                     </button>
+                     <!-- Alert on CS - Modal -->
+                     <div class="modal fade" id="tsrAlertFormModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                           <div class="modal-content">
+                              <div class="modal-header d-flex justify-content-between align-items-center">
+                                 <h1 class="modal-title fs-4 mx-0 px-0" id="staticBackdropLabel">Add Alert
+                                 </h1>
+                                 <div>
+                                    <input type="checkbox" name="enableAddAlertInfo" id="enableAddAlertInfo"
+                                       onchange="showAddAlertInstructions(event)" checked>
+                                    <label for="enableAddAlertInfo" style="font-size: 18px;">Show instructions</label>
+                                 </div>
+                                 <button type="button" class="btn-close mx-0 px-0" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                 <form id="tsrAlertForm" class="tsr_alert_form" action="">
+                                    <div class="d-none d-sm-flex">
+                                       <h6 class="me-3">Steps</h6>
+                                       <div class="tsr_alert_form_steps">
+                                          <span class="tsr_af_circle active">1</span>
+                                          <span class="tsr_af_circle">2</span>
+                                          <span class="tsr_af_circle">3</span>
+                                          <div class="tsr_alert_form_progress_bar">
+                                             <span class="tsr_alert_form_indicator"></span>
+                                          </div>
                                        </div>
                                     </div>
-                                 </div>
-                                 <br class="d-none d-sm-block">
-                                 <div class="tsr_alert_form_tab">
-                                    <div class="form-floating mb-3">
-                                       <input type="text" class="form-control" id="tsrAlertName"
-                                          placeholder="My Strategy Alert" required>
-                                       <label for="tsrAlertName">Enter Alert Name</label>
-                                    </div>
-                                    <!-- <p style="color: grey;">
+                                    <br class="d-none d-sm-block">
+                                    <div class="tsr_alert_form_tab">
+                                       <div class="form-floating mb-3">
+                                          <input type="text" class="form-control" id="tsrAlertName"
+                                             placeholder="My Strategy Alert" required>
+                                          <label for="tsrAlertName">Enter Alert Name</label>
+                                       </div>
+                                       <!-- <p style="color: grey;">
                                        Note<span style="color: red;">*</span>
                                        <br>
                                        Alerts are Popped during intraday. If you are offline then you
                                        can still view them in the Alert Tab
                                        </p> -->
-                                    <br>
-                                    <h4>Choose Alert Type</h4>
-                                    <hr>
-                                    <div class="d-flex flex-column flex-md-row">
-                                       <div class="w-100" id="tsrAlertTriggerTimesContainer"
-                                          style="height: max-content;">
-                                          <input type="radio" id="alertTypeOne" name="tsrAlertType"
-                                             value="alertTypeOne"
-                                             style="-webkit-appearance: auto !important;"
-                                             onchange="showSubOptions(event, 'alertTypeOne'); showTsrAlertTypeInfo(event);"
-                                             checked required>
-                                          <label for="alertTypeOne">From Current Filters</label>
-                                          <br>
-                                          <input type="radio" id="alertTypeTwo" name="tsrAlertType"
-                                             value="alertTypeTwo"
-                                             style="-webkit-appearance: auto !important;"
-                                             onchange="showSubOptions(event, 'tsrCsAlertTypeSavedScreener'); showTsrAlertTypeInfo(event);">
-                                          <label for="alertTypeTwo">From Saved Screener <span
-                                             style="color: grey; font-size: 10pt;">(Select
-                                          One)</span></label>
-                                          <br>
-                                          <div id="tsrCsAlertTypeSavedScreener"
-                                             style="display: none;">
-                                             <select class="form-select my-1"
-                                                aria-label="Small select example">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                             </select>
-                                          </div>
-                                          <input type="radio" id="alertTypeThree" name="tsrAlertType"
-                                             value="alertTypeThree"
-                                             style="-webkit-appearance: auto !important;"
-                                             onchange="showSubOptions(event, 'tsrCsAlertTypeStock'); showTsrAlertTypeInfo(event);">
-                                          <label for="alertTypeThree">On a stock <span
-                                             style="color: grey; font-size: 10pt;">(Using Current
-                                          Filters)</span></label>
-                                          <br>
-                                          <div id="tsrCsAlertTypeStock" style="display: none;">
-                                             <div class="form-floating mb-3">
-                                                <input type="email" class="form-control"
-                                                   id="floatingInput"
-                                                   placeholder="My Strategy Alert">
-                                                <label for="floatingInput">Enter Stock Name</label>
+                                       <br>
+                                       <h4>Choose Alert Type</h4>
+                                       <hr>
+                                       <div class="d-flex flex-column flex-md-row">
+                                          <div class="w-100" id="tsrAlertTriggerTimesContainer"
+                                             style="height: max-content;">
+                                             <input type="radio" id="alertTypeOne" name="tsrAlertType"
+                                                value="alertTypeOne" style="-webkit-appearance: auto !important;"
+                                                onchange="showSubOptions(event, 'alertTypeOne'); showTsrAlertTypeInfo(event);"
+                                                checked required>
+                                             <label for="alertTypeOne">From Current Filters</label>
+                                             <br>
+                                             <input type="radio" id="alertTypeTwo" name="tsrAlertType"
+                                                value="alertTypeTwo" style="-webkit-appearance: auto !important;"
+                                                onchange="showSubOptions(event, 'tsrCsAlertTypeSavedScreener'); showTsrAlertTypeInfo(event);">
+                                             <label for="alertTypeTwo">From Saved Screener <span
+                                                   style="color: grey; font-size: 10pt;">(Select
+                                                   One)</span></label>
+                                             <br>
+                                             <div id="tsrCsAlertTypeSavedScreener" style="display: none;">
+                                                <select class="form-select my-1" aria-label="Small select example">
+                                                   <option selected>Open this select menu</option>
+                                                   <option value="1">One</option>
+                                                   <option value="2">Two</option>
+                                                   <option value="3">Three</option>
+                                                </select>
+                                             </div>
+                                             <input type="radio" id="alertTypeThree" name="tsrAlertType"
+                                                value="alertTypeThree" style="-webkit-appearance: auto !important;"
+                                                onchange="showSubOptions(event, 'tsrCsAlertTypeStock'); showTsrAlertTypeInfo(event);">
+                                             <label for="alertTypeThree">On a stock <span
+                                                   style="color: grey; font-size: 10pt;">(Using Current
+                                                   Filters)</span></label>
+                                             <br>
+                                             <div id="tsrCsAlertTypeStock" style="display: none;">
+                                                <div class="form-floating mb-3">
+                                                   <input type="email" class="form-control" id="floatingInput"
+                                                      placeholder="My Strategy Alert">
+                                                   <label for="floatingInput">Enter Stock Name</label>
+                                                </div>
                                              </div>
                                           </div>
-                                       </div>
-                                       <div class="vert_divider d-none d-md-block mx-3">
-                                       </div>
-                                       <div class="horz_divider d-block d-md-none">
-                                          <hr>
-                                       </div>
-                                       <div class="tsr_alert_info_div w-100 mt-2 mt-md-0">
-                                          <div class="mt-0"
-                                             style="height: 125px; overflow-y: auto; font-size: 18px;">
-                                             <span style="color:#607D8B;"> Receive Alert on current
-                                             settings. The alert may be added without having to
-                                             save current settings. </span>
+                                          <div class="vert_divider d-none d-md-block mx-3">
                                           </div>
+                                          <div class="horz_divider d-block d-md-none">
+                                             <hr>
+                                          </div>
+                                          <div class="tsr_alert_info_div w-100 mt-2 mt-md-0">
+                                             <div class="mt-0"
+                                                style="height: 125px; overflow-y: auto; font-size: 18px;">
+                                                <span style="color:#607D8B;"> Receive Alert on current
+                                                   settings. The alert may be added without having to
+                                                   save current settings. </span>
+                                             </div>
+                                          </div>
+                                          <br>
                                        </div>
-                                       <br>
                                     </div>
-                                 </div>
-                                 <div class="tsr_alert_form_tab">
-                                    <h4>Choose Alert Time</h4>
-                                    <hr>
-                                    <div>
-                                       <input type="radio" id="getAlerts1" name="tsrAlertTime"
-                                          value="HTML"
-                                          style="-webkit-appearance: auto !important; width: unset;"
-                                          onchange="showSubOptions(event, '')" checked required>
-                                       <label for="getAlerts1">Get Alert as soon as conditions are
-                                       met</label><br>
-                                       <input type="radio" id="getAlerts2" name="tsrAlertTime"
-                                          value="HTML"
-                                          style="-webkit-appearance: auto !important; width: unset;"
-                                          onchange="showSubOptions(event, 'tsrCsAlertTime')">
-                                       <label for="getAlerts2">Specific Time / Time Range</label>
-                                       <br>
-                                       <div id="tsrCsAlertTime" style="display: none;">
+                                    <div class="tsr_alert_form_tab">
+                                       <h4>Choose Alert Time</h4>
+                                       <hr>
+                                       <div>
+                                          <input type="radio" id="getAlerts1" name="tsrAlertTime" value="HTML"
+                                             style="-webkit-appearance: auto !important; width: unset;"
+                                             onchange="showSubOptions(event, '')" checked required>
+                                          <label for="getAlerts1">Get Alert as soon as conditions are
+                                             met</label><br>
+                                          <input type="radio" id="getAlerts2" name="tsrAlertTime" value="HTML"
+                                             style="-webkit-appearance: auto !important; width: unset;"
+                                             onchange="showSubOptions(event, 'tsrCsAlertTime')">
+                                          <label for="getAlerts2">Specific Time / Time Range</label>
                                           <br>
-                                          <div style="display: flex !important; ">
-                                             <h6>Choose Specific Time</h6>
-                                          </div>
-                                          <hr>
-                                          <div class="d-flex flex-column flex-md-row">
-                                             <div class="w-100" id="tsrAlertTriggerTimesContainer"
-                                                style="height: max-content;">
-                                                <input type="radio" id="fixedTime"
-                                                   name="tsrTimeOfTheDay" value="fixedTime"
-                                                   style="-webkit-appearance: auto !important;"
-                                                   onchange="showSubOptions(event, 'fixedTimeDiv');
-                                                   showTsrAlertSpecificTimeInfo(event);
-                                                   " checked required>
-                                                <label for="fixedTime">Fixed Time</label>
-                                                <br>
-                                                <div id="fixedTimeDiv" style="display: none;">
-                                                   <label for="" class="me-1"></label>
-                                                   <input type="time">
-                                                </div>
-                                                <input type="radio" id="timeRange"
-                                                   name="tsrTimeOfTheDay" value="timeRange"
-                                                   style="-webkit-appearance: auto !important;"
-                                                   onchange="showSubOptions(event, 'timeRangeDiv');
-                                                   showTsrAlertSpecificTimeInfo(event);
-                                                   ">
-                                                <label for="timeRange">Time Range</label><br>
-                                                <div id="timeRangeDiv" style="display: none;">
-                                                   <div class="my-2">
-                                                      <label class="mb-1 me-5"
-                                                         for="startTime">Start
-                                                      Time</label>
-                                                      <input type="time" name="" id="">
-                                                   </div>
-                                                   <div class="my-2">
-                                                      <label class="mb-1 me-5" for="endTime">End
-                                                      Time</label>
-                                                      <input type="time" name="" id="">
-                                                   </div>
-                                                </div>
-                                                <input type="radio" id="anytime"
-                                                   name="tsrTimeOfTheDay" value="anytime"
-                                                   style="-webkit-appearance: auto !important;"
-                                                   onchange="showSubOptions(event, '');
-                                                   showTsrAlertSpecificTimeInfo(event);
-                                                   ">
-                                                <label for="anytime">Any time as it happens</label>
-                                             </div>
-                                             <div class="vert_divider d-none d-md-block mx-3">
-                                             </div>
-                                             <div class="horz_divider d-block d-md-none">
-                                                <hr>
-                                             </div>
-                                             <div class="tsr_alert_info_div w-100 mt-2 mt-md-0">
-                                                <div class="mt-0"
-                                                   style="height: 100px; overflow-y: auto; font-size: 18px;">
-                                                   <span style="color:#607D8B;"> Alert will be generated only when criteria is met at the chosen Time.
-                                                   </span>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <br>
-                                          <div id="dayOfTheWeek" style="display: block;">
-                                             <div style="display: flex !important;">
-                                                <h6>Choose Day of the Week</h6>
+                                          <div id="tsrCsAlertTime" style="display: none;">
+                                             <br>
+                                             <div style="display: flex !important; ">
+                                                <h6>Choose Specific Time</h6>
                                              </div>
                                              <hr>
                                              <div class="d-flex flex-column flex-md-row">
-                                                <div class="w-100"
-                                                   id="tsrAlertTriggerTimesContainer"
+                                                <div class="w-100" id="tsrAlertTriggerTimesContainer"
                                                    style="height: max-content;">
-                                                   <input type="radio" id="anyDayOfWeek"
-                                                      name="tsrDayOfTheWeek" value="anyDayOfWeek"
-                                                      style="-webkit-appearance: auto !important;"
-                                                      onchange="showSubOptions(event, '');
-                                                      showTsrAlertChooseDayInfo(event);"
-                                                      checked required>
-                                                   <label for="anyDayOfWeek">Any Day of the
-                                                   Week</label><br>
-                                                   <input type="radio" id="specificDay"
-                                                      name="tsrDayOfTheWeek" value="specificDay"
-                                                      style="-webkit-appearance: auto !important;"
-                                                      onchange="showSubOptions(event, 'specificDays');
-                                                      showTsrAlertChooseDayInfo(event);">
-                                                   <label class="mb-1" for="specificDay">Specific
-                                                   Day</label>
-                                                   <div class="form-floating mx-2"
-                                                      id="specificDays" style="display: none;">
-                                                      <select class="form-select"
-                                                         id="floatingSelect"
-                                                         aria-label="Floating label select example"
-                                                         style="width: 150px;">
-                                                         <option selected>Monday</option>
-                                                         <option value="1">One</option>
-                                                         <option value="2">Two</option>
-                                                         <option value="3">Three</option>
-                                                      </select>
-                                                      <label for="floatingSelect">Day</label>
+                                                   <input type="radio" id="fixedTime" name="tsrTimeOfTheDay"
+                                                      value="fixedTime" style="-webkit-appearance: auto !important;"
+                                                      onchange="showSubOptions(event, 'fixedTimeDiv');
+                                                   showTsrAlertSpecificTimeInfo(event);
+                                                   " checked required>
+                                                   <label for="fixedTime">Fixed Time</label>
+                                                   <br>
+                                                   <div id="fixedTimeDiv" style="display: none;">
+                                                      <label for="" class="me-1"></label>
+                                                      <input type="time">
                                                    </div>
+                                                   <input type="radio" id="timeRange" name="tsrTimeOfTheDay"
+                                                      value="timeRange" style="-webkit-appearance: auto !important;"
+                                                      onchange="showSubOptions(event, 'timeRangeDiv');
+                                                   showTsrAlertSpecificTimeInfo(event);
+                                                   ">
+                                                   <label for="timeRange">Time Range</label><br>
+                                                   <div id="timeRangeDiv" style="display: none;">
+                                                      <div class="my-2">
+                                                         <label class="mb-1 me-5" for="startTime">Start
+                                                            Time</label>
+                                                         <input type="time" name="" id="">
+                                                      </div>
+                                                      <div class="my-2">
+                                                         <label class="mb-1 me-5" for="endTime">End
+                                                            Time</label>
+                                                         <input type="time" name="" id="">
+                                                      </div>
+                                                   </div>
+                                                   <input type="radio" id="anytime" name="tsrTimeOfTheDay"
+                                                      value="anytime" style="-webkit-appearance: auto !important;"
+                                                      onchange="showSubOptions(event, '');
+                                                   showTsrAlertSpecificTimeInfo(event);
+                                                   ">
+                                                   <label for="anytime">Any time as it happens</label>
                                                 </div>
-                                                <div class="vert_divider d-none mx-3">
+                                                <div class="vert_divider d-none d-md-block mx-3">
                                                 </div>
-                                                <div class="horz_divider d-md-none">
+                                                <div class="horz_divider d-block d-md-none">
                                                    <hr>
                                                 </div>
                                                 <div class="tsr_alert_info_div w-100 mt-2 mt-md-0">
                                                    <div class="mt-0"
-                                                      style="height: 75px; overflow-y: auto; font-size: 18px;">
-                                                      <span style="color:#607D8B;"> </span>
+                                                      style="height: 100px; overflow-y: auto; font-size: 18px;">
+                                                      <span style="color:#607D8B;"> Alert will be generated only when
+                                                         criteria is met at the chosen Time.
+                                                      </span>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <br>
+                                             <div id="dayOfTheWeek" style="display: block;">
+                                                <div style="display: flex !important;">
+                                                   <h6>Choose Day of the Week</h6>
+                                                </div>
+                                                <hr>
+                                                <div class="d-flex flex-column flex-md-row">
+                                                   <div class="w-100" id="tsrAlertTriggerTimesContainer"
+                                                      style="height: max-content;">
+                                                      <input type="radio" id="anyDayOfWeek" name="tsrDayOfTheWeek"
+                                                         value="anyDayOfWeek"
+                                                         style="-webkit-appearance: auto !important;" onchange="showSubOptions(event, '');
+                                                      showTsrAlertChooseDayInfo(event);" checked required>
+                                                      <label for="anyDayOfWeek">Any Day of the
+                                                         Week</label><br>
+                                                      <input type="radio" id="specificDay" name="tsrDayOfTheWeek"
+                                                         value="specificDay"
+                                                         style="-webkit-appearance: auto !important;" onchange="showSubOptions(event, 'specificDays');
+                                                      showTsrAlertChooseDayInfo(event);">
+                                                      <label class="mb-1" for="specificDay">Specific
+                                                         Day</label>
+                                                      <div class="form-floating mx-2" id="specificDays"
+                                                         style="display: none;">
+                                                         <select class="form-select" id="floatingSelect"
+                                                            aria-label="Floating label select example"
+                                                            style="width: 150px;">
+                                                            <option selected>Monday</option>
+                                                            <option value="1">One</option>
+                                                            <option value="2">Two</option>
+                                                            <option value="3">Three</option>
+                                                         </select>
+                                                         <label for="floatingSelect">Day</label>
+                                                      </div>
+                                                   </div>
+                                                   <div class="vert_divider d-none mx-3">
+                                                   </div>
+                                                   <div class="horz_divider d-md-none">
+                                                      <hr>
+                                                   </div>
+                                                   <div class="tsr_alert_info_div w-100 mt-2 mt-md-0">
+                                                      <div class="mt-0"
+                                                         style="height: 75px; overflow-y: auto; font-size: 18px;">
+                                                         <span style="color:#607D8B;"> </span>
+                                                      </div>
                                                    </div>
                                                 </div>
                                              </div>
                                           </div>
                                        </div>
-                                    </div>
-                                    <p id="dailyTickNote" style="color: grey; display: none;">
-                                       Note<span style="color: red;">*</span>
-                                       <br>
-                                       Daily tick is selected, this might disable some options
-                                    </p>
-                                    <br>
-                                    <h4>Choose Trigger Times</h4>
-                                    <hr>
-                                    <div class="d-flex flex-column flex-md-row">
-                                       <div class="w-100" id="tsrAlertTriggerTimesContainer"
-                                          style="height: max-content;">
-                                          <p>
-                                             <label class="me-3" for="triggerDate">Active
-                                             till</label>
-                                             <input type="date" id="triggerDate" name="tsrAlertType"
-                                                value="2025-12-31"
-                                                style="-webkit-appearance: auto !important; width: unset;">
-                                          </p>
-                                          <input type="radio" id="triggerTimeOne"
-                                             name="tsrTriggerTime" value="triggerTimeOne"
-                                             style="-webkit-appearance: auto !important;"
-                                             onchange="showTsrAlertTriggerTimesInfo(event)" checked
-                                             required>
-                                          <label for="triggerTimeOne">Once</label>
+                                       <p id="dailyTickNote" style="color: grey; display: none;">
+                                          Note<span style="color: red;">*</span>
                                           <br>
-                                          <input type="radio" id="triggerTimeTwo"
-                                             name="tsrTriggerTime" value="triggerTimeTwo"
-                                             style="-webkit-appearance: auto !important;"
-                                             onchange="showTsrAlertTriggerTimesInfo(event)">
-                                          <label for="triggerTimeTwo">Repeat Till
-                                          Disabled/Deleted</label>
-                                          <br>
-                                       </div>
-                                       <div class="vert_divider d-none d-md-block mx-3">
-                                       </div>
-                                       <div class="horz_divider d-block d-md-none">
-                                          <hr>
-                                       </div>
-                                       <div class="tsr_alert_info_div w-100 mt-2 mt-md-0">
-                                          <div class="mt-0"
-                                             style="height: 125px; overflow-y: auto; font-size: 18px;">
-                                             <span style="color:#607D8B;"> <b>Once </b> -&gt; Alert
-                                             will be paused once criteria is met. Works best on a
-                                             stock. </span>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="tsr_alert_form_tab">
-                                    <h4>Choose Stock Relevance</h4>
-                                    <hr>
-                                    <div class="d-flex flex-column flex-md-row">
-                                       <div class="w-100" id="tsrAlertStockRelevanceContainer"
-                                          style="height: max-content;">
-                                          <input type="radio" id="showAll"
-                                             name="tsrAlertStockRelevance" value="showAll"
-                                             style="-webkit-appearance: auto !important;"
-                                             onchange="showTsrAlertStockRelevanceInfo(event)" checked
-                                             required>
-                                          <label for="showAll">Show All</label>
-                                          <br>
-                                          <input type="radio" id="showNone"
-                                             name="tsrAlertStockRelevance" value="showNew"
-                                             style="-webkit-appearance: auto !important;"
-                                             onchange="showTsrAlertStockRelevanceInfo(event)">
-                                          <label for="showNone">Show New</label>
-                                          <br>
-                                       </div>
-                                       <div class="vert_divider d-none d-md-block mx-3">
-                                       </div>
-                                       <div class="horz_divider d-block d-md-none">
-                                          <hr>
-                                       </div>
-                                       <div class="tsr_alert_info_div w-100 mt-2 mt-md-0">
-                                          <div class="mt-0"
-                                             style="height: 75; overflow-y: auto; font-size: 18px;">
-                                             <span style="color:#607D8B;"><b>Show All</b> - it shows all the stocks that match the criteria at the time of trigger. In such case you are likely to see the stocks repeating from previous alerts.</span>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <br>
-                                    <h4>Choose Alert Mode</h4>
-                                    <hr>
-                                    <div class="d-flex flex-column flex-md-row">
-                                       <div class="w-100" id="tsrAlertModeRadioContainer"
-                                          style="height: max-content;">
-                                          <input type="radio" id="webAlert" name="tsrAlertMode"
-                                             value="webAlert"
-                                             style="-webkit-appearance: auto !important;"
-                                             required onchange="showTsrAlertModeInfo(event)" checked>
-                                          <label for="webAlert">Web Alert</label>
-                                          <br>
-                                          <input type="radio" id="emailAlert" name="tsrAlertMode"
-                                             value="emailAlert"
-                                             style="-webkit-appearance: auto !important;"
-                                             onchange="showTsrAlertModeInfo(event)">
-                                          <label for="emailAlert">Email Alert</label>
-                                          <br>
-                                          <input type="radio" id="smsAlert" name="tsrAlertMode"
-                                             value="smsAlert"
-                                             style="-webkit-appearance: auto !important;"
-                                             onchange="showTsrAlertModeInfo(event)">
-                                          <label for="smsAlert">SMS Alert</label>
-                                          <br>
-                                          <input type="radio" id="whatsappAlert" name="tsrAlertMode"
-                                             value="whatsappAlert"
-                                             style="-webkit-appearance: auto !important;"
-                                             onchange="showTsrAlertModeInfo(event)">
-                                          <label for="whatsappAlert">Whatsapp Alert</label>
-                                          <br>
-                                          <input type="radio" id="webPushAlert" name="tsrAlertMode"
-                                             value="webPushAlert"
-                                             style="-webkit-appearance: auto !important;"
-                                             onchange="showTsrAlertModeInfo(event)">
-                                          <label for="webPushAlert">Push Notifications</label>
-                                       </div>
-                                       <div class="vert_divider d-none d-md-block mx-3">
-                                       </div>
-                                       <div class="horz_divider d-block d-md-none">
-                                          <hr>
-                                       </div>
-                                       <div id="tsrAlertModeInfo"
-                                          class="tsr_alert_info_div w-100 mt-2 mt-md-0">
-                                          <div class="mt-0"
-                                             style="height: 150; overflow-y: auto; font-size: 18px;">
-                                             <span style="color:#607D8B;"> Alerts will be shown as a popup on the website. If you are offline then you can still view them later in the <a href="">Alert Tab</a>. </span>
-                                          </div>
-                                          <br>
-                                          <div class="mt-auto">
-                                             <span style="color:#607D8B;"> View your balance Alert
-                                             quota <a href="#">here</a> </span>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <div id="tsrAlertToast" style="display: none; text-align: center;">
-                                       <p style="color: green; font-size: 18px;">
-                                          Alert added successfully! <br>
-                                          Go to <a href="" class="link-primary">Alerts</a> dashboard
+                                          Daily tick is selected, this might disable some options
                                        </p>
+                                       <br>
+                                       <h4>Choose Trigger Times</h4>
+                                       <hr>
+                                       <div class="d-flex flex-column flex-md-row">
+                                          <div class="w-100" id="tsrAlertTriggerTimesContainer"
+                                             style="height: max-content;">
+                                             <p>
+                                                <label class="me-3" for="triggerDate">Active
+                                                   till</label>
+                                                <input type="date" id="triggerDate" name="tsrAlertType"
+                                                   value="2025-12-31"
+                                                   style="-webkit-appearance: auto !important; width: unset;">
+                                             </p>
+                                             <input type="radio" id="triggerTimeOne" name="tsrTriggerTime"
+                                                value="triggerTimeOne" style="-webkit-appearance: auto !important;"
+                                                onchange="showTsrAlertTriggerTimesInfo(event)" checked required>
+                                             <label for="triggerTimeOne">Once</label>
+                                             <br>
+                                             <input type="radio" id="triggerTimeTwo" name="tsrTriggerTime"
+                                                value="triggerTimeTwo" style="-webkit-appearance: auto !important;"
+                                                onchange="showTsrAlertTriggerTimesInfo(event)">
+                                             <label for="triggerTimeTwo">Repeat Till
+                                                Disabled/Deleted</label>
+                                             <br>
+                                          </div>
+                                          <div class="vert_divider d-none d-md-block mx-3">
+                                          </div>
+                                          <div class="horz_divider d-block d-md-none">
+                                             <hr>
+                                          </div>
+                                          <div class="tsr_alert_info_div w-100 mt-2 mt-md-0">
+                                             <div class="mt-0"
+                                                style="height: 125px; overflow-y: auto; font-size: 18px;">
+                                                <span style="color:#607D8B;"> <b>Once </b> -&gt; Alert
+                                                   will be paused once criteria is met. Works best on a
+                                                   stock. </span>
+                                             </div>
+                                          </div>
+                                       </div>
                                     </div>
-                                 </div>
-                                 <div id="prevNextBtn" style="display: flex;">
-                                    <button type="button" class="btn btn-primary" id="prevBtn"
-                                       onclick="nextPrev(event, -1)">Previous</button>
-                                    <button type="button" class="btn btn-primary" id="nextBtn"
-                                       onclick="nextPrev(event, 1)">Next</button>
-                                 </div>
-                              </form>
+                                    <div class="tsr_alert_form_tab">
+                                       <h4>Choose Stock Relevance</h4>
+                                       <hr>
+                                       <div class="d-flex flex-column flex-md-row">
+                                          <div class="w-100" id="tsrAlertStockRelevanceContainer"
+                                             style="height: max-content;">
+                                             <input type="radio" id="showAll" name="tsrAlertStockRelevance"
+                                                value="showAll" style="-webkit-appearance: auto !important;"
+                                                onchange="showTsrAlertStockRelevanceInfo(event)" checked required>
+                                             <label for="showAll">Show All</label>
+                                             <br>
+                                             <input type="radio" id="showNone" name="tsrAlertStockRelevance"
+                                                value="showNew" style="-webkit-appearance: auto !important;"
+                                                onchange="showTsrAlertStockRelevanceInfo(event)">
+                                             <label for="showNone">Show New</label>
+                                             <br>
+                                          </div>
+                                          <div class="vert_divider d-none d-md-block mx-3">
+                                          </div>
+                                          <div class="horz_divider d-block d-md-none">
+                                             <hr>
+                                          </div>
+                                          <div class="tsr_alert_info_div w-100 mt-2 mt-md-0">
+                                             <div class="mt-0" style="height: 75; overflow-y: auto; font-size: 18px;">
+                                                <span style="color:#607D8B;"><b>Show All</b> - it shows all the stocks
+                                                   that match the criteria at the time of trigger. In such case you are
+                                                   likely to see the stocks repeating from previous alerts.</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <br>
+                                       <h4>Choose Alert Mode</h4>
+                                       <hr>
+                                       <div class="d-flex flex-column flex-md-row">
+                                          <div class="w-100" id="tsrAlertModeRadioContainer"
+                                             style="height: max-content;">
+                                             <input type="radio" id="webAlert" name="tsrAlertMode" value="webAlert"
+                                                style="-webkit-appearance: auto !important;" required
+                                                onchange="showTsrAlertModeInfo(event)" checked>
+                                             <label for="webAlert">Web Alert</label>
+                                             <br>
+                                             <input type="radio" id="emailAlert" name="tsrAlertMode" value="emailAlert"
+                                                style="-webkit-appearance: auto !important;"
+                                                onchange="showTsrAlertModeInfo(event)">
+                                             <label for="emailAlert">Email Alert</label>
+                                             <br>
+                                             <input type="radio" id="smsAlert" name="tsrAlertMode" value="smsAlert"
+                                                style="-webkit-appearance: auto !important;"
+                                                onchange="showTsrAlertModeInfo(event)">
+                                             <label for="smsAlert">SMS Alert</label>
+                                             <br>
+                                             <input type="radio" id="whatsappAlert" name="tsrAlertMode"
+                                                value="whatsappAlert" style="-webkit-appearance: auto !important;"
+                                                onchange="showTsrAlertModeInfo(event)">
+                                             <label for="whatsappAlert">Whatsapp Alert</label>
+                                             <br>
+                                             <input type="radio" id="webPushAlert" name="tsrAlertMode"
+                                                value="webPushAlert" style="-webkit-appearance: auto !important;"
+                                                onchange="showTsrAlertModeInfo(event)">
+                                             <label for="webPushAlert">Push Notifications</label>
+                                          </div>
+                                          <div class="vert_divider d-none d-md-block mx-3">
+                                          </div>
+                                          <div class="horz_divider d-block d-md-none">
+                                             <hr>
+                                          </div>
+                                          <div id="tsrAlertModeInfo" class="tsr_alert_info_div w-100 mt-2 mt-md-0">
+                                             <div class="mt-0" style="height: 150; overflow-y: auto; font-size: 18px;">
+                                                <span style="color:#607D8B;"> Alerts will be shown as a popup on the
+                                                   website. If you are offline then you can still view them later in the
+                                                   <a href="">Alert Tab</a>. </span>
+                                             </div>
+                                             <br>
+                                             <div class="mt-auto">
+                                                <span style="color:#607D8B;"> View your balance Alert
+                                                   quota <a href="#">here</a> </span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <br>
+                                       <br>
+                                       <div id="tsrAlertToast" style="display: none; text-align: center;">
+                                          <p style="color: green; font-size: 18px;">
+                                             Alert added successfully! <br>
+                                             Go to <a href="" class="link-primary">Alerts</a> dashboard
+                                          </p>
+                                       </div>
+                                    </div>
+                                    <div id="prevNextBtn" style="display: flex;">
+                                       <button type="button" class="btn btn-primary" id="prevBtn"
+                                          onclick="nextPrev(event, -1)">Previous</button>
+                                       <button type="button" class="btn btn-primary" id="nextBtn"
+                                          onclick="nextPrev(event, 1)">Next</button>
+                                    </div>
+                                 </form>
+                              </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-                  <script src="index.js"></script>
-                  <script>
-                     // For hiding instructions when Alert form is opened for the first time -->
-                     var change = new Event('change');
-                     document.getElementById('enableAddAlertInfo').dispatchEvent(change);
-                  </script>
-                  <!-- Add alerts form code ends here -->
-                  <div id='csDiv'> </div>
-                  <div id="cs_dialog" class="cc_dialog miCtrl"> </div>
-                  <link rel='stylesheet' type='text/css'
-                     href='https://www.TopStockResearch.com/static/css/v3/MintControls.css'>
-                  <link rel='stylesheet' type='text/css'
-                     href='https://www.topstockresearch.com/static/css/v3/miScrV0.0.0.5.css' />
-                  <link rel='stylesheet' type='text/css'
-                     href='https://www.topstockresearch.com/static/css/v3/MintScreener.css' />
-                  <link rel="stylesheet" type="text/css"
-                     href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/fc-4.0.2/fh-3.2.2/datatables.min.css" />
-                  <script type="text/javascript"
-                     src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/fc-4.0.2/fh-3.2.2/datatables.min.js"></script>
-                  <script
-                     src='https://www.topstockresearch.com/static/js/tsr/screener/tsr_screener_minV0.9.3.181.js'></script>
-                  <br />
-                  <div id='results' align='left' class=' border border-1 border-primary'
-                     style='border-radius:20px'>
-                  </div>
-                  <br />
-                  <div id="dialog" class="web_dialog"> </div>
-                  <br />
-                  <div id='alertDialog' class='web_dialog'></div>
-                  <div id='alert_dialog_np' class='web_dialog'> </div>
-                  <script> $('body').css('max-width', '100%'); $('tsrContainer').css('max-width', 'max-content'); </script>
-                  <script src='//cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js'></script>
-                  <link rel="stylesheet"
-                     href="https://www.topstockresearch.com/static/css/v1/tsrchartsNgV0.0.5.css">
-                  <script
-                     src="https://www.topstockresearch.com/static/js/chart/tsr_charts_minV0.9.2.159.js"></script>
-                  <div class='col-lg-12 col-md-12 col-sm-12'>
-                     <div class='card shadow-lg'>
-                        <div class='card-header'>
-                           <h5 class="card-title">Quick Overview of Custom screener</h5>
-                        </div>
-                        <div class="card-body">
-                           <div class='table-responsive'>
-                              <div class='col-md-12'>
-                                 <div class="card shadow-lg">
-                                    <div class="card-header">
-                                       <ul class="nav nav-tabs" id="listing-tabs" role="tablist">
-                                          <li class="nav-item" role="presentation">
-                                             <button
-                                                class='nav-link active' id='English-tab'
-                                                data-bs-toggle='tab' data-bs-target='#English'
-                                                type='button' role='tab' aria-controls='English'
-                                                aria-selected='true'>
-                                                <h5 class='card-title'>English</h5>
-                                             </button>
-                                          </li>
-                                          <li class="nav-item" role="presentation">
-                                             <button
-                                                class='nav-link ' id='Hindi-tab'
-                                                data-bs-toggle='tab' data-bs-target='#Hindi'
-                                                type='button' role='tab' aria-controls='Hindi'
-                                                aria-selected='false'>
-                                                <h5 class='card-title'>Hindi</h5>
-                                             </button>
-                                          </li>
-                                       </ul>
-                                    </div>
-                                    <div class="card-body">
-                                       <div class="tab-content" id="listing-content">
-                                          <div class='tab-pane fade show active' id='English'
-                                             role="tabpanel" aria-labelledby='English-tab'>
-                                             <div id='EnglishDiv'><iframe width='560' height='315'
-                                                src='https://www.youtube.com/embed/wF10NKBxg_k?start=4'
-                                                title='YouTube video player' frameborder='0'
-                                                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                                                allowfullscreen></iframe></div>
-                                          </div>
-                                          <div class='tab-pane fade' id='Hindi' role="tabpanel"
-                                             aria-labelledby='Hindi-tab'>
-                                             <div id='HindiDiv'><iframe width='560' height='315'
-                                                src='https://www.youtube.com/embed/Rkh0YMcq6E8?start=4'
-                                                title='YouTube video player' frameborder='0'
-                                                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                                                allowfullscreen></iframe></div>
+                     <script src="index.js"></script>
+                     <script>
+                        // For hiding instructions when Alert form is opened for the first time -->
+                        var change = new Event('change');
+                        document.getElementById('enableAddAlertInfo').dispatchEvent(change);
+                     </script>
+                     <!-- Add alerts form code ends here -->
+                     <div id='csDiv'> </div>
+                     <div id="cs_dialog" class="cc_dialog miCtrl"> </div>
+                     <link rel='stylesheet' type='text/css'
+                        href='https://www.TopStockResearch.com/static/css/v3/MintControls.css'>
+                     <link rel='stylesheet' type='text/css'
+                        href='https://www.topstockresearch.com/static/css/v3/miScrV0.0.0.5.css' />
+                     <link rel='stylesheet' type='text/css'
+                        href='https://www.topstockresearch.com/static/css/v3/MintScreener.css' />
+                     <link rel="stylesheet" type="text/css"
+                        href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/fc-4.0.2/fh-3.2.2/datatables.min.css" />
+                     <script type="text/javascript"
+                        src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/fc-4.0.2/fh-3.2.2/datatables.min.js"></script>
+                     <script
+                        src='https://www.topstockresearch.com/static/js/tsr/screener/tsr_screener_minV0.9.3.181.js'></script>
+                     <br />
+                     <div id='results' align='left' class=' border border-1 border-primary' style='border-radius:20px'>
+                     </div>
+                     <br />
+                     <div id="dialog" class="web_dialog"> </div>
+                     <br />
+                     <div id='alertDialog' class='web_dialog'></div>
+                     <div id='alert_dialog_np' class='web_dialog'> </div>
+                     <script> $('body').css('max-width', '100%'); $('tsrContainer').css('max-width', 'max-content'); </script>
+                     <script src='//cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js'></script>
+                     <link rel="stylesheet" href="https://www.topstockresearch.com/static/css/v1/tsrchartsNgV0.0.5.css">
+                     <script
+                        src="https://www.topstockresearch.com/static/js/chart/tsr_charts_minV0.9.2.159.js"></script>
+                     <div class='col-lg-12 col-md-12 col-sm-12'>
+                        <div class='card shadow-lg'>
+                           <div class='card-header'>
+                              <h5 class="card-title">Quick Overview of Custom screener</h5>
+                           </div>
+                           <div class="card-body">
+                              <div class='table-responsive'>
+                                 <div class='col-md-12'>
+                                    <div class="card shadow-lg">
+                                       <div class="card-header">
+                                          <ul class="nav nav-tabs" id="listing-tabs" role="tablist">
+                                             <li class="nav-item" role="presentation">
+                                                <button class='nav-link active' id='English-tab' data-bs-toggle='tab'
+                                                   data-bs-target='#English' type='button' role='tab'
+                                                   aria-controls='English' aria-selected='true'>
+                                                   <h5 class='card-title'>English</h5>
+                                                </button>
+                                             </li>
+                                             <li class="nav-item" role="presentation">
+                                                <button class='nav-link ' id='Hindi-tab' data-bs-toggle='tab'
+                                                   data-bs-target='#Hindi' type='button' role='tab'
+                                                   aria-controls='Hindi' aria-selected='false'>
+                                                   <h5 class='card-title'>Hindi</h5>
+                                                </button>
+                                             </li>
+                                          </ul>
+                                       </div>
+                                       <div class="card-body">
+                                          <div class="tab-content" id="listing-content">
+                                             <div class='tab-pane fade show active' id='English' role="tabpanel"
+                                                aria-labelledby='English-tab'>
+                                                <div id='EnglishDiv'><iframe width='560' height='315'
+                                                      src='https://www.youtube.com/embed/wF10NKBxg_k?start=4'
+                                                      title='YouTube video player' frameborder='0'
+                                                      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                                                      allowfullscreen></iframe></div>
+                                             </div>
+                                             <div class='tab-pane fade' id='Hindi' role="tabpanel"
+                                                aria-labelledby='Hindi-tab'>
+                                                <div id='HindiDiv'><iframe width='560' height='315'
+                                                      src='https://www.youtube.com/embed/Rkh0YMcq6E8?start=4'
+                                                      title='YouTube video player' frameborder='0'
+                                                      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                                                      allowfullscreen></iframe></div>
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -994,83 +937,73 @@
                         </div>
                      </div>
                   </div>
-               </div>
-               <br /><span style='color:grey;font-size:12px;'><b>Recent Additions</b><br />1. Cross Tick
-               Tech Strength Filter is added in 'Strength Tab' . <br />2. Tech Strength Ranking is not
-               added. Ex. Top 10% Bullish stocks on Daily / Weekly / Monthly Tick <br />3. Narrow range /
-               Wide Range Filters is now available in 'Chart Pattern' Tab <br />4. 3/4 5 and 10 Years High
-               / Low Filter Added <br />5. Tick Range (high-low) / Body range (open -close) can now be
-               compared with previous Ticks <br />6. Weighted Moving Average , MA Cross Over in previous
-               tick and MA witing x% of Price <br />7. Cross Tick price/MA and two MA cross over
-               </span><br />About Financial Data , All results are consolidated, Values are in Crores, Sourced
-               from external Vendors<br />
-               <div id='ytVideoDiv'></div>
-               <hr />
-               <footer class=" text-light" style='background-color: #f2f2f2;text-decoration:underline'>
-                  <div class="container" style="margin-left: 10px;">
-                     <br>
-                     <div class="row">
-                        <h3 style="color:black">Quick Links</h3>
-                        <div>
-                           <span style="color:black"><b>TSR Support</b><br /> <span><a
-                              href='https://www.TopStockResearch.com/my/UserManagement?act=rfd'
-                              style="color:black"> Request For Demo <i
-                              class="fas fa-pencil-alt"></i></a></span>
-                           <span><a href='https://www.TopStockResearch.com/my/UserManagement?act=contactUs'
-                              style="color:black"> | Contact Us <i
-                              class="fas fa-envelope"></i></a></span>
-                           <br /> For Support Call us @ +91 922 655 760 3/4/5 between 10 AM to 6 PM ,
-                           Mon - Sat <i class="fas fa-phone-alt"></i>
-                           <br /><b>TSR Videos</b> <span style='font-size:27px;color:#f44336;'><i
-                              class="fab fa-youtube"></i> </span> <br /> <a
-                              style='cursor : pointer ;color:black'
-                              onClick="mintHtmlUtil.sytv('ytVideoDiv',  'v4Hp02h_XXQ')"><span
-                              style=''>English (New)</span></a>&nbsp;&nbsp;&nbsp; | <a
-                              style='cursor : pointer ;color:black'
-                              onClick="mintHtmlUtil.sytv('ytVideoDiv',  'U4Epx5HvIfU')"><span
-                              style=''>हिंदी (New)</span> </a><br /> <a
-                              style='cursor : pointer ;color:black'
-                              onClick="mintHtmlUtil.sytv('ytVideoDiv',  'Z8RFbA3w0yo')"><span
-                              style=''>English (Classic MyTSR)</span></a>&nbsp;&nbsp;&nbsp; | <a
-                              style='cursor : pointer ;color:black'
-                              onClick="mintHtmlUtil.sytv('ytVideoDiv',  'Uc-gJ__FM64')"><span
-                              style=' '>हिंदी (Classic MyTSR)</span> </a> |
-                           <br /><br /><b>Global Markets</b> <br /> <a
-                              href='https://www.StockAio.com/US/ai/Home'
-                              style='cursor : pointer ;color:black'><span style=''>US Stock Screener &
-                           Analysis</span> <img
-                              src="//www.StockAIo.com/static/img/flags/USFlag.png"
-                              style="max-height:18px;"> </a><br /> <a
-                              href='https://www.StockAio.com/UK/ai/Home'
-                              style='cursor : pointer ;color:black'><span style=''>UK Stock Screener &
-                           Analysis</span> <img
-                              src="//www.StockAIo.com/static/img/flags/UKFlag.png"
-                              style="max-height:18px;"> </a>
-                        </div>
+                  <br /><span style='color:grey;font-size:12px;'><b>Recent Additions</b><br />1. Cross Tick
+                     Tech Strength Filter is added in 'Strength Tab' . <br />2. Tech Strength Ranking is not
+                     added. Ex. Top 10% Bullish stocks on Daily / Weekly / Monthly Tick <br />3. Narrow range /
+                     Wide Range Filters is now available in 'Chart Pattern' Tab <br />4. 3/4 5 and 10 Years High
+                     / Low Filter Added <br />5. Tick Range (high-low) / Body range (open -close) can now be
+                     compared with previous Ticks <br />6. Weighted Moving Average , MA Cross Over in previous
+                     tick and MA witing x% of Price <br />7. Cross Tick price/MA and two MA cross over
+                  </span><br />About Financial Data , All results are consolidated, Values are in Crores, Sourced
+                  from external Vendors<br />
+                  <div id='ytVideoDiv'></div>
+                  <hr />
+                  <footer class=" text-light" style='background-color: #f2f2f2;text-decoration:underline'>
+                     <div class="container" style="margin-left: 10px;">
+                        <br>
                         <div class="row">
+                           <h3 style="color:black">Quick Links</h3>
                            <div>
-                              <br />
-                              <span><a href='https://www.topstockresearch.com/rt/Home'
-                                 style="color:black">Home</a></span>
-                              <span class="ms-1"><a
-                                 href="https://www.topstockresearch.com/Disclaimer.html"
-                                 style="color:black">| Disclaimer</a></span>
-                              <span class="ms-1"><a
-                                 href="https://www.topstockresearch.com/TermsAndConditions.html"
-                                 style="color:black">| Terms &amp; Conditions </a></span>
-                              <span class="ms-1"><a
-                                 href="https://www.topstockresearch.com/PrivacyPolicy.html"
-                                 style="color:black">| Privacy </a></span>
+                              <span style="color:black"><b>TSR Support</b><br /> <span><a
+                                       href='https://www.TopStockResearch.com/my/UserManagement?act=rfd'
+                                       style="color:black"> Request For Demo <i
+                                          class="fas fa-pencil-alt"></i></a></span>
+                                 <span><a href='https://www.TopStockResearch.com/my/UserManagement?act=contactUs'
+                                       style="color:black"> | Contact Us <i class="fas fa-envelope"></i></a></span>
+                                 <br /> For Support Call us @ +91 922 655 760 3/4/5 between 10 AM to 6 PM ,
+                                 Mon - Sat <i class="fas fa-phone-alt"></i>
+                                 <br /><b>TSR Videos</b> <span style='font-size:27px;color:#f44336;'><i
+                                       class="fab fa-youtube"></i> </span> <br /> <a
+                                    style='cursor : pointer ;color:black'
+                                    onClick="mintHtmlUtil.sytv('ytVideoDiv',  'v4Hp02h_XXQ')"><span style=''>English
+                                       (New)</span></a>&nbsp;&nbsp;&nbsp; | <a style='cursor : pointer ;color:black'
+                                    onClick="mintHtmlUtil.sytv('ytVideoDiv',  'U4Epx5HvIfU')"><span style=''>हिंदी
+                                       (New)</span> </a><br /> <a style='cursor : pointer ;color:black'
+                                    onClick="mintHtmlUtil.sytv('ytVideoDiv',  'Z8RFbA3w0yo')"><span style=''>English
+                                       (Classic MyTSR)</span></a>&nbsp;&nbsp;&nbsp; | <a
+                                    style='cursor : pointer ;color:black'
+                                    onClick="mintHtmlUtil.sytv('ytVideoDiv',  'Uc-gJ__FM64')"><span style=' '>हिंदी
+                                       (Classic MyTSR)</span> </a> |
+                                 <br /><br /><b>Global Markets</b> <br /> <a href='https://www.StockAio.com/US/ai/Home'
+                                    style='cursor : pointer ;color:black'><span style=''>US Stock Screener &
+                                       Analysis</span> <img src="//www.StockAIo.com/static/img/flags/USFlag.png"
+                                       style="max-height:18px;"> </a><br /> <a
+                                    href='https://www.StockAio.com/UK/ai/Home'
+                                    style='cursor : pointer ;color:black'><span style=''>UK Stock Screener &
+                                       Analysis</span> <img src="//www.StockAIo.com/static/img/flags/UKFlag.png"
+                                       style="max-height:18px;"> </a>
                            </div>
-                           <h7 style="text-align:center;line-height: 28px;color:#9E9E9E"> Happy to provide
-                              Premium Analytics Since 2010 @TopStockResearch
-                           </h7>
-                           <h7 style="color:#9E9E9E;text-align:center;line-height: 28px;">All rights
-                              reserved by Mintnovate Market Research Limited
-                           </h7>
+                           <div class="row">
+                              <div>
+                                 <br />
+                                 <span><a href='https://www.topstockresearch.com/rt/Home'
+                                       style="color:black">Home</a></span>
+                                 <span class="ms-1"><a href="https://www.topstockresearch.com/Disclaimer.html"
+                                       style="color:black">| Disclaimer</a></span>
+                                 <span class="ms-1"><a href="https://www.topstockresearch.com/TermsAndConditions.html"
+                                       style="color:black">| Terms &amp; Conditions </a></span>
+                                 <span class="ms-1"><a href="https://www.topstockresearch.com/PrivacyPolicy.html"
+                                       style="color:black">| Privacy </a></span>
+                              </div>
+                              <h7 style="text-align:center;line-height: 28px;color:#9E9E9E"> Happy to provide
+                                 Premium Analytics Since 2010 @TopStockResearch
+                              </h7>
+                              <h7 style="color:#9E9E9E;text-align:center;line-height: 28px;">All rights
+                                 reserved by Mintnovate Market Research Limited
+                              </h7>
+                           </div>
                         </div>
-                     </div>
-               </footer>
+                  </footer>
                </div>
             </div>
             <!-- Content Wrapper End -->
@@ -1081,51 +1014,50 @@
       <script>
          // <![CDATA[  <-- For SVG support
          if ('WebSocket' in window) {
-         	(function () {
-         		function refreshCSS() {
-         			var sheets = [].slice.call(document.getElementsByTagName("link"));
-         			var head = document.getElementsByTagName("head")[0];
-         			for (var i = 0; i < sheets.length; ++i) {
-         				var elem = sheets[i];
-         				var parent = elem.parentElement || head;
-         				parent.removeChild(elem);
-         				var rel = elem.rel;
-         				if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-         					var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-         					elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-         				}
-         				parent.appendChild(elem);
-         			}
-         		}
-         		var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-         		var address = protocol + window.location.host + window.location.pathname + '/ws';
-         		var socket = new WebSocket(address);
-         		socket.onmessage = function (msg) {
-         			if (msg.data == 'reload') window.location.reload();
-         			else if (msg.data == 'refreshcss') refreshCSS();
-         		};
-         		if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-         			console.log('Live reload enabled.');
-         			sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-         		}
-         	})();
+            (function () {
+               function refreshCSS() {
+                  var sheets = [].slice.call(document.getElementsByTagName("link"));
+                  var head = document.getElementsByTagName("head")[0];
+                  for (var i = 0; i < sheets.length; ++i) {
+                     var elem = sheets[i];
+                     var parent = elem.parentElement || head;
+                     parent.removeChild(elem);
+                     var rel = elem.rel;
+                     if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                        var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                        elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                     }
+                     parent.appendChild(elem);
+                  }
+               }
+               var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+               var address = protocol + window.location.host + window.location.pathname + '/ws';
+               var socket = new WebSocket(address);
+               socket.onmessage = function (msg) {
+                  if (msg.data == 'reload') window.location.reload();
+                  else if (msg.data == 'refreshcss') refreshCSS();
+               };
+               if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                  console.log('Live reload enabled.');
+                  sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+               }
+            })();
          }
          else {
-         	console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
          }
          // ]]>
       </script>
-   </body>
-   <script>   migUi.init(); </script>
-   <div id='alertDialog' class='web_dialog'></div>
-   <script src='https://www.topstockresearch.com/static/js/tsr/my/fav_minV0.0.1.1.js'></script>
-   <script src='https://www.topstockresearch.com/static/js/tsr/mipu/mipu_minV0.0.0.46.js'"></script>    
-   <link rel="
-      stylesheet" type="text/css"
-      href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/fc-4.0.2/fh-3.2.2/datatables.min.css" />
-   <script type="text/javascript"
-      src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/fc-4.0.2/fh-3.2.2/datatables.min.js"></script>
-   <script> misu.iar('custScr', 'null');  </script>
-   <div id='custDialog' class='cc_dialog'> </div>
-   <div id='cs_dialog' class='cc_dialog'> </div>
-   <script>  mintHtmlUtil.aed(['chart_dialog', 'custDialog', 'dialog', 'alertDialog', 'cc_dialog', 'cs_dialog'])   </script>
+</body>
+<script>   migUi.init(); </script>
+<div id='alertDialog' class='web_dialog'></div>
+<script src='https://www.topstockresearch.com/static/js/tsr/my/fav_minV0.0.1.1.js'></script>
+<script src='https://www.topstockresearch.com/static/js/tsr/mipu/mipu_minV0.0.0.46.js'"></script>    
+   <link rel=" stylesheet" type="text/css"
+   href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/fc-4.0.2/fh-3.2.2/datatables.min.css" />
+<script type="text/javascript"
+   src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/fc-4.0.2/fh-3.2.2/datatables.min.js"></script>
+<script> misu.iar('custScr', 'null');  </script>
+<div id='custDialog' class='cc_dialog'> </div>
+<div id='cs_dialog' class='cc_dialog'> </div>
+<script>  mintHtmlUtil.aed(['chart_dialog', 'custDialog', 'dialog', 'alertDialog', 'cc_dialog', 'cs_dialog'])   </script>

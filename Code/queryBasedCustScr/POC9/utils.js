@@ -1,4 +1,6 @@
-const getPhrase = function getPhrase(selectionStartIdx, textValue) {
+// By Nikhil H
+
+const getPhrase = function getPhrase(operators, selectionStartIdx, textValue) {
 
     let lines = textValue.split("\n");
     let words = [];
@@ -17,8 +19,9 @@ const getPhrase = function getPhrase(selectionStartIdx, textValue) {
             phrase += words[j] + " ";
         }
         else {
+            // console.log(words[j], phrase, sum, selectionStartIdx);
             if (sum > selectionStartIdx) {
-                return phrase;
+                return phrase.split(words[j])[0];
             }
             phrase = "";
         }
@@ -61,7 +64,8 @@ function createDivForSuggestions(label, defaultVal, relatedOps, qlCategory, show
     div.classList.add("tsrSuggestion");
     // tsrCsQueryBox.setSelectionRange(tsrCsQueryBox.value.length, tsrCsQueryBox.value.length);
 
-    div.addEventListener("pointerdown", () => {
+    div.addEventListener("pointerdown", (e) => {
+        e.preventDefault();
         insertMetric(label, defaultVal, relatedOps, qlCategory, showRelatedOps);
     });
     div.addEventListener("keydown", (e) => {
@@ -83,7 +87,8 @@ function createOpDivForSuggestions(op, qlCategory) {
     div.classList.add("tsrSuggestion");
     // tsrCsQueryBox.setSelectionRange(tsrCsQueryBox.value.length, tsrCsQueryBox.value.length);
 
-    div.addEventListener("pointerdown", () => {
+    div.addEventListener("pointerdown", (e) => {
+        e.preventDefault();
         insertOp(op, qlCategory);
     });
     div.addEventListener("keydown", (e) => {
@@ -94,7 +99,8 @@ function createOpDivForSuggestions(op, qlCategory) {
             // tsrCsQueryBox.focus();
         }
     });
-    operators.push(op);
+    // if (!operators.includes(op))
+    //     operators.push(op);
     return div;
 }
 
@@ -148,13 +154,14 @@ function updateSuggestionsPosition() {
 
     document.body.appendChild(tempSpan);
     rect = tempSpan.getBoundingClientRect();
-    if ((textareaRect.left + rect.width) > textareaRect.width)
-        suggestionsDiv.style.left = `${textareaRect.left + rect.width - textareaRect.width}px`;
-    else
-        suggestionsDiv.style.left = `${textareaRect.left + rect.width}px`;
+    // if ((textareaRect.left + rect.width) > textareaRect.width)
+    //     suggestionsDiv.style.left = `${textareaRect.left + rect.width - textareaRect.width}px`;
+    // else
+    suggestionsDiv.style.left = `${textareaRect.left + rect.width}px`;
 
     // console.log(textareaRect.left, rect.width);
     document.body.removeChild(tempSpan);
+
 }
 
 function lineHasOperator(startIdx, relatedOps) {
@@ -180,6 +187,27 @@ function lineHasOperator(startIdx, relatedOps) {
     return lineHasOperator;
 }
 
+function lineTextHasOperator(lineText, relatedOps) {
+
+    for (let i = 0; i < lineText.length; i++) {
+        if (relatedOps.includes(lineText.charAt(i))) {
+            return true;
+        }
+    }
+
+    
+    for (let i = 0; i < lineText.length; i++) {
+        let words = lineText.split(/\s+/);
+
+        for(let j=0; j< words.length; j++){
+            if(relatedOps.includes(words[j]))
+                return true;
+        }
+
+    }
+
+    return false;
+}
 
 function getAdvancedOptions(keyword) {
     for (let i = 0; i < DATA_MASTER.length; i++) { // for every qlCategory
@@ -189,7 +217,7 @@ function getAdvancedOptions(keyword) {
                 let fieldCategory = qlCategory[j].voArr;
                 if (fieldCategory != null) {
                     for (let k = 0; k < fieldCategory.length; k++) { // for every field
-                        if (keyword.toLowerCase() == fieldCategory[k].id.toLowerCase()) {
+                        if (keyword.toLowerCase() == fieldCategory[k].label.toLowerCase()) {
                             return fieldCategory[k].advancedOptions;
                         }
                     }
@@ -205,14 +233,14 @@ function modifyAdvancedOptionsDiv(keyword, advancedOptions, currentFields) {
     let selectionStartIdx = tsrCsQueryBox.selectionStart;
     let label, brElement = document.createElement('br');
 
-    if (advancedOptions != null) {
+    if (advancedOptions != null && Object.entries(advancedOptions).length != 0) {
         tsrCsAdvancedOptions.style.display = "block";
         let div = document.createElement("div");
         div.innerHTML = `<h4>Advanced Options</h4>`;
         // div.innerHTML = `<h4>Advanced Options</h4>
         // <h6>${keyword}</h6>`;
         tsrCsAdvancedOptions.appendChild(div);
-        let i =0;
+        let i = 0;
 
         Object.entries(advancedOptions).forEach(item => {
 
@@ -223,7 +251,7 @@ function modifyAdvancedOptionsDiv(keyword, advancedOptions, currentFields) {
 
                 let selectElement = document.createElement("select");
                 selectElement.id = item[1].inputType + item[0];
-                selectElement.onchange = () => { 
+                selectElement.onchange = () => {
                     updateKeyword(selectionStartIdx, keyword, tsrCsAdvancedOptions.children);
                 };
 
@@ -231,7 +259,7 @@ function modifyAdvancedOptionsDiv(keyword, advancedOptions, currentFields) {
                     let ele = document.createElement("option");
                     ele.innerHTML = option.label;
                     ele.value = option.value;
-                    if(currentFields.includes(option.value))
+                    if (currentFields.includes(option.value.toLowerCase()))
                         ele.selected = 'selected';
                     selectElement.appendChild(ele);
                 });
@@ -247,11 +275,14 @@ function modifyAdvancedOptionsDiv(keyword, advancedOptions, currentFields) {
 
                 let inputElement = document.createElement("input");
                 inputElement.id = item[1].inputType + item[0];
-                inputElement.onchange = () => { 
+                inputElement.onchange = () => {
                     updateKeyword(selectionStartIdx, keyword, tsrCsAdvancedOptions.children);
                 };
-                if(!isNaN(Number(currentFields[0])))
-                    inputElement.value = Number(currentFields[0]) == 0 ? 21: Number(currentFields[0]);
+
+                if (isNaN(Number(currentFields[1])))
+                    inputElement.value = 21;
+                else
+                    inputElement.value = Number(currentFields[0]) == 1 ? 21 : Number(currentFields[1]);
 
                 tsrCsAdvancedOptions.appendChild(label);
                 tsrCsAdvancedOptions.appendChild(inputElement);
@@ -262,4 +293,38 @@ function modifyAdvancedOptionsDiv(keyword, advancedOptions, currentFields) {
     else {
         tsrCsAdvancedOptions.style.display = "none";
     }
+}
+
+function splitLineUsingOperators(lineText, operatorsInLine) {
+
+    let phrases = [];
+    let split = [];
+    let opIndex = -1;
+    for (let i = 0; i < operatorsInLine.length; i++) {
+        if (operatorsInLine[i].length == 1) {
+            opIndex = lineText.indexOf(operatorsInLine[i]);
+
+            phrases.push(lineText.substring(0, opIndex));
+
+            lineText = lineText.substring(opIndex + 1, lineText.length);
+        }
+        else {
+            phrases.push(lineText.split(operatorsInLine[i])[0]);
+
+            lineText = lineText.split(operatorsInLine[i])[1];
+            // lineText = lineText.substring(opIndex + 1, lineText.length);
+        }
+
+        if (!lineTextHasOperator(lineText, operatorsInLine)){
+            phrases.push(lineText);
+            return phrases;
+        }
+    }
+
+    // To handle case: when we only have single phrase on a line, without any operator
+    if (!lineTextHasOperator(lineText, operatorsInLine))
+            phrases.push(lineText);
+
+    // console.log(phrases);
+    return phrases;
 }

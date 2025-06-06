@@ -1,3 +1,5 @@
+// By Nikhil H
+
 const getPhrase = function getPhrase(selectionStartIdx, textValue) {
 
     let lines = textValue.split("\n");
@@ -61,7 +63,8 @@ function createDivForSuggestions(label, defaultVal, relatedOps, qlCategory, show
     div.classList.add("tsrSuggestion");
     // tsrCsQueryBox.setSelectionRange(tsrCsQueryBox.value.length, tsrCsQueryBox.value.length);
 
-    div.addEventListener("pointerdown", () => {
+    div.addEventListener("pointerdown", (e) => {
+        e.preventDefault();
         insertMetric(label, defaultVal, relatedOps, qlCategory, showRelatedOps);
     });
     div.addEventListener("keydown", (e) => {
@@ -83,7 +86,8 @@ function createOpDivForSuggestions(op, qlCategory) {
     div.classList.add("tsrSuggestion");
     // tsrCsQueryBox.setSelectionRange(tsrCsQueryBox.value.length, tsrCsQueryBox.value.length);
 
-    div.addEventListener("pointerdown", () => {
+    div.addEventListener("pointerdown", (e) => {
+        e.preventDefault();
         insertOp(op, qlCategory);
     });
     div.addEventListener("keydown", (e) => {
@@ -94,7 +98,8 @@ function createOpDivForSuggestions(op, qlCategory) {
             // tsrCsQueryBox.focus();
         }
     });
-    operators.push(op);
+    if(!operators.includes(op))
+        operators.push(op);
     return div;
 }
 
@@ -148,13 +153,14 @@ function updateSuggestionsPosition() {
 
     document.body.appendChild(tempSpan);
     rect = tempSpan.getBoundingClientRect();
-    if ((textareaRect.left + rect.width) > textareaRect.width)
-        suggestionsDiv.style.left = `${textareaRect.left + rect.width - textareaRect.width}px`;
-    else
+    // if ((textareaRect.left + rect.width) > textareaRect.width)
+    //     suggestionsDiv.style.left = `${textareaRect.left + rect.width - textareaRect.width}px`;
+    // else
         suggestionsDiv.style.left = `${textareaRect.left + rect.width}px`;
 
     // console.log(textareaRect.left, rect.width);
     document.body.removeChild(tempSpan);
+    
 }
 
 function lineHasOperator(startIdx, relatedOps) {
@@ -189,7 +195,7 @@ function getAdvancedOptions(keyword) {
                 let fieldCategory = qlCategory[j].voArr;
                 if (fieldCategory != null) {
                     for (let k = 0; k < fieldCategory.length; k++) { // for every field
-                        if (keyword.toLowerCase() == fieldCategory[k].id.toLowerCase()) {
+                        if (keyword.toLowerCase() == fieldCategory[k].label.toLowerCase()) {
                             return fieldCategory[k].advancedOptions;
                         }
                     }
@@ -205,7 +211,7 @@ function modifyAdvancedOptionsDiv(keyword, advancedOptions, currentFields) {
     let selectionStartIdx = tsrCsQueryBox.selectionStart;
     let label, brElement = document.createElement('br');
 
-    if (advancedOptions != null) {
+    if (advancedOptions != null && Object.entries(advancedOptions).length != 0) {
         tsrCsAdvancedOptions.style.display = "block";
         let div = document.createElement("div");
         div.innerHTML = `<h4>Advanced Options</h4>`;
@@ -231,7 +237,7 @@ function modifyAdvancedOptionsDiv(keyword, advancedOptions, currentFields) {
                     let ele = document.createElement("option");
                     ele.innerHTML = option.label;
                     ele.value = option.value;
-                    if(currentFields.includes(option.value))
+                    if(currentFields.includes(option.value.toLowerCase()))
                         ele.selected = 'selected';
                     selectElement.appendChild(ele);
                 });

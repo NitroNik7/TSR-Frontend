@@ -31,8 +31,6 @@ var OHLC_DEF = [
     LOW_DEF_CLONE,
     CLOSE_DEF_CLONE
 ];
-
-
 // * IMPORTANT - let value of each option be in lowercase only 
 let ohlcAdvancedOptions = {
     period: {
@@ -69,7 +67,6 @@ var MA_DEF = [
     EMA_DEF_CLONE,
     WMA_DEF_CLONE
 ];
-
 
 let maAdvancedOptions = {
     period: {

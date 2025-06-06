@@ -4,38 +4,32 @@ self.addEventListener('install', () => {
 	self.skipWaiting();
 });
 
-self.addEventListener('push', function (event) {
+self.addEventListener('push', function(event) {
 	// console.log('Push message received.');
 	let notificationTitle = null;
 	const notificationOptions = {
 		body: null,
 		icon: null,
 		data: {
-			url: "/TsrAlerts"
+			url: "https://www.topstockresearch.com/"
 		},
-		requireInteraction: true,
+		requireInteraction: false,
 		vibrate: null,
-		actions: [{ 
-			action: null, 
-			title: null, 
-			icon: null }]
-		// image: null // should be an URL
+		image: null // should be an URL
 	};
 
-	// if (event.data) {
-	// 	const dataJson = JSON.parse(event.data.text());
-	// 	notificationTitle = dataJson.title;
-	// 	notificationOptions.body = dataJson.text;
-	// 	notificationOptions.icon = dataJson.icon;
-	// 	notificationOptions.data = dataJson.url;
-	// 	notificationOptions.vibrate = [200, 100, 200, 100, 200, 100, 200];
-	// 	notificationOptions.actions = [{
-	// 		action: dataJson.action.name,
-	// 		title: dataJson.action.title,
-	// 		icon: dataJson.action.icon
-	// 	}]
-	// 	// notificationOptions.image = "https://www.topstockresearch.com/static/v21/img/tsr/TsrLogo.png";
-	// }
+	if (event.data) {
+		const dataJson = JSON.parse(event.data.text());
+		// const dataJson = '';
+		notificationTitle = dataJson.title;
+		notificationOptions.body = dataJson.text;
+		notificationOptions.icon = dataJson.icon;
+		notificationOptions.data.url = "https://www.topstockresearch.com/";
+		notificationOptions.requireInteraction = true;
+		notificationOptions.vibrate = [200, 100, 200, 100, 200, 100, 200];
+		notificationOptions.image = "https://www.topstockresearch.com/static/v21/img/tsr/TsrLogo.png";
+
+	}
 
 	event.waitUntil(
 		self.registration.showNotification(
@@ -45,7 +39,8 @@ self.addEventListener('push', function (event) {
 	);
 });
 
-self.addEventListener('notificationclick', function (event) {
+// Src: https://web.dev/articles/push-notifications-notification-behaviour
+self.addEventListener('notificationclick', function(event) {
 	// console.log('Notification clicked.');
 	event.notification.close();
 
@@ -57,24 +52,7 @@ self.addEventListener('notificationclick', function (event) {
 	event.waitUntil(clickResponsePromise);
 });
 
-// the push subscription can be replaced / renewed automatically by the browser
-self.addEventListener('pushsubscriptionchange', function (event) {
-
-	var key = event.subscription.getKey ? event.subscription.getKey('p256dh') : '';
-	var auth = event.subscription.getKey ? event.subscription.getKey('auth') : '';
-
-	let postEndpoint = 'http://localhost:8080/webPushTrigger/subscribe';
-
-	event.waitUntil(
-		fetch(postEndpoint, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				oldEndpoint: event.oldSubscription ? event.oldSubscription.endpoint : null,
-				newEndpoint: event.newSubscription ? event.newSubscription.endpoint : null,
-				newKey: event.newSubscription ? btoa(String.fromCharCode.apply(null, new Uint8Array(key))) : '',
-				newAuth: event.newSubscription ? btoa(String.fromCharCode.apply(null, new Uint8Array(auth))) : ''
-			})
-		})
-	);
-});
+self.onclick = (event) => {
+  event.preventDefault(); // prevent the browser from focusing the Notification's tab
+  window.open("https://www.mozilla.org", "_blank");
+};

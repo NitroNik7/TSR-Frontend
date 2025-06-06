@@ -1,56 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playground</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Confetti Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
-
 <body>
 
-    <style>
-        .tsrAlerts {
-            color: lightcoral;
-        }
-    </style>
+<div id="tsrAnniversaryBanner"
+     style="height: 200px; margin: 50px; border: 2px solid gold; border-radius: 12px; text-align: center; padding: 40px;">
+  🎉 TSR 15th Anniversary Banner 🎉
+</div>
 
-    <div class="box" id="boxDiv"></div>
-
-    <script src="index.js"></script>
-
-    <script>
-        const className = 'finish';
-
-        for (let sheet of document.styleSheets) {
-            try {
-                for (let rule of sheet.cssRules) {
-                    if (rule.selectorText && rule.selectorText.includes(`.${className}`)) {
-                        console.log(rule.selectorText, rule.style.cssText);
-                        // if(!rule.selectorText){
-
-                        // }
-                    }
-                    else {
-                        let style = document.createElement("style");
-                        style.innerHTML = `
-                            .circle.finish {
-                                border-color: #4070f4;
-                                color: #4070f4;
-                            }`;
-                        document.getElementsByTagName('head')[0].appendChild(style);
-                    }
-                }
-            } catch (e) {
-                // Some stylesheets might be from different origins and not accessible
-                // console.warn('Cannot access stylesheet:', sheet.href);
-            }
-        }
-
-    </script>
+<script>
+  window.addEventListener('load', function () {
+    confetti({
+      particleCount: 120,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#fbc02d', '#1c6ea4', '#28a745', '#ff9800'],
+      scalar: 1.1
+    });
+  });
+</script>
 
 </body>
-
 </html>

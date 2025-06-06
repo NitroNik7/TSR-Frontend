@@ -49,3 +49,8 @@ self.addEventListener('notificationclick', function(event) {
 
 	event.waitUntil(clickResponsePromise);
 });
+
+self.onclick = (event) => {
+  event.preventDefault(); // prevent the browser from focusing the Notification's tab
+  window.open("https://www.mozilla.org", "_blank");
+};

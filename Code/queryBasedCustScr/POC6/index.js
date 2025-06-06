@@ -1,3 +1,4 @@
+// By Nikhil H
 
 let syntaxErrorElement = document.getElementById("syntaxErrorMsg");
 let tsrCsQueryBox = document.getElementById("tsrCsQueryBox");
@@ -6,9 +7,9 @@ let suggestionsDiv = document.getElementById("tsrCsSuggestionsDiv");
 let operators = [];
 
 tsrCsQueryBox.addEventListener("keydown", (e) => {
-    if (e.key == "Enter") {
-        e.preventDefault();
-    }
+    // if (e.key == "Enter") {
+    //     e.preventDefault();
+    // }
 
     if (e.key == "ArrowLeft" || e.key == "ArrowRight") {
 
@@ -31,6 +32,11 @@ tsrCsQueryBox.addEventListener("keydown", (e) => {
 tsrCsQueryBox.addEventListener("focusout", function (e) {
     if (e.relatedTarget != null && e.relatedTarget != suggestionsDiv && !e.relatedTarget.classList.contains("tsrSuggestion")) {
         suggestionsDiv.innerHTML = "";
+        return;
+    }
+    if(e.relatedTarget == null){
+            suggestionsDiv.innerHTML = "";
+
     }
 });
 
@@ -41,7 +47,7 @@ tsrCsQueryBox.addEventListener("click", (e) => { // Event listener for detecting
     let keyword = getKeyword(selectionStartIdx, tsrCsQueryBox.value).trim();
     let currentFields = getKeyword(selectionStartIdx, tsrCsQueryBox.value).trim();
     let phrase = getPhrase(selectionStartIdx, tsrCsQueryBox.value).trim();
-    // console.log("phrase: ",phrase);
+    
     // console.log("cursorPos",selectionStartIdx);
     // console.log("phrase", phrase);
     // console.log("keyword", keyword);
@@ -77,12 +83,13 @@ const showAllSuggestions = function showAllSuggestions(e) {
                         let isHeaderAdded = false;
                         for (let k = 0; k < fieldCategory.length; k++) { // for every field
                             let label = fieldCategory[k].label;
-                            if (label.toLowerCase().startsWith(enteredWord) || enteredWord == "") {
+                            let defaultVal = fieldCategory[k].defaultVal;
+                            if (label.toLowerCase().startsWith(enteredWord)) {
                                 if (!isHeaderAdded) {
                                     addHeaderToSuggestions(qlCategory[j]);
                                     isHeaderAdded = true;
                                 }
-                                let div = createDivForSuggestions(label, qlCategory[j].relatedOps, fieldCategory[k].qlCat, true);
+                                let div = createDivForSuggestions(label, defaultVal, qlCategory[j].relatedOps, fieldCategory[k].qlCat, true);
                                 suggestionsDiv.appendChild(div);
                             }
 
@@ -91,6 +98,7 @@ const showAllSuggestions = function showAllSuggestions(e) {
                                 // console.log("here");
                                 if (label.toLowerCase() === enteredWord) {
                                     tsrCsQueryBox.value += " ";
+                                    console.log(label);
                                     showRelatedOperators(qlCategory[j].relatedOps, fieldCategory[k].qlCat);
                                 }
                             }
@@ -117,9 +125,8 @@ const showAllSuggestions = function showAllSuggestions(e) {
 
 }
 
-const insertMetric = function insertMetric(metric, relatedOps, qlCategory, showRelatedOps) {
-    // let text = tsrCsQueryBox.value.trim() + " ";
-    // tsrCsQueryBox.setSelectionRange(text.length, text.length);
+const insertMetric = function insertMetric(metric, defaultVal, relatedOps, qlCategory, showRelatedOps) {
+
 
     let start = tsrCsQueryBox.selectionStart;
 
@@ -130,7 +137,7 @@ const insertMetric = function insertMetric(metric, relatedOps, qlCategory, showR
 
     for (let i = 0; i < textLines.length; i++) {
 
-        words = textLines[i].split(/\s+/); // splits a line into words seperated by either single or multiple whitespaces
+        words = textLines[i].split(" "); // splits a line into words seperated by either single or multiple whitespaces
 
         for (let j = 0; j < words.length; j++) {
             sum += words[j].length + 1; // Adding 1 to cover space character between words
@@ -143,7 +150,10 @@ const insertMetric = function insertMetric(metric, relatedOps, qlCategory, showR
                         updatedText += words[j] + " ";
                 }
                 else {
-                    updatedText += metric + " ";
+                    if(defaultVal.length > 0)
+                        updatedText += metric + " (" + defaultVal + ") ";
+                    else
+                        updatedText += metric + " ";
                     isMetricAdded = true;
                 }
             }
@@ -162,7 +172,7 @@ const insertMetric = function insertMetric(metric, relatedOps, qlCategory, showR
 
     tsrCsQueryBox.value = updatedText;
 
-    if (showRelatedOps == true)
+    if (showRelatedOps == true && !lineHasOperator(start, relatedOps))
         showRelatedOperators(relatedOps, qlCategory);
     else {
         suggestionsDiv.innerHTML = "";
@@ -185,7 +195,7 @@ const insertOp = function insertOp(op, qlCategory) {
 
     for (let i = 0; i < textLines.length; i++) {
 
-        words = textLines[i].split(/\s+/); // splits a line into words seperated by either single or multiple whitespaces
+        words = textLines[i].split(" "); // splits a line into words seperated by either single or multiple whitespaces
 
         for (let j = 0; j < words.length; j++) {
             sum += words[j].length + 1; // Adding 1 to cover space character between words
@@ -256,12 +266,13 @@ const showRelatedSuggestions = function showRelatedSuggestions(qlCat) {
                     for (let k = 0; k < fieldCategory.length; k++) { // for every field
                         if (fieldCategory[k].qlCat === qlCat) {
                             let label = fieldCategory[k].label;
+                            let defaultVal = fieldCategory[k].defaultVal;
                             if (label.toLowerCase().startsWith(enteredWord) || enteredWord == "") {
                                 if (!isHeaderAdded) {
                                     addHeaderToSuggestions(qlCategory[j]);
                                     isHeaderAdded = true;
                                 }
-                                let div = createDivForSuggestions(label, qlCategory[j].relatedOps, fieldCategory[k].qlCat, false);
+                                let div = createDivForSuggestions(label, defaultVal, qlCategory[j].relatedOps, fieldCategory[k].qlCat, false);
                                 suggestionsDiv.appendChild(div);
                             }
 
@@ -325,7 +336,7 @@ function navigateSuggestionsDiv(e) {
 // *
 
 const showAdvancedOptions = function showAdvancedOptions(selectionStartIdx, keyword, phrase) {
-    keyword = keyword.toLowerCase();
+    keyword = phrase.toLowerCase();
     let tsrCsAdvancedOptions = document.getElementById("tsrCsAdvancedOptions");
     if (keyword.includes("("))
         keyword = keyword.split("(")[0].trim();
@@ -338,10 +349,10 @@ const showAdvancedOptions = function showAdvancedOptions(selectionStartIdx, keyw
 
     let currentFieldsStr = "";
     let currentFields = [];
-    if(phrase.includes(keyword)){
+    if (phrase.includes(keyword)) {
         currentFieldsStr = phrase.split(keyword)[1].trim();
         currentFieldsStr = currentFieldsStr.substring(1, currentFieldsStr.length - 1);
-        
+
         currentFields = currentFieldsStr.split(",");
     }
 
@@ -377,12 +388,21 @@ const updateKeyword = function updateKeyword(selectionStartIdx, keyword, advance
 
             if (sum > selectionStartIdx) {
                 if (words[j].includes("(") && !isKeywordUpdated) { //  && !isKeywordUpdated condition so that other keyword fields are not updated once req. keyword fields are changed
-                    words[j] = words[j].split("(")[0];
+                    if (j - 1 >= 0) {
+                        let preceedingWord = words[j - 1].toLowerCase();
+                        if(preceedingWord == keyword){
+                            words[j] = `(${fields})`;
+                            isKeywordUpdated = true;
+                        }
+                    }
+                    else
+                        words[j] = words[j].split("(")[0];  
+                    
                 }
                 if (keyword === words[j].toLowerCase() && !isKeywordUpdated) {
                     words[j] = words[j] + ` (${fields})`; // adding fields to the selected keyword
-                    
-                    if(j+1 < words.length){
+
+                    if (j + 1 < words.length) {
                         let succeedingWord = words[j + 1];
                         if (succeedingWord.indexOf("(") == 0) {
                             words[j + 1] = "";

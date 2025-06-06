@@ -1,23 +1,33 @@
+// By Nitronik
 
-let syntaxErrorElement = document.getElementById("syntaxErrorMsg");
 let tsrCsQueryBox = document.getElementById("tsrCsQueryBox");
 let suggestionsDiv = document.getElementById("tsrCsSuggestionsDiv");
 
 let operators = [];
 
 tsrCsQueryBox.addEventListener("keydown", (e) => {
-    if (e.key == "Enter") {
-        e.preventDefault();
-    }
+    // if (e.key == "Enter") {
+    //     e.preventDefault();
+    // }
 
     if (e.key == "ArrowLeft" || e.key == "ArrowRight") {
 
         let selectionStartIdx = e.currentTarget.selectionStart;
 
-        let keyword = getKeyword(selectionStartIdx, tsrCsQueryBox.value).trim();
+        // let keyword = getKeyword(selectionStartIdx, tsrCsQueryBox.value).trim();
+        let keyword = getPhrase(selectionStartIdx, tsrCsQueryBox.value).trim().split("[")[0].trim();
         let phrase = getPhrase(selectionStartIdx, tsrCsQueryBox.value).trim();
+        // console.log(selectionStartIdx);
+        // console.log("phrase", phrase);
+        // console.log("keyword", keyword);
 
         showAdvancedOptions(selectionStartIdx, keyword, phrase);
+    }
+
+    // * Solution for 
+    // ! Bug #2: Reentering keyword, using keyboard on suggestionsDiv, inserts keyword incorrectly 
+    if (e.key == "ArrowDown") {
+        e.preventDefault();
     }
 
     // ? Issue: keydown handler runs before textarea value updates, i.e. before character entered is shown in it, thus,
@@ -31,6 +41,10 @@ tsrCsQueryBox.addEventListener("keydown", (e) => {
 tsrCsQueryBox.addEventListener("focusout", function (e) {
     if (e.relatedTarget != null && e.relatedTarget != suggestionsDiv && !e.relatedTarget.classList.contains("tsrSuggestion")) {
         suggestionsDiv.innerHTML = "";
+        return;
+    }
+    if (e.relatedTarget == null) {
+        suggestionsDiv.innerHTML = "";
     }
 });
 
@@ -38,10 +52,11 @@ tsrCsQueryBox.addEventListener("click", (e) => { // Event listener for detecting
 
     let selectionStartIdx = e.currentTarget.selectionStart;
 
-    let keyword = getKeyword(selectionStartIdx, tsrCsQueryBox.value).trim();
-    let currentFields = getKeyword(selectionStartIdx, tsrCsQueryBox.value).trim();
+    // let keyword = getKeyword(selectionStartIdx, tsrCsQueryBox.value).trim();
+    let keyword = getPhrase(selectionStartIdx, tsrCsQueryBox.value).trim().split("[")[0].trim();
+    // let currentFields = getKeyword(selectionStartIdx, tsrCsQueryBox.value).trim();
     let phrase = getPhrase(selectionStartIdx, tsrCsQueryBox.value).trim();
-    // console.log("phrase: ",phrase);
+
     // console.log("cursorPos",selectionStartIdx);
     // console.log("phrase", phrase);
     // console.log("keyword", keyword);
@@ -49,6 +64,7 @@ tsrCsQueryBox.addEventListener("click", (e) => { // Event listener for detecting
     showAdvancedOptions(selectionStartIdx, keyword, phrase);
 });
 
+let qlCat = "";
 const showAllSuggestions = function showAllSuggestions(e) {
 
     let textLines = tsrCsQueryBox.value.split(/\r?\n/);
@@ -66,6 +82,7 @@ const showAllSuggestions = function showAllSuggestions(e) {
 
     if (((/[a-zA-Z]/).test(keyCode) && keyCode.length == 1) || keyCode == "Backspace") {
         let enteredWord = getPhrase(tsrCsQueryBox.selectionStart, tsrCsQueryBox.value).toLowerCase().trim();
+
         suggestionsDiv.innerHTML = "";
 
         for (let i = 0; i < DATA_MASTER.length; i++) { // for every qlCategory
@@ -77,12 +94,13 @@ const showAllSuggestions = function showAllSuggestions(e) {
                         let isHeaderAdded = false;
                         for (let k = 0; k < fieldCategory.length; k++) { // for every field
                             let label = fieldCategory[k].label;
-                            if (label.toLowerCase().startsWith(enteredWord) || enteredWord == "") {
+                            let defaultVal = fieldCategory[k].defaultVal;
+                            if (label.toLowerCase().startsWith(enteredWord) && enteredWord != "") {
                                 if (!isHeaderAdded) {
                                     addHeaderToSuggestions(qlCategory[j]);
                                     isHeaderAdded = true;
                                 }
-                                let div = createDivForSuggestions(label, qlCategory[j].relatedOps, fieldCategory[k].qlCat, true);
+                                let div = createDivForSuggestions(label, defaultVal, qlCategory[j].relatedOps, fieldCategory[k].qlCat, true);
                                 suggestionsDiv.appendChild(div);
                             }
 
@@ -91,6 +109,7 @@ const showAllSuggestions = function showAllSuggestions(e) {
                                 // console.log("here");
                                 if (label.toLowerCase() === enteredWord) {
                                     tsrCsQueryBox.value += " ";
+                                    qlCat = fieldCategory[k].qlCat;
                                     showRelatedOperators(qlCategory[j].relatedOps, fieldCategory[k].qlCat);
                                 }
                             }
@@ -100,7 +119,20 @@ const showAllSuggestions = function showAllSuggestions(e) {
             }
         }
     }
+    else if (operators.includes(keyCode) && keyCode.length == 1 || operators.includes(lastword)) {
+        tsrCsQueryBox.value += " ";
+        showRelatedSuggestions(qlCat);
+
+        suggestionsDiv.focus();
+        // Dispatching below event is required for focusing on first div inside suggestionsDiv 
+        let ev = new Event("keydown");
+        ev.key = "ArrowDown";
+        suggestionsDiv.addEventListener("keydown", navigateSuggestionsDiv);
+        suggestionsDiv.dispatchEvent(ev);
+    }
     else if (keyCode == "ArrowDown" || keyCode == "ArrowUp") {
+        // e.preventDefault();
+        // e.stopPropagation();
         suggestionsDiv.focus();
         // Dispatching below event is required for focusing on first div inside suggestionsDiv 
         let ev = new Event("keydown");
@@ -117,10 +149,9 @@ const showAllSuggestions = function showAllSuggestions(e) {
 
 }
 
-const insertMetric = function insertMetric(metric, relatedOps, qlCategory, showRelatedOps) {
-    // let text = tsrCsQueryBox.value.trim() + " ";
-    // tsrCsQueryBox.setSelectionRange(text.length, text.length);
+const insertMetric = function insertMetric(metric, defaultVal, relatedOps, qlCategory, showRelatedOps) {
 
+    qlCat = qlCategory;
     let start = tsrCsQueryBox.selectionStart;
 
     let textLines = tsrCsQueryBox.value.split("\n");
@@ -130,7 +161,7 @@ const insertMetric = function insertMetric(metric, relatedOps, qlCategory, showR
 
     for (let i = 0; i < textLines.length; i++) {
 
-        words = textLines[i].split(/\s+/); // splits a line into words seperated by either single or multiple whitespaces
+        words = textLines[i].split(" "); // splits a line into words seperated by either single or multiple whitespaces
 
         for (let j = 0; j < words.length; j++) {
             sum += words[j].length + 1; // Adding 1 to cover space character between words
@@ -143,7 +174,10 @@ const insertMetric = function insertMetric(metric, relatedOps, qlCategory, showR
                         updatedText += words[j] + " ";
                 }
                 else {
-                    updatedText += metric + " ";
+                    if (defaultVal.length > 0)
+                        updatedText += metric + " [" + defaultVal + "] ";
+                    else
+                        updatedText += metric + " ";
                     isMetricAdded = true;
                 }
             }
@@ -162,7 +196,7 @@ const insertMetric = function insertMetric(metric, relatedOps, qlCategory, showR
 
     tsrCsQueryBox.value = updatedText;
 
-    if (showRelatedOps == true)
+    if (showRelatedOps == true && !lineHasOperator(start, relatedOps))
         showRelatedOperators(relatedOps, qlCategory);
     else {
         suggestionsDiv.innerHTML = "";
@@ -185,7 +219,7 @@ const insertOp = function insertOp(op, qlCategory) {
 
     for (let i = 0; i < textLines.length; i++) {
 
-        words = textLines[i].split(/\s+/); // splits a line into words seperated by either single or multiple whitespaces
+        words = textLines[i].split(" "); // splits a line into words seperated by either single or multiple whitespaces
 
         for (let j = 0; j < words.length; j++) {
             sum += words[j].length + 1; // Adding 1 to cover space character between words
@@ -256,12 +290,13 @@ const showRelatedSuggestions = function showRelatedSuggestions(qlCat) {
                     for (let k = 0; k < fieldCategory.length; k++) { // for every field
                         if (fieldCategory[k].qlCat === qlCat) {
                             let label = fieldCategory[k].label;
-                            if (label.toLowerCase().startsWith(enteredWord) || enteredWord == "") {
+                            let defaultVal = fieldCategory[k].defaultVal;
+                            if (label.toLowerCase().startsWith(enteredWord) || enteredWord == "" || operators.includes(enteredWord)) {
                                 if (!isHeaderAdded) {
                                     addHeaderToSuggestions(qlCategory[j]);
                                     isHeaderAdded = true;
                                 }
-                                let div = createDivForSuggestions(label, qlCategory[j].relatedOps, fieldCategory[k].qlCat, false);
+                                let div = createDivForSuggestions(label, defaultVal, qlCategory[j].relatedOps, fieldCategory[k].qlCat, false);
                                 suggestionsDiv.appendChild(div);
                             }
 
@@ -279,6 +314,9 @@ const showRelatedSuggestions = function showRelatedSuggestions(qlCat) {
 
     suggestionsDiv.focus();
     updateSuggestionsPosition();
+
+
+
 
 }
 
@@ -325,10 +363,10 @@ function navigateSuggestionsDiv(e) {
 // *
 
 const showAdvancedOptions = function showAdvancedOptions(selectionStartIdx, keyword, phrase) {
-    keyword = keyword.toLowerCase();
+    // keyword = phrase.toLowerCase();
     let tsrCsAdvancedOptions = document.getElementById("tsrCsAdvancedOptions");
-    if (keyword.includes("("))
-        keyword = keyword.split("(")[0].trim();
+    // if (keyword.includes("["))
+    //     keyword = keyword.split("[")[0].trim();
 
     if (keyword == "") {
         tsrCsAdvancedOptions.style.display = "none";
@@ -338,11 +376,14 @@ const showAdvancedOptions = function showAdvancedOptions(selectionStartIdx, keyw
 
     let currentFieldsStr = "";
     let currentFields = [];
-    if(phrase.includes(keyword)){
+    if (phrase.includes(keyword)) {
         currentFieldsStr = phrase.split(keyword)[1].trim();
         currentFieldsStr = currentFieldsStr.substring(1, currentFieldsStr.length - 1);
-        
+
         currentFields = currentFieldsStr.split(",");
+        for (let i = 0; i < currentFields.length; i++) {
+            currentFields[i] = currentFields[i].trim();
+        }
     }
 
     let advancedOptions = getAdvancedOptions(keyword);
@@ -350,7 +391,102 @@ const showAdvancedOptions = function showAdvancedOptions(selectionStartIdx, keyw
     modifyAdvancedOptionsDiv(keyword, advancedOptions, currentFields);
 };
 
-const updateKeyword = function updateKeyword(selectionStartIdx, keyword, advancedOptions) {
+// const updateKeyword = function updateKeyword(selectionStartIdx, keyword, advancedOptions) {
+
+//     let fields = [];
+
+//     for (let i = 0; i < advancedOptions.length; i++) {
+//         if (advancedOptions[i].tagName == 'SELECT' || advancedOptions[i].tagName == 'INPUT')
+//             fields.push(advancedOptions[i].value);
+//     }
+
+//     let text = tsrCsQueryBox.value;
+//     let lines = text.trim().split("\n");
+
+//     tsrCsQueryBox.value = "";
+
+//     let words;
+//     let sum = 0, isKeywordUpdated = false;
+//     for (let i = 0; i < lines.length; i++) {
+//         words = lines[i].trim().split(/\s+/);
+
+//         for (let j = 0; j < words.length; j++) {
+//             if (words[j] != "and" || words[j] != "or")
+//                 sum += words[j].length + 1;
+//             else
+//                 sum += words[j].length;
+
+//             if (sum > selectionStartIdx) {
+//                 if (words[j].includes("[") && !isKeywordUpdated) { //  && !isKeywordUpdated condition so that other keyword fields are not updated once req. keyword fields are changed
+//                     if (j - 1 >= 0) {
+//                         let preceedingWord = "";
+//                         for (let k = 0; k <= j - 1; k++) {
+//                             if (words[k] == "and" || words[k] == "or" || operators.includes(words[k])) {
+//                                 preceedingWord = "";
+//                                 continue;
+//                             }
+
+//                             preceedingWord += words[k] + " ";
+//                         }
+//                         preceedingWord = preceedingWord.trim().toLowerCase();
+//                         if (preceedingWord == keyword) {
+//                             words[j] = `[${fields.join(", ")}]`;
+//                             isKeywordUpdated = true;
+//                             let k = j + 1;
+//                             while (!words[k].includes("]")) {
+//                                 k++;
+//                             }
+
+//                             for (; k > j; k--) {
+//                                 words[k] = ""; // removing all the words after the field
+//                             }
+//                         }
+//                     }
+//                 }
+//                 else {
+//                     if (words[j].indexOf("]") == words[j].length - 1 && !isKeywordUpdated) { // if the word has a field, then remove it
+//                         let k = j;
+//                         while (!words[k].includes("[")) {
+//                             k--;
+//                         }
+//                         words[k] = `[${fields.join(", ")}]`;
+//                         isKeywordUpdated = true;
+//                         k = k + 1; // remove all the words after the field  
+//                         for (; k <= j; k++) {
+//                             words[k] = "";
+//                         }
+//                     }
+//                     else {
+//                         if (words[j].toLowerCase() == keyword && !isKeywordUpdated) {
+//                             words[j] = words[j] + ` [${fields.join(", ")}]`; // adding fields to the selected keyword
+//                             isKeywordUpdated = true;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+
+//         let wordsInLine = [];
+
+//         for (let i = 0; i < words.length; i++) {
+//             if (words[i] != "")
+//                 wordsInLine.push(words[i])
+
+//         }
+//         let text;
+//         if (i < lines.length - 1) {
+//             text = wordsInLine.join(" ") + "\n";
+//             tsrCsQueryBox.value += text;
+//         }
+//         // for adding last line of words, without new line character
+//         else {
+//             text = wordsInLine.join(" ");
+//             tsrCsQueryBox.value += text;
+//         }
+//     }
+// };
+
+const updateKeyword = function updateKeyword(selectionStart, keyword, advancedOptions) {
 
     let fields = [];
 
@@ -365,42 +501,49 @@ const updateKeyword = function updateKeyword(selectionStartIdx, keyword, advance
     tsrCsQueryBox.value = "";
 
     let words;
-    let sum = 0, isKeywordUpdated = false;
+
+    let sum = 0, isKeywordUpdated = false, arePreviousFieldsRemoved = false;
+
     for (let i = 0; i < lines.length; i++) {
         words = lines[i].trim().split(/\s+/);
-
+        let reqKeyword = "";
         for (let j = 0; j < words.length; j++) {
-            if (words[j] != "and" || words[j] != "or")
-                sum += words[j].length + 1;
-            else
+            if (words[j] == "and" || words[j] == "or")
                 sum += words[j].length;
+            else
+                sum += words[j].length + 1; // Adding 1 to cover space character between words
 
-            if (sum > selectionStartIdx) {
-                if (words[j].includes("(") && !isKeywordUpdated) { //  && !isKeywordUpdated condition so that other keyword fields are not updated once req. keyword fields are changed
-                    words[j] = words[j].split("(")[0];
-                }
-                if (keyword === words[j].toLowerCase() && !isKeywordUpdated) {
-                    words[j] = words[j] + ` (${fields})`; // adding fields to the selected keyword
-                    
-                    if(j+1 < words.length){
-                        let succeedingWord = words[j + 1];
-                        if (succeedingWord.indexOf("(") == 0) {
-                            words[j + 1] = "";
-                        }
-                    }
+            if (words[j] != 'and' && words[j] != 'or' && !operators.includes(words[i])) {
+                reqKeyword += words[j] + " ";
+            }
+
+            if (!isKeywordUpdated) {
+                // reqKeyword = ; // getting the first word of the keyword
+                if (reqKeyword.toLowerCase().split("[")[0].trim() == keyword.toLowerCase() && sum > selectionStart) {
+                    words[j] += ` [${fields.join(", ")}]`; // adding fields to the selected keyword
                     isKeywordUpdated = true;
+                }
+            }
+            else {
+                if (!arePreviousFieldsRemoved) {
+                    while ((!operators.includes(words[j]) && words[j] != "and" && words[j] != "or") && j < words.length) {
+                        words[j] = ""; // removing all the words after the field
+                        j++;
+                    }
+                    arePreviousFieldsRemoved = true;
                 }
             }
         }
 
-        let wordsInLine = [];
 
+        let wordsInLine = [];
         for (let i = 0; i < words.length; i++) {
             if (words[i] != "")
-                wordsInLine.push(words[i])
-
+                wordsInLine.push(words[i]);
         }
+
         let text;
+
         if (i < lines.length - 1) {
             text = wordsInLine.join(" ") + "\n";
             tsrCsQueryBox.value += text;
@@ -410,69 +553,6 @@ const updateKeyword = function updateKeyword(selectionStartIdx, keyword, advance
             text = wordsInLine.join(" ");
             tsrCsQueryBox.value += text;
         }
+
     }
-};
-
-function runTsrCsQuery() {
-    // console.log(tsrCsQueryBox.value); // Log the query in the console
-    let isSyntaxValid = parseEnteredQuery();
-    if (isSyntaxValid === true) {
-        // console.log("Syntax valid");
-        syntaxErrorElement.innerHTML = `Syntax valid`;
-        syntaxErrorElement.style.color = 'green';
-    }
-}
-
-// parses entire query and returns true or false if it's syntax is valid
-function parseEnteredQuery() {
-    let query = tsrCsQueryBox.value;
-    let queryLines = query.split(/\n/);
-    let isValid = false;
-
-    for (let i = 0; i < queryLines.length; i++) {
-        isValid = parseLine(queryLines[i].trim().toLowerCase()); // ! Make sure stock metrics are all in lowercase only
-        if (isValid == false) {
-            // console.error("Syntax error at line number", i + 1);
-            syntaxErrorElement.innerHTML = `Syntax error at line number ${i + 1}`;
-            syntaxErrorElement.style.color = 'red';
-            break;
-        }
-    }
-
-    return isValid;
-}
-
-// parses each line and returns true or false if it's syntax is valid
-function parseLine(queryLine) {
-    if (queryLine.includes("and"))
-        queryLine = queryLine.split("and")[0].trim();
-
-    if (queryLine.includes("or"))
-        queryLine = queryLine.split("or")[0].trim();
-
-    let lhs, rhs, subQueries = [];
-    for (let i = 0; i < operators.length; i++) {
-        // console.log(queryLine.includes(operators[i]));
-        if (queryLine.includes(operators[i])) {
-            subQueries.push(queryLine.split(operators[i])[0]);
-            subQueries.push(queryLine.substring(queryLine.indexOf(operators[i]) + 1));
-            subQueries = subQueries.map(str => str.trim());
-            lhs = parseLine(subQueries[0]);
-            rhs = parseLine(subQueries[1]);
-            if (lhs == true && rhs == true)
-                return true;
-            break;
-        }
-        else {
-
-            if (stockMetrics.price.fields.includes(queryLine) || queryLine == "" || !isNaN(Number(queryLine)))
-                return true; // TODO Add Comparable fields logic OR Match SubQuery with keywords
-        }
-    }
-    return false;
-}
-
-function resetTsrCsQueryBox() {
-    tsrCsQueryBox.value = "";
-    tsrCsQueryBox.focus();
 }
