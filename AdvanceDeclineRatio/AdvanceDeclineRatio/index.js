@@ -267,9 +267,9 @@ function drawChartFromData(upData) {
 
             div.innerHTML = `<b>${(selectedData.Date.toLocaleString())}</b>
                             <br>
-                            <b style="color: green">${selectedData.Advances}</b>
+                            <span style="color: green">Advances: ${selectedData.Advances}</span>
                             <br>
-                        <b style="color: red">${selectedData.Declines}</b>`;
+                        <span style="color: red">Declines: ${selectedData.Declines}</span>`;
         }
     }
 
