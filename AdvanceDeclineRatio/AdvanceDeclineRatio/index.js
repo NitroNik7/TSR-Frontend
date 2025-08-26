@@ -83,9 +83,7 @@ function downloadData() {
             });   
     */
 
-    // url = "https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/26a44e2f3963829bf1d68ffc1cdaafadce373826/AdvanceDeclineData.csv";
-    url = "https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/main/AdvanceDeclineData.csv";
-    // url = "https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/95c2a2e4db8e456334ebafffd6006ed8e24a5ac2/AdvanceDeclineData.csv";
+    url = "https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/AdvanceDeclineRatio/AdvanceDeclineRatio/AdvanceDeclineData.csv";
     downloadAndProcess(url)
 
 }
