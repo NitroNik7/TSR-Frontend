@@ -1,25 +1,38 @@
-// const d3 = require("./d3.v7");
-
-// import * as d3 from "./d3.v7";
-
 var width, height;
-
 var margin = { top: 10, right: 70, bottom: 20, left: 20 }
 
 var offsetTop;
+var rawDailyData, todaysData;
+var divId, params, period;
+var today;
+var smallDimension;
 
-let tooltipStyle = "font-weight: bold; background-color: white; height: max-content;";
+var lineStyle = 'fill: none; stroke-width: 1.25 px;'
+var circleStyle = 'fill-opacity: 0.2; stroke-width: 1.5;';
+let circleRadius = 3;
+var crosshairStyle = 'stroke: gray; stroke-width: 1; stroke-dasharray: 3;';
+let xAxisTickFreq = d3.timeMinute.every(10);
+
+let tooltipStyle = ` 
+        display: block; 
+        position: absolute; 
+        border: 5px solid lightgray; 
+        border-radius: 10px; 
+        padding: 5px;
+        background-color: white;
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.1) !important;
+    `;
 
 function setDimensions(params, chartDiv) {
-    // width =  mintJsUtil.isNull(params.width) ? 300 : params.width ;
-    // height = mintJsUtil.isNull(params.height) ? 300 : params.height ;
-
+    // TODO
+    // width = mintJsUtil.isNull(params.width) ? 300 : params.width;
+    // height = mintJsUtil.isNull(params.height) ? 300 : params.height;
 
     width = chartDiv.width() - 100;
 
-    smallDimention = width < 500 ? true : false;
+    smallDimension = width < 500 ? true : false;
 
-    if (smallDimention) {
+    if (smallDimension) {
         margin.left = 5;
         margin.right = 5;
         margin.top = 5;
@@ -27,7 +40,6 @@ function setDimensions(params, chartDiv) {
     }
 
     width = chartDiv.width() - margin.left - margin.right;
-
 
     if (window.innerHeight < chartDiv.height()) {
         height = window.innerHeight - margin.top - margin.bottom - 50;;
@@ -43,7 +55,6 @@ function setDimensions(params, chartDiv) {
     // }
 }
 
-today = true;
 function downloadData() {
     var filePrefix = ''
     if (today) {
@@ -54,6 +65,7 @@ function downloadData() {
 
     var url = '//' + window.location.hostname + '/charts/'
 
+    // TODO
     // if(jsu.isMigContext()){
 
     //     if(jsu.isUsContext()){
@@ -86,11 +98,10 @@ function downloadData() {
             });   
     */
 
+    // hardcoding
     url = "https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/AdvanceDeclineRatio/AdvanceDeclineRatio/AdvanceDeclineData.csv";
     downloadAndProcess(url)
-
 }
-
 
 async function downloadAndProcess(url) {
     let upData = await d3.csv(url, d => d);
@@ -100,15 +111,7 @@ async function downloadAndProcess(url) {
     } else {
         rawDailyData = upData;
     }
-    drawChartFromData(upData);
-}
-
-
-function isNull(obj) {
-    if (obj == null)
-        return true;
-
-    return false;
+    drawChartFromData();
 }
 
 function parseDate(date) {
@@ -129,22 +132,106 @@ function parseDate(date) {
     return parsedDate;
 }
 
-setDimensions(null, $("#chartContainer"));
-downloadData();
+function drawChart(divIdArg, paramsArg) {
+    divId = divIdArg;
+    params = paramsArg;
 
-function drawChartFromData(upData) {
+    if (params == null || params.period == null) {
+        today = true;
+        period = '1D';
+    } else {
+        today = false;
+        period = params.period;
+    }
 
-    const svg = d3.select("#chartContainer")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom);
+    downloadData();
+}
+
+function drawChartFromData() {
+
+
+    var upData = null;
+
+    if (period == '1D') {
+        upData = todaysData;
+    } else {
+        upData = rawDailyData;
+    }
+
+    // TODO
+    // if (isNull(upData) || upData.length == 0) {
+    //     // console.log('no up Data');
+    //     return;
+    // }
+
+    // TODO
+    /*
+    
+        var latestDate = upData[upData.length - 1].Date;
+        var startDate = null;
+
+        if (!today) {
+            latestDate = parseTime(latestDate);
+
+            startDate = new Date(latestDate.getTime());// cloning 
+            if (period == '1W') {
+                startDate.setDate(startDate.getDate() - 7);
+            } else if (period == '2W') {
+                startDate = startDate.setDate(startDate.getDate() - 14);
+            } else if (period == '1M') {
+                startDate.setMonth(startDate.getMonth() - 1);
+            } else if (period == '3M') {
+                startDate.setMonth(startDate.getMonth() - 3);
+            } else if (period == '6M') {
+                startDate.setMonth(startDate.getMonth() - 6);
+            } else if (period == '1Y') {
+                startDate.setFullYear(startDate.getFullYear() - 1);
+            } else if (period == '2Y') {
+                startDate.setFullYear(startDate.getFullYear() - 2);
+            } else if (period == '5Y') {
+                startDate.setFullYear(startDate.getFullYear() - 5);
+            }
+        }
+
+        var data = [];
+        // format the data
+        if (today) {
+            for (var i = 0; i < upData.length; i++) {
+                var d = upData[i];
+                data.push({ 'Date': parseDate(d.Date), 'Advances': Number(d.Advances), 'Declines': Number(d.Declines) });
+            }
+        } else {
+            for (var i = 0; i < upData.length; i++) {
+                var d = upData[i];
+                var runningDate = parseTime(d.Date);
+
+                if (runningDate < startDate) continue;
+                data.push({ 'Date': runningDate, 'Close': Number(d.Close) });
+            }
+        }
+
+
+        var div = $('#' + divId);
+
+
+        div.empty();
+
+        */
+
+    setDimensions(params, $(`#${divId}`));
+
     var data = [];
-
+    // code starts here
     for (var i = 0; i < upData.length; i++) {
         var d = upData[i];
         if (!isNaN(parseDate(d.Date)) && d.Advances != '' && d.Declines != '')
             data.push({ 'Date': parseDate(d.Date), 'Advances': Number(d.Advances), 'Declines': Number(d.Declines) });
     }
+
+    const svg = d3.select(`#${divId}`)
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom);
 
     const x = d3.scaleTime()
         .domain(d3.extent(data, function (d) { return d.Date }))
@@ -152,7 +239,7 @@ function drawChartFromData(upData) {
     svg.append("g")
         .attr("transform", `translate(${margin.left}, ${height + margin.top})`)
         .call(d3.axisBottom(x)
-            .ticks(d3.timeMinute.every(10)));
+            .ticks(xAxisTickFreq));
 
     // Add Y axis
     const y = d3.scaleLinear()
@@ -162,100 +249,69 @@ function drawChartFromData(upData) {
         .attr("transform", `translate(${margin.left}, ${margin.top})`)
         .call(d3.axisLeft(y));
 
-    // const y1 = d3.scaleLinear()
-    //     .domain([0, d3.max(data, function (d) { return d.Advances + d.Declines })])
-    //     .range([height / 2, 0]);
-    // svg.append("g")
-    //     .attr("transform", `translate(${margin.left}, ${margin.top})`)
-    //     .call(d3.axisLeft(y1)
-    //         .ticks(0))
-    //     .attr("stroke-width", 0);
-
-    // const y2 = d3.scaleLinear()
-    //     .domain([0, d3.max(data, function (d) { return d.Advances + d.Declines })])
-    //     .range([height, height / 2]);
-    // svg.append("g")
-    //     .attr("transform", `translate(${margin.left}, ${margin.top})`)
-    //     .call(d3.axisLeft(y2)
-    //         .ticks(0))
-    //     .attr("stroke-width", 0);
-
     let advances = d3.line()
         .x(function (d) { return x(d.Date) })
         .y(function (d) { return y(d.Advances) })
+
     // Advances
     svg.append("path")
         .datum(data)
-        .attr("fill", "none")
+        .attr("style", lineStyle)
         .attr("stroke", "green")
-        .attr("stroke-width", 1)
         .attr("d", advances)
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     let declines = d3.line()
         .x(function (d) { return x(d.Date) })
         .y(function (d) { return y(d.Declines) })
+
     // Declines
     svg.append("path")
         .datum(data)
-        .attr("fill", "none")
+        .attr("style", lineStyle)
         .attr("stroke", "red")
-        .attr("stroke-width", 1)
         .attr("d", declines)
         .attr("transform", `translate(${margin.left}, 0)`);
 
-
-
-    const tooltip = d3.path();
-
-    svg.append("rect")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("opacity", 0)
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-        .on("mouseover", function (e) { mouseover(e) })
-        .on("mousemove", function (e) { mousemove(e) })
-        .on("mouseout", function (e) { mouseout(e) });
-
-    let radius = 3;
-
     let circleAdvances = svg.append("g")
         .append("circle")
-        .attr("r", radius)
+        .attr("r", circleRadius)
+        .attr("style", circleStyle)
         .attr("fill", "green")
-        .attr("fill-opacity", "0.2")
         .attr("stroke", "green")
-        .attr("stroke-width", "1.5")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
         .attr("opacity", 0);
 
     let circleDeclines = svg.append("g")
         .append("circle")
-        .attr("r", radius)
+        .attr("r", circleRadius)
+        .attr("style", circleStyle)
         .attr("fill", "red")
-        .attr("fill-opacity", "0.2")
-
         .attr("stroke", "red")
-        .attr("stroke-width", "1.5")
         .attr("transform", "translate(" + margin.left + "," + 0 + ")")
         .attr("opacity", 0);
+
+    // rect for capturing mouse interactions
+    svg.append("rect")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("opacity", 0)
+        .attr("transform", `translate(${margin.left}, ${margin.top})`)
+        .on("mouseover", function (e) { mouseover(e) })
+        .on("mousemove", function (e) { mousemove(e) })
+        .on("mouseout", function (e) { mouseout(e) });
 
     // // This allows to find the closest X index of the mouse:
     var bisect = d3.bisector(function (d) { return d.Date; }).left;
 
-    // let div = document.createElement("div");
-    // // div.style.zIndex = "999";
-    // div.style.display = "block";
-    // div.style.position = "absolute";
-    // div.setAttribute("style", `
-    //     display: block; 
-    //     position: absolute; 
-    //     border: 5px solid lightgray; 
-    //     border-radius: 10px; 
-    //     box-shadow: 0 1rem 3rem rgba(0,0,0,.1)!important; 
-    //     padding: 5px`);
-
-    // document.body.appendChild(div);
+    // tooltip div
+    let div = document.createElement("div");
+    div.style.display = "block";
+    div.style.position = "absolute";
+    div.setAttribute("style", tooltipStyle);
+    div.addEventListener("mouseover", function (e) { mouseover(e) });
+    div.addEventListener("mousemove", function (e) { mousemove(e) });
+    div.addEventListener("mouseout", function (e) { mouseout(e) });
 
     svg.append("line")
         .attr("id", "crosshair")
@@ -264,47 +320,19 @@ function drawChartFromData(upData) {
         .attr("x2", 0)
         .attr("y2", height)
         .attr("opacity", 0)
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-    tooltip.rect(0, 0, 50, 50);
-    svg.append("g")
-        .attr("id", "tooltipContainer")
-        .attr("opacity", "0");
-
-    d3.select("#tooltipContainer")
-        .append("path")
-        .attr("id", "tooltip")
-        .attr("d", tooltip)
-        .attr("fill", "white")
-        .attr("stroke", "black")
-        .attr("opacity", "0.1")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    d3.select("#tooltipContainer").append("text")
-        .attr("id", "tooltipDateTime")
-        .style("color", "black");
-
-    d3.select("#tooltipContainer").append("text")
-        .attr("id", "tooltipAdvances")
-        .style("color", "black");
-
-    d3.select("#tooltipContainer").append("text")
-        .attr("id", "tooltipDeclines")
-        .style("color", "black");
+        .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     function mouseover(e) {
         circleAdvances.attr("opacity", 1);
         circleDeclines.attr("opacity", 1);
 
-        // div.style.opacity = "1";
+        div.style.opacity = "1";
 
         d3.select("#crosshair")
             .attr("opacity", "1");
 
-        d3.select("#tooltipContainer")
-            .attr("opacity", "1");
-        // document.body.appendChild(div);
+        if (!div.isConnected)
+            document.body.appendChild(div);
     }
 
     function mousemove(e) {
@@ -315,56 +343,41 @@ function drawChartFromData(upData) {
 
             let selectedData = data[index];
 
-            circleAdvances.attr("cx", x(selectedData.Date));
+            let xCord = x(selectedData.Date);
+
+            circleAdvances.attr("cx", xCord);
             circleAdvances.attr("cy", y(selectedData.Advances));
 
-            circleDeclines.attr("cx", x(selectedData.Date));
+            circleDeclines.attr("cx", xCord);
             circleDeclines.attr("cy", y(selectedData.Declines));
 
-            // div.style.left = x(selectedData.Date) + 40 + "px";
-            // div.style.top = ((offsetTop + height) / 2) + "px";
+            if (xCord > window.innerWidth / 2) { // if mouse is on rhs of screen
+                div.style.left = xCord - div.getBoundingClientRect().width + 15 + "px"
+            }
+            else {
+                div.style.left = xCord + 40 + "px";
+            }
 
-            // div.innerHTML = `<b>${(selectedData.Date.toLocaleString())}</b>
-            //                 <br>
-            //                 <span style="color: green">Advances: ${selectedData.Advances}</span>
-            //                 <br>
-            //             <span style="color: red">Declines: ${selectedData.Declines}</span>`;
+            div.style.top = ((e.pageY)) + "px";
 
+            div.innerHTML = `
+                    <b>${(selectedData.Date.toLocaleString())}</b>
+                    <br>
+                    <span style="color: green">
+                        Advances: ${selectedData.Advances}
+                    </span>
+                    <br>
+                    <span style="color: red">
+                        Declines: ${selectedData.Declines}
+                    </span>
+                `;
 
             svg.select("#crosshair")
-                .attr("x1", x(selectedData.Date))
+                .attr("x1", xCord)
                 .attr("y1", 0)
-                .attr("x2", x(selectedData.Date))
+                .attr("x2", xCord)
                 .attr("y2", height)
-                .attr("stroke", "gray") // Set the line color
-                .attr("stroke-width", 1)
-                .attr("stroke-dasharray", "3"); // Set the line thickness
-
-            const newTooltip = d3.path();
-            newTooltip.rect(x(selectedData.Date) + 15, e.pageY - offsetTop, 50, 50);
-
-            d3.select("#tooltip")
-                .attr("d", newTooltip);
-
-            d3.select("#tooltipDateTime")
-                .text("Time: " + selectedData.Date.toLocaleTimeString())
-                .attr("x", x(selectedData.Date) + 45)
-                .attr("y", e.pageY - offsetTop + margin.top + margin.bottom)
-                .style("font-weight", "bold");
-
-                d3.select("#tooltipAdvances")
-                .text("Advance: " + selectedData.Advances)
-                .attr("x", x(selectedData.Date) + 45)
-                .attr("y", e.pageY - offsetTop + margin.top + margin.bottom + 15)
-                .style("font-weight", "bold");
-
-                d3.select("#tooltipDeclines")
-                .html("<span style='color: red;'>Decline: " + selectedData.Declines + "</span>")
-                .attr("x", x(selectedData.Date) + 45)
-                .attr("y", e.pageY - offsetTop + margin.top + margin.bottom + 30)
-                .style("font-weight", "bold");
-
-
+                .attr("style", crosshairStyle)
         }
     }
 
@@ -376,9 +389,9 @@ function drawChartFromData(upData) {
         d3.select("#crosshair")
             .attr("opacity", "0");
 
-        d3.select("#tooltipContainer")
-            .attr("opacity", "0");
-
+        if (!div.isConnected)
+            document.body.removeChild(div);
     }
 }
 
+drawChart("chartContainer", null);
