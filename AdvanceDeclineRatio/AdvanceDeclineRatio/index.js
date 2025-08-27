@@ -6,14 +6,16 @@ var width, height;
 
 var margin = { top: 10, right: 70, bottom: 20, left: 20 }
 
+var offsetTop;
+
 let tooltipStyle = "font-weight: bold; background-color: white; height: max-content;";
 
-function setDimensions(params, div) {
+function setDimensions(params, chartDiv) {
     // width =  mintJsUtil.isNull(params.width) ? 300 : params.width ;
     // height = mintJsUtil.isNull(params.height) ? 300 : params.height ;
 
 
-    width = div.width() - 100;
+    width = chartDiv.width() - 100;
 
     smallDimention = width < 500 ? true : false;
 
@@ -24,15 +26,16 @@ function setDimensions(params, div) {
         margin.bottom = 35;
     }
 
-    width = div.width() - margin.left - margin.right;
+    width = chartDiv.width() - margin.left - margin.right;
 
 
-    if (window.innerHeight < div.height()) {
+    if (window.innerHeight < chartDiv.height()) {
         height = window.innerHeight - margin.top - margin.bottom - 50;;
     } else {
-        height = div.height() - margin.top - margin.bottom;
+        height = chartDiv.height() - margin.top - margin.bottom;
     }
 
+    offsetTop = chartDiv.offset().top;
     // height = div.height()- margin.top - margin.bottom;
 
     // if(isMobile()){
@@ -201,6 +204,10 @@ function drawChartFromData(upData) {
         .attr("d", declines)
         .attr("transform", `translate(${margin.left}, 0)`);
 
+
+
+    const tooltip = d3.path();
+
     svg.append("rect")
         .attr("width", width)
         .attr("height", height)
@@ -215,7 +222,8 @@ function drawChartFromData(upData) {
     let circleAdvances = svg.append("g")
         .append("circle")
         .attr("r", radius)
-        .attr("fill", "white")
+        .attr("fill", "green")
+        .attr("fill-opacity", "0.2")
         .attr("stroke", "green")
         .attr("stroke-width", "1.5")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
@@ -224,7 +232,9 @@ function drawChartFromData(upData) {
     let circleDeclines = svg.append("g")
         .append("circle")
         .attr("r", radius)
-        .attr("fill", "white")
+        .attr("fill", "red")
+        .attr("fill-opacity", "0.2")
+
         .attr("stroke", "red")
         .attr("stroke-width", "1.5")
         .attr("transform", "translate(" + margin.left + "," + 0 + ")")
@@ -233,25 +243,74 @@ function drawChartFromData(upData) {
     // // This allows to find the closest X index of the mouse:
     var bisect = d3.bisector(function (d) { return d.Date; }).left;
 
-    let div = document.createElement("div");
-    div.style.zIndex = "999";
-    div.style.display = "block";
-    div.style.position = "absolute";
+    // let div = document.createElement("div");
+    // // div.style.zIndex = "999";
+    // div.style.display = "block";
+    // div.style.position = "absolute";
+    // div.setAttribute("style", `
+    //     display: block; 
+    //     position: absolute; 
+    //     border: 5px solid lightgray; 
+    //     border-radius: 10px; 
+    //     box-shadow: 0 1rem 3rem rgba(0,0,0,.1)!important; 
+    //     padding: 5px`);
+
+    // document.body.appendChild(div);
+
+    svg.append("line")
+        .attr("id", "crosshair")
+        .attr("x1", 0)
+        .attr("y1", 0)
+        .attr("x2", 0)
+        .attr("y2", height)
+        .attr("opacity", 0)
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+    tooltip.rect(0, 0, 50, 50);
+    svg.append("g")
+        .attr("id", "tooltipContainer")
+        .attr("opacity", "0");
+
+    d3.select("#tooltipContainer")
+        .append("path")
+        .attr("id", "tooltip")
+        .attr("d", tooltip)
+        .attr("fill", "white")
+        .attr("stroke", "black")
+        .attr("opacity", "0.1")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.select("#tooltipContainer").append("text")
+        .attr("id", "tooltipDateTime")
+        .style("color", "black");
+
+    d3.select("#tooltipContainer").append("text")
+        .attr("id", "tooltipAdvances")
+        .style("color", "black");
+
+    d3.select("#tooltipContainer").append("text")
+        .attr("id", "tooltipDeclines")
+        .style("color", "black");
 
     function mouseover(e) {
         circleAdvances.attr("opacity", 1);
         circleDeclines.attr("opacity", 1);
 
-        document.body.appendChild(div);
-        div.style.opacity = "1";
+        // div.style.opacity = "1";
 
+        d3.select("#crosshair")
+            .attr("opacity", "1");
+
+        d3.select("#tooltipContainer")
+            .attr("opacity", "1");
+        // document.body.appendChild(div);
     }
 
     function mousemove(e) {
         let x0 = x.invert(e.pageX - margin.left - 8);
 
         var index = bisect(data, x0, 1);
-
         if (index <= data.length - 1) {
 
             let selectedData = data[index];
@@ -262,22 +321,63 @@ function drawChartFromData(upData) {
             circleDeclines.attr("cx", x(selectedData.Date));
             circleDeclines.attr("cy", y(selectedData.Declines));
 
-            div.style.left = x(selectedData.Date) + "px";
-            div.style.top = (height) / 2 + "px";
+            // div.style.left = x(selectedData.Date) + 40 + "px";
+            // div.style.top = ((offsetTop + height) / 2) + "px";
 
-            div.innerHTML = `<b>${(selectedData.Date.toLocaleString())}</b>
-                            <br>
-                            <span style="color: green">Advances: ${selectedData.Advances}</span>
-                            <br>
-                        <span style="color: red">Declines: ${selectedData.Declines}</span>`;
+            // div.innerHTML = `<b>${(selectedData.Date.toLocaleString())}</b>
+            //                 <br>
+            //                 <span style="color: green">Advances: ${selectedData.Advances}</span>
+            //                 <br>
+            //             <span style="color: red">Declines: ${selectedData.Declines}</span>`;
+
+
+            svg.select("#crosshair")
+                .attr("x1", x(selectedData.Date))
+                .attr("y1", 0)
+                .attr("x2", x(selectedData.Date))
+                .attr("y2", height)
+                .attr("stroke", "gray") // Set the line color
+                .attr("stroke-width", 1)
+                .attr("stroke-dasharray", "3"); // Set the line thickness
+
+            const newTooltip = d3.path();
+            newTooltip.rect(x(selectedData.Date) + 15, e.pageY - offsetTop, 50, 50);
+
+            d3.select("#tooltip")
+                .attr("d", newTooltip);
+
+            d3.select("#tooltipDateTime")
+                .text("Time: " + selectedData.Date.toLocaleTimeString())
+                .attr("x", x(selectedData.Date) + 45)
+                .attr("y", e.pageY - offsetTop + margin.top + margin.bottom)
+                .style("font-weight", "bold");
+
+                d3.select("#tooltipAdvances")
+                .text("Advance: " + selectedData.Advances)
+                .attr("x", x(selectedData.Date) + 45)
+                .attr("y", e.pageY - offsetTop + margin.top + margin.bottom + 15)
+                .style("font-weight", "bold");
+
+                d3.select("#tooltipDeclines")
+                .html("<span style='color: red;'>Decline: " + selectedData.Declines + "</span>")
+                .attr("x", x(selectedData.Date) + 45)
+                .attr("y", e.pageY - offsetTop + margin.top + margin.bottom + 30)
+                .style("font-weight", "bold");
+
+
         }
     }
 
     function mouseout(e) {
+
         circleAdvances.attr("opacity", 0);
         circleDeclines.attr("opacity", 0);
 
-        document.body.removeChild(div);
+        d3.select("#crosshair")
+            .attr("opacity", "0");
+
+        d3.select("#tooltipContainer")
+            .attr("opacity", "0");
 
     }
 }
