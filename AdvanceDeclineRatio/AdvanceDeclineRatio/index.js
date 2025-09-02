@@ -250,6 +250,9 @@ function drawChartFromData() {
             data.push({ 'Date': parseDate(d.Date, dateFormat), 'Advances': Number(d.Advances), 'Declines': Number(d.Declines) });
     }
 
+
+    let chartContainerOffset = chartContainer.offset().left;
+
     const svg = d3.select(`#${divId}`)
         .append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -359,7 +362,7 @@ function drawChartFromData() {
     }
 
     function mousemove(e) {
-        let x0 = x.invert(e.pageX - margin.left - 8);
+        let x0 = x.invert(e.clientX - chartContainerOffset - margin.left);
 
         var index = bisect(data, x0, 1);
         if (index <= data.length - 1) {
@@ -375,13 +378,13 @@ function drawChartFromData() {
             circleDeclines.attr("cy", y(selectedData.Declines));
 
             if (xCord > window.innerWidth / 2) { // if mouse is on rhs of screen
-                div.style.left = xCord - div.getBoundingClientRect().width + 15 + "px"
+                div.style.left = (e.clientX - div.getBoundingClientRect().width - 10) + "px";
             }
             else {
-                div.style.left = xCord + 40 + "px";
+                div.style.left = e.clientX + 10 + "px";
             }
 
-            div.style.top = ((e.pageY)) + "px";
+            div.style.top = e.pageY + "px";
 
             div.innerHTML = `
                     <b>${(selectedData.Date.toLocaleString())}</b>
@@ -422,12 +425,12 @@ function draw(tick) {
         dateFormat = ``;
         xAxisTickFreq = d3.timeMinute.every(10);
         url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/AdvanceDeclineRatio/AdvanceDeclineRatio/AdvanceDeclineData.csv`;
-        drawChart('chartContainer', null);
+        drawChart('chartContainer', { leftOffset: 300 });
     }
     else if (tick == "eod") {
         xAxisTickFreq = d3.timeMonth.every(1);
         dateFormat = `dd/MM/yyyy`;
         url = `https://raw.githubusercontent.com/NitroNik7/nitronik7.github.io/refs/heads/nitro/AdvanceDeclineRatio/AdvanceDeclineRatio/AdvanceDeclineDataDaily.csv`;
-        drawChart('chartContainer', null);
+        drawChart('chartContainer', { leftOffset: 300 });
     }
 }
