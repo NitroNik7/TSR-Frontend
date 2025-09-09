@@ -118,7 +118,11 @@
                     </form>
 
                     <div id="tsrUserLoginPopup" class="form-text mt-2 text-center">
-                        Already have an account? <a onclick="updateUserRegForm('login')">Login</a>
+                        Already have an account? <a onclick="updateUserRegForm('login')">
+                            <span style="text-decoration: underline; color: #0a58ca;">
+                                Login
+                            </span>
+                        </a>
                     </div>
 
                 </div>
@@ -179,7 +183,7 @@
                 document.getElementById('tsrUserRegPopupTitle').innerHTML = "Welcome back to <span style='color: #0d6efd;'>Top Stock Research</span>";
 
                 
-                        document.getElementById('tsrUserLoginPopup').innerHTML = "Register a new account? <a onclick=\"updateUserRegForm('register')\">Register</a>";
+                        document.getElementById('tsrUserLoginPopup').innerHTML = "Register a new account? <a onclick=\"updateUserRegForm('register')\"><span  style='text-decoration: underline; color: #0a58ca;'>Register</span></a>";
 
             }
             else if ('register') {
@@ -243,7 +247,7 @@
 
                         <button type="submit" class="btn btn-primary w-100">Register</button>`;
 
-                        document.getElementById('tsrUserLoginPopup').innerHTML = `Already have an account? <a onclick="updateUserRegForm('login')">Login</a>`;
+                        document.getElementById('tsrUserLoginPopup').innerHTML = `Already have an account? <a onclick="updateUserRegForm('login')"> <span style="text-decoration: underline; color: #0a58ca;">Login</span></a>`;
             }
 
 
