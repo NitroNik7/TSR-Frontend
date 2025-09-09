@@ -13,8 +13,8 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <!-- Google sign in -->
-         <script src="https://accounts.google.com/gsi/client" async></script>
+    <!-- Google sign in -->
+    <script src="https://accounts.google.com/gsi/client" async></script>
 
 </head>
 
@@ -36,7 +36,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="d-flex justify-content-center">
-                        <span style="font-weight: 500; font-size: 18px;">Register with</span>
+                        <span id="tsrRegLoginText" style="font-weight: 500; font-size: 18px;">Register with</span>
                     </div>
                     <div id="tsrGoogleSignIn">
                         <!-- TODO -->
@@ -58,7 +58,7 @@
                             width: 100%;
                         }
                     </style>
-                    <form class="mt-3">
+                    <form class="mt-3" id="tsrUserRegForm">
                         <div class="mb-3 d-flex">
                             <input type="text" class="form-control w-100 me-1" placeholder="First Name"
                                 aria-label="First name">
@@ -117,8 +117,8 @@
                         <button type="submit" class="btn btn-primary w-100">Register</button>
                     </form>
 
-                    <div class="form-text mt-2 text-center">
-                        Already have an account? <a href="#">Login</a>
+                    <div id="tsrUserLoginPopup" class="form-text mt-2 text-center">
+                        Already have an account? <a onclick="updateUserRegForm('login')">Login</a>
                     </div>
 
                 </div>
@@ -129,6 +129,127 @@
             </div>
         </div>
     </div>
+
+
+
+
+    <script>
+        function updateUserRegForm(formType) {
+
+            if (formType == 'login') {
+                let form = document.getElementById('tsrUserRegForm');
+
+                form.innerHTML = `
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <i class="far fa-envelope"></i>
+                    </span>
+
+                    <input type="email" class="form-control" id="tsrUserRegEmail" placeholder="Email Address"
+                        required>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <i class="fas fa-lock fa-sm"></i>
+                    </span>
+                    <input type="password" class="form-control" id="tsrUserRegPassword" placeholder="Password"
+                        required>
+                </div>
+
+                 <div class="row d-flex align-items-center mb-3">
+                    <div class="col-md-4">
+                        <div id="captchaImg" style="display:inline;"><img class="img-responsive img-fluid"
+                                src="https://www.stockaio.com/static/img/pramanik/UKHMRrItUuBo/OQbtlyLmuUmB.jpg">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-primary mt-2 mb-2 btn-sm" onclick="migu.changeImage()">Change
+                            Image</a>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control" id="captcha" placeholder="Image Value" type="text">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            `;
+
+                document.getElementById('tsrRegLoginText').innerText = "Login with";
+
+                document.getElementById('tsrUserRegPopupTitle').innerHTML = "Welcome back to <span style='color: #0d6efd;'>Top Stock Research</span>";
+
+                
+                        document.getElementById('tsrUserLoginPopup').innerHTML = "Register a new account? <a onclick=\"updateUserRegForm('register')\">Register</a>";
+
+            }
+            else if ('register') {
+                let form = document.getElementById('tsrUserRegForm');
+
+                form.innerHTML = `
+                 <div class="mb-3 d-flex">
+                            <input type="text" class="form-control w-100 me-1" placeholder="First Name"
+                                aria-label="First name">
+                            <input type="text" class="form-control w-100 ms-1" placeholder="Last Name"
+                                aria-label="Last name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <!-- <label for="tsrUserRegEmail" class="form-label" style="font-size: 14px;">Email address</label> -->
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="far fa-envelope"></i>
+                            </span>
+
+                            <input type="email" class="form-control" id="tsrUserRegEmail" placeholder="Email Address"
+                                required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <!-- <label for="tsrUserRegPassword" class="form-label" style="font-size: 14px;">Password</label> -->
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fas fa-lock fa-sm"></i>
+                            </span>
+                            <input type="password" class="form-control" id="tsrUserRegPassword" placeholder="Password"
+                                required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <!-- <label for="tsrUserRegPhnNumber" class="form-label" style="font-size: 14px;">Phone number</label> -->
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fas fa-phone fa-sm"></i> </span>
+                            <input type="text" class="form-control" id="tsrUserRegPhnNumber" placeholder="Phone Number"
+                                required>
+                        </div>
+
+                        <div class="row d-flex align-items-center mb-3">
+                            <div class="col-md-4">
+                                <div id="captchaImg" style="display:inline;"><img class="img-responsive img-fluid"
+                                        src="https://www.stockaio.com/static/img/pramanik/UKHMRrItUuBo/OQbtlyLmuUmB.jpg">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="btn btn-primary mt-2 mb-2 btn-sm" onclick="migu.changeImage()">Change
+                                    Image</a>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="captcha" placeholder="Image Value" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-text mb-3 text-center">
+                            By proceeding, I agree to
+                            <a href="https://www.topstockresearch.com/Disclaimer.html" target="_blank"
+                                style="font-size: 12px;">T&amp;C</a>
+                            and
+                            <a href="">Key notes</a>
+                            mentioned below
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Register</button>`;
+
+                        document.getElementById('tsrUserLoginPopup').innerHTML = `Already have an account? <a onclick="updateUserRegForm('login')">Login</a>`;
+            }
+
+
+        }
+    </script>
+
 </body>
 
 </html>
