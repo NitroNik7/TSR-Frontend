@@ -14,6 +14,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Google sign in -->
+    <meta name="referrer" content="no-referrer-when-downgrade" /> <!-- For testing -->
+
+    <!-- Step 1 - import Google Identity Services client library -->
     <script src="https://accounts.google.com/gsi/client" async></script>
 
 </head>
@@ -34,15 +37,55 @@
                             Stock Research</span></h1>
                     <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" onclick="google.accounts.id.cancel();">
                     <div class="d-flex justify-content-center">
-                        <span id="tsrRegLoginText" style="font-weight: 500; font-size: 18px;">Register with</span>
+                        <span id="tsrRegLoginText" style="font-weight: 500; font-size: 18px;">Register</span>
                     </div>
-                    <div id="tsrGoogleSignIn">
-                        <!-- TODO -->
-                        <br>
-                        <br>
+                    <br>
+
+                    <!-- TODO -->
+                    <div id="tsrGoogleSignIn" align="center" style="scale: 115%;">
+                        <script>
+
+                            function handleCredentialResponse(response) {
+                                console.log(response.credential);
+                            }
+
+                            window.onload = function () {
+                                google.accounts.id.initialize({
+                                    client_id: '687781720116-6e04u9huhh1u235ar6o9in1d3a3r44t5.apps.googleusercontent.com',
+                                    auto_select: true,
+                                    callback: handleCredentialResponse,
+                                    cancel_on_tap_outside: false,
+                                    state_cookie_domain: "netlify.app",
+                                    use_fedcm_for_prompt: true,
+                                    use_fedcm_for_button: true
+
+                                }); // creates a Sign In With Google client instance for use throughout the webpage, it is called only once
+                                google.accounts.id.prompt();
+
+
+
+                                google.accounts.id.renderButton(document.getElementById("tsrGoogleSignIn"), {
+                                    theme: 'outline',
+                                    size: 'large',
+                                    text: "continue_with",
+                                    width: "300px",
+                                    // click_listener: onClickHandler,
+                                });
+
+
+                            };
+
+                            // function onClickHandler(response) {
+                            //     handleCredentialResponse(response);
+                            //     console.log("Sign in with Google button clicked...", response);
+                            //     // google.accounts.id.cancel();
+                            // }
+
+                        </script>
                     </div>
+                    <br>
                     <div class="line-container d-flex w-100">
                         <div class="line"></div>
                         <div class="fw-300 fs-16 mx-3">or</div>
@@ -160,6 +203,16 @@
                         required>
                 </div>
 
+                <div class="form-text mb-3 text-end">
+                            <a href="https://www.topstockresearch.com/Disclaimer.html" target="_blank"
+                                style="font-size: 14px;">Forgot Password ?</a>
+                        </div>
+
+
+                        <span style="text-decoration: underline; color: #0a58ca;">
+                                
+                            </span>
+
                  <div class="row d-flex align-items-center mb-3">
                     <div class="col-md-4">
                         <div id="captchaImg" style="display:inline;"><img class="img-responsive img-fluid"
@@ -178,12 +231,12 @@
                 <button type="submit" class="btn btn-primary w-100">Login</button>
             `;
 
-                document.getElementById('tsrRegLoginText').innerText = "Login with";
+                document.getElementById('tsrRegLoginText').innerText = "Login";
 
                 document.getElementById('tsrUserRegPopupTitle').innerHTML = "Welcome back to <span style='color: #0d6efd;'>Top Stock Research</span>";
 
-                
-                        document.getElementById('tsrUserLoginPopup').innerHTML = "Register a new account? <a onclick=\"updateUserRegForm('register')\"><span  style='text-decoration: underline; color: #0a58ca;'>Register</span></a>";
+
+                document.getElementById('tsrUserLoginPopup').innerHTML = "Register a new account? <a onclick=\"updateUserRegForm('register')\"><span  style='text-decoration: underline; color: #0a58ca;'>Register</span></a>";
 
             }
             else if ('register') {
@@ -247,7 +300,10 @@
 
                         <button type="submit" class="btn btn-primary w-100">Register</button>`;
 
-                        document.getElementById('tsrUserLoginPopup').innerHTML = `Already have an account? <a onclick="updateUserRegForm('login')"> <span style="text-decoration: underline; color: #0a58ca;">Login</span></a>`;
+                document.getElementById('tsrRegLoginText').innerText = "Register";
+
+
+                document.getElementById('tsrUserLoginPopup').innerHTML = `Already have an account? <a onclick="updateUserRegForm('login')"> <span style="text-decoration: underline; color: #0a58ca;">Login</span></a>`;
             }
 
 
