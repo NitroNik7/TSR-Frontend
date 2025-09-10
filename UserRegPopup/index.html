@@ -45,45 +45,7 @@
 
                     <!-- TODO -->
                     <div id="tsrGoogleSignIn" align="center" style="scale: 115%;">
-                        <script>
 
-                            function handleCredentialResponse(response) {
-                                console.log(response.credential);
-                            }
-
-                            window.onload = function () {
-                                google.accounts.id.initialize({
-                                    client_id: '687781720116-6e04u9huhh1u235ar6o9in1d3a3r44t5.apps.googleusercontent.com',
-                                    auto_select: true,
-                                    callback: handleCredentialResponse,
-                                    cancel_on_tap_outside: false,
-                                    state_cookie_domain: "netlify.app",
-                                    use_fedcm_for_prompt: true,
-                                    use_fedcm_for_button: true
-
-                                }); // creates a Sign In With Google client instance for use throughout the webpage, it is called only once
-                                google.accounts.id.prompt();
-
-
-
-                                google.accounts.id.renderButton(document.getElementById("tsrGoogleSignIn"), {
-                                    theme: 'outline',
-                                    size: 'large',
-                                    text: "continue_with",
-                                    width: "300px",
-                                    // click_listener: onClickHandler,
-                                });
-
-
-                            };
-
-                            // function onClickHandler(response) {
-                            //     handleCredentialResponse(response);
-                            //     console.log("Sign in with Google button clicked...", response);
-                            //     // google.accounts.id.cancel();
-                            // }
-
-                        </script>
                     </div>
                     <br>
                     <div class="line-container d-flex w-100">
@@ -128,12 +90,21 @@
                         <div class="input-group mb-3">
                             <!-- <label for="tsrUserRegPhnNumber" class="form-label" style="font-size: 14px;">Phone number</label> -->
                             <span class="input-group-text" id="basic-addon1">
-                                <i class="fas fa-phone fa-sm"></i> </span>
+                                <i class="fas fa-phone fa-sm"></i>
+                            </span>
+                            <!-- All countries -->
+                            <!-- Code and Calling Code -->
+                            <!-- total - 252 -->
+                             <!-- <div style="width: 15%;">
+                                 <input type="text" class="form-control" id="tsrUserRegPhnNumber" placeholder="+91" required>
+
+                             </div> -->
+
                             <input type="text" class="form-control" id="tsrUserRegPhnNumber" placeholder="Phone Number"
                                 required>
                         </div>
 
-                        <div class="row d-flex align-items-center mb-3">
+                        <div class="row d-flex align-items-center mb,-3">
                             <div class="col-md-4">
                                 <div id="captchaImg" style="display:inline;"><img class="img-responsive img-fluid"
                                         src="https://www.stockaio.com/static/img/pramanik/UKHMRrItUuBo/OQbtlyLmuUmB.jpg">
@@ -154,7 +125,6 @@
                                 style="font-size: 12px;">T&amp;C</a>
                             and
                             <a href="">Key notes</a>
-                            mentioned below
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">Register</button>
@@ -310,6 +280,38 @@
         }
     </script>
 
+    <!-- Google Sign in -->
+    <script>
+
+        function handleCredentialResponse(response) {
+            console.log(response.credential);
+        }
+
+        window.onload = function () {
+            google.accounts.id.initialize({
+                client_id: '687781720116-6e04u9huhh1u235ar6o9in1d3a3r44t5.apps.googleusercontent.com',
+                auto_select: true,
+                callback: handleCredentialResponse,
+                cancel_on_tap_outside: false,
+                state_cookie_domain: "netlify.app",
+                use_fedcm_for_prompt: true,
+                use_fedcm_for_button: true
+
+            }); // creates a Sign In With Google client instance for use throughout the webpage, it is called only once
+            google.accounts.id.prompt();
+
+            // var a = isMobile() ? 275 : 375;
+            // var d = isMobile() ? "medium" : "large";
+            google.accounts.id.renderButton(document.getElementById("tsrGoogleSignIn"), {
+                theme: 'outline',
+                size: 'large',
+                text: "continue_with",
+                width: "300px",
+                size: "large"
+            });
+        };
+
+    </script>
 </body>
 
 </html>
