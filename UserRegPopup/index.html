@@ -86,6 +86,9 @@
                             </span>
                             <input type="password" class="form-control" id="tsrUserRegPassword" placeholder="Password"
                                 required>
+                            <span class="input-group-text" id="basic-addon1" onclick="showPassword(this)">
+                                <i class="far fa-eye"></i>
+                            </span>
                         </div>
                         <div class="input-group mb-3">
                             <!-- <label for="tsrUserRegPhnNumber" class="form-label" style="font-size: 14px;">Phone number</label> -->
@@ -95,7 +98,7 @@
                             <!-- All countries -->
                             <!-- Code and Calling Code -->
                             <!-- total - 252 -->
-                             <!-- <div style="width: 15%;">
+                            <!-- <div style="width: 15%;">
                                  <input type="text" class="form-control" id="tsrUserRegPhnNumber" placeholder="+91" required>
 
                              </div> -->
@@ -151,6 +154,22 @@
 
 
     <script>
+
+        function showPassword(showButton) {
+            let passwordField = document.getElementById('tsrUserRegPassword');
+            let passwordFieldType = passwordField.getAttribute('type');
+
+            if (passwordFieldType == 'password') {
+                passwordField.setAttribute('type', 'text');
+                showButton.innerHTML = '<i class="far fa-eye-slash"></i>';
+            }
+            else {
+                passwordField.setAttribute('type', 'password');
+                showButton.innerHTML = '<i class="far fa-eye"></i>';
+            }
+        }   
+
+
         function updateUserRegForm(formType) {
 
             if (formType == 'login') {

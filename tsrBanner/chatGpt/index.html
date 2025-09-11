@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* Dashboard Banner Styles */
+.dashboard-banner {
+  background-color: #f1f7ff;
+  padding: 16px 0;
+  border-bottom: 1px solid #d3e2f3;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-banner-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 0 20px;
+}
+
+.banner-link {
+  background-color: white;
+  flex: 1 1 30%;
+  min-width: 280px;
+  text-align: center;
+  padding: 20px 15px;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  color: #003366;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.banner-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.banner-link .icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.banner-link .title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.banner-link .desc {
+  font-size: 14px;
+  color: #555;
+}
+
+
+/* 🔧 Responsive Design for Mobile */
+@media screen and (max-width: 768px) {
+  .dashboard-banner-container {
+    flex-direction: column;
+    padding: 0 10px;
+  }
+
+  .banner-link {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .banner-link .icon {
+    font-size: 28px;
+  }
+
+  .banner-link .title {
+    font-size: 16px;
+  }
+
+  .banner-link .desc {
+    font-size: 13px;
+  }
+}
+
+    </style>
+
+</head>
+<body>
+    <!-- Dashboard Promotion Banner -->
+<!-- Dashboard Promotion Banner -->
+<div class="dashboard-banner">
+  <div class="dashboard-banner-container">
+    <a href="https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener" class="banner-link">
+      <div class="icon">
+        <!-- Insert SVG icon here -->
+      </div>
+      <div class="title">Market Overview</div>
+      <div class="desc">Track current market trends</div>
+    </a>
+
+    <a href="https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener" class="banner-link">
+      <div class="icon">
+        <!-- Insert SVG icon here -->
+      </div>
+      <div class="title">Intraday Screener</div>
+      <div class="desc">Real-time picks for short-term trades</div>
+    </a>
+
+    <a href="https://www.topstockresearch.com/rt/StrategySnapshot" class="banner-link">
+      <div class="icon">
+        <!-- Insert SVG icon here -->
+      </div>
+      <div class="title">Strategy Snapshot</div>
+      <div class="desc">Top-performing strategies at a glance</div>
+    </a>
+  </div>
+</div>
+
+
+</body>
+</html>
