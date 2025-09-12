@@ -467,87 +467,95 @@
                                     font-weight: bold;
                                 }
 
-                                /* 
-                                #tsrHomeBanner .card{
-                                   color: #023368;
-                                } */
+                                #tsrHomeBanner .card {
+                                    border: none;
+                                }
 
                                 #tsrHomeBanner .card:hover {
 
                                     transform: translateY(-3px);
-                                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-                                    /* background-color: #0179d5; */
-                                    /* color: white !important; */
+                                    /* box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); */
+                                    box-shadow: 0px 8px 12px rgb(2, 51, 104, 0.25);
                                     transition: all 0.3s ease-in-out;
                                 }
                             </style>
 
 
                             <!-- <div class='tsrScPromoLa'> -->
+                            <div class="card" style="border-color: white; box-shadow: 0px 4px 12px rgb(2, 51, 104, 0.25);">
 
-                            <div id="tsrHomeBanner">
-                                <div id="tsrHomeBannerHeading"
-                                    class="d-flex justify-content-center fs-3 fw-bold p-3 animate-charcter-banner text-center">
-                                    Explore the New & Improved Dashboards
-                                </div>
-                                <div id="tsrHomeBannerContent" class="row mx-3">
-                                    <div class="col col-sm-4">
-                                        <div class="card">
-                                            <div class="card-body p-sm-3">
+                                <div id="tsrHomeBanner" class="card-body ">
+                                    <div id="tsrHomeBannerHeading"
+                                        class="d-flex justify-content-center fs-3 fw-bold animate-charcter-banner text-center">
+                                        Ready to Use Dashboard to make Analysis Faster
+                                    </div>
+                                    <hr style="color: #023368;">
+                                    <div id="tsrHomeBannerContent" class="row mx-3 d-flex">
+                                        <div class="col col-sm-4 d-flex">
+                                            <div class="card w-100 me-3">
+                                                <div class="card-body p-sm-2">
 
-                                                <a href="https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener"
-                                                    class="text-center" style="all: unset; cursor: pointer;">
-                                                    <h4 class="card-title" style="color: #023368;">
-                                                        Market
-                                                        <span style="white-space: nowrap;">Overview <i
-                                                                class="fas fa-search-dollar"></i></span>
-                                                    </h4>
-                                                    <h6 class="card-subtitle mb-2 text-body-secondary"
-                                                        style="color: gray;">Track overall
-                                                        market trends</h6>
-                                                </a>
+                                                    <a href="https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener"
+                                                        class="text-center" style="all: unset; cursor: pointer;">
+                                                        <h4 class="card-title" style="color: #023368;">
+                                                            Market
+                                                            <span style="white-space: nowrap;">Overview <i
+                                                                    class="fas fa-search-dollar"></i></span>
+                                                        </h4>
+                                                        <h6 class="card-subtitle mb-2 text-body-secondary"
+                                                            style="color: gray;">Birds Eye View of the Market</h6>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="vr p-0" style="color: #023368;"></div>
+                                            <!-- Bootstrap 5 vertical rule -->
+                                        </div>
+
+
+                                        <!-- https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener -->
+                                        <!-- https://www.topstockresearch.com/rt/StrategySnapshot -->
+
+                                        <div class="col col-sm-4 d-flex">
+                                            <div class="card w-100 me-3">
+                                                <div class="card-body p-sm-2">
+                                                    <a href="https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener"
+                                                        class="text-center" style="all: unset; cursor: pointer;">
+                                                        <h4 class="card-title" style="color: #023368;">
+                                                            Intraday
+                                                            <span style="white-space: nowrap;">Screener <i
+                                                                    class="fas fa-bolt"></i></span>
+                                                        </h4>
+                                                        <h6 class="card-subtitle mb-2 text-body-secondary"
+                                                            style="color: gray;">Strategies to Spot Live Market Move
+                                                        </h6>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="vr p-0" style="color: #023368;"></div>
+                                            <!-- Bootstrap 5 vertical rule -->
+                                        </div>
+
+
+
+                                        <div class="col col-sm-4 mt-4 mt-sm-0">
+                                            <div class="card">
+                                                <div class="card-body p-sm-2">
+                                                    <a href="https://www.topstockresearch.com/rt/StrategySnapshot"
+                                                        class="text-center" style="all: unset; cursor: pointer;">
+                                                        <h4 class="card-title" style="color: #023368;">
+                                                            Strategy
+                                                            <span style="white-space: nowrap;">Snapshot <i
+                                                                    class="fas fa-chess-rook"></i></span>
+                                                        </h4>
+                                                        <h6 class="card-subtitle mb-2 text-body-secondary"
+                                                            style="color: gray;">View All your Strategies at Once</h6>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener -->
-                                    <!-- https://www.topstockresearch.com/rt/StrategySnapshot -->
 
-                                    <div class="col col-sm-4">
-                                        <div class="card">
-                                            <div class="card-body p-sm-3">
-                                                <a href="https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener"
-                                                    class="text-center" style="all: unset; cursor: pointer;">
-                                                    <h4 class="card-title" style="color: #023368;">
-                                                        Intraday
-                                                        <span style="white-space: nowrap;">Screener <i
-                                                                class="fas fa-bolt"></i></span>
-                                                    </h4>
-                                                    <h6 class="card-subtitle mb-2 text-body-secondary"
-                                                        style="color: gray;">Live trade
-                                                        insights & signals</h6>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col col-sm-4 mt-4 mt-sm-0">
-                                        <div class="card">
-                                            <div class="card-body p-sm-3">
-                                                <a href="https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener"
-                                                    class="text-center" style="all: unset; cursor: pointer;">
-                                                    <h4 class="card-title" style="color: #023368;">
-                                                        Strategy
-                                                        <span style="white-space: nowrap;">Snapshot <i
-                                                                class="fas fa-chess-rook"></i></span>
-                                                    </h4>
-                                                    <h6 class="card-subtitle mb-2 text-body-secondary"
-                                                        style="color: gray;">See what
-                                                        strategies are working</h6>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    <!-- 
                                 <div class="card mt-3 mx-3" style="transition: none; transform: none;">
                                     <div class="card-body p-2">
                                         <div class="text-center">
@@ -563,10 +571,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                 -->
+                                </div>
                             </div>
                             <!-- </div> -->
 
-                            <hr>
 
                             <div class='tsrScPromoSm'>
 
