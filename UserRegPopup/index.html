@@ -32,10 +32,8 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <!-- <img src="./TsrLogo.png" alt=""> -->
                     <h1 class="modal-title fs-5" id="tsrUserRegPopupTitle">Welcome to <span style="color: #0d6efd;">Top
                             Stock Research</span></h1>
-                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
                 <div class="modal-body" onclick="google.accounts.id.cancel();">
                     <div class="d-flex justify-content-center">
@@ -133,21 +131,21 @@
                         <button type="submit" class="btn btn-primary w-100">Register</button>
                     </form>
 
-                    <div id="tsrUserLoginPopup" class="form-text mt-2 text-center">
+                </div>
+                
+
+                    <div class="modal-footer justify-content-center">
+
+                    <div id="tsrUserLoginPopup" class="form-text text-center">
                         Already have an account? <a onclick="updateUserRegForm('login')">
                             <span style="text-decoration: underline; color: #0a58ca;">
                                 Login
                             </span>
                         </a>
                     </div>
-
-                </div>
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div> -->
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -167,7 +165,7 @@
                 passwordField.setAttribute('type', 'password');
                 showButton.innerHTML = '<i class="far fa-eye"></i>';
             }
-        }   
+        }
 
 
         function updateUserRegForm(formType) {
@@ -321,13 +319,13 @@
 
             // var a = isMobile() ? 275 : 375;
             // var d = isMobile() ? "medium" : "large";
-            google.accounts.id.renderButton(document.getElementById("tsrGoogleSignIn"), {
-                theme: 'outline',
-                size: 'large',
-                text: "continue_with",
-                width: "300px",
-                size: "large"
-            });
+            // google.accounts.id.renderButton(document.getElementById("tsrGoogleSignIn"), {
+            //     theme: 'outline',
+            //     size: 'large',
+            //     text: "continue_with",
+            //     width: "300px",
+            //     size: "large"
+            // });
         };
 
     </script>

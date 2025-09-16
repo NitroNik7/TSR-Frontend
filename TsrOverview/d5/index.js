@@ -337,17 +337,21 @@ sectionContainer.classList.add("container", "col-12", "col-sm-8", "col-md-8", "c
 
 for (let i = 0; i < tsrOverviewData.length; i++) {
     let sectionDiv = document.createElement("div");
-    sectionDiv.classList.add("mb-5", "mx-3");
+    sectionDiv.classList.add("mb-5", "mx-3", "p-3", "border");
+    sectionDiv.style.borderRadius = "15px";
+
     let sectionObj = tsrOverviewData[i];
 
     let sectionHeadingLink = document.createElement("a");
     sectionHeadingLink.classList.add("tsrSectionHeading");
     // sectionHeadingLink.href = "#" + sectionObj.section.url;
     sectionHeadingLink.href = "#" + sectionObj.section.title.replaceAll(" ", ""); // temp
+
     let sectionHeading = document.createElement("h5");
     sectionHeading.innerHTML = sectionObj.section.title;
     sectionHeading.id = sectionObj.section.title.replaceAll(" ", "");
     sectionHeading.style.scrollMargin = "100px";
+
     sectionHeadingLink.appendChild(sectionHeading);
 
     let hr = document.createElement("hr");
@@ -457,6 +461,77 @@ for (let i = 0; i < tsrOverviewData.length; i++) {
     a.classList.add("my-1", "tsrLinks");
     navMenu.appendChild(a);
 }
+
+
+let planDivData = [
+    {
+        title: "EOD Plans",
+        plans: [
+            {
+                name: "EOD Funda",
+                features: [
+                    "For Student and Investor",
+                ]
+            },
+            {
+                name: "EOD Combo",
+                features: [
+                    "For Part Time Pro",
+                ]
+            }
+        ]
+    },
+    {
+        title: "Live Plans",
+        plans: [
+            {
+                name: "Trader Value",
+                features: [
+                    "Ticks - Daily / Weekly / Monthly",
+                    "Newbie or Causal Trader"
+                ]
+            },
+            {
+                name: "Trader",
+                features: [
+                    "Ticks - 5 Min to Qtr Tick",
+                    "Swing /Positional Trader"
+                ]
+            },
+            {
+                name: "Trader Pro",
+                features: [
+                    "Ticks - 1,2 min to Qtr Ticks",
+                    "Professional Trader, Intraday, Swing Trader"
+                ]
+            }
+        ]
+    }
+]
+
+// let pricingPlanDiv = document.createElement("div");
+// pricingPlanDiv.classList.add("card");
+// let planDiv = document.createElement("div");
+// planDiv.classList.add("col-12", "col-md-4");
+
+// let planDivUl = document.createElement("ul");
+// for(let i=0; i<planDivData.length; i++){
+//     let planTitle = document.createElement("span");
+//     planTitle.innerText = planDivData[i].title;
+//     let plans = planDivData[i].plans;
+//     for(let j=0; j<plans.length; j++){
+//         let plan = plans[j];
+//         let planName = document.createElement("span");
+//         planName.innerText = plan.name;
+
+//     }
+// }
+
+let planTermsDiv = document.createElement("div");
+planTermsDiv.classList.add("col-12", "col-md-4");
+
+let vsCompetitorDiv = document.createElement("div");
+vsCompetitorDiv.classList.add("col-12", "col-md-4");
 
 wrapper.appendChild(sectionContainer);
 
