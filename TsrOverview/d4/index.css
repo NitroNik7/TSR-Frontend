@@ -56,7 +56,7 @@
 }
 
 .tsr-header {
-    background: linear-gradient(135deg, #f1f5ff, #dbeafe);
+    background: linear-gradient(135deg, #dbeafe, #f1f5ff);
     border-radius: 0.75rem;
     cursor: default;
 }
