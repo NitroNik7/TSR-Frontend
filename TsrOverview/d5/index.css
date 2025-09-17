@@ -1,10 +1,8 @@
 .tsrSectionHeading {
-    /* change here */
     color: black;
 }
 
 .tsrSectionHeading:hover {
-    /* change here */
     color: #0b5ed7;
 }
 
@@ -17,10 +15,9 @@
 }
 
 .tsrLinks:hover {
-    font-weight: 600 !important;
+    font-weight: 600;
     color: #0b5ed7;
     text-decoration: none;
-
 }
 
 .tsrLinks::after {
@@ -31,8 +28,6 @@
     width: 0;
     height: 2px;
     background-color: #0d6efd;
-        /* background-color: #6c757d; */
-
     transition: width 0.3s ease;
 }
 
@@ -47,18 +42,15 @@
 #tsrOverviewContainer .card-title {
     font-size: 1.2rem;
     font-weight: 700;
-    /* change here */
     color: #0d6efd;
-    border-left: 4px solid #0d6efd;
     margin-bottom: 0.75rem;
-    /* change here */
+    border-left: 4px solid #0d6efd;
     padding-left: 10px;
     line-height: 1.4;
     transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 #tsrOverviewContainer .card-title:hover {
-    /* change here */
     color: #0b5ed7;
     border-color: #0b5ed7;
 }
@@ -91,9 +83,9 @@
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    width: 100%;
+    width: 50%;
     height: 3px;
-    background-color: #0d47a1;
+    background-color: #0d6efd;
     border-radius: 2px;
 }
 
@@ -106,29 +98,4 @@
 
 .tsrSectionHeading:focus {
     color: #0b5ed7;
-}
-
-.ul-header {
-    font-size: 1rem;
-    margin-top: 0;
-    margin-bottom: .5rem;
-    font-weight: 500;
-    line-height: 1.2;
-}
-
-
-.line-container {
-    align-items: center;
-}
-
-.line {
-    border-top: 1px solid #ccc;
-    width: 100%;
-}
-
-.vertical-line {
-    width: 1px;
-    background-color: #999;
-    min-height: 100%;
-    /* Ensures the line extends the full height */
 }
