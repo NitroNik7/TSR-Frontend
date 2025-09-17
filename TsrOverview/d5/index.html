@@ -435,190 +435,37 @@
                             </div>
                         </header>
 
-
-                        <style>
-                            #tsrAnniversaryBanner {
-                                display: block;
-                            }
-
-                            .animate-character-tsr-mantra {
-                                /* background-image: linear-gradient(-225deg, #d2cf28 0%, #f5ff68 29%, #bbc500 67%, #91a01e 100%) !important; */
-                                background-image: linear-gradient(-225deg, #ffe79f 0%, #ffbf00 29%, #ffe6bc 67%, #ffc107 100%) !important;
-                                background-size: auto auto;
-                                background-clip: border-box;
-                                background-size: 200% auto;
-                                background-clip: text;
-                                text-fill-color: transparent;
-                                -webkit-background-clip: text;
-                                -webkit-text-fill-color: transparent;
-                                animation: textclip 2s linear infinite;
-                                display: inline-block;
-                                font-weight: bold;
-                            }
-
-                            @keyframes textclip {
-                                to {
-                                    background-position: 200% center;
-                                }
-                            }
-
-
-                            #anniversaryMessage {
-                                font-size: 16px;
-                            }
-
-                            @media screen and (max-width: 1300px) {
-                                #anniversaryMessage {
-                                    font-size: 14px !important;
-                                }
-                            }
-
-                            @media screen and (max-width: 576px) {
-                                #tsrAnniversaryBannerMobile {
-                                    font-size: 16px;
-                                }
-
-                            }
-                        </style>
-
-                        <div id="tsrAnniversaryBanner" class="d-none d-lg-block"
-                            style="position: relative; background-color: #ffffff; border-radius: 0.75rem; padding: 8px 16px 8px 16px; margin: 8px 0 16px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-
-                            <div class="row text-center">
-
-                                <!-- Center Content -->
-                                <div id="tsrAnniversaryBannerContent" class="text-center" style="cursor: pointer;">
-                                    <div style="font-size: 20px; font-weight: 700;  "
-                                        class="animate-character-tsr-mantra ">
-                                        Our mantra is <i>'Learn, Screen, Analyse, Test Before Trade'</i>.
-                                    </div>
-
-                                </div>
-
-
-                            </div>
-
-                            <!-- Arrow Expand Button Positioned at Bottom Center -->
-                            <div
-                                style="position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); z-index: 999;">
-                                <button id="expandArrow" class="btn btn-outline-secondary shadow-sm"
-                                    style="border-radius: 50%; border: white 1px solid; padding: 6px 10px; background-color: white; color: black;"
-                                    aria-label="Expand">
-                                    <span class="fas fa-angle-down" id="arrowIcon" style="font-size: 12px;"></span>
-                                </button>
-                            </div>
-
-
-                            <div id="tsrBannerExtraContent"
-                                style="max-height: 0; overflow: hidden; transition: max-height 0.6s, padding 0.4s; background-color: rgb(252, 252, 252); border-radius: 8px;"
-                                class="text-center">
-                                <i class="mb-1 fw-bold" style="color: orange;">TSR platform covers it all and has helped
-                                    millions of
-                                    users. You will not require another tool for analysis. </i>
+                        <div class="m-0 p-5 py-1">
+                            <p class="text-center text-secondary m-0" style="font-size: 14px;">
+                                <span class="my-2">
+                                    Our mantra is <i>'Learn, Screen, Analyse, Test Before
+                                        Trade'</i>. TSR platform covers it
+                                    all and has helped millions of users. You will not require another tool for
+                                    analysis.
+                                </span>
                                 <br>
-                                <i class="mb-1 fw-bold" style="color: cornflowerblue;">So why wait? (ICON / Image)</i>
+                                <span class="my-1 fw-bold">
+                                    So why wait?
+                                </span>
                                 <br>
-                                <i class="fw-bold" style="color: green;">Start your journey to financial freedom
-                                    (Atmanirbhar )! But not
-                                    just because we say, explore and then decide, Be in charge of your financial
-                                    destiny.</i>
-
-                                <br>
-                            </div>
-
-
-                        </div>
-
-                        <script>
-                            const arrowBtn = document.getElementById("expandArrow");
-                            const arrowIcon = document.getElementById("arrowIcon");
-                            const extraContent = document.getElementById("tsrBannerExtraContent");
-
-                            let expanded = false;
-
-                            const centerContent = document.getElementById("tsrAnniversaryBannerContent");
-
-                            centerContent.addEventListener("click", () => {
-                                expanded = !expanded;
-                                if (expanded) {
-                                    extraContent.style.maxHeight = "475px"; // adjust as needed
-                                    extraContent.style.padding = "12px 20px";
-                                    arrowIcon.classList.remove("fa-angle-down");
-                                    arrowIcon.classList.add("fa-angle-up");
-                                } else {
-                                    extraContent.style.maxHeight = "0";
-                                    extraContent.style.padding = "0 20px";
-                                    arrowIcon.classList.remove("fa-angle-up");
-                                    arrowIcon.classList.add("fa-angle-down");
-                                }
-                            });
-
-                            arrowBtn.addEventListener("click", () => {
-                                expanded = !expanded;
-                                if (expanded) {
-                                    extraContent.style.maxHeight = "475px"; // adjust as needed
-                                    extraContent.style.padding = "12px 20px";
-                                    arrowIcon.classList.remove("fa-angle-down");
-                                    arrowIcon.classList.add("fa-angle-up");
-                                } else {
-                                    extraContent.style.maxHeight = "0";
-                                    extraContent.style.padding = "0 20px";
-                                    arrowIcon.classList.remove("fa-angle-up");
-                                    arrowIcon.classList.add("fa-angle-down");
-                                }
-                            });
-                        </script>
-
-                        <br>
-                        <style>
-                            .line-container {
-                                align-items: center;
-                            }
-
-                            .line {
-                                border-top: 1px solid #ccc;
-                                width: 100%;
-                            }
-  .vertical-line {
-    width: 1px;
-    background-color: #999;
-    min-height: 100%; /* Ensures the line extends the full height */
-  }
-    </style>
-                        </style>
-                        <div class="line-container d-flex w-100">
-                            <div class="line"></div>
-                            <div class="fw-300 fs-16 mx-3 text-secondary">***</div>
-                            <div class="line"></div>
-                        </div>
-                        
-                        <p class="text-center text-secondary m-1">
-                            <span class="my-2">
-                                Our mantra is <i style="color: #0d47a1;">'Learn, Screen, Analyse, Test Before Trade'</i>. TSR platform covers it
-                                all and has helped millions of users. You will not require another tool for analysis.
-                            </span>
-                            <br>
-                            <span class="my-1" style="color: #0d47a1;">
-                                So why wait?
-                            </span>
-                            <br>
-                            <span class="my-1">
-                                Start your journey to financial freedom (
-                                    <a href="">Atmanirbhar</a>
+                                <span class="my-1">
+                                    Start your journey to financial freedom (
+                                    <span style="text-decoration: underline;">Atmanirbhar</span>
                                     )! But not just because we say,
-                                <a href="">explore</a>
-                                and then decide, Be in charge of your financial destiny.
-                            </span>
-                        </p>
-                        <div class="line-container d-flex w-100">
-                            <div class="line"></div>
-                            <div class="fw-300 fs-16 mx-3 text-secondary">***</div>
-                            <div class="line"></div>
+                                    <span style="text-decoration: underline;">explore</span>
+                                    and then decide, Be in charge of your financial destiny.
+                                </span>
+                            </p>
+                            <div class="line-container d-flex w-100">
+                                <div class="line"></div>
+                                <div class="fw-300 fs-16 mx-3 text-secondary">***</div>
+                                <div class="line"></div>
+                            </div>
                         </div>
 
-                        <br>
+
                         <div class="tsr-subheading text-center my-3">
-                            <h5 class="fw-semibold text-primary">Key highlights of TopStockResearch</h5>
+                            <h5 style="color: #0d47a1;">Key highlights of TopStockResearch</h5>
                         </div>
 
                     </div>

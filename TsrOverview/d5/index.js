@@ -455,7 +455,7 @@ addSections(tsrOverviewData, sectionContainer);
 let navMenuContainer = document.createElement("div");
 navMenuContainer.classList.add("d-none", "d-sm-flex", "col-sm-4", "col-md-4", "col-lg-3", "col-xxl-2", "border-start");
 let navMenu = document.createElement("div");
-navMenu.id="tsrNavMenu";
+navMenu.id = "tsrNavMenu";
 navMenu.classList.add("d-none", "d-sm-flex", "my-3", "flex-column", "position-fixed");
 
 let navMenuTitle = document.createElement("span");
@@ -470,7 +470,10 @@ function addNavMenuLink(tsrOverviewData, navMenu) {
 
         a.href = "#" + tsrOverviewData[i].section.title.replaceAll(" ", "");
         a.innerHTML = tsrOverviewData[i].section.title + "<br>";
-        a.classList.add("my-1", "tsrLinks");
+        a.classList.add("mb-2", "tsrLinks");
+        a.style.fontSize = "14px";
+        a.style.fontWeight = "300";
+
         navMenu.appendChild(a);
     }
 }
@@ -483,7 +486,10 @@ let a = document.createElement("a");
 
 a.href = "#pricingPlans";
 a.innerHTML = "Pricing / Plans" + "<br>";
-a.classList.add("my-1", "tsrLinks");
+a.classList.add("mb-2", "tsrLinks");
+a.style.fontSize = "14px";
+a.style.fontWeight = "300";
+
 navMenu.appendChild(a);
 
 
@@ -604,19 +610,141 @@ And upgrade
     </div>
         </div>
 
-
-
-
-    <div class="mx-3 my-5 p-3 shadow border" style="background-color: antiquewhite; border-radius: 15px;">
-        <!-- change here -->
-        <a class="tsrSectionHeading" href="#TradersDelight">
-            <h5 id="pricingPlans" style="scroll-margin: 100px;">About us / Help</h5>
+<div class="mb-5 mx-3 p-3 border" style="border-radius: 15px; background-color: antiquewhite;">
+        <a
+            class="tsrSectionHeading" href="#pricingPlans">
+            <h5 id="Legacy" style="scroll-margin: 100px;">Pricing Plans</h5>
             <hr>
         </a>
-        <div class="card" style="background-color: aliceblue;"> <!-- change here -->
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 col-md p-3">
+        <div class="row mb-3">
+            <div class="col-12 col-md-6 col-lg-4 mb-3 mb-lg-0">
+                <div class="card h-100 shadow-lg border-end" style="background-color: aliceblue;">
+                    <div class="card-body h-100"><div class="card-title">
+                        <h5>Tailor Made Plans</h5>
+                    </div>
+                    <hr>
+                    <div>
+                        <b>EOD Plans</b>
+                        <ul style="list-style-type: disclosure-closed;">
+                            <li>
+                                <span class="ul-header">EOD Funda</span> - For Students and Investors
+                            </li>
+                            <li>
+                                <span class="ul-header">EOD Combo</span> - For Part Time Pro
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <b>Live Plans</b>
+                        <ul style="list-style-type: disclosure-closed;">
+                            <li>
+                                <span class="ul-header">Trader Value</span>
+                                <ul>
+                                    <li>Ticks - Daily / Weekly / Monthly</li>
+                                    <li>Newbie or Causal Trader</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="ul-header">Trader</span>
+                                <ul>
+                                    <li>5 Min to Qtr Tick</li>
+                                    <li>Swing / Positional Trader</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="ul-header">Trader Pro</span>
+                                <ul>
+                                    <li>Tick 1/ 2 min to Qtr Ticks</li>
+                                    <li>Professional Trader, Intraday, Swing Trader</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-3 mb-lg-0">
+                <div class="card h-100 shadow-lg border-end" style="background-color: aliceblue;">
+                    <div class="card-body h-100">
+                        <div class="card-title">
+                        <h5>Plan terms</h5>
+                    </div>
+                    <hr>
+                    <div>
+                        <ul style="list-style-type: disclosure-closed;">
+                            <li>
+                                <span class="ul-header">Monthly Plan</span> - Try TSR at Reasonable Price
+                            </li>
+                            <li>
+                                <span class="ul-header">Annual Plan</span> - For Regular users with Discount
+                            </li>
+                            <li>
+                                <span class="ul-header">2 / 5 Year Plan</span> - Deep Discount , Beat Inflation
+                                Suggested for pro
+                            </li>
+                            <li>
+                                Loyalty benefit for renewal
+                                And upgrade
+                            </li>
+                            <li>
+                                Refer a Friend and get 1 Mth free for you and for your friend
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-3 mb-lg-0">
+                <div class="card h-100 shadow-lg" style="background-color: aliceblue;">
+                    <div class="card-body h-100">
+                        <div class="card-title">
+                        <h5>Vs Competitor</h5>
+                    </div>
+                    <hr>
+                    <div>
+                        <ul style="list-style-type: disclosure-closed;">
+                            <li>
+                                Majority of Competitor don’t have <span class="ul-header">1, 2, 3 mins Tick</span>
+                            </li>
+                            <li>
+                                <span class="ul-header">TSR Trader Plans</span> are more Feature Rich that most
+                                Competitors
+                            </li>
+                            <li>
+                                <span class="ul-header">Chart Pattern Screen</span>not available
+                                Suggested for pro
+                            </li>
+                            <li>
+                                <span class="ul-header">Candlestick pattern 70+</span> and ability to select multiple
+                                pattern in one
+                            </li>
+                            <li>
+                                <span class="ul-header">TSR Pro Plan</span>comes with lots of pre built Strategies not
+                                available with competitors
+                            </li>
+                            <li>
+                                Competitor lack deep integration between <span class="ul-header">Equity, Chart and
+                                    Screener combo</span>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+
+    <div class="mb-5 mx-3 p-3 border" style="border-radius: 15px; background-color: antiquewhite;"><a
+            class="tsrSectionHeading" href="#AboutUs/Help">
+            <h5 id="AboutUs/Help" style="scroll-margin: 100px;">About Us / Help</h5>
+            <hr>
+        </a>
+        <div class="row mb-3">
+            <div class="col-12 col-md-6 mb-3">
+                <div class="card h-100 shadow-lg border-end" style="background-color: aliceblue;">
+                    <div class="card-body h-100">
                         <div class="card-title">
                             <h5>Legacy</h5>
                         </div>
@@ -648,11 +776,11 @@ And upgrade
                             </ul>
                         </div>
                     </div>
-                    
-                    <div class="d-none d-md-block vr p-0 bg-secondary">
-                    </div>
-                    
-                    <div class="col-12 col-md p-3">
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+                <div class="card h-100 shadow-lg border-end" style="background-color: aliceblue;">
+                    <div class="card-body h-100">
                         <div class="card-title">
                             <h5>Help / Support</h5>
                         </div>
@@ -696,73 +824,85 @@ And upgrade
         </div>
     </div>
 
+
+
 `;
 
 
-tsrOverviewData = [{
-    section: {
-        title: "Legacy",
-        url: null
-    },
-    cards: [
-        {
-            title: "Experience",
-            url: "",
-            data: [
-                { text: "15 Years and growing Strong", url: null, modal: false, imgSrc: null, htmlSrc: null },
-            ]
-        },
-        {
-            title: "Markets",
-            url: "",
-            data: [
-                { text: "India , Australia , Europe and America", url: null, modal: false, imgSrc: null, htmlSrc: null }
-            ]
-        },
-        {
-            title: "Happy users",
-            url: "",
-            data: [
-                { text: "Million+ happy Users", url: null, modal: false, imgSrc: null, htmlSrc: null }
-            ]
-        }
-    ]
-},
-{
-    section: {
-        title: "New User? No Problem - Help/ Support System ",
-        url: null
-    },
-    cards: [
-        {
-            title: "Documentation",
-            url: "",
-            data: [
-                { text: "Tutorial", url: null, modal: false, imgSrc: null, htmlSrc: null },
-                { text: "Ebooks", url: "", modal: false, imgSrc: null, htmlSrc: null }
-            ]
-        },
-        {
-            title: "Tutorial Videos",
-            url: "",
-            data: [
-                { text: "English", url: "", modal: false, imgSrc: null, htmlSrc: null },
-                { text: "Hindi", url: null, modal: false, imgSrc: null, htmlSrc: null }]
-        },
-        {
-            title: "One on One demo",
-            url: "",
-            data: [
-                { text: "Call us on +91 922 655 760 3/4/5 ", url: "", modal: false, imgSrc: null, htmlSrc: null },
-                { text: "Write to us on support@topstockresearch.com ", url: "", modal: false, imgSrc: null, htmlSrc: null },
+// tsrOverviewData = [{
+//     section: {
+//         title: "Legacy",
+//         url: null
+//     },
+//     cards: [
+//         {
+//             title: "Experience",
+//             url: "",
+//             data: [
+//                 { text: "15 Years and growing Strong", url: null, modal: false, imgSrc: null, htmlSrc: null },
+//             ]
+//         },
+//         {
+//             title: "Markets",
+//             url: "",
+//             data: [
+//                 { text: "India , Australia , Europe and America", url: null, modal: false, imgSrc: null, htmlSrc: null }
+//             ]
+//         },
+//         {
+//             title: "Happy users",
+//             url: "",
+//             data: [
+//                 { text: "Million+ happy Users", url: null, modal: false, imgSrc: null, htmlSrc: null }
+//             ]
+//         }
+//     ]
+// },
+// {
+//     section: {
+//         title: "New User? No Problem - Help/ Support System ",
+//         url: null
+//     },
+//     cards: [
+//         {
+//             title: "Documentation",
+//             url: "",
+//             data: [
+//                 { text: "Tutorial", url: null, modal: false, imgSrc: null, htmlSrc: null },
+//                 { text: "Ebooks", url: "", modal: false, imgSrc: null, htmlSrc: null }
+//             ]
+//         },
+//         {
+//             title: "Tutorial Videos",
+//             url: "",
+//             data: [
+//                 { text: "English", url: "", modal: false, imgSrc: null, htmlSrc: null },
+//                 { text: "Hindi", url: null, modal: false, imgSrc: null, htmlSrc: null }]
+//         },
+//         {
+//             title: "One on One demo",
+//             url: "",
+//             data: [
+//                 { text: "Call us on +91 922 655 760 3/4/5 ", url: "", modal: false, imgSrc: null, htmlSrc: null },
+//                 { text: "Write to us on support@topstockresearch.com ", url: "", modal: false, imgSrc: null, htmlSrc: null },
 
-            ]
-        }
-    ]
-}];
+//             ]
+//         }
+//     ]
+// }];
 
-addSections(tsrOverviewData, sectionContainer);
-addNavMenuLink(tsrOverviewData, navMenu);
+// addSections(tsrOverviewData, sectionContainer);
+// addNavMenuLink(tsrOverviewData, navMenu);
+
+a = document.createElement("a");
+
+a.href = "#AboutUs/Help";
+a.innerHTML = "About Us / Help" + "<br>";
+a.classList.add("mb-2", "tsrLinks");
+a.style.fontSize = "14px";
+a.style.fontWeight = "300";
+
+navMenu.appendChild(a);
 
 
 wrapper.appendChild(sectionContainer);
@@ -824,7 +964,7 @@ function closeDialog() {
 
 
 
-window.onscroll = function (e){
+window.onscroll = function (e) {
     let navMenu = document.getElementById("tsrNavMenu");
     navMenu.offsetTop = "300px";
 }
