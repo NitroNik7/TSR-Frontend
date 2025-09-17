@@ -430,13 +430,148 @@
                             <div>
                                 <h3 class="fw-bold mb-1">India’s Best Technical Tool for Traders</h3>
                                 <p class="mb-0 small-text text-secondary">
-                                    All-in-one platform for Stock Analysis, Screening, and Trading Strategies
+                                    TSR - One Stop Shop for Stock Screener, Research, Charts, Alerts ...
                                 </p>
                             </div>
                         </header>
 
+
+                        <style>
+                            #tsrAnniversaryBanner {
+                                display: block;
+                            }
+
+                            .animate-character-tsr-mantra {
+                                /* background-image: linear-gradient(-225deg, #d2cf28 0%, #f5ff68 29%, #bbc500 67%, #91a01e 100%) !important; */
+                                background-image: linear-gradient(-225deg, #ffe79f 0%, #ffbf00 29%, #ffe6bc 67%, #ffc107 100%) !important;
+                                background-size: auto auto;
+                                background-clip: border-box;
+                                background-size: 200% auto;
+                                background-clip: text;
+                                text-fill-color: transparent;
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                                animation: textclip 2s linear infinite;
+                                display: inline-block;
+                                font-weight: bold;
+                            }
+
+                            @keyframes textclip {
+                                to {
+                                    background-position: 200% center;
+                                }
+                            }
+
+
+                            #anniversaryMessage {
+                                font-size: 16px;
+                            }
+
+                            @media screen and (max-width: 1300px) {
+                                #anniversaryMessage {
+                                    font-size: 14px !important;
+                                }
+                            }
+
+                            @media screen and (max-width: 576px) {
+                                #tsrAnniversaryBannerMobile {
+                                    font-size: 16px;
+                                }
+
+                            }
+                        </style>
+
+                        <div id="tsrAnniversaryBanner" class="d-none d-lg-block"
+                            style="position: relative; background-color: #ffffff; border-radius: 0.75rem; padding: 8px 16px 8px 16px; margin: 8px 0 16px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+
+                            <div class="row text-center">
+
+                                <!-- Center Content -->
+                                <div id="tsrAnniversaryBannerContent" class="text-center" style="cursor: pointer;">
+                                    <div style="font-size: 20px; font-weight: 700;  "
+                                        class="animate-character-tsr-mantra ">
+                                        Our mantra is <i>'Learn, Screen, Analyse, Test Before Trade'</i>.
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <!-- Arrow Expand Button Positioned at Bottom Center -->
+                            <div
+                                style="position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); z-index: 999;">
+                                <button id="expandArrow" class="btn btn-outline-secondary shadow-sm"
+                                    style="border-radius: 50%; border: white 1px solid; padding: 6px 10px; background-color: white; color: black;"
+                                    aria-label="Expand">
+                                    <span class="fas fa-angle-down" id="arrowIcon" style="font-size: 12px;"></span>
+                                </button>
+                            </div>
+
+
+                            <div id="tsrBannerExtraContent"
+                                style="max-height: 0; overflow: hidden; transition: max-height 0.6s, padding 0.4s; background-color: rgb(252, 252, 252); border-radius: 8px;" class="text-center">
+                                <i class="mb-1 fw-bold" style="color: orange;">TSR platform covers it all and has helped
+                                    millions of
+                                    users. You will not require another tool for analysis. </i>
+                                <br>
+                                <i class="mb-1 fw-bold" style="color: cornflowerblue;">So why wait? (ICON / Image)</i>
+                                <br>
+                                <i class="fw-bold" style="color: green;">Start your journey to financial freedom
+                                    (Atmanirbhar )! But not
+                                    just because we say, explore and then decide, Be in charge of your financial
+                                    destiny.</i>
+
+                                <br>
+                            </div>
+
+
+                        </div>
+
+                        <script>
+                            const arrowBtn = document.getElementById("expandArrow");
+                            const arrowIcon = document.getElementById("arrowIcon");
+                            const extraContent = document.getElementById("tsrBannerExtraContent");
+
+                            let expanded = false;
+
+                            const centerContent = document.getElementById("tsrAnniversaryBannerContent");
+
+                            centerContent.addEventListener("click", () => {
+                                expanded = !expanded;
+                                if (expanded) {
+                                    extraContent.style.maxHeight = "475px"; // adjust as needed
+                                    extraContent.style.padding = "12px 20px";
+                                    arrowIcon.classList.remove("fa-angle-down");
+                                    arrowIcon.classList.add("fa-angle-up");
+                                } else {
+                                    extraContent.style.maxHeight = "0";
+                                    extraContent.style.padding = "0 20px";
+                                    arrowIcon.classList.remove("fa-angle-up");
+                                    arrowIcon.classList.add("fa-angle-down");
+                                }
+                            });
+
+                            arrowBtn.addEventListener("click", () => {
+                                expanded = !expanded;
+                                if (expanded) {
+                                    extraContent.style.maxHeight = "475px"; // adjust as needed
+                                    extraContent.style.padding = "12px 20px";
+                                    arrowIcon.classList.remove("fa-angle-down");
+                                    arrowIcon.classList.add("fa-angle-up");
+                                } else {
+                                    extraContent.style.maxHeight = "0";
+                                    extraContent.style.padding = "0 20px";
+                                    arrowIcon.classList.remove("fa-angle-up");
+                                    arrowIcon.classList.add("fa-angle-down");
+                                }
+                            });
+                        </script>
+
+                        <br>
+
                         <div class="tsr-subheading text-center my-3">
-                            <h5 class="fw-semibold text-primary">Our Key Highlights</h5>
+                            <h5 class="fw-semibold text-primary">Key highlights of TopStockResearch</h5>
                         </div>
 
                     </div>
@@ -446,7 +581,7 @@
                         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
                         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                     <!-- code ends here -->
-                     
+
                 </div>
             </div> <!-- NG APP  align='center'-->
 

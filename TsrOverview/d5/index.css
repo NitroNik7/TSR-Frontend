@@ -1,8 +1,10 @@
 .tsrSectionHeading {
+    /* change here */
     color: black;
 }
 
 .tsrSectionHeading:hover {
+    /* change here */
     color: #0b5ed7;
 }
 
@@ -42,15 +44,18 @@
 #tsrOverviewContainer .card-title {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #0d6efd;
+    /* change here */
+    color: #0d6efd; 
+    border-left: 4px solid #0d6efd;  
     margin-bottom: 0.75rem;
-    border-left: 4px solid #0d6efd;
+    /* change here */
     padding-left: 10px;
     line-height: 1.4;
     transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 #tsrOverviewContainer .card-title:hover {
+        /* change here */
     color: #0b5ed7;
     border-color: #0b5ed7;
 }
@@ -99,3 +104,11 @@
 .tsrSectionHeading:focus {
     color: #0b5ed7;
 }
+
+        .ul-header {
+            font-size: 1rem;
+            margin-top: 0;
+            margin-bottom: .5rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
