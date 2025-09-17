@@ -9,6 +9,8 @@ let tsrOverviewData = [
             {
                 title: "360 Degree Research View",
                 url: "",
+                html: true,
+                htmlUrl: "./assets/html/index.html",
                 data: [
                     { text: "Index Outperformers Stocks - Active", url: "https://www.topstockresearch.com/rt/Home", modal: false, imgSrc: null, htmlSrc: null },
                     { text: "Tech Strong", url: null, modal: false, imgSrc: null, htmlSrc: null },
@@ -31,6 +33,9 @@ let tsrOverviewData = [
             {
                 title: "Strategy Snapshot",
                 url: "",
+                html: true,
+                htmlUrl: "./assets/html/index.html",
+
                 data: [
                     { text: "Result of Multiple Strategies in One Place", url: null, modal: false, imgSrc: null, htmlSrc: null },
                     { text: "Highly Customisable", url: null, modal: false, imgSrc: null, htmlSrc: null },
@@ -85,6 +90,9 @@ let tsrOverviewData = [
             {
                 title: "Indicator Customisation",
                 url: "",
+                html: true,
+                htmlUrl: "./assets/html/index2.html",
+
                 data: [
                     { text: "RSI (7)", url: null, modal: false, imgSrc: null, htmlSrc: null },
                     { text: "Bollinger (20 , 1.5)", url: null, modal: false, imgSrc: null, htmlSrc: null },
@@ -144,6 +152,8 @@ let tsrOverviewData = [
             {
                 title: "Custom Strategy (1000’s Filter)",
                 url: "",
+                html: true,
+                htmlUrl: "./assets/html/index.html",
                 data: [
                     { text: "Ready to use Building Block", url: "", modal: false, imgSrc: null, htmlSrc: null },
                     { text: "Alert, Auto Refresh", url: null, modal: false, imgSrc: null, htmlSrc: null },
@@ -335,116 +345,211 @@ wrapper.classList.add("row");
 let sectionContainer = document.createElement("div");
 sectionContainer.classList.add("container", "col-12", "col-sm-8", "col-md-8", "col-lg-9", "col-xxl-10", "my-3");
 
-for (let i = 0; i < tsrOverviewData.length; i++) {
-    let sectionDiv = document.createElement("div");
-    sectionDiv.classList.add("mb-5", "mx-3", "p-3", "border");
-    sectionDiv.style.borderRadius = "15px";
+function addSections(tsrOverviewData, sectionContainer) {
+    for (let i = 0; i < tsrOverviewData.length; i++) {
+        let sectionDiv = document.createElement("div");
+        sectionDiv.classList.add("mb-5", "mx-3", "p-3", "border");
+        sectionDiv.style.borderRadius = "15px";
+        sectionDiv.style.backgroundColor = "antiquewhite"; // change here
 
-    let sectionObj = tsrOverviewData[i];
+        let sectionObj = tsrOverviewData[i];
 
-    let sectionHeadingLink = document.createElement("a");
-    sectionHeadingLink.classList.add("tsrSectionHeading");
-    // sectionHeadingLink.href = "#" + sectionObj.section.url;
-    sectionHeadingLink.href = "#" + sectionObj.section.title.replaceAll(" ", ""); // temp
+        let sectionHeadingLink = document.createElement("a");
+        sectionHeadingLink.classList.add("tsrSectionHeading");
+        // sectionHeadingLink.href = "#" + sectionObj.section.url;
+        sectionHeadingLink.href = "#" + sectionObj.section.title.replaceAll(" ", ""); // temp
 
-    let sectionHeading = document.createElement("h5");
-    sectionHeading.innerHTML = sectionObj.section.title;
-    sectionHeading.id = sectionObj.section.title.replaceAll(" ", "");
-    sectionHeading.style.scrollMargin = "100px";
+        let sectionHeading = document.createElement("h5");
+        sectionHeading.innerHTML = sectionObj.section.title;
+        sectionHeading.id = sectionObj.section.title.replaceAll(" ", "");
+        sectionHeading.style.scrollMargin = "100px";
 
-    sectionHeadingLink.appendChild(sectionHeading);
+        sectionHeadingLink.appendChild(sectionHeading);
 
-    let hr = document.createElement("hr");
+        let hr = document.createElement("hr");
 
-    sectionHeadingLink.appendChild(hr);
+        sectionHeadingLink.appendChild(hr);
 
-    sectionDiv.appendChild(sectionHeadingLink);
+        sectionDiv.appendChild(sectionHeadingLink);
 
-    let cards = sectionObj.cards;
-    let noOfRows = cards.length % 3 == 0 ? (cards.length / 3) : (cards.length / 3) + 1;
-    for (let j = 0; j < noOfRows; j++) {
-        let row = document.createElement("div");
-        row.classList.add("row", "mb-3");
-        for (let k = 0; k <= 2; k++) {
-            let cardIdx = (j * 3) + k;
-            if (cards[cardIdx]) {
-                let cardContainer = document.createElement("div");
-                cardContainer.classList.add("col-12", "col-md-6", "col-lg-4", "mb-3", "mb-lg-0");
+        let cards = sectionObj.cards;
+        let noOfRows = cards.length % 3 == 0 ? (cards.length / 3) : (cards.length / 3) + 1;
+        for (let j = 0; j < noOfRows; j++) {
+            let row = document.createElement("div");
+            row.classList.add("row", "mb-3");
+            for (let k = 0; k <= 2; k++) {
+                let cardIdx = (j * 3) + k;
+                if (cards[cardIdx]) {
+                    let cardContainer = document.createElement("div");
+                    cardContainer.classList.add("col-12", "col-md-6", "col-lg-4", "mb-3", "mb-lg-0");
 
-                let card = document.createElement("div");
-                card.classList.add("card", "h-100", "shadow-lg");
-                if (k + 1 <= 2) {
-                    card.classList.add("border-end");
+                    let card = document.createElement("div");
+                    card.classList.add("card", "h-100", "shadow-lg", "tsrPopupCard");
+                    if (k + 1 <= 2) {
+                        card.classList.add("border-end");
+                    }
+                    card.style.backgroundColor = "aliceblue"; // change here
+
+                    let cardBody = document.createElement("div");
+                    cardBody.classList.add("card-body", "h-100");
+
+                    let a = document.createElement("a");
+                    let h5 = document.createElement("h5");
+                    h5.classList.add("card-title");
+                    h5.innerText = cards[cardIdx].title;
+                    h5.id = cards[cardIdx].title;
+                    a.href = cards[cardIdx].url;
+                    a.appendChild(h5);
+
+                    let ul = document.createElement("ul");
+                    ul.classList.add("card-text", "mb-0");
+
+                    let cardData = cards[cardIdx].data;
+
+                    for (let l = 0; l < cardData.length; l++) {
+                        let data = cardData[l];
+
+                        let li = document.createElement("li");
+                        li.innerText = data.text;
+                        li.style.cursor = "default";
+
+                        // removed links for popup/external link
+                        // if (data.modal == false) {  // if modal: false, create URL using <a>
+                        //     if (data.url != null) {
+                        //         let a = document.createElement("a");
+                        //         a.innerHTML = data.text + '&nbsp;' + '<i class="fas fa-link"></i>' + "<br>";
+                        //         a.href = data.url;
+                        //         a.classList.add("tsrLinks");
+                        //         li.appendChild(a);
+                        //     }
+                        //     else {
+                        //         li.innerText = data.text;
+                        //         li.style.cursor = "default";
+                        //     }
+                        // }
+                        // else { // if modal: true, create dialog
+
+                        //     li.innerHTML = data.text + "&nbsp;" + '<i class="fas fa-external-link-alt"></i>';
+                        //     // li.innerHTML = data.text + "&nbsp;" + '<i class="far fa-image"></i>';
+                        //     li.classList.add("tsrLinks");
+                        //     li.style.cursor = "pointer";
+
+                        //     if (data.imgSrc != null) {
+                        //         li.onclick = function () { createDialog(true, data.imgSrc) };
+                        //     }
+                        //     else {
+                        //         li.onclick = function () { createDialog(false, data.htmlSrc) };
+                        //     }
+                        // }
+                        ul.appendChild(li);
+                    }
+
+                    cardBody.appendChild(a);
+                    cardBody.appendChild(ul);
+
+
+
+
+                    card.appendChild(cardBody);
+
+                    cardContainer.appendChild(card);
+                    row.appendChild(cardContainer);
                 }
 
-                let cardBody = document.createElement("div");
-                cardBody.classList.add("card-body", "h-100");
-
-                let a = document.createElement("a");
-                let h5 = document.createElement("h5");
-                h5.classList.add("card-title");
-                h5.innerText = cards[cardIdx].title;
-                h5.id = cards[cardIdx].title;
-                a.href = cards[cardIdx].url;
-                a.appendChild(h5);
-
-                let ul = document.createElement("ul");
-                ul.classList.add("card-text", "mb-0");
-
-                let cardData = cards[cardIdx].data;
-
-                for (let l = 0; l < cardData.length; l++) {
-                    let data = cardData[l];
-
-                    let li = document.createElement("li");
-                    if (data.modal == false) {  // if modal: false, create URL using <a>
-                        if (data.url != null) {
-                            let a = document.createElement("a");
-                            a.innerHTML = data.text + '&nbsp;' + '<i class="fas fa-link"></i>' + "<br>";
-                            a.href = data.url;
-                            a.classList.add("tsrLinks");
-                            li.appendChild(a);
-                        }
-                        else {
-                            li.innerText = data.text;
-                            li.style.cursor = "default";
-                        }
-                    }
-                    else { // if modal: true, create dialog
-
-                        li.innerHTML = data.text + "&nbsp;" + '<i class="fas fa-external-link-alt"></i>';
-                        // li.innerHTML = data.text + "&nbsp;" + '<i class="far fa-image"></i>';
-                        li.classList.add("tsrLinks");
-                        li.style.cursor = "pointer";
-
-                        if (data.imgSrc != null) {
-                            li.onclick = function () { createDialog(true, data.imgSrc) };
-                        }
-                        else {
-                            li.onclick = function () { createDialog(false, data.htmlSrc) };
-                        }
-                    }
-                    ul.appendChild(li);
-                }
-
-                cardBody.appendChild(a);
-                cardBody.appendChild(ul);
-
-                card.appendChild(cardBody);
-
-                cardContainer.appendChild(card);
-                row.appendChild(cardContainer);
             }
-
+            sectionDiv.appendChild(row);
         }
-        sectionDiv.appendChild(row);
+        sectionContainer.appendChild(sectionDiv);
     }
-    sectionContainer.appendChild(sectionDiv);
 }
+
+function getPopupHtml(popupDataObj) {
+    /*
+                                    htmlSrc: [
+                                {
+                                    title: "Tile - Multi Stocks in one View",
+                                    steps: [
+                                        "<b>Step 1</b>: On the right side of the chart, click the <b>Compare</b> tab.",
+                                        "Step 2: A pop-up will open — select Compare with Stocks.",
+                                        "Step 3: Click on Tile."
+                                    ],
+                                    imageSrc: [
+                                        "d5/assets/inline1.png",
+                                        "d5/assets/inline2.png"
+                                    ],
+                                    desc: null
+                                },
+                                {
+                                    title: "Tile - Multi Ticks in one View",
+                                    steps: [
+                                        "Step 1: In that pop-up, click on Multiple Ticks (Freq).",
+                                        "Step 2: Click on Tile."
+                                    ],
+                                    imageSrc: [
+                                        "d5/assets/multiStock.png"
+                                    ],
+                                    desc: null
+                                },
+                                {
+                                    title: "Tile - Multi Stocks in one View",
+                                    steps: [
+                                        "<b>Step 1</b>: On the right side of the chart, click the <b>Compare</b> tab.",
+                                        "Step 2: A pop-up will open — select Compare with Stocks.",
+                                        "Step 3: Click on Tile."
+                                    ],
+                                    imageSrc: [
+                                        "d5/assets/inline1.png",
+                                        "d5/assets/inline2.png"
+                                    ],
+                                    desc: null
+                                },
+                            ],
+    
+                            */
+
+    let html = "";
+    for (let i = 0; i < popupDataObj.length; i++) {
+        let dataObj = popupDataObj[i];
+        let div = document.createElement("div");
+        div.style.color = "blue";
+        div.classList.add("text-center");
+
+        let stepsList = document.createElement("ul");
+        let steps = dataObj.steps;
+        for (let j = 0; j < steps.length; j++) {
+            let li = document.createElement("li");
+            li.innerHTML = steps[j];
+            stepsList.appendChild(li);
+        }
+
+        let imgContainer = document.createElement("div");
+        // imgContainer.style.overflowX = "auto";
+
+        let images = dataObj.imageSrc;
+
+        for (let j = 0; j < images.length; j++) {
+            let img = document.createElement("img");
+            img.src = images[j];
+
+            imgContainer.appendChild(img);
+        }
+
+
+
+        html += div.outerHTML;
+        html += stepsList.outerHTML;
+        html + imgContainer.outerHTML;
+        html += "<br>";
+    }
+    return html;
+}
+
+addSections(tsrOverviewData, sectionContainer);
 
 let navMenuContainer = document.createElement("div");
 navMenuContainer.classList.add("d-none", "d-sm-flex", "col-sm-4", "col-md-4", "col-lg-3", "col-xxl-2", "border-start");
 let navMenu = document.createElement("div");
+navMenu.id = "tsrNavMenu";
 navMenu.classList.add("d-none", "d-sm-flex", "my-3", "flex-column", "position-fixed");
 
 let navMenuTitle = document.createElement("span");
@@ -453,85 +558,331 @@ navMenuTitle.style.fontWeight = "bold";
 
 navMenu.appendChild(navMenuTitle);
 
-for (let i = 0; i < tsrOverviewData.length; i++) {
-    let a = document.createElement("a");
+function addNavMenuLink(tsrOverviewData, navMenu) {
+    for (let i = 0; i < tsrOverviewData.length; i++) {
+        let a = document.createElement("a");
 
-    a.href = "#" + tsrOverviewData[i].section.title.replaceAll(" ", "");
-    a.innerHTML = tsrOverviewData[i].section.title + "<br>";
-    a.classList.add("my-1", "tsrLinks");
-    navMenu.appendChild(a);
+        a.href = "#" + tsrOverviewData[i].section.title.replaceAll(" ", "");
+        a.innerHTML = tsrOverviewData[i].section.title + "<br>";
+        a.classList.add("mb-2", "tsrLinks");
+        a.style.fontSize = "14px";
+        a.style.fontWeight = "300";
+
+        navMenu.appendChild(a);
+    }
 }
 
+addNavMenuLink(tsrOverviewData, navMenu);
 
-let planDivData = [
-    {
-        title: "EOD Plans",
-        plans: [
-            {
-                name: "EOD Funda",
-                features: [
-                    "For Student and Investor",
-                ]
-            },
-            {
-                name: "EOD Combo",
-                features: [
-                    "For Part Time Pro",
-                ]
-            }
-        ]
-    },
-    {
-        title: "Live Plans",
-        plans: [
-            {
-                name: "Trader Value",
-                features: [
-                    "Ticks - Daily / Weekly / Monthly",
-                    "Newbie or Causal Trader"
-                ]
-            },
-            {
-                name: "Trader",
-                features: [
-                    "Ticks - 5 Min to Qtr Tick",
-                    "Swing /Positional Trader"
-                ]
-            },
-            {
-                name: "Trader Pro",
-                features: [
-                    "Ticks - 1,2 min to Qtr Ticks",
-                    "Professional Trader, Intraday, Swing Trader"
-                ]
-            }
-        ]
-    }
-]
+// For pricing plans section
 
-// let pricingPlanDiv = document.createElement("div");
-// pricingPlanDiv.classList.add("card");
-// let planDiv = document.createElement("div");
-// planDiv.classList.add("col-12", "col-md-4");
+let a = document.createElement("a");
 
-// let planDivUl = document.createElement("ul");
-// for(let i=0; i<planDivData.length; i++){
-//     let planTitle = document.createElement("span");
-//     planTitle.innerText = planDivData[i].title;
-//     let plans = planDivData[i].plans;
-//     for(let j=0; j<plans.length; j++){
-//         let plan = plans[j];
-//         let planName = document.createElement("span");
-//         planName.innerText = plan.name;
+a.href = "#pricingPlans";
+a.innerHTML = "Pricing / Plans" + "<br>";
+a.classList.add("mb-2", "tsrLinks");
+a.style.fontSize = "14px";
+a.style.fontWeight = "300";
 
-//     }
-// }
+navMenu.appendChild(a);
 
-let planTermsDiv = document.createElement("div");
-planTermsDiv.classList.add("col-12", "col-md-4");
 
-let vsCompetitorDiv = document.createElement("div");
-vsCompetitorDiv.classList.add("col-12", "col-md-4");
+sectionContainer.innerHTML += `
+
+<div class="mb-5 mx-3 p-3 border" style="border-radius: 15px; background-color: antiquewhite;">
+        <a
+            class="tsrSectionHeading" href="#pricingPlans">
+            <h5 id="pricingPlans" style="scroll-margin: 100px;">Pricing Plans</h5>
+            <hr>
+        </a>
+        <div class="row mb-3">
+            <div class="col-12 col-md-6 col-lg-4 mb-3 mb-lg-0">
+                <div class="card h-100 shadow-lg border-end" style="background-color: aliceblue;">
+                    <div class="card-body h-100"><div class="card-title">
+                        <h5>Tailor Made Plans</h5>
+                    </div>
+                    <hr>
+                    <div>
+                        <b>EOD Plans</b>
+                        <ul style="list-style-type: disclosure-closed;">
+                            <li>
+                                <span class="ul-header">EOD Funda</span> - For Students and Investors
+                            </li>
+                            <li>
+                                <span class="ul-header">EOD Combo</span> - For Part Time Pro
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <b>Live Plans</b>
+                        <ul style="list-style-type: disclosure-closed;">
+                            <li>
+                                <span class="ul-header">Trader Value</span>
+                                <ul>
+                                    <li>Ticks - Daily / Weekly / Monthly</li>
+                                    <li>Newbie or Causal Trader</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="ul-header">Trader</span>
+                                <ul>
+                                    <li>5 Min to Qtr Tick</li>
+                                    <li>Swing / Positional Trader</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="ul-header">Trader Pro</span>
+                                <ul>
+                                    <li>Tick 1/ 2 min to Qtr Ticks</li>
+                                    <li>Professional Trader, Intraday, Swing Trader</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-3 mb-lg-0">
+                <div class="card h-100 shadow-lg border-end" style="background-color: aliceblue;">
+                    <div class="card-body h-100">
+                        <div class="card-title">
+                        <h5>Plan terms</h5>
+                    </div>
+                    <hr>
+                    <div>
+                        <ul style="list-style-type: disclosure-closed;">
+                            <li>
+                                <span class="ul-header">Monthly Plan</span> - Try TSR at Reasonable Price
+                            </li>
+                            <li>
+                                <span class="ul-header">Annual Plan</span> - For Regular users with Discount
+                            </li>
+                            <li>
+                                <span class="ul-header">2 / 5 Year Plan</span> - Deep Discount , Beat Inflation
+                                Suggested for pro
+                            </li>
+                            <li>
+                                Loyalty benefit for renewal
+                                And upgrade
+                            </li>
+                            <li>
+                                Refer a Friend and get 1 Mth free for you and for your friend
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-3 mb-lg-0">
+                <div class="card h-100 shadow-lg" style="background-color: aliceblue;">
+                    <div class="card-body h-100">
+                        <div class="card-title">
+                        <h5>Vs Competitor</h5>
+                    </div>
+                    <hr>
+                    <div>
+                        <ul style="list-style-type: disclosure-closed;">
+                            <li>
+                                Majority of Competitor don’t have <span class="ul-header">1, 2, 3 mins Tick</span>
+                            </li>
+                            <li>
+                                <span class="ul-header">TSR Trader Plans</span> are more Feature Rich that most
+                                Competitors
+                            </li>
+                            <li>
+                                <span class="ul-header">Chart Pattern Screen</span>not available
+                                Suggested for pro
+                            </li>
+                            <li>
+                                <span class="ul-header">Candlestick pattern 70+</span> and ability to select multiple
+                                pattern in one
+                            </li>
+                            <li>
+                                <span class="ul-header">TSR Pro Plan</span>comes with lots of pre built Strategies not
+                                available with competitors
+                            </li>
+                            <li>
+                                Competitor lack deep integration between <span class="ul-header">Equity, Chart and
+                                    Screener combo</span>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+
+    <div class="mb-5 mx-3 p-3 border" style="border-radius: 15px; background-color: antiquewhite;"><a
+            class="tsrSectionHeading" href="#AboutUs/Help">
+            <h5 id="AboutUs/Help" style="scroll-margin: 100px;">About Us / Help</h5>
+            <hr>
+        </a>
+        <div class="row mb-3">
+            <div class="col-12 col-md-6 mb-3">
+                <div class="card h-100 shadow-lg border-end" style="background-color: aliceblue;">
+                    <div class="card-body h-100">
+                        <div class="card-title">
+                            <h5>Legacy</h5>
+                        </div>
+                        <hr>
+                        <div>
+                            <b>Experience</b>
+                            <ul style="list-style-type: disclosure-closed;">
+                                <li>
+                                    15 Years and growing Strong
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <b>Markets</b>
+                            <ul style="list-style-type: disclosure-closed;">
+                                <li>
+                                    India , Australia , Europe and America
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div>
+                            <b>Happy Users</b>
+                            <ul style="list-style-type: disclosure-closed;">
+                                <li>
+                                    Million+ Happy Users
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+                <div class="card h-100 shadow-lg border-end" style="background-color: aliceblue;">
+                    <div class="card-body h-100">
+                        <div class="card-title">
+                            <h5>Help / Support</h5>
+                        </div>
+                        <hr>
+                        <div>
+                            <b>Resources</b>
+                            <ul style="list-style-type: disclosure-closed;">
+                                <li>
+                                    Tutorial
+                                </li>
+                                <li>
+                                    Ebooks
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <b>Tutorial Videos</b>
+                            <ul style="list-style-type: disclosure-closed;">
+                                <li>
+                                    English
+                                </li>
+                                <li>
+                                    Hindi
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <b>One on One demo</b>
+                            <ul style="list-style-type: disclosure-closed;">
+                                <li>
+                                    Call us on <span>+91 922 655 760 3/4/5</span>
+                                </li>
+                                <li>
+                                    Write to us on <span>support@topstockresearch.com</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+`;
+
+
+// tsrOverviewData = [{
+//     section: {
+//         title: "Legacy",
+//         url: null
+//     },
+//     cards: [
+//         {
+//             title: "Experience",
+//             url: "",
+//             data: [
+//                 { text: "15 Years and growing Strong", url: null, modal: false, imgSrc: null, htmlSrc: null },
+//             ]
+//         },
+//         {
+//             title: "Markets",
+//             url: "",
+//             data: [
+//                 { text: "India , Australia , Europe and America", url: null, modal: false, imgSrc: null, htmlSrc: null }
+//             ]
+//         },
+//         {
+//             title: "Happy users",
+//             url: "",
+//             data: [
+//                 { text: "Million+ happy Users", url: null, modal: false, imgSrc: null, htmlSrc: null }
+//             ]
+//         }
+//     ]
+// },
+// {
+//     section: {
+//         title: "New User? No Problem - Help/ Support System ",
+//         url: null
+//     },
+//     cards: [
+//         {
+//             title: "Documentation",
+//             url: "",
+//             data: [
+//                 { text: "Tutorial", url: null, modal: false, imgSrc: null, htmlSrc: null },
+//                 { text: "Ebooks", url: "", modal: false, imgSrc: null, htmlSrc: null }
+//             ]
+//         },
+//         {
+//             title: "Tutorial Videos",
+//             url: "",
+//             data: [
+//                 { text: "English", url: "", modal: false, imgSrc: null, htmlSrc: null },
+//                 { text: "Hindi", url: null, modal: false, imgSrc: null, htmlSrc: null }]
+//         },
+//         {
+//             title: "One on One demo",
+//             url: "",
+//             data: [
+//                 { text: "Call us on +91 922 655 760 3/4/5 ", url: "", modal: false, imgSrc: null, htmlSrc: null },
+//                 { text: "Write to us on support@topstockresearch.com ", url: "", modal: false, imgSrc: null, htmlSrc: null },
+
+//             ]
+//         }
+//     ]
+// }];
+
+// addSections(tsrOverviewData, sectionContainer);
+// addNavMenuLink(tsrOverviewData, navMenu);
+
+a = document.createElement("a");
+
+a.href = "#AboutUs/Help";
+a.innerHTML = "About Us / Help" + "<br>";
+a.classList.add("mb-2", "tsrLinks");
+a.style.fontSize = "14px";
+a.style.fontWeight = "300";
+
+navMenu.appendChild(a);
+
 
 wrapper.appendChild(sectionContainer);
 
@@ -540,7 +891,55 @@ wrapper.appendChild(navMenuContainer);
 container.appendChild(wrapper);
 
 
-function createDialog(isImg, src) {
+
+function addClickListener() {
+
+    let cards = document.querySelectorAll(".tsrPopupCard");
+
+    let cardsObj = [];
+    for (let i = 0; i < tsrOverviewData.length; i++) {
+        let section = tsrOverviewData[i];
+
+        let cards = section.cards;
+
+        cardsObj.push(...cards);
+    }
+
+    for (let i = 0; i < cards.length; i++) {
+        if (cardsObj[i].html) {
+            let div = document.createElement("div");
+            div.setAttribute("align", "right");
+            div.style.position = "absolute";
+            div.style.bottom = "10px";
+            div.style.right = "10px";
+
+            let button = document.createElement("button");
+            // button.innerHTML = `<i class="far fa-object-ungroup fa-flip-horizontal"></i>`;
+            button.innerHTML = `<i class="fas fa-info-circle"></i>`;
+            button.classList.add("btn", "btn-sm", "tsr-popup-btn");
+
+            let obj = cardsObj[i];
+            button.onclick = function () {
+                $.get(obj.htmlUrl, function (data, status) {
+                    createDialog(false, data);
+                });
+            };
+
+            div.appendChild(button);
+            cards[i].appendChild(div);
+        }
+    }
+}
+
+setTimeout(addClickListener, 1000);
+// addClickListener();
+
+function getData(htmlUrl) {
+
+}
+
+
+function createDialog(isImg, html) {
     let dialog = document.createElement("dialog");
     dialog.id = "tsrImageViewer";
     dialog.classList.add("border");
@@ -554,15 +953,15 @@ function createDialog(isImg, src) {
     closeDiv.appendChild(closeBtn);
 
     let contentDiv = document.createElement("div");
-    contentDiv.style.overflowX = "auto";
+    contentDiv.style.overflowX = "visible";
 
     if (isImg) {
         let img = document.createElement("img");
         img.classList.add("m-3")
-        img.src = src;
+        img.src = html;
         contentDiv.appendChild(img);
     } else {
-        contentDiv.innerHTML = src;
+        contentDiv.innerHTML = html;
     }
 
     dialog.appendChild(closeDiv);
@@ -590,3 +989,9 @@ function closeDialog() {
 }
 
 
+
+
+window.onscroll = function (e) {
+    let navMenu = document.getElementById("tsrNavMenu");
+    navMenu.offsetTop = "300px";
+}
