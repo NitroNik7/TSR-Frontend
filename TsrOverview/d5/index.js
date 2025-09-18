@@ -10,7 +10,7 @@ let tsrOverviewData = [
                 title: "360 Degree Research View",
                 url: "",
                 html: true,
-                htmlUrl: "./assets/html/index.html",
+                htmlUrl: "./assets/html/360DegreeResearchView.html",
                 data: [
                     { text: "Index Outperformers Stocks - Active", url: "https://www.topstockresearch.com/rt/Home", modal: false, imgSrc: null, htmlSrc: null },
                     { text: "Tech Strong", url: null, modal: false, imgSrc: null, htmlSrc: null },
@@ -33,9 +33,6 @@ let tsrOverviewData = [
             {
                 title: "Strategy Snapshot",
                 url: "",
-                html: true,
-                htmlUrl: "./assets/html/index.html",
-
                 data: [
                     { text: "Result of Multiple Strategies in One Place", url: null, modal: false, imgSrc: null, htmlSrc: null },
                     { text: "Highly Customisable", url: null, modal: false, imgSrc: null, htmlSrc: null },
@@ -90,9 +87,6 @@ let tsrOverviewData = [
             {
                 title: "Indicator Customisation",
                 url: "",
-                html: true,
-                htmlUrl: "./assets/html/index2.html",
-
                 data: [
                     { text: "RSI (7)", url: null, modal: false, imgSrc: null, htmlSrc: null },
                     { text: "Bollinger (20 , 1.5)", url: null, modal: false, imgSrc: null, htmlSrc: null },
@@ -152,8 +146,6 @@ let tsrOverviewData = [
             {
                 title: "Custom Strategy (1000’s Filter)",
                 url: "",
-                html: true,
-                htmlUrl: "./assets/html/index.html",
                 data: [
                     { text: "Ready to use Building Block", url: "", modal: false, imgSrc: null, htmlSrc: null },
                     { text: "Alert, Auto Refresh", url: null, modal: false, imgSrc: null, htmlSrc: null },
@@ -172,7 +164,7 @@ let tsrOverviewData = [
     },
     {
         section: {
-            title: "Technical Stock  Charts",
+            title: "Technical Stock Charts",
             url: ""
         },
         cards: [
@@ -190,6 +182,8 @@ let tsrOverviewData = [
             {
                 title: "Compare / Multi Charts",
                 url: "",
+                html: true,
+                htmlUrl: "./assets/html/CompareMultiChart.html",
                 data: [
                     { text: "Tile - Multi Stocks In One View", url: "", modal: false, imgSrc: null, htmlSrc: null },
                     { text: "Tile - Multi Ticks in one View", url: null, modal: false, imgSrc: null, htmlSrc: null },
@@ -892,7 +886,7 @@ container.appendChild(wrapper);
 
 
 
-function addClickListener() {
+function addClickListenerToCards() {
 
     let cards = document.querySelectorAll(".tsrPopupCard");
 
@@ -931,18 +925,13 @@ function addClickListener() {
     }
 }
 
-setTimeout(addClickListener, 1000);
-// addClickListener();
-
-function getData(htmlUrl) {
-
-}
-
+addClickListenerToCards();
 
 function createDialog(isImg, html) {
     let dialog = document.createElement("dialog");
-    dialog.id = "tsrImageViewer";
+    dialog.id = "tsrMoreInfoPopup";
     dialog.classList.add("border");
+    document.body.style.overflow = "hidden";
 
     let closeDiv = document.createElement("div");
     let closeBtn = document.createElement("button");
@@ -953,7 +942,11 @@ function createDialog(isImg, html) {
     closeDiv.appendChild(closeBtn);
 
     let contentDiv = document.createElement("div");
-    contentDiv.style.overflowX = "visible";
+    contentDiv.style.maxWidth = "80vw";
+    contentDiv.style.maxHeight = "80vh";
+    // contentDiv.style.overflowX = "visible";
+    contentDiv.style.overflowY = "hidden";
+
 
     if (isImg) {
         let img = document.createElement("img");
@@ -972,6 +965,7 @@ function createDialog(isImg, html) {
     dialog.showModal();
 
     document.addEventListener("keydown", handleKeydown);
+
 }
 
 function handleKeydown(e) {
@@ -981,17 +975,12 @@ function handleKeydown(e) {
 }
 
 function closeDialog() {
-    let dialog = document.getElementById("tsrImageViewer");
+    let dialog = document.getElementById("tsrMoreInfoPopup");
     dialog.close();
     document.body.removeChild(dialog);
+    document.body.style.overflow = "auto";
 
     document.removeEventListener("keydown", handleKeydown);
 }
 
 
-
-
-window.onscroll = function (e) {
-    let navMenu = document.getElementById("tsrNavMenu");
-    navMenu.offsetTop = "300px";
-}
