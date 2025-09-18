@@ -23,6 +23,8 @@ let tsrOverviewData = [
             {
                 title: "Intraday Opportunities",
                 url: "",
+                html: true,
+                htmlUrl: "./assets/html/IntradayOpportunities.html",
                 data: [
                     { text: "Gapup", url: null, modal: false, imgSrc: null, htmlSrc: null },
                     { text: "Open=close ORB", url: "https://www.topstockresearch.com/rt/Home", modal: false, imgSrc: null, htmlSrc: null },
@@ -590,7 +592,7 @@ sectionContainer.innerHTML += `
             <hr>
         </a>
         <div class="row mb-3">
-            <div class="col-12 col-md-6 col-lg-4 mb-3 mb-lg-0">
+            <div class="col-12 mb-3">
                 <div class="card h-100 shadow-lg border-end" style="background-color: aliceblue;">
                     <div class="card-body h-100"><div class="card-title">
                         <h5>Tailor Made Plans</h5>
@@ -637,7 +639,7 @@ sectionContainer.innerHTML += `
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 mb-3 mb-lg-0">
+            <div class="col-12 mb-3">
                 <div class="card h-100 shadow-lg border-end" style="background-color: aliceblue;">
                     <div class="card-body h-100">
                         <div class="card-title">
@@ -668,7 +670,7 @@ sectionContainer.innerHTML += `
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 mb-3 mb-lg-0">
+            <div class="col-12 mb-3">
                 <div class="card h-100 shadow-lg" style="background-color: aliceblue;">
                     <div class="card-body h-100">
                         <div class="card-title">
@@ -909,9 +911,10 @@ function addClickListenerToCards() {
 
             let button = document.createElement("button");
             // button.innerHTML = `<i class="far fa-object-ungroup fa-flip-horizontal"></i>`;
-            button.innerHTML = `<i class="fas fa-info-circle"></i>`;
+            // button.innerHTML = `<i class="fas fa-info-circle"></i>`;
+            button.innerHTML = `<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-picture-in-picture"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11 19h-6a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v4" /><path d="M14 14m0 1a1 1 0 0 1 1 -1h5a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1z" /></svg>`;
             button.classList.add("btn", "btn-sm", "tsr-popup-btn");
-
+            button.title = "More";
             let obj = cardsObj[i];
             button.onclick = function () {
                 $.get(obj.htmlUrl, function (data, status) {
@@ -930,7 +933,7 @@ addClickListenerToCards();
 function createDialog(isImg, html) {
     let dialog = document.createElement("dialog");
     dialog.id = "tsrMoreInfoPopup";
-    dialog.classList.add("border");
+    dialog.classList.add("border", "rounded");
     document.body.style.overflow = "hidden";
 
     let closeDiv = document.createElement("div");
@@ -939,13 +942,15 @@ function createDialog(isImg, html) {
     closeBtn.onclick = closeDialog;
 
     closeDiv.setAttribute("align", "right");
+    closeDiv.classList.add("mb-2");
     closeDiv.appendChild(closeBtn);
 
     let contentDiv = document.createElement("div");
-    contentDiv.style.maxWidth = "80vw";
+    contentDiv.style.maxWidth = "90vw";
     contentDiv.style.maxHeight = "80vh";
     // contentDiv.style.overflowX = "visible";
     contentDiv.style.overflowY = "hidden";
+    contentDiv.classList.add("border", "rounded");
 
 
     if (isImg) {
@@ -984,3 +989,22 @@ function closeDialog() {
 }
 
 
+window.onscroll = function (e) {
+
+    // navMenu.style.transition = "top 1s ease";
+
+    // if(window.scrollY > 0 && window.scrollY < 300){
+    //     console.log("offsetTop",navMenu.offsetTop);
+    //     console.log("scrollY", window.scrollY);
+    //     navMenu.style.top = (navMenu.offsetTop - window.scrollY) + "px";
+    //     console.log("top",navMenu.style.top);
+    // }
+    // else 
+    if (window.scrollY > 300) {
+        navMenu.style.top = "100px";
+    }
+    else {
+        navMenu.style.top = "auto";
+    }
+
+}
