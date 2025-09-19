@@ -48,7 +48,7 @@ let tsrOverviewData = [
             section: "background-color: antiquewhite;",
             sectionTitle: "color: #9e5960; font-size: 22px",
             card: "background-color: bisque;",
-            cardTitle: "border-left: 4px solid rgb(13, 110, 253); color: rgb(13, 110, 253)",
+            cardTitle: "border-left: 4px solid #9e5960; color: #9e5960",
             cardText: "color: #9e5960; font-size:14px;",
             pipIcon: "color: blue; font-size: 12px;"
         }
@@ -999,11 +999,39 @@ a.style.fontWeight = "300";
 
 navMenu.appendChild(a);
 
+let faqSection = document.createElement("div");
+faqSection.id = "tsrFaqSection";
+faqSection.classList.add("mb-5", "mx-3", "p-3", "border");
+faqSection.style.borderRadius = "15px";
+faqSection.style.backgroundColor = "antiquewhite";
+
+let faqSectionHeading = document.createElement("h1");
+faqSectionHeading.classList.add("p-3");
+faqSectionHeading.innerText = "FAQs";
+
+faqSection.appendChild(faqSectionHeading);
+
+sectionContainer.appendChild(faqSection);
+
+sectionContainer.innerHTML+=`
+<!-- Vocal for Local Section -->
+<div class="vocal-for-local text-center mt-5 mb-5">
+  <h3>Vocal for Local</h3>
+  <p class="tagline">Shudd Desi platform / Build in India platform</p>
+</div>
+
+
+`;
 
 wrapper.appendChild(sectionContainer);
 
+
+
 navMenuContainer.appendChild(navMenu);
 wrapper.appendChild(navMenuContainer);
+
+
+
 container.appendChild(wrapper);
 
 
@@ -1079,6 +1107,7 @@ function createDialog(isImg, html) {
     contentDiv.style.maxHeight = "80vh";
     // contentDiv.style.overflowX = "visible";
     contentDiv.style.overflowY = "hidden";
+    contentDiv.style.backgroundColor = "whitesmoke";
     contentDiv.classList.add("border", "border-5", "rounded");
 
 
@@ -1117,23 +1146,116 @@ function closeDialog() {
     document.removeEventListener("keydown", handleKeydown);
 }
 
-
 window.onscroll = function (e) {
-
-    // navMenu.style.transition = "top 1s ease";
-
-    // if(window.scrollY > 0 && window.scrollY < 300){
-    //     console.log("offsetTop",navMenu.offsetTop);
-    //     console.log("scrollY", window.scrollY);
-    //     navMenu.style.top = (navMenu.offsetTop - window.scrollY) + "px";
-    //     console.log("top",navMenu.style.top);
-    // }
-    // else 
     if (window.scrollY > 300) {
         navMenu.style.top = "100px";
     }
     else {
         navMenu.style.top = "auto";
     }
-
 }
+
+let faqData = [
+    {
+        question: "I am new to trading. How will it help me ?",
+        answer: `Our mantra is   to make you atma nirbhar. We provide all tools to help you with. You can use Learn -  tutorials, ebook, video 
+Analysis - Screener , charts, equity analysis
+Test - Using our mock portfolio and back testing
+`
+    },
+    {
+        question: "How does TSR support in creating strategies ?",
+        answer: "We support one-on-one sessions with our premium users till they become independent. Apart from that we have several videos and ebooks on the platform."
+    },
+    {
+        question: "Is there any trial ?",
+        answer: "You may use a one month plan to try out the platform."
+    },
+    {
+        question: "Why Should I go for a long term plan ?",
+        answer: `
+            We are in a constant innovation phase that requires more technologists , bigger infrastructure and more expensive data. This comes at an additional cost. Some of these costs are borne by us and some are passed to the clients. But we like to reward our loyal users with more perks that are why we have introduced long term plans. They offer
+                Deep Discount
+                Immune to any price hike.
+            The pattern of clients buying 2 and 5 year plans is growing at a rapid pace. You can also benefit from it.
+
+        `
+    }
+];
+
+
+function addFaqs() {
+    let faqSection = document.getElementById("tsrFaqSection");
+    let faqDiv = document.createElement("div");
+    faqDiv.id = "accordionFlushExample";
+    faqDiv.classList.add("accordion", "accordion-flush");
+
+    for (let i = 0; i < faqData.length; i++) {
+        let div = document.createElement("div");
+        div.classList.add("accordion-item");
+
+        let h2 = document.createElement("h2");
+        h2.classList.add("accordion-header");
+
+        let button = document.createElement("button");
+        button.classList.add("accordion-button", "collapsed");
+        button.setAttribute("type", "button");
+        button.setAttribute("data-bs-toggle", "collapse");
+        button.setAttribute("data-bs-target", "#answerDiv" + i);
+        button.setAttribute("aria-expanded", "false");
+        button.setAttribute("aria-controls", "answerDiv" + i);
+        button.style.fontWeight = "500";
+        button.innerHTML = faqData[i].question;
+        //  type="button" ="collapse" ="#flush-collapseOne"  >
+        let answerDiv = document.createElement("div");
+        answerDiv.id = "answerDiv" + i;
+        answerDiv.classList.add("accordion-collapse", "collapse");
+        answerDiv.setAttribute("data-bs-parent", "#accordionFlushExample");
+
+        let answerBody = document.createElement("div");
+        answerBody.classList.add("accordion-body");
+        answerBody.innerHTML = faqData[i].answer;
+
+        h2.appendChild(button);
+        answerDiv.appendChild(answerBody);
+
+        div.appendChild(h2);
+        div.appendChild(answerDiv);
+
+        faqDiv.appendChild(div);
+
+    }
+
+    faqSection.appendChild(faqDiv);
+};
+
+addFaqs();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
