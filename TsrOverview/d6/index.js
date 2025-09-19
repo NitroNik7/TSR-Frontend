@@ -50,7 +50,7 @@ let tsrOverviewData = [
             card: "background-color: bisque;",
             cardTitle: "border-left: 4px solid #9e5960; color: #9e5960",
             cardText: "color: #9e5960; font-size:14px;",
-            pipIcon: "color: blue; font-size: 12px;"
+            pipIcon: "color: #9e5960; font-size: 12px;"
         }
     },
     {
@@ -90,12 +90,12 @@ let tsrOverviewData = [
             }
         ],
         style: {
-            section: "background-color: Beige;",
+            section: "background-color: beige;",
             sectionTitle: "color: darkgoldenrod; font-size: 22px",
             card: "background-color: lightyellow;",
-            cardTitle: "border-left: 4px solid rgba(13, 110, 253, 1); color: rgb(13, 110, 253)",
-            cardText: "color: black; font-size:14px;",
-            pipIcon: "color: gray; font-size: 12px;"
+            cardTitle: "border-left: 4px solid darkgoldenrod; color: darkgoldenrod",
+            cardText: "color: rgb(128 88 3); font-size:14px;",
+            pipIcon: "color: darkgoldenrod; font-size: 12px;"
         }
     },
     {
@@ -150,9 +150,9 @@ let tsrOverviewData = [
             section: "background-color: #d9f3d9;",
             sectionTitle: "color: #299362; font-size: 22px",
             card: "background-color: #deffde;",
-            cardTitle: "border-left: 4px solid rgb(13, 110, 253); color: rgb(13, 110, 253)",
-            cardText: "color: black; font-size:14px;",
-            pipIcon: "color: gray; font-size: 12px;"
+            cardTitle: "border-left: 4px solid #299362; color: #299362",
+            cardText: "color: #299362; font-size:14px;",
+            pipIcon: "color: #299362; font-size: 12px;"
         }
     },
     {
@@ -193,9 +193,9 @@ let tsrOverviewData = [
             section: "background-color: #cbe8e8;",
             sectionTitle: "color: #2697ae; font-size: 22px",
             card: "background-color: Azure;",
-            cardTitle: "border-left: 4px solid rgb(13, 110, 253); color: rgb(13, 110, 253)",
-            cardText: "color: black; font-size:14px;",
-            pipIcon: "color: gray; font-size: 12px;"
+            cardTitle: "border-left: 4px solid #2697ae; color: #2697ae",
+            cardText: "color: #2697ae; font-size:14px;",
+            pipIcon: "color: #2697ae; font-size: 12px;"
         }
     },
     {
@@ -243,9 +243,9 @@ let tsrOverviewData = [
             section: "background-color: #ececec;",
             sectionTitle: "color: #8a7536; font-size: 22px",
             card: "background-color: #f4f4f4;",
-            cardTitle: "border-left: 4px solid rgb(13, 110, 253); color: rgb(13, 110, 253)",
-            cardText: "color: black; font-size:14px;",
-            pipIcon: "color: gray; font-size: 12px;"
+            cardTitle: "border-left: 4px solid #8a7536; color: #8a7536",
+            cardText: "color: #8a7536; font-size:14px;",
+            pipIcon: "color: #8a7536; font-size: 12px;"
         }
     },
     {
@@ -339,9 +339,9 @@ let tsrOverviewData = [
             section: "background-color: #eaeada;",
             sectionTitle: "color: #7c3b0c; font-size: 22px",
             card: "background-color: #ebebdf;",
-            cardTitle: "border-left: 4px solid rgb(13, 110, 253); color: rgb(13, 110, 253)",
+            cardTitle: "border-left: 4px solid #7c3b0c; color: #7c3b0c",
             cardText: "color: black; font-size:14px;",
-            pipIcon: "color: gray; font-size: 12px;"
+            pipIcon: "color: #7c3b0c; font-size: 12px;"
         }
     },
     {
@@ -377,7 +377,7 @@ let tsrOverviewData = [
             section: "background-color: #fef5f4;",
             sectionTitle: "color: #7c3b0c; font-size: 22px",
             card: "background-color: #ebebdf;",
-            cardTitle: "border-left: 4px solid rgb(13, 110, 253); color: rgb(13, 110, 253)",
+            cardTitle: "border-left: 4px solid #7c3b0c; color: #7c3b0c",
             cardText: "color: black; font-size:14px;",
             pipIcon: "color: gray; font-size: 12px;"
         }
@@ -419,7 +419,7 @@ let tsrOverviewData = [
             section: "background-color: #eaeada;",
             sectionTitle: "color: #7c3b0c; font-size: 22px",
             card: "background-color: #ebebdf;",
-            cardTitle: "border-left: 4px solid rgb(13, 110, 253); color: rgb(13, 110, 253)",
+            cardTitle: "border-left: 4px solid #7c3b0c; color: #7c3b0c",
             cardText: "color: black; font-size:14px;",
             pipIcon: "color: gray; font-size: 12px;"
         }
@@ -460,8 +460,8 @@ let tsrOverviewData = [
             section: "background-color: #eaeada;",
             sectionTitle: "color: #7c3b0c; font-size: 22px",
             card: "background-color: #ebebdf;",
-            cardTitle: "border-left: 4px solid rgb(13, 110, 253); color: rgb(13, 110, 253)",
-            cardText: "color: black; font-size:14px;",
+            cardTitle: "border-left: 4px solid #7c3b0c; color: #7c3b0c",
+            cardText: "color: #7c3b0c; font-size:14px;",
             pipIcon: "color: gray; font-size: 12px;"
         }
     }
@@ -515,7 +515,7 @@ sectionContainer.classList.add("container", "col-12", "col-sm-8", "col-md-8", "c
 function addSections(tsrOverviewData, sectionContainer) {
     for (let i = 0; i < tsrOverviewData.length; i++) {
         let sectionDiv = document.createElement("div");
-        sectionDiv.classList.add("mb-5", "mx-3", "p-3", "border");
+        sectionDiv.classList.add("mb-5", "mx-3", "p-3", "border", "shadow");
         sectionDiv.style.borderRadius = "15px";
 
         let cssText = sectionDiv.style.cssText + tsrOverviewData[i].style.section;
@@ -769,29 +769,36 @@ a.style.fontWeight = "300";
 navMenu.appendChild(a);
 
 
-sectionContainer.innerHTML += `
-
-<div class="mb-5 mx-3 p-3 border" style="border-radius: 15px; background-color: antiquewhite;">
+let html = `
+<div class="mb-5 mx-3 p-3 border shadow" style="border-radius: 15px; background-color: antiquewhite;">  
         <a
-            class="tsrSectionHeading" href="#pricingPlans">
-            <h5 id="pricingPlans" style="scroll-margin: 100px;">Pricing Plans</h5>
+            class="tsrSectionHeading" href="#pricingPlans">`;
+
+html += `<h5 id="pricingPlans" style="scroll-margin: 200px;color: #7c3b0c; font-size: 22px">Pricing Plans</h5>`; // change here
+html += `
             <hr>
         </a>
         <div class="row mb-3">
             <div class="col-12 col-xxl-4 mb-3">
                 <div class="card h-100 shadow-lg border-end" style="background-color: aliceblue;">
-                    <div class="card-body h-100"><div class="card-title">
-                        <h5>Tailor Made Plans</h5>
+
+                    <div class="card-body h-100">`
+html += `<div class="card-title" style="border-left: 4px solid #9e5960; color: #9e5960">`; // change here
+html += `<h5>Tailor Made Plans</h5>
                     </div>
-                    <hr>
+                    <hr>`;
+html += `
+                        <div style="color: #7c3b0c;">` // change here
+html += `
+                        <div>
                     <div>
                         <b>EOD Plans</b>
                         <ul style="list-style-type: disclosure-closed;">
                             <li>
-                                <span class="ul-header">EOD Funda</span> - For Students and Investors
+                                EOD Funda - For Students and Investors
                             </li>
                             <li>
-                                <span class="ul-header">EOD Combo</span> - For Part Time Pro
+                                EOD Combo - For Part Time Pro
 
                             </li>
                         </ul>
@@ -800,21 +807,21 @@ sectionContainer.innerHTML += `
                         <b>Live Plans</b>
                         <ul style="list-style-type: disclosure-closed;">
                             <li>
-                                <span class="ul-header">Trader Value</span>
+                                Trader Value
                                 <ul>
                                     <li>Ticks - Daily / Weekly / Monthly</li>
                                     <li>Newbie or Causal Trader</li>
                                 </ul>
                             </li>
                             <li>
-                                <span class="ul-header">Trader</span>
+                                Trader
                                 <ul>
                                     <li>5 Min to Qtr Tick</li>
                                     <li>Swing / Positional Trader</li>
                                 </ul>
                             </li>
                             <li>
-                                <span class="ul-header">Trader Pro</span>
+                                Trader Pro
                                 <ul>
                                     <li>Tick 1/ 2 min to Qtr Ticks</li>
                                     <li>Professional Trader, Intraday, Swing Trader</li>
@@ -823,25 +830,33 @@ sectionContainer.innerHTML += `
                         </ul>
                     </div>
                     </div>
+                    </div>
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-xxl-4  mb-3">
                 <div class="card h-100 shadow-lg border-end" style="background-color: aliceblue;">
-                    <div class="card-body h-100">
-                        <div class="card-title">
+                    <div class="card-body h-100">`
+html += `<div class="card-title" style="border-left: 4px solid #9e5960; color: #9e5960">`; // change here
+
+html += `
                         <h5>Plan terms</h5>
                     </div>
-                    <hr>
+                    <hr>`;
+                        html+=`
+                        <div style="color: #7c3b0c;">` // change here
+                        html+=`
+                        <div>
                     <div>
                         <ul style="list-style-type: disclosure-closed;">
                             <li>
-                                <span class="ul-header">Monthly Plan</span> - Try TSR at Reasonable Price
+                                Monthly Plan - Try TSR at Reasonable Price
                             </li>
                             <li>
-                                <span class="ul-header">Annual Plan</span> - For Regular users with Discount
+                                Annual Plan - For Regular users with Discount
                             </li>
                             <li>
-                                <span class="ul-header">2 / 5 Year Plan</span> - Deep Discount , Beat Inflation
+                                2 / 5 Year Plan - Deep Discount , Beat Inflation
                                 Suggested for pro
                             </li>
                             <li>
@@ -854,65 +869,91 @@ sectionContainer.innerHTML += `
                         </ul>
                     </div>
                     </div>
+                    </div>
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-xxl-4 mb-3">
                 <div class="card h-100 shadow-lg" style="background-color: aliceblue;">
-                    <div class="card-body h-100">
-                        <div class="card-title">
+                    <div class="card-body h-100">`;
+html += `<div class="card-title" style="border-left: 4px solid #9e5960; color: #9e5960">`; // change here
+
+html += `
                         <h5>Vs Competitor</h5>
                     </div>
-                    <hr>
+                    <hr>`;
+                        html+=`
+                        <div style="color: #7c3b0c;">` // change here
+                        html+=`
+                        <div>
                     <div>
                         <ul style="list-style-type: disclosure-closed;">
                             <li>
-                                Majority of Competitor don't have <span class="ul-header">1, 2, 3 mins Tick</span>
+                                Majority of Competitor don't have 1, 2, 3 mins Tick
                             </li>
                             <li>
-                                <span class="ul-header">TSR Trader Plans</span> are more Feature Rich that most
+                                TSR Trader Plans are more Feature Rich that most
                                 Competitors
                             </li>
                             <li>
-                                <span class="ul-header">Chart Pattern Screen</span>not available
+                                Chart Pattern Screen</span>not available
                                 Suggested for pro
                             </li>
                             <li>
-                                <span class="ul-header">Candlestick pattern 70+</span> and ability to select multiple
+                                Candlestick pattern 70+ and ability to select multiple
                                 pattern in one
                             </li>
                             <li>
-                                <span class="ul-header">TSR Pro Plan</span>comes with lots of pre built Strategies not
+                                TSR Pro Plan comes with lots of pre built Strategies not
                                 available with competitors
                             </li>
                             <li>
-                                Competitor lack deep integration between <span class="ul-header">Equity, Chart and
-                                    Screener combo</span>
+                                Competitor lack deep integration betweenEquity, Chart and
+                                    Screener combo
                             </li>
                         </ul>
+                    </div>
+                    </div>
                     </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div align="center">`
+        html+=`<a href="https://www.topstockresearch.com/my/TsrPlans/" target="blank">`;
+        html+=`    <button class="btn" style="background-color: #672b00; color: white">Pricing Plans</button>` // change here
+        html+=`</a>`;
+        html+=`</div>
+
     </div>
         
 
-    <div class="mb-5 mx-3 p-3 border" style="border-radius: 15px; background-color: antiquewhite;"><a
-            class="tsrSectionHeading" href="#AboutUs/Help">
-            <h5 id="AboutUs/Help" style="scroll-margin: 100px;">About Us / Help</h5>
-            <hr>
+    <div class="mb-5 mx-3 p-3 border shadow" style="border-radius: 15px; background-color: antiquewhite;"><a
+            class="tsrSectionHeading" href="#AboutUs/Help">`;
+
+
+html += `<h5 id="AboutUs/Help" style="scroll-margin: 200px; color: #7c3b0c; font-size: 22px;">About Us / Help</h5>`; // change here
+
+html += `<hr>
         </a>
         <div class="row mb-3">
             <div class="col-12 col-md-6 mb-3">
                 <div class="card h-100 shadow-lg border-end" style="background-color: aliceblue;">
-                    <div class="card-body h-100">
-                        <div class="card-title">
-                            <h5>Legacy</h5>
+                    <div class="card-body h-100">`
+
+html += `<div class="card-title" style="border-left: 4px solid #9e5960; color: #9e5960">`; // change here
+
+html += `                            <h5>Legacy</h5>
                         </div>
                         <hr>
+                        `;
+html += `
+                        <div style="color: #7c3b0c;">` // change here
+html += `
                         <div>
                             <b>Experience</b>
-                            <ul style="list-style-type: disclosure-closed;">
+                            <ul style="list-style-type: disclosure-closed;" >
                                 <li>
                                     15 Years and growing Strong
                                 </li>
@@ -936,16 +977,21 @@ sectionContainer.innerHTML += `
 
                             </ul>
                         </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-6 mb-3">
                 <div class="card h-100 shadow-lg border-end" style="background-color: aliceblue;">
-                    <div class="card-body h-100">
-                        <div class="card-title">
-                            <h5>Help / Support</h5>
+                    <div class="card-body h-100">`
+html += `<div class="card-title" style="border-left: 4px solid #9e5960; color: #9e5960">`; // change here
+
+html += `                            <h5>Help / Support</h5>
                         </div>
-                        <hr>
+                        <hr>`;
+html += `
+                        <div style="color: #7c3b0c;">` // change here
+html += `
                         <div>
                             <b>Resources</b>
                             <ul style="list-style-type: disclosure-closed;">
@@ -979,15 +1025,18 @@ sectionContainer.innerHTML += `
                                 </li>
                             </ul>
                         </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-
 `;
+
+
+
+sectionContainer.innerHTML += html;
 
 a = document.createElement("a");
 
@@ -1001,9 +1050,9 @@ navMenu.appendChild(a);
 
 let faqSection = document.createElement("div");
 faqSection.id = "tsrFaqSection";
-faqSection.classList.add("mb-5", "mx-3", "p-3", "border");
+faqSection.classList.add("mb-5", "mx-3", "p-3", "border", "shadow");
 faqSection.style.borderRadius = "15px";
-faqSection.style.backgroundColor = "antiquewhite";
+faqSection.style.backgroundColor = "antiquewhite"; // change here
 
 let faqSectionHeading = document.createElement("h1");
 faqSectionHeading.classList.add("p-3");
@@ -1013,14 +1062,12 @@ faqSection.appendChild(faqSectionHeading);
 
 sectionContainer.appendChild(faqSection);
 
-sectionContainer.innerHTML+=`
+sectionContainer.innerHTML += `
 <!-- Vocal for Local Section -->
 <div class="vocal-for-local text-center mt-5 mb-5">
   <h3>Vocal for Local</h3>
-  <p class="tagline">Shudd Desi platform / Build in India platform</p>
+  <p class="tagline">Shudd Desi platform / Built in India platform</p>
 </div>
-
-
 `;
 
 wrapper.appendChild(sectionContainer);
@@ -1107,7 +1154,7 @@ function createDialog(isImg, html) {
     contentDiv.style.maxHeight = "80vh";
     // contentDiv.style.overflowX = "visible";
     contentDiv.style.overflowY = "hidden";
-    contentDiv.style.backgroundColor = "whitesmoke";
+    contentDiv.style.backgroundColor = "whitesmoke"; // change here
     contentDiv.classList.add("border", "border-5", "rounded");
 
 
@@ -1230,6 +1277,16 @@ function addFaqs() {
 };
 
 addFaqs();
+
+a = document.createElement("a");
+
+a.href = "#tsrFaqSection";
+a.innerHTML = "FAQs" + "<br>";
+a.classList.add("mb-2", "tsrLinks");
+a.style.fontSize = "14px";
+a.style.fontWeight = "300";
+
+navMenu.appendChild(a);
 
 
 
