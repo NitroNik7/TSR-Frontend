@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css">
+
+    <!-- Google sign in -->
+    <meta name="referrer" content="no-referrer-when-downgrade" /> <!-- For testing -->
+
+    <!-- Step 1 - import Google Identity Services client library -->
+    <script src="https://accounts.google.com/gsi/client" async></script>
+</head>
+
+<body>
+
+    <style>
+        .line-container {
+            align-items: center;
+        }
+
+        .line {
+            border-top: 1px solid #ccc;
+            width: 100%;
+        }
+    </style>
+
+    <!-- Login Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tsrUserLoginModal">
+        Login
+    </button>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="tsrUserLoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">
+                        Welcome back to
+                        <span style="color: #0d6efd;">Top Stock Research</span>
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center">
+                        <span style="font-weight: 500; font-size: 18px;">Login</span>
+                    </div>
+                    <br>
+
+                    <!-- TODO -->
+                    <div id="tsrUserLoginGoogleSignIn" align="center" style="scale: 115%;">
+
+                    </div>
+                    <br>
+                    <div class="line-container d-flex w-100">
+                        <div class="line"></div>
+                        <div class="fw-300 fs-16 mx-3">or</div>
+                        <div class="line"></div>
+                    </div>
+
+                    <form class="mt-3" id="tsrUserLoginForm">
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="far fa-envelope"></i>
+                            </span>
+
+                            <input type="email" class="form-control" id="tsrUserLoginEmail" placeholder="Email Address"
+                                required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock fa-sm"></i>
+                            </span>
+                            <input type="password" class="form-control" id="tsrUserLoginPassword" placeholder="Password"
+                                required>
+                            <span class="input-group-text" id="tsrUserLoginShowPasswordBtn"
+                                onclick="showUserAccPassword(event, 'tsrUserLoginPassword')">
+                                <i class="far fa-eye"></i>
+                            </span>
+                        </div>
+
+                        <div class="form-text mb-3 text-end">
+                            <button class="btn" type="button" data-bs-toggle="modal"
+                                data-bs-target="#tsrUserForgotPasswordModal">
+                                <span style="text-decoration: underline; color: #0a58ca;">
+                                    Forgot Password ?
+                                </span>
+                            </button>
+                        </div>
+
+
+                        <span style="text-decoration: underline; color: #0a58ca;">
+
+                        </span>
+
+                        <div class="row d-flex align-items-center mb-3">
+                            <div class="col-md-4">
+                                <div style="display:inline;"><img class="img-responsive img-fluid"
+                                        src="https://www.stockaio.com/static/img/pramanik/UKHMRrItUuBo/OQbtlyLmuUmB.jpg">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="btn btn-primary mt-2 mb-2 btn-sm" onclick="migu.changeImage()">Change
+                                    Image</a>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="captchaLogin" placeholder="Image Value" type="text">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn" style="font-weight: 300;" data-bs-target="#tsrUserRegModal"
+                        data-bs-toggle="modal">
+                        <span style='text-decoration: underline; color: #0a58ca; font-weight: 500;'>
+                            Register</span>
+                        a new account
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Reg Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tsrUserRegModal">
+        Register
+    </button>
+
+    <!-- Reg Modal -->
+    <div class="modal fade" id="tsrUserRegModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">
+                        Welcome to
+                        <span style="color: #0d6efd;">
+                            Top Stock Research
+                        </span>
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center">
+                        <span style="font-weight: 500; font-size: 18px;">Register</span>
+                    </div>
+                    <br>
+
+                    <!-- TODO -->
+                    <div id="tsrUserRegGoogleSignIn" align="center" style="scale: 115%;">
+
+                    </div>
+                    <br>
+                    <div class="line-container d-flex w-100">
+                        <div class="line"></div>
+                        <div class="fw-300 fs-16 mx-3">or</div>
+                        <div class="line"></div>
+                    </div>
+                    <form class="mt-3" id="tsrUserRegForm">
+                        <div class="mb-3 d-flex">
+                            <input type="text" class="form-control w-100 me-1" placeholder="First Name"
+                                aria-label="First name" required>
+                            <input type="text" class="form-control w-100 ms-1" placeholder="Last Name"
+                                aria-label="Last name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <!-- <label for="tsrUserRegEmail" class="form-label" style="font-size: 14px;">Email address</label> -->
+                            <span class="input-group-text">
+                                <i class="far fa-envelope"></i>
+                            </span>
+
+                            <input type="email" class="form-control" id="tsrUserRegEmail" placeholder="Email Address"
+                                required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <!-- <label for="tsrUserRegPassword" class="form-label" style="font-size: 14px;">Password</label> -->
+                            <span class="input-group-text">
+                                <i class="fas fa-lock fa-sm"></i>
+                            </span>
+                            <input type="password" class="form-control" id="tsrUserRegPassword" placeholder="Password"
+                                required>
+                            <span class="input-group-text" id="userRegShowPasswordBtn"
+                                onclick="showUserAccPassword(event, 'tsrUserRegPassword')">
+                                <i class="far fa-eye"></i>
+                            </span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <!-- <label for="tsrUserRegPhnNumber" class="form-label" style="font-size: 14px;">Phone number</label> -->
+                            <span class="input-group-text">
+                                <i class="fas fa-phone fa-sm"></i>
+                            </span>
+
+                            <select class="form-select" name="countryCode" id="countryCode" style="max-width: 120px">
+                                <option value="IND">+91 India</option>
+                                <option value="AFG">+93 Afghanistan</option>
+                                <option value="ALA">+358 Åland Islands</option>
+                                <option value="ALB">+355 Albania</option>
+                                <option value="DZA">+213 Algeria</option>
+                                <option value="ASM">+1684 American Samoa</option>
+                                <option value="AND">+376 Andorra</option>
+                                <option value="AGO">+244 Angola</option>
+                                <option value="AIA">+1264 Anguilla</option>
+                                <option value="ATA">+672 Antarctica</option>
+                                <option value="ATG">+1268 Antigua and Barbuda</option>
+                                <option value="ARG">+54 Argentina</option>
+                                <option value="ARM">+374 Armenia</option>
+                                <option value="ABW">+297 Aruba</option>
+                                <option value="AUS">+61 Australia</option>
+                                <option value="AUT">+43 Austria</option>
+                                <option value="AZE">+994 Azerbaijan</option>
+                                <option value="BHS">+1242 Bahamas</option>
+                                <option value="BHR">+973 Bahrain</option>
+                                <option value="BGD">+880 Bangladesh</option>
+                                <option value="BRB">+1246 Barbados</option>
+                                <option value="BLR">+375 Belarus</option>
+                                <option value="BEL">+32 Belgium</option>
+                                <option value="BLZ">+501 Belize</option>
+                                <option value="BEN">+229 Benin</option>
+                                <option value="BMU">+1441 Bermuda</option>
+                                <option value="BTN">+975 Bhutan</option>
+                                <option value="BOL">+591 Bolivia</option>
+                                <option value="BES">+599 Bonaire, Sint Eustatius and Saba</option>
+                                <option value="BIH">+387 Bosnia and Herzegovina</option>
+                                <option value="BWA">+267 Botswana</option>
+                                <option value="BVT">+47 Bouvet Island</option>
+                                <option value="BRA">+55 Brazil</option>
+                                <option value="IOT">+246 British Indian Ocean Territory</option>
+                                <option value="BRN">+673 Brunei Darussalam</option>
+                                <option value="BGR">+359 Bulgaria</option>
+                                <option value="BFA">+226 Burkina Faso</option>
+                                <option value="BDI">+257 Burundi</option>
+                                <option value="KHM">+855 Cambodia</option>
+                                <option value="CMR">+237 Cameroon</option>
+                                <option value="CAN">+1 Canada</option>
+                                <option value="CPV">+238 Cabo Verde</option>
+                                <option value="CYM">+1345 Cayman Islands</option>
+                                <option value="CAF">+236 Central African Republic</option>
+                                <option value="TCD">+235 Chad</option>
+                                <option value="CHL">+56 Chile</option>
+                                <option value="CHN">+86 China</option>
+                                <option value="CXR">+61 Christmas Island</option>
+                                <option value="CCK">+61 Cocos (Keeling) Islands</option>
+                                <option value="COL">+57 Colombia</option>
+                                <option value="COM">+269 Comoros</option>
+                                <option value="COG">+242 Congo</option>
+                                <option value="COD">+243 Congo, Democratic Republic of the</option>
+                                <option value="COK">+682 Cook Islands</option>
+                                <option value="CRI">+506 Costa Rica</option>
+                                <option value="CIV">+225 Côte d'Ivoire</option>
+                                <option value="HRV">+385 Croatia</option>
+                                <option value="CUB">+53 Cuba</option>
+                                <option value="CUW">+599 Curaçao</option>
+                                <option value="CYP">+357 Cyprus</option>
+                                <option value="CZE">+420 Czechia</option>
+                                <option value="DNK">+45 Denmark</option>
+                                <option value="DJI">+253 Djibouti</option>
+                                <option value="DMA">+1767 Dominica</option>
+                                <option value="DOM">+1809 Dominican Republic</option>
+                                <option value="ECU">+593 Ecuador</option>
+                                <option value="EGY">+20 Egypt</option>
+                                <option value="SLV">+503 El Salvador</option>
+                                <option value="GNQ">+240 Equatorial Guinea</option>
+                                <option value="ERI">+291 Eritrea</option>
+                                <option value="EST">+372 Estonia</option>
+                                <option value="ETH">+251 Ethiopia</option>
+                                <option value="FJI">+679 Fiji</option>
+                                <option value="FIN">+358 Finland</option>
+                                <option value="FRA">+33 France</option>
+                                <option value="DEU">+49 Germany</option>
+                                <option value="GRC">+30 Greece</option>
+                                <option value="HKG">+852 Hong Kong</option>
+                                <option value="ISL">+354 Iceland</option>
+                                <option value="IDN">+62 Indonesia</option>
+                                <option value="IRN">+98 Iran</option>
+                                <option value="IRQ">+964 Iraq</option>
+                                <option value="IRL">+353 Ireland</option>
+                                <option value="ISR">+972 Israel</option>
+                                <option value="ITA">+39 Italy</option>
+                                <option value="JPN">+81 Japan</option>
+                                <option value="JOR">+962 Jordan</option>
+                                <option value="KEN">+254 Kenya</option>
+                                <option value="KOR">+82 Korea, Republic of</option>
+                                <option value="LBN">+961 Lebanon</option>
+                                <option value="LKA">+94 Sri Lanka</option>
+                                <option value="MEX">+52 Mexico</option>
+                                <option value="NPL">+977 Nepal</option>
+                                <option value="NLD">+31 Netherlands</option>
+                                <option value="NZL">+64 New Zealand</option>
+                                <option value="NGA">+234 Nigeria</option>
+                                <option value="NOR">+47 Norway</option>
+                                <option value="PAK">+92 Pakistan</option>
+                                <option value="PHL">+63 Philippines</option>
+                                <option value="POL">+48 Poland</option>
+                                <option value="PRT">+351 Portugal</option>
+                                <option value="QAT">+974 Qatar</option>
+                                <option value="ROU">+40 Romania</option>
+                                <option value="RUS">+7 Russian Federation</option>
+                                <option value="SAU">+966 Saudi Arabia</option>
+                                <option value="SGP">+65 Singapore</option>
+                                <option value="ZAF">+27 South Africa</option>
+                                <option value="ESP">+34 Spain</option>
+                                <option value="SWE">+46 Sweden</option>
+                                <option value="CHE">+41 Switzerland</option>
+                                <option value="TWN">+886 Taiwan</option>
+                                <option value="THA">+66 Thailand</option>
+                                <option value="TUR">+90 Türkiye</option>
+                                <option value="UKR">+380 Ukraine</option>
+                                <option value="ARE">+971 United Arab Emirates</option>
+                                <option value="GBR">+44 United Kingdom</option>
+                                <option value="USA">+1 United States of America</option>
+                                <option value="URY">+598 Uruguay</option>
+                                <option value="UZB">+998 Uzbekistan</option>
+                                <option value="VEN">+58 Venezuela</option>
+                                <option value="VNM">+84 Viet Nam</option>
+                                <option value="YEM">+967 Yemen</option>
+                                <option value="ZMB">+260 Zambia</option>
+                                <option value="ZWE">+263 Zimbabwe</option>
+                                <option value="OTH"> Other</option>
+                            </select>
+
+                            <input type="text" class="form-control" id="tsrUserRegPhnNumber" placeholder="Phone Number"
+                                required>
+                        </div>
+
+                        <div class="row d-flex align-items-center mb,-3">
+                            <div class="col-md-4">
+                                <div id="captchaImg" style="display:inline;"><img class="img-responsive img-fluid"
+                                        src="https://www.stockaio.com/static/img/pramanik/UKHMRrItUuBo/OQbtlyLmuUmB.jpg">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="btn btn-primary mt-2 mb-2 btn-sm" onclick="migu.changeImage()">Change
+                                    Image</a>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="captchaReg" placeholder="Image Value" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-text mb-3 text-center">
+                            By proceeding, I agree to
+                            <a href="https://www.topstockresearch.com/Disclaimer.html" target="_blank"
+                                style="font-size: 12px;">T&amp;C</a>
+                            and
+                            <a href="">Key notes</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn" style="font-weight: 300;" data-bs-target="#tsrUserLoginModal"
+                        data-bs-toggle="modal">
+                        Already have an account?
+                        <span style="text-decoration: underline; color: #0a58ca; font-weight: 500;">
+                            Login
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Details trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tsrUserForgotPasswordModal">
+        Forgot Password
+    </button>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="tsrUserForgotPasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">
+                        Reset Password
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="mt-3" id="tsrUserResetPswdForm">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="far fa-envelope"></i>
+                            </span>
+
+                            <input type="email" class="form-control" id="tsrUserResetPswdEmail"
+                                placeholder="Email Address" required>
+                        </div>
+
+                        <div class="row d-flex align-items-center mb-3">
+                            <div class="col-md-4">
+                                <div style="display:inline;"><img class="img-responsive img-fluid"
+                                        src="https://www.stockaio.com/static/img/pramanik/UKHMRrItUuBo/OQbtlyLmuUmB.jpg">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="btn btn-primary mt-2 mb-2 btn-sm" onclick="migu.changeImage()">Change
+                                    Image</a>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="captchaPswdReset" placeholder="Image Value" type="text">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <div style="font-weight: 300; text-align: center">
+                        On submit, you will receive a Password reset link on your e-mail, if it exists in our records
+                    </div>
+                    <button type="button" class="btn" style="font-weight: 300;" data-bs-target="#tsrUserLoginModal"
+                        data-bs-toggle="modal">
+                        Back to
+                        <span style="text-decoration: underline; color: #0a58ca;">
+                            Login
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- User Details trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tsrUserDetailsModal">
+        User Details
+    </button>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="tsrUserDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">
+                        Please enter your details
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="mt-3" id="tsrUserRegForm">
+                        <div class="mb-3 d-flex">
+                            <input type="text" class="form-control w-100 me-1" placeholder="State" aria-label="State">
+                        </div>
+                        <!-- <label for="tsrUserRegEmail" class="form-label" style="font-size: 14px;">Email address</label> -->
+                        <div class="form-floating mb-3">
+
+                            <div class="form-floating mb-3"> <select class="form-select" name="country"
+                                    id="country">
+                                    <option value="IND">India</option>
+                                    <option value="AFG">Afghanistan</option>
+                                    <option value="ALA">Åland Islands</option>
+                                    <option value="ALB">Albania</option>
+                                    <option value="DZA">Algeria</option>
+                                    <option value="ASM">American Samoa</option>
+                                    <option value="AND">Andorra</option>
+                                    <option value="AGO">Angola</option>
+                                    <option value="AIA">Anguilla</option>
+                                    <option value="ATA">Antarctica</option>
+                                    <option value="ATG">Antigua and Barbuda</option>
+                                    <option value="ARG">Argentina</option>
+                                    <option value="ARM">Armenia</option>
+                                    <option value="ABW">Aruba</option>
+                                    <option value="AUS">Australia</option>
+                                    <option value="AUT">Austria</option>
+                                    <option value="AZE">Azerbaijan</option>
+                                    <option value="BHS">Bahamas</option>
+                                    <option value="BHR">Bahrain</option>
+                                    <option value="BGD">Bangladesh</option>
+                                    <option value="BRB">Barbados</option>
+                                    <option value="BLR">Belarus</option>
+                                    <option value="BEL">Belgium</option>
+                                    <option value="BLZ">Belize</option>
+                                    <option value="BEN">Benin</option>
+                                    <option value="BMU">Bermuda</option>
+                                    <option value="BTN">Bhutan</option>
+                                    <option value="BOL">Bolivia</option>
+                                    <option value="BES">Bonaire, Sint Eustatius and Saba</option>
+                                    <option value="BIH">Bosnia and Herzegovina</option>
+                                    <option value="BWA">Botswana</option>
+                                    <option value="BVT">Bouvet Island</option>
+                                    <option value="BRA">Brazil</option>
+                                    <option value="IOT">British Indian Ocean Territory</option>
+                                    <option value="BRN">Brunei Darussalam</option>
+                                    <option value="BGR">Bulgaria</option>
+                                    <option value="BFA">Burkina Faso</option>
+                                    <option value="BDI">Burundi</option>
+                                    <option value="KHM">Cambodia</option>
+                                    <option value="CMR">Cameroon</option>
+                                    <option value="CAN">Canada</option>
+                                    <option value="CPV">Cabo Verde</option>
+                                    <option value="CYM">Cayman Islands</option>
+                                    <option value="CAF">Central African Republic</option>
+                                    <option value="TCD">Chad</option>
+                                    <option value="CHL">Chile</option>
+                                    <option value="CHN">China</option>
+                                    <option value="CXR">Christmas Island</option>
+                                    <option value="CCK">Cocos (Keeling) Islands</option>
+                                    <option value="COL">Colombia</option>
+                                    <option value="COM">Comoros</option>
+                                    <option value="COG">Congo</option>
+                                    <option value="COD">Congo, Democratic Republic of the</option>
+                                    <option value="COK">Cook Islands</option>
+                                    <option value="CRI">Costa Rica</option>
+                                    <option value="CIV">Côte d'Ivoire</option>
+                                    <option value="HRV">Croatia</option>
+                                    <option value="CUB">Cuba</option>
+                                    <option value="CUW">Curaçao</option>
+                                    <option value="CYP">Cyprus</option>
+                                    <option value="CZE">Czechia</option>
+                                    <option value="DNK">Denmark</option>
+                                    <option value="DJI">Djibouti</option>
+                                    <option value="DMA">Dominica</option>
+                                    <option value="DOM">Dominican Republic</option>
+                                    <option value="ECU">Ecuador</option>
+                                    <option value="EGY">Egypt</option>
+                                    <option value="SLV">El Salvador</option>
+                                    <option value="GNQ">Equatorial Guinea</option>
+                                    <option value="ERI">Eritrea</option>
+                                    <option value="EST">Estonia</option>
+                                    <option value="ETH">Ethiopia</option>
+                                    <option value="FJI">Fiji</option>
+                                    <option value="FIN">Finland</option>
+                                    <option value="FRA">France</option>
+                                    <option value="DEU">Germany</option>
+                                    <option value="GRC">Greece</option>
+                                    <option value="HKG">Hong Kong</option>
+                                    <option value="ISL">Iceland</option>
+                                    <option value="IDN">Indonesia</option>
+                                    <option value="IRN">Iran</option>
+                                    <option value="IRQ">Iraq</option>
+                                    <option value="IRL">Ireland</option>
+                                    <option value="ISR">Israel</option>
+                                    <option value="ITA">Italy</option>
+                                    <option value="JPN">Japan</option>
+                                    <option value="JOR">Jordan</option>
+                                    <option value="KEN">Kenya</option>
+                                    <option value="KOR">Korea, Republic of</option>
+                                    <option value="LBN">Lebanon</option>
+                                    <option value="LKA">Sri Lanka</option>
+                                    <option value="MEX">Mexico</option>
+                                    <option value="NPL">Nepal</option>
+                                    <option value="NLD">Netherlands</option>
+                                    <option value="NZL">New Zealand</option>
+                                    <option value="NGA">Nigeria</option>
+                                    <option value="NOR">Norway</option>
+                                    <option value="PAK">Pakistan</option>
+                                    <option value="PHL">Philippines</option>
+                                    <option value="POL">Poland</option>
+                                    <option value="PRT">Portugal</option>
+                                    <option value="QAT">Qatar</option>
+                                    <option value="ROU">Romania</option>
+                                    <option value="RUS">Russian Federation</option>
+                                    <option value="SAU">Saudi Arabia</option>
+                                    <option value="SGP">Singapore</option>
+                                    <option value="ZAF">South Africa</option>
+                                    <option value="ESP">Spain</option>
+                                    <option value="SWE">Sweden</option>
+                                    <option value="CHE">Switzerland</option>
+                                    <option value="TWN">Taiwan</option>
+                                    <option value="THA">Thailand</option>
+                                    <option value="TUR">Türkiye</option>
+                                    <option value="UKR">Ukraine</option>
+                                    <option value="ARE">United Arab Emirates</option>
+                                    <option value="GBR">United Kingdom</option>
+                                    <option value="USA">United States of America</option>
+                                    <option value="URY">Uruguay</option>
+                                    <option value="UZB">Uzbekistan</option>
+                                    <option value="VEN">Venezuela</option>
+                                    <option value="VNM">Viet Nam</option>
+                                    <option value="YEM">Yemen</option>
+                                    <option value="ZMB">Zambia</option>
+                                    <option value="ZWE">Zimbabwe</option>
+                                    <option value="OTH">Other</option>
+                                </select> <label for="country">Country</label></div>
+
+
+                            <div class="input-group mb-3">
+                                <!-- <label for="tsrUserRegPassword" class="form-label" style="font-size: 14px;">Password</label> -->
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock fa-sm"></i>
+                                </span>
+                                <input type="password" class="form-control" id="tsrUserDetailsPassword"
+                                    placeholder="Password" required>
+                                <span class="input-group-text" id="tsrUserDetailsShowPasswordBtn"
+                                    onclick="showUserAccPassword(event, 'tsrUserDetailsPassword')">
+                                    <i class="far fa-eye"></i>
+                                </span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <!-- <label for="tsrUserRegPhnNumber" class="form-label" style="font-size: 14px;">Phone number</label> -->
+                                <span class="input-group-text">
+                                    <i class="fas fa-phone fa-sm"></i>
+                                </span>
+
+
+                            <select class="form-select" name="countryCode" id="countryCode" style="max-width: 120px">
+                                <option value="IND">+91 India</option>
+                                <option value="AFG">+93 Afghanistan</option>
+                                <option value="ALA">+358 Åland Islands</option>
+                                <option value="ALB">+355 Albania</option>
+                                <option value="DZA">+213 Algeria</option>
+                                <option value="ASM">+1684 American Samoa</option>
+                                <option value="AND">+376 Andorra</option>
+                                <option value="AGO">+244 Angola</option>
+                                <option value="AIA">+1264 Anguilla</option>
+                                <option value="ATA">+672 Antarctica</option>
+                                <option value="ATG">+1268 Antigua and Barbuda</option>
+                                <option value="ARG">+54 Argentina</option>
+                                <option value="ARM">+374 Armenia</option>
+                                <option value="ABW">+297 Aruba</option>
+                                <option value="AUS">+61 Australia</option>
+                                <option value="AUT">+43 Austria</option>
+                                <option value="AZE">+994 Azerbaijan</option>
+                                <option value="BHS">+1242 Bahamas</option>
+                                <option value="BHR">+973 Bahrain</option>
+                                <option value="BGD">+880 Bangladesh</option>
+                                <option value="BRB">+1246 Barbados</option>
+                                <option value="BLR">+375 Belarus</option>
+                                <option value="BEL">+32 Belgium</option>
+                                <option value="BLZ">+501 Belize</option>
+                                <option value="BEN">+229 Benin</option>
+                                <option value="BMU">+1441 Bermuda</option>
+                                <option value="BTN">+975 Bhutan</option>
+                                <option value="BOL">+591 Bolivia</option>
+                                <option value="BES">+599 Bonaire, Sint Eustatius and Saba</option>
+                                <option value="BIH">+387 Bosnia and Herzegovina</option>
+                                <option value="BWA">+267 Botswana</option>
+                                <option value="BVT">+47 Bouvet Island</option>
+                                <option value="BRA">+55 Brazil</option>
+                                <option value="IOT">+246 British Indian Ocean Territory</option>
+                                <option value="BRN">+673 Brunei Darussalam</option>
+                                <option value="BGR">+359 Bulgaria</option>
+                                <option value="BFA">+226 Burkina Faso</option>
+                                <option value="BDI">+257 Burundi</option>
+                                <option value="KHM">+855 Cambodia</option>
+                                <option value="CMR">+237 Cameroon</option>
+                                <option value="CAN">+1 Canada</option>
+                                <option value="CPV">+238 Cabo Verde</option>
+                                <option value="CYM">+1345 Cayman Islands</option>
+                                <option value="CAF">+236 Central African Republic</option>
+                                <option value="TCD">+235 Chad</option>
+                                <option value="CHL">+56 Chile</option>
+                                <option value="CHN">+86 China</option>
+                                <option value="CXR">+61 Christmas Island</option>
+                                <option value="CCK">+61 Cocos (Keeling) Islands</option>
+                                <option value="COL">+57 Colombia</option>
+                                <option value="COM">+269 Comoros</option>
+                                <option value="COG">+242 Congo</option>
+                                <option value="COD">+243 Congo, Democratic Republic of the</option>
+                                <option value="COK">+682 Cook Islands</option>
+                                <option value="CRI">+506 Costa Rica</option>
+                                <option value="CIV">+225 Côte d'Ivoire</option>
+                                <option value="HRV">+385 Croatia</option>
+                                <option value="CUB">+53 Cuba</option>
+                                <option value="CUW">+599 Curaçao</option>
+                                <option value="CYP">+357 Cyprus</option>
+                                <option value="CZE">+420 Czechia</option>
+                                <option value="DNK">+45 Denmark</option>
+                                <option value="DJI">+253 Djibouti</option>
+                                <option value="DMA">+1767 Dominica</option>
+                                <option value="DOM">+1809 Dominican Republic</option>
+                                <option value="ECU">+593 Ecuador</option>
+                                <option value="EGY">+20 Egypt</option>
+                                <option value="SLV">+503 El Salvador</option>
+                                <option value="GNQ">+240 Equatorial Guinea</option>
+                                <option value="ERI">+291 Eritrea</option>
+                                <option value="EST">+372 Estonia</option>
+                                <option value="ETH">+251 Ethiopia</option>
+                                <option value="FJI">+679 Fiji</option>
+                                <option value="FIN">+358 Finland</option>
+                                <option value="FRA">+33 France</option>
+                                <option value="DEU">+49 Germany</option>
+                                <option value="GRC">+30 Greece</option>
+                                <option value="HKG">+852 Hong Kong</option>
+                                <option value="ISL">+354 Iceland</option>
+                                <option value="IDN">+62 Indonesia</option>
+                                <option value="IRN">+98 Iran</option>
+                                <option value="IRQ">+964 Iraq</option>
+                                <option value="IRL">+353 Ireland</option>
+                                <option value="ISR">+972 Israel</option>
+                                <option value="ITA">+39 Italy</option>
+                                <option value="JPN">+81 Japan</option>
+                                <option value="JOR">+962 Jordan</option>
+                                <option value="KEN">+254 Kenya</option>
+                                <option value="KOR">+82 Korea, Republic of</option>
+                                <option value="LBN">+961 Lebanon</option>
+                                <option value="LKA">+94 Sri Lanka</option>
+                                <option value="MEX">+52 Mexico</option>
+                                <option value="NPL">+977 Nepal</option>
+                                <option value="NLD">+31 Netherlands</option>
+                                <option value="NZL">+64 New Zealand</option>
+                                <option value="NGA">+234 Nigeria</option>
+                                <option value="NOR">+47 Norway</option>
+                                <option value="PAK">+92 Pakistan</option>
+                                <option value="PHL">+63 Philippines</option>
+                                <option value="POL">+48 Poland</option>
+                                <option value="PRT">+351 Portugal</option>
+                                <option value="QAT">+974 Qatar</option>
+                                <option value="ROU">+40 Romania</option>
+                                <option value="RUS">+7 Russian Federation</option>
+                                <option value="SAU">+966 Saudi Arabia</option>
+                                <option value="SGP">+65 Singapore</option>
+                                <option value="ZAF">+27 South Africa</option>
+                                <option value="ESP">+34 Spain</option>
+                                <option value="SWE">+46 Sweden</option>
+                                <option value="CHE">+41 Switzerland</option>
+                                <option value="TWN">+886 Taiwan</option>
+                                <option value="THA">+66 Thailand</option>
+                                <option value="TUR">+90 Türkiye</option>
+                                <option value="UKR">+380 Ukraine</option>
+                                <option value="ARE">+971 United Arab Emirates</option>
+                                <option value="GBR">+44 United Kingdom</option>
+                                <option value="USA">+1 United States of America</option>
+                                <option value="URY">+598 Uruguay</option>
+                                <option value="UZB">+998 Uzbekistan</option>
+                                <option value="VEN">+58 Venezuela</option>
+                                <option value="VNM">+84 Viet Nam</option>
+                                <option value="YEM">+967 Yemen</option>
+                                <option value="ZMB">+260 Zambia</option>
+                                <option value="ZWE">+263 Zimbabwe</option>
+                                <option value="OTH"> Other</option>
+                            </select>
+
+                                <input type="text" class="form-control" id="tsrUserRegPhnNumber"
+                                    placeholder="Phone Number" required>
+                            </div>
+
+                            <div class="row d-flex align-items-center mb,-3">
+                                <div class="col-md-4">
+                                    <div id="captchaImg" style="display:inline;"><img class="img-responsive img-fluid"
+                                            src="https://www.stockaio.com/static/img/pramanik/UKHMRrItUuBo/OQbtlyLmuUmB.jpg">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="btn btn-primary mt-2 mb-2 btn-sm" onclick="migu.changeImage()">Change
+                                        Image</a>
+                                </div>
+                                <div class="col-md-4">
+                                    <input class="form-control" id="captchaReg" placeholder="Image Value" type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-text mb-3 text-center">
+                                By proceeding, I agree to
+                                <a href="https://www.topstockresearch.com/Disclaimer.html" target="_blank"
+                                    style="font-size: 12px;">T&amp;C</a>
+                                and
+                                <a href="">Key notes</a>
+                            </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary w-100" style="font-weight: 300;">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/js/all.min.js"></script>
+
+</body>
+
+</html>
