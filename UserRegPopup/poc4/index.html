@@ -29,6 +29,27 @@
             border-top: 1px solid #ccc;
             width: 100%;
         }
+
+        @media screen and (max-width: 900px){
+            .modal-content{
+                min-width: unset !important;
+            }
+
+            .tsrCaptchaContainer img {
+                width: 200px !important;
+            }
+        }
+
+        @media screen and (min-width: 900px){
+            .modal-content{
+                min-width: 650px !important;
+            }
+
+            .tsrCaptchaContainer img {
+                width: 250px !important;
+            }
+        }
+
     </style>
 
     <!-- Login Button trigger modal -->
@@ -39,7 +60,7 @@
     <!-- Login Modal -->
     <div class="modal fade" id="tsrUserLoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="min-width: 650px;">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5">
                         Welcome back to
@@ -100,18 +121,18 @@
 
                         </span>
 
-                        <div class="row d-flex align-items-center mb-3">
-                            <div class="col-md-4">
+                        <div class="row d-flex align-items-center mb-3 tsrCaptchaContainer">
+                            <div class="col-6 col-md-6">
                                 <div style="display:inline;"><img class="img-responsive img-fluid"
                                         src="https://www.stockaio.com/static/img/pramanik/UKHMRrItUuBo/OQbtlyLmuUmB.jpg">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-2 col-md-2">
                                 <a class="btn mt-2 mb-2 btn-lg" onclick="migu.changeImage()">
                                     <i class="fas fa-sync-alt"></i>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-4 col-md-4">
                                 <input class="form-control" id="captchaLogin" placeholder="Image Value" type="text">
                             </div>
                         </div>
@@ -141,7 +162,7 @@
     <!-- Reg Modal -->
     <div class="modal fade" id="tsrUserRegModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="min-width: 650px;">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5">
                         Welcome to
@@ -385,7 +406,7 @@
     <div class="modal fade" id="tsrUserForgotPasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="min-width: 650px;">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5">
                         Reset Password
@@ -453,7 +474,7 @@
     <div class="modal fade" id="tsrUserDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="min-width: 650px;">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5">
                         Please update your details
