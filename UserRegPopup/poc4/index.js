@@ -52,7 +52,7 @@ let countryCallingCodes = {
     "COL": { "name": "Colombia", "code": "+57" },
     "COM": { "name": "Comoros", "code": "+269" },
     "COG": { "name": "Congo", "code": "+242" },
-    "COD": { "name": "Congo, Democratic Republic of the", "code": "+243" },
+    "COD": { "name": "Congo, Democratic Republic of the Congo", "code": "+243" },
     "COK": { "name": "Cook Islands", "code": "+682" },
     "CRI": { "name": "Costa Rica", "code": "+506" },
     "CIV": { "name": "Côte d'Ivoire", "code": "+225" },
