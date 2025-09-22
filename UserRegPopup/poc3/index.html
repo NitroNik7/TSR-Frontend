@@ -196,7 +196,7 @@
                         <div class="input-group mb-3">
                             <!-- <label for="tsrUserRegPhnNumber" class="form-label" style="font-size: 14px;">Phone number</label> -->
                             <span class="input-group-text">
-                                <i class="fas fa-phone fa-sm"  style="rotate: 90deg;"></i>
+                                <i class="fas fa-phone fa-sm" style="rotate: 90deg;"></i>
                             </span>
 
                             <select class="form-select" name="countryCode" id="countryCode" style="max-width: 120px">
@@ -452,6 +452,28 @@
                 </div>
                 <div class="modal-body">
                     <form class="mt-3" id="tsrUserRegForm">
+
+                        <fieldset disabled>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">
+                                    <i class="far fa-envelope"></i>
+                                </span>
+
+                                <input type="email" class="form-control" id="tsrUserLoginEmail"
+                                    placeholder="example@example.com" required>
+
+                            </div>
+
+                            <div class="mb-3 d-flex">
+                                <input type="text" class="form-control w-100 me-1" placeholder="User"
+                                    aria-label="First name" required>
+                                <input type="text" class="form-control w-100 ms-1" placeholder="Last Name"
+                                    aria-label="Last name">
+                            </div>
+
+
+                        </fieldset>
+
 
                         <div class="input-group mb-3">
                             <!-- <label for="tsrUserRegPhnNumber" class="form-label" style="font-size: 14px;">Phone number</label> -->
@@ -725,7 +747,45 @@
                             <label for="country">Country</label>
                         </div> -->
 
-                        <div class="form-floating mb-3"><select class="form-select" name="state" id="state"> <option value="AD">Andhra Pradesh</option><option value="AN">Andaman and Nicobar Islands</option><option value="AR">Arunachal Pradesh</option><option value="AS">Assam</option><option value="BR">Bihar</option><option value="CG">Chattisgarh</option><option value="CH">Chandigarh</option><option value="DL">Delhi</option><option value="DNHDD">Dadra &amp; Nagar Haveli and Daman &amp; Diu</option><option value="GA">Goa</option><option value="GJ">Gujarat</option><option value="HR">Haryana</option><option value="HP">Himachal Pradesh</option><option value="JK">Jammu and Kashmir</option><option value="JH">Jharkhand</option><option value="KA">Karnataka</option><option value="KL">Kerala</option><option value="LA">Ladakh</option><option value="LD">Lakshadweep Islands</option><option value="MP">Madhya Pradesh</option><option value="MH" selected="">Maharashtra</option><option value="MN">Manipur</option><option value="ML">Meghalaya</option><option value="MZ">Mizoram</option><option value="NL">Nagaland</option><option value="OD">Odisha</option><option value="PY">Pondicherry</option><option value="PB">Punjab</option><option value="RJ">Rajasthan</option><option value="SK">Sikkim</option><option value="TN">Tamil Nadu</option><option value="TS">Telangana</option><option value="TR">Tripura</option><option value="UP">Uttar Pradesh</option><option value="UK">Uttarakhand</option><option value="WB">West Bengal</option><option value="OTHERS">Others</option></select> <label for="state">State</label></div>
+                        <div class="form-floating mb-3"><select class="form-select" name="state" id="state">
+                                <option value="AD">Andhra Pradesh</option>
+                                <option value="AN">Andaman and Nicobar Islands</option>
+                                <option value="AR">Arunachal Pradesh</option>
+                                <option value="AS">Assam</option>
+                                <option value="BR">Bihar</option>
+                                <option value="CG">Chattisgarh</option>
+                                <option value="CH">Chandigarh</option>
+                                <option value="DL">Delhi</option>
+                                <option value="DNHDD">Dadra &amp; Nagar Haveli and Daman &amp; Diu</option>
+                                <option value="GA">Goa</option>
+                                <option value="GJ">Gujarat</option>
+                                <option value="HR">Haryana</option>
+                                <option value="HP">Himachal Pradesh</option>
+                                <option value="JK">Jammu and Kashmir</option>
+                                <option value="JH">Jharkhand</option>
+                                <option value="KA">Karnataka</option>
+                                <option value="KL">Kerala</option>
+                                <option value="LA">Ladakh</option>
+                                <option value="LD">Lakshadweep Islands</option>
+                                <option value="MP">Madhya Pradesh</option>
+                                <option value="MH" selected="">Maharashtra</option>
+                                <option value="MN">Manipur</option>
+                                <option value="ML">Meghalaya</option>
+                                <option value="MZ">Mizoram</option>
+                                <option value="NL">Nagaland</option>
+                                <option value="OD">Odisha</option>
+                                <option value="PY">Pondicherry</option>
+                                <option value="PB">Punjab</option>
+                                <option value="RJ">Rajasthan</option>
+                                <option value="SK">Sikkim</option>
+                                <option value="TN">Tamil Nadu</option>
+                                <option value="TS">Telangana</option>
+                                <option value="TR">Tripura</option>
+                                <option value="UP">Uttar Pradesh</option>
+                                <option value="UK">Uttarakhand</option>
+                                <option value="WB">West Bengal</option>
+                                <option value="OTHERS">Others</option>
+                            </select> <label for="state">State</label></div>
 
                         <div class="mb-3 d-flex">
                             <input type="text" class="form-control w-100 me-1" placeholder="Postal Code"
