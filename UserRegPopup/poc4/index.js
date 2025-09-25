@@ -196,7 +196,6 @@ function showUserAccPassword(e, id) {
                 auto_select: true,
                 callback: handleCredentialResponse,
                 cancel_on_tap_outside: false,
-                state_cookie_domain: "netlify.app",
                 use_fedcm_for_prompt: true,
                 use_fedcm_for_button: true
 
@@ -224,7 +223,7 @@ function showUserAccPassword(e, id) {
             });
         }
 
-        setTimeout(renderGsiButtons, 1000);
+        setTimeout(renderGsiButtons, 1000); // rendering sign in with google buttons after 1 sec, i.e. after google sign in is initialised onload
 
         function handleCredentialResponse(response) {
             console.log(response.credential);
