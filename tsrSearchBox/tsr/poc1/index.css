@@ -25,6 +25,7 @@
     cursor: pointer;
     color: black !important;
     font-weight: 700;
+    font-size: 17px;
 }
 
 #tsrStockList li:focus {
@@ -33,6 +34,7 @@
     cursor: pointer;
     color: white !important;
     font-weight: 700;
+    font-size: 17px;
 
 }
 
@@ -55,7 +57,7 @@
     color: white !important;
 }
 
-#tsrStockList li .btn:hover{
+#tsrStockList li .btn:hover {
     background-color: black !important;
 }
 

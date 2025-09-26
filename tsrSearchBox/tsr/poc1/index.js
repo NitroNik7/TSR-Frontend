@@ -1,29 +1,29 @@
 
 
-let data = [
-    {
-        code: "AAATech",
-        name: "AAA Technologies Ltd.",
-        industry: "COMPUTERS - SOFTWARE - INDIA",
-    },
-    {
-        code: "AXISBPSETF",
-        name: "AXIS MUTUAL FUND - Axis Nifty AAA Bond Plus SDL Apr 2026 50-50 ETF",
-        industry: "FINANCE - INDIA",
-    }, {
-        code: "CEDAAR",
-        name: "Cedaar Textile Limited",
-        industry: "TEXTILES - COTTON - INDIA",
-    }, {
-        code: "DIAMONDYD",
-        name: "Prataap Snacks Ltd.",
-        industry: "FOOD AND FOOD PROCESSING - INDIA",
-    }, {
-        code: "IMAGICAA",
-        name: "Imagicaaworld Entertainment Ltd.",
-        industry: "MEDIA & ENTERTAINMENT - INDIA",
-    }
-];
+// let data = [
+//     {
+//         code: "AAATech",
+//         name: "AAA Technologies Ltd.",
+//         industry: "COMPUTERS - SOFTWARE - INDIA",
+//     },
+//     {
+//         code: "AXISBPSETF",
+//         name: "AXIS MUTUAL FUND - Axis Nifty AAA Bond Plus SDL Apr 2026 50-50 ETF",
+//         industry: "FINANCE - INDIA",
+//     }, {
+//         code: "CEDAAR",
+//         name: "Cedaar Textile Limited",
+//         industry: "TEXTILES - COTTON - INDIA",
+//     }, {
+//         code: "DIAMONDYD",
+//         name: "Prataap Snacks Ltd.",
+//         industry: "FOOD AND FOOD PROCESSING - INDIA",
+//     }, {
+//         code: "IMAGICAA",
+//         name: "Imagicaaworld Entertainment Ltd.",
+//         industry: "MEDIA & ENTERTAINMENT - INDIA",
+//     }
+// ];
 
 let chartData = [];
 
@@ -34,6 +34,7 @@ let screenerData = [];
 let equityData = [
     {
         code: "EQ001", name: "Equity One Ltd.", industry: "FINANCE - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -44,6 +45,7 @@ let equityData = [
     },
     {
         code: "EQ002", name: "Equity Two Ltd.", industry: "TechNOLOGY - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -54,6 +56,7 @@ let equityData = [
     },
     {
         code: "EQ003", name: "Equity Three Ltd.", industry: "PHARMA - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -64,6 +67,7 @@ let equityData = [
     },
     {
         code: "EQ004", name: "Equity Four Ltd.", industry: "AUTOMOBILE - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -74,6 +78,7 @@ let equityData = [
     },
     {
         code: "EQ005", name: "Equity Five Ltd.", industry: "TEXTILE - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -84,6 +89,7 @@ let equityData = [
     },
     {
         code: "EQ006", name: "Equity Six Ltd.", industry: "ENERGY - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -94,6 +100,7 @@ let equityData = [
     },
     {
         code: "EQ007", name: "Equity Seven Ltd.", industry: "BANKING - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -104,6 +111,7 @@ let equityData = [
     },
     {
         code: "EQ008", name: "Equity Eight Ltd.", industry: "CHEMICALS - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -114,6 +122,7 @@ let equityData = [
     },
     {
         code: "EQ009", name: "Equity Nine Ltd.", industry: "INFRASTRUCTURE - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -124,6 +133,7 @@ let equityData = [
     },
     {
         code: "EQ010", name: "Equity Ten Ltd.", industry: "MEDIA - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -134,6 +144,7 @@ let equityData = [
     },
     {
         code: "EQ011", name: "Equity Eleven Ltd.", industry: "RETAIL - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -144,6 +155,7 @@ let equityData = [
     },
     {
         code: "EQ012", name: "Equity Twelve Ltd.", industry: "FOOD - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -154,6 +166,7 @@ let equityData = [
     },
     {
         code: "EQ013", name: "Equity Thirteen Ltd.", industry: "LOGISTICS - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -164,6 +177,7 @@ let equityData = [
     },
     {
         code: "EQ014", name: "Equity Fourteen Ltd.", industry: "REAL ESTATE - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -174,6 +188,7 @@ let equityData = [
     },
     {
         code: "EQ015", name: "Equity Fifteen Ltd.", industry: "IT SERVICES - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -184,6 +199,7 @@ let equityData = [
     },
     {
         code: "EQ016", name: "Equity Sixteen Ltd.", industry: "TELECOM - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -194,6 +210,7 @@ let equityData = [
     },
     {
         code: "EQ017", name: "Equity Seventeen Ltd.", industry: "FMCG - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -204,6 +221,7 @@ let equityData = [
     },
     {
         code: "EQ018", name: "Equity Eighteen Ltd.", industry: "METALS - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -214,6 +232,7 @@ let equityData = [
     },
     {
         code: "EQ019", name: "Equity Nineteen Ltd.", industry: "OIL & GAS - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -224,6 +243,7 @@ let equityData = [
     },
     {
         code: "EQ020", name: "Equity Twenty Ltd.", industry: "POWER - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -234,6 +254,7 @@ let equityData = [
     },
     {
         code: "EQ021", name: "Equity Twenty-One Ltd.", industry: "AGRICULTURE - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -244,6 +265,7 @@ let equityData = [
     },
     {
         code: "EQ022", name: "Equity Twenty-Two Ltd.", industry: "DEFENSE - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -254,6 +276,7 @@ let equityData = [
     },
     {
         code: "EQ023", name: "Equity Twenty-Three Ltd.", industry: "AVIATION - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -264,6 +287,7 @@ let equityData = [
     },
     {
         code: "EQ024", name: "Equity Twenty-Four Ltd.", industry: "TOURISM - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -274,6 +298,7 @@ let equityData = [
     },
     {
         code: "EQ025", name: "Equity Twenty-Five Ltd.", industry: "EDUCATION - INDIA",
+        defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
@@ -293,15 +318,15 @@ function getSearchBoxHtml(option) {
     html += `
     
         <div class="radioBtns ms-2">
-            <input type="radio" name="stockBaskets" id="chartBasket" onclick="showTsrSearchBox('chart')" 
+            <input type="radio" name="stockBaskets" data-basket-name="charts" id="chartBasket" onclick="showTsrSearchBox('chart')" 
             ${(option == "chart" ? "checked" : "")}>
             <label for="chartBasket">Charts</label>
 
-            <input type="radio" name="stockBaskets" id="equityBasket" onclick="showTsrSearchBox('equity')"
+            <input type="radio" name="stockBaskets"  data-basket-name="equity" id="equityBasket" onclick="showTsrSearchBox('equity')"
             ${(option == "equity" ? "checked" : "")}>
             <label for="equityBasket">Equity</label>
 
-            <input type="radio" name="stockBaskets" id="screenerBasket" onclick="showTsrSearchBox('screener')"
+            <input type="radio" name="stockBaskets"  data-basket-name="screeners" id="screenerBasket" onclick="showTsrSearchBox('screener')"
             ${(option == "screener" ? "checked" : "")}>
             <label for="screenerBasket">Screeners</label>
         </div>
@@ -310,16 +335,26 @@ function getSearchBoxHtml(option) {
 
         <div class="d-flex">`;
 
+        let placeholder;
+
+        if(option == "chart"){
+            placeholder = "Search a Chart";
+        }
+        else if(option == "equity"){
+            placeholder = "Search a Stock";
+        }
+        else if(option == "screener"){
+            placeholder = "Search a Screener";
+        }
+
     html += `    <input id="tsrStockSearch" type="text" class="form-control ui-autocomplete-input mx-2"
-                placeholder="Search a Stock / Screener" autocomplete="off">`;
+                placeholder="${placeholder}" autocomplete="off">`;
 
     html += `<select
                 style="border-radius: 6px; height: 35px;  box-shadow: inset 0px 0px 0px 0px red; text-shadow: none; border-color: #C0C0C0; background-color:white; width: 20%"
                 id="eqSubCat" onchange="JavaScript:miSrch.sc('sc');" class="mx-2">
                 <option value="any">All </option>
-                <option value=""Funda"mentalAnalysis">Stock "Funda"mentals</option>
-                <option value=""Tech"nicalAnalysis">Stock "Tech"nicals</option>
-                <option value="PivotPoint">Stock Pivot Point</option>
+               
             </select>
         </div>
 
@@ -330,13 +365,13 @@ function getSearchBoxHtml(option) {
     `;
 
     /*
-
+     <option value="FundamentalAnalysis">Stock Fundamentals</option>
+                <option value="TechnicalAnalysis">Stock Technicals</option>
+                <option value="PivotPoint">Stock Pivot Point</option>
         <option value="Screener">Screener Only</option>
-                        <option value="Candlestick">Stock Candlestick</option>
-                        <option value=""BirdsEyeView"">Stock Birds Eye View</option>
-                    <option value="InteractiveCharts">Stock Interactive Charts</option>
-
-
+            <option value="Candlestick">Stock Candlestick</option>
+            <option value=""BirdsEyeView"">Stock Birds Eye View</option>
+        <option value="InteractiveCharts">Stock Interactive Charts</option>
     */
 
     return html;
@@ -354,26 +389,17 @@ function showTsrSearchBox(option) {
     if (option == "equity") {
         let html = getSearchBoxHtml(option);
         createDialog(false, html);
-        filterStocks('', equityData);
-
-        let input = document.getElementById("tsrStockSearch");
-        input.addEventListener("input", () => { filterStocks(input.value, equityData) });
+        filterStocks('');
     }
     else if (option == "screener") {
         let html = getSearchBoxHtml(option);
         createDialog(false, html);
-        filterStocks('', screenerData);
-
-        let input = document.getElementById("tsrStockSearch");
-        input.addEventListener("input", () => { filterStocks(input.value) });
+        filterStocks('');
     }
     else if (option == "chart") {
         let html = getSearchBoxHtml(option);
         createDialog(false, html);
-        filterStocks('', chartData);
-
-        let input = document.getElementById("tsrStockSearch");
-        input.addEventListener("input", () => { filterStocks(input.value, chartData) });
+        filterStocks('');
     }
 
 }
@@ -382,16 +408,14 @@ function showTsrSearchBox(option) {
 function createDialog(isImg, html) {
     let dialog = document.createElement("dialog");
     dialog.id = "tsrMoreInfoPopup";
-    // dialog.classList.add("border", "bg-light", "border", "rounded", "shadow-lg", "w-75");
     dialog.classList.add("border", "border", "rounded", "shadow-lg", "w-75");
 
     document.body.style.overflow = "hidden";
 
-
     let closeDiv = document.createElement("div");
     let closeBtn = document.createElement("button");
     closeBtn.classList.add("btn-close");
-    closeBtn.onclick = closeDialog;
+    closeBtn.onclick = function () { closeDialog(dialog) };
 
     closeDiv.setAttribute("align", "right");
     closeDiv.classList.add("mb-2");
@@ -400,9 +424,7 @@ function createDialog(isImg, html) {
     let contentDiv = document.createElement("div");
     contentDiv.style.maxWidth = "80vw";
     contentDiv.style.maxHeight = "80vh";
-    // contentDiv.style.overflowX = "visible";
     contentDiv.style.overflowY = "hidden";
-    // contentDiv.classList.add("border", "border-5", "rounded");
 
 
     if (isImg) {
@@ -421,6 +443,10 @@ function createDialog(isImg, html) {
 
     dialog.showModal();
 
+    let input = dialog.querySelector("#tsrStockSearch");
+    console.log(input);
+    input.focus();
+
     dialog.addEventListener("keydown", handleKeydownOnDialog);
 }
 
@@ -433,7 +459,6 @@ function handleKeydown(e, dialogId) {
         closeDialog(dialog);
     }
     else if (e.key === "ArrowUp" || e.key === "ArrowDown" || e.key === "ArrowLeft" || e.key === "ArrowRight") {
-        console.log(document.activeElement);
         let list = dialog.querySelector("ul");
 
         let listElements = list.childNodes;
@@ -453,6 +478,35 @@ function handleKeydown(e, dialogId) {
             }
         }
     }
+    else if (isAlphaNumericSymbol(e.key)) {
+        let input = document.getElementById("tsrStockSearch");
+        let text = input.value + e.key;
+        e.preventDefault();
+        input.value = text;
+        filterStocks(text);
+        input.focus();
+    }
+    else {
+        // * Issue: when key such as backspace is pressed, input.value doesn't get updated immediately, due to which stocks are filtered incorrectly 
+        // * Solution: below code is a hack which solves the concerned issue by calling filterStocks() after a timeout
+        setTimeout(() => { 
+            let input = document.getElementById("tsrStockSearch");
+            filterStocks(input.value);
+
+        }, 10);
+    }
+}
+
+function isAlphaNumericSymbol(character) {
+    if (character.length == 1) {
+        let asciiCode = character.charCodeAt(0);
+
+        if ((asciiCode >= 65 && asciiCode <= 90) || (asciiCode >= 97 && asciiCode <= 122)) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 function closeDialog(dialog) {
@@ -464,23 +518,37 @@ function closeDialog(dialog) {
 
 }
 
-function focusListElement(pos) {
+function filterStocks(query) {
 
-}
+    let radioBtns = document.getElementsByName("stockBaskets");
 
-function filterStocks(query, data) {
+    let checkedRadio = radioBtns[0];
+
+    for (let i = 0; i < radioBtns.length; i++) {
+        if (radioBtns[i].checked) {
+            checkedRadio = radioBtns[i]
+        }
+    }
 
     let stockList = [];
-    if (query == '') {
-        stockList = data;
+
+    let basketName = checkedRadio.getAttribute("data-basket-name");
+    if (basketName === "charts") {
+        stockList = chartData;
     }
-    else {
-        stockList = data.filter((item) => {
-            if (item.code.toLowerCase().includes(query.toLowerCase()) || item.name.toLowerCase().includes(query.toLowerCase()) || item.industry.toLowerCase().includes(query.toLowerCase())) {
-                return item;
-            }
-        });
+    else if (basketName === "equity") {
+        stockList = equityData;
     }
+    else if (basketName === "screeners") {
+        stockList = screenerData;
+    }
+
+    stockList = stockList.filter((item) => {
+        if (item.code.toLowerCase().includes(query.toLowerCase()) || item.name.toLowerCase().includes(query.toLowerCase()) || item.industry.toLowerCase().includes(query.toLowerCase())) {
+            return item;
+        }
+    });
+
 
     let list = document.getElementById('tsrStockList');
     list.innerHTML = ''; // Clear previous results
@@ -612,6 +680,20 @@ function navigateButtons(e) {
     }
     e.stopImmediatePropagation();
 }
+
+// listen for ctrl + space
+document.addEventListener("keyup", (e) => {
+    if (e.key === "Control") {
+        document.addEventListener("keyup", (e) => {
+            if (e.code === "Space") { // e.key returns Unidentified for Space key in some browsers
+                showTsrSearchBox('equity')
+            }
+        }, { once: true });
+    }
+}
+);
+
+
 
 
 
