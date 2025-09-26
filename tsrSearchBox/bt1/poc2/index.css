@@ -1,0 +1,90 @@
+#tsrStockList {
+    max-height: 300px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#tsrStockList::-webkit-scrollbar {
+    width: 4px;
+}
+
+#tsrStockList::-webkit-scrollbar-track {
+
+    background-color: white;
+}
+
+#tsrStockList li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+#tsrStockList li:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+    color: black !important;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+#tsrStockList li:focus {
+    background-color: lightslategray;
+    /* background-color: #084298; */
+    cursor: pointer;
+    color: white !important;
+    font-weight: 700;
+    font-size: 17px;
+
+}
+
+
+#tsrStockList li a {
+    color: black;
+}
+
+#tsrStockList li:focus a{
+    color: white ;
+}
+
+ #tsrStockList li .code {
+    display: block;
+}
+
+#tsrStockList li:hover .code,
+#tsrStockList li:focus .code {
+    display: none;
+}
+
+#tsrStockList li .btn {
+    display: none;
+    border-radius: 15px;
+}
+
+#tsrStockList li .btn:hover a {
+    /* background-color: black !important; */
+    color: white !important;
+}
+
+#tsrStockList li .btn:hover {
+    background-color: black !important;
+    font-weight: 700;
+}
+
+#tsrStockList li:hover .btn,
+#tsrStockList li:focus .btn {
+    display: block;
+    background-color: white;
+}
+
+
+/* Below can be removed later */
+.radioBtns input[type="radio"] {
+    -webkit-appearance: radio;
+    -moz-appearance: radio;
+}
+
+.radioBtns label {
+    margin-left: 2px;
+    margin-right: 10px;
+}
