@@ -222,7 +222,7 @@ function showTsrSearchBox(option) {
 function createDialog(isImg, html) {
     let dialog = document.createElement("dialog");
     dialog.id = "tsrMoreInfoPopup";
-    dialog.classList.add("border", "rounded", "shadow-lg", "w-50", "p-0");
+    dialog.classList.add("border", "rounded", "shadow-lg", "w-75", "p-0");
 
     let div = document.createElement("div");
     div.id = "searchBox";
