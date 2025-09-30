@@ -1,0 +1,169 @@
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+#tsrMoreInfoPopup input[type="text"] {
+    width: 60%;
+}
+
+#selectContainer {
+    width: 40%;
+}
+
+#tsrStockList {
+    max-height: 300px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#tsrStockList::-webkit-scrollbar {
+    width: 4px;
+}
+
+#tsrStockList::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+#tsrStockList li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+#tsrStockList li:hover {
+    background-color: lightgray;
+    cursor: pointer;
+    color: black !important;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+#tsrStockList li:focus {
+    background-color: lightslategray;
+    cursor: pointer;
+    color: white !important;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+
+#tsrStockList li a {
+    color: black;
+}
+
+#tsrStockList li:focus a {
+    color: white;
+}
+
+#tsrStockList li .code {
+    display: block;
+}
+
+#tsrStockList li:hover .code,
+#tsrStockList li:focus .code {
+    display: none;
+}
+
+#tsrStockList li:focus-within {
+    background-color: lightslategray;
+    /* background-color: #084298; */
+    cursor: pointer;
+
+}
+
+#tsrStockList li:focus-within a div:first-child {
+    color: white;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+#tsrStockList li:focus-within .code {
+    display: none;
+}
+
+
+#tsrStockList li:focus-within .btn {
+    display: block;
+    background-color: white;
+
+}
+
+#tsrStockList li .btn {
+    display: none;
+    border-radius: 15px;
+}
+
+
+
+#tsrStockList li .btn:hover a,
+#tsrStockList li .btn:focus a {
+    /* background-color: black !important; */
+    color: white !important;
+}
+
+#tsrStockList li .btn:hover,
+#tsrStockList li .btn:focus {
+    background-color: black !important;
+    font-weight: 700;
+    box-shadow: none;
+}
+
+#tsrStockList li .itemRight {
+    overflow-x: hidden;
+    }
+
+#tsrStockList li:hover .itemRight {
+    padding-bottom: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    justify-content: flex-start;
+}
+
+#tsrStockList li:hover .itemRight::-webkit-scrollbar {
+    height: 3px !important;
+}
+
+#tsrStockList li:hover .itemRight::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+#tsrStockList li:hover .btn,
+#tsrStockList li:focus .btn {
+    display: block;
+    background-color: white;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    #tsrStockList li:hover .btn,
+    #tsrStockList li:focus .btn {
+        display: none;
+    }
+
+    #tsrStockList li:hover .code,
+    #tsrStockList li:focus .code {
+        display: block;
+    }
+
+    #tsrStockList li a div:first-child {
+        width: 100% !important;
+    }
+
+    #tsrStockSearch {
+        width: 100% !important;
+    }
+}
+
+
+/* Below can be removed later */
+.radioBtns input[type="radio"] {
+    -webkit-appearance: radio;
+    -moz-appearance: radio;
+}
+
+.radioBtns label {
+    margin-left: 2px;
+    margin-right: 10px;
+}

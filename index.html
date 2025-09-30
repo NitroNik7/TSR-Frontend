@@ -1,97 +1,12 @@
-<style>
-    #tsrStockList {
-        max-height: 300px;
-        overflow-y: auto;
-        scroll-behavior: smooth;
-        list-style-type: none;
-        padding-left: 0;
-    }
-
-    #tsrStockList::-webkit-scrollbar {
-        width: 4px;
-    }
-
-    #tsrStockList::-webkit-scrollbar-track {
-
-        background-color: white;
-    }
-
-    #tsrStockList li {
-        padding: 8px;
-        border-bottom: 1px solid #ddd;
-    }
-
-    #tsrStockList li:hover {
-        background-color: #084298;
-        cursor: pointer;
-        color: white !important;
-        font-weight: 800;
-        font-size: 18px;
-        /* transition: font-weight 0.1s ease-in; */
-    }
-
-    #tsrStockList li .code {
-        display: block;
-    }
-
-    #tsrStockList li:hover .code {
-        display: none;
-    }
-
-    #tsrStockList li .btn {
-        display: none;
-    }
-
-    #tsrStockList li:hover .btn {
-        display: block;
-        background-color: white;
-    }
-
-
-    .radioBtns input[type="radio"] {
-        -webkit-appearance: radio;
-        -moz-appearance: radio;
-    }
-
-    .radioBtns label {
-        margin-left: 2px;
-        margin-right: 10px;
-    }
-</style>
-
-
-<div class="radioBtns ms-2 ">
-    <input type="radio" name="stockBaskets" id="chartBasket" >
-    <label for="chartBasket">Charts</label>
-
-    <input type="radio" name="stockBaskets" id="equityBasket">
-    <label for="equityBasket">Equity</label>
-
-    <input type="radio" name="stockBaskets" id="ScreenerBasket">
-    <label for="ScreenerBasket">Screeners</label>
-</div>
-
-<hr>
-
-<div class="d-flex">
-    <input id="tsrStockSearch" type="text" class="form-control ui-autocomplete-input mx-2"
-        placeholder="Search a Stock / Screener" onclick="" autocomplete="off" oninput="filterStocks(this.value);">
-
-    <select
-        style="border-radius: 6px; height: 35px;  box-shadow: inset 0px 0px 0px 0px red; text-shadow: none; border-color: #C0C0C0; background-color:white; width: 20%"
-        id="eqSubCat" onchange="JavaScript:miSrch.sc('sc');" class="mx-2">
-        <option value="any">All </option>
-        <option value="Screener">Screener Only</option>
-        <option value="BirdsEyeView">Stock Birds Eye View</option>
-        <option value="Candlestick">Stock Candlestick</option>
-        <option value="InteractiveCharts">Stock Interactive Charts</option>
-        <option value="FundamentalAnalysis">Stock Fundamentals</option>
-        <option value="MovingAverage">Stock Moving Average</option>
-        <option value="TechnicalAnalysis">Stock Technicals</option>
-        <option value="PivotPoint">Stock Pivot Point</option>
-    </select>
-</div>
-
-<div class="mt-3">
-    <ul id="tsrStockList"></ul>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="index2.js"></script>
+</body>
+</html>
