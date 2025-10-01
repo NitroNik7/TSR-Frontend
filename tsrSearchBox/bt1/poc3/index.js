@@ -1,11 +1,10 @@
-function getSearchBoxHtml(option) {
+function getSearchBoxHeaderHtml(option){
+    let html = "";
 
-
-    let html = ``;
-
-    html += `
-    
+    html = `
+    <div class="d-flex justify-content-between"">
         <div class="radioBtns ms-2">
+            <span>Search in: &nbsp; </span>
             <input type="radio" name="stockBaskets" data-basket-name="charts" id="chartBasket" onclick="showTsrSearchBox('chart')" 
             ${(option == "chart" ? "checked" : "")}>
             <label for="chartBasket">Charts</label>
@@ -18,6 +17,22 @@ function getSearchBoxHtml(option) {
             ${(option == "screener" ? "checked" : "")}>
             <label for="screenerBasket">Screeners</label>
         </div>
+
+        <button class="btn-close"></button>
+    </div>
+    `;
+
+    return html;
+}
+
+function getSearchBoxHtml(option) {
+
+
+    let html = ``;
+
+    html += `
+    
+        
 
         <hr>
 
@@ -82,7 +97,10 @@ function writeToSelectContainer(option) {
 
     let select = document.createElement("select");
     select.id = "basketSelect";
-    select.onchange = function () { showSubCategories(option) };
+    select.onchange = function () { 
+        input.focus();
+        filterStocks('') };
+    // select.onchange = function () { showSubCategories(option) };
     select.classList.add("form-select");
 
     let data;
@@ -179,13 +197,16 @@ function showTsrSearchBox(option) {
     }
 
     if (option == "equity") {
-        let html = getSearchBoxHtml(option);
+        let html = getSearchBoxHeaderHtml(option); 
+        html+=getSearchBoxHtml(option);
+        
         createDialog(false, html);
         writeToSelectContainer(option);
         // filterStocks('');
     }
     else if (option == "screener") {
-        let html = getSearchBoxHtml(option);
+                let html = getSearchBoxHeaderHtml(option); 
+        html+=getSearchBoxHtml(option);
         createDialog(false, html);
         filterStocks('');
     }
@@ -201,18 +222,26 @@ function showTsrSearchBox(option) {
 function createDialog(isImg, html) {
     let dialog = document.createElement("dialog");
     dialog.id = "tsrMoreInfoPopup";
-    dialog.classList.add("border", "border", "rounded", "shadow-lg", "w-75");
+    dialog.classList.add("border", "rounded", "shadow-lg", "w-50", "p-0");
+
+    let div = document.createElement("div");
+    div.id = "searchBox";
+    div.classList.add("p-3");
 
     document.body.style.overflow = "hidden";
 
-    let closeDiv = document.createElement("div");
-    let closeBtn = document.createElement("button");
-    closeBtn.classList.add("btn-close");
-    closeBtn.onclick = function () { closeDialog(dialog) };
+    // let closeDiv = document.createElement("div");
+    // // closeDiv.setAttribute("align", "right");
+    // closeDiv.classList.add("d-flex", "justify-content-between");
 
-    closeDiv.setAttribute("align", "right");
-    closeDiv.classList.add("mb-2");
-    closeDiv.appendChild(closeBtn);
+    // let closeBtn = document.createElement("button");
+    // closeBtn.classList.add("btn-close");
+    // closeBtn.onclick = function () { closeDialog(dialog) };
+
+    // closeDiv.classList.add("mb-2");
+    // option = "equity";
+    // closeDiv.innerHTML = getSearchBoxHeaderHtml(option);
+    // closeDiv.appendChild(closeBtn);
 
     let contentDiv = document.createElement("div");
     contentDiv.style.maxWidth = "80vw";
@@ -228,14 +257,27 @@ function createDialog(isImg, html) {
         contentDiv.innerHTML = html;
     }
 
-    dialog.appendChild(closeDiv);
-    dialog.appendChild(contentDiv);
+    // div.appendChild(closeDiv);
+    div.appendChild(contentDiv);
+
+    dialog.appendChild(div);
+
 
     document.body.appendChild(dialog);
 
     dialog.showModal();
 
     dialog.addEventListener("keyup", handleKeydownOnDialog);
+
+    dialog.addEventListener("click", closeOnClick);
+
+}
+
+let closeOnClick = function closeOnClick(e) {
+    if (!document.getElementById("searchBox").contains(e.target)) {
+        let dialog = document.getElementById("tsrMoreInfoPopup");
+        closeDialog(dialog);
+    }
 }
 
 let handleKeydownOnDialog = (e) => { handleKeydown(e, "tsrMoreInfoPopup") };
@@ -282,12 +324,12 @@ function handleKeydown(e, dialogId) {
             // console.log(e.key, input.value);
 
             input.value = text;
-            
+
         }
         input.focus();
         setTimeout(
-                filterStocks(input.value), 10
-            )
+            filterStocks(input.value), 10
+        )
     }
     else {
         // * Issue: when key such as backspace is pressed, input.value doesn't get updated immediately, due to which stocks are filtered incorrectly 
@@ -318,6 +360,8 @@ function closeDialog(dialog) {
 
     document.body.removeChild(dialog);
     document.body.style.overflow = "auto";
+    document.removeEventListener("click", closeOnClick);
+
 
 }
 
@@ -340,6 +384,9 @@ function filterStocks(query) {
     let basketCategory = document.getElementById("basketSelect");
     let category = basketCategory.value;
 
+    let buttons;
+    let btnPrefix = "";
+
     if (basketName === "charts") {
         stockList = chartData;
         // No sub categories for now
@@ -353,37 +400,50 @@ function filterStocks(query) {
                 item.defaultUrl = base_url + "/Stock/" + item.code + "/BirdsEyeView";
                 return item;
             });
+
+            buttons = ALL_SEARCH_CAT;
+            btnPrefix = "Stock";
+
         }
         else if (category == 'TechnicalAnalysis') {
-            let techIndi = document.getElementById("subSelect").value;
+            // let techIndi = document.getElementById("subSelect").value;
 
             stockList = stockList.filter((item) => {
-                if (item.tech) {
+                // if (item.tech) {
 
-                    if (techIndi == "any") {
-                        item.defaultUrl = base_url + "/Stock/" + item.code + "/TechnicalAnalysis";
-                    }
-                    else {
-                        item.defaultUrl = base_url + "/Technicals/" + item.code + "/" + techIndi;
-                    }
-                    return item;
-                }
+                // if (techIndi == "any") {
+                item.defaultUrl = base_url + "/Stock/" + item.code + "/TechnicalAnalysis";
+                // }
+                // else {
+                //     item.defaultUrl = base_url + "/Technicals/" + item.code + "/" + techIndi;
+                // }
+                return item;
+                // }
             });
+
+            buttons = TECH_INDI;
+            btnPrefix = "ViewInChart";
+
+
         }
         else if (category == "FundamentalAnalysis") {
-            let funda = document.getElementById("subSelect").value;
+            // let funda = document.getElementById("subSelect").value;
 
             stockList = stockList.filter((item) => {
-                if (item.funda) {
-                    if (funda == "any") {
-                        item.defaultUrl = base_url + "/Stock/" + item.code + "/FundamentalAnalysis";
-                    }
-                    else {
-                        item.defaultUrl = base_url + "/Financial/" + item.code + "/" + funda;
-                    }
-                    return item;
-                }
+                // if (item.funda) {
+                // if (funda == "any") {
+                item.defaultUrl = base_url + "/Stock/" + item.code + "/FundamentalAnalysis";
+                // }
+                // else {
+                //     item.defaultUrl = base_url + "/Financial/" + item.code + "/" + funda;
+                // }
+                return item;
+                // }
             });
+
+            buttons = FUNDA_INDI;
+            btnPrefix = "Financial";
+
         }
         else if (category == "FuturesAndOptions") {
             stockList = stockList.filter((item) => {
@@ -393,6 +453,23 @@ function filterStocks(query) {
                     return item;
                 }
             });
+
+            buttons = FNO_CAT;
+            btnPrefix = "Stock";
+
+        }
+        else if (category == "MovingAverage") {
+            stockList = stockList.filter((item) => {
+                if (item.ma) {
+                    item.defaultUrl = base_url + "/Stock/" + item.code + "/FuturesAndOptions";
+
+                    return item;
+                }
+            });
+
+            buttons = MA_CAT;
+            btnPrefix = "Stock";
+
         }
     }
     else if (basketName === "screeners") {
@@ -420,10 +497,13 @@ function filterStocks(query) {
         a.href = element.defaultUrl;
 
         let itemRow = document.createElement('div');
-        itemRow.classList.add('d-flex', 'justify-content-between', 'w-100');
+        itemRow.classList.add('d-flex', 'justify-content-between');
+        itemRow.style.width = "100%";
+        itemRow.style.overflowX = "hidden";
 
         let itemLeft = document.createElement('div');
-        itemLeft.classList.add('d-flex', 'flex-column');
+        itemLeft.classList.add('d-flex', 'flex-column', "w-25");
+
 
         let top = document.createElement('div');
         top.innerHTML = element.name + "&nbsp;";
@@ -438,22 +518,24 @@ function filterStocks(query) {
         // -------------------------------------
 
         let itemRight = document.createElement('div');
-        itemRight.classList.add('d-sm-flex', 'd-none', "d-flex");
+        itemRight.classList.add('d-sm-flex', 'd-none', "d-flex", "w-75", "justify-content-end");
 
-        let code = document.createElement('span');
-        code.classList.add("code");
-        code.innerHTML = element.code;
 
-        itemRight.appendChild(code);
+        // let data = element.urls;
+        // let urls = Object.keys(data);
+        let maxElements = (document.getElementById("tsrStockList").offsetWidth / 150);
+        console.log(maxElements);
 
-        let data = element.urls;
-        let urls = Object.keys(data);
-        for (let i = 0; i < urls.length; i++) {
+        for (let i = 0; i < buttons.length; i++) {
             let button = document.createElement('button');
             button.classList.add('btn', 'btn-sm', 'me-2');
+            button.style.maxWidth = "125px";
+            // button.style.whiteSpace = "nowrap";
+            // button.style.overflow = "hidden";
+            // button.style.textOverflow = "ellipsis";
             button.innerHTML = `
-            <a href="${data[urls[i]]}" style="color: black;">
-             ${urls[i]}
+            <a href="${btnPrefix + "/" + buttons[i].id}" style="color: black; ">
+             ${buttons[i].label}
             </a>
             `;
             button.setAttribute("tabindex", "0");
@@ -461,7 +543,17 @@ function filterStocks(query) {
             button.addEventListener("keydown", navigateButtons);
 
             itemRight.appendChild(button);
+
+            if (i > maxElements)
+                break;
         }
+
+
+        let code = document.createElement('span');
+        code.classList.add("code");
+        code.innerHTML = element.code;
+
+        itemRight.appendChild(code);
 
         // -------------------------------------
 
@@ -551,16 +643,13 @@ function navigateButtons(e) {
                 if (!buttonHasFocus) {
                     buttons[0].focus();
 
-                    setTimeout(function () {
-                        console.log(document.activeElement);
-                    }, 10);
+
                     // e.stopImmediatePropagation();
                 }
             }
         }
         else if (element.tagName == "BUTTON") {
             if (element.previousSibling) {
-                console.log("go to previous sibling");
                 element.previousSibling.focus();
             }
         }
@@ -582,16 +671,13 @@ function navigateButtons(e) {
 
                 if (!buttonHasFocus) {
                     buttons[0].focus();
-                    setTimeout(function () {
-                        console.log(document.activeElement);
-                    }, 0)
+
                     // e.stopImmediatePropagation();
                 }
             }
         }
         else if (element.tagName == "BUTTON") {
             if (element.nextSibling) {
-                console.log("go to next sibling");
 
                 element.nextSibling.focus();
             }

@@ -1,4 +1,4 @@
-dialog::backdrop{
+dialog::backdrop {
     background: rgba(0, 0, 0, 0.75);
 }
 
@@ -94,6 +94,8 @@ dialog::backdrop{
     border-radius: 15px;
 }
 
+
+
 #tsrStockList li .btn:hover a,
 #tsrStockList li .btn:focus a {
     /* background-color: black !important; */
@@ -107,11 +109,58 @@ dialog::backdrop{
     box-shadow: none;
 }
 
+#tsrStockList li .itemRight {
+    overflow-x: hidden;
+}
+
+#tsrStockList li:hover .itemRight {
+    padding-bottom: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    justify-content: flex-start;
+}
+
+#tsrStockList li:hover .itemRight::-webkit-scrollbar {
+    height: 3px !important;
+}
+
+#tsrStockList li:hover .itemRight::-webkit-scrollbar-track {
+    background-color: white;
+}
 
 #tsrStockList li:hover .btn,
 #tsrStockList li:focus .btn {
     display: block;
     background-color: white;
+}
+
+#tsrStockList .empty:hover {
+    background-color: white;
+    cursor: default;
+    color: black !important;
+    font-weight: 400 !important;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    #tsrStockList li:hover .btn,
+    #tsrStockList li:focus .btn {
+        display: none;
+    }
+
+    #tsrStockList li:hover .code,
+    #tsrStockList li:focus .code {
+        display: block;
+    }
+
+    #tsrStockList li a div:first-child {
+        width: 100% !important;
+    }
+
+    #tsrStockSearch {
+        width: 100% !important;
+    }
 }
 
 

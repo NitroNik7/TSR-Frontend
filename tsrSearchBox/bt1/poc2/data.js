@@ -1,29 +1,131 @@
-// let data = [
-//     {
-//         code: "AAATech",
-//         name: "AAA Technologies Ltd.",
-//         industry: "COMPUTERS - SOFTWARE - INDIA",
-//     },
-//     {
-//         code: "AXISBPSETF",
-//         name: "AXIS MUTUAL FUND - Axis Nifty AAA Bond Plus SDL Apr 2026 50-50 ETF",
-//         industry: "FINANCE - INDIA",
-//     }, {
-//         code: "CEDAAR",
-//         name: "Cedaar Textile Limited",
-//         industry: "TEXTILES - COTTON - INDIA",
-//     }, {
-//         code: "DIAMONDYD",
-//         name: "Prataap Snacks Ltd.",
-//         industry: "FOOD AND FOOD PROCESSING - INDIA",
-//     }, {
-//         code: "IMAGICAA",
-//         name: "Imagicaaworld Entertainment Ltd.",
-//         industry: "MEDIA & ENTERTAINMENT - INDIA",
-//     }
-// ];
 
-let chartData = [];
+let chartData = [
+    {
+        code: "EQ001", name: "Equity One Ltd.", industry: "FINANCE - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ002", name: "Equity Two Ltd.", industry: "TECHNOLOGY - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ003", name: "Equity Three Ltd.", industry: "PHARMA - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ004", name: "Equity Four Ltd.", industry: "AUTOMOBILE - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ005", name: "Equity Five Ltd.", industry: "TEXTILE - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ006", name: "Equity Six Ltd.", industry: "ENERGY - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ007", name: "Equity Seven Ltd.", industry: "BANKING - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ008", name: "Equity Eight Ltd.", industry: "CHEMICALS - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ009", name: "Equity Nine Ltd.", industry: "INFRASTRUCTURE - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ010", name: "Equity Ten Ltd.", industry: "MEDIA - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ011", name: "Equity Eleven Ltd.", industry: "RETAIL - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ012", name: "Equity Twelve Ltd.", industry: "FOOD - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ013", name: "Equity Thirteen Ltd.", industry: "LOGISTICS - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ014", name: "Equity Fourteen Ltd.", industry: "REAL ESTATE - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ015", name: "Equity Fifteen Ltd.", industry: "IT SERVICES - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ016", name: "Equity Sixteen Ltd.", industry: "TELECOM - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ017", name: "Equity Seventeen Ltd.", industry: "FMCG - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ018", name: "Equity Eighteen Ltd.", industry: "METALS - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ019", name: "Equity Nineteen Ltd.", industry: "OIL & GAS - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ020", name: "Equity Twenty Ltd.", industry: "POWER - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ021", name: "Equity Twenty-One Ltd.", industry: "AGRICULTURE - INDIA",
+        defaultUrl: "https://example.com",
+    },
+
+    {
+        code: "EQ022", name: "Equity Twenty-Two Ltd.", industry: "DEFENSE - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ023", name: "Equity Twenty-Three Ltd.", industry: "AVIATION - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ024", name: "Equity Twenty-Four Ltd.", industry: "TOURISM - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ025", name: "Equity Twenty-Five Ltd.", industry: "EDUCATION - INDIA",
+        defaultUrl: "https://example.com",
+
+    }
+];
 
 let screenerData = [];
 
@@ -38,19 +140,27 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        funda: true,
+        tech: true,
+        fno: true,
     },
     {
-        code: "EQ002", name: "Equity Two Ltd.", industry: "TechNOLOGY - INDIA",
+        code: "EQ002", name: "Equity Two Ltd.", industry: "TECHNOLOGY - INDIA",
         defaultUrl: "https://example.com",
         urls: {
             "BirdsEyeView": "https://example.com",
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        funda: true,
+        tech: true,
+        fno: true,
     },
     {
         code: "EQ003", name: "Equity Three Ltd.", industry: "PHARMA - INDIA",
@@ -60,7 +170,8 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
         }
     },
     {
@@ -71,8 +182,12 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        funda: true,
+        tech: true,
+        fno: true,
     },
     {
         code: "EQ005", name: "Equity Five Ltd.", industry: "TEXTILE - INDIA",
@@ -82,8 +197,12 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        funda: true,
+        tech: true,
+        fno: true,
     },
     {
         code: "EQ006", name: "Equity Six Ltd.", industry: "ENERGY - INDIA",
@@ -93,8 +212,12 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        funda: true,
+        tech: true,
+        fno: true,
     },
     {
         code: "EQ007", name: "Equity Seven Ltd.", industry: "BANKING - INDIA",
@@ -104,8 +227,12 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        funda: true,
+        tech: true,
+        fno: true,
     },
     {
         code: "EQ008", name: "Equity Eight Ltd.", industry: "CHEMICALS - INDIA",
@@ -115,8 +242,12 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        funda: true,
+        tech: true,
+        fno: true,
     },
     {
         code: "EQ009", name: "Equity Nine Ltd.", industry: "INFRASTRUCTURE - INDIA",
@@ -126,7 +257,8 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
         }
     },
     {
@@ -137,7 +269,8 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
         }
     },
     {
@@ -148,7 +281,8 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
         }
     },
     {
@@ -159,7 +293,8 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
         }
     },
     {
@@ -170,8 +305,12 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        funda: true,
+        tech: true,
+        fno: true,
     },
     {
         code: "EQ014", name: "Equity Fourteen Ltd.", industry: "REAL ESTATE - INDIA",
@@ -181,7 +320,8 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
         }
     },
     {
@@ -192,8 +332,12 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        funda: true,
+        tech: true,
+        fno: true,
     },
     {
         code: "EQ016", name: "Equity Sixteen Ltd.", industry: "TELECOM - INDIA",
@@ -203,8 +347,12 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        funda: true,
+        tech: true,
+        fno: true,
     },
     {
         code: "EQ017", name: "Equity Seventeen Ltd.", industry: "FMCG - INDIA",
@@ -214,7 +362,8 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
         }
     },
     {
@@ -225,8 +374,12 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        funda: true,
+        tech: true,
+        fno: true,
     },
     {
         code: "EQ019", name: "Equity Nineteen Ltd.", industry: "OIL & GAS - INDIA",
@@ -236,8 +389,10 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        fno: true,
     },
     {
         code: "EQ020", name: "Equity Twenty Ltd.", industry: "POWER - INDIA",
@@ -247,8 +402,10 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        fno: true,
     },
     {
         code: "EQ021", name: "Equity Twenty-One Ltd.", industry: "AGRICULTURE - INDIA",
@@ -258,7 +415,8 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
         }
     },
     {
@@ -269,8 +427,10 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        fno: true,
     },
     {
         code: "EQ023", name: "Equity Twenty-Three Ltd.", industry: "AVIATION - INDIA",
@@ -280,7 +440,8 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
         }
     },
     {
@@ -291,8 +452,10 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
-        }
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
+        },
+        fno: true,
     },
     {
         code: "EQ025", name: "Equity Twenty-Five Ltd.", industry: "EDUCATION - INDIA",
@@ -302,13 +465,17 @@ let equityData = [
             "MA": "https://example.com",
             "Tech": "https://example.com",
             "Funda": "https://example.com",
-            "Fno": "https://example.com"
+            "Fno": "https://example.com",
+            "Candlestick": "https://example.com",
         }
     }
 ];
 
+var CHARTS_SUB_CATEGORY = [
+    { id: 'any', label: "All " },
+]
 
-var SEARCH_SUB_CAT = [
+var EQUITY_SUB_CAT = [
     { id: 'any', label: "All " },
     // { id: 'Screener', label: "Screener Only" },
     // { id: 'BirdsEyeView', label: "Stock Birds Eye View" },
@@ -318,7 +485,7 @@ var SEARCH_SUB_CAT = [
     // { id: 'MovingAverage', label: "Stock Moving Average" },
     { id: 'TechnicalAnalysis', label: "Stock Technicals" },
     // { id: 'PivotPoint', label: "Stock Pivot Point" },
-    { id: 'fno', label: "FNO" },
+    { id: 'FuturesAndOptions', label: "Futures & Options" },
 ];
 
 var TECH_INDI = [
@@ -364,3 +531,9 @@ var FUNDA_INDI = [
     // {id: '' , label: ""},
 
 ];
+
+var SCREENERS_SUB_CATEGORY = [
+    { id: 'any', label: "All " },
+]
+
+var base_url = "";

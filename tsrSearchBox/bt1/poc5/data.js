@@ -127,7 +127,43 @@ let chartData = [
     }
 ];
 
-let screenerData = [];
+let screenerData = [
+    {
+        code: "EQ001", name: "Equity One Ltd.", industry: "FINANCE - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ002", name: "Equity Two Ltd.", industry: "TECHNOLOGY - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ003", name: "Equity Three Ltd.", industry: "PHARMA - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ004", name: "Equity Four Ltd.", industry: "AUTOMOBILE - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ005", name: "Equity Five Ltd.", industry: "TEXTILE - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ006", name: "Equity Six Ltd.", industry: "ENERGY - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+    {
+        code: "EQ007", name: "Equity Seven Ltd.", industry: "BANKING - INDIA",
+        defaultUrl: "https://example.com",
+
+    },
+];
 
 
 // Dummy equityData array with 25 items
@@ -299,13 +335,13 @@ var CHARTS_SUB_CATEGORY = [
 
 
 // For buttons
-let ALL_SEARCH_CAT = [
-    { id: 'BirdsEyeView', label: "Birds Eye View" },
-    { id: 'MovingAverages', label: "MA" },
-    { id: 'TechnicalAnalysis', label: "Tech" },
-    { id: 'FundamentalAnalysis', label: "Funda" },
-    { id: 'FuturesAndOptions', label: "FNO" },
-    { id: 'Candlestick', label: "Candlestick" },
+var ALL_SEARCH_CAT = [
+    { id: 'BirdsEyeView', label: "Birds Eye View", default: true },
+    { id: 'MovingAverages', label: "MA", default: true },
+    { id: 'TechnicalAnalysis', label: "Tech", default: true },
+    { id: 'FundamentalAnalysis', label: "Funda", default: false, mappedParam: "funda" },
+    { id: 'FuturesAndOptions', label: "FNO", default: false, mappedParam: "fno" },
+    { id: 'Candlestick', label: "Candlestick", default: true },
 ];
 
 
@@ -324,68 +360,67 @@ var EQUITY_SUB_CAT = [
 ];
 
 var TECH_INDI = [
-    { id: 'any', label: "All Technicals " },
-    { id: 'ADX', label: "ADX" },
-    { id: 'AROON', label: "AROON" },
-    { id: 'AwesomeOscillator', label: "AwesomeOsc" },
-    { id: 'BOLLINGER', label: "Bollinger" },
-    { id: 'CCI', label: "CCI" },
-    { id: 'CMF', label: "CMF" },
-    { id: 'KeltnerBand', label: "KeltnerBand" },
-    { id: 'MACD', label: "MACD" },
-    { id: 'MFI', label: "MFI" },
-    { id: 'PSAR', label: "PSAR" },
-    { id: 'RsiSmooth', label: "RSI" },
-    { id: 'ROC', label: "ROC" },
-    { id: 'Supertrend', label: "Supertrend" },
-    { id: 'WilliamsR', label: "WilliamsR" },
+    { id: 'any', label: "All Technicals ", default: true },
+    { id: 'ADX', label: "ADX", default: true },
+    { id: 'AROON', label: "AROON", default: true },
+    { id: 'AwesomeOscillator', label: "AwesomeOsc", default: true },
+    { id: 'BOLLINGER', label: "Bollinger", default: true },
+    { id: 'CCI', label: "CCI", default: true },
+    { id: 'CMF', label: "CMF", default: true },
+    { id: 'KeltnerBand', label: "KeltnerBand", default: true },
+    { id: 'MACD', label: "MACD", default: true },
+    { id: 'MFI', label: "MFI", default: true },
+    { id: 'PSAR', label: "PSAR", default: true },
+    { id: 'RsiSmooth', label: "RSI", default: true },
+    { id: 'ROC', label: "ROC", default: true },
+    { id: 'Supertrend', label: "Supertrend", default: true },
+    { id: 'WilliamsR', label: "WilliamsR", default: true },
 ];
 
 var FUNDA_INDI = [
-    { id: 'any', label: "All Fundamentals " },
-    { id: 'AltmanZScore', label: "Altman Z" },
-    { id: 'CashRatio', label: "Cash Ratio" },
-    { id: 'DebtToEquityRatio', label: "Debt to Eq Ratio" },
+    { id: 'any', label: "All Fundamentals ", default: true },
+    { id: 'AltmanZScore', label: "Altman Z", default: true },
+    { id: 'CashRatio', label: "Cash Ratio", default: true },
+    { id: 'DebtToEquityRatio', label: "Debt to Eq Ratio", default: true },
 
-    { id: 'EBITDAMargin', label: "EBITDA Margin" },
-    { id: 'EVToEBITDA', label: "EV to EBITDA" },
+    { id: 'EBITDAMargin', label: "EBITDA Margin", default: true },
+    { id: 'EVToEBITDA', label: "EV to EBITDA", default: true },
 
-    { id: 'NetProfitMargin', label: "Net Profit Margin" },
-    { id: 'OperatingProfitMargin', label: "Ops Profit Margin" },
-    { id: 'PiotroskiFScore', label: "Piotroski F Score" },
-    { id: 'PriceToEarningRatio', label: "PE Ratio" },
-    { id: 'PriceToBookRatio', label: "Price To Book" },
-    { id: 'PriceToSalesRatio', label: "Price To Sales" },
-    { id: 'QuickRatio', label: "Quick Ratio" },
-    { id: 'ReturnOnEquity', label: "Return on Equity" },
-    { id: 'ReturnOnAsset', label: "Return On Asset" },
-    { id: 'ShareholdersEquityRatio', label: "Sh Equity Ratio" },
+    { id: 'NetProfitMargin', label: "Net Profit Margin", default: true },
+    { id: 'OperatingProfitMargin', label: "Ops Profit Margin", default: true },
+    { id: 'PiotroskiFScore', label: "Piotroski F Score", default: true },
+    { id: 'PriceToEarningRatio', label: "PE Ratio", default: true },
+    { id: 'PriceToBookRatio', label: "Price To Book", default: true },
+    { id: 'PriceToSalesRatio', label: "Price To Sales", default: true },
+    { id: 'QuickRatio', label: "Quick Ratio", default: true },
+    { id: 'ReturnOnEquity', label: "Return on Equity", default: true },
+    { id: 'ReturnOnAsset', label: "Return On Asset", default: true },
+    { id: 'ShareholdersEquityRatio', label: "Sh Equity Ratio", default: true },
 
     // {id: 'DebtToEBITDA' , label: ""},
     // {id: '' , label: ""},
     // {id: '' , label: ""},
-
 ];
 
 // for buttons
 let FNO_CAT = [
-    { id: 'FuturesAndOptions', label: "Summary" },
-    { id: 'ViewOptionChain', label: "Option Chain" },
-    { id: 'ViewPutCallRatio', label: "Put Call Ratio" },
+    { id: 'FuturesAndOptions', label: "Summary", default: true },
+    { id: 'ViewOptionChain', label: "Option Chain", default: true },
+    { id: 'ViewPutCallRatio', label: "Put Call Ratio", default: true },
 ];
 
 // for buttons
 let MA_CAT = [
-    { id: 'SMA', label: "SMA" },
-    { id: 'EMA', label: "EMA" },
-    { id: 'WMA', label: "WMA" },
-    { id: 'HullMA', label: "Hull MA" },
-    { id: 'SmoothMA', label: "Smooth MA" },
-    { id: 'WilderMA', label: "Wilder MA" },
-    { id: 'DoubleEMA', label: "Double EMA" },
-    { id: 'TripleEMA', label: "Triple EMA" },
-    { id: 'TriangleMA', label: "Triangle MA" },
-    { id: 'ZLEMA', label: "Zero Lag EMA" }
+    { id: 'SMA', label: "SMA", default: true },
+    { id: 'EMA', label: "EMA", default: true },
+    { id: 'WMA', label: "WMA", default: true },
+    { id: 'HullMA', label: "Hull MA", default: true },
+    { id: 'SmoothMA', label: "Smooth MA", default: true },
+    { id: 'WilderMA', label: "Wilder MA", default: true },
+    { id: 'DoubleEMA', label: "Double EMA", default: true },
+    { id: 'TripleEMA', label: "Triple EMA", default: true },
+    { id: 'TriangleMA', label: "Triangle MA", default: true },
+    { id: 'ZLEMA', label: "Zero Lag EMA", default: true },
 ];
 
 
