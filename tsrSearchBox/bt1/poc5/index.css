@@ -1,3 +1,7 @@
+dialog {
+    width: 50%;
+}
+
 dialog::backdrop {
     background: rgba(0, 0, 0, 0.75);
 }
@@ -69,7 +73,6 @@ dialog::backdrop {
     background-color: lightslategray;
     /* background-color: #084298; */
     cursor: pointer;
-
 }
 
 #tsrStockList li:focus-within a div:first-child {
@@ -141,6 +144,13 @@ dialog::backdrop {
     font-weight: 400 !important;
 }
 
+@media only screen and (max-width: 1200px) {
+
+    dialog{
+        width: 75%;
+    }
+
+}
 
 @media only screen and (max-width: 768px) {
 

@@ -82,34 +82,243 @@
                 <div class="tsrhdr navbar">
                     <div class="tsrhdr-container">
                         <div class="nav-logo" id='navLogoDiv'>
-                            <a href="javascript:void(0);" class="tsrsn-fold-toggler" title='TSR (tsrbt1.com)'>
+                            <a href="javascript:void(0);" class="tsrsn-fold-toggler" title='TSR (TopStockResearch.com)'>
                                 <div class="logo logo-dark"
                                     style="background-image: url('https://www.tsrbt1.com/static/v21/img/tsr/TsrLogo.png')">
                                 </div>
                             </a>
                         </div>
-                        <!-- <div id='dynHead'></div> -->
-
-                        <!-- code starts here -->
-
-                        <link rel="stylesheet" href="index.css">
-
+                        <!-- <div id='dynHead'></div>   -->
                         <div class="px-5 mx-5 py-3">
                             <div id="searchFormDiv">
-                                <table border="0" width="25%">
+                                <table border="0" width="100%">
                                     <tbody>
                                         <tr>
                                             <td>
-                                                
+                                                <!-- tsrSearchBox POC 1 -->
+                                                <!-- code starts here -->
                                                 <input id="user_input" type="text"
                                                     class="form-control ui-autocomplete-input"
-                                                    placeholder="Search (Ctrl + Space)"
-                                                    onclick="showTsrSearchBox('equity')" style="width: 175px;" 
-                                                    autocomplete="off">
+                                                    placeholder="Search a Stock / Screener" onclick="showTsrSearchBox()"
+                                                    style="width:95%;" autocomplete="off">
+
+                                                <script>
+                                                    function showTsrSearchBox() {
+
+                                                        $.get("http://127.0.0.1:5500/", function (data, status) {
+
+                                                            createDialog(false, data);
+
+                                                            filterStocks('');
+
+                                                        });
+
+                                                    }
+
+
+                                                    function createDialog(isImg, html) {
+                                                        let dialog = document.createElement("dialog");
+                                                        dialog.id = "tsrMoreInfoPopup";
+                                                        // dialog.classList.add("border", "bg-light", "border", "rounded", "shadow-lg", "w-75");
+                                                        dialog.classList.add("border", "border", "rounded", "shadow-lg");
+
+                                                        document.body.style.overflow = "hidden";
+
+
+                                                        let closeDiv = document.createElement("div");
+                                                        let closeBtn = document.createElement("button");
+                                                        closeBtn.classList.add("btn-close");
+                                                        closeBtn.onclick = closeDialog;
+
+                                                        closeDiv.setAttribute("align", "right");
+                                                        closeDiv.classList.add("mb-2");
+                                                        closeDiv.appendChild(closeBtn);
+
+                                                        let contentDiv = document.createElement("div");
+                                                        contentDiv.style.maxWidth = "80vw";
+                                                        contentDiv.style.maxHeight = "80vh";
+                                                        // contentDiv.style.overflowX = "visible";
+                                                        contentDiv.style.overflowY = "hidden";
+                                                        // contentDiv.classList.add("border", "border-5", "rounded");
+
+
+                                                        if (isImg) {
+                                                            let img = document.createElement("img");
+                                                            img.classList.add("m-3")
+                                                            img.src = html;
+                                                            contentDiv.appendChild(img);
+                                                        } else {
+                                                            contentDiv.innerHTML = html;
+                                                        }
+
+                                                        dialog.appendChild(closeDiv);
+                                                        dialog.appendChild(contentDiv);
+
+                                                        document.body.appendChild(dialog);
+
+                                                        dialog.showModal();
+
+                                                        document.addEventListener("keydown", handleKeydown);
+
+                                                    }
+
+                                                    function handleKeydown(e) {
+                                                        if (e.key === "Escape") {
+                                                            closeDialog();
+                                                        }
+                                                    }
+
+                                                    function closeDialog() {
+                                                        let dialog = document.getElementById("tsrMoreInfoPopup");
+                                                        dialog.close();
+                                                        document.body.removeChild(dialog);
+                                                        document.body.style.overflow = "auto";
+
+                                                        document.removeEventListener("keydown", handleKeydown);
+                                                    }
+
+                                                    let data = [
+                                                        {
+                                                            code: "AAATECH",
+                                                            name: "AAA Technologies Ltd.",
+                                                            industry: "COMPUTERS - SOFTWARE - INDIA",
+                                                        }, {
+                                                            code: "AADHARHFC",
+                                                            name: "Aadhar Housing Finance Ltd.",
+                                                            industry: "FINANCE - HOUSING - INDIA",
+                                                        }, {
+                                                            code: "AADHARHFC",
+                                                            name: "Aadhar Housing Finance Ltd.",
+                                                            industry: "FINANCE - HOUSING - INDIA",
+                                                        }, {
+                                                            code: "AADHARHFC",
+                                                            name: "Aadhar Housing Finance Ltd.",
+                                                            industry: "FINANCE - HOUSING - INDIA",
+                                                        }, {
+                                                            code: "AADITYA",
+                                                            name: "Aaditya Healthcare Ltd.",
+                                                            industry: "Hospitals & Medical Services - INDIA",
+                                                        }, {
+                                                            code: "AARVEEDEN",
+                                                            name: "Aarvee Denim and Exports",
+                                                            industry: "TEXTILE PRODUCTS - INDIA",
+                                                        }, {
+                                                            code: "AARVI",
+                                                            name: "Aarvi Encon Ltd.",
+                                                            industry: "DIVERSIFIED - INDIA",
+                                                        }, {
+                                                            code: "AATMAJ",
+                                                            name: "Aat maj Healthcare Ltd.",
+                                                            industry: "Hospitals & Medical Services - INDIA",
+                                                        }, {
+                                                            code: "AAVAS",
+                                                            name: "Aavas Financiers Ltd.",
+                                                            industry: "FINANCE - HOUSING - INDIA",
+                                                        }, {
+                                                            code: "ACUTAAS",
+                                                            name: "Acutaas Chemicals Limited",
+                                                            industry: "PHARMACEUTICALS - INDIA",
+                                                        }, {
+                                                            code: "ATLANTAA",
+                                                            name: "Atlantaa Ltd.",
+                                                            industry: "CONSTRUCTION - INDIA",
+                                                        }, {
+                                                            code: "AXISBPSETF",
+                                                            name: "AXIS MUTUAL FUND - Axis Nifty AAA Bond Plus SDL Apr 2026 50-50 ETF",
+                                                            industry: "FINANCE - INDIA",
+                                                        }, {
+                                                            code: "CEDAAR",
+                                                            name: "Cedaar Textile Limited",
+                                                            industry: "TEXTILES - COTTON - INDIA",
+                                                        }, {
+                                                            code: "DIAMONDYD",
+                                                            name: "Prataap Snacks Ltd.",
+                                                            industry: "FOOD AND FOOD PROCESSING - INDIA",
+                                                        }, {
+                                                            code: "IMAGICAA",
+                                                            name: "Imagicaaworld Entertainment Ltd.",
+                                                            industry: "MEDIA & ENTERTAINMENT - INDIA",
+                                                        }
+                                                    ];
+
+
+                                                    function filterStocks(query) {
+
+                                                        let stockList = [];
+                                                        if (query == '') {
+                                                            stockList = data;
+                                                        }
+                                                        else {
+                                                            stockList = data.filter((item) => {
+                                                                if (item.code.toLowerCase().includes(query.toLowerCase()) || item.name.toLowerCase().includes(query.toLowerCase()) || item.industry.toLowerCase().includes(query.toLowerCase())) {
+                                                                    return item;
+                                                                }
+                                                            });
+                                                        }
+
+                                                        let list = document.getElementById('tsrStockList');
+                                                        list.innerHTML = ''; // Clear previous results
+
+                                                        stockList.forEach(element => {
+                                                            let li = document.createElement('li');
+
+                                                            let div = document.createElement('div');
+                                                            div.classList.add('d-flex', 'justify-content-between', 'w-100');
+
+                                                            let divLeft = document.createElement('div');
+                                                            divLeft.classList.add('d-flex', 'flex-column');
+
+                                                            let divTop = document.createElement('div');
+                                                            divTop.innerHTML = element.name + "&nbsp;";
+
+                                                            let divRight = document.createElement('div');
+                                                            divRight.classList.add('d-sm-flex', 'd-none', "d-flex");
+
+                                                            let code = document.createElement('span');
+                                                            code.classList.add("code");
+                                                            code.innerHTML = element.code;
+
+
+                                                            let chartBtn = document.createElement('button');
+                                                            chartBtn.classList.add('btn', 'btn-sm', 'me-2');
+                                                            chartBtn.innerHTML = 'Launch chart';
+                                                            let analysisBtn = document.createElement('button');
+                                                            analysisBtn.classList.add('btn', 'btn-sm');
+                                                            analysisBtn.innerHTML = 'Analysis';
+
+                                                            divRight.appendChild(code);
+                                                            divRight.appendChild(chartBtn);
+                                                            divRight.appendChild(analysisBtn);
+
+                                                            // divLeft.appendChild
+
+                                                            let divBottom = document.createElement('div');
+                                                            divBottom.textContent = element.industry;
+                                                            divBottom.style.fontSize = "0.6em";
+
+                                                            divLeft.appendChild(divTop);
+                                                            divLeft.appendChild(divBottom);
+
+                                                            div.appendChild(divLeft);
+                                                            div.appendChild(divRight);
+
+                                                            li.appendChild(div);
+
+                                                            list.appendChild(li);
+                                                        });
+
+                                                    }
+
+
+                                                </script>
+
+
+
+
+
 
                                             </td>
-                                            <!-- <td>
-                                                <select
+                                            <td><select
                                                     style="border-radius: 6px; height: 35px;  box-shadow: inset 0px 0px 0px 0px red; text-shadow: none; border-color: #C0C0C0; background-color:white;"
                                                     id="eqSubCat" onchange="JavaScript:miSrch.sc('sc');">
                                                     <option value="any">All </option>
@@ -121,17 +330,12 @@
                                                     <option value="MovingAverage">Stock Moving Average</option>
                                                     <option value="TechnicalAnalysis">Stock Technicals</option>
                                                     <option value="PivotPoint">Stock Pivot Point</option>
-                                                </select></td> -->
+                                                </select></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
-                        <script src="data.js"></script>
-                        <script src="index.js"></script>
-
-                        <!-- code ends here -->
                     </div>
                 </div>
                 <!-- Header End-->
@@ -410,10 +614,10 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <!-- <div id='dynSearch'>
+                                    <div id='dynSearch'>
 
 
-                                    </div> -->
+                                    </div>
                                 </div>
                             </div>
                             <style>
@@ -534,14 +738,14 @@
                                                 <div class="card w-100 me-3">
                                                     <div class="card-body p-sm-1">
 
-                                                        <a href="https://www.tsrbt1.com/rt/Screener/Markets/MarketScreener"
+                                                        <a href="https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener"
                                                             class="text-center" style="all: unset; cursor: pointer;">
                                                             <h4 class="card-title"
                                                                 style="color: #023368; font-size: 21px; margin-bottom: 0px;">
                                                                 Market
                                                                 <span style="white-space: nowrap;">Overview
                                                                     <img style="height: 28px; width: 32px; margin-bottom: 9px;"
-                                                                        src="https://www.tsrbt1.com/static/img/Campaign/MarketOverview.png"
+                                                                        src="https://www.topstockresearch.com/static/img/Campaign/MarketOverview.png"
                                                                         alt="">
                                                                 </span>
                                                                 <!-- <span style="white-space: nowrap;">Overview <i
@@ -558,13 +762,13 @@
                                             </div>
 
 
-                                            <!-- https://www.tsrbt1.com/rt/Screener/Markets/MarketScreener -->
-                                            <!-- https://www.tsrbt1.com/rt/StrategySnapshot -->
+                                            <!-- https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener -->
+                                            <!-- https://www.topstockresearch.com/rt/StrategySnapshot -->
 
                                             <div class="col col-sm-4 d-flex">
                                                 <div class="card w-100 me-3">
                                                     <div class="card-body p-sm-1">
-                                                        <a href="https://www.tsrbt1.com/rt/Screener/Markets/IntradayScreener"
+                                                        <a href="https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener"
                                                             class="text-center" style="all: unset; cursor: pointer;">
                                                             <h4 class="card-title"
                                                                 style="color: #023368;  font-size: 21px;">
@@ -588,7 +792,7 @@
                                             <div class="col col-sm-4 mt-sm-0">
                                                 <div class="card">
                                                     <div class="card-body p-sm-1">
-                                                        <a href="https://www.tsrbt1.com/rt/StrategySnapshot"
+                                                        <a href="https://www.topstockresearch.com/rt/StrategySnapshot"
                                                             class="text-center" style="all: unset; cursor: pointer;">
                                                             <h4 class="card-title"
                                                                 style="color: #023368;  font-size: 21px;">
@@ -611,14 +815,14 @@
                                         <div class="text-end tsrRfdLink">
 
 
-                                            <a href="https://www.tsrbt1.com/my/UserManagement/?act=rfd"
+                                            <a href="https://www.topstockresearch.com/my/UserManagement/?act=rfd"
                                                 style="font-size: 16px;font-weight: bold;">
                                                 <span>
                                                     India's Best Technical Tool for Traders
                                                 </span>
                                             </a>
                                             <div class="vr" style="color: black;"></div>
-                                            <a href="https://www.tsrbt1.com/my/UserManagement/?act=rfd"
+                                            <a href="https://www.topstockresearch.com/my/UserManagement/?act=rfd"
                                                 style="font-size: 16px;font-weight: bold;">
                                                 <!-- <span style="color: #b4d2ff;"> -->
                                                 Request for Demo
@@ -656,14 +860,14 @@
                                                 <div class="card w-100">
                                                     <div class="card-body p-2">
 
-                                                        <a href="https://www.tsrbt1.com/rt/Screener/Markets/MarketScreener"
+                                                        <a href="https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener"
                                                             class="text-center" style="all: unset; cursor: pointer;">
                                                             <h4 class="card-title"
                                                                 style="color: #023368; font-size: 21px; margin-bottom: 0px;">
                                                                 Market
                                                                 <span style="white-space: nowrap;">Overview
                                                                     <img style="height: 28px; width: 32px; margin-bottom: 9px;"
-                                                                        src="https://www.tsrbt1.com/static/img/Campaign/MarketOverview.png"
+                                                                        src="https://www.topstockresearch.com/static/img/Campaign/MarketOverview.png"
                                                                         alt="">
                                                                 </span>
                                                                 <!-- <span style="white-space: nowrap;">Overview <i
@@ -679,13 +883,13 @@
                                             </div>
 
 
-                                            <!-- https://www.tsrbt1.com/rt/Screener/Markets/MarketScreener -->
-                                            <!-- https://www.tsrbt1.com/rt/StrategySnapshot -->
+                                            <!-- https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener -->
+                                            <!-- https://www.topstockresearch.com/rt/StrategySnapshot -->
 
                                             <div class="col-12 d-flex">
                                                 <div class="card w-100">
                                                     <div class="card-body p-2">
-                                                        <a href="https://www.tsrbt1.com/rt/Screener/Markets/IntradayScreener"
+                                                        <a href="https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener"
                                                             class="text-center" style="all: unset; cursor: pointer;">
                                                             <h4 class="card-title"
                                                                 style="color: #023368;  font-size: 21px;">
@@ -708,7 +912,7 @@
                                             <div class="col-12 mt-sm-0">
                                                 <div class="card">
                                                     <div class="card-body p-2">
-                                                        <a href="https://www.tsrbt1.com/rt/StrategySnapshot"
+                                                        <a href="https://www.topstockresearch.com/rt/StrategySnapshot"
                                                             class="text-center" style="all: unset; cursor: pointer;">
                                                             <h4 class="card-title"
                                                                 style="color: #023368;  font-size: 21px;">
@@ -801,102 +1005,100 @@
                                                 <div class='owl-carousel owl-theme priceGainerCarCss'>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/SCI/BirdsEyeView'>
-                                                                <h6>SCI</h6>
-                                                                <h3 class='fw-bold text-success'>7.22 %</h3><small
-                                                                    class='fw-light h6 '>235.44 /
-                                                                    15.85</small><br /><span
+                                                                href='https://www.tsrbt1.com/rt/Stock/TBOTEK/BirdsEyeView'>
+                                                                <h6>TBOTEK</h6>
+                                                                <h3 class='fw-bold text-success'>7.63 %</h3><small
+                                                                    class='fw-light h6 '>1659.7 /
+                                                                    117.70</small><br /><span
                                                                     style='color:#008B00;  '>Bullish</span>
                                                             </a></div>
                                                     </div>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/NETWEB/BirdsEyeView'>
-                                                                <h6>NETWEB</h6>
-                                                                <h3 class='fw-bold text-success'>5.52 %</h3><small
-                                                                    class='fw-light h6 '>3460.4 /
-                                                                    181.00</small><br /><span
+                                                                href='https://www.tsrbt1.com/rt/Stock/COHANCE/BirdsEyeView'>
+                                                                <h6>COHANCE</h6>
+                                                                <h3 class='fw-bold text-success'>6.69 %</h3><small
+                                                                    class='fw-light h6 '>984.65 /
+                                                                    61.75</small><br /><span
+                                                                    style='color:orange;  '>Mild Bearish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.tsrbt1.com/rt/Stock/GMDCLTD/BirdsEyeView'>
+                                                                <h6>GMDCLTD</h6>
+                                                                <h3 class='fw-bold text-success'>6.26 %</h3><small
+                                                                    class='fw-light h6 '>540.85 /
+                                                                    31.85</small><br /><span
                                                                     style='color:#004F00;  '>Strong Bullish</span>
                                                             </a></div>
                                                     </div>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/ANANTRAJ/BirdsEyeView'>
-                                                                <h6>ANANTRAJ</h6>
-                                                                <h3 class='fw-bold text-success'>4.59 %</h3><small
-                                                                    class='fw-light h6 '>669.8 /
-                                                                    29.40</small><br /><span
-                                                                    style='color:#004F00;  '>Strong Bullish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/GRSE/BirdsEyeView'>
-                                                                <h6>GRSE</h6>
-                                                                <h3 class='fw-bold text-success'>4.30 %</h3><small
-                                                                    class='fw-light h6 '>2717.4 /
-                                                                    112.10</small><br /><span
-                                                                    style='color:#96C8A2;  '>Mild Bullish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/ADANIGREEN/BirdsEyeView'>
-                                                                <h6>ADANIGREEN</h6>
-                                                                <h3 class='fw-bold text-success'>3.47 %</h3><small
-                                                                    class='fw-light h6 '>1066.5 /
-                                                                    35.80</small><br /><span
-                                                                    style='color:#004F00;  '>Strong Bullish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/ATGL/BirdsEyeView'>
-                                                                <h6>ATGL</h6>
-                                                                <h3 class='fw-bold text-success'>3.06 %</h3><small
-                                                                    class='fw-light h6 '>671.4 /
-                                                                    19.95</small><br /><span
-                                                                    style='color:#004F00;  '>Strong Bullish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/HINDCOPPER/BirdsEyeView'>
-                                                                <h6>HINDCOPPER</h6>
-                                                                <h3 class='fw-bold text-success'>2.89 %</h3><small
-                                                                    class='fw-light h6 '>291.04 /
-                                                                    8.18</small><br /><span
-                                                                    style='color:#96C8A2;  '>Mild Bullish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/ADANIENT/BirdsEyeView'>
-                                                                <h6>ADANIENT</h6>
-                                                                <h3 class='fw-bold text-success'>2.69 %</h3><small
-                                                                    class='fw-light h6 '>2591.8 /
-                                                                    67.80</small><br /><span
-                                                                    style='color:#004F00;  '>Strong Bullish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/GESHIP/BirdsEyeView'>
-                                                                <h6>GESHIP</h6>
-                                                                <h3 class='fw-bold text-success'>2.67 %</h3><small
-                                                                    class='fw-light h6 '>1082.6 /
-                                                                    28.20</small><br /><span
+                                                                href='https://www.tsrbt1.com/rt/Stock/ADANIPOWER/BirdsEyeView'>
+                                                                <h6>ADANIPOWER</h6>
+                                                                <h3 class='fw-bold text-success'>6.02 %</h3><small
+                                                                    class='fw-light h6 '>646.4 /
+                                                                    36.70</small><br /><span
                                                                     style='color:#008B00;  '>Bullish</span>
                                                             </a></div>
                                                     </div>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/PEL/BirdsEyeView'>
-                                                                <h6>PEL</h6>
-                                                                <h3 class='fw-bold text-success'>2.65 %</h3><small
-                                                                    class='fw-light h6 '>1151.9 /
-                                                                    29.70</small><br /><span
+                                                                href='https://www.tsrbt1.com/rt/Stock/BHARATFORG/BirdsEyeView'>
+                                                                <h6>BHARATFORG</h6>
+                                                                <h3 class='fw-bold text-success'>5.61 %</h3><small
+                                                                    class='fw-light h6 '>1200.5 /
+                                                                    63.80</small><br /><span
+                                                                    style='color:orange;  '>Mild Bearish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.tsrbt1.com/rt/Stock/JPPOWER/BirdsEyeView'>
+                                                                <h6>JPPOWER</h6>
+                                                                <h3 class='fw-bold text-success'>4.98 %</h3><small
+                                                                    class='fw-light h6 '>20.02 /
+                                                                    0.950</small><br /><span
+                                                                    style='color:#008B00;  '>Bullish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.tsrbt1.com/rt/Stock/IDBI/BirdsEyeView'>
+                                                                <h6>IDBI</h6>
+                                                                <h3 class='fw-bold text-success'>4.77 %</h3><small
+                                                                    class='fw-light h6 '>93.11 / 4.24</small><br /><span
                                                                     style='color:#ff9999;  '>Neutral</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.tsrbt1.com/rt/Stock/NETWORK18/BirdsEyeView'>
+                                                                <h6>NETWORK18</h6>
+                                                                <h3 class='fw-bold text-success'>4.72 %</h3><small
+                                                                    class='fw-light h6 '>56.59 / 2.55</small><br /><span
+                                                                    style='color:#ff9999;  '>Neutral</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.tsrbt1.com/rt/Stock/SYRMA/BirdsEyeView'>
+                                                                <h6>SYRMA</h6>
+                                                                <h3 class='fw-bold text-success'>4.47 %</h3><small
+                                                                    class='fw-light h6 '>868.4 /
+                                                                    37.15</small><br /><span
+                                                                    style='color:#004F00;  '>Strong Bullish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.tsrbt1.com/rt/Stock/ASHOKLEY/BirdsEyeView'>
+                                                                <h6>ASHOKLEY</h6>
+                                                                <h3 class='fw-bold text-success'>4.40 %</h3><small
+                                                                    class='fw-light h6 '>136.53 /
+                                                                    5.76</small><br /><span
+                                                                    style='color:#96C8A2;  '>Mild Bullish</span>
                                                             </a></div>
                                                     </div>
                                                 </div><span style='font-size:8pt;color:grey;  '>Symbol /Price Change % /
@@ -954,29 +1156,29 @@
                                                         <td><a href='https://www.tsrbt1.com/rt/Stock/NIFTY/BirdsEyeView'
                                                                 alt='S&P CNX NIFTY' title='S&P CNX NIFTY'>NIFTY</a>
                                                         </td>
-                                                        <td>25299.20 </td>
-                                                        <td>-27.900 </td>
+                                                        <td>24816.70 </td>
+                                                        <td>75.70 </td>
                                                         <td>
-                                                            <font color='red'>0.110 %</font>
+                                                            <font color='green'>0.306 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td><a href='https://www.tsrbt1.com/rt/Stock/NIFTY_FIN_SERV/BirdsEyeView'
                                                                 alt='Nifty Fin Service'
                                                                 title='Nifty Fin Service'>NIFTY_FIN_SERV</a> </td>
-                                                        <td>26611.20 </td>
-                                                        <td>83.60 </td>
+                                                        <td>25986.60 </td>
+                                                        <td>97.30 </td>
                                                         <td>
-                                                            <font color='green'>0.315 %</font>
+                                                            <font color='green'>0.376 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td><a href='https://www.tsrbt1.com/rt/Stock/NIFTYIT/BirdsEyeView'
                                                                 alt='Nifty IT' title='Nifty IT'>NIFTYIT</a> </td>
-                                                        <td>35638.90 </td>
-                                                        <td>-939.301 </td>
+                                                        <td>34453.10 </td>
+                                                        <td>-182.797 </td>
                                                         <td>
-                                                            <font color='red'>2.57 %</font>
+                                                            <font color='red'>0.528 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -999,33 +1201,32 @@
                                                         <th>Change % </th>
                                                     </tr>
                                                     <tr>
+                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/NIFTY_AUTO/BirdsEyeView'
+                                                                alt='Nifty Auto' title='Nifty Auto'>NIFTY_AUTO</a> </td>
+                                                        <td>26998.90 </td>
+                                                        <td>678.30 </td>
+                                                        <td>
+                                                            <font color='green'>2.58 %</font>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
                                                         <td><a href='https://www.tsrbt1.com/rt/Stock/NIFTY_PSU_BANK/BirdsEyeView'
                                                                 alt='Nifty PSU Bank'
                                                                 title='Nifty PSU Bank'>NIFTY_PSU_BANK</a> </td>
-                                                        <td>7459.20 </td>
-                                                        <td>61.45 </td>
+                                                        <td>6919.05 </td>
+                                                        <td>63.35 </td>
                                                         <td>
-                                                            <font color='green'>0.831 %</font>
+                                                            <font color='green'>0.924 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/NIFTY_MEDIA/BirdsEyeView'
-                                                                alt='Nifty Media' title='Nifty Media'>NIFTY_MEDIA</a>
-                                                        </td>
-                                                        <td>1628.10 </td>
-                                                        <td>8.65 </td>
+                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/NIFTY_CONSUM/BirdsEyeView'
+                                                                alt='Nifty Consumption'
+                                                                title='Nifty Consumption'>NIFTY_CONSUM</a> </td>
+                                                        <td>12461.40 </td>
+                                                        <td>90.90 </td>
                                                         <td>
-                                                            <font color='green'>0.534 %</font>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/NIFTY_METAL/BirdsEyeView'
-                                                                alt='Nifty Metal' title='Nifty Metal'>NIFTY_METAL</a>
-                                                        </td>
-                                                        <td>10023.20 </td>
-                                                        <td>33.30 </td>
-                                                        <td>
-                                                            <font color='green'>0.333 %</font>
+                                                            <font color='green'>0.735 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -1050,30 +1251,10 @@
                                                     <tr>
                                                         <td><a href='https://www.tsrbt1.com/rt/Stock/NIFTYIT/BirdsEyeView'
                                                                 alt='Nifty IT' title='Nifty IT'>NIFTYIT</a> </td>
-                                                        <td>35638.90 </td>
-                                                        <td>-939.301 </td>
+                                                        <td>34453.10 </td>
+                                                        <td>-182.797 </td>
                                                         <td>
-                                                            <font color='red'>2.57 %</font>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/NIFTY_SMALLCAP_50/BirdsEyeView'
-                                                                alt='NIFTY Smallcap 50'
-                                                                title='NIFTY Smallcap 50'>NIFTY_SMALLCAP_50</a> </td>
-                                                        <td>8894.30 </td>
-                                                        <td>-15.400 </td>
-                                                        <td>
-                                                            <font color='red'>0.173 %</font>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/NIFTY/BirdsEyeView'
-                                                                alt='S&P CNX NIFTY' title='S&P CNX NIFTY'>NIFTY</a>
-                                                        </td>
-                                                        <td>25299.20 </td>
-                                                        <td>-27.900 </td>
-                                                        <td>
-                                                            <font color='red'>0.110 %</font>
+                                                            <font color='red'>0.528 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -1173,102 +1354,102 @@
                                                 <div class='owl-carousel owl-theme priceLoserCarCss'>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/ADANIPOWER/BirdsEyeView'>
-                                                                <h6>ADANIPOWER</h6>
-                                                                <h3 class='fw-bold text-danger'>-76.56 %</h3><small
-                                                                    class='fw-light h6 '>166.3 /
-                                                                    -543.100</small><br /><span
+                                                                href='https://www.tsrbt1.com/rt/Stock/AMBER/BirdsEyeView'>
+                                                                <h6>AMBER</h6>
+                                                                <h3 class='fw-bold text-danger'>-3.89 %</h3><small
+                                                                    class='fw-light h6 '>7490.0 /
+                                                                    -303.500</small><br /><span
+                                                                    style='color:#008B00;  '>Bullish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.tsrbt1.com/rt/Stock/BLUESTARCO/BirdsEyeView'>
+                                                                <h6>BLUESTARCO</h6>
+                                                                <h3 class='fw-bold text-danger'>-2.95 %</h3><small
+                                                                    class='fw-light h6 '>1886.1 /
+                                                                    -57.400</small><br /><span
+                                                                    style='color:#96C8A2;  '>Mild Bullish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.tsrbt1.com/rt/Stock/EIDPARRY/BirdsEyeView'>
+                                                                <h6>EIDPARRY</h6>
+                                                                <h3 class='fw-bold text-danger'>-2.77 %</h3><small
+                                                                    class='fw-light h6 '>1082.0 /
+                                                                    -30.800</small><br /><span
+                                                                    style='color:#ff9999;  '>Neutral</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.tsrbt1.com/rt/Stock/GODFRYPHLP/BirdsEyeView'>
+                                                                <h6>GODFRYPHLP</h6>
+                                                                <h3 class='fw-bold text-danger'>-2.46 %</h3><small
+                                                                    class='fw-light h6 '>10801.0 /
+                                                                    -272.000</small><br /><span
+                                                                    style='color:#008B00;  '>Bullish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.tsrbt1.com/rt/Stock/PVRINOX/BirdsEyeView'>
+                                                                <h6>PVRINOX</h6>
+                                                                <h3 class='fw-bold text-danger'>-2.42 %</h3><small
+                                                                    class='fw-light h6 '>1118.6 /
+                                                                    -27.700</small><br /><span
                                                                     style='color:#004F00;  '>Strong Bullish</span>
                                                             </a></div>
                                                     </div>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/TECHM/BirdsEyeView'>
-                                                                <h6>TECHM</h6>
-                                                                <h3 class='fw-bold text-danger'>-4.03 %</h3><small
-                                                                    class='fw-light h6 '>1491.2 /
-                                                                    -62.600</small><br /><span
+                                                                href='https://www.tsrbt1.com/rt/Stock/DOMS/BirdsEyeView'>
+                                                                <h6>DOMS</h6>
+                                                                <h3 class='fw-bold text-danger'>-2.08 %</h3><small
+                                                                    class='fw-light h6 '>2591.4 /
+                                                                    -55.000</small><br /><span
                                                                     style='color:#008B00;  '>Bullish</span>
                                                             </a></div>
                                                     </div>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/IPCALAB/BirdsEyeView'>
-                                                                <h6>IPCALAB</h6>
-                                                                <h3 class='fw-bold text-danger'>-3.85 %</h3><small
-                                                                    class='fw-light h6 '>1385.5 /
-                                                                    -55.500</small><br /><span
-                                                                    style='color:#004F00;  '>Strong Bullish</span>
+                                                                href='https://www.tsrbt1.com/rt/Stock/BIKAJI/BirdsEyeView'>
+                                                                <h6>BIKAJI</h6>
+                                                                <h3 class='fw-bold text-danger'>-1.84 %</h3><small
+                                                                    class='fw-light h6 '>785.3 /
+                                                                    -14.750</small><br /><span
+                                                                    style='color:#008B00;  '>Bullish</span>
                                                             </a></div>
                                                     </div>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/PERSISTENT/BirdsEyeView'>
-                                                                <h6>PERSISTENT</h6>
-                                                                <h3 class='fw-bold text-danger'>-3.78 %</h3><small
-                                                                    class='fw-light h6 '>5298.0 /
-                                                                    -208.000</small><br /><span
+                                                                href='https://www.tsrbt1.com/rt/Stock/VEDL/BirdsEyeView'>
+                                                                <h6>VEDL</h6>
+                                                                <h3 class='fw-bold text-danger'>-1.68 %</h3><small
+                                                                    class='fw-light h6 '>438.0 /
+                                                                    -7.500</small><br /><span
                                                                     style='color:#96C8A2;  '>Mild Bullish</span>
                                                             </a></div>
                                                     </div>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/LTIM/BirdsEyeView'>
-                                                                <h6>LTIM</h6>
-                                                                <h3 class='fw-bold text-danger'>-3.47 %</h3><small
-                                                                    class='fw-light h6 '>5318.5 /
-                                                                    -191.000</small><br /><span
-                                                                    style='color:#008B00;  '>Bullish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/COFORGE/BirdsEyeView'>
-                                                                <h6>COFORGE</h6>
-                                                                <h3 class='fw-bold text-danger'>-3.17 %</h3><small
-                                                                    class='fw-light h6 '>1738.4 /
-                                                                    -56.900</small><br /><span
+                                                                href='https://www.tsrbt1.com/rt/Stock/SUPREMEIND/BirdsEyeView'>
+                                                                <h6>SUPREMEIND</h6>
+                                                                <h3 class='fw-bold text-danger'>-1.63 %</h3><small
+                                                                    class='fw-light h6 '>4503.0 /
+                                                                    -74.700</small><br /><span
                                                                     style='color:#96C8A2;  '>Mild Bullish</span>
                                                             </a></div>
                                                     </div>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/MPHASIS/BirdsEyeView'>
-                                                                <h6>MPHASIS</h6>
-                                                                <h3 class='fw-bold text-danger'>-2.93 %</h3><small
-                                                                    class='fw-light h6 '>2906.0 /
-                                                                    -87.800</small><br /><span
-                                                                    style='color:#008B00;  '>Bullish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/SAGILITY/BirdsEyeView'>
-                                                                <h6>SAGILITY</h6>
-                                                                <h3 class='fw-bold text-danger'>-2.91 %</h3><small
-                                                                    class='fw-light h6 '>45.08 /
-                                                                    -1.350</small><br /><span
-                                                                    style='color:#008B00;  '>Bullish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/LALPATHLAB/BirdsEyeView'>
-                                                                <h6>LALPATHLAB</h6>
-                                                                <h3 class='fw-bold text-danger'>-2.68 %</h3><small
-                                                                    class='fw-light h6 '>3380.5 /
-                                                                    -93.000</small><br /><span
-                                                                    style='color:#008B00;  '>Bullish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.tsrbt1.com/rt/Stock/NEWGEN/BirdsEyeView'>
-                                                                <h6>NEWGEN</h6>
-                                                                <h3 class='fw-bold text-danger'>-2.68 %</h3><small
-                                                                    class='fw-light h6 '>891.0 /
-                                                                    -24.500</small><br /><span
-                                                                    style='color:#96C8A2;  '>Mild Bullish</span>
+                                                                href='https://www.tsrbt1.com/rt/Stock/COROMANDEL/BirdsEyeView'>
+                                                                <h6>COROMANDEL</h6>
+                                                                <h3 class='fw-bold text-danger'>-1.61 %</h3><small
+                                                                    class='fw-light h6 '>2221.6 /
+                                                                    -36.300</small><br /><span
+                                                                    style='color:#ff9999;  '>Neutral</span>
                                                             </a></div>
                                                     </div>
                                                 </div><span style='font-size:8pt;color:grey;  '>Symbol /Price Change % /
@@ -1323,23 +1504,14 @@
                                                         <th>Change % </th>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/ADANIPOWER/BirdsEyeView'
-                                                                alt='Adani Power Limited'
-                                                                title='Adani Power Limited'>ADANIPOWER</a> </td>
-                                                        <td>166.95 </td>
-                                                        <td>2.95 </td>
-                                                        <td>
-                                                            <font color='green'>1.80 %</font>
+                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/NETWORK18/BirdsEyeView'
+                                                                alt='Network18 Media & Investments Ltd.'
+                                                                title='Network18 Media & Investments Ltd.'>NETWORK18</a>
                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/GPIL/BirdsEyeView'
-                                                                alt='Godawari Power & Ispat'
-                                                                title='Godawari Power & Ispat'>GPIL</a> </td>
-                                                        <td>267.90 </td>
-                                                        <td>2.90 </td>
+                                                        <td>56.59 </td>
+                                                        <td>1.21 </td>
                                                         <td>
-                                                            <font color='green'>1.09 %</font>
+                                                            <font color='green'>2.18 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -1367,34 +1539,12 @@
                                                         <th>Change % </th>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/SCI/BirdsEyeView'
-                                                                alt='Shipping Corporation of India Ltd.'
-                                                                title='Shipping Corporation of India Ltd.'>SCI</a> </td>
-                                                        <td>236.41 </td>
-                                                        <td>16.83 </td>
+                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/JBMA/BirdsEyeView'
+                                                                alt='JBM Auto' title='JBM Auto'>JBMA</a> </td>
+                                                        <td>632.00 </td>
+                                                        <td>9.40 </td>
                                                         <td>
-                                                            <font color='green'>7.66 %</font>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/GRSE/BirdsEyeView'
-                                                                alt='Garden Reach Shipbuilders & Engineers Ltd.'
-                                                                title='Garden Reach Shipbuilders & Engineers Ltd.'>GRSE</a>
-                                                        </td>
-                                                        <td>2716.50 </td>
-                                                        <td>115.50 </td>
-                                                        <td>
-                                                            <font color='green'>4.44 %</font>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/COCHINSHIP/BirdsEyeView'
-                                                                alt='Cochin Shipyard Ltd.'
-                                                                title='Cochin Shipyard Ltd.'>COCHINSHIP</a> </td>
-                                                        <td>1957.90 </td>
-                                                        <td>59.80 </td>
-                                                        <td>
-                                                            <font color='green'>3.15 %</font>
+                                                            <font color='green'>1.51 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -1422,33 +1572,33 @@
                                                         <th>Change % </th>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/SCI/BirdsEyeView'
-                                                                alt='Shipping Corporation of India Ltd.'
-                                                                title='Shipping Corporation of India Ltd.'>SCI</a> </td>
-                                                        <td>234.33 </td>
-                                                        <td>14.75 </td>
+                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/NETWORK18/BirdsEyeView'
+                                                                alt='Network18 Media & Investments Ltd.'
+                                                                title='Network18 Media & Investments Ltd.'>NETWORK18</a>
+                                                        </td>
+                                                        <td>55.44 </td>
+                                                        <td>1.44 </td>
                                                         <td>
-                                                            <font color='green'>6.72 %</font>
+                                                            <font color='green'>2.67 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/ANANTRAJ/BirdsEyeView'
-                                                                alt='Anant Raj Ltd.' title='Anant Raj Ltd.'>ANANTRAJ</a>
-                                                        </td>
-                                                        <td>672.25 </td>
-                                                        <td>33.85 </td>
+                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/SAILIFE/BirdsEyeView'
+                                                                alt='Sai Life Sciences Limited'
+                                                                title='Sai Life Sciences Limited'>SAILIFE</a> </td>
+                                                        <td>867.90 </td>
+                                                        <td>11.95 </td>
                                                         <td>
-                                                            <font color='green'>5.30 %</font>
+                                                            <font color='green'>1.40 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/ADANIGREEN/BirdsEyeView'
-                                                                alt='Adani Green Energy Ltd.'
-                                                                title='Adani Green Energy Ltd.'>ADANIGREEN</a> </td>
-                                                        <td>1069.15 </td>
-                                                        <td>37.40 </td>
+                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/JBMA/BirdsEyeView'
+                                                                alt='JBM Auto' title='JBM Auto'>JBMA</a> </td>
+                                                        <td>627.00 </td>
+                                                        <td>7.00 </td>
                                                         <td>
-                                                            <font color='green'>3.62 %</font>
+                                                            <font color='green'>1.13 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -1481,33 +1631,33 @@
                                                         <th>Change % </th>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/NETWEB/TechnicalAnalysis'
-                                                                alt='Netweb Technologies India Ltd.'
-                                                                title='Netweb Technologies India Ltd.'>NETWEB</a> </td>
-                                                        <td>3460.40 </td>
-                                                        <td>181.00 </td>
+                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/MSUMI/TechnicalAnalysis'
+                                                                alt='Motherson Sumi Wiring India Ltd.'
+                                                                title='Motherson Sumi Wiring India Ltd.'>MSUMI</a> </td>
+                                                        <td>46.99 </td>
+                                                        <td>1.82 </td>
                                                         <td>
-                                                            <font color='green'>5.52 %</font>
+                                                            <font color='green'>4.03 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/HYUNDAI/TechnicalAnalysis'
-                                                                alt='Hyundai Motor India Limited'
-                                                                title='Hyundai Motor India Limited'>HYUNDAI</a> </td>
-                                                        <td>2869.60 </td>
-                                                        <td>60.30 </td>
+                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/M&M/TechnicalAnalysis'
+                                                                alt='Mahindra & Mahindra Ltd.'
+                                                                title='Mahindra & Mahindra Ltd.'>M&M</a> </td>
+                                                        <td>3677.40 </td>
+                                                        <td>116.10 </td>
                                                         <td>
-                                                            <font color='green'>2.15 %</font>
+                                                            <font color='green'>3.26 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/SCI/TechnicalAnalysis'
-                                                                alt='Shipping Corporation of India Ltd.'
-                                                                title='Shipping Corporation of India Ltd.'>SCI</a> </td>
-                                                        <td>235.44 </td>
-                                                        <td>15.85 </td>
+                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/BAJFINANCE/TechnicalAnalysis'
+                                                                alt='Bajaj Finance' title='Bajaj Finance'>BAJFINANCE</a>
+                                                        </td>
+                                                        <td>941.90 </td>
+                                                        <td>4.30 </td>
                                                         <td>
-                                                            <font color='green'>7.22 %</font>
+                                                            <font color='green'>0.459 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -1538,30 +1688,30 @@
                                                         <td><a href='https://www.tsrbt1.com/rt/Stock/JSL/FundamentalAnalysis'
                                                                 alt='Jindal Stainless Ltd.'
                                                                 title='Jindal Stainless Ltd.'>JSL</a> </td>
-                                                        <td>778.95 </td>
-                                                        <td>16.75 </td>
+                                                        <td>755.70 </td>
+                                                        <td>8.80 </td>
                                                         <td>
-                                                            <font color='green'>2.20 %</font>
+                                                            <font color='green'>1.18 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/JWL/FundamentalAnalysis'
-                                                                alt='Jupiter Wagons Ltd.'
-                                                                title='Jupiter Wagons Ltd.'>JWL</a> </td>
-                                                        <td>339.75 </td>
-                                                        <td>-5.050 </td>
+                                                        <td><a href='https://www.tsrbt1.com/rt/Stock/KARURVYSYA/FundamentalAnalysis'
+                                                                alt='Karur Vysya Bank Ltd.'
+                                                                title='Karur Vysya Bank Ltd.'>KARURVYSYA</a> </td>
+                                                        <td>206.10 </td>
+                                                        <td>3.14 </td>
                                                         <td>
-                                                            <font color='red'>1.46 %</font>
+                                                            <font color='green'>1.55 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td><a href='https://www.tsrbt1.com/rt/Stock/PGEL/FundamentalAnalysis'
                                                                 alt='PG Electroplast' title='PG Electroplast'>PGEL</a>
                                                         </td>
-                                                        <td>571.15 </td>
-                                                        <td>3.75 </td>
+                                                        <td>554.15 </td>
+                                                        <td>-0.850 </td>
                                                         <td>
-                                                            <font color='green'>0.661 %</font>
+                                                            <font color='red'>0.153 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -1592,30 +1742,30 @@
                                                         <td><a href='https://www.tsrbt1.com/rt/Stock/NATIONALUM/FundamentalAnalysis'
                                                                 alt='National Aluminium Co. Ltd.'
                                                                 title='National Aluminium Co. Ltd.'>NATIONALUM</a> </td>
-                                                        <td>211.60 </td>
-                                                        <td>-2.200 </td>
+                                                        <td>212.14 </td>
+                                                        <td>5.47 </td>
                                                         <td>
-                                                            <font color='red'>1.03 %</font>
+                                                            <font color='green'>2.65 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td><a href='https://www.tsrbt1.com/rt/Stock/IOC/FundamentalAnalysis'
                                                                 alt='Indian Oil Corporation Ltd.'
                                                                 title='Indian Oil Corporation Ltd.'>IOC</a> </td>
-                                                        <td>148.50 </td>
-                                                        <td>1.35 </td>
+                                                        <td>139.65 </td>
+                                                        <td>-0.030 </td>
                                                         <td>
-                                                            <font color='green'>0.917 %</font>
+                                                            <font color='red'>0.0215 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td><a href='https://www.tsrbt1.com/rt/Stock/TATAMOTORS/FundamentalAnalysis'
                                                                 alt='Tata Motors Ltd.'
                                                                 title='Tata Motors Ltd.'>TATAMOTORS</a> </td>
-                                                        <td>707.45 </td>
-                                                        <td>-3.750 </td>
+                                                        <td>691.70 </td>
+                                                        <td>4.20 </td>
                                                         <td>
-                                                            <font color='red'>0.527 %</font>
+                                                            <font color='green'>0.611 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -1638,10 +1788,10 @@
                                 lc.lc(10000, 200000, 'SimpleChartsDiv', { "period": "3M", "name": "Nifty 50" });
 
                             </script>
-                            <script> mintHtmlUtil.dlg({ divId: 'niftyTechStr', rank: 0.618, title: 'Nifty Tech Index', leftLabel: 'Low', rightLabel: 'High', width: 200, height: 8 }); mintHtmlUtil.dlg({ divId: 'bankNiftyTechStr', rank: 0.63, title: ' Bank Nifty Tech Index', leftLabel: 'Low', rightLabel: 'High', width: 200, height: 8 });</script>
+                            <script> mintHtmlUtil.dlg({ divId: 'niftyTechStr', rank: 0.5923809523809523, title: 'Nifty Tech Index', leftLabel: 'Low', rightLabel: 'High', width: 200, height: 8 }); mintHtmlUtil.dlg({ divId: 'bankNiftyTechStr', rank: 0.46095238095238095, title: ' Bank Nifty Tech Index', leftLabel: 'Low', rightLabel: 'High', width: 200, height: 8 });</script>
                             <div id='heatMapAdsDiv' align='center'><a
                                     href='https://www.tsrbt1.com/rt/Screener/Markets/HeatMap/NIFTY50'><img
-                                        src='https://www.tsrbt1.com/static/img/Campaign/HeatMapCreative.gif'
+                                        src='https://www.TopStockResearch.com/static/img/Campaign/HeatMapCreative.gif'
                                         class='img-responsive img-fluid' alt='TSR NextGen Heatmap'
                                         name='TSR NextGen Heatmap' title='TSR NextGen Heatmap' /></a></div><br /><br />
                             <div class="row">
@@ -2165,7 +2315,7 @@
                                 <div class="card-body d-flex flex-column flex-sm-row justify-content-center">
                                     <div
                                         class="d-flex flex-column justify-content-center align-items-center mb-3 mb-sm-0">
-                                        <a href='https://www.tsrbt1.com/static/Ebooks/CandlestickpatternPart1ByTSR.pdf'
+                                        <a href='https://www.topstockresearch.com/static/Ebooks/CandlestickpatternPart1ByTSR.pdf'
                                             target="_blank" style="color: black;">
                                             <h2 class="d-flex align-items-center">Candlestick <span
                                                     class="d-none d-md-inline-block">&nbsp; eBook</span> &nbsp; <i
@@ -2192,7 +2342,7 @@
                                         <p class="text-gray-500 text-sm m-0">Free CandleStick Pattern PDF eBook</p>
                                         <br>
                                         <button type="button" class="btn btn-primary">
-                                            <a href='https://www.tsrbt1.com/static/Ebooks/CandlestickpatternPart1ByTSR.pdf'
+                                            <a href='https://www.topstockresearch.com/static/Ebooks/CandlestickpatternPart1ByTSR.pdf'
                                                 target='_blank'>
                                                 <span style="color: white;">Download</span>
                                             </a>
@@ -2481,7 +2631,7 @@
                                 <div class="card-body d-flex flex-column flex-sm-row justify-content-center">
                                     <div
                                         class="d-flex flex-column justify-content-center align-items-center mb-3 mb-sm-0">
-                                        <a href='https://www.tsrbt1.com/static/Ebooks/ValueInvesting1ByTSR.pdf'
+                                        <a href='https://www.topstockresearch.com/static/Ebooks/ValueInvesting1ByTSR.pdf'
                                             target="_blank" style="color: black;">
                                             <h2 class="d-flex align-items-center">Value Investing <span
                                                     class="d-none d-md-inline-block">&nbsp; eBook</span> &nbsp; <i
@@ -2508,7 +2658,7 @@
                                         <p class="text-gray-500 text-sm m-0">Free PDF eBook on Value Investing</p>
                                         <br>
                                         <button type="button" class="btn btn-primary">
-                                            <a href='https://www.tsrbt1.com/static/Ebooks/ValueInvesting1ByTSR.pdf'
+                                            <a href='https://www.topstockresearch.com/static/Ebooks/ValueInvesting1ByTSR.pdf'
                                                 target='_blank'>
                                                 <span style="color: white;">Download</span>
                                             </a>
@@ -3050,7 +3200,7 @@
                                             <div class="col-lg-6 col-md-3 col-sm-12" style="margin:0px;" align="center">
                                                 <a href="https://www.stockaio.com/" target="_blank">
                                                     <img style="max-height: 300px;"
-                                                        src="https://www.tsrbt1.com/static/img/FeaturedProduct/USLaunch/UKLaunch.gif"
+                                                        src="https://www.topstockresearch.com/static/img/FeaturedProduct/USLaunch/UKLaunch.gif"
                                                         title="StockAio.com (Stock All In One) Launch"
                                                         class="img-responsive img-fluid">
                                                 </a>
@@ -3073,7 +3223,7 @@
                                                 <br> <br>
                                                 <span
                                                     style="font-size:16px;color: #a2330b;font-weight: bold">Introductory
-                                                    Price <a href='https://www.tsrbt1.com/my/TsrPlans/'>@ Rs
+                                                    Price <a href='https://www.TopStockResearch.com/my/TsrPlans/'>@ Rs
                                                         999/Year</a> exclusively for TSR Users.</span>
                                             </div>
                                         </div>
@@ -3086,7 +3236,7 @@
                                             <div style="margin:0px;" align="center">
                                                 <a href="https://www.stockaio.com/" target="_blank">
                                                     <img style="max-height: 80px;"
-                                                        src="https://www.tsrbt1.com/static/img/FeaturedProduct/USLaunch/UKLaunch.gif"
+                                                        src="https://www.topstockresearch.com/static/img/FeaturedProduct/USLaunch/UKLaunch.gif"
                                                         title="StockAio.com (Stock All In One) Launch"
                                                         class="img-responsive img-fluid">
                                                 </a>
@@ -3103,7 +3253,7 @@
                                                 </span>
                                                 <br>
                                                 <span style="font-size:16px;color: #a2330b;font-weight: bold">Plan <a
-                                                        href='https://www.tsrbt1.com/my/TsrPlans/'>@ Rs
+                                                        href='https://www.TopStockResearch.com/my/TsrPlans/'>@ Rs
                                                         999/Year</a> exclusively for TSR Users.</span>
                                             </div>
                                         </div>
@@ -3115,7 +3265,7 @@
                                             <div class="card border-danger border-2">
                                                 <div class="card-body">
                                                     <p>
-                                                        tsrbt1.com (TSR) is a self service Stock Analytical
+                                                        TopStockResearch.com (TSR) is a self service Stock Analytical
                                                         tool. Nobody from topstockresearch will ever create an account
                                                         for you.
                                                         <br>
@@ -3124,7 +3274,7 @@
                                                         trading / investment services. .
                                                         <br>
                                                         Please do not entertain any email not ending with
-                                                        tsrbt1.com or mintnovate.com.
+                                                        TopStockresearch.com or mintnovate.com.
                                                     </p>
                                                     <p class="text-dark">
                                                         (Intraday Analysis is on Real Time Data (Updated every 1 Min).

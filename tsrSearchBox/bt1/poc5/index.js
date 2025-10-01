@@ -18,7 +18,7 @@ function getSearchBoxHeaderHtml(option) {
             <label for="screenerBasket">Screeners</label>
         </div>
 
-        <button class="btn-close" onclick ="closeDialog('tsrMoreInfoPopup')"></button>
+        <button class="btn-close" onclick ="closeDialog('tsrSearchBoxPopup')"></button>
     </div>
     `;
 
@@ -129,70 +129,70 @@ function writeToSelectContainer(option) {
     filterStocks('');
 }
 
-function showSubCategories(option) {
+// function showSubCategories(option) {
 
-    let input = document.getElementById("tsrStockSearch");
-    input.value = "";
+//     let input = document.getElementById("tsrStockSearch");
+//     input.value = "";
 
-    let container = document.getElementById("selectContainer");
+//     let container = document.getElementById("selectContainer");
 
-    let select = document.getElementById("basketSelect");
-    select.classList.add("form-select");
+//     let select = document.getElementById("basketSelect");
+//     select.classList.add("form-select");
 
-    if (option == "equity") {
-        let value = select.value;
+//     if (option == "equity") {
+//         let value = select.value;
 
-        let data;
+//         let data;
 
-        if (value == "any" || value == "FuturesAndOptions") {
-            data = undefined;
-        }
+//         if (value == "any" || value == "FuturesAndOptions") {
+//             data = undefined;
+//         }
 
-        if (value == "TechnicalAnalysis") {
-            data = TECH_INDI;
-        }
-        else if (value == "FundamentalAnalysis") {
-            data = FUNDA_INDI;
-        }
+//         if (value == "TechnicalAnalysis") {
+//             data = TECH_INDI;
+//         }
+//         else if (value == "FundamentalAnalysis") {
+//             data = FUNDA_INDI;
+//         }
 
-        if (data != undefined) {
-            let subSelect = document.getElementById("subSelect");
-            if (subSelect == undefined) {
-                subSelect = document.createElement("select");
-                subSelect.id = "subSelect";
-                subSelect.onchange = function () { filterStocks('') };
+//         if (data != undefined) {
+//             let subSelect = document.getElementById("subSelect");
+//             if (subSelect == undefined) {
+//                 subSelect = document.createElement("select");
+//                 subSelect.id = "subSelect";
+//                 subSelect.onchange = function () { filterStocks('') };
 
 
-                for (let i = 0; i < data.length; i++) {
-                    let option = document.createElement("option");
-                    option.value = data[i].id;
-                    option.text = data[i].label;
+//                 for (let i = 0; i < data.length; i++) {
+//                     let option = document.createElement("option");
+//                     option.value = data[i].id;
+//                     option.text = data[i].label;
 
-                    subSelect.appendChild(option);
-                }
+//                     subSelect.appendChild(option);
+//                 }
 
-                container.appendChild(subSelect);
-            }
-            else {
-                container.removeChild(subSelect);
-                showSubCategories(option);
-            }
-        }
-        else {
-            let subSelect = document.getElementById("subSelect");
-            if (subSelect != undefined) {
-                container.removeChild(subSelect);
-                showSubCategories(option);
-            }
-        }
+//                 container.appendChild(subSelect);
+//             }
+//             else {
+//                 container.removeChild(subSelect);
+//                 showSubCategories(option);
+//             }
+//         }
+//         else {
+//             let subSelect = document.getElementById("subSelect");
+//             if (subSelect != undefined) {
+//                 container.removeChild(subSelect);
+//                 showSubCategories(option);
+//             }
+//         }
 
-        filterStocks('');
-    }
-}
+//         filterStocks('');
+//     }
+// }
 
 function showTsrSearchBox(option) {
 
-    closeDialog('tsrMoreInfoPopup');
+    closeDialog('tsrSearchBoxPopup');
 
     if (option == "equity") {
         let html = getSearchBoxHeaderHtml(option);
@@ -219,8 +219,8 @@ function showTsrSearchBox(option) {
 
 function createDialog(isImg, html) {
     let dialog = document.createElement("dialog");
-    dialog.id = "tsrMoreInfoPopup";
-    dialog.classList.add("border", "rounded", "shadow-lg", "w-75", "p-0");
+    dialog.id = "tsrSearchBoxPopup";
+    dialog.classList.add("border", "rounded", "shadow-lg", "p-0");
 
     let div = document.createElement("div");
     div.id = "searchBox";
@@ -273,38 +273,46 @@ function createDialog(isImg, html) {
 
 let closeOnClick = function closeOnClick(e) {
     if (!document.getElementById("searchBox").contains(e.target)) {
-        // let dialog = document.getElementById("tsrMoreInfoPopup");
-        closeDialog('tsrMoreInfoPopup');
+        // let dialog = document.getElementById("tsrSearchBoxPopup");
+        closeDialog('tsrSearchBoxPopup');
     }
 }
 
-let handleKeydownOnDialog = (e) => { handleKeydown(e, "tsrMoreInfoPopup") };
+let handleKeydownOnDialog = (e) => { handleKeydown(e, "tsrSearchBoxPopup") };
 
 function handleKeydown(e, dialogId) {
 
     let dialog = document.getElementById(dialogId);
+
+    let input = document.getElementById("tsrStockSearch");
     if (e.key === "Escape") {
         console.log("escape clicked");
         closeDialog(dialogId);
     }
     if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-        // console.log("in handlekeydown");
-        let list = dialog.querySelector("ul");
 
-        let listElements = list.childNodes;
+        if (!(document.activeElement == input && e.key == 'ArrowUp')) { // * this prevents first list item from getting focused when ArrowUp is pressed on input box
+        
+            // console.log("in handlekeydown");
+            let list = dialog.querySelector("ul");
 
-        let listItemHasFocus = false;
+            let listElements = list.childNodes;
 
-        if (listElements.length != 0) {
-            let idx = 0;
-            for (let i = 0; i < listElements.length; i++) {
-                if (listElements[i] == document.activeElement || listElements[i].contains(document.activeElement)) {
-                    idx = i;
-                    listItemHasFocus = true;
+            let listItemHasFocus = false;
+
+            if (listElements.length != 0) {
+                let idx = 0;
+                for (let i = 0; i < listElements.length; i++) {
+                    if (listElements[i] == document.activeElement || listElements[i].contains(document.activeElement)) {
+                        idx = i;
+                        listItemHasFocus = true;
+                    }
                 }
-            }
 
-            listElements[idx].focus();
+                listElements[idx].focus();
+                listElements[idx].scrollIntoView();
+                e.preventDefault();
+            }
         }
     }
     else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
@@ -319,9 +327,6 @@ function handleKeydown(e, dialogId) {
         if (!e.ctrlKey)
             e.preventDefault();
 
-            
-
-        let input = document.getElementById("tsrStockSearch");
         if (document.activeElement != input) {
             input.value = "";
         }
@@ -341,7 +346,7 @@ function handleKeydown(e, dialogId) {
         e.preventDefault();
     }
     else if (e.ctrlKey || e.altKey || e.shiftKey) {
-        console.log(e.key, "in handleKeyDown");
+        // console.log(e.key, "in handleKeyDown");
         // e.stopPropagation();
         // e.preventDefault();
     }
@@ -349,7 +354,6 @@ function handleKeydown(e, dialogId) {
         // * Issue: when key such as backspace is pressed, input.value doesn't get updated immediately, due to which stocks are filtered incorrectly 
         // * Solution: below code is a hack which solves the concerned issue by calling filterStocks() after a timeout
 
-        let input = document.getElementById("tsrStockSearch");
 
         // if (e.key === "Backspace") {
         //     input.focus();
@@ -562,7 +566,7 @@ function filterStocks(query) {
         // let btnContainer = document.createElement()
 
         for (let i = 0; i < buttons.length; i++) {
-            // * Below conditions check if current button should be shown for a stock
+            // * Below conditions check if current button should be shown for a stock or not
             if (!buttons[i].default) {
                 if (!element[buttons[i].mappedParam]) {
                     continue;
@@ -755,19 +759,19 @@ function navigateButtons(e) {
 // listen for ctrl + space
 document.addEventListener("keydown", (e) => {
 
-        let dialog = document.getElementById("tsrMoreInfoPopup");
+    let dialog = document.getElementById("tsrSearchBoxPopup");
 
-        if (e.ctrlKey) {
-                document.addEventListener("keydown", (event) => {
-                    console.log(event.code);
+    if (e.ctrlKey) {
+        document.addEventListener("keydown", (event) => {
+            // console.log(event.code);
 
-                    if (event.code === "Space") { // ! e.key returns Unidentified for Space key in some browsers
-                        if (!dialog) // * if dialog is null || unidentified - not found
-                            showTsrSearchBox('equity');
-                    }
-                }, { once: true });
-        }
+            if (event.code === "Space") { // ! e.key returns Unidentified for Space key in some browsers
+                if (!dialog) // * if dialog is null || unidentified - not found
+                    showTsrSearchBox('equity');
+            }
+        }, { once: true });
     }
+}
 );
 
 
