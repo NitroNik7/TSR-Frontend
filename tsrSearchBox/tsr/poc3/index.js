@@ -1,28 +1,146 @@
+
+function showTsrSearchBox(option) {
+
+    closeDialog('tsrSearchBoxPopup');
+
+    if (option == "equity") {
+        let html = getSearchBoxHeaderHtml(option);
+        html += getSearchBoxHtml(option);
+
+        createDialog(html);
+        writeToSelectContainer(option);
+        attachEventListenersToRadioBtns();
+    }
+    else if (option == "screeners") {
+        let html = getSearchBoxHeaderHtml(option);
+        html += getSearchBoxHtml(option);
+        createDialog(html);
+        attachEventListenersToRadioBtns();
+
+        filterStocks('');
+    }
+    else if (option == "charts") {
+        let html = getSearchBoxHeaderHtml(option);
+        html += getSearchBoxHtml(option);
+        createDialog(html);
+        attachEventListenersToRadioBtns();
+
+        filterStocks('');
+    }
+
+}
+
+
 function getSearchBoxHeaderHtml(option) {
     let html = "";
 
-    html = `
-    <div class="d-flex justify-content-between p-1">
-        <div class="radioBtns ms-2" tabindex="5">
-            <span>Search in: &nbsp; </span>
-            <input type="radio" name="stockBaskets" data-basket-name="charts" id="chartBasket" onclick="showTsrSearchBox('chart')" 
-            ${(option == "chart" ? "checked" : "")} tabindex="5">
-            <label for="chartBasket">Charts</label>
+    // html = `
+    // <div class="d-flex justify-content-between p-1">
+    //     <div class="radioBtns ms-2" tabindex="0">
+    //         <span>Search in: &nbsp; </span>
+    //         <input type="radio" name="stockBaskets" data-basket-name="charts" id="chartBasket" onclick="showTsrSearchBox('chart')" 
+    //         ${(option == "chart" ? "checked" : "")} tabindex="0">
+    //         <label for="chartBasket">Charts</label>
 
-            <input type="radio" name="stockBaskets"  data-basket-name="equity" id="equityBasket" onclick="showTsrSearchBox('equity')"
-            ${(option == "equity" ? "checked" : "")}  tabindex="5">
-            <label for="equityBasket">Equity</label>
+    //         <input type="radio" name="stockBaskets"  data-basket-name="equity" id="equityBasket" onclick="showTsrSearchBox('equity')"
+    //         ${(option == "equity" ? "checked" : "")}  tabindex="0">
+    //         <label for="equityBasket">Equity</label>
 
-            <input type="radio" name="stockBaskets"  data-basket-name="screeners" id="screenerBasket" onclick="showTsrSearchBox('screener')"
-            ${(option == "screener" ? "checked" : "")}  tabindex="5">
-            <label for="screenerBasket">Screeners</label>
-        </div>
+    //         <input type="radio" name="stockBaskets"  data-basket-name="screeners" id="screenerBasket" onclick="showTsrSearchBox('screener')"
+    //         ${(option == "screener" ? "checked" : "")}  tabindex="0">
+    //         <label for="screenerBasket">Screeners</label>
+    //     </div>
 
-        <button class="btn-close" onclick ="closeDialog('tsrMoreInfoPopup')"></button>
-    </div>
-    `;
+    //     <button class="btn-close" onclick ="closeDialog('tsrSearchBoxPopup')"></button>
+    // </div>
+    // `;
+
+    html += createRadioBtns(radioBtnData);
+
+
 
     return html;
+}
+
+
+
+function createRadioBtns(radioBtnData) {
+
+    let container = document.createElement("div");
+    container.classList.add("tsrRadioBtnContainer");
+    // container.setAttribute("tabindex", 1);
+
+    for (let i = 0; i < radioBtnData.length; i++) {
+        let div = document.createElement("div");
+        div.id = "tsrRadioBtn" + i;
+        div.classList.add("tsrRadioBtn");
+        div.setAttribute("tabindex", 0);
+        div.setAttribute("data-basket", radioBtnData[i].id);
+
+
+        let radioDiv = document.createElement("div");
+        radioDiv.classList.add("tsrRadio");
+
+        if (radioBtnData[i].default) {
+
+            div.setAttribute("checked", "");
+
+            let radioDivCircle = document.createElement("div");
+            radioDivCircle.classList.add("tsrRadioCircle");
+            radioDiv.appendChild(radioDivCircle);
+        }
+
+        let labelDiv = document.createElement("div");
+        labelDiv.classList.add("tsrRadioLabel");
+        labelDiv.innerText = radioBtnData[i].label;
+
+
+        div.appendChild(radioDiv);
+        div.appendChild(labelDiv);
+
+        container.appendChild(div);
+    }
+
+    return container.outerHTML;
+}
+
+const radioBtnHandler = function radioBtnHandler(e) {
+    // console.log(e.t)
+    // e.stopPropagation();
+    let radio = e.currentTarget;
+
+    if (e.type === "click") {
+        for (let i = 0; i < radioBtnData.length; i++) {
+            if (radioBtnData[i].id == radio.getAttribute("data-basket")) {
+                radioBtnData[i].default = true;
+            } else {
+                radioBtnData[i].default = false;
+            }
+        }
+        showTsrSearchBox(radio.getAttribute("data-basket"));
+
+    }
+    else if (e.type === "keydown") {
+        if (e.key === "Enter") {
+            for (let i = 0; i < radioBtnData.length; i++) {
+                if (radioBtnData[i].id == radio.getAttribute("data-basket")) {
+                    radioBtnData[i].default = true;
+                } else {
+                    radioBtnData[i].default = false;
+                }
+            }
+            showTsrSearchBox(radio.getAttribute("data-basket"));
+        }
+    }
+}
+
+function attachEventListenersToRadioBtns() {
+    let radioBtns = document.querySelectorAll(".tsrRadioBtn");
+
+    for (let i = 0; i < radioBtns.length; i++) {
+        radioBtns[i].addEventListener("click", radioBtnHandler);
+        radioBtns[i].addEventListener("keydown", radioBtnHandler);
+    }
 }
 
 function getSearchBoxHtml(option) {
@@ -31,45 +149,30 @@ function getSearchBoxHtml(option) {
     let html = ``;
 
     html += `
-    
-        
-
-        <hr  style="color: #023368;">
+        <hr>
 
         <div class="d-flex">`;
 
     let placeholder;
 
-    if (option == "chart") {
+    if (option == "charts") {
         placeholder = "Search a Chart";
     }
     else if (option == "equity") {
         placeholder = "Search a Stock";
     }
-    else if (option == "screener") {
+    else if (option == "screeners") {
         placeholder = "Search a Screener";
     }
 
     html += `    <input id="tsrStockSearch" type="text" class="form-control ui-autocomplete-input mx-2"
-                placeholder="${placeholder}" autocomplete="off" autofocus tabindex="1">`;
+                placeholder="${placeholder}" autocomplete="off" autofocus tabindex="0">`;
 
     html += `
             <div id="selectContainer" class="d-none d-md-flex">
 
             </div>
     `;
-
-    // html += getStockBasketSelect();
-
-    // html += `<select
-    //             style="border-radius: 6px; height: 35px;  box-shadow: inset 0px 0px 0px 0px red; text-shadow: none; border-color: #C0C0C0; background-color:white; width: 20%"
-    //             id="eqSubCat" onchange="JavaScript:miSrch.sc('sc');" class="mx-2">
-    //             <option value="any">All </option>
-    //             <option value="FundamentalAnalysis">Stock Fundamentals</option>
-    //             <option value="TechnicalAnalysis">Stock Technicals</option>
-    //             <option value="PivotPoint">Stock Pivot Point</option>
-    //             <option value="Candlestick">Stock Candlestick</option>
-    //         </select>`;
 
     html += `</div>
 
@@ -78,11 +181,6 @@ function getSearchBoxHtml(option) {
         </div>
     
     `;
-
-    /*
-        <option value="Screener">Screener Only</option>
-        <option value="InteractiveCharts">Stock Interactive Charts</option>
-    */
 
     return html;
 }
@@ -103,7 +201,7 @@ function writeToSelectContainer(option) {
     };
     // select.onchange = function () { showSubCategories(option) };
     select.classList.add("form-select");
-    select.setAttribute("tabindex", "1");
+    select.setAttribute("tabindex", "0");
 
     let data;
 
@@ -129,98 +227,10 @@ function writeToSelectContainer(option) {
     filterStocks('');
 }
 
-function showSubCategories(option) {
-
-    let input = document.getElementById("tsrStockSearch");
-    input.value = "";
-
-    let container = document.getElementById("selectContainer");
-
-    let select = document.getElementById("basketSelect");
-    select.classList.add("form-select");
-
-    if (option == "equity") {
-        let value = select.value;
-
-        let data;
-
-        if (value == "any" || value == "FuturesAndOptions") {
-            data = undefined;
-        }
-
-        if (value == "TechnicalAnalysis") {
-            data = TECH_INDI;
-        }
-        else if (value == "FundamentalAnalysis") {
-            data = FUNDA_INDI;
-        }
-
-        if (data != undefined) {
-            let subSelect = document.getElementById("subSelect");
-            if (subSelect == undefined) {
-                subSelect = document.createElement("select");
-                subSelect.id = "subSelect";
-                subSelect.onchange = function () { filterStocks('') };
-
-
-                for (let i = 0; i < data.length; i++) {
-                    let option = document.createElement("option");
-                    option.value = data[i].id;
-                    option.text = data[i].label;
-
-                    subSelect.appendChild(option);
-                }
-
-                container.appendChild(subSelect);
-            }
-            else {
-                container.removeChild(subSelect);
-                showSubCategories(option);
-            }
-        }
-        else {
-            let subSelect = document.getElementById("subSelect");
-            if (subSelect != undefined) {
-                container.removeChild(subSelect);
-                showSubCategories(option);
-            }
-        }
-
-        filterStocks('');
-    }
-}
-
-function showTsrSearchBox(option) {
-
-    closeDialog('tsrMoreInfoPopup');
-
-    if (option == "equity") {
-        let html = getSearchBoxHeaderHtml(option);
-        html += getSearchBoxHtml(option);
-
-        createDialog(false, html);
-        writeToSelectContainer(option);
-        // filterStocks('');
-    }
-    else if (option == "screener") {
-        let html = getSearchBoxHeaderHtml(option);
-        html += getSearchBoxHtml(option);
-        createDialog(false, html);
-        filterStocks('');
-    }
-    else if (option == "chart") {
-        let html = getSearchBoxHtml(option);
-        createDialog(false, html);
-        filterStocks('');
-    }
-
-}
-
-
-function createDialog(isImg, html) {
+function createDialog(html) {
     let dialog = document.createElement("dialog");
-    dialog.id = "tsrMoreInfoPopup";
-    dialog.classList.add("border", "rounded", "shadow-lg", "w-75", "p-0");
+    dialog.id = "tsrSearchBoxPopup";
+    dialog.classList.add("border", "rounded", "shadow-lg", "p-0");
 
     let div = document.createElement("div");
     div.id = "searchBox";
@@ -228,32 +238,13 @@ function createDialog(isImg, html) {
 
     document.body.style.overflow = "hidden";
 
-    // let closeDiv = document.createElement("div");
-    // // closeDiv.setAttribute("align", "right");
-    // closeDiv.classList.add("d-flex", "justify-content-between");
-
-    // let closeBtn = document.createElement("button");
-    // closeBtn.classList.add("btn-close");
-    // closeBtn.onclick = function () { closeDialog(dialog) };
-
-    // closeDiv.classList.add("mb-2");
-    // option = "equity";
-    // closeDiv.innerHTML = getSearchBoxHeaderHtml(option);
-    // closeDiv.appendChild(closeBtn);
-
     let contentDiv = document.createElement("div");
     contentDiv.style.maxWidth = "80vw";
     contentDiv.style.maxHeight = "80vh";
     contentDiv.style.overflowY = "hidden";
 
-    if (isImg) {
-        let img = document.createElement("img");
-        img.classList.add("m-3")
-        img.src = html;
-        contentDiv.appendChild(img);
-    } else {
-        contentDiv.innerHTML = html;
-    }
+    contentDiv.innerHTML = html;
+
 
     // div.appendChild(closeDiv);
     div.appendChild(contentDiv);
@@ -272,38 +263,49 @@ function createDialog(isImg, html) {
 }
 
 let closeOnClick = function closeOnClick(e) {
-    if (!document.getElementById("searchBox").contains(e.target)) {
-        // let dialog = document.getElementById("tsrMoreInfoPopup");
-        closeDialog('tsrMoreInfoPopup');
+
+    let div = document.getElementById("searchBox");
+    if (!div.contains(e.target)) {
+        // let dialog = document.getElementById("tsrSearchBoxPopup");
+        closeDialog('tsrSearchBoxPopup');
     }
 }
 
-let handleKeydownOnDialog = (e) => { handleKeydown(e, "tsrMoreInfoPopup") };
+let handleKeydownOnDialog = (e) => { handleKeydown(e, "tsrSearchBoxPopup") };
 
 function handleKeydown(e, dialogId) {
 
     let dialog = document.getElementById(dialogId);
-    // if (e.key === "Escape") {
-    //     closeDialog(dialogId);
-    // }
+
+    let input = document.getElementById("tsrStockSearch");
+    if (e.key === "Escape") {
+        console.log("escape clicked");
+        closeDialog(dialogId);
+    }
     if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-        // console.log("in handlekeydown");
-        let list = dialog.querySelector("ul");
 
-        let listElements = list.childNodes;
+        if (!(document.activeElement == input && e.key == 'ArrowUp')) { // * this prevents first list item from getting focused when ArrowUp is pressed on input box
 
-        let listItemHasFocus = false;
+            // console.log("in handlekeydown");
+            let list = dialog.querySelector("ul");
 
-        if (listElements.length != 0) {
-            let idx = 0;
-            for (let i = 0; i < listElements.length; i++) {
-                if (listElements[i] == document.activeElement || listElements[i].contains(document.activeElement)) {
-                    idx = i;
-                    listItemHasFocus = true;
+            let listElements = list.childNodes;
+
+            let listItemHasFocus = false;
+
+            if (listElements.length != 0) {
+                let idx = 0;
+                for (let i = 0; i < listElements.length; i++) {
+                    if (listElements[i] == document.activeElement || listElements[i].contains(document.activeElement)) {
+                        idx = i;
+                        listItemHasFocus = true;
+                    }
                 }
-            }
 
-            listElements[idx].focus();
+                listElements[idx].focus();
+                listElements[idx].scrollIntoView();
+                e.preventDefault();
+            }
         }
     }
     else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
@@ -315,30 +317,9 @@ function handleKeydown(e, dialogId) {
         }
     }
     else if (isAlphaNumericSymbol(e.key)) {
-        e.preventDefault();
+        if (!e.ctrlKey)
+            e.preventDefault();
 
-        // let input = document.getElementById("tsrStockSearch");
-        // if (document.activeElement.tagName == "LI" || document.activeElement.tagName == "BUTTON") {
-        //     input.value = "";
-        // }
-        // if (document.activeElement != input) {
-        //     let text = input.value + e.key;
-        //     // console.log("here");
-
-        //     input.value = text;
-
-
-        // } else {
-        //     // setTimeout(
-        //     //     filterStocks(input.value), 100
-        //     // );
-        // }
-        // input.focus();
-        // setTimeout(
-        //         filterStocks(input.value), 10
-        //     );
-
-        let input = document.getElementById("tsrStockSearch");
         if (document.activeElement != input) {
             input.value = "";
         }
@@ -357,11 +338,15 @@ function handleKeydown(e, dialogId) {
     else if (e.key === "Tab") {
         // e.preventDefault();
     }
+    else if (e.ctrlKey || e.altKey || e.shiftKey) {
+        // console.log(e.key, "in handleKeyDown");
+        // e.stopPropagation();
+        // e.preventDefault();
+    }
     else {
         // * Issue: when key such as backspace is pressed, input.value doesn't get updated immediately, due to which stocks are filtered incorrectly 
         // * Solution: below code is a hack which solves the concerned issue by calling filterStocks() after a timeout
 
-        let input = document.getElementById("tsrStockSearch");
 
         // if (e.key === "Backspace") {
         //     input.focus();
@@ -404,33 +389,39 @@ function closeDialog(dialogId) {
 }
 
 function filterStocks(query) {
-    let radioBtns = document.getElementsByName("stockBaskets");
+
+    // console.log(query)
+
+    let radioBtns = document.getElementsByClassName("tsrRadioBtn");
 
     let checkedRadio = radioBtns[0];
 
     for (let i = 0; i < radioBtns.length; i++) {
-        if (radioBtns[i].checked) {
+        if (radioBtns[i].hasAttribute("checked")) {
             checkedRadio = radioBtns[i]
         }
     }
 
     let stockList = [];
 
-    let basketName = checkedRadio.getAttribute("data-basket-name");
-
-    let basketCategory = document.getElementById("basketSelect");
-    let category = basketCategory.value;
+    let basketName = checkedRadio.getAttribute("data-basket");
 
     let buttons;
     let btnPrefix = "";
 
     if (basketName === "charts") {
         stockList = chartData;
+
+        btnPrefix = "";
+        buttons = [];
         // No sub categories for now
     }
     else if (basketName === "equity") {
 
         stockList = equityData;
+
+        let basketCategory = document.getElementById("basketSelect");
+        let category = basketCategory.value;
 
         if (category == 'any') {
             stockList = stockList.filter((item) => {
@@ -511,6 +502,9 @@ function filterStocks(query) {
     }
     else if (basketName === "screeners") {
         stockList = screenerData;
+
+        btnPrefix = "";
+        buttons = [];
         // No sub categories for now
     }
 
@@ -520,13 +514,27 @@ function filterStocks(query) {
         }
     });
 
+    createListItem(stockList, btnPrefix, buttons);
+}
+
+function createListItem(stockList, btnPrefix, buttons) {
+
 
     let list = document.getElementById('tsrStockList');
     list.innerHTML = ''; // Clear previous results
 
+    if (stockList.length == 0) {
+        let li = document.createElement('li');
+        li.classList.add("empty");
+        li.innerHTML = 'No records found';
+        li.style.fontSize = '14px';
+        li.style.borderBottom = '';
+        list.appendChild(li);
+    }
+
     stockList.forEach(element => {
         let li = document.createElement('li');
-        li.setAttribute("tabindex", "2");
+        li.setAttribute("tabindex", "0");
         li.addEventListener("keydown", navigateList);
         li.addEventListener("keydown", navigateButtons);
 
@@ -555,18 +563,39 @@ function filterStocks(query) {
         // -------------------------------------
 
         let itemRight = document.createElement('div');
-        itemRight.classList.add('d-sm-flex', 'd-none', "d-flex", "w-75", "itemRight");
-        itemRight.style.width = ((document.getElementById("tsrStockList").offsetWidth / 125) * 0.75) + "px";
+        itemRight.classList.add('d-sm-flex', 'd-none', "d-flex", "w-75", "itemRight", "align-items-center");
+        itemRight.style.width = ((document.getElementById("tsrStockList").offsetWidth * 0.75) / 125) + "px";
         // itemRight.style.textAlign = "end";
 
-        // let maxElements = (document.getElementById("tsrStockList").offsetWidth / 125) * 0.75;
+        // hack
+        let maxElements = Math.round((document.getElementById("tsrStockList").offsetWidth * 0.75) / (75)); // 125px is the max-width of a button, 13px is the margin-x for each button
         // console.log(maxElements);
 
-        // let btnContainer = document.createElement(   )
+        let leftScrollBtn = document.createElement("button");
+        leftScrollBtn.classList.add("h-100", "px-2", "align-items-center");
+        leftScrollBtn.innerHTML = `<i class="fas fa-angle-left"></i>`;
+        leftScrollBtn.addEventListener("click", function (e) {
+            btnContainer.scrollBy({
+                left: -125,
+                behavior: 'smooth' // For smooth scrolling animation
+            });
+            e.preventDefault();
 
+        });
+
+        let btnContainer = document.createElement("div");
+        btnContainer.classList.add("d-flex");
+
+        let noOfBtns = 0;
         for (let i = 0; i < buttons.length; i++) {
+            // * Below conditions check if current button should be shown for a stock or not
+            if (!buttons[i].default) {
+                if (!element[buttons[i].mappedParam]) {
+                    continue;
+                }
+            }
             let button = document.createElement('button');
-            button.classList.add('btn', 'btn-sm', 'me-2');
+            button.classList.add('btn', 'btn-sm', 'me-2', "p-2");
             button.style.maxWidth = "125px";
             button.style.whiteSpace = "nowrap";
             // button.style.overflow = "hidden";
@@ -580,19 +609,43 @@ function filterStocks(query) {
 
             button.addEventListener("keydown", navigateButtons);
 
-            itemRight.appendChild(button);
-
-            // if (i > maxElements)
-            //     break;
+            btnContainer.appendChild(button);
+            noOfBtns++;
         }
 
+        // console.log(noOfBtns, maxElements, noOfBtns > maxElements);
+
+        if (noOfBtns > maxElements) {
+            itemRight.appendChild(leftScrollBtn);
+
+        }
+
+        itemRight.appendChild(btnContainer);
+
+        let rightScrollBtn = document.createElement("button");
+        rightScrollBtn.classList.add("h-100", "px-2", "align-items-center");
+
+        rightScrollBtn.innerHTML = `<i class="fas fa-angle-right"></i>`;
+        rightScrollBtn.addEventListener("click", function (e) {
+
+            btnContainer.scrollBy({
+                left: 150,
+                behavior: 'smooth'
+            });
+
+            e.preventDefault();
+
+        });
+        if (noOfBtns > maxElements) {
+            itemRight.appendChild(rightScrollBtn);
+        }
 
         let code = document.createElement('span');
         code.classList.add("code");
-        // code.setAttribute("align", "right");
         code.innerHTML = element.code;
 
         itemRight.appendChild(code);
+
 
         // -------------------------------------
 
@@ -604,11 +657,12 @@ function filterStocks(query) {
         li.appendChild(a);
 
         list.appendChild(li);
+
     });
 }
 
 let navigateList = function navigateList(e) {
-    e.preventDefault();
+    // e.preventDefault();
     /* 
     ----------------------------------------
     * e.preventDefault() -
@@ -618,10 +672,14 @@ let navigateList = function navigateList(e) {
     *   also stops tab key behaviour
     ---------------------------------------
     */
-
     let li = this;
-    if (e.key === "ArrowUp") {
-        // console.log("in navigateList ArrowUp");
+
+    if (e.key === "Tab") {
+        // console.log(document.getElementsByClassName("tsrRadioBtn"));
+        document.getElementById("tsrRadioBtn0").focus();
+        e.preventDefault();
+    }
+    else if (e.key === "ArrowUp") {
 
         if (li.previousSibling) {
             li.previousSibling.focus();
@@ -651,45 +709,16 @@ let navigateList = function navigateList(e) {
          */
 
     }
-    // if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-
-    //     console.log(e.key);
-
-    //     let buttons = this.querySelectorAll("button");
-
-    //     let buttonHasFocus = false;
-
-    //     if (buttons.length != 0) {
-    //         for (let i = 0; i < buttons.length; i++) {
-    //             if (buttons[i] == document.activeElement) {
-    //                 console.log("focused");
-
-    //                 buttonHasFocus = true;
-    //             }
-    //         }
-
-    //         if (!buttonHasFocus) {
-    //             buttons[0].focus();
-    //         }
-    //     }
-    // }
 }
 
 function navigateButtons(e) {
-    // e.preventDefault();
-    /* 
-    * e.preventDefault() -
-    *   prevents multiple scrolls from happening together - 1. ul scrolling & li scrolling during focus
-    *   prevents abnor"MA"l scrolling when user repeatedly presses arrow up or down
-    * 
-    *   also stops tab key behaviour
-    * */
 
     let element = this;
+    // console.log(this);
     if (e.key === "ArrowLeft") {
 
         if (element.tagName == "LI") {
-            let buttons = this.querySelectorAll("button");
+            let buttons = this.querySelectorAll(".btn");
 
             let buttonHasFocus = false;
 
@@ -706,7 +735,7 @@ function navigateButtons(e) {
                 }
             }
         }
-        else if (element.tagName == "BUTTON") {
+        else if (element.classList.contains("btn")) {
             if (element.previousSibling) {
                 element.previousSibling.focus();
             } else {
@@ -719,48 +748,46 @@ function navigateButtons(e) {
     }
     else if (e.key === "ArrowRight") {
         if (element.tagName == "LI") {
-            let buttons = this.querySelectorAll("button");
+            let buttons = this.querySelectorAll(".btn");
 
             let buttonHasFocus = false;
 
             if (buttons.length != 0) {
                 for (let i = 0; i < buttons.length; i++) { // check if any button is active
                     if (buttons[i] == document.activeElement) {
-                        // console.log("focused");
-
                         buttonHasFocus = true;
                     }
                 }
 
                 if (!buttonHasFocus) {
                     buttons[0].focus();
-
-                    // e.stopImmediatePropagation();
                 }
             }
         }
-        else if (element.tagName == "BUTTON") {
+        else if (element.classList.contains("btn")) {
             if (element.nextSibling) {
 
                 element.nextSibling.focus();
             }
         }
     }
-    // e.stopImmediatePropagation();
 }
 
 // listen for ctrl + space
-document.addEventListener("keyup", (e) => {
-    if (e.key === "Control") {
-        document.addEventListener("keyup", (event) => {
-            if (event.code === "Space") { // e.key returns Unidentified for Space key in some browsers
-                showTsrSearchBox('equity');
+document.addEventListener("keydown", (e) => {
+
+    let dialog = document.getElementById("tsrSearchBoxPopup");
+
+    if (e.ctrlKey) {
+        document.addEventListener("keydown", (event) => {
+            if (event.code === "Space") { // ! e.key returns Unidentified for Space key in some browsers
+                if (!dialog) // * if dialog is null || unidentified - not found
+                    showTsrSearchBox('equity');
             }
         }, { once: true });
     }
 }
 );
-
 
 
 

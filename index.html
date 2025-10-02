@@ -1,12 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .tsrRadioBtnContainer {
+            display: flex;
+        }
+
+        .tsrRadioBtn {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 5px;
+        }
+
+        .tsrRadio {
+            margin-right: 5px;
+            border: 1px solid;
+            border-radius: 20px;
+            height: 10px;
+            width: 10px;
+        }
+
+        .tsrRadioCircle {
+            /* border: 1px solid; */
+            border-radius: 20px;
+            height: 7px;
+            width: 7px;
+            position: relative;
+            top: 1.75px;
+            left: 1.75px;
+            background-color: black;
+        }
+    </style>
+
 </head>
+
 <body>
-    
-    <script src="index2.js"></script>
+
+    <!-- <div class="tsrRadioBtnContainer">
+        <div class="tsrRadioBtn" tabindex="0" onclick="radioBtnHandler(event)" onkeydown="radioBtnHandler(event)">
+            <div class="tsrRadio">
+                <div class="tsrRadioCircle">
+
+                </div>
+            </div>
+            <div class="tsrRadioLabel">
+                Charts
+            </div>
+        </div>
+        <div class="tsrRadioBtn" tabindex="0" onclick="radioBtnHandler(event)" onkeydown="radioBtnHandler(event)">
+            <div class="tsrRadio">
+                <div class="tsrRadioCircle">
+
+                </div>
+            </div>
+            <div class="tsrRadioLabel">
+                Charts
+            </div>
+        </div>
+        <div class="tsrRadioBtn" tabindex="0" onclick="radioBtnHandler(event)" onkeydown="radioBtnHandler(event)">
+            <div class="tsrRadio">
+                <div class="tsrRadioCircle">
+
+                </div>
+            </div>
+            <div class="tsrRadioLabel">
+                Charts
+            </div>
+        </div>
+    </div> -->
+
+    <script>
+
+        const radioBtnHandler = function radioBtnHandler(e) {
+            console.log(e.type);
+            if (e.type === "click") {
+            }
+            else if (e.type === "keydown") {
+                if (e.type === "Enter") {
+
+                }
+            }
+
+        }
+
+        let radioBtnData = [
+            { id: "charts", label: "Charts" },
+            { id: "equity", label: "Equity" },
+            { id: "screeners", label: "Screeners" },
+        ];
+
+        document.body.innerHTML = createRadioBtns(radioBtnData);
+        addEventListeners();
+
+        function attachEventListenersToRadioBtns() {
+            let radioBtns = document.querySelectorAll(".tsrRadioBtn");
+
+            for (let i = 0; i < radioBtns.length; i++) {
+                radioBtns[i].addEventListener("click", radioBtnHandler);
+                radioBtns[i].addEventListener("keydown", radioBtnHandler);
+            }
+        }
+
+
+        function createRadioBtns(radioBtnData) {
+
+            let container = document.createElement("div");
+            container.classList.add("tsrRadioBtnContainer");
+
+            for (let i = 0; i < radioBtnData.length; i++) {
+                let div = document.createElement("div");
+                div.classList.add("tsrRadioBtn");
+                div.setAttribute("tabindex", 0);
+                div.setAttribute("data-basket", radioBtnData[i].id);
+
+
+                let radioDiv = document.createElement("div");
+                radioDiv.classList.add("tsrRadio");
+
+                let radioDivCircle = document.createElement("div");
+                radioDivCircle.classList.add("tsrRadioCircle");
+
+                let labelDiv = document.createElement("div");
+                labelDiv.classList.add("tsrRadioLabel");
+                labelDiv.innerText = radioBtnData[i].label;
+
+                radioDiv.appendChild(radioDivCircle);
+
+                div.appendChild(radioDiv);
+                div.appendChild(labelDiv);
+
+                container.appendChild(div);
+            }
+
+            return container.outerHTML;
+        }
+
+
+
+    </script>
+
+    <script src="index.js"></script>
 </body>
+
 </html>
