@@ -582,6 +582,7 @@ function createListItem(stockList, btnPrefix, buttons) {
                 behavior: 'smooth' // For smooth scrolling animation
             });
             e.preventDefault();
+            btnContainer.focus();
 
         });
 
@@ -637,6 +638,7 @@ function createListItem(stockList, btnPrefix, buttons) {
             });
 
             e.preventDefault();
+            btnContainer.focus();
 
         });
         if (noOfBtns > maxElements) {
