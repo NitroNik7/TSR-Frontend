@@ -1,0 +1,235 @@
+dialog {
+    width: 50%;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+#tsrMoreInfoPopup input[type="text"] {
+    width: auto;
+}
+
+#selectContainer {
+    width: auto;
+}
+
+#tsrStockList {
+    max-height: 300px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#tsrStockList::-webkit-scrollbar {
+    width: 4px;
+}
+
+#tsrStockList::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+#tsrStockList li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+#tsrStockList li:hover {
+    background-color: lightgray;
+    cursor: pointer;
+    color: black !important;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+#tsrStockList li:focus {
+    /* background-color: lightslategray; */
+    background-color: #41464b;
+    cursor: pointer;
+    color: white !important;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+
+#tsrStockList li a {
+    color: black;
+}
+
+#tsrStockList li:focus a {
+    color: white;
+}
+
+#tsrStockList li .code {
+    display: block;
+}
+
+#tsrStockList li:hover .code,
+#tsrStockList li:focus .code {
+    display: none;
+}
+
+#tsrStockList li:focus-within {
+    /* background-color: lightslategray; */
+    /* background-color: #41464b; */
+    background-color: gray;
+    cursor: pointer;
+}
+
+#tsrStockList li:focus-within a div:first-child {
+    color: white;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+#tsrStockList li:focus-within .code {
+    display: none;
+}
+
+
+#tsrStockList li:focus-within .btn {
+    display: block;
+    background-color: white;
+
+}
+
+#tsrStockList li .btn {
+    display: none;
+    border-radius: 15px;
+}
+
+
+
+#tsrStockList li .btn:hover a,
+#tsrStockList li .btn:focus a {
+    /* background-color: black !important; */
+    color: white !important;
+}
+
+#tsrStockList li .btn:hover,
+#tsrStockList li .btn:focus {
+    background-color: black !important;
+    font-weight: 700;
+    box-shadow: none;
+}
+
+#tsrStockList li .itemRight {
+    overflow-x: hidden;
+    justify-content: end;
+}
+
+#tsrStockList li .itemRight button {
+    display: none;
+    border: none;
+    background: none;
+}
+
+#tsrStockList li:hover .itemRight button:hover {
+    color: white;
+}
+
+#tsrStockList li:hover .itemRight button {
+    display: flex;
+}
+
+
+#tsrStockList li:hover .itemRight div,
+#tsrStockList li:focus .itemRight div {
+    overflow-x: hidden;
+    display: flex;
+}
+
+/*
+#tsrStockList li:hover .itemRight {
+    padding-bottom: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    justify-content: flex-start;
+}
+
+#tsrStockList li:hover .itemRight::-webkit-scrollbar {
+    height: 3px !important;
+}
+
+#tsrStockList li:hover .itemRight::-webkit-scrollbar-track {
+    background-color: white;
+} */
+
+#tsrStockList li:hover .btn,
+#tsrStockList li:focus .btn {
+    display: block;
+    background-color: white;
+}
+
+#tsrStockList .empty:hover {
+    background-color: white;
+    cursor: default;
+    color: black !important;
+    font-weight: 400 !important;
+}
+
+@media only screen and (max-width: 1200px) {
+
+    dialog {
+        width: 75%;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+    #tsrStockList li:hover .btn,
+    #tsrStockList li:focus .btn {
+        display: none;
+    }
+
+    #tsrStockList li:hover .code,
+    #tsrStockList li:focus .code {
+        display: block;
+    }
+
+    #tsrStockList li a div:first-child {
+        width: 100% !important;
+    }
+
+    #tsrStockSearch {
+        width: 100% !important;
+    }
+}
+
+/* for radioBtns */
+
+.tsrRadioBtnContainer {
+    display: flex;
+}
+
+.tsrRadioBtn {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 15px;
+    cursor: default;
+}
+
+.tsrRadioBtn:focus {
+    border: 1px solid;
+}
+
+.tsrRadio {
+    margin-right: 5px;
+    border: 1px solid;
+    border-radius: 20px;
+    height: 13px;
+    width: 13px;
+}
+
+.tsrRadioCircle {
+    /* border: 1px solid; */
+    border-radius: 20px;
+    height: 7.5px;
+    width: 7.5px;
+    position: relative;
+    top: 2px;
+    left: 2px;
+    background-color: black;
+}
