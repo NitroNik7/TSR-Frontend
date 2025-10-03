@@ -1,0 +1,235 @@
+dialog {
+    width: 50%;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+#tsrMoreInfoPopup input[type="text"] {
+    width: auto;
+}
+
+#selectContainer {
+    width: auto;
+}
+
+#tsrSearchBoxList {
+    max-height: 300px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#tsrSearchBoxList::-webkit-scrollbar {
+    width: 4px;
+}
+
+#tsrSearchBoxList::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+#tsrSearchBoxList li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+#tsrSearchBoxList li:hover {
+    background-color: lightgray;
+    cursor: pointer;
+    color: black !important;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+#tsrSearchBoxList li:focus {
+    /* background-color: lightslategray; */
+    background-color: #41464b;
+    cursor: pointer;
+    color: white !important;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+
+#tsrSearchBoxList li a {
+    color: black;
+}
+
+#tsrSearchBoxList li:focus a {
+    color: white;
+}
+
+#tsrSearchBoxList li .name {
+    display: block;
+}
+
+#tsrSearchBoxList li:hover .name,
+#tsrSearchBoxList li:focus .name {
+    display: none;
+}
+
+#tsrSearchBoxList li:focus-within {
+    /* background-color: lightslategray; */
+    /* background-color: #41464b; */
+    background-color: gray;
+    cursor: pointer;
+}
+
+#tsrSearchBoxList li:focus-within a div:first-child {
+    color: white;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+#tsrSearchBoxList li:focus-within .name {
+    display: none;
+}
+
+
+#tsrSearchBoxList li:focus-within .btn {
+    display: block;
+    background-color: white;
+
+}
+
+#tsrSearchBoxList li .btn {
+    display: none;
+    border-radius: 15px;
+}
+
+
+
+#tsrSearchBoxList li .btn:hover a,
+#tsrSearchBoxList li .btn:focus a {
+    /* background-color: black !important; */
+    color: white !important;
+}
+
+#tsrSearchBoxList li .btn:hover,
+#tsrSearchBoxList li .btn:focus {
+    background-color: black !important;
+    font-weight: 700;
+    box-shadow: none;
+}
+
+#tsrSearchBoxList li .itemRight {
+    overflow-x: hidden;
+    justify-content: end;
+}
+
+#tsrSearchBoxList li .itemRight button {
+    display: none;
+    border: none;
+    background: none;
+}
+
+#tsrSearchBoxList li:hover .itemRight button:hover {
+    color: white;
+}
+
+#tsrSearchBoxList li:hover .itemRight button {
+    display: flex;
+}
+
+
+#tsrSearchBoxList li:hover .itemRight div,
+#tsrSearchBoxList li:focus .itemRight div {
+    overflow-x: hidden;
+    display: flex;
+}
+
+/*
+#tsrSearchBoxList li:hover .itemRight {
+    padding-bottom: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    justify-content: flex-start;
+}
+
+#tsrSearchBoxList li:hover .itemRight::-webkit-scrollbar {
+    height: 3px !important;
+}
+
+#tsrSearchBoxList li:hover .itemRight::-webkit-scrollbar-track {
+    background-color: white;
+} */
+
+#tsrSearchBoxList li:hover .btn,
+#tsrSearchBoxList li:focus .btn {
+    display: block;
+    background-color: white;
+}
+
+#tsrSearchBoxList .empty:hover {
+    background-color: white;
+    cursor: default;
+    color: black !important;
+    font-weight: 400 !important;
+}
+
+@media only screen and (max-width: 1200px) {
+
+    dialog {
+        width: 75%;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+    #tsrSearchBoxList li:hover .btn,
+    #tsrSearchBoxList li:focus .btn {
+        display: none;
+    }
+
+    #tsrSearchBoxList li:hover .name,
+    #tsrSearchBoxList li:focus .name {
+        display: block;
+    }
+
+    #tsrSearchBoxList li a div:first-child {
+        width: 100% !important;
+    }
+
+    #tsrStockSearch {
+        width: 100% !important;
+    }
+}
+
+/* for radioBtns */
+
+.tsrRadioMenu {
+    display: flex;
+}
+
+.tsrRadioBtn {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 15px;
+    cursor: default;
+}
+
+.tsrRadioBtn:focus {
+    border: 1px solid;
+}
+
+.tsrRadioCircle {
+    margin-right: 5px;
+    border: 1px solid;
+    border-radius: 20px;
+    height: 13px;
+    width: 13px;
+}
+
+.tsrRadioInnerCircle {
+    /* border: 1px solid; */
+    border-radius: 20px;
+    height: 7.5px;
+    width: 7.5px;
+    position: relative;
+    top: 2px;
+    left: 2px;
+    background-color: black;
+}
