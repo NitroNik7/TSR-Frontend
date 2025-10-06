@@ -66,7 +66,6 @@ function getRadioMenuHtml(data) {
 }
 
 const radioBtnHandler = function radioBtnHandler(e) {
-    e.stopPropagation(); // prevents search box dialog from closing 
 
     let radio = e.currentTarget;
 
@@ -81,6 +80,7 @@ const radioBtnHandler = function radioBtnHandler(e) {
                     searchMenu[i].default = false;
                 }
             }
+            e.stopPropagation(); // prevents search box dialog from closing 
             showSearchBox(searchCat);
 
         }
@@ -99,20 +99,29 @@ const radioBtnHandler = function radioBtnHandler(e) {
                 if (e.target.previousSibling) {
                     e.target.previousSibling.focus();
                 }
+                e.stopPropagation(); // prevents search box dialog from closing 
+
             }
             else if (e.key === "ArrowRight") {
                 if (e.target.nextSibling) {
                     e.target.nextSibling.focus();
                 }
+                e.stopPropagation(); // prevents search box dialog from closing 
             }
             else if (e.key === "ArrowDown") {
 
-                if (e.target.classList.contains("tsrRadioBtn")) {
-
-
+                if (e.target.classList.contains(radioBtnIdPrefix)) {
                     let input = document.getElementById(inputTextBoxId);
                     input.focus();
                 }
+                e.stopPropagation(); // prevents search box dialog from closing 
+            }
+            else if (isAlphaNumericSymbol(e.key)) {
+
+            }
+            else {
+                e.stopPropagation(); // prevents search box dialog from closing 
+
             }
 
         }
@@ -194,7 +203,7 @@ function paintSearchBox(searchBoxHtml) {
 
     let html = `
             <dialog id="${tsrSearchBoxId}" class="border rounded p-0 ${tsrSearchBoxId}" onclick="closeSearchBoxOnClickOut(event)" onkeydown="handleKeypressOnSearchBox(event, '${tsrSearchBoxId}')">`;
-    html += `   <div id="${tsrSearchBoxId + "content"}" class="p-3" style="overflowY: hidden;">`;
+    html += `   <div id="${tsrSearchBoxId + "content"}" class="p-3" style="overflow-Y: hidden; ">`;
     html += searchBoxHtml;
     html += `   </div>`;
     html += `</dialog>`;
@@ -273,7 +282,15 @@ function handleKeypressOnSearchBox(e, searchBoxId) {
         }
     }
     // * Condition 3 : if Arrow Left or Right key is pressed do not perform any action
-    else if (e.key === "ArrowLeft" || e.key === "ArrowRight") { }
+    else if (e.key === "ArrowLeft" || e.key === "ArrowRight") { 
+
+        // if(document.activeElement == inputTextBox){
+        //     if(paramDefined(document.getElementById(tsrSearchBoxId + "Select"))){
+        //         let select = document.getElementById(tsrSearchBoxId + "Select");
+        //         select.focus();
+        //     } 
+        // }
+    }
     // * Condition 4 : if Tab key is pressed do not perform any action, let sequential focus navigation work by itself
     else if (e.key === "Tab") {
         // * Not possible to programatically open a <select>
@@ -332,8 +349,9 @@ function closeDialog(searchBoxId) {
 function filterStocks(query) {
 
     // ! WARNING assuming there will be always be a radio button in the search box, i.e. in the searchMenu[] 
-    let radioBtns = document.getElementsByClassName("tsrRadioBtn");
-
+    let searchBox = document.getElementById(tsrSearchBoxId);
+    let radioBtns = searchBox.getElementsByClassName(radioBtnIdPrefix);
+    
     let checkedRadio = radioBtns[0];
 
     for (let i = 0; i < radioBtns.length; i++) {
@@ -448,42 +466,32 @@ function populateSearchList(query, stockList, urlPrefix, buttons) {
         itemRow.style.overflowX = "hidden";
 
         let itemLeft = document.createElement('div');
-        itemLeft.classList.add('d-flex', 'flex-column', "justify-content-center");
+        itemLeft.classList.add('itemLeft', 'd-flex', 'flex-column', "justify-content-center");
+        // itemLeft.style
 
         let itemRight = document.createElement('div');
 
         // setting width of left and right div 
         // if code exists left div has 25% width
-        if (paramDefined(element.code) && element.code != "") {
-            let top = document.createElement('div');
-            top.innerHTML = element.code;
-            itemLeft.appendChild(top);
-            itemLeft.classList.add("w-25");
-            itemRight.classList.add("w-75");
-
-        } else { // else left div does not have width
-            itemLeft.classList.add("w-0");
-            itemRight.classList.add("w-100");
+        if ((paramDefined(element.code) && element.code != "")) { // If code exists 
+            if (paramDefined(element.name) && element.name != "") { // if name also exists - give width to both itemLeft and itemRight
+                itemLeft.classList.add("w-25");
+                itemLeft.style.minWidth = "125px";
+                itemRight.classList.add("w-75");
+            }
+            else { // If name doesn't exist - give available width to itemLeft
+                itemLeft.classList.add("w-auto");
+                itemLeft.style.minWidth = "125px";
+                itemRight.classList.add("w-auto");
+            }
         }
 
-        // let bottom = document.createElement('div');
-        // // bottom.style.whiteSpace = "nowrap";
-
-        // if (paramDefined(element.industry) && element.industry != "") {
-        //     bottom.innerHTML += element.industry;
-        //     itemLeft.appendChild(bottom);
-
-        // }
-        // if (paramDefined(element.sector) && element.sector != "") {
-        //     bottom.innerHTML += "<br>" + element.sector;
-        //     itemLeft.appendChild(bottom);
-        // }
-
-        // bottom.style.fontSize = "0.8em";
-
+        let top = document.createElement('div');
+        top.innerHTML = element.code;
+        itemLeft.appendChild(top);
 
         // aligning name to the left/start, if code doesn't exist
-        itemRight.classList.add('d-sm-flex', 'd-none', "d-flex", "itemRight", "align-items-center", "justify-content-start");
+        itemRight.classList.add("d-none", "d-sm-flex", "itemRight", "justify-content-start");
         itemRight.style.width = ((document.getElementById(tsrSearchBoxId + "List").offsetWidth * 0.75) / 125) + "px";
 
         // hack
@@ -571,25 +579,33 @@ function populateSearchList(query, stockList, urlPrefix, buttons) {
             nameDiv.style.display = "block";
 
         }
-        let name = document.createElement("span");
-        name.innerHTML = element.name;
+        if (paramDefined(element.name) && element.name != "") {
+            let name = document.createElement("span");
+            name.innerHTML = element.name;
 
-        let indSector = document.createElement("span");
-        indSector.style.fontSize = "12px";
-        if (paramDefined(element.industry) && paramDefined(element.sector)) {
-            indSector.innerHTML = element.industry + " | " + element.sector;
-        }
-        else if (paramDefined(element.industry)) {
-            indSector.innerHTML = element.industry;
-        }
-        else if (paramDefined(element.sector)) {
-            indSector.innerHTML = element.sector;
-        }
+            let indSector = document.createElement("span");
+            indSector.style.fontSize = "12px";
+            if (paramDefined(element.industry) && paramDefined(element.sector)) {
+                indSector.innerHTML = element.industry + " | " + element.sector;
+            }
+            else if (paramDefined(element.industry)) {
+                indSector.innerHTML = element.industry;
+            }
+            else if (paramDefined(element.sector)) {
+                indSector.innerHTML = element.sector;
+            }
+            else {
+                itemLeft.style.width = "100%";
+                itemRight.style.width = "0%";
+            }
 
-        nameDiv.appendChild(name);
-        nameDiv.innerHTML += "<br>";
-        nameDiv.appendChild(indSector);
-        itemRight.appendChild(nameDiv);
+            nameDiv.appendChild(name);
+            nameDiv.innerHTML += "<br>";
+            nameDiv.appendChild(indSector);
+
+
+            itemRight.appendChild(nameDiv);
+        }
 
 
         // -------------------------------------
@@ -748,6 +764,8 @@ function paramDefined(param) {
         return true;
 
     return false;
+
+
 }
 
 
@@ -796,8 +814,7 @@ let tsr_search_box_list_css = `
     }
 
     .tsrSearchBoxList li:focus {
-        /* background-color: lightslategray; */
-        background-color: #41464b;
+        background-color: gray;
         cursor: pointer;
         color: white !important;
         font-weight: 700;
@@ -822,13 +839,11 @@ let tsr_search_box_list_css = `
     }
 
     .tsrSearchBoxList li:focus-within {
-        /* background-color: lightslategray; */
-        /* background-color: #41464b; */
         background-color: gray;
         cursor: pointer;
     }
 
-    .tsrSearchBoxList li:focus-within a div:first-child {
+    .tsrSearchBoxList li:focus-within .itemLeft{
         color: white;
         font-weight: 700;
         font-size: 17px;
@@ -866,6 +881,7 @@ let tsr_search_box_list_css = `
     .tsrSearchBoxList li .itemRight {
         overflow-x: hidden;
         justify-content: end;
+        display: flex;
     }
 
     .tsrSearchBoxList li .itemRight button {
@@ -874,12 +890,12 @@ let tsr_search_box_list_css = `
         background: none;
     }
 
-    .tsrSearchBoxList li:hover .itemRight button:hover {
-        color: white;
-    }
-
     .tsrSearchBoxList li:hover .itemRight button {
         display: flex;
+    }
+
+    .tsrSearchBoxList li:hover .itemRight button:hover {
+        color: white;
     }
 
 
@@ -916,30 +932,11 @@ let tsr_search_box_media_query = `
     @media only screen and (max-width: 768px) {
 
         .tsrSearchBox{
-            width: 75%;
+            width: 100%;
+            max-width: 450px;
         }
 
-        .tsrSearchBoxList li:hover .btn,
-        .tsrSearchBoxList li:focus .btn {
-            display: none;
-        }
-
-        .tsrSearchBoxList li:hover .name,
-        .tsrSearchBoxList li:focus .name {
-            display: block;
-        }
-
-        .tsrSearchBoxList li .itemRight{
-            display: none;
-        }
-
-        .tsrSearchBoxList li a div:first-child {
-            width: 100% !important;
-        }
-
-        #tsrStockSearch {
-            width: 100% !important;
-        }
+        
     }
 
 `;
