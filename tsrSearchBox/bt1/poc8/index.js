@@ -2,6 +2,9 @@ let tsrSearchBoxId = "tsrSearchBox";
 
 let inputTextBoxId = "tsrStockSearch";
 
+let radioBtnIdPrefix = "tsrRadioBtn";
+
+
 
 // start
 function showSearchBox(option) {
@@ -16,7 +19,7 @@ function showSearchBox(option) {
 
             paintSearchBox(html);
             addOptionsToSelect(searchMenu[i]);
-            attachEventListenersToRadioBtns();
+            // attachEventListenersToRadioBtns();
 
             break;
         }
@@ -27,7 +30,7 @@ function getSearchBoxHeaderHtml() {
 
     let html = `<div id="${tsrSearchBoxId + "Header"}" class="d-flex justify-content-between">`
 
-    html += getRadioMenu(searchMenu);
+    html += getRadioMenuHtml(searchMenu);
 
     html += `<button class="btn-close" style="margin: 5px;" tabindex="-1 " onclick ="closeDialog('${tsrSearchBoxId}')"></button>`; // Close button
 
@@ -36,47 +39,33 @@ function getSearchBoxHeaderHtml() {
     return html;
 }
 
-function getRadioMenu(data) {
+function getRadioMenuHtml(data) {
 
-    let radioMenu = document.createElement("div");
-    radioMenu.classList.add("tsrRadioMenu");
+    let html = `<div class="${radioBtnIdPrefix + "Menu"}">`;
 
     for (let i = 0; i < data.length; i++) {
-        let radioBtnDiv = document.createElement("div");
-        radioBtnDiv.id = "tsrRadioBtn" + i;
-        radioBtnDiv.classList.add("tsrRadioBtn");
-        radioBtnDiv.setAttribute("tabindex", 0);
-        radioBtnDiv.setAttribute("data-basket", data[i].id);
 
+        html += `<div id="${radioBtnIdPrefix + i}" class="${radioBtnIdPrefix}" tabindex="0" data-basket="${data[i].id}"`;
+        html += data[i].default ? "checked" : "";
+        html += ` onclick="radioBtnHandler(event)" onkeydown="radioBtnHandler(event)">`;
 
-        let radioCircleDiv = document.createElement("div");
-        radioCircleDiv.classList.add("tsrRadioCircle");
-
+        html += `       <div class="${radioBtnIdPrefix + "Circle"}" >`;
         if (data[i].default) {
-
-            radioBtnDiv.setAttribute("checked", "");
-
-            let radioInnerCircleDiv = document.createElement("div");
-            radioInnerCircleDiv.classList.add("tsrRadioInnerCircle");
-            radioCircleDiv.appendChild(radioInnerCircleDiv);
+            html += `       <div class="${radioBtnIdPrefix + "InnerCircle"}" >`;
+            html += `       </div>`
         }
-
-        let labelDiv = document.createElement("div");
-        labelDiv.classList.add("tsrRadioLabel");
-        labelDiv.innerText = data[i].label;
-
-
-        radioBtnDiv.appendChild(radioCircleDiv);
-        radioBtnDiv.appendChild(labelDiv);
-
-        radioMenu.appendChild(radioBtnDiv);
+        html += `       </div>`;
+        html += `       <div class="${radioBtnIdPrefix + "Label"}">`;
+        html += data[i].label;
+        html += `       </div>`;
+        html += `</div>`;
     }
 
-    return radioMenu.outerHTML;
+    html += "</div>";
+    return html;
 }
 
 const radioBtnHandler = function radioBtnHandler(e) {
-
     e.stopPropagation(); // prevents search box dialog from closing 
 
     let radio = e.currentTarget;
@@ -106,6 +95,26 @@ const radioBtnHandler = function radioBtnHandler(e) {
                 }
                 showSearchBox(searchCat);
             }
+            else if (e.key === "ArrowLeft") {
+                if (e.target.previousSibling) {
+                    e.target.previousSibling.focus();
+                }
+            }
+            else if (e.key === "ArrowRight") {
+                if (e.target.nextSibling) {
+                    e.target.nextSibling.focus();
+                }
+            }
+            else if (e.key === "ArrowDown") {
+
+                if (e.target.classList.contains("tsrRadioBtn")) {
+
+
+                    let input = document.getElementById(inputTextBoxId);
+                    input.focus();
+                }
+            }
+
         }
     }
 }
@@ -133,7 +142,7 @@ function getSearchBoxBodyHtml(searchCat) {
     html += `</div>`;
 
     html += `<div class="mt-3">
-                <ul id="${tsrSearchBoxId + "List"}"></ul>
+                <ul id="${tsrSearchBoxId + "List"}" class="${tsrSearchBoxId + "List"}"></ul>
             </div> `;
 
     return html;
@@ -181,34 +190,25 @@ function addOptionsToSelect(searchCat) {
     filterStocks(input.value);
 }
 
-function paintSearchBox(html) {
-    let dialog = document.createElement("dialog");
-    dialog.id = tsrSearchBoxId;
-    dialog.classList.add("border", "rounded", "shadow-lg", "p-0");
+function paintSearchBox(searchBoxHtml) {
 
-    let contentDiv = document.createElement("div");
-    contentDiv.id = tsrSearchBoxId + "content";
-    contentDiv.classList.add("p-3");
-    contentDiv.style.maxWidth = "80vw";
-    contentDiv.style.maxHeight = "80vh";
-    contentDiv.style.overflowY = "hidden";
+    let html = `
+            <dialog id="${tsrSearchBoxId}" class="border rounded p-0 ${tsrSearchBoxId}" onclick="closeSearchBoxOnClickOut(event)" onkeydown="handleKeypressOnSearchBox(event, '${tsrSearchBoxId}')">`;
+    html += `   <div id="${tsrSearchBoxId + "content"}" class="p-3" style="overflowY: hidden;">`;
+    html += searchBoxHtml;
+    html += `   </div>`;
+    html += `</dialog>`;
 
-    contentDiv.innerHTML = html;
+    let searchBoxWrapper = document.getElementById(tsrSearchBoxId + "Wrapper");
+    searchBoxWrapper.innerHTML = html;
 
-    dialog.appendChild(contentDiv);
-    document.body.appendChild(dialog);
-
-    dialog.showModal();
-
-    dialog.addEventListener("keydown", handleKeypressOnSearchBox);
-    dialog.addEventListener("click", closeSearchBoxOnClickOut);
-
-    // document.body.style.overflow = "hidden";
+    let searchBox = document.getElementById(tsrSearchBoxId);
+    searchBox.showModal();
 }
 
-let handleKeypressOnSearchBox = (e) => { handleKeydownOnSearchBox(e, tsrSearchBoxId) };
+// let handleKeypressOnSearchBox = (e) => { handleKeydownOnSearchBox(e, tsrSearchBoxId) };
 
-function handleKeydownOnSearchBox(e, searchBoxId) {
+function handleKeypressOnSearchBox(e, searchBoxId) {
 
     let searchBox = document.getElementById(searchBoxId);
     let inputTextBox = document.getElementById(inputTextBoxId);
@@ -218,8 +218,9 @@ function handleKeydownOnSearchBox(e, searchBoxId) {
 
         // Check if Ctrl key is also pressed at the time
         // This prevents default beahviour and character from being entered twice
-        if (!e.ctrlKey)
+        if (!e.ctrlKey) {
             e.preventDefault();
+        }
 
         // If user types from somewhere other than input text box, reset the text box
         if (document.activeElement != inputTextBox) {
@@ -266,6 +267,10 @@ function handleKeydownOnSearchBox(e, searchBoxId) {
                 e.preventDefault();
             }
         }
+        else {
+            let radioBtns = document.getElementsByClassName("tsrRadioBtn");
+            radioBtns[0].focus();
+        }
     }
     // * Condition 3 : if Arrow Left or Right key is pressed do not perform any action
     else if (e.key === "ArrowLeft" || e.key === "ArrowRight") { }
@@ -288,7 +293,9 @@ function handleKeydownOnSearchBox(e, searchBoxId) {
     } // * Condition 8 : if anything else on the keyboard is pressed, focus on inputTextBox 
     else {
         inputTextBox.focus();
-        filterStocks('');
+        setTimeout(() => {
+            filterStocks(inputTextBox.value);
+        }, 10);
     }
 }
 
@@ -303,26 +310,22 @@ function isAlphaNumericSymbol(character) {
 
     return false;
 }
-
-let closeSearchBoxOnClickOut = function closeSearchBoxOnClickOut(e) {
+function closeSearchBoxOnClickOut(e) {
     let div = document.getElementById(tsrSearchBoxId + "content");
 
-    if (!div.contains(e.target)) {
+    if (paramDefined(div) && !div.contains(e.target)) {
         closeDialog(tsrSearchBoxId);
     }
 }
 
-function closeDialog(dialogId) {
+function closeDialog(searchBoxId) {
 
-    let dialog = document.getElementById(dialogId);
+    let searchBox = document.getElementById(searchBoxId);
 
-    if (dialog) {
-        dialog.close();
-        dialog.removeEventListener("keydown", handleKeypressOnSearchBox);
-
-        document.body.removeChild(dialog);
-        // document.body.style.overflow = "auto";
-        document.removeEventListener("click", closeSearchBoxOnClickOut);
+    if (searchBox) {
+        searchBox.close();
+        let searchBoxWrapper = document.getElementById(tsrSearchBoxId + "Wrapper");
+        searchBoxWrapper.removeChild(searchBox);
     }
 }
 
@@ -445,7 +448,7 @@ function populateSearchList(query, stockList, urlPrefix, buttons) {
         itemRow.style.overflowX = "hidden";
 
         let itemLeft = document.createElement('div');
-        itemLeft.classList.add('d-flex', 'flex-column');
+        itemLeft.classList.add('d-flex', 'flex-column', "justify-content-center");
 
         let itemRight = document.createElement('div');
 
@@ -463,20 +466,20 @@ function populateSearchList(query, stockList, urlPrefix, buttons) {
             itemRight.classList.add("w-100");
         }
 
-        let bottom = document.createElement('div');
-        // bottom.style.whiteSpace = "nowrap";
+        // let bottom = document.createElement('div');
+        // // bottom.style.whiteSpace = "nowrap";
 
-        if (paramDefined(element.industry) && element.industry != "") {
-            bottom.innerHTML += element.industry;
-            itemLeft.appendChild(bottom);
+        // if (paramDefined(element.industry) && element.industry != "") {
+        //     bottom.innerHTML += element.industry;
+        //     itemLeft.appendChild(bottom);
 
-        }
-        if (paramDefined(element.sector) && element.sector != "") {
-            bottom.innerHTML += "<br>" + element.sector;
-            itemLeft.appendChild(bottom);
-        }
+        // }
+        // if (paramDefined(element.sector) && element.sector != "") {
+        //     bottom.innerHTML += "<br>" + element.sector;
+        //     itemLeft.appendChild(bottom);
+        // }
 
-        bottom.style.fontSize = "0.8em";
+        // bottom.style.fontSize = "0.8em";
 
 
         // aligning name to the left/start, if code doesn't exist
@@ -555,24 +558,38 @@ function populateSearchList(query, stockList, urlPrefix, buttons) {
         }
 
         // if code exists then name should be aligned to the end/right
-        let name = document.createElement('span');
+        let nameDiv = document.createElement('div');
         if ((paramDefined(element.code) && element.code != "")) {
-            itemRight.classList.add("justify-content-end");
-            name.classList.add("name");
+            // itemRight.classList.add("justify-content-end");
+            nameDiv.classList.add("name");
         }
 
-        if (noOfBtns > 0) { // if there are buttons to show, then align name to end/right
-            if (name.classList.contains("justify-content-start")) {
-                name.classList.remove("justify-content-start");
-            }
-            itemRight.classList.add("justify-content-end");
-        } else {    // else: it will stay aligned to start/left and remove name class so that it even shows on hover
+        if (noOfBtns <= 0) { // remove name class so that it even shows on hover
             // itemRight.classList.add("justify-content-start");
 
-            name.classList.remove("name");
+            nameDiv.classList.remove("name");
+            nameDiv.style.display = "block";
+
         }
+        let name = document.createElement("span");
         name.innerHTML = element.name;
-        itemRight.appendChild(name);
+
+        let indSector = document.createElement("span");
+        indSector.style.fontSize = "12px";
+        if (paramDefined(element.industry) && paramDefined(element.sector)) {
+            indSector.innerHTML = element.industry + " | " + element.sector;
+        }
+        else if (paramDefined(element.industry)) {
+            indSector.innerHTML = element.industry;
+        }
+        else if (paramDefined(element.sector)) {
+            indSector.innerHTML = element.sector;
+        }
+
+        nameDiv.appendChild(name);
+        nameDiv.innerHTML += "<br>";
+        nameDiv.appendChild(indSector);
+        itemRight.appendChild(nameDiv);
 
 
         // -------------------------------------
@@ -731,4 +748,268 @@ function paramDefined(param) {
         return true;
 
     return false;
+}
+
+
+
+// CSS:
+let tsr_search_box_css = `
+    .tsrSearchBox {
+        width: 50%;
+    }
+
+    .tsrSearchBox::backdrop {
+        background: rgba(0, 0, 0, 0.75);
+    }
+
+`;
+
+let tsr_search_box_list_css = `
+
+    .tsrSearchBoxList {
+        max-height: 300px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .tsrSearchBoxList::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .tsrSearchBoxList::-webkit-scrollbar-track {
+        background-color: white;
+    }
+
+    .tsrSearchBoxList li {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .tsrSearchBoxList li:hover {
+        background-color: lightgray;
+        cursor: pointer;
+        color: black !important;
+        font-weight: 700;
+        font-size: 17px;
+    }
+
+    .tsrSearchBoxList li:focus {
+        /* background-color: lightslategray; */
+        background-color: #41464b;
+        cursor: pointer;
+        color: white !important;
+        font-weight: 700;
+        font-size: 17px;
+    }
+
+    .tsrSearchBoxList li a {
+        color: black;
+    }
+
+    .tsrSearchBoxList li:focus a {
+        color: white;
+    }
+
+    .tsrSearchBoxList li .name {
+        display: block;
+    }
+
+    .tsrSearchBoxList li:hover .name,
+    .tsrSearchBoxList li:focus .name {
+        display: none !important;
+    }
+
+    .tsrSearchBoxList li:focus-within {
+        /* background-color: lightslategray; */
+        /* background-color: #41464b; */
+        background-color: gray;
+        cursor: pointer;
+    }
+
+    .tsrSearchBoxList li:focus-within a div:first-child {
+        color: white;
+        font-weight: 700;
+        font-size: 17px;
+    }
+
+    .tsrSearchBoxList li:focus-within .name {
+        display: none;
+    }
+
+
+    .tsrSearchBoxList li:focus-within .btn {
+        display: block;
+        background-color: white;
+
+    }
+
+    .tsrSearchBoxList li .btn {
+        display: none;
+        border-radius: 15px;
+    }
+
+    .tsrSearchBoxList li .btn:hover a,
+    .tsrSearchBoxList li .btn:focus a {
+        /* background-color: black !important; */
+        color: white !important;
+    }
+
+    .tsrSearchBoxList li .btn:hover,
+    .tsrSearchBoxList li .btn:focus {
+        background-color: black !important;
+        font-weight: 700;
+        box-shadow: none;
+    }
+
+    .tsrSearchBoxList li .itemRight {
+        overflow-x: hidden;
+        justify-content: end;
+    }
+
+    .tsrSearchBoxList li .itemRight button {
+        display: none;
+        border: none;
+        background: none;
+    }
+
+    .tsrSearchBoxList li:hover .itemRight button:hover {
+        color: white;
+    }
+
+    .tsrSearchBoxList li:hover .itemRight button {
+        display: flex;
+    }
+
+
+    .tsrSearchBoxList li:hover .itemRight div,
+    .tsrSearchBoxList li:focus .itemRight div {
+        overflow-x: hidden;
+        display: flex;
+    }
+
+    .tsrSearchBoxList li:hover .btn,
+    .tsrSearchBoxList li:focus .btn {
+        display: block;
+        background-color: white;
+    }
+
+    .tsrSearchBoxList .empty:hover {
+        background-color: white;
+        cursor: default;
+        color: black !important;
+        font-weight: 400 !important;
+    }
+`;
+
+let tsr_search_box_media_query = `
+
+    @media only screen and (max-width: 1200px) {
+
+        .tsrSearchBox {
+            width: 75%;
+        }
+
+    }
+
+    @media only screen and (max-width: 768px) {
+
+        .tsrSearchBox{
+            width: 75%;
+        }
+
+        .tsrSearchBoxList li:hover .btn,
+        .tsrSearchBoxList li:focus .btn {
+            display: none;
+        }
+
+        .tsrSearchBoxList li:hover .name,
+        .tsrSearchBoxList li:focus .name {
+            display: block;
+        }
+
+        .tsrSearchBoxList li .itemRight{
+            display: none;
+        }
+
+        .tsrSearchBoxList li a div:first-child {
+            width: 100% !important;
+        }
+
+        #tsrStockSearch {
+            width: 100% !important;
+        }
+    }
+
+`;
+
+let tsr_radio_btn_css = `
+    .${radioBtnIdPrefix}Menu {
+        display: flex;
+    }
+
+    .${radioBtnIdPrefix} {
+        display: inline-flex;
+        align-items: center;
+        margin-left: 15px;
+        cursor: default;
+    }
+
+    .${radioBtnIdPrefix}:focus {
+        border: 1px solid;
+    }
+
+    .${radioBtnIdPrefix}Circle {
+        margin-right: 5px;
+        border: 1px solid;
+        border-radius: 20px;
+        height: 13px;
+        width: 13px;
+    }
+
+    .${radioBtnIdPrefix}InnerCircle {
+        /* border: 1px solid; */
+        border-radius: 20px;
+        height: 7.5px;
+        width: 7.5px;
+        position: relative;
+        top: 2px;
+        left: 2px;
+        background-color: black;
+    }
+`;
+
+// Code to find CSS in HTML and append it if not found
+addTsrSearchBoxCss();
+function addTsrSearchBoxCss() {
+    let className = 'tsrSearchBox';
+
+    for (let sheet of document.styleSheets) {
+        if (sheet.ownerNode && sheet.ownerNode.tagName === 'STYLE') {
+
+            try {
+                for (let rule of sheet.cssRules) {
+                    if (rule.selectorText && rule.selectorText.includes(`.${className}`)) {
+                        console.log(rule.selectorText, rule.style.cssText);
+                        break;
+
+                    }
+                    else {
+                        let style = document.createElement("style");
+                        style.innerHTML = tsr_search_box_css + `\n` + tsr_search_box_list_css + `\n` + tsr_search_box_media_query + `\n` + tsr_radio_btn_css;
+
+                        document.getElementsByTagName('head')[0].appendChild(style);
+                        break;
+
+                    }
+                }
+            } catch (e) {
+
+                // Some stylesheets might be from different origins and not accessible
+                // console.warn('Cannot access stylesheet:', sheet.href);
+            }
+            break;
+        }
+    }
 }
