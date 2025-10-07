@@ -969,6 +969,7 @@ let equityData = [{
 
 let screenerData = [{
         "id": "https://www.tsrbt1.com/rt//Screener/TSRStrengthIndex/TechnicalStrength/Bullish/BullishTechStrength",
+<<<<<<< HEAD
         code: "",
         defaultUrl: "",
         candlestick: true,
@@ -1638,4 +1639,675 @@ let screenerData = [{
         code: "",
         defaultUrl: "",
         name: "RSI Cross 57 and Bullish Tech Strength With High Volume"
+=======
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish1Day/BullishPinBar",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Pin Bar"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish2Day/BullishEngulfing",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Engulfing"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish2Day/BullishGapUp",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Gap Up"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish2Day/BullishHarami",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Harami"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish3Day/BullishAbandonedBaby",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Abandoned Baby"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/BullishMultiDay/BullishBreakaway",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Breakaway"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/BullishMultiDay/BullishIslandReversal",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Island Reversal"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/BullishMultiDay/BullishThreeLinesStrike",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Three Lines Strike"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishInitiation",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Initiation"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishContinuation",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Continuation"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishWithHighVolume",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish With High Volume"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/BullishHeikinAshi/BullishTickFromRedToGreen",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Tick From Red To Green"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ChartPatterns/PopularChartPatterns/BullishPatterns/BullishFlag",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Flag"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ChartPatterns/PopularChartPatterns/BullishPatterns/BullishPennant",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Pennant"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishReversal",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Trend Reversal Screeners"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishContinuation",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Continuation Screeners"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishBreakout",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Breakout Screeners"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishMomentum",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Momentum Screeners"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ExpertScreener/PriceActionBased/BullishTrendReversal",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Trend Reversal Screener"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ExpertScreener/PriceActionBased/BullishTrendReversal/BullishPatternsAtBottom",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Reversal Candlestick Patterns at Lower Levels"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ExpertScreener/TechIndiBased/BullishTechScreener",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Technical Screener"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ExpertScreener/TechIndiBased/BullishScan",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Screener"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ExpertScreener/TechIndiBased/BullishScan/UpTrendingStocks",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Stocks Screener with Good Value & Stability"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ExpertScreener/TechIndiBased/BullishScan/GrowthStockWithMomentum",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Stocks with High Growth (Funda) and Stability"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish1Day/BullishMarubozu",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Marubozu"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish2Day/BullishBeltHold",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Belt Hold"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish2Day/BullishCounterAttack",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Counter Attack"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish2Day/BullishHaramiCross",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Harami Cross"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish2Day/BullishKicker",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Kicker"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish2Day/BullishOnNeck",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish On Neck"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish2Day/BullishPiercing",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Piercing"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish2Day/BullishSeparatingLines",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Separating Lines"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish3Day/BullishSidebySideWhiteLines",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Side by Side White Lines"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish3Day/BullishStickSandwich",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Stick Sandwich"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish3Day/BullishTriStar",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Tri Star"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/BullishMultiDay/BullishHikkake",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Hikkake"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BTSTAndIntraday/BullishBreakoutwithVolumeConfirmation",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Breakout with Volume Confirmation"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BTSTAndIntraday/BullishMomentumStocksandHighVolume",
+        
+        defaultUrl: "",
+        candlestick: true,
+        tech: true,
+        code: "Bullish Momentum Stocks and High Volume "
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/TSRStrengthIndex/TechnicalStrength/Bullish/StrongBullTechStrength",
+        
+        defaultUrl: "",
+        code: "Strong Bullish"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/TSRStrengthIndex/TechnicalStrength/Bullish/MildBullTechStrength",
+        
+        defaultUrl: "",
+        code: "Mild Bullish"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/TSRStrengthIndex/TechnicalStrength/Neutral/NeutralWithBullTechStrength",
+        
+        defaultUrl: "",
+        code: "Neutral With Bullish Bias"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/OHLCScreeners/BullishScreener/LHLLReversal",
+        
+        defaultUrl: "",
+        code: "Lower High Lower Low Bullish Reversal"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/RSISmooth/RSISmoothBullishDivergence",
+        
+        defaultUrl: "",
+        code: "RSI Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/RSI/RSIBullishDivergence",
+        
+        defaultUrl: "",
+        code: "RSI Fast Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/SlowStochastic/StochasticSlowBullishDivergence",
+        
+        defaultUrl: "",
+        code: "Stochastic Slow Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/FastStochastic/StochasticFastBullishDivergence",
+        
+        defaultUrl: "",
+        code: "Stochastic Fast Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/StochasticRSI/StochasticRSIBullishDivergence",
+        
+        defaultUrl: "",
+        code: "Stochastic RSI Fast Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/StochasticRSISmooth/StochasticRSISmoothBullishDivergence",
+        
+        defaultUrl: "",
+        code: "Stochastic RSI Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/WilliamsR/WilliamsRBullishDivergence",
+        
+        defaultUrl: "",
+        code: "Williams % R Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/CommodityChannelIndex/CCIBullishDivergence",
+        
+        defaultUrl: "",
+        code: "CCI Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/MoneyFlowIndex/MFIBullishDivergence",
+        
+        defaultUrl: "",
+        code: "MFI Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/UltimateOscillator/UltimateOscillatorBullishDivergence",
+        
+        defaultUrl: "",
+        code: "Ultimate Oscillator Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/AroonOscillator/AroonOscillatorBullishDivergence",
+        
+        defaultUrl: "",
+        code: "Aroon Oscillator Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/Overlays/ParabolicSAR/PSARBullishReversal",
+        
+        defaultUrl: "",
+        code: "PSAR Bullish Reversal"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/TrendIndicator/MACD/MACDBullishDivergence",
+        
+        defaultUrl: "",
+        code: "MACD Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/TrendIndicator/MACD/MACDHistogramBullishDivergence",
+        
+        defaultUrl: "",
+        code: "MACD Histogram Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/TrendIndicator/ADX/ADXBullishDivergence",
+        
+        defaultUrl: "",
+        code: "ADX Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/TrendIndicator/Supertrend/SupertrendBullishReversal",
+        
+        defaultUrl: "",
+        code: "Supertrend Bullish Reversal"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/TrendIndicator/AwesomeOscillator/AwesomeOscillatorBullishReversal",
+        
+        defaultUrl: "",
+        code: "Awesome Oscillator Bullish Reversal"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/TrendIndicator/AwesomeOscillator/AwesomeOscillatorBullishDivergence",
+        
+        defaultUrl: "",
+        code: "Awesome Oscillator Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/TrendIndicator/RateOfChange/ROCBullishDivergence",
+        
+        defaultUrl: "",
+        code: "Rate Of Change Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/VolumeBasedIndicator/ChaikinMoneyFlow/CMFBullishTrendChange",
+        
+        defaultUrl: "",
+        code: "CMF Bullish Trend Change"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/VolumeBasedIndicator/ChaikinMoneyFlow/CMFBullishDivergence",
+        
+        defaultUrl: "",
+        code: "CMF Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/EMAScreener/TrendingEMA/UptrendEmaBullCO",
+        
+        defaultUrl: "",
+        code: "EMA Trending Up with Bullish Crossover"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/EMAScreener/EMAConvergenceDivergence/BullishConvergence20and50EMA",
+        
+        defaultUrl: "",
+        code: "20 and 50 EMA Bullish Convergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/EMAScreener/EMAConvergenceDivergence/BullishDivergence20and50EMA",
+        
+        defaultUrl: "",
+        code: "20 and 50 EMA Bullish Divergence"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ChartPatterns/NRWR/NarrowRange/NR7BullishBreakout",
+        
+        defaultUrl: "",
+        code: "NR 7 Bullish Breakout"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ChartPatterns/NRWR/NarrowRange/NR11BullishBreakout",
+        
+        defaultUrl: "",
+        code: "NR 11 Bullish Breakout"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ChartPatterns/NRWR/WideRange/WR7BullishContinuation",
+        
+        defaultUrl: "",
+        code: "WR 7 Bullish Continuation"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ChartPatterns/NRWR/WideRange/WR14BullishContinuation",
+        
+        defaultUrl: "",
+        code: "WR 14 Bullish Continuation"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ExpertScreener/MovingAverageStrategies/MovingAverageConvergence/MABullishConvergence20and50SMA",
+        
+        defaultUrl: "",
+        code: "MA Bullish Convergence 20 and 50 SMA"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/TrendIndicator/AwesomeOscillator/AwesomeOscillatorBullishSaucer",
+        
+        defaultUrl: "",
+        code: "Awesome Oscillator Bullish Saucer"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/TrendIndicator/AwesomeOscillator/AwesomeOscillatorBullishTwinPeak",
+        
+        defaultUrl: "",
+        code: "Awesome Oscillator Bullish Twin Peak"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ChartPatterns/NRWR/NarrowRange/NR4BullishBreakout",
+        
+        defaultUrl: "",
+        code: "NR 4 Bullish Breakout"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ChartPatterns/NRWR/NarrowRange/NR15BullishBreakout",
+        
+        defaultUrl: "",
+        code: "NR 15 Bullish Breakout"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ChartPatterns/NRWR/WideRange/WR20BullishContinuation",
+        
+        defaultUrl: "",
+        code: "WR 20 Bullish Continuation"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/TSRStrengthIndex/TechnicalStrength/Bullish/AllBullishTechStrength",
+        
+        defaultUrl: "",
+        code: "All Bullish"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/RSISmooth/RSIBullishSwingRejection",
+        
+        defaultUrl: "",
+        code: "RSI Bullish Swing Rejection"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/RSI/RSIFastBullishSwingRejection",
+        
+        defaultUrl: "",
+        code: "RSI Fast Bullish Swing Rejection"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishReversal/MACDBullishCrosswithVolume",
+        
+        defaultUrl: "",
+        code: "MACD Bullish Cross with Volume"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishReversal/MACDBullishCrossoverandStochIndicatorAbove50",
+        
+        defaultUrl: "",
+        code: "MACD Bullish Crossover and Stochastic Slow Indicator Above 50"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishReversal/MACDBullishcrossoverandADXPDICrossAboveMDI",
+        
+        defaultUrl: "",
+        code: "MACD Bullish Crossover and ADX PDI Cross Above MDI"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishReversal/MACDbullishcrossoverandStochasticRSIindicatorabove50",
+        
+        defaultUrl: "",
+        code: "MACD Bullish Crossover and Stochastic RSI Indicator Above 50"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishReversal/StochBullishCrossoverRSICrossAbove30",
+        
+        defaultUrl: "",
+        code: "Stochastic Slow Bullish Crossover and RSI Cross Above 30"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishReversal/MACDBullishcrossoverandPricebetweenMid&lowerband",
+        
+        defaultUrl: "",
+        code: "MACD Bullish Crossover and Price between Mid & Lower Band"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishReversal/StochasticBullishCrosswithPriceCrossabove50MA",
+        
+        defaultUrl: "",
+        code: "Stochastic Bullish Cross with Price Cross above 50 MA"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishReversal/StochasticRSIBullishCrosswithPriceCrossabove50MA",
+        
+        defaultUrl: "",
+        code: "Stochastic RSI Bullish Cross with Price Cross above 50 MA"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishReversal/MACDBullishCrossat3MonthLow",
+        
+        defaultUrl: "",
+        code: "MACD Bullish Cross at 3 Month Low"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishContinuation/MACDBullishCrossandCMFabove0",
+        
+        defaultUrl: "",
+        code: "MACD Bullish Cross and CMF Above 0"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishContinuation/RSIabove50andMACDBullishCrossover",
+        
+        defaultUrl: "",
+        code: "RSI Above 50 and MACD Bullish Crossover"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishContinuation/MACDBullishcrossoverandADXAbove25",
+        
+        defaultUrl: "",
+        code: "MACD Bullish Crossover and ADX Above 25"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishBreakout/BollingerBandBreakoutandMACDBullishCrossover",
+        
+        defaultUrl: "",
+        code: "Bollinger Band Breakout and MACD Bullish Crossover"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishBreakout/MACDBullishCrosswith30daysBreakout",
+        
+        defaultUrl: "",
+        code: "MACD Bullish Cross with 30 days Breakout"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishMomentum/MACDBullishCrossoverandMFIAbove50",
+        
+        defaultUrl: "",
+        code: "MACD Bullish Crossover and MFI Above 50"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishMomentum/StochBullishCrossoverAbove80withVolume",
+        
+        defaultUrl: "",
+        code: "Stochastic Slow Bullish Crossover Above 80 with Volume"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishMomentum/ZLMACDBullishCrossandZeroLineCross",
+        
+        defaultUrl: "",
+        code: "Zero lag MACD Bullish Cross and Zero Line Cross"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BullishMomentum/ZLMACDBullishCrossAnd21EMACross",
+        
+        defaultUrl: "",
+        code: "Zero Lag MACD  Bullish Cross And 21 EMA Cross"
+},
+    {
+        "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/BullishTechnicalsScreener/BTSTAndIntraday/RSICross57andBullishTechStrengthWithHighVol",
+        
+        defaultUrl: "",
+        code: "RSI Cross 57 and Bullish Tech Strength With High Volume"
+>>>>>>> 820ba23 (updates)
 }];

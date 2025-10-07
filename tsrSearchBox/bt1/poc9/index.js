@@ -169,7 +169,10 @@ function addOptionsToSelect(searchCat) {
     select.onchange = function () {
         input.focus();
         input.value = "";
-        filterStocks(input.value);
+        setTimeout(function (){
+            filterStocks(input.value);
+        }, 10);
+
     };
 
     select.classList.add("form-select");
@@ -196,13 +199,15 @@ function addOptionsToSelect(searchCat) {
     }
 
 
-    filterStocks(input.value);
+    setTimeout(function (){
+            filterStocks(input.value);
+        }, 10);
 }
 
 function paintSearchBox(searchBoxHtml) {
 
     let html = `
-            <dialog id="${tsrSearchBoxId}" class="border rounded p-0 ${tsrSearchBoxId}" onclick="closeSearchBoxOnClickOut(event)" onkeydown="handleKeypressOnSearchBox(event, '${tsrSearchBoxId}')">`;
+            <dialog id="${tsrSearchBoxId}" class="border rounded p-0 ${tsrSearchBoxId}" onclick="closeSearchBoxOnClickOut(event)" onkeydown="handleKeypressOnSearchBox(event, '${tsrSearchBoxId}')" onmouseover="enablePointerEvents(this)" ontouchstart="enablePointerEvents(this)">`;
     html += `   <div id="${tsrSearchBoxId + "content"}" class="p-3" style="overflow-Y: hidden; ">`;
     html += searchBoxHtml;
     html += `   </div>`;
@@ -242,7 +247,9 @@ function handleKeypressOnSearchBox(e, searchBoxId) {
         inputTextBox.value = text;
         inputTextBox.focus();
 
-        filterStocks(inputTextBox.value);
+        setTimeout(function (){
+            filterStocks(inputTextBox.value);
+        }, 10);
 
         // setTimeout(
         //     filterStocks(inputTextBox.value), 10
@@ -282,7 +289,7 @@ function handleKeypressOnSearchBox(e, searchBoxId) {
         }
     }
     // * Condition 3 : if Arrow Left or Right key is pressed do not perform any action
-    else if (e.key === "ArrowLeft" || e.key === "ArrowRight") { 
+    else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
 
         // if(document.activeElement == inputTextBox){
         //     if(paramDefined(document.getElementById(tsrSearchBoxId + "Select"))){
@@ -303,7 +310,9 @@ function handleKeypressOnSearchBox(e, searchBoxId) {
     // * Condition 5 : if Enter key is pressed do not perform any action, if select options cannot be selected using Enter key
     else if (e.key === "Enter") { }
     // * Condition 6 : if below keys are pressed do not perform any action, since these are modifier keys and have other functionality such as Ctrl + S, Ctrl + P, Alt + Tab etc.
-    else if (e.ctrlKey || e.altKey || e.shiftKey) { }
+    else if (e.ctrlKey || e.altKey || e.shiftKey) { 
+        // if()
+    }
     // * Condition 7 : close search box if escape is pressed and remove form DOM 
     else if (e.key === "Escape") {
         closeDialog(searchBoxId);
@@ -335,6 +344,15 @@ function closeSearchBoxOnClickOut(e) {
     }
 }
 
+function enablePointerEvents(dialog){
+    dialog.style.pointerEvents = "auto";
+    let liElements = dialog.querySelectorAll("li");
+
+    for(let i=0; i<liElements.length; i++){
+        liElements[i].style.pointerEvents = "auto";
+    }
+}
+
 function closeDialog(searchBoxId) {
 
     let searchBox = document.getElementById(searchBoxId);
@@ -351,7 +369,7 @@ function filterStocks(query) {
     // ! WARNING assuming there will be always be a radio button in the search box, i.e. in the searchMenu[] 
     let searchBox = document.getElementById(tsrSearchBoxId);
     let radioBtns = searchBox.getElementsByClassName(radioBtnIdPrefix);
-    
+
     let checkedRadio = radioBtns[0];
 
     for (let i = 0; i < radioBtns.length; i++) {
@@ -362,95 +380,129 @@ function filterStocks(query) {
 
     let categoryName = checkedRadio.getAttribute("data-basket");
 
+    // * below code passes relevant data to processSearchCategory()
+    // * It finds desired search category from the radio button
+    for (let i = 0; i < searchMenu.length; i++) {
+        if (searchMenu[i].id == categoryName) {
+            processSearchCategory(searchMenu[i]);
+        }
+    }
+
+}
+
+function processSearchCategory(searchMenuData) {
+
+    // ! data params used in populateSearchList() are code, name, industry and sector only
+
     let stockList = [];
     let categoryButtons = [];
     let urlPrefix = "", urlSuffix = "";
 
     // * below code passes relevant data to populateSearchList()
-    // * First: it finds desired search category from the radio button
-    // * Second: it checks for any additional sub category that might be selected using the Select (select)
-    for (let i = 0; i < searchMenu.length; i++) {
-        if (searchMenu[i].id == categoryName) {
-            stockList = searchMenu[i].catData;
+    switch (searchMenuData.id) {
 
-            if (document.getElementById(tsrSearchBoxId + "Select")) {
-                let basketCategory = document.getElementById(tsrSearchBoxId + "Select");
-                let category = basketCategory.value;
-
-                let subCat = searchMenu[i].subCat;
-                for (let j = 0; j < subCat.length; j++) {
-                    if (subCat[j].id == category) {
-                        // if (!subCat[i].default) {
-                        if (paramDefined(subCat[j].buttons)) {
-                            categoryButtons = subCat[j].buttons;
-                        }
-                        if (paramDefined(subCat[j].urlPrefix)) {
-                            urlPrefix = subCat[j].urlPrefix;
-                        }
-                        if (paramDefined(subCat[j].urlSuffix)) {
-                            urlSuffix = subCat[j].urlSuffix;
-                        }
-
-                        if (!subCat[j].default) {
-                            let mappedParam = subCat[j].mappedParam;
-                            if (paramDefined(mappedParam)) {
-                                stockList = stockList.filter((item) => {
-                                    if (item[mappedParam]) {
-                                        item.defaultUrl = base_url + urlPrefix + "/" + item.code + "/" + urlSuffix;
-                                        return item;
-                                    }
-                                });
-                            }
-                        }
-
-                        stockList = stockList.filter((item) => {
-                            item.defaultUrl = base_url + urlPrefix + "/" + item.code + "/" + urlSuffix;
-                            return item;
-                        });
-
-
-                        return populateSearchList(query, stockList, urlPrefix, categoryButtons);
-                    }
-                }
-            }
-
+        case "charts":
+            // let chartData = [
+            //     {
+            //         "code": "A2ZINFRA",
+            //         "label": "A2ZINFRA",
+            //         name: "A2Z Infra Engineering",
+            //         industry: "IT Services",
+            //         sector: "POWER"
+            //     },
+            // ];
+            stockList = searchMenuData.catData;
+            urlPrefix = "Stock", urlSuffix = "InteractiveCharts";
             stockList = stockList.filter((item) => {
                 item.defaultUrl = base_url + urlPrefix + "/" + item.code + "/" + urlSuffix;
                 return item;
             });
 
-            return populateSearchList(query, stockList, urlPrefix, categoryButtons);
+            return populateSearchList(searchMenuData, stockList, categoryButtons);
+        case "screeners":
+            // let SCR_DEF_DATA = [
+            //     {
+            //         "id": "https://www.tsrbt1.com/rt/Screener/Technical/SMAScreener/SMABullishCrossover/50SMACrossAbv200",
+            //         uri: "Screener/Technical/SMAScreener/SMABullishCrossover/50SMACrossAbv200",
+            //         "label": "50 SMA Cross Above 200"
+            //     }
+            // ];
+            stockList = searchMenuData.catData;
 
-        }
+            stockList = stockList.filter((item) => {
+                item.defaultUrl = base_url + item.uri;
+                item.code = item.label; // * element.code should be present - it represents left part of the search box record 
+                return item;
+            });
+
+            return populateSearchList(searchMenuData, stockList, categoryButtons);
+
+
+        default: // * case equity:
+            stockList = searchMenuData.catData;
+
+            // let EQ_DEF_DATA = [
+            //     {
+            //         "id": "NIFTY", "label": "NIFTY - S&P CNX NIFTY - INDEX - INDIA",
+            //         "name": "S&P CNX NIFTY", "code": "NIFTY", "fno": "true",
+            //         "funda": "false", "sector": "INDEX", "industry": "Broad-Based Index",
+            //         "scId": "200000", "ecId": "10000", "ccId": "in"
+            //     },
+            // * checks for any additional sub category that might be selected using the Select dropdown
+            if (document.getElementById(tsrSearchBoxId + "Select")) { // if select dropdown is present
+                let basketCategory = document.getElementById(tsrSearchBoxId + "Select");
+                let category = basketCategory.value; // get selected option
+
+                let subCat = searchMenuData.subCat;
+                for (let j = 0; j < subCat.length; j++) {
+                    if (subCat[j].id == category) { // if selected option and subCat match
+
+                        if (paramDefined(subCat[j].buttons)) { // store buttons if they exist
+                            categoryButtons = subCat[j].buttons;
+                        }
+                        if (paramDefined(subCat[j].urlPrefix)) {  // store url prefix if it exists
+                            urlPrefix = subCat[j].urlPrefix;
+                        }
+                        if (paramDefined(subCat[j].urlSuffix)) { // store url suffix if it exists
+                            urlSuffix = subCat[j].urlSuffix;
+                        }
+
+                        if (!subCat[j].default) { // if default is false, then check if mapped param is present in the element
+                            let mappedParam = subCat[j].mappedParam;
+                            if (paramDefined(mappedParam)) {
+                                stockList = stockList.filter((item) => {
+                                    if (item[mappedParam]) { // if mappedParam exists in element, then set url and add it to stockList
+                                        item.defaultUrl = base_url + urlPrefix + "/" + item.code + "/" + urlSuffix;
+                                        return item;
+                                    }
+                                });
+
+                                // stockList contains all items which contains mappedParam
+                                // * Eg. All stocks of equityData do not have fno. So 
+                                // * subCat FuturesAndOptions: default:false, mappedParam: "fno"
+                                // * stockList only contains all elements which has fno: true defined
+
+                                return populateSearchList(searchMenuData, stockList, categoryButtons);
+
+                            }
+                        }
+                        // * else - return entire stockList
+                        stockList = stockList.filter((item) => {
+                            item.defaultUrl = base_url + urlPrefix + "/" + item.code + "/" + urlSuffix;
+                            return item;
+                        });
+
+                        return populateSearchList(searchMenuData, stockList, categoryButtons);
+                    }
+                }
+            }
+            break;
     }
 }
 
-function populateSearchList(query, stockList, urlPrefix, buttons) {
 
-    // filter stocks which include query string
-<<<<<<< HEAD
-    stockList = stockList.filter((item) => {
-        let keys = Object.keys(item);
+function populateSearchList(searchMenuData, stockList, buttons) {
 
-        for (let i = 0; i < keys.length; i++) {
-            if (typeof item[keys[i]] == "string" && item[keys[i]].toLowerCase().includes(query.toLowerCase())) {
-                return item;
-            }
-        }
-    });
-=======
-
-    // let params = ["label", "name", "industry", "sector"]
-    // stockList = stockList.filter((item) => {
-
-    //     for (let i = 0; i < params.length; i++) {
-    //         if(paramDefined(item[params[i]]) && typeof item[params[i]] == "string" && item[params[i]].toLowerCase().includes(query.toLowerCase())){
-    //         // if (typeof item[keys[i]] == "string" && item[keys[i]].toLowerCase().includes(query.toLowerCase())) {
-    //             return item;
-    //         }
-    //     }
-    // });
->>>>>>> 820ba23 (updates)
 
     let list = document.getElementById(tsrSearchBoxId + "List");
     list.innerHTML = ''; // Clear previous results
@@ -469,176 +521,189 @@ function populateSearchList(query, stockList, urlPrefix, buttons) {
         let li = document.createElement('li');
         li.setAttribute("tabindex", "0");
         li.addEventListener("keydown", navigateList);
-        li.addEventListener("keydown", navigateButtons);
-
-        let a = document.createElement("a");
-        a.href = element.defaultUrl; // defaultUrl - set in filterStocks()
+        li.style.pointerEvents = "none";
 
         let itemRow = document.createElement('div');
         itemRow.classList.add('d-flex', 'justify-content-between');
         itemRow.style.width = "100%";
         itemRow.style.overflowX = "hidden";
 
-        let itemLeft = document.createElement('div');
-        itemLeft.classList.add('itemLeft', 'd-flex', 'flex-column', "justify-content-center");
-        // itemLeft.style
-
-        let itemRight = document.createElement('div');
-
-        // setting width of left and right div 
-        // if code exists left div has 25% width
-        if ((paramDefined(element.code) && element.code != "")) { // If code exists 
-            if (paramDefined(element.name) && element.name != "") { // if name also exists - give width to both itemLeft and itemRight
-                itemLeft.classList.add("w-25");
-                itemLeft.style.minWidth = "125px";
-                itemRight.classList.add("w-75");
+        if (searchMenuData.jsFnc) { // set onclick handler
+            li.innerHTML = element.label;
+            let param = true;
+            li.onclick = function (e) {
+                closeDialog(tsrSearchBoxId);
+                console.log("clicked ", param);
             }
-            else { // If name doesn't exist - give available width to itemLeft
-                itemLeft.classList.add("w-auto");
-                itemLeft.style.minWidth = "125px";
-                itemRight.classList.add("w-auto");
-            }
-        }
 
-        let top = document.createElement('div');
-        top.innerHTML = element.code;
-        itemLeft.appendChild(top);
-
-        // aligning name to the left/start, if code doesn't exist
-        itemRight.classList.add("d-none", "d-sm-flex", "itemRight", "justify-content-start");
-        itemRight.style.width = ((document.getElementById(tsrSearchBoxId + "List").offsetWidth * 0.75) / 125) + "px";
-
-        // hack
-        // * stores max no. of buttons that can be shown on the screen at a time for each <li>
-        let maxButtons = Math.round((document.getElementById(tsrSearchBoxId + "List").offsetWidth * 0.75) / 75);
-
-        let leftScrollBtn = document.createElement("button");
-        leftScrollBtn.classList.add("h-100", "px-2", "align-items-center");
-        leftScrollBtn.innerHTML = `<i class="fas fa-angle-left"></i>`;
-        leftScrollBtn.addEventListener("click", function (e) {
-            btnContainer.scrollBy({
-                left: -125,
-                behavior: 'smooth'
-            });
-            e.preventDefault();
-            btnContainer.focus();
-        });
-
-        let btnContainer = document.createElement("div");
-        btnContainer.classList.add("d-flex");
-        btnContainer.style.overflowX = "hidden";
-
-        let noOfBtns = 0; // stores actual no of buttons appended to button container
-        for (let i = 0; i < buttons.length; i++) {
-            // * Below conditions check if current button should be shown for a stock or not
-            if (!buttons[i].default) {
-                if (!element[buttons[i].mappedParam]) {
-                    continue;
+            li.onkeydown = function (e) {
+                if (e.key == "Enter") {
+                    closeDialog(tsrSearchBoxId);
+                    console.log("clicked", param);
                 }
             }
-            let button = document.createElement('button');
-<<<<<<< HEAD
-            button.classList.add('btn', 'btn-sm', 'me-2', "p-2");
-            button.style.maxWidth = "125px";
-            button.style.whiteSpace = "nowrap";
-            button.innerHTML = `
-                <a href="${buttons[i].urlPrefix + "/" + element.code + "/" + buttons[i].id}" style="color: black; ">
-=======
-            button.classList.add('btn', 'btn-sm', 'me-2', "p-0");
-            button.style.maxWidth = "125px";
-            button.style.minHeight = "37.5px";
-            button.style.whiteSpace = "nowrap";
-            button.innerHTML = `
+
+            // li.appendChild(itemRow);
+        }
+        else { // add <a> link and buttons
+            li.addEventListener("keydown", navigateButtons);
+
+            let a = document.createElement("a");
+            a.href = element.defaultUrl; // defaultUrl - set in filterStocks()
+
+            let itemLeft = document.createElement('div');
+            itemLeft.classList.add('itemLeft', 'd-flex', 'flex-column', "justify-content-center");
+            // itemLeft.style
+
+            let itemRight = document.createElement('div');
+
+            // setting width of left and right div 
+            // if code exists left div has 25% width
+            if ((paramDefined(element.code) && element.code != "")) { // If code exists 
+                if (paramDefined(element.name) && element.name != "") { // if name also exists - give width to both itemLeft and itemRight
+                    itemLeft.classList.add("w-25");
+                    itemLeft.style.minWidth = "125px";
+                    itemRight.classList.add("w-75");
+                }
+                else { // If name doesn't exist - give available width to itemLeft
+                    itemLeft.classList.add("w-auto");
+                    itemLeft.style.minWidth = "125px";
+                    itemRight.classList.add("w-auto");
+                }
+            }
+
+            let top = document.createElement('div');
+            top.innerHTML = element.code;
+            itemLeft.appendChild(top);
+
+            // aligning name to the left/start, if code doesn't exist
+            itemRight.classList.add("d-none", "d-sm-flex", "itemRight", "justify-content-start");
+            itemRight.style.width = ((document.getElementById(tsrSearchBoxId + "List").offsetWidth * 0.75) / 125) + "px";
+
+            // hack
+            // * stores max no. of buttons that can be shown on the screen at a time for each <li>
+            let maxButtons = Math.round((document.getElementById(tsrSearchBoxId + "List").offsetWidth * 0.75) / 75);
+
+            let leftScrollBtn = document.createElement("button");
+            leftScrollBtn.classList.add("h-100", "px-2", "align-items-center");
+            leftScrollBtn.innerHTML = `<i class="fas fa-angle-left"></i>`;
+            leftScrollBtn.addEventListener("click", function (e) {
+                btnContainer.scrollBy({
+                    left: -125,
+                    behavior: 'smooth'
+                });
+                e.preventDefault();
+                btnContainer.focus();
+            });
+
+            let btnContainer = document.createElement("div");
+            btnContainer.classList.add("d-flex");
+            btnContainer.style.overflowX = "hidden";
+
+            let noOfBtns = 0; // stores actual no of buttons appended to button container
+            for (let i = 0; i < buttons.length; i++) {
+                // * Below conditions check if current button should be shown for a stock or not
+                if (!buttons[i].default) {
+                    if (!element[buttons[i].mappedParam]) {
+                        continue;
+                    }
+                }
+                let button = document.createElement('button');
+                button.classList.add('btn', 'btn-sm', 'me-2', "p-0");
+                button.style.maxWidth = "125px";
+                button.style.minHeight = "37.5px";
+                button.style.whiteSpace = "nowrap";
+                button.innerHTML = `
                 <a href="${buttons[i].urlPrefix + "/" + element.code + "/" + buttons[i].id}" style="color: black; padding: 7px;">
->>>>>>> 820ba23 (updates)
                 ${buttons[i].label}
                 </a>
             `;
-            button.setAttribute("tabindex", "-1");
-            button.addEventListener("keydown", navigateButtons);
-            btnContainer.appendChild(button);
+                button.setAttribute("tabindex", "-1");
+                button.addEventListener("keydown", navigateButtons);
+                btnContainer.appendChild(button);
 
-            noOfBtns++;
-        }
+                noOfBtns++;
+            }
 
-        // If actual no of buttons appended to btnContainer are more than max buttons, add leftscroll and rightscroll btn, else don't
-        if (noOfBtns > maxButtons) {
-            itemRight.appendChild(leftScrollBtn);
-        }
+            // If actual no of buttons appended to btnContainer are more than max buttons, add leftscroll and rightscroll btn, else don't
+            if (noOfBtns > maxButtons) {
+                itemRight.appendChild(leftScrollBtn);
+            }
 
-        itemRight.appendChild(btnContainer);
+            itemRight.appendChild(btnContainer);
 
-        let rightScrollBtn = document.createElement("button");
-        rightScrollBtn.classList.add("h-100", "px-2", "align-items-center");
+            let rightScrollBtn = document.createElement("button");
+            rightScrollBtn.classList.add("h-100", "px-2", "align-items-center");
 
-        rightScrollBtn.innerHTML = `<i class="fas fa-angle-right"></i>`;
-        rightScrollBtn.addEventListener("click", function (e) {
+            rightScrollBtn.innerHTML = `<i class="fas fa-angle-right"></i>`;
+            rightScrollBtn.addEventListener("click", function (e) {
 
-            btnContainer.scrollBy({
-                left: 150,
-                behavior: 'smooth'
+                btnContainer.scrollBy({
+                    left: 150,
+                    behavior: 'smooth'
+                });
+
+                e.preventDefault();
+                btnContainer.focus();
+
             });
 
-            e.preventDefault();
-            btnContainer.focus();
-
-        });
-
-        if (noOfBtns > maxButtons) {
-            itemRight.appendChild(rightScrollBtn);
-        }
-
-        // if code exists then name should be aligned to the end/right
-        let nameDiv = document.createElement('div');
-        if ((paramDefined(element.code) && element.code != "")) {
-            // itemRight.classList.add("justify-content-end");
-            nameDiv.classList.add("name");
-        }
-
-        if (noOfBtns <= 0) { // remove name class so that it even shows on hover
-            // itemRight.classList.add("justify-content-start");
-
-            nameDiv.classList.remove("name");
-            nameDiv.style.display = "block";
-
-        }
-        if (paramDefined(element.name) && element.name != "") {
-            let name = document.createElement("span");
-            name.innerHTML = element.name;
-
-            let indSector = document.createElement("span");
-            indSector.style.fontSize = "12px";
-            if (paramDefined(element.industry) && paramDefined(element.sector)) {
-                indSector.innerHTML = element.industry + " | " + element.sector;
-            }
-            else if (paramDefined(element.industry)) {
-                indSector.innerHTML = element.industry;
-            }
-            else if (paramDefined(element.sector)) {
-                indSector.innerHTML = element.sector;
-            }
-            else {
-                itemLeft.style.width = "100%";
-                itemRight.style.width = "0%";
+            if (noOfBtns > maxButtons) {
+                itemRight.appendChild(rightScrollBtn);
             }
 
-            nameDiv.appendChild(name);
-            nameDiv.innerHTML += "<br>";
-            nameDiv.appendChild(indSector);
+            // if code exists then name should be aligned to the end/right
+            let nameDiv = document.createElement('div');
+            if ((paramDefined(element.code) && element.code != "")) {
+                // itemRight.classList.add("justify-content-end");
+                nameDiv.classList.add("name");
+            }
+
+            if (noOfBtns <= 0) { // remove name class so that it even shows on hover
+                // itemRight.classList.add("justify-content-start");
+
+                nameDiv.classList.remove("name");
+                nameDiv.style.display = "block";
+
+            }
+            if (paramDefined(element.name) && element.name != "") {
+                let name = document.createElement("span");
+                name.innerHTML = element.name;
+
+                let indSector = document.createElement("span");
+                indSector.style.fontSize = "12px";
+                if (paramDefined(element.industry) && paramDefined(element.sector)) {
+                    indSector.innerHTML = element.industry + " | " + element.sector;
+                }
+                else if (paramDefined(element.industry)) {
+                    indSector.innerHTML = element.industry;
+                }
+                else if (paramDefined(element.sector)) {
+                    indSector.innerHTML = element.sector;
+                }
+                else {
+                    itemLeft.style.width = "100%";
+                    itemRight.style.width = "0%";
+                }
+
+                nameDiv.appendChild(name);
+                nameDiv.innerHTML += "<br>";
+                nameDiv.appendChild(indSector);
 
 
-            itemRight.appendChild(nameDiv);
+                itemRight.appendChild(nameDiv);
+            }
+
+
+            // -------------------------------------
+
+            itemRow.appendChild(itemLeft);
+            itemRow.appendChild(itemRight);
+
+            a.appendChild(itemRow);
+
+            li.appendChild(a);
         }
-
-
-        // -------------------------------------
-
-        itemRow.appendChild(itemLeft);
-        itemRow.appendChild(itemRight);
-
-        a.appendChild(itemRow);
-
-        li.appendChild(a);
 
         list.appendChild(li);
 
@@ -656,8 +721,10 @@ let navigateList = function navigateList(e) {
         e.preventDefault();
     }
     else if (e.key === "Enter") {
-        let a = li.querySelector("a");
-        window.open(a.href, "_self");
+        if (li.querySelector("a")) {
+            let a = li.querySelector("a");
+            window.open(a.href, "_self");
+        }
     }
     else if (e.key === "ArrowUp") {
 
@@ -764,17 +831,14 @@ function navigateButtons(e) {
             }
         }
     }
-<<<<<<< HEAD
-=======
     else if (e.key === "Enter") {
-        if(e.target.tagName = "BUTTON"){
+        if (e.target.tagName = "BUTTON") {
             let a = e.target.querySelector("a");
             window.open(a.href, "_self");
         }
         e.stopPropagation();
         e.preventDefault();
     }
->>>>>>> 820ba23 (updates)
 }
 
 // listen for ctrl + space
@@ -835,10 +899,6 @@ let tsr_search_box_list_css = `
     }
 
     .tsrSearchBoxList li {
-<<<<<<< HEAD
-=======
-        margin-bottom: 8px;
->>>>>>> 820ba23 (updates)
         padding: 8px;
         border-bottom: 1px solid #ddd;
     }
@@ -851,13 +911,10 @@ let tsr_search_box_list_css = `
         font-size: 17px;
     }
 
-<<<<<<< HEAD
-=======
     .tsrSearchBoxList li:hover + li{
         z-index: -1;
     }
 
->>>>>>> 820ba23 (updates)
     .tsrSearchBoxList li:focus {
         background-color: gray;
         cursor: pointer;
