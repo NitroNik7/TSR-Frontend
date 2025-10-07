@@ -11,58 +11,31 @@ var CHART_SUB_CATEGORY = [];
 
 // For buttons
 var ALL_SEARCH_CAT = [
-<<<<<<< HEAD
-    { id: 'BirdsEyeView', label: "Birds Eye View", default: true },
-    { id: 'MovingAverages', label: "MA", default: true },
-    { id: 'TechnicalAnalysis', label: "Tech", default: true },
-    { id: 'FundamentalAnalysis', label: "Funda", default: false, mappedParam: "funda" },
-    { id: 'FuturesAndOptions', label: "FNO", default: false, mappedParam: "fno" },
-    { id: 'Candlestick', label: "Candlestick", default: true },
-=======
     { id: 'BirdsEyeView', label: "Birds Eye View", default: true, urlPrefix: "Stock" },
     { id: 'MovingAverages', label: "MA", default: true, urlPrefix: "Stock" },
     { id: 'TechnicalAnalysis', label: "Tech", default: true, urlPrefix: "Stock" },
     { id: 'FundamentalAnalysis', label: "Funda", default: false, mappedParam: "funda", urlPrefix: "Stock" },
     { id: 'FuturesAndOptions', label: "FNO", default: false, mappedParam: "fno", urlPrefix: "Stock" },
     { id: 'Candlestick', label: "Candlestick", default: true, urlPrefix: "Stock" },
->>>>>>> 820ba23 (updates)
 ];
 
 // TECH INDI BUTTONS
 var TECH_INDI = [
-<<<<<<< HEAD
-    { id: 'any', label: "All Technicals ", default: true },
-    { id: 'ADX', label: "ADX", default: true },
-    { id: 'AROON', label: "AROON", default: true },
-    { id: 'AwesomeOscillator', label: "AwesomeOsc", default: true },
-    { id: 'BOLLINGER', label: "Bollinger", default: true },
-    { id: 'CCI', label: "CCI", default: true },
-    { id: 'CMF', label: "CMF", default: true },
-    { id: 'KeltnerBand', label: "KeltnerBand", default: true },
-    { id: 'MACD', label: "MACD", default: true },
-    { id: 'MFI', label: "MFI", default: true },
-    { id: 'PSAR', label: "PSAR", default: true },
-    { id: 'RsiSmooth', label: "RSI", default: true },
-    { id: 'ROC', label: "ROC", default: true },
-    { id: 'Supertrend', label: "Supertrend", default: true },
-    { id: 'WilliamsR', label: "WilliamsR", default: true },
-=======
-    { id: 'TechnicalAnalysis', label: "All Technicals ", default: true, urlPrefix:"Stock"},
-    { id: 'ADX', label: "ADX", default: true, urlPrefix:"ViewInChart"},
-    { id: 'AROON', label: "AROON", default: true, urlPrefix:"ViewInChart"},
-    { id: 'AwesomeOscillator', label: "AwesomeOsc", default: true, urlPrefix:"ViewInChart"},
-    { id: 'BOLLINGER', label: "Bollinger", default: true, urlPrefix:"ViewInChart" },
-    { id: 'CCI', label: "CCI", default: true, urlPrefix:"ViewInChart" },
-    { id: 'CMF', label: "CMF", default: true, urlPrefix:"ViewInChart" },
-    { id: 'KeltnerBand', label: "KeltnerBand", default: true, urlPrefix:"ViewInChart" },
-    { id: 'MACD', label: "MACD", default: true, urlPrefix:"ViewInChart" },
-    { id: 'MFI', label: "MFI", default: true, urlPrefix:"ViewInChart" },
-    { id: 'PSAR', label: "PSAR", default: true, urlPrefix:"ViewInChart" },
-    { id: 'RsiSmooth', label: "RSI", default: true, urlPrefix:"ViewInChart" },
-    { id: 'ROC', label: "ROC", default: true, urlPrefix:"ViewInChart" },
-    { id: 'Supertrend', label: "Supertrend", default: true, urlPrefix:"ViewInChart" },
-    { id: 'WilliamsR', label: "WilliamsR", default: true, urlPrefix:"ViewInChart" },
->>>>>>> 820ba23 (updates)
+    { id: 'TechnicalAnalysis', label: "All Technicals ", default: true, urlPrefix: "Stock" },
+    { id: 'ADX', label: "ADX", default: true, urlPrefix: "ViewInChart" },
+    { id: 'AROON', label: "AROON", default: true, urlPrefix: "ViewInChart" },
+    { id: 'AwesomeOscillator', label: "AwesomeOsc", default: true, urlPrefix: "ViewInChart" },
+    { id: 'BOLLINGER', label: "Bollinger", default: true, urlPrefix: "ViewInChart" },
+    { id: 'CCI', label: "CCI", default: true, urlPrefix: "ViewInChart" },
+    { id: 'CMF', label: "CMF", default: true, urlPrefix: "ViewInChart" },
+    { id: 'KeltnerBand', label: "KeltnerBand", default: true, urlPrefix: "ViewInChart" },
+    { id: 'MACD', label: "MACD", default: true, urlPrefix: "ViewInChart" },
+    { id: 'MFI', label: "MFI", default: true, urlPrefix: "ViewInChart" },
+    { id: 'PSAR', label: "PSAR", default: true, urlPrefix: "ViewInChart" },
+    { id: 'RsiSmooth', label: "RSI", default: true, urlPrefix: "ViewInChart" },
+    { id: 'ROC', label: "ROC", default: true, urlPrefix: "ViewInChart" },
+    { id: 'Supertrend', label: "Supertrend", default: true, urlPrefix: "ViewInChart" },
+    { id: 'WilliamsR', label: "WilliamsR", default: true, urlPrefix: "ViewInChart" },
 ];
 
 // FUNDA BUTTONS
@@ -122,11 +95,7 @@ var EQUITY_SUB_CAT = [
     { id: 'any', label: "All ", buttons: ALL_SEARCH_CAT, urlPrefix: "Stock", urlSuffix: "BirdsEyeView", default: true },
     { id: 'FundamentalAnalysis', label: "Stock Fundamentals", urlPrefix: "Stock", urlSuffix: "FundamentalAnalysis", buttons: FUNDA_INDI, default: false, mappedParam: "funda" },
     { id: 'MovingAverage', label: "Stock Moving Average", urlPrefix: "Stock", urlSuffix: "MovingAverage", buttons: MA_CAT, default: true },
-<<<<<<< HEAD
-    { id: 'TechnicalAnalysis', label: "Stock Technicals", urlPrefix: "Stock", urlSuffix: "TechnicalAnalysis", buttons: TECH_INDI, default: true },
-=======
     { id: 'TechnicalAnalysis', label: "Stock Technicals", urlPrefix: "Stock", urlSuffix: "ViewInChart", buttons: TECH_INDI, default: true },
->>>>>>> 820ba23 (updates)
     { id: 'FuturesAndOptions', label: "Futures & Options", urlPrefix: "Stock", urlSuffix: "FuturesAndOptions", buttons: FNO_CAT, default: false, mappedParam: "fno" },
 ];
 
@@ -147,9 +116,9 @@ var SCREENER_SUB_CATEGORY = [
 //  * OTHER
 
 var searchMenu = [
-    { id: "charts", label: "Charts", inputPlaceholder: "Search a Chart", subCat: CHART_SUB_CATEGORY, catData: chartData },
-    { id: "equity", label: "Equity", default: true, inputPlaceholder: "Search a Stock", subCat: EQUITY_SUB_CAT, catData: equityData },
-    { id: "screeners", label: "Screeners", inputPlaceholder: "Search a Screener", subCat: SCREENER_SUB_CATEGORY, catData: screenerData },
+    { id: "charts", label: "Charts", inputPlaceholder: "Search a Chart", subCat: CHART_SUB_CATEGORY, catData: chartData, jsFnc: true },
+    { id: "equity", label: "Equity", default: true, inputPlaceholder: "Search a Stock", subCat: EQUITY_SUB_CAT, catData: EQ_DEF_DATA },
+    { id: "screeners", label: "Screeners", inputPlaceholder: "Search a Screener", subCat: SCREENER_SUB_CATEGORY, catData: SCR_DEF_DATA },
 ];
 
 
