@@ -1,6 +1,6 @@
 
 
-let chartData = [{ "code": "A2ZINFRA", "label": "A2ZINFRA", name: "A2Z Infra Engineering", industry: "IT Services", sector: "POWER" },
+var chartData = [{ "code": "A2ZINFRA", "label": "A2ZINFRA", name: "A2Z Infra Engineering", industry: "IT Services", sector: "POWER" },
 { "code": "AAATECH", "label": "AAATECH", name: "AAA Technologies Ltd.", industry: "IT Services", sector: "COMPUTERS", industry: "IT Services", sector: "SOFTWARE" },
 { "code": "AADHARHFC", "label": "AADHARHFC", name: "Aadhar Housing Finance Ltd.", industry: "IT Services", sector: "FINANCE", industry: "IT Services", sector: "HOUSING" },
 { "code": "AAKAAR", "label": "AAKAAR", name: "Aakaar Medical Technologies Limited", industry: "IT Services", sector: "Hospitals & Medical Services" },
@@ -960,83 +960,83 @@ let chartData = [{ "code": "A2ZINFRA", "label": "A2ZINFRA", name: "A2Z Infra Eng
 //         fno: true
 // }];
 
-let EQ_DEF_DATA =[
-        {  "id": "NIFTY",  "label": "NIFTY - S&P CNX NIFTY - INDEX - INDIA",
-          "name": "S&P CNX NIFTY",   "code": "NIFTY",   "fno": "true",
-          "funda": "false",  "sector": "INDEX",  "industry": "Broad-Based Index",
-          "scId": "200000",  "ecId": "10000",  "ccId": "in"
-        },
-        {  "id": "BANKNIFTY",   "label": "BANKNIFTY - BANK NIFTY - INDEX - INDIA",
-          "name": "BANK NIFTY",   "code": "BANKNIFTY",   "fno": "true",
-          "funda": "false",   "sector": "INDEX",   "industry": "Sectoral  Index",
-          "scId": "200000",   "ecId": "10100",   "ccId": "in" 
-        },
-        {  "id": "RELIANCE",  "label": "RELIANCE - Reliance Industries Ltd. - REFINERIES - INDIA",
-              "name": "Reliance Industries Ltd.",  "code": "RELIANCE",
-              "fno": "true",  "funda": "true",  "sector": "Energy",
-              "industry": "Crude Oil & Natural Gas",  "scId": "170",  "ecId": "1",  "ccId": "in"
-        },
+// let EQ_DEF_DATA =[
+//         {  "id": "NIFTY",  "label": "NIFTY - S&P CNX NIFTY - INDEX - INDIA",
+//           "name": "S&P CNX NIFTY",   "code": "NIFTY",   "fno": "true",
+//           "funda": "false",  "sector": "INDEX",  "industry": "Broad-Based Index",
+//           "scId": "200000",  "ecId": "10000",  "ccId": "in"
+//         },
+//         {  "id": "BANKNIFTY",   "label": "BANKNIFTY - BANK NIFTY - INDEX - INDIA",
+//           "name": "BANK NIFTY",   "code": "BANKNIFTY",   "fno": "true",
+//           "funda": "false",   "sector": "INDEX",   "industry": "Sectoral  Index",
+//           "scId": "200000",   "ecId": "10100",   "ccId": "in" 
+//         },
+//         {  "id": "RELIANCE",  "label": "RELIANCE - Reliance Industries Ltd. - REFINERIES - INDIA",
+//               "name": "Reliance Industries Ltd.",  "code": "RELIANCE",
+//               "fno": "true",  "funda": "true",  "sector": "Energy",
+//               "industry": "Crude Oil & Natural Gas",  "scId": "170",  "ecId": "1",  "ccId": "in"
+//         },
 
-        {  "id": "HDFCBANK",   "label": "HDFCBANK - HDFC Bank Ltd. - BANKS - INDIA",
-              "name": "HDFC Bank Ltd.",  "code": "HDFCBANK",  "fno": "true",
-              "funda": "true",  "sector": "Financial",  "industry": "Banking",
-              "scId": "121",  "ecId": "93",  "ccId": "in"
-        },
-        {
-          "id": "TCS",       "label": "TCS - Tata Consultancy Services Ltd. - COMPUTERS - SOFTWARE - INDIA",
-          "name": "Tata Consultancy Services Ltd.",      "code": "TCS",
-          "fno": "true",       "funda": "true",       "sector": "Technology",
-          "industry": "Computer Software",       "scId": "133",       "ecId": "19",       "ccId": "in"
-        },
-        {  "id": "BHARTIARTL",
-              "label": "BHARTIARTL - Bharti Airtel Ltd. - TELECOMMUNICATION - SERVICES - INDIA",
-              "name": "Bharti Airtel Ltd.",  "code": "BHARTIARTL",  "fno": "true",
-              "funda": "true",   "sector": "Communication",  "industry": "Telecom Services",
-              "scId": "178",   "ecId": "137",   "ccId": "in"
-        },
-        {   "id": "ICICIBANK",
-              "label": "ICICIBANK - ICICI Bank Ltd. - BANKS - INDIA",
-              "name": "ICICI Bank Ltd.",   "code": "ICICIBANK",  "fno": "true",
-              "funda": "true",   "sector": "Financial",  "industry": "Banking",
-              "scId": "121",   "ecId": "94",   "ccId": "in"
-        }
-    ]
+//         {  "id": "HDFCBANK",   "label": "HDFCBANK - HDFC Bank Ltd. - BANKS - INDIA",
+//               "name": "HDFC Bank Ltd.",  "code": "HDFCBANK",  "fno": "true",
+//               "funda": "true",  "sector": "Financial",  "industry": "Banking",
+//               "scId": "121",  "ecId": "93",  "ccId": "in"
+//         },
+//         {
+//           "id": "TCS",       "label": "TCS - Tata Consultancy Services Ltd. - COMPUTERS - SOFTWARE - INDIA",
+//           "name": "Tata Consultancy Services Ltd.",      "code": "TCS",
+//           "fno": "true",       "funda": "true",       "sector": "Technology",
+//           "industry": "Computer Software",       "scId": "133",       "ecId": "19",       "ccId": "in"
+//         },
+//         {  "id": "BHARTIARTL",
+//               "label": "BHARTIARTL - Bharti Airtel Ltd. - TELECOMMUNICATION - SERVICES - INDIA",
+//               "name": "Bharti Airtel Ltd.",  "code": "BHARTIARTL",  "fno": "true",
+//               "funda": "true",   "sector": "Communication",  "industry": "Telecom Services",
+//               "scId": "178",   "ecId": "137",   "ccId": "in"
+//         },
+//         {   "id": "ICICIBANK",
+//               "label": "ICICIBANK - ICICI Bank Ltd. - BANKS - INDIA",
+//               "name": "ICICI Bank Ltd.",   "code": "ICICIBANK",  "fno": "true",
+//               "funda": "true",   "sector": "Financial",  "industry": "Banking",
+//               "scId": "121",   "ecId": "94",   "ccId": "in"
+//         }
+//     ]
 
 // * --------------------------------------------------------------
 
-let SCR_DEF_DATA =[
-        {
-          "id": "https://www.tsrbt1.com/rt/Screener/Technical/SMAScreener/SMABullishCrossover/50SMACrossAbv200",
-           uri : "Screener/Technical/SMAScreener/SMABullishCrossover/50SMACrossAbv200",
-          "label": "50 SMA Cross Above 200"
-        },
-        {
-          "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/RSISmooth/RSISmoothOSForMoreThan3Days",
-          uri : "Screener/Technical/OverboughtSold/RSISmooth/RSISmoothOSForMoreThan3Days",
-          "label": "RSI Oversold For More Than 3 Days"
-        },
-        {
-          "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish2Day/BullishEngulfing",
-           uri : "Screener/Candlestick/BullishScreener/Bullish2Day/BullishEngulfing",
-          "label": "Bullish Engulfing"
-        },
-        {
-          "id": "https://www.tsrbt1.com/rt//Screener/ChartPatterns/PopularChartPatterns/BullishPatterns/DoubleBottomPotential",
-          uri : "Screener/ChartPatterns/PopularChartPatterns/BullishPatterns/DoubleBottomPotential",
-          "label": "Double Bottom (Potential)"
-        },
-        {
-          "id": "https://www.tsrbt1.com/rt//Screener/ExpertScreener/PriceActionBased/Breakout",
-           uri : "Screener/ExpertScreener/PriceActionBased/Breakout",
-          "label": "Breakout Screener"
-        },
-        {
-          "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/PriceActionScreeners/DemandZoneScreeners",
-          uri : "Screener/ComboScreener/PriceActionScreeners/DemandZoneScreeners",
-          "label": "Demand  Zone Screeners"
-        }
+// let SCR_DEF_DATA =[
+//         {
+//           "id": "https://www.tsrbt1.com/rt/Screener/Technical/SMAScreener/SMABullishCrossover/50SMACrossAbv200",
+//            uri : "Screener/Technical/SMAScreener/SMABullishCrossover/50SMACrossAbv200",
+//           "label": "50 SMA Cross Above 200"
+//         },
+//         {
+//           "id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/RSISmooth/RSISmoothOSForMoreThan3Days",
+//           uri : "Screener/Technical/OverboughtSold/RSISmooth/RSISmoothOSForMoreThan3Days",
+//           "label": "RSI Oversold For More Than 3 Days"
+//         },
+//         {
+//           "id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish2Day/BullishEngulfing",
+//            uri : "Screener/Candlestick/BullishScreener/Bullish2Day/BullishEngulfing",
+//           "label": "Bullish Engulfing"
+//         },
+//         {
+//           "id": "https://www.tsrbt1.com/rt//Screener/ChartPatterns/PopularChartPatterns/BullishPatterns/DoubleBottomPotential",
+//           uri : "Screener/ChartPatterns/PopularChartPatterns/BullishPatterns/DoubleBottomPotential",
+//           "label": "Double Bottom (Potential)"
+//         },
+//         {
+//           "id": "https://www.tsrbt1.com/rt//Screener/ExpertScreener/PriceActionBased/Breakout",
+//            uri : "Screener/ExpertScreener/PriceActionBased/Breakout",
+//           "label": "Breakout Screener"
+//         },
+//         {
+//           "id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/PriceActionScreeners/DemandZoneScreeners",
+//           uri : "Screener/ComboScreener/PriceActionScreeners/DemandZoneScreeners",
+//           "label": "Demand  Zone Screeners"
+//         }
 
-    ]
+//     ]
 
 
 // let screenerData = [{
@@ -1713,108 +1713,108 @@ let SCR_DEF_DATA =[
 // }];
 
 
-let chartData = [{ "code": "A2ZINFRA", "label": "A2ZINFRA", name: "A2Z Infra Engineering", industry: "IT Services", sector: "POWER" },
-{ "code": "AAATECH", "label": "AAATECH", name: "AAA Technologies Ltd.", industry: "IT Services", sector: "COMPUTERS", industry: "IT Services", sector: "SOFTWARE" },
-{ "code": "AADHARHFC", "label": "AADHARHFC", name: "Aadhar Housing Finance Ltd.", industry: "IT Services", sector: "FINANCE", industry: "IT Services", sector: "HOUSING" },
-{ "code": "AAKAAR", "label": "AAKAAR", name: "Aakaar Medical Technologies Limited", industry: "IT Services", sector: "Hospitals & Medical Services" },
-{ "code": "AAKASH", "label": "AAKASH", name: "Aakash Exploration Services Ltd.", industry: "IT Services", sector: "ENGINEERING" },
-{ "code": "AARADHYA", "label": "AARADHYA", name: "Aaradhya Disposal Industries Limited", industry: "IT Services", sector: "PAPER AND PAPER PRODUCTS" },
-{ "code": "AAREYDRUGS", "label": "AAREYDRUGS", name: "Aarey Drugs & Pharmaceuticals Ltd.", industry: "IT Services", sector: "PHARMACEUTICALS" },
-{ "code": "AARON", "label": "AARON", name: "Aaron Industries Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
-{ "code": "AARTECH", "label": "AARTECH", name: "Aartech Solonics Ltd.", industry: "IT Services", sector: "ELECTRICAL EQUIPMENT" },
-{ "code": "AARTIDRUGS", "label": "AARTIDRUGS", name: "Aarti Drugs", industry: "IT Services", sector: "PHARMACEUTICALS" },
-{ "code": "AARTIIND", "label": "AARTIIND", name: "Aarti Industries Ltd.", industry: "IT Services", sector: "CHEMICALS", industry: "IT Services", sector: "ORGANIC" },
-{ "code": "AARTIPHARM", "label": "AARTIPHARM", name: "Aarti Pharmalabs Ltd.", industry: "IT Services", sector: "PHARMACEUTICALS" },
-{ "code": "AARTISURF", "label": "AARTISURF", name: "Aarti Surfactants Ltd.", industry: "IT Services", sector: "CHEMICALS", industry: "IT Services", sector: "SPECIALITY" },
-{ "code": "AARVEEDEN", "label": "AARVEEDEN", name: "Aarvee Denim and Exports", industry: "IT Services", sector: "TEXTILE PRODUCTS" },
-{ "code": "AARVI", "label": "AARVI", name: "Aarvi Encon Ltd.", industry: "IT Services", sector: "DIVERSIFIED" },
-{ "code": "AATMAJ", "label": "AATMAJ", name: "Aatmaj Healthcare Ltd.", industry: "IT Services", sector: "Hospitals & Medical Services" },
-{ "code": "AAVAS", "label": "AAVAS", name: "Aavas Financiers Ltd.", industry: "IT Services", sector: "FINANCE", industry: "IT Services", sector: "HOUSING" },
-{ "code": "ABAN", "label": "ABAN", name: "Aban Offshore Ltd.", industry: "IT Services", sector: "OIL EXPLORATION/PRODUCTION" },
-{ "code": "ABB", "label": "ABB", name: "ABB Ltd.", industry: "IT Services", sector: "ELECTRICAL EQUIPMENT" },
-{ "code": "ABBOTINDIA", "label": "ABBOTINDIA", name: "Abbott India Ltd.", industry: "IT Services", sector: "PHARMACEUTICALS" },
-{ "code": "ABCAPITAL", "label": "ABCAPITAL", name: "Aditya Birla Capital Ltd.", industry: "IT Services", sector: "FINANCE" },
-{ "code": "ABCOTS", "label": "ABCOTS", name: "AB Cotspin India Ltd.", industry: "IT Services", sector: "TEXTILES", industry: "IT Services", sector: "COTTON" },
-{ "code": "ABDL", "label": "ABDL", name: "Allied Blenders and Distillers Ltd.", industry: "IT Services", sector: "BREW/DISTILLERIES" },
-{ "code": "ABFRL", "label": "ABFRL", name: "Aditya Birla Fashion and Retail Ltd.", industry: "IT Services", sector: "RETAIL" },
-{ "code": "ABGSEC", "label": "ABGSEC", name: "AdityaBirlaSunLifeMF-Aditya Birla Sun Life CRISIL Broad Based Gilt ETF", industry: "IT Services", sector: "ETF" },
-{ "code": "ABHAPOWER", "label": "ABHAPOWER", name: "Abha Power and Steel Limited", industry: "IT Services", sector: "CASTINGS/FORGINGS" },
-{ "code": "ABINFRA", "label": "ABINFRA", name: "A B Infrabuild Ltd.", industry: "IT Services", sector: "CEMENT AND CEMENT PRODUCTS" },
-{ "code": "ABLBL", "label": "ABLBL", name: "Aditya Birla Lifestyle Brands Limited", industry: "IT Services", sector: "RETAIL" },
-{ "code": "ABMINTLLTD", "label": "ABMINTLLTD", name: "ABM International Ltd.", industry: "IT Services", sector: "TRADING" },
-{ "code": "ABREL", "label": "ABREL", name: "Aditya Birla Real Estate Limited", industry: "IT Services", sector: "DIVERSIFIED" },
-{ "code": "ABSLAMC", "label": "ABSLAMC", name: "Aditya Birla Sun Life AMC Ltd.", industry: "IT Services", sector: "FINANCE" },
-{ "code": "ABSLBANETF", "label": "ABSLBANETF", name: "ABSLBANETF Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
-{ "code": "ABSLLIQUID", "label": "ABSLLIQUID", name: "Aditya Birla Sun Life CRISIL Liquid Overnight ETF", industry: "IT Services", sector: "ETF" },
-{ "code": "ABSLNN50ET", "label": "ABSLNN50ET", name: "ABSLNN50ET Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
-{ "code": "ABSLPSE", "label": "ABSLPSE", name: "Aditya Birla Sun Life Mutual Fund-Aditya Birla Sun Life Nifty PSE ETF", industry: "IT Services", sector: "ETF" },
-{ "code": "ABSMARINE", "label": "ABSMARINE", name: "ABS Marine Services Ltd.", industry: "IT Services", sector: "SHIPPING" },
-{ "code": "ACC", "label": "ACC", name: "ACC Ltd.", industry: "IT Services", sector: "CEMENT AND CEMENT PRODUCTS" },
-{ "code": "ACCELYA", "label": "ACCELYA", name: "Accelya Solutions India Ltd.", industry: "IT Services", sector: "COMPUTERS", industry: "IT Services", sector: "SOFTWARE" },
-{ "code": "ACCENTMIC", "label": "ACCENTMIC", name: "Accent Microcell Ltd.", industry: "IT Services", sector: "PHARMACEUTICALS" },
-{ "code": "ACCORD", "label": "ACCORD", name: "Accord Synergy Ltd.", industry: "IT Services", sector: "TELECOMMUNICATION", industry: "IT Services", sector: "SERVICES" },
-{ "code": "ACCPL", "label": "ACCPL", name: "Accretion Pharmaceuticals Limited", industry: "IT Services", sector: "PHARMACEUTICALS" },
-{ "code": "ACCURACY", "label": "ACCURACY", name: "Accuracy Shipping Ltd.", industry: "IT Services", sector: "SHIPPING" },
-{ "code": "ACE", "label": "ACE", name: "Action Construction Equipment Ltd. ", industry: "IT Services", sector: "ENGINEERING" },
-{ "code": "ACEINTEG", "label": "ACEINTEG", name: "ACE Integrated Solutions Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
-{ "code": "ACI", "label": "ACI", name: "Archean Chemical Industries Ltd.", industry: "IT Services", sector: "CHEMICALS", industry: "IT Services", sector: "ORGANIC" },
-{ "code": "ACL", "label": "ACL", name: "Andhra Cements Ltd.", industry: "IT Services", sector: "CEMENT AND CEMENT PRODUCTS" },
-{ "code": "ACLGATI", "label": "ACLGATI", name: "Allcargo Gati Ltd.", industry: "IT Services", sector: "TRAVEL AND TRANSPORT" },
-{ "code": "ACMESOLAR", "label": "ACMESOLAR", name: "Acme Solar Holdings Limited", industry: "IT Services", sector: "CONSTRUCTION" },
-{ "code": "ACTIVEINFR", "label": "ACTIVEINFR", name: "Active Infrastructures Limited", industry: "IT Services", sector: "CONSTRUCTION" },
-{ "code": "ACUTAAS", "label": "ACUTAAS", name: "Acutaas Chemicals Limited", industry: "IT Services", sector: "PHARMACEUTICALS" },
-{ "code": "ADANIENSOL", "label": "ADANIENSOL", name: "Adani Energy Solutions Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
-{ "code": "ADANIENT", "label": "ADANIENT", name: "Adani Enterprises Ltd.", industry: "IT Services", sector: "TRADING" },
-{ "code": "ADANIGREEN", "label": "ADANIGREEN", name: "Adani Green Energy Ltd.", industry: "IT Services", sector: "POWER" },
-{ "code": "ADANIPORTS", "label": "ADANIPORTS", name: "Adani Ports & Special Economic Zone Ltd.", industry: "IT Services", sector: "CONSTRUCTION" },
-{ "code": "ADANIPOWER", "label": "ADANIPOWER", name: "Adani Power Limited", industry: "IT Services", sector: "POWER" },
-{ "code": "ADFFOODS", "label": "ADFFOODS", name: "ADF Foods Industries", industry: "IT Services", sector: "FOOD AND FOOD PROCESSING" },
-{ "code": "ADL", "label": "ADL", name: "Archidply Decor Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
-{ "code": "ADOR", "label": "ADOR", name: "Ador Welding Ltd.", industry: "IT Services", sector: "ELECTRODES" },
-{ "code": "ADROITINFO", "label": "ADROITINFO", name: "Adroit Infotech Ltd.", industry: "IT Services", sector: "MEDIA & ENTERTAINMENT" },
-{ "code": "ADSL", "label": "ADSL", name: "Allied Digital Services L", industry: "IT Services", sector: "COMPUTERS", industry: "IT Services", sector: "SOFTWARE" },
-{ "code": "ADVANIHOTR", "label": "ADVANIHOTR", name: "Advani Hotels and Resorts (India)", industry: "IT Services", sector: "HOTELS" },
-{ "code": "ADVENZYMES", "label": "ADVENZYMES", name: "Advanced Enzyme Technologies", industry: "IT Services", sector: "PHARMACEUTICALS" },
-{ "code": "AEGISLOG", "label": "AEGISLOG", name: "Aegis Logistics Ltd.", industry: "IT Services", sector: "TRAVEL AND TRANSPORT" },
-{ "code": "AEGISVOPAK", "label": "AEGISVOPAK", name: "Aegis Vopak Terminals Limited", industry: "IT Services", sector: "Logistic" },
-{ "code": "AEROENTER", "label": "AEROENTER", name: "Aeroflex Enterprises Limited", industry: "IT Services", sector: "TRADING" },
-{ "code": "AEROFLEX", "label": "AEROFLEX", name: "Aeroflex Industries Ltd.", industry: "IT Services", sector: "STEEL AND STEEL PRODUCTS" },
-{ "code": "AERON", "label": "AERON", name: "Aeron Composite Ltd.", industry: "IT Services", sector: "PLASTIC AND PLASTIC PRODUCTS" },
-{ "code": "AERONEU", "label": "AERONEU", name: "Aeroflex Neu Limited", industry: "IT Services", sector: "PACKAGING" },
-{ "code": "AESTHETIK", "label": "AESTHETIK", name: "Aesthetik Engineers Ltd.", industry: "IT Services", sector: "CONSTRUCTION" },
-{ "code": "AETHER", "label": "AETHER", name: "Aether Industries Ltd.", industry: "IT Services", sector: "CHEMICALS", industry: "IT Services", sector: "SPECIALITY" },
-{ "code": "AFCONS", "label": "AFCONS", name: "Afcons Infrastructure Limited", industry: "IT Services", sector: "CONSTRUCTION" },
-{ "code": "AFFLE", "label": "AFFLE", name: "Affle 3I Limited", industry: "IT Services", sector: "MEDIA & ENTERTAINMENT" },
-{ "code": "AFFORDABLE", "label": "AFFORDABLE", name: "Affordable Robotic & Automation Limited", industry: "IT Services", sector: "ENGINEERING" },
-{ "code": "AFIL", "label": "AFIL", name: "Akme Fintrade (India) Ltd.", industry: "IT Services", sector: "FINANCE" },
-{ "code": "AFSL", "label": "AFSL", name: "Abans Financial Services Limited", industry: "IT Services", sector: "FINANCE" },
-{ "code": "AGARIND", "label": "AGARIND", name: "Agarwal Industrial Corporation Ltd.", industry: "IT Services", sector: "TRAVEL AND TRANSPORT" },
-{ "code": "AGARWALEYE", "label": "AGARWALEYE", name: "Dr. Agarwal's Health Care Limited", industry: "IT Services", sector: "Hospitals & Medical Services" },
-{ "code": "AGARWALFT", "label": "AGARWALFT", name: "Agarwal Float Glass India Ltd.", industry: "IT Services", sector: "TRADING" },
-{ "code": "AGARWALTUF", "label": "AGARWALTUF", name: "Agarwal Toughened Glass India Limited", industry: "IT Services", sector: "Glass, Glass Product" },
-{ "code": "AGI", "label": "AGI", name: "AGI Greenpac Ltd.", industry: "IT Services", sector: "CONSTRUCTION" },
-{ "code": "AGIIL", "label": "AGIIL", name: "Agi Infra Ltd.", industry: "IT Services", sector: "CONSTRUCTION" },
-{ "code": "AGNI", "label": "AGNI", name: "Agni Green Power Ltd.", industry: "IT Services", sector: "ELECTRICAL EQUIPMENT" },
-{ "code": "AGRITECH", "label": "AGRITECH", name: "Agri-Tech (India)", industry: "IT Services", sector: "FERTILISERS" },
-{ "code": "AGROPHOS", "label": "AGROPHOS", name: "Agro Phos India Ltd.", industry: "IT Services", sector: "DIVERSIFIED" },
-{ "code": "AGSTRA", "label": "AGSTRA", name: "AGS Transact Technologies Ltd.", industry: "IT Services", sector: "COMPUTERS", industry: "IT Services", sector: "SOFTWARE" },
-{ "code": "AGUL", "label": "AGUL", name: "A G Universal Ltd.", industry: "IT Services", sector: "TRADING" },
-{ "code": "AHCL", "label": "AHCL", name: "Anlon Healthcare Limited", industry: "IT Services", sector: "CHEMICALS", industry: "IT Services", sector: "SPECIALITY" },
-{ "code": "AHLADA", "label": "AHLADA", name: "Ahlada Engineers Ltd.", industry: "IT Services", sector: "ELECTRICAL EQUIPMENT" },
-{ "code": "AHLEAST", "label": "AHLEAST", name: "Asian Hotels (East)", industry: "IT Services", sector: "HOTELS" },
-{ "code": "AHLUCONT", "label": "AHLUCONT", name: "Ahluwalia Contracts (India) Ltd.", industry: "IT Services", sector: "CONSTRUCTION" },
-{ "code": "AIAENG", "label": "AIAENG", name: "AIA Engineering Ltd.", industry: "IT Services", sector: "ENGINEERING" },
-{ "code": "AIIL", "label": "AIIL", name: "Authum Investment & Infrastructure Ltd.", industry: "IT Services", sector: "FINANCE" },
-{ "code": "AILIMITED", "label": "AILIMITED", name: "Abhishek Integrations Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
-{ "code": "AIMTRON", "label": "AIMTRON", name: "Aimtron Electronics Ltd.", industry: "IT Services", sector: "ELECTRONICS", industry: "IT Services", sector: "INDUSTRIAL" },
-{ "code": "AIRAN", "label": "AIRAN", name: "Airan Ltd.", industry: "IT Services", sector: "COMPUTERS", industry: "IT Services", sector: "HARDWARE" },
-{ "code": "AIROLAM", "label": "AIROLAM", name: "Airo Lam Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
-{ "code": "AIRTELPP", "label": "AIRTELPP", name: "Bharti Airtel PP Ltd.", industry: "IT Services", sector: "CABLES", industry: "IT Services", sector: "TELECOM" },
-{ "code": "AISL", "label": "AISL", name: "ANI Integrated Services Ltd.", industry: "IT Services", sector: "ENGINEERING" },
-{ "code": "AJANTPHARM", "label": "AJANTPHARM", name: "Ajanta Pharmaceuticals Ltd.", industry: "IT Services", sector: "PHARMACEUTICALS" },
-{
-    "code": "AJAXENGG", "label": "AJAXENGG", name: "Ajax Engineering Limited", industry: "IT Services", sector: "ENGINEERING"
-}];
+// let chartData = [{ "code": "A2ZINFRA", "label": "A2ZINFRA", name: "A2Z Infra Engineering", industry: "IT Services", sector: "POWER" },
+// { "code": "AAATECH", "label": "AAATECH", name: "AAA Technologies Ltd.", industry: "IT Services", sector: "COMPUTERS", industry: "IT Services", sector: "SOFTWARE" },
+// { "code": "AADHARHFC", "label": "AADHARHFC", name: "Aadhar Housing Finance Ltd.", industry: "IT Services", sector: "FINANCE", industry: "IT Services", sector: "HOUSING" },
+// { "code": "AAKAAR", "label": "AAKAAR", name: "Aakaar Medical Technologies Limited", industry: "IT Services", sector: "Hospitals & Medical Services" },
+// { "code": "AAKASH", "label": "AAKASH", name: "Aakash Exploration Services Ltd.", industry: "IT Services", sector: "ENGINEERING" },
+// { "code": "AARADHYA", "label": "AARADHYA", name: "Aaradhya Disposal Industries Limited", industry: "IT Services", sector: "PAPER AND PAPER PRODUCTS" },
+// { "code": "AAREYDRUGS", "label": "AAREYDRUGS", name: "Aarey Drugs & Pharmaceuticals Ltd.", industry: "IT Services", sector: "PHARMACEUTICALS" },
+// { "code": "AARON", "label": "AARON", name: "Aaron Industries Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
+// { "code": "AARTECH", "label": "AARTECH", name: "Aartech Solonics Ltd.", industry: "IT Services", sector: "ELECTRICAL EQUIPMENT" },
+// { "code": "AARTIDRUGS", "label": "AARTIDRUGS", name: "Aarti Drugs", industry: "IT Services", sector: "PHARMACEUTICALS" },
+// { "code": "AARTIIND", "label": "AARTIIND", name: "Aarti Industries Ltd.", industry: "IT Services", sector: "CHEMICALS", industry: "IT Services", sector: "ORGANIC" },
+// { "code": "AARTIPHARM", "label": "AARTIPHARM", name: "Aarti Pharmalabs Ltd.", industry: "IT Services", sector: "PHARMACEUTICALS" },
+// { "code": "AARTISURF", "label": "AARTISURF", name: "Aarti Surfactants Ltd.", industry: "IT Services", sector: "CHEMICALS", industry: "IT Services", sector: "SPECIALITY" },
+// { "code": "AARVEEDEN", "label": "AARVEEDEN", name: "Aarvee Denim and Exports", industry: "IT Services", sector: "TEXTILE PRODUCTS" },
+// { "code": "AARVI", "label": "AARVI", name: "Aarvi Encon Ltd.", industry: "IT Services", sector: "DIVERSIFIED" },
+// { "code": "AATMAJ", "label": "AATMAJ", name: "Aatmaj Healthcare Ltd.", industry: "IT Services", sector: "Hospitals & Medical Services" },
+// { "code": "AAVAS", "label": "AAVAS", name: "Aavas Financiers Ltd.", industry: "IT Services", sector: "FINANCE", industry: "IT Services", sector: "HOUSING" },
+// { "code": "ABAN", "label": "ABAN", name: "Aban Offshore Ltd.", industry: "IT Services", sector: "OIL EXPLORATION/PRODUCTION" },
+// { "code": "ABB", "label": "ABB", name: "ABB Ltd.", industry: "IT Services", sector: "ELECTRICAL EQUIPMENT" },
+// { "code": "ABBOTINDIA", "label": "ABBOTINDIA", name: "Abbott India Ltd.", industry: "IT Services", sector: "PHARMACEUTICALS" },
+// { "code": "ABCAPITAL", "label": "ABCAPITAL", name: "Aditya Birla Capital Ltd.", industry: "IT Services", sector: "FINANCE" },
+// { "code": "ABCOTS", "label": "ABCOTS", name: "AB Cotspin India Ltd.", industry: "IT Services", sector: "TEXTILES", industry: "IT Services", sector: "COTTON" },
+// { "code": "ABDL", "label": "ABDL", name: "Allied Blenders and Distillers Ltd.", industry: "IT Services", sector: "BREW/DISTILLERIES" },
+// { "code": "ABFRL", "label": "ABFRL", name: "Aditya Birla Fashion and Retail Ltd.", industry: "IT Services", sector: "RETAIL" },
+// { "code": "ABGSEC", "label": "ABGSEC", name: "AdityaBirlaSunLifeMF-Aditya Birla Sun Life CRISIL Broad Based Gilt ETF", industry: "IT Services", sector: "ETF" },
+// { "code": "ABHAPOWER", "label": "ABHAPOWER", name: "Abha Power and Steel Limited", industry: "IT Services", sector: "CASTINGS/FORGINGS" },
+// { "code": "ABINFRA", "label": "ABINFRA", name: "A B Infrabuild Ltd.", industry: "IT Services", sector: "CEMENT AND CEMENT PRODUCTS" },
+// { "code": "ABLBL", "label": "ABLBL", name: "Aditya Birla Lifestyle Brands Limited", industry: "IT Services", sector: "RETAIL" },
+// { "code": "ABMINTLLTD", "label": "ABMINTLLTD", name: "ABM International Ltd.", industry: "IT Services", sector: "TRADING" },
+// { "code": "ABREL", "label": "ABREL", name: "Aditya Birla Real Estate Limited", industry: "IT Services", sector: "DIVERSIFIED" },
+// { "code": "ABSLAMC", "label": "ABSLAMC", name: "Aditya Birla Sun Life AMC Ltd.", industry: "IT Services", sector: "FINANCE" },
+// { "code": "ABSLBANETF", "label": "ABSLBANETF", name: "ABSLBANETF Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
+// { "code": "ABSLLIQUID", "label": "ABSLLIQUID", name: "Aditya Birla Sun Life CRISIL Liquid Overnight ETF", industry: "IT Services", sector: "ETF" },
+// { "code": "ABSLNN50ET", "label": "ABSLNN50ET", name: "ABSLNN50ET Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
+// { "code": "ABSLPSE", "label": "ABSLPSE", name: "Aditya Birla Sun Life Mutual Fund-Aditya Birla Sun Life Nifty PSE ETF", industry: "IT Services", sector: "ETF" },
+// { "code": "ABSMARINE", "label": "ABSMARINE", name: "ABS Marine Services Ltd.", industry: "IT Services", sector: "SHIPPING" },
+// { "code": "ACC", "label": "ACC", name: "ACC Ltd.", industry: "IT Services", sector: "CEMENT AND CEMENT PRODUCTS" },
+// { "code": "ACCELYA", "label": "ACCELYA", name: "Accelya Solutions India Ltd.", industry: "IT Services", sector: "COMPUTERS", industry: "IT Services", sector: "SOFTWARE" },
+// { "code": "ACCENTMIC", "label": "ACCENTMIC", name: "Accent Microcell Ltd.", industry: "IT Services", sector: "PHARMACEUTICALS" },
+// { "code": "ACCORD", "label": "ACCORD", name: "Accord Synergy Ltd.", industry: "IT Services", sector: "TELECOMMUNICATION", industry: "IT Services", sector: "SERVICES" },
+// { "code": "ACCPL", "label": "ACCPL", name: "Accretion Pharmaceuticals Limited", industry: "IT Services", sector: "PHARMACEUTICALS" },
+// { "code": "ACCURACY", "label": "ACCURACY", name: "Accuracy Shipping Ltd.", industry: "IT Services", sector: "SHIPPING" },
+// { "code": "ACE", "label": "ACE", name: "Action Construction Equipment Ltd. ", industry: "IT Services", sector: "ENGINEERING" },
+// { "code": "ACEINTEG", "label": "ACEINTEG", name: "ACE Integrated Solutions Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
+// { "code": "ACI", "label": "ACI", name: "Archean Chemical Industries Ltd.", industry: "IT Services", sector: "CHEMICALS", industry: "IT Services", sector: "ORGANIC" },
+// { "code": "ACL", "label": "ACL", name: "Andhra Cements Ltd.", industry: "IT Services", sector: "CEMENT AND CEMENT PRODUCTS" },
+// { "code": "ACLGATI", "label": "ACLGATI", name: "Allcargo Gati Ltd.", industry: "IT Services", sector: "TRAVEL AND TRANSPORT" },
+// { "code": "ACMESOLAR", "label": "ACMESOLAR", name: "Acme Solar Holdings Limited", industry: "IT Services", sector: "CONSTRUCTION" },
+// { "code": "ACTIVEINFR", "label": "ACTIVEINFR", name: "Active Infrastructures Limited", industry: "IT Services", sector: "CONSTRUCTION" },
+// { "code": "ACUTAAS", "label": "ACUTAAS", name: "Acutaas Chemicals Limited", industry: "IT Services", sector: "PHARMACEUTICALS" },
+// { "code": "ADANIENSOL", "label": "ADANIENSOL", name: "Adani Energy Solutions Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
+// { "code": "ADANIENT", "label": "ADANIENT", name: "Adani Enterprises Ltd.", industry: "IT Services", sector: "TRADING" },
+// { "code": "ADANIGREEN", "label": "ADANIGREEN", name: "Adani Green Energy Ltd.", industry: "IT Services", sector: "POWER" },
+// { "code": "ADANIPORTS", "label": "ADANIPORTS", name: "Adani Ports & Special Economic Zone Ltd.", industry: "IT Services", sector: "CONSTRUCTION" },
+// { "code": "ADANIPOWER", "label": "ADANIPOWER", name: "Adani Power Limited", industry: "IT Services", sector: "POWER" },
+// { "code": "ADFFOODS", "label": "ADFFOODS", name: "ADF Foods Industries", industry: "IT Services", sector: "FOOD AND FOOD PROCESSING" },
+// { "code": "ADL", "label": "ADL", name: "Archidply Decor Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
+// { "code": "ADOR", "label": "ADOR", name: "Ador Welding Ltd.", industry: "IT Services", sector: "ELECTRODES" },
+// { "code": "ADROITINFO", "label": "ADROITINFO", name: "Adroit Infotech Ltd.", industry: "IT Services", sector: "MEDIA & ENTERTAINMENT" },
+// { "code": "ADSL", "label": "ADSL", name: "Allied Digital Services L", industry: "IT Services", sector: "COMPUTERS", industry: "IT Services", sector: "SOFTWARE" },
+// { "code": "ADVANIHOTR", "label": "ADVANIHOTR", name: "Advani Hotels and Resorts (India)", industry: "IT Services", sector: "HOTELS" },
+// { "code": "ADVENZYMES", "label": "ADVENZYMES", name: "Advanced Enzyme Technologies", industry: "IT Services", sector: "PHARMACEUTICALS" },
+// { "code": "AEGISLOG", "label": "AEGISLOG", name: "Aegis Logistics Ltd.", industry: "IT Services", sector: "TRAVEL AND TRANSPORT" },
+// { "code": "AEGISVOPAK", "label": "AEGISVOPAK", name: "Aegis Vopak Terminals Limited", industry: "IT Services", sector: "Logistic" },
+// { "code": "AEROENTER", "label": "AEROENTER", name: "Aeroflex Enterprises Limited", industry: "IT Services", sector: "TRADING" },
+// { "code": "AEROFLEX", "label": "AEROFLEX", name: "Aeroflex Industries Ltd.", industry: "IT Services", sector: "STEEL AND STEEL PRODUCTS" },
+// { "code": "AERON", "label": "AERON", name: "Aeron Composite Ltd.", industry: "IT Services", sector: "PLASTIC AND PLASTIC PRODUCTS" },
+// { "code": "AERONEU", "label": "AERONEU", name: "Aeroflex Neu Limited", industry: "IT Services", sector: "PACKAGING" },
+// { "code": "AESTHETIK", "label": "AESTHETIK", name: "Aesthetik Engineers Ltd.", industry: "IT Services", sector: "CONSTRUCTION" },
+// { "code": "AETHER", "label": "AETHER", name: "Aether Industries Ltd.", industry: "IT Services", sector: "CHEMICALS", industry: "IT Services", sector: "SPECIALITY" },
+// { "code": "AFCONS", "label": "AFCONS", name: "Afcons Infrastructure Limited", industry: "IT Services", sector: "CONSTRUCTION" },
+// { "code": "AFFLE", "label": "AFFLE", name: "Affle 3I Limited", industry: "IT Services", sector: "MEDIA & ENTERTAINMENT" },
+// { "code": "AFFORDABLE", "label": "AFFORDABLE", name: "Affordable Robotic & Automation Limited", industry: "IT Services", sector: "ENGINEERING" },
+// { "code": "AFIL", "label": "AFIL", name: "Akme Fintrade (India) Ltd.", industry: "IT Services", sector: "FINANCE" },
+// { "code": "AFSL", "label": "AFSL", name: "Abans Financial Services Limited", industry: "IT Services", sector: "FINANCE" },
+// { "code": "AGARIND", "label": "AGARIND", name: "Agarwal Industrial Corporation Ltd.", industry: "IT Services", sector: "TRAVEL AND TRANSPORT" },
+// { "code": "AGARWALEYE", "label": "AGARWALEYE", name: "Dr. Agarwal's Health Care Limited", industry: "IT Services", sector: "Hospitals & Medical Services" },
+// { "code": "AGARWALFT", "label": "AGARWALFT", name: "Agarwal Float Glass India Ltd.", industry: "IT Services", sector: "TRADING" },
+// { "code": "AGARWALTUF", "label": "AGARWALTUF", name: "Agarwal Toughened Glass India Limited", industry: "IT Services", sector: "Glass, Glass Product" },
+// { "code": "AGI", "label": "AGI", name: "AGI Greenpac Ltd.", industry: "IT Services", sector: "CONSTRUCTION" },
+// { "code": "AGIIL", "label": "AGIIL", name: "Agi Infra Ltd.", industry: "IT Services", sector: "CONSTRUCTION" },
+// { "code": "AGNI", "label": "AGNI", name: "Agni Green Power Ltd.", industry: "IT Services", sector: "ELECTRICAL EQUIPMENT" },
+// { "code": "AGRITECH", "label": "AGRITECH", name: "Agri-Tech (India)", industry: "IT Services", sector: "FERTILISERS" },
+// { "code": "AGROPHOS", "label": "AGROPHOS", name: "Agro Phos India Ltd.", industry: "IT Services", sector: "DIVERSIFIED" },
+// { "code": "AGSTRA", "label": "AGSTRA", name: "AGS Transact Technologies Ltd.", industry: "IT Services", sector: "COMPUTERS", industry: "IT Services", sector: "SOFTWARE" },
+// { "code": "AGUL", "label": "AGUL", name: "A G Universal Ltd.", industry: "IT Services", sector: "TRADING" },
+// { "code": "AHCL", "label": "AHCL", name: "Anlon Healthcare Limited", industry: "IT Services", sector: "CHEMICALS", industry: "IT Services", sector: "SPECIALITY" },
+// { "code": "AHLADA", "label": "AHLADA", name: "Ahlada Engineers Ltd.", industry: "IT Services", sector: "ELECTRICAL EQUIPMENT" },
+// { "code": "AHLEAST", "label": "AHLEAST", name: "Asian Hotels (East)", industry: "IT Services", sector: "HOTELS" },
+// { "code": "AHLUCONT", "label": "AHLUCONT", name: "Ahluwalia Contracts (India) Ltd.", industry: "IT Services", sector: "CONSTRUCTION" },
+// { "code": "AIAENG", "label": "AIAENG", name: "AIA Engineering Ltd.", industry: "IT Services", sector: "ENGINEERING" },
+// { "code": "AIIL", "label": "AIIL", name: "Authum Investment & Infrastructure Ltd.", industry: "IT Services", sector: "FINANCE" },
+// { "code": "AILIMITED", "label": "AILIMITED", name: "Abhishek Integrations Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
+// { "code": "AIMTRON", "label": "AIMTRON", name: "Aimtron Electronics Ltd.", industry: "IT Services", sector: "ELECTRONICS", industry: "IT Services", sector: "INDUSTRIAL" },
+// { "code": "AIRAN", "label": "AIRAN", name: "Airan Ltd.", industry: "IT Services", sector: "COMPUTERS", industry: "IT Services", sector: "HARDWARE" },
+// { "code": "AIROLAM", "label": "AIROLAM", name: "Airo Lam Ltd.", industry: "IT Services", sector: "MISCELLANEOUS" },
+// { "code": "AIRTELPP", "label": "AIRTELPP", name: "Bharti Airtel PP Ltd.", industry: "IT Services", sector: "CABLES", industry: "IT Services", sector: "TELECOM" },
+// { "code": "AISL", "label": "AISL", name: "ANI Integrated Services Ltd.", industry: "IT Services", sector: "ENGINEERING" },
+// { "code": "AJANTPHARM", "label": "AJANTPHARM", name: "Ajanta Pharmaceuticals Ltd.", industry: "IT Services", sector: "PHARMACEUTICALS" },
+// {
+//     "code": "AJAXENGG", "label": "AJAXENGG", name: "Ajax Engineering Limited", industry: "IT Services", sector: "ENGINEERING"
+// }];
 
 
 
@@ -2673,7 +2673,7 @@ let chartData = [{ "code": "A2ZINFRA", "label": "A2ZINFRA", name: "A2Z Infra Eng
 //         fno: true
 // }];
 
-let EQ_DEF_DATA =[
+var EQ_DEF_DATA =[
         {  "id": "NIFTY",  "label": "NIFTY - S&P CNX NIFTY - INDEX - INDIA",
           "name": "S&P CNX NIFTY",   "code": "NIFTY",   "fno": "true",
           "funda": "false",  "sector": "INDEX",  "industry": "Broad-Based Index",
@@ -2717,7 +2717,7 @@ let EQ_DEF_DATA =[
 
 // * --------------------------------------------------------------
 
-let SCR_DEF_DATA =[
+var SCR_DEF_DATA =[
         {
           "id": "https://www.tsrbt1.com/rt/Screener/Technical/SMAScreener/SMABullishCrossover/50SMACrossAbv200",
            uri : "Screener/Technical/SMAScreener/SMABullishCrossover/50SMACrossAbv200",

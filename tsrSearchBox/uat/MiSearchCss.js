@@ -4,11 +4,11 @@
 var miIsc = (function () {  // my Ui Head
 
 
-let radioBtnIdPrefix = 'mishRadioBtn'
+    let radioBtnIdPrefix = 'mishRadioBtn'
 
 
-// CSS:
-let tsr_search_box_css = `
+    // CSS:
+    let tsr_search_box_css = `
     .tsrSearchBox {
         width: 50% !important;
     }
@@ -19,7 +19,7 @@ let tsr_search_box_css = `
 
 `;
 
-let tsr_search_box_list_css = `
+    let tsr_search_box_list_css = `
 
     .tsrSearchBoxList {
         max-height: 300px;
@@ -42,16 +42,18 @@ let tsr_search_box_list_css = `
         border-bottom: 1px solid #ddd;
     }
 
-    .tsrSearchBoxList li:hover {
+    .tsrSearchBoxList .hover {
         background-color: lightgray;
         cursor: pointer;
         color: black !important;
         font-weight: 700;
         font-size: 17px;
+        cursor: pointer;
     }
 
     .tsrSearchBoxList li:focus {
-        background-color: gray;
+        /* background-color: gray; */
+        background-color: #acacac;
         cursor: pointer;
         color: white !important;
         font-weight: 700;
@@ -70,13 +72,14 @@ let tsr_search_box_list_css = `
         display: block;
     }
 
-    .tsrSearchBoxList li:hover .name,
+    .tsrSearchBoxList .hover .name,
     .tsrSearchBoxList li:focus .name {
         display: none !important;
     }
 
     .tsrSearchBoxList li:focus-within {
-        background-color: gray;
+        /* background-color: gray; */
+        background-color: #acacac;
         cursor: pointer;
     }
 
@@ -119,6 +122,7 @@ let tsr_search_box_list_css = `
         background-color: black !important;
         font-weight: 700;
         box-shadow: none;
+
     }
 
     .tsrSearchBoxList li .itemRight {
@@ -133,25 +137,26 @@ let tsr_search_box_list_css = `
         background: none;
     }
 
-    .tsrSearchBoxList li:hover .itemRight button {
+    .tsrSearchBoxList .hover .itemRight button {
         display: flex;
     }
 
-    .tsrSearchBoxList li:hover .itemRight button:hover {
+    .tsrSearchBoxList .hover .itemRight button:hover {
         color: white;
     }
 
 
-    .tsrSearchBoxList li:hover .itemRight div,
+    .tsrSearchBoxList .hover .itemRight div,
     .tsrSearchBoxList li:focus .itemRight div {
         overflow-x: hidden;
         display: flex;
     }
 
-    .tsrSearchBoxList li:hover .btn,
+    .tsrSearchBoxList .hover .btn,
     .tsrSearchBoxList li:focus .btn {
         display: block;
         background-color: white;
+        /* border: 1px solid gray; */
     }
 
     .tsrSearchBoxList .empty:hover {
@@ -162,7 +167,7 @@ let tsr_search_box_list_css = `
     }
 `;
 
-let tsr_search_box_media_query = `
+    let tsr_search_box_media_query = `
 
     @media only screen and (max-width: 1200px) {
 
@@ -184,7 +189,7 @@ let tsr_search_box_media_query = `
 
 `;
 
-let tsr_radio_btn_css = `
+    let tsr_radio_btn_css = `
     .${radioBtnIdPrefix}Menu {
         display: flex;
         width: 100%;
@@ -232,40 +237,40 @@ let tsr_radio_btn_css = `
 `;
 
 
-	function addTsrSearchBoxCss() {
-	    let className = 'tsrSearchBox';
+    function addTsrSearchBoxCss() {
+        let className = 'tsrSearchBox';
 
-	    for (let sheet of document.styleSheets) {
-	        if (sheet.ownerNode && sheet.ownerNode.tagName === 'STYLE') {
-	            try {
-	                for (let rule of sheet.cssRules) {
-	                    if (rule.selectorText && rule.selectorText.includes(`.${className}`)) {
-	                        console.log(rule.selectorText, rule.style.cssText);
-	                        break;
+        for (let sheet of document.styleSheets) {
+            if (sheet.ownerNode && sheet.ownerNode.tagName === 'STYLE') {
+                try {
+                    for (let rule of sheet.cssRules) {
+                        if (rule.selectorText && rule.selectorText.includes(`.${className}`)) {
+                            console.log(rule.selectorText, rule.style.cssText);
+                            break;
 
-	                    }
-	                    else {
-	                        let style = document.createElement("style");
-	                        style.innerHTML = tsr_search_box_css + `\n` + tsr_search_box_list_css + `\n` + tsr_search_box_media_query + `\n` + tsr_radio_btn_css;
+                        }
+                        else {
+                            let style = document.createElement("style");
+                            style.innerHTML = tsr_search_box_css + `\n` + tsr_search_box_list_css + `\n` + tsr_search_box_media_query + `\n` + tsr_radio_btn_css;
 
-	                        document.getElementsByTagName('head')[0].appendChild(style);
-	                        break;
+                            document.getElementsByTagName('head')[0].appendChild(style);
+                            break;
 
-	                    }
-	                }
-	            } catch (e) {
+                        }
+                    }
+                } catch (e) {
 
-	                // Some stylesheets might be from different origins and not accessible
-	                // console.warn('Cannot access stylesheet:', sheet.href);
-	            }
-	            break;
-	        }
-	    }
-	}
+                    // Some stylesheets might be from different origins and not accessible
+                    // console.warn('Cannot access stylesheet:', sheet.href);
+                }
+                break;
+            }
+        }
+    }
 
-	return {
-		init: addTsrSearchBoxCss
-	}
+    return {
+        init: addTsrSearchBoxCss
+    }
 
 
 })(); // module 	

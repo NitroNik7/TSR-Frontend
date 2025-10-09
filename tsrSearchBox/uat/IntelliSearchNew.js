@@ -21,46 +21,37 @@ var miIs = (function () {  // chart init Params
 
         searchMenu = miIsh.ism(); // Get search Menu
 
-        // var searchForm = '<table border="0" width="100%">';
+        var searchForm = '<table border="0" width="100%">';
 
-        // searchForm += '<tr><td>'
-        // searchForm += `<input id="user_input" type="text" class="form-control " placeholder="Search (Ctrl + K)" 
-        // onclick="miIs.ssb('equity')" autocomplete="off" style="width:200px; margin:10px">`
-
-        // searchForm += '</td><td align="center">'
-
-        // // if(jsu.isMigContext()){ // Interactive charts not support in MIG
-        // // 		jsu.removeFromArrayWithId(SEARCH_SUB_CAT, 'InteractiveCharts');
-        // // }
-
-        // // searchForm += htmlU.getSpan('hello', null ,12) + TSR_HR 
-        // // + htmlU.getSpan("Dashboard"  , 'grey' ,12)
-        // // + SP_3
-        // // + htmlU.getSpan("Heatmap"  , 'grey' ,12);
-
-        // // searchForm += htmlU.getDropDown(SEARCH_SUB_CAT, 'eqSubCat', ddStyle, objName+".sc", 'sc', defPref);
-
-        // // if(defPref == 'TechnicalAnalysis') {
-        // // 	searchForm += SP_2+  addTechIndiOpt();
-        // // }else if(defPref == 'FundamentalAnalysis') {
-        // // 	searchForm += SP_2+  addFundaIndiOpt();
-        // // }
-
-        // searchForm += '</td></tr>'
-        // searchForm += '</table>'
+        searchForm += '<tr><td>'
+        searchForm += `<input id="user_input" type="text" class="form-control " placeholder="Search (Ctrl + K)" 
+		onclick="miIs.ssb('equity')" autocomplete="off" style="width:200px; margin:10px">`
 
 
-        var searchForm = `
-            <div class="miSearchWrapper d-flex pt-1" style="box-sizing: border-box;">
-                <div style="width: auto;">
-                    <input id="user_input" type="text" class="form-control " placeholder="Search (Ctrl + K)"
-                        onclick="miIs.ssb('equity')" autocomplete="off" style="width:200px; margin:10px">
-                </div>
 
-                <div id="miUpdatesBox" class="text-center w-100" style="white-space: nowrap;">
-                </div>
-            </div>
-        `;
+        searchForm += '</td><td align="center">'
+
+        // if(jsu.isMigContext()){ // Interactive charts not support in MIG
+        // 		jsu.removeFromArrayWithId(SEARCH_SUB_CAT, 'InteractiveCharts');
+        // }
+
+        searchForm += htmlU.getSpan('hello', null ,12) + TSR_HR 
+        + htmlU.getSpan("Dashboard"  , 'grey' ,12)
+        + SP_3
+        + htmlU.getSpan("Heatmap"  , 'grey' ,12);
+
+        // searchForm += htmlU.getDropDown(SEARCH_SUB_CAT, 'eqSubCat', ddStyle, objName+".sc", 'sc', defPref);
+
+        // if(defPref == 'TechnicalAnalysis') {
+        // 	searchForm += SP_2+  addTechIndiOpt();
+        // }else if(defPref == 'FundamentalAnalysis') {
+        // 	searchForm += SP_2+  addFundaIndiOpt();
+        // }
+
+        searchForm += '</td></tr>'
+        searchForm += '</table>'
+
+
 
         htmlU.addMsgToDiv('mainController', false, '<div id="' + tsrSearchBoxId + 'Wrapper"></div>');
 
@@ -80,8 +71,6 @@ var miIs = (function () {  // chart init Params
 
         // return html;
     }
-
-
 
     function showSearchBox(option) {
 
@@ -131,42 +120,28 @@ var miIs = (function () {  // chart init Params
             // This prevents default beahviour and character from being entered twice
             if (!e.ctrlKey) {
                 e.preventDefault();
-
-                // If user types from somewhere other than input text box, reset the text box
-                if (document.activeElement != inputTextBox) {
-                    inputTextBox.value = "";
-                }
-
-                // * For allowing default Ctrl + hotkey behaviour
-                let start = inputTextBox.selectionStart;
-                let end = inputTextBox.selectionEnd;
-                // Update current text box value with the new character entered
-                let text = inputTextBox.value.substring(0, start) + e.key + inputTextBox.value.substring(end, inputTextBox.length);
-
-                // If text is selected using the mouse or Ctrl key and replaced
-                let replacedText = replaceSelectedText(inputTextBox, e.key);
-                if (replacedText.length > 0) {
-                    text = replacedText;
-                }
-
-                inputTextBox.value = text;
-                inputTextBox.focus();
-
-                // * For allowing default Ctrl + hotkey behaviour
-                inputTextBox.setSelectionRange(start + 1, start + 1);
-
-                setTimeout(function () {
-                    filterStocks(inputTextBox.value);
-                }, 10);
-            }
-            else {
-                // filter stocks if text is pasted/cleared/other using Ctrl + key
-                setTimeout(function () {
-                    filterStocks(inputTextBox.value);
-                }, 10);
-
             }
 
+            // If user types from somewhere other than input text box, reset the text box
+            if (document.activeElement != inputTextBox) {
+                inputTextBox.value = "";
+            }
+
+            // Update current text box value with the new character entered
+            let text = inputTextBox.value + e.key;
+
+            // If text is selected using the mouse or Ctrl key and replaced
+            let replacedText = replaceSelectedText(inputTextBox, e.key);
+            if (replacedText.length > 0) {
+                text = replacedText;
+            }
+
+            inputTextBox.value = text;
+            inputTextBox.focus();
+
+            setTimeout(function () {
+                filterStocks(inputTextBox.value);
+            }, 10);
 
             // setTimeout(
             //     filterStocks(inputTextBox.value), 10
@@ -306,7 +281,7 @@ var miIs = (function () {  // chart init Params
             stockList = miChIs.ls(query)
         } else if (searchMenuData.id == 'addFilter') {
             stockList = mintSrch.gf(query)
-
+   
         }
 
         processSearchCategory(searchMenuData, stockList);
@@ -350,7 +325,7 @@ var miIs = (function () {  // chart init Params
 
 
             case 'indCh':
-            case 'addFilter':
+            case 'addFilter' :    
             case 'eqCh':
                 return populateSearchList(searchMenuData, stockList, categoryButtons, base_url);
             case "chart":
@@ -383,7 +358,7 @@ var miIs = (function () {  // chart init Params
                                 let mappedParam = subCat[j].mappedParam;
                                 if (paramDefined(mappedParam)) {
                                     stockList = stockList.filter((item) => {
-                                        if ((item[mappedParam] && typeof item[mappedParam] == "boolean") || item[mappedParam] == 'true') { // if mappedParam exists in element, then set url and add it to stockList
+                                        if (item[mappedParam]) { // if mappedParam exists in element, then set url and add it to stockList
                                             item.defaultUrl = base_url + urlPrefix + "/" + item.code + "/" + urlSuffix;
                                             return item;
                                         }
@@ -412,15 +387,63 @@ var miIs = (function () {  // chart init Params
         }
     }
 
+    // function processSubCategory(searchMenuData, stockList, base_url) {
+    //     let categoryButtons = [];
+    //     if (document.getElementById(tsrSearchBoxId + "Select")) { // if select dropdown is present
+    //         let basketCategory = document.getElementById(tsrSearchBoxId + "Select");
+    //         let category = basketCategory.value; // get selected option
+
+    //         let subCat = searchMenuData.subCat;
+    //         for (let j = 0; j < subCat.length; j++) {
+    //             if (subCat[j].id == category) { // if selected option and subCat match
+
+    //                 if (paramDefined(subCat[j].buttons)) { // store buttons if they exist
+    //                     categoryButtons = subCat[j].buttons;
+    //                 }
+    //                 if (paramDefined(subCat[j].urlPrefix)) {  // store url prefix if it exists
+    //                     urlPrefix = subCat[j].urlPrefix;
+    //                 }
+    //                 if (paramDefined(subCat[j].urlSuffix)) { // store url suffix if it exists
+    //                     urlSuffix = subCat[j].urlSuffix;
+    //                 }
+
+    //                 if (!subCat[j].default) { // if default is false, then check if mapped param is present in the element
+    //                     let mappedParam = subCat[j].mappedParam;
+    //                     if (paramDefined(mappedParam)) {
+    //                         stockList = stockList.filter((item) => {
+    //                             if (item[mappedParam]) { // if mappedParam exists in element, then set url and add it to stockList
+    //                                 item.defaultUrl = base_url + urlPrefix + "/" + item.code + "/" + urlSuffix;
+    //                                 return item;
+    //                             }
+    //                         });
+
+    //                         // stockList contains all items which contains mappedParam
+    //                         // * Eg. All stocks of equityData do not have fno. So 
+    //                         // * subCat FuturesAndOptions: default:false, mappedParam: "fno"
+    //                         // * stockList only contains all elements which has fno: true defined
+
+    //                         return { cb: categoryButtons };
+
+    //                     }
+    //                 }
+    //                 // * else - return entire stockList
+    //                 stockList = stockList.filter((item) => {
+    //                     item.defaultUrl = base_url + urlPrefix + "/" + item.code + "/" + urlSuffix;
+    //                     return item;
+    //                 });
+
+    //                 return { cb: categoryButtons };
+    //             }
+    //         }
+    //     }
+    // }
+
+
     function populateSearchList(searchMenuData, stockList, buttons, base_url) {
 
 
         let list = document.getElementById(tsrSearchBoxId + "List");
         list.innerHTML = ''; // Clear previous results
-
-        // list.onmousemove = function (e) {
-        //     list.style.pointerEvents = "auto";
-        // }
 
         // If list is empty - show "No Records Found" message
         if (stockList.length == 0) {
@@ -439,26 +462,6 @@ var miIs = (function () {  // chart init Params
             li.setAttribute("tabindex", "0");
             li.addEventListener("keydown", navigateList);
 
-
-            // * Solution to Jitter issue
-            // * mousemove - only fires when cursor's hotspot is inside it.
-            // * cursor's hotspot is the exact point(a single pixel) in the cursor that interacts with other elements on the screen.
-
-            li.onmousemove = function (e) {
-                this.classList.add("hover");
-                if (this.nextSibling) {
-                    this.nextSibling.style.pointerEvents = "none";
-                }
-                e.stopImmediatePropagation();
-            }
-
-            li.onmouseleave = function (e) {
-
-                li.classList.remove("hover");
-                if (this.nextSibling) {
-                    this.nextSibling.style.pointerEvents = "auto";
-                }
-            }
 
             if (searchMenuData.jsFnc) { // set onclick handler
 
@@ -547,7 +550,7 @@ var miIs = (function () {  // chart init Params
         for (let i = 0; i < buttons.length; i++) {
             // * Below conditions check if current button should be shown for a stock or not
             if (!buttons[i].default) {
-                if (!element[buttons[i].mappedParam] || element[buttons[i].mappedParam] == 'false') {
+                if (!element[buttons[i].mappedParam]) {
                     continue;
                 }
             }
@@ -562,6 +565,7 @@ var miIs = (function () {  // chart init Params
                 button.onclick = function (e) {
                     e.stopImmediatePropagation();
                     e.preventDefault();
+                    console.log(buttons[i].label + " clicked");
                 }
 
                 button.innerHTML = `
@@ -755,10 +759,10 @@ var miIs = (function () {  // chart init Params
             if (paramDefined(buttons[i].jsFnc) && buttons[i].jsFnc) {
                 button.innerHTML = buttons[i].label;
 
-                miIsh.ajs(searchMenuData.id, element, button, buttons[i].id);
-
+                miIsh.ajs(searchMenuData.id, element, button,buttons[i].id );
+                
                 // button.onclick = function (e) {
-
+                    
                 //     miIsh.ajs(searchMenuData.id, element, button,buttons[i].id );
                 //     e.stopImmediatePropagation();
                 //     e.preventDefault();
@@ -865,9 +869,6 @@ var miIs = (function () {  // chart init Params
     }
 
     let navigateList = function navigateList(e) {
-
-        // let list = document.getElementById(tsrSearchBoxId + "List");
-        // list.style.pointerEvents = "none";
 
         let li = this;
 
@@ -1064,8 +1065,6 @@ var miIs = (function () {  // chart init Params
             searchBox.close();
             let searchBoxWrapper = document.getElementById(tsrSearchBoxId + "Wrapper");
             searchBoxWrapper.removeChild(searchBox);
-            document.body.style.overflowY = "auto";
-
         }
     }
 

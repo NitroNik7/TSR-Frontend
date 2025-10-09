@@ -5,8 +5,8 @@ let inputTextBoxId = "tsrStockSearch";
 let radioBtnIdPrefix = "tsrRadioBtn";
 
 
-
 // start
+var searchMenu = searchMenu;
 function showSearchBox(option) {
 
     closeDialog(tsrSearchBoxId);
@@ -169,7 +169,7 @@ function addOptionsToSelect(searchCat) {
     select.onchange = function () {
         input.focus();
         input.value = "";
-        setTimeout(function (){
+        setTimeout(function () {
             filterStocks(input.value);
         }, 10);
 
@@ -199,9 +199,9 @@ function addOptionsToSelect(searchCat) {
     }
 
 
-    setTimeout(function (){
-            filterStocks(input.value);
-        }, 10);
+    setTimeout(function () {
+        filterStocks(input.value);
+    }, 10);
 }
 
 function paintSearchBox(searchBoxHtml) {
@@ -234,22 +234,42 @@ function handleKeypressOnSearchBox(e, searchBoxId) {
         // This prevents default beahviour and character from being entered twice
         if (!e.ctrlKey) {
             e.preventDefault();
+
+            // If user types from somewhere other than input text box, reset the text box
+            if (document.activeElement != inputTextBox) {
+                inputTextBox.value = "";
+            }
+
+            // * For allowing default Ctrl + hotkey behaviour
+            let start = inputTextBox.selectionStart;
+            let end = inputTextBox.selectionEnd;
+            // Update current text box value with the new character entered
+            let text = inputTextBox.value.substring(0, start) + e.key + inputTextBox.value.substring(end, inputTextBox.length);
+
+            // If text is selected using the mouse or Ctrl key and replaced
+            let replacedText = replaceSelectedText(inputTextBox, e.key);
+            if (replacedText.length > 0) {
+                text = replacedText;
+            }
+
+            inputTextBox.value = text;
+            inputTextBox.focus();
+
+            // * For allowing default Ctrl + hotkey behaviour
+            inputTextBox.setSelectionRange(start + 1, start + 1);
+
+            setTimeout(function () {
+                filterStocks(inputTextBox.value);
+            }, 10);
+        }
+        else { 
+            // filter stocks if text is pasted or cleared using Ctrl + key
+            setTimeout(function () {
+                filterStocks(inputTextBox.value);
+            }, 10);
+
         }
 
-        // If user types from somewhere other than input text box, reset the text box
-        if (document.activeElement != inputTextBox) {
-            inputTextBox.value = "";
-        }
-
-        // Update current text box value with the new character entered
-        let text = inputTextBox.value + e.key;
-
-        inputTextBox.value = text;
-        inputTextBox.focus();
-
-        setTimeout(function (){
-            filterStocks(inputTextBox.value);
-        }, 10);
 
         // setTimeout(
         //     filterStocks(inputTextBox.value), 10
@@ -310,7 +330,7 @@ function handleKeypressOnSearchBox(e, searchBoxId) {
     // * Condition 5 : if Enter key is pressed do not perform any action, if select options cannot be selected using Enter key
     else if (e.key === "Enter") { }
     // * Condition 6 : if below keys are pressed do not perform any action, since these are modifier keys and have other functionality such as Ctrl + S, Ctrl + P, Alt + Tab etc.
-    else if (e.ctrlKey || e.altKey || e.shiftKey) { 
+    else if (e.ctrlKey || e.altKey || e.shiftKey) {
         // if()
     }
     // * Condition 7 : close search box if escape is pressed and remove form DOM 
@@ -324,6 +344,23 @@ function handleKeypressOnSearchBox(e, searchBoxId) {
         }, 10);
     }
 }
+
+
+function replaceSelectedText(inputTextBox, char) {
+    let start = inputTextBox.selectionStart;
+    let end = inputTextBox.selectionEnd;
+
+    let selectedText = inputTextBox.value.substring(start, end);
+    let replacedText = "";
+    if (selectedText.length > 0) {
+        replacedText = inputTextBox.value.substring(0, start) + char + inputTextBox.value.substring(end, inputTextBox.length);
+        return replacedText;
+    }
+
+    return replacedText;
+
+}
+
 
 function isAlphaNumericSymbol(character) {
     if (character.length == 1) {
@@ -344,11 +381,11 @@ function closeSearchBoxOnClickOut(e) {
     }
 }
 
-function enablePointerEvents(dialog){
+function enablePointerEvents(dialog) {
     dialog.style.pointerEvents = "auto";
     let liElements = dialog.querySelectorAll("li");
 
-    for(let i=0; i<liElements.length; i++){
+    for (let i = 0; i < liElements.length; i++) {
         liElements[i].style.pointerEvents = "auto";
     }
 }
@@ -503,6 +540,21 @@ function processSearchCategory(searchMenuData) {
 
 function populateSearchList(searchMenuData, stockList, buttons) {
 
+    let input = document.getElementById(inputTextBoxId);
+    let query = input.value;
+
+
+    //          "id": "NIFTY",  "label": "NIFTY - S&P CNX NIFTY - INDEX - INDIA",
+    //           "name": "S&P CNX NIFTY",   "code": "NIFTY",   "fno": "true",
+    //           "funda": "false",  "sector": "INDEX",  "industry": "Broad-Based Index",
+    //           "scId": "200000",  "ecId": "10000",  "ccId": "in"
+
+    stockList = stockList.filter((item) => {
+        console.log(item.id, query);
+        if (item.id.toLowerCase().includes(query))
+            return item;
+    });
+
 
     let list = document.getElementById(tsrSearchBoxId + "List");
     list.innerHTML = ''; // Clear previous results
@@ -522,6 +574,26 @@ function populateSearchList(searchMenuData, stockList, buttons) {
         li.setAttribute("tabindex", "0");
         li.addEventListener("keydown", navigateList);
         li.style.pointerEvents = "none";
+
+        // * Solution to Jitter issue
+        // * mousemove - only fires when cursor's hotspot is inside it.
+        // * cursor's hotspot is the exact point(a single pixel) in the cursor that interacts with other elements on the screen.
+
+        li.onmousemove = function (e) {
+            this.classList.add("hover");
+            if (this.nextSibling) {
+                this.nextSibling.style.pointerEvents = "none";
+            }
+            e.stopImmediatePropagation();
+        }
+
+        li.onmouseleave = function (e) {
+
+            li.classList.remove("hover");
+            if (this.nextSibling) {
+                this.nextSibling.style.pointerEvents = "auto";
+            }
+        }
 
         let itemRow = document.createElement('div');
         itemRow.classList.add('d-flex', 'justify-content-between');
@@ -899,24 +971,20 @@ let tsr_search_box_list_css = `
     }
 
     .tsrSearchBoxList li {
+        box-sizing: border-box; 
         padding: 8px;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid lightgray;
     }
 
-    .tsrSearchBoxList li:hover {
+    .tsrSearchBoxList .hover {
         background-color: lightgray;
         cursor: pointer;
         color: black !important;
-        font-weight: 700;
-        font-size: 17px;
     }
 
-    .tsrSearchBoxList li:hover + li{
-        z-index: -1;
-    }
 
     .tsrSearchBoxList li:focus {
-        background-color: gray;
+        background-color: #acacac;
         cursor: pointer;
         color: white !important;
         font-weight: 700;
@@ -935,7 +1003,7 @@ let tsr_search_box_list_css = `
         display: block;
     }
 
-    .tsrSearchBoxList li:hover .name,
+    .tsrSearchBoxList .hover .name,
     .tsrSearchBoxList li:focus .name {
         display: none !important;
     }
@@ -992,22 +1060,22 @@ let tsr_search_box_list_css = `
         background: none;
     }
 
-    .tsrSearchBoxList li:hover .itemRight button {
+    .tsrSearchBoxList .hover .itemRight button {
         display: flex;
     }
 
-    .tsrSearchBoxList li:hover .itemRight button:hover {
+    .tsrSearchBoxList .hover .itemRight button:hover {
         color: white;
     }
 
 
-    .tsrSearchBoxList li:hover .itemRight div,
+    .tsrSearchBoxList .hover .itemRight div,
     .tsrSearchBoxList li:focus .itemRight div {
         overflow-x: hidden;
         display: flex;
     }
 
-    .tsrSearchBoxList li:hover .btn,
+    .tsrSearchBoxList .hover .btn,
     .tsrSearchBoxList li:focus .btn {
         display: block;
         background-color: white;

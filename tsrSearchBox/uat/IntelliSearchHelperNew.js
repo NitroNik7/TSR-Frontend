@@ -293,7 +293,7 @@ var miIsh = (function () {  // mi Intelli search Helper
 			searchMenu.push(jsu.cloneObj(CHART_INDI_SEARCH));
 			searchMenu.push(jsu.cloneObj(CHART_COMP_EQ_SEARCH));
 			defaultSel = 'indCh';
-		} else if (context === 'ScrFilter' || htmlU.divExist('csDiv')) {     // csDiv   
+		} else if (context === 'ScrFilter'  || htmlU.divExist('csDiv')) {     // csDiv   
 			searchMenu.push(jsu.cloneObj(CH_SEARCH));
 			searchMenu.push(jsu.cloneObj(CS_FILTER));
 			defaultSel = 'addFilter';
@@ -511,16 +511,12 @@ var miIsh = (function () {  // mi Intelli search Helper
 		}
 
 		if (data != undefined && data != null && data.length != 0) {
+			container.style.width = "40%";
 
 			if (data.length == 1) {
 				select.setAttribute("disabled", "");
-				container.style.display = "none";
-				select.style.display = "none"
 			}
-			else {
 
-				container.style.width = "40%";
-			}
 			for (let i = 0; i < data.length; i++) {
 				let option = document.createElement("option");
 				option.value = data[i].id;
@@ -558,8 +554,6 @@ var miIsh = (function () {  // mi Intelli search Helper
 
 		let searchBox = document.getElementById(tsrSearchBoxId);
 		searchBox.showModal();
-
-		document.body.style.overflowY = "hidden";
 	}
 
 
@@ -583,7 +577,7 @@ var miIsh = (function () {  // mi Intelli search Helper
 
 
 		// Add indi to chart
-		if (jsu.containsString(['indCh', 'eqCh', 'compEqCh', 'addFilter'], menucat)) {
+		if (jsu.containsString(['indCh', 'eqCh', 'compEqCh','addFilter'], menucat)) {
 			li.onclick = function (e) {
 				handleJs(menucat, element, param2, param3)
 				miIs.cd();
@@ -602,16 +596,16 @@ var miIsh = (function () {  // mi Intelli search Helper
 
 	}
 
-	function handleJs(menucat, element, param2, param3) {
+	function handleJs(menucat, element, param2, param3){
 
-		if (menucat === 'indCh') {
-			miChIs.ua(element.catParam, element.id, element)
-		} else if (menucat === 'eqCh') {
+		if(  menucat === 'indCh'  ){
+			miChIs.ua(element.catParam,   element.id, element)
+		}else if(  menucat === 'eqCh'  ){
 			myTsrChartInit.sc(element);
-		} else if (menucat === 'compEqCh') {
-			let layout = jsu.isNull(param2) ? LO_INLINE : param2
+		}else if(  menucat === 'compEqCh'  ){
+			let layout = jsu.isNull( param2) ? LO_INLINE : param2  
 			myTsrChartInit.asc(element, layout, true)
-		} else if (menucat === 'addFilter') {
+		}else if(  menucat === 'addFilter'  ){
 			mintSrch.ef(element);
 		}
 	}
@@ -639,152 +633,6 @@ var miIsh = (function () {  // mi Intelli search Helper
 
 	}
 
-
-	// let tsrUpdateJson = {
-	// 	"heading": "TRY OUR NEW <i>IntelliSearch</i>",
-	// 	"list": [
-	// 		{
-	// 			"label": "Search Stock",
-	// 			"link": ""
-	// 		},
-	// 		{
-	// 			"label": "Search Screener",
-	// 			"link": ""
-	// 		},
-	// 		{
-	// 			"label": "Search Chart",
-	// 			"link": ""
-	// 		}
-	// 	]
-	// };
-
-	let tsrUpdateJson = {
-		"heading": "New updates in TSR",
-		"list": [
-			{
-				"label": "Delta Screener",
-				"link": "www.tsr.com/deltascreeer"
-			},
-			{
-				"label": "Gamma Screener",
-				"link": "www.tsr.com/gammascreeer"
-			},
-			{
-				"label": "Rho Screener",
-				"link": "www.tsr.com/rhoscreeer"
-			},
-			{
-				"label": "Vega Screener",
-				"link": "www.tsr.com/vegascreeer"
-			}
-		]
-	}
-
-	// function writeToTsrUpdateBox() {
-	// 	let tsrUpdateBox = document.getElementById("miUpdatesBox");
-
-	// 	if (tsrUpdateJson) {
-
-
-	// 		let html = "";
-
-	// 		html += `<span class="my-1" style="font-size: 18px; 
-	// 					font-family: 'Georgia', serif;
-	// 					font-size: 1rem;
-	// 					font-weight: 600;
-	// 					color: #2c3e50;
-	// 					letter-spacing: 2px;
-	// 					position: relative;
-	// 					display: inline-block;
-	// 					line-height: 1.4;"> ${tsrUpdateJson.heading} </span>`;
-
-
-	// 		let list = tsrUpdateJson["list"];
-
-	// 		if (list.length > 0) {
-	// 			html += `<hr style="height:2px; margin: auto; width: 50%; color: #ff9800">`;
-
-	// 			html += `<div class="d-flex">`;
-
-	// 			let linkStyles = [
-	// 				"me-3 w-100 d-md-block",
-	// 				"me-3 w-100 d-none d-lg-block",
-	// 				"me-3 w-100 d-none d-xl-block",
-	// 				"me-3 w-100 d-none d-xxl-block"
-	// 			];
-
-	// 			for (let i = 0; i < list.length; i++) {
-	// 				if (list[i].link && list[i].link != "") {
-	// 					html += `<a class="${linkStyles[i]}" style="font-family: 'Georgia', serif; font-weight: 600; letter-spacing: 1px; color: #0281ff; line-height: 1.4;" href="${list[i].link}">${list[i].label}</a>`
-	// 				}
-	// 				else {
-	// 					html += `<span class="${linkStyles[i]}" style="font-family: 'Georgia', serif; font-weight: 600; letter-spacing: 1px; color: #0281ff; line-height: 1.4;">${list[i].label}</span>`;
-	// 				}
-	// 			}
-
-	// 			html += `</div>`;
-	// 		}
-
-	// 		tsrUpdateBox.innerHTML = html;
-
-	// 	}
-	// };
-
-	function writeToTsrUpdateBox() {
-		let tsrUpdateBox = document.getElementById("miUpdatesBox");
-
-		if (tsrUpdateJson) {
-			let html = "";
-
-			html += `<div class="d-flex h-100">`;
-
-			html += `<div class="my-1 d-flex align-items-center px-3" style="font-size: 18px; 
-						font-family: 'Georgia', serif;
-						font-size: 1rem;
-						font-weight: 600;
-						color: #2c3e50;
-						letter-spacing: 2px;
-						position: relative;
-						display: inline-block;
-						line-height: 1.4; border-right: 3px solid #ff9800;"> `;
-			html += `${tsrUpdateJson.heading}`;
-
-			html += "</div>";
-
-			let list = tsrUpdateJson["list"];
-
-			if (list.length > 0) {
-				html += `<div class="d-flex align-items-center ps-3">`;
-				html += `<hr style="height:2px; margin: auto; width: 50%; color: #ff9800">`;
-
-				html += `<div class="d-flex">`;
-
-				let linkStyles = [
-					"me-3 w-100 d-md-block",
-					"me-3 w-100 d-none d-lg-block",
-					"me-3 w-100 d-none d-xl-block",
-					"me-3 w-100 d-none d-xxl-block"
-				];
-
-				for (let i = 0; i < list.length; i++) {
-					if (list[i].link && list[i].link != "") {
-						html += `<a class="${linkStyles[i]}" style="font-family: 'Georgia', serif; font-weight: 600; letter-spacing: 1px; color: #0281ff; line-height: 1.4;" href="${list[i].link}">${list[i].label}</a>`;
-					}
-					else {
-						html += `<span class="${linkStyles[i]}" style="font-family: 'Georgia', serif; font-weight: 600; letter-spacing: 1px; color: #0281ff; line-height: 1.4;">${list[i].label}</span>`;
-					}
-				}
-
-				html += `</div>`;
-				html += `<div>`;
-
-			}
-
-			tsrUpdateBox.innerHTML = html;
-		}
-	};
-
-	writeToTsrUpdateBox();
 
 
 	return {
