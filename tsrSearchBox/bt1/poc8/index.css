@@ -27,6 +27,10 @@
     border-bottom: 1px solid #ddd;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 820ba23 (updates)
 .tsrSearchBoxList li:hover {
     background-color: lightgray;
     cursor: pointer;
@@ -155,7 +159,11 @@
 
 @media only screen and (max-width: 768px) {
 
+<<<<<<< HEAD
     .tsrSearchBox{
+=======
+    .tsrSearchBox {
+>>>>>>> 820ba23 (updates)
         width: 75%;
     }
 
@@ -169,7 +177,11 @@
         display: block;
     }
 
+<<<<<<< HEAD
     .tsrSearchBoxList li .itemRight{
+=======
+    .tsrSearchBoxList li .itemRight {
+>>>>>>> 820ba23 (updates)
         display: none;
     }
 

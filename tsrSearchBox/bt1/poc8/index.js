@@ -428,6 +428,7 @@ function filterStocks(query) {
 function populateSearchList(query, stockList, urlPrefix, buttons) {
 
     // filter stocks which include query string
+<<<<<<< HEAD
     stockList = stockList.filter((item) => {
         let keys = Object.keys(item);
 
@@ -437,6 +438,19 @@ function populateSearchList(query, stockList, urlPrefix, buttons) {
             }
         }
     });
+=======
+
+    // let params = ["label", "name", "industry", "sector"]
+    // stockList = stockList.filter((item) => {
+
+    //     for (let i = 0; i < params.length; i++) {
+    //         if(paramDefined(item[params[i]]) && typeof item[params[i]] == "string" && item[params[i]].toLowerCase().includes(query.toLowerCase())){
+    //         // if (typeof item[keys[i]] == "string" && item[keys[i]].toLowerCase().includes(query.toLowerCase())) {
+    //             return item;
+    //         }
+    //     }
+    // });
+>>>>>>> 820ba23 (updates)
 
     let list = document.getElementById(tsrSearchBoxId + "List");
     list.innerHTML = ''; // Clear previous results
@@ -523,11 +537,20 @@ function populateSearchList(query, stockList, urlPrefix, buttons) {
                 }
             }
             let button = document.createElement('button');
+<<<<<<< HEAD
             button.classList.add('btn', 'btn-sm', 'me-2', "p-2");
             button.style.maxWidth = "125px";
             button.style.whiteSpace = "nowrap";
             button.innerHTML = `
                 <a href="${buttons[i].urlPrefix + "/" + element.code + "/" + buttons[i].id}" style="color: black; ">
+=======
+            button.classList.add('btn', 'btn-sm', 'me-2', "p-0");
+            button.style.maxWidth = "125px";
+            button.style.minHeight = "37.5px";
+            button.style.whiteSpace = "nowrap";
+            button.innerHTML = `
+                <a href="${buttons[i].urlPrefix + "/" + element.code + "/" + buttons[i].id}" style="color: black; padding: 7px;">
+>>>>>>> 820ba23 (updates)
                 ${buttons[i].label}
                 </a>
             `;
@@ -741,6 +764,17 @@ function navigateButtons(e) {
             }
         }
     }
+<<<<<<< HEAD
+=======
+    else if (e.key === "Enter") {
+        if(e.target.tagName = "BUTTON"){
+            let a = e.target.querySelector("a");
+            window.open(a.href, "_self");
+        }
+        e.stopPropagation();
+        e.preventDefault();
+    }
+>>>>>>> 820ba23 (updates)
 }
 
 // listen for ctrl + space
@@ -801,6 +835,10 @@ let tsr_search_box_list_css = `
     }
 
     .tsrSearchBoxList li {
+<<<<<<< HEAD
+=======
+        margin-bottom: 8px;
+>>>>>>> 820ba23 (updates)
         padding: 8px;
         border-bottom: 1px solid #ddd;
     }
@@ -813,6 +851,13 @@ let tsr_search_box_list_css = `
         font-size: 17px;
     }
 
+<<<<<<< HEAD
+=======
+    .tsrSearchBoxList li:hover + li{
+        z-index: -1;
+    }
+
+>>>>>>> 820ba23 (updates)
     .tsrSearchBoxList li:focus {
         background-color: gray;
         cursor: pointer;
