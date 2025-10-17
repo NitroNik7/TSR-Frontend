@@ -17,6 +17,8 @@ var miIs = (function () {  // chart init Params
 
     function init(mobile) {
 
+        console.log("here");
+
         miIsc.init();
 
 
@@ -67,17 +69,18 @@ var miIs = (function () {  // chart init Params
                                     <div style="width: auto; text-align: center;">
                                         <input id="user_input" type="text" class="form-control " placeholder="Search (Ctrl + K)"
                                             onclick="miIs.ssb('equity')" autocomplete="off" style="width:200px; margin:10px; margin-bottom: 5px; margin-top: 0px;">
-                                        <a href="${jsu.getBaseUrl()}/rt/TsrHighlights/TsrTechnicalTool" style="margin-left: 10px; font-weight: 500;">India's Best Technical Tool</a>
+                                        <a href="https://www.topstockresearch.com/rt/TsrHighlights/TsrTechnicalTool" style="margin-left: 10px; font-weight: 500;">India's Best Technical Tool</a>
 
                                     </div>
 
                                     <div class="miUpdatesBox text-center w-100 mx-3">
-                                        ${topBanner(mobile)}
+                                        ${miIsh.wub()}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                   
+                    </div>
+                </div>
         `;
 
             // <a href="https://www.topstockresearch.com/rt/TsrHighlights/TsrTechnicalTool" style="font-size: 12px;">India's Best Technical Tool</a>
@@ -140,162 +143,6 @@ var miIs = (function () {  // chart init Params
 
         // return html;
     }
-
-
-
-    function topBanner(mobile){
-
-
-        let premium = false;
-
-        if(userProf.status  == 'signedIn' && jsu.isNotNull( userProf.sub)  && userProf.sub != 'EXPIRED' ) {
-            premium = true;
-        }
-
-        if(premium){
-
-            var url =window.location.href ;
-
-            if(url.includes("rt/Home")  ||  url.includes("/rt/TsrHighlights") 
-                    || url.includes("my/TsrPlans/")  ){
-                // Show Ads
-                return showAds();
-            }else{
-                return miIsh.wub();
-            }
-        }else{
-            // if(mobile){
-            //     return ''    
-            // }
-            
-            // return miIsh.wub();
-            // always Ads
-            let ads = showAds();
-
-            // if(mobile){
-            //     ads+'</div>';
-
-            //     return
-            // }
-            return ads;
-        }
-    }
-
-    function showAds(){
-
-
-        // return ''
-
-
-        return `
-                                    <!-- Diwali banner starts here -->
-                                                    <style>
-                                                        .animate-charcter1 {
-                                                            background-image: linear-gradient(-225deg, var(--bs-primary) 0%, #af487c 29%, #537ab4 67%, var(--bs-primary) 100%);
-                                                            background-size: auto auto;
-                                                            background-clip: border-box;
-                                                            background-size: 200% auto;
-                                                            background-clip: text;
-                                                            text-fill-color: transparent;
-                                                            -webkit-background-clip: text;
-                                                            -webkit-text-fill-color: transparent;
-                                                            animation: textclip 2s linear infinite;
-                                                            display: inline-block;
-                                                            font-weight: bold;
-                                                        }
-                                                    </style>
-
-                                                    <div class="miUpdatesBox text-center w-100 mx-3">
-                                                        <!-- MEDIUM SIZED SCREEN VIEW - ABOVE 768 PX -->
-                                                        <div class="d-none d-md-flex flex-column d-lg-none h-100 text-center"
-                                                            style="box-sizing: border-box;">
-                                                            <span style="font-size: 18px; 
-                                                                font-family: 'Georgia', serif;
-                                                                font-weight: 600;
-                                                                color: #fd7e14;
-                                                                letter-spacing: 2px;
-                                                                position: relative;
-                                                                display: inline-block;
-                                                                font-style: italic;">
-
-                                                                Happy Diwali
-
-                                                            </span>
-                                                            <div class="d-flex justify-content-center">
-                                                                <span class="pe-2" style="font-size: 14px; color: darkblue;">
-                                                                    <i>
-                                                                        Offers Upto
-                                                                        <span style="font-size: 20px;" class="animate-charcter1">
-                                                                            60%
-                                                                        </span>
-                                                                        Off
-                                                                    </i>
-                                                                </span>
-                                                                <a class="btn btn-primary btn-style userEdit py-1"
-                                                                    style="border-radius: 999px;box-shadow: #0061ff 0 10px 10px -10px; font-size: 15px; font-weight: bold; color: white; letter-spacing: 0;"
-                                                                    href="https://www.topstockresearch.com/my/TsrPlans/"
-                                                                    target="_blank" target="_blank"> Buy Now</a>
-                                                            </div>
-                                                        </div>
-                                                        <!-- LARGE SIZED SCREEN VIEW - ABOVE 992 PX -->
-                                                        <div class="d-none d-lg-flex h-100">
-                                                            <div class="my-1 d-flex align-items-center px-3"
-                                                                style="font-size: 18px; 
-                                                                font-family: 'Georgia', serif;
-                                                                font-size: 18px;
-                                                                font-weight: 600;
-                                                                color: #2c3e50;
-                                                                letter-spacing: 2px;
-                                                                position: relative;
-                                                                display: inline-block;
-                                                                line-height: 1.4; border-right: 3px solid #ff9800; white-space: nowrap;">
-
-                                                                <a href="https://www.topstockresearch.com/my/TsrPlans/"><img
-                                                                        style="max-width: unset; height: 50px; width: 70px;"
-                                                                        src="https://www.topstockresearch.com/static/img/Campaign/HappyDiwaliY23.png"
-                                                                        title="TSR Diwali 2025"
-                                                                        class="img-responsive img-fluid"></a>
-
-                                                            </div>
-                                                            <div class="d-flex align-items-center ps-3 w-100">
-                                                                <div class="d-flex flex-column w-100 text-center">
-                                                                    <div>
-                                                                        <span
-                                                                            style='color:#fd7e14;font-weight: bold;font-size: 19px; font-style: italic;'>Be
-                                                                            in Charge of
-                                                                            your Prosperity</span>
-                                                                    </div>
-                                                                    <div class="d-flex justify-content-center mx-1">
-                                                                        <span class="px-1 align-content-center"
-                                                                            style="color: darkblue; font-size: 16px;">
-                                                                            <i>
-                                                                                Diwali Special Offers Up to
-                                                                                <span class="animate-charcter1" style="font-size: 20px;">
-                                                                                    60%
-                                                                                </span>
-                                                                                Off
-                                                                            </i>
-                                                                        </span>
-                                                                        <!-- <span class="mx-auto d-none d-xxl-block"
-                                                                            style='color:#6c757d;font-weight: bold;font-size: 14px;'>US/UK Screener@ Rs 999/Yr </span> -->
-                                                                        <a class="btn btn-primary btn-style userEdit mx-3 py-1"
-                                                                            style="border-radius: 999px;box-shadow: #3a5176 0 10px 10px -10px;font-size: 15px; font-weight: bold; color: white; letter-spacing: 0; text-decoration: none;"
-                                                                            href="https://www.topstockresearch.com/my/TsrPlans/"
-                                                                            target="_blank" target="_blank">Buy
-                                                                            Now</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                                 
-                                                 </div>
-                                            </div>
-
-                                               <!-- Diwali banner ends here -->
-          
-        `;
-    }
-
-
 
     function showSearchBox(option) {
 
@@ -530,14 +377,7 @@ var miIs = (function () {  // chart init Params
     function processSearchCategory(searchMenuData, stockList) {
 
         // ! data params used in populateSearchList() are code, name, industry and sector only
-        let base_url =  null;// jsu.getRootUrl() + "/";
-
-        if(jsu.isMigContext()){
-             base_url = jsu.getRootUrl() + "/";
-        }else{
-            base_url = jsu.getBaseWwwUrl() + "/rt/";
-        }
-
+        let base_url = jsu.getRootUrl() + "/";
 
         let categoryButtons = [];
         let urlPrefix = "", urlSuffix = "";

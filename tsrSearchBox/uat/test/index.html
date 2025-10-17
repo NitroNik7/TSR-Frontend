@@ -1,0 +1,610 @@
+<html>
+
+<head>
+    <title>US Stock Screener, Stock Analysis, Charts - All In One</title>
+    <meta name="description" content="US Stock Screener, Pattern Screeners, Stock Analysis, Charts - All In One Place">
+    <meta name="keywords"
+        content="Stock aio, Stock Screener, Technical & Fundamental Analysis, Stock Analysis, Charts, Technical Screeners, Fundamental Screeners, Chart Patterns, Candlestick ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href='https://www.aiostag.com/static/mig/icon/StockAio.ico' type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' type='text/css' href='https://www.aiostag.com/static/mig/css/aioCmnV0.0.0.9.css' />
+    <link rel='stylesheet' type='text/css' href='https://www.aiostag.com/static/mig/css/responsive.css'>
+
+    <link rel='stylesheet' type='text/css' href='https://www.aiostag.com/static/mig/css/mytsr_struct.css'>
+    <link rel='stylesheet' type='text/css' href='https://www.aiostag.com/static/css/v3/MintCommon.css'>
+    <link rel='stylesheet' type='text/css' href='https://www.aiostag.com/static/mig/css/my.css'>
+    <link rel='stylesheet' type='text/css' href='https://www.aiostag.com/static/css/v3/MintControls.css'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='//code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/common/mint_cn_minV0.7.5.179.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/common/mintHtmlUtil.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/common/MintJsUtils.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/common/MintStkCommon.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/common/MintCommonValidator.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/common/mintCommonCss.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/utils.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/common/MintConstants.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/common/IndiField.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/common/MintTechIndiConstants.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/common/MintFundaIndiConstants.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/common/MintScrUtils.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/mipu/mintCore.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/mipu/miScreenerUtils.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/mipu/ActivityTracker.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/mipu/alertutils.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/mipu/DataInitializer.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/mipu/mintJsAds.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/mipu/AlertNgDialog.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/mipu/AlertNgUtils.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/mipu/AlertCss.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/mipu/AlertSimpleStock.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/mipl   /mintJsAds.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/common/MintDataTable.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/utils.js"></script>
+    <script src="https://www.aiostag.com/static/js/tsr/common/StockBasketUtils.js"></script>
+    <script src="https://www.aiostag.com/static/mig/js/migUi.js"></script>
+    <script src="https://www.aiostag.com/static/mig/js/aioIcons.js"></script>
+    <script src="https://www.aiostag.com/static/mig/js/search.js"></script>
+    <script src="https://www.aiostag.com/static/mig/js/IntelliSearch.js"></script>
+    <script src="https://www.aiostag.com/static/mig/js/IntelliSearchHelper.js"></script>
+    <script src="https://www.aiostag.com/static/mig/js/MiSearchCss.js"></script>
+    <script src="https://www.aiostag.com/static/mig/js/aio_cmnV0.0.0.40.js"></script>
+</head><!-- Space for GA Tag -->
+<style>
+    .dummyCss {
+        position: relative;
+        display: inline-block;
+    }
+</style>
+<script>   var userProf = { status: 'signedIn', sal: 'Dear', fName: 'aiopro', sub: 'AIO_PRO' };  </script>
+
+<body class="scrollable">
+    <div id="mainController">
+
+        <div style="display: none;">
+            <select class='selectpicker' id='userMkt' onchange="javascript:marketOnChange();">
+                <option value="IN" selected="selected" label="India">India</option>
+            </select>
+        </div>
+
+
+        <div class="app tsrsn-folded">
+            <div class="layout"><!--                <div id='dynHead'></div>-->
+                <div class="tsrhdr navbar">
+                    <div class="tsrhdr-container">
+                        <div class="nav-logo" id='navLogoDiv'>
+                            <a href="javascript:void(0);" class="tsrsn-fold-toggler" title='Stock AIO (All In One)'>
+                                <div class="logo logo-dark"
+                                    style="background-image: url('https://www.aiostag.com/static/img/StockAioLogo.png')">
+                                </div>
+                            </a>
+                        </div>
+                        <div id="dynHead">
+                            <div style="display: inline">
+                                <div class="row">
+                                    <div class="col-sm-1 col-md1 col-lg-1 "><a onclick="migUi.lslt()"
+                                            class="tsrsn-expand-toggler">
+                                            <div id="sideNavToogleIconDiv" class="fa-3x"> <i
+                                                    class="fas fa-angle-double-right" style="color:#6c757d"></i> <span
+                                                    style="color:white;font-size:1px;">Expand</span> </div>
+                                        </a> </div>
+                                    <div class="col-sm-8 col-md-8 col-lg-8 ">
+
+                                        <style>
+                                            .miSearchWrapper a {
+                                                color: rgb(102 115 103);
+                                                font-size: 10px;
+                                                transition: all 0.3s ease
+                                            }
+
+                                            .miSearchWrapper a:hover {
+                                                color: #2a67ca;
+                                                font-size: 13px;
+                                            }
+
+                                            .miUpdatesBox a,
+                                            .miUpdatesBox span {
+                                                font-family: 'Georgia', serif;
+                                                font-weight: 600;
+                                                letter-spacing: 1px;
+                                                color: rgb(102 115 103);
+                                                line-height: 1.4;
+                                                font-size: 18px;
+                                                white-space: nowrap;
+                                            }
+
+                                            .miUpdatesBox a:hover {
+                                                color: rgb(102 115 103);
+                                                text-decoration: underline;
+                                                font-size: 18px;
+
+                                            }
+                                        </style>
+
+                                        <div>
+                                            <div id="searchFormDiv">
+                                                <div class="miSearchWrapper d-flex pt-1 w-100"
+                                                    style="box-sizing: border-box;">
+                                                    <div style="width: auto; text-align: center;"> <input
+                                                            id="user_input" type="text"
+                                                            class="form-control ui-autocomplete-input"
+                                                            placeholder="Search (Ctrl + K)" onclick="miIs.ssb('equity')"
+                                                            autocomplete="off" style="width:200px; margin:10px;"> </div>
+                                                    <div class="miUpdatesBox text-center w-100 mx-3">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 col-lg-3 ">
+                                        <div style="text-align:right;">
+                                            <li class="user-profile dropdown dropdown-animated scale-left"> <a href=""
+                                                    id="upsa1" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                                    style="margin-right:10px"><img
+                                                        src="//www.aiostag.com/static/img/flags/USFlag.png"
+                                                        style="max-height:25px;"> </a>
+                                                <ul id="upsul1" class="dropdown-menu dropdown-md p-v-0">
+                                                    <li><a href="//www.aiostag.com/UK/ai/Home"> <img
+                                                                src="//www.aiostag.com/static/img/flags/UKFlag.png"
+                                                                style="max-height:25px;"> &nbsp;&nbsp;<span
+                                                                style="color:#232751;font-size:13pt;"> UK Stock
+                                                                Analysis</span></a> </li>
+                                                    <li><a href="//www.aiostag.com/CA/ai/Home"> <img
+                                                                src="//www.aiostag.com/static/img/flags/CAFlag.png"
+                                                                style="max-height:25px;"> &nbsp;&nbsp;<span
+                                                                style="color:#232751;font-size:13pt;"> Canada Stock
+                                                                Analysis</span></a> </li>
+                                                    <li><a href="//www.aiostag.com/AU/ai/Home"> <img
+                                                                src="//www.aiostag.com/static/img/flags/AUFlag.png"
+                                                                style="max-height:25px;"> &nbsp;&nbsp;<span
+                                                                style="color:#232751;font-size:13pt;"> Australia Stock
+                                                                Analysis</span></a> </li>
+                                                </ul>
+                                            </li>
+                                            <li onclick="migUi.addShow();"
+                                                class="user-profile dropdown dropdown-animated scale-left"> <a href=""
+                                                    id="upsa" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                                    style="margin-right:10px"><span class="fas fa-user fa"
+                                                        style="margin-top:10px;font-size:30px;"></span> </a>
+                                                <ul id="upsul" class="dropdown-menu dropdown-md p-v-0">
+                                                    <li>
+                                                        <div style="margin: 20px"> <b>Hello,<br> Dear aiopro</b><br>
+                                                        </div>
+                                                    </li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li> <a href="https://www.aiostag.com/US/ai/UserManagement"> <i
+                                                                class="far fa-handshake"></i> <span>View Profile</span>
+                                                        </a> </li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li>
+                                                        <div style="margin: 20px"> Plan Details : <br> Plan :
+                                                            <b>AIO_PRO</b> </div>
+                                                    </li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li> <a
+                                                            href="https://www.aiostag.com/US/ai/UserManagement?action=logOff">
+                                                            <i class="fas fa-sign-out-alt"></i> <span>Logout</span> </a>
+                                                    </li>
+                                                </ul>
+                                            </li> <span style="text-align:right; margin:10px;"><a
+                                                    onclick="migUi.help();"><span class="icon-holder"
+                                                        style="align-items: center;" id="myAioTopDiv"
+                                                        aria-hidden="true"> </span></a> </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Header End-->
+                <div class="tsrsn expand-lg">
+                    <div class="tsrsn-inner">
+                        <div id="sideNavBarDiv">
+                            <ul class="tsrsn-menu scrollable">
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.aiostag.com/US/ai/Home'> <span class='icon-holder'
+                                            id='homeSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Home</span></a></li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='msSbDiv' aria-hidden='true'> </span> <span class='title'>Market
+                                            Screener</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/Markets/PriceVolume'>Price /
+                                                Volume</a></li>
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/Markets/HighsLows'>Highs /
+                                                Lows</a></li>
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/Markets/Returns'>Returns</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='strSbDiv' aria-hidden='true'> </span> <span class='title'>AIO Strength
+                                            Index</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                                        </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/TSRStrengthIndex/TechnicalStrength'>Technical
+                                                Strength</a></li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/TSRStrengthIndex/FinancialStrength'>Financial
+                                                Strength</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='csSbDiv' aria-hidden='true'> </span> <span class='title'>Candlestick
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/Candlestick/BullishScreener'>Bullish
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/Candlestick/BearishScreener'>Bearish
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/Candlestick/Consolidation'>Consolidation</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='techSbDiv' aria-hidden='true'> </span> <span class='title'>Technical
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/Technical/OHLCScreeners'>OHLC
+                                                Screeners</a></li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/Technical/OverboughtSold'>Overbought/Sold</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/Technical/Indicators'>Indicators</a>
+                                        </li>
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/Technical/PivotPoint'>Pivot
+                                                Point</a></li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/Technical/FibonacciScreener'>Fibonacci
+                                                Screener</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='maSbDiv' aria-hidden='true'> </span> <span class='title'>Moving Average
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/MovingAverage/SMAScreener'>SMA
+                                                Screener</a></li>
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/MovingAverage/EMAScreener'>EMA
+                                                Screener</a></li>
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/MovingAverage/WMAScreener'>WMA
+                                                Screener</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='cpSbDiv' aria-hidden='true'> </span> <span class='title'>Chart
+                                            Patterns</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/ChartPatterns/PopularChartPatterns'>Popular
+                                                Chart Patterns</a></li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/ChartPatterns/Triangle'>Triangle</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/ChartPatterns/Channel'>Channel</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/ChartPatterns/Trendlines'>Trendlines</a>
+                                        </li>
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/ChartPatterns/NRWR'>NR /
+                                                WR</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='fundaSbDiv' aria-hidden='true'> </span> <span class='title'>Financial
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/Financial/FinHighlight'>Financial
+                                                Highlight</a></li>
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/Financial/GuruRatios'>Guru
+                                                Ratios</a></li>
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/Financial/ValuationRatio'>Valuation
+                                                Ratio </a></li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/Financial/ProfitabilityRatio'>Profitability
+                                                Ratio</a></li>
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/Financial/SolvencyRatios'>Solvency
+                                                Ratios</a></li>
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/Financial/EfficiencyRatios'>Efficiency
+                                                Ratios</a></li>
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/Financial/IncStatGrowthYr'>Income
+                                                Statement Growth (Yr)</a></li>
+                                        <li><a href='https://www.aiostag.com/US/ai/Screener/Financial/BalSheetGrowthYr'>Balance
+                                                Sheet Growth (Yr)</a></li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/Financial/CashFlowStatGrowthYr'>Cash
+                                                Flow Statement Growth (Yr)</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='haSbDiv' aria-hidden='true'> </span> <span class='title'>Heikin Ashi
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/HeikinAshi/HeikinAshiScreener'>Heikin
+                                                Ashi Screener</a></li>
+                                    </ul>
+                                </li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.aiostag.com/US/ai/AIOScreener'> <span class='icon-holder'
+                                            id='diysSbDiv' aria-hidden='true'> </span> <span class='title'>Custom
+                                            Screener</span></a></li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='comboSbDiv' aria-hidden='true'> </span> <span class='title'>Combo
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/ComboScreener/PriceActionScreeners'>Price
+                                                Action Screeners</a></li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish
+                                                Technical Screeners</a></li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish
+                                                Technical Screeners</a></li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/ComboScreener/FundamentalScreener'>Fundamental
+                                                Screeners</a></li>
+                                        <li><a
+                                                href='https://www.aiostag.com/US/ai/Screener/ComboScreener/MovingAverageScreeners'>Moving
+                                                Average Screeners</a></li>
+                                    </ul>
+                                </li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.aiostag.com/US/ai/StockTechnicalCharts'> <span
+                                            class='icon-holder' id='tcSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Technical Charts</span></a></li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.aiostag.com/US/ai/SubscriptionPlans'> <span
+                                            class='icon-holder' id='subsSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Premium Plans</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <script>var mcat = 'homeSb';</script> <!-- Page Container Start -->
+                <div class="page-container"> <!-- Quick View Start -->
+
+
+                    <div class="tsrqv1" id='helpNav'>
+                        <ul class="tsrqv-tabs nav nav-tabs nav-justified" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" data-bs-target="#myTsrLinkstab" role="tab"
+                                    data-bs-toggle="tab">
+                                    MyTSR Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myLinksTab" role="tab" data-bs-toggle="tab"
+                                    onClick='migUi.myLinks()'>
+                                    My Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myRecentActTab" role="tab"
+                                    data-bs-toggle="tab" onClick='migUi.myRecAct()'>
+                                    My Recent Activities
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content scrollable">
+                            <div id="myTsrLinksTab" role="tabpanel" class="tab-pane fade show active">
+                                <div id='myTsrLinks'> Loading</div>
+                            </div>
+                            <div id="myLinksTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myLinksDiv'> Loading ...</div>
+                            </div>
+                            <div id="myRecentActTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myRecentActivityDiv'> Loading ...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick View End --> <!-- Content Wrapper Start -->
+                    <div class="main-content">
+                        <div class="container-fluid aioRowPad">
+                            <div class="row   ">
+                                <div class="col-md-12">
+                                    <div id="premServiceDiv" style="text-align:justify;"> </div>
+
+
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div id='dynSearch'>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <script>var mtppp = '3361580417952311782423592';</script>
+                            <h3 align='center'>US Stock Screeners, Stock Analysis, Charts - All In One</h3>
+                            <br />
+                            <br />
+                            <div class='col-lg-12 col-md-12 col-sm-12'>
+                                <div class='card shadow-lg'>
+                                    <div class='card-header'>
+                                        <h5 class="card-title" align='center'>Stock AIO - One Stop Shop</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class='table-responsive'>
+                                            <div align='center'><img
+                                                    src='https://www.aiostag.com/static/mig/img/home/StockAIOFeatures.png'
+                                                    class="img-responsive img-fluid" alt='One Stop Shop'
+                                                    name='One Stop Shop' title='One Stop Shop' style="
+    max-height: 600px;
+"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class='col-lg-12 col-md-12 col-sm-12'>
+                                <div class='card shadow-lg'>
+                                    <div class='card-header'>
+                                        <h5 class="card-title" align='center'>Stock Deep Dive</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class='table-responsive'>
+                                            <div align='center'><img
+                                                    src='https://www.aiostag.com/static/mig/img/home/StockAIOHomePage.gif'
+                                                    class="img-responsive img-fluid" alt='Stock Deep Dive'
+                                                    name='Stock Deep Dive' title='Stock Deep Dive' style="
+    max-height: 600px;
+"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class='col-lg-12 col-md-12 col-sm-12'>
+                                <div class='card shadow-lg'>
+                                    <div class='card-header'>
+                                        <h5 class="card-title" align='center'>Ready to Use Precreated Screeners</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class='table-responsive'>
+                                            <div align='center'><img
+                                                    src='https://www.aiostag.com/static/mig/img/home/PreCreatedScreeners.gif'
+                                                    class="img-responsive img-fluid" alt='Precreated Strategies'
+                                                    name='Precreated Strategies' title='Precreated Strategies' style="
+    max-height: 600px;
+"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class='col-lg-12 col-md-12 col-sm-12'>
+                                <div class='card shadow-lg'>
+                                    <div class='card-header'>
+                                        <h5 class="card-title" align='center'>Create Powerful Strategies with AIO
+                                            Screener</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class='table-responsive'>
+                                            <div align='center'><img
+                                                    src='https://www.aiostag.com/static/mig/img/home/CustomScreener.gif'
+                                                    class="img-responsive img-fluid" alt='AIO Screener'
+                                                    name='AIO Screener' title='AIO Screener' style="
+    max-height: 600px;
+"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id='ytVideoDiv'></div>
+                            <script>
+                                // let tsrUpdateJson = {
+                                //         "heading": "TRENDING",
+                                //         "list": [
+                                //             {
+                                //                 "label": "Double Bottom",
+                                //                 "link": "https://www.aiostag.com/US/ai/Screener/ChartPatterns/PopularChartPatterns/BullishPatterns/DoubleBottom"
+                                //             },
+                                //             {
+                                //                 "label": "Golden Cross",
+                                //                 "link": "https://www.aiostag.com/US/ai/Screener/MovingAverage/EMAScreener/EMABullishCrossover/50EMACrossAbv200"
+                                //             },
+                                //             {
+                                //                 "label": "Bullish Stocks",
+                                //                 "link": "https://www.aiostag.com/US/ai/Screener/TSRStrengthIndex/TechnicalStrength/Bullish/StrongBullTechStrength"
+                                //             },
+                                //             {
+                                //                 "label": "Engulging",
+                                //                 "link": "https://www.aiostag.com/US/ai/Screener/Candlestick/BullishScreener/Bullish2Day/BullishEngulfing"
+                                //             }
+                                //         ]
+                                //     }
+                            </script><br /><br /><b>Note</b> : All Data Generated at the End of Trading Hours (EOD
+                            Data)
+                            <hr />
+                            <footer class=" text-light" style='background-color: #f2f2f2;'>
+                                <div class="container" style="margin-left: 10px;">
+                                    <br>
+                                    <div class="row">
+                                        <div>
+                                            <h3 style="color:black">Quick Links</h3>
+
+                                            <span><a href="https://www.aiostag.com" style="color:black">Home</a></span>
+                                            <span><a href='https://www.aiostag.com/US/ai/UserManagement?action=contactUs'
+                                                    style="color:black">| Contact Us</a></span>
+
+                                            <span class="ms-1"><a href="https://www.aiostag.com/Disclaimer.html"
+                                                    style="color:black">| Disclaimer</a></span>
+
+                                            <span class="ms-1"><a href="https://www.aiostag.com/TermsAndConditions.html"
+                                                    style="color:black">| Terms &amp; Conditions </a></span>
+
+                                            <span class="ms-1"><a href="https://www.aiostag.com/PrivacyPolicy.html"
+                                                    style="color:black">| Privacy </a></span>
+
+                                            <span class="ms-1"><a href=https://www.topstockresearch.com
+                                                    style="color:black">| Indian Market Analysis </a></span>
+
+                                        </div>
+
+                                        <h6 style="color:grey;text-align:left;line-height: 28px;">All rights reserved by
+                                            Mintnovate Market Research Limited</h6>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div>
+                    <!-- Content Wrapper End -->
+
+
+
+
+                </div>
+            </div> <!-- NG APP  align='center'-->
+
+
+
+
+
+</body>
+<script>   migUi.init(); </script>
+<div id='alertDialog' class='web_dialog'></div>
+<div id='artnuDiv'></div>
+<script src='https://www.aiostag.com/static/js/tsr/my/fav/mifav.js'></script>
+<script src='https://www.aiostag.com/static/js/tsr/my/fav_minV0.0.1.1.js'></script>
+<script src='https://www.aiostag.com/static/js/tsr/mipu/mipu_minV0.0.0.65.js'"></script><script> misu.iar();   </script>

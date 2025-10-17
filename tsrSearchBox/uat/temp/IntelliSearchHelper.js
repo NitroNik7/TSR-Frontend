@@ -104,11 +104,11 @@ var miIsh = (function () {  // mi Intelli search Helper
 
 	// MA BUTTONS
 	// * id is appended to end of button url - https://www.tsrbt1.com/rt/Stock/NIFTY/MovingAverage
-	let MA_CAT = [
-		{ id: 'MovingAverage', label: "SMA", default: true, urlPrefix: "Stock" },
-		{ id: 'MovingAverage', label: "EMA", default: true, urlPrefix: "Stock" },
-		{ id: 'MovingAverage', label: "WMA", default: true, urlPrefix: "Stock" },
-	];
+	// let MA_CAT = [
+	// 	{ id: 'MovingAverage', label: "SMA", default: true, urlPrefix: "Stock" },
+	// 	{ id: 'MovingAverage', label: "EMA", default: true, urlPrefix: "Stock" },
+	// 	{ id: 'MovingAverage', label: "WMA", default: true, urlPrefix: "Stock" },
+	// ];
 
 
 
@@ -116,15 +116,11 @@ var miIsh = (function () {  // mi Intelli search Helper
 	var EQUITY_SUB_CAT = [
 		{ id: 'any', label: "All ", buttons: ALL_SEARCH_CAT, urlPrefix: "Stock", urlSuffix: "BirdsEyeView", default: true },
 		{ id: 'FundamentalAnalysis', label: "Stock Fundamentals", urlPrefix: "Stock", urlSuffix: "FundamentalAnalysis", buttons: FUNDA_INDI, default: false, mappedParam: "funda" },
-		{ id: 'MovingAverage', label: "Stock Moving Average", urlPrefix: "Stock", urlSuffix: "MovingAverage", buttons: MA_CAT, default: true },
+		{ id: 'MovingAverage', label: "Stock Moving Average", urlPrefix: "Stock", urlSuffix: "MovingAverage", buttons: [], default: true },
 		{ id: 'TechnicalAnalysis', label: "Stock Technicals", urlPrefix: "Stock", urlSuffix: "TechnicalAnalysis", buttons: TECH_INDI, default: true },
-		
+		{ id: 'FuturesAndOptions', label: "Futures & Options", urlPrefix: "Stock", urlSuffix: "FuturesAndOptions", buttons: FNO_CAT, default: false, mappedParam: "fno" },
 	];
 
-
-	if(!jsu.isMigContext()){
-		EQUITY_SUB_CAT.push({ id: 'FuturesAndOptions', label: "Futures & Options", urlPrefix: "Stock", urlSuffix: "FuturesAndOptions", buttons: FNO_CAT, default: false, mappedParam: "fno" },);
-	}
 
 
 	// 	var EQUITY_SUB_CAT = [
@@ -178,7 +174,7 @@ var miIsh = (function () {  // mi Intelli search Helper
 	];
 
 	var CHART_SUB_CAT = [
-		{ id: 'any', label: "All ",  urlPrefix: "Stock", urlSuffix: "InteractiveCharts", default: true, buttons: TICKS },
+		{ id: 'any', label: "All ", buttons: ALL_SEARCH_CAT, urlPrefix: "Stock", urlSuffix: "InteractiveCharts", default: true, buttons: TICKS },
 	];
 
 
@@ -278,7 +274,7 @@ var miIsh = (function () {  // mi Intelli search Helper
 
 	let SCR_SEARCH = { id: "screener", label: "Screener", inputPlaceholder: "Search a Screener", defData: SCR_DEF_DATA, subCat: [] };
 
-	let CH_SEARCH = { id: "chart", label: "Chart", inputPlaceholder: "Chart", defData: EQ_DEF_DATA,  subCat: CHART_SUB_CAT };
+	let CH_SEARCH = { id: "chart", label: "Chart", inputPlaceholder: "Chart", defData: EQ_DEF_DATA, subCat: [], subCat: CHART_SUB_CAT };
 
 
 	let EQ_CHART_SEARCH = {
@@ -329,16 +325,11 @@ var miIsh = (function () {  // mi Intelli search Helper
 			searchMenu.push(jsu.cloneObj(CHART_INDI_SEARCH));
 			searchMenu.push(jsu.cloneObj(CHART_COMP_EQ_SEARCH));
 			defaultSel = 'indCh';
-
-		}else if (option === 'eqCh'  ||  option === 'indCh' || option === 'compEqCh'){
-			searchMenu.push(jsu.cloneObj(EQ_CHART_SEARCH));
-			searchMenu.push(jsu.cloneObj(CHART_INDI_SEARCH));
-			searchMenu.push(jsu.cloneObj(CHART_COMP_EQ_SEARCH));
-			// defaultSel = 'eqCh';
 		} else if (context === 'ScrFilter' || htmlU.divExist('csDiv')) {     // csDiv   
 			searchMenu.push(jsu.cloneObj(CH_SEARCH));
 			searchMenu.push(jsu.cloneObj(CS_FILTER));
 			defaultSel = 'addFilter';
+
 		} else {
 
 			searchMenu.push(jsu.cloneObj(CH_SEARCH));
@@ -359,11 +350,7 @@ var miIsh = (function () {  // mi Intelli search Helper
 			defaultSel = option;
 		}
 
-
 		let defObj = jsu.getObjFrmArr(searchMenu, defaultSel);
-
-
-
 
 		// for(let i=0;i< searchMenu.length;i++){
 		// 	searchMenu[i].default = false;
@@ -748,11 +735,10 @@ var miIsh = (function () {  // mi Intelli search Helper
 				}
 
 				html += `	</div>`;
-				// html += `</div>`;
+				html += `</div>`;
 			}
-			html += `</div>`; // medium
 
-			html += `<div class="d-none d-lg-flex h-100">`; // Large
+			html += `<div class="d-none d-lg-flex h-100">`;
 
 			html += `<div class="my-1 d-flex align-items-center px-3" style="font-size: 18px; 
 						font-family: 'Georgia', serif;
@@ -792,9 +778,9 @@ var miIsh = (function () {  // mi Intelli search Helper
 				}
 
 				html += `</div>`;
-				html += `</div>`;
+
 			}
-			html += `</div>`; // Large
+
 			return html;
 		}
 	};

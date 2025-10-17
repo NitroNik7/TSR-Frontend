@@ -20,77 +20,78 @@ var miIsh = (function () {  // mi Intelli search Helper
 		{ id: 'MovingAverage', label: "MA", default: true, urlPrefix: "Stock" },
 		{ id: 'TechnicalAnalysis', label: "Tech", default: true, urlPrefix: "Stock" },
 		{ id: 'FundamentalAnalysis', label: "Funda", default: false, mappedParam: "funda", urlPrefix: "Stock" },
-		{ id: 'FuturesAndOptions', label: "FNO", default: false, mappedParam: "fno", urlPrefix: "Stock" },
 		{ id: 'Candlestick', label: "Candlestick", default: true, urlPrefix: "Stock" },
 		{ id: 'PivotPoint', label: "Pivot Point", default: true, urlPrefix: "Stock" },
-		{ id: 'BetaAndVolatility', label: "Beta & Volatility", default: true, urlPrefix: "Stock" },
 	];
 
+	if (!jsu.isMigContext()) {
+		ALL_SEARCH_CAT.push(
+			{ id: 'FuturesAndOptions', label: "FNO", default: false, mappedParam: "fno", urlPrefix: "Stock" },
+			{ id: 'BetaAndVolatility', label: "Beta & Volatility", default: true, urlPrefix: "Stock" }
+		);
+	}
 
-	// RSI
-	// Stochastic(F)
-	// MACD
-	// Super Trend    
-	// BOLLINGER
-	// PSAR
-	// ADX
+	// https://www.stockaio.com/US/ai/TechIndicatorAnalysis/AAPL/ADX/DAILY
+	// https://www.tsrbt1.com/rt/ViewInChart/NIFTY/FastStochastic
 
+	let prefix = "";
+
+	if (!jsu.isMigContext()) {
+		prefix = "ViewInChart";
+	}
+	else {
+		prefix = "TechIndicatorAnalysis";
+	}
 	// TECH INDI BUTTONS
 	var TECH_INDI = [
 		{ id: 'TechnicalAnalysis', label: "All Technicals ", default: true, urlPrefix: "Stock" },
-		{ id: 'RsiSmooth', label: "RSI", default: true, urlPrefix: "ViewInChart" },
-		{ id: 'FastStochastic', label: "Stochastic(F)", default: true, urlPrefix: "ViewInChart" },
-		{ id: 'MACD', label: "MACD", default: true, urlPrefix: "ViewInChart" },
-		{ id: 'Supertrend', label: "Supertrend", default: true, urlPrefix: "ViewInChart" },
-		{ id: 'BOLLINGER', label: "Bollinger", default: true, urlPrefix: "ViewInChart" },
-		{ id: 'PSAR', label: "PSAR", default: true, urlPrefix: "ViewInChart" },
-		{ id: 'ADX', label: "ADX", default: true, urlPrefix: "ViewInChart" },
-		{ id: 'AROON', label: "AROON", default: true, urlPrefix: "ViewInChart" },
-		{ id: 'AwesomeOscillator', label: "AwesomeOsc", default: true, urlPrefix: "ViewInChart" },
-		{ id: 'CCI', label: "CCI", default: true, urlPrefix: "ViewInChart" },
-		{ id: 'CMF', label: "CMF", default: true, urlPrefix: "ViewInChart" },
-		{ id: 'KeltnerBand', label: "KeltnerBand", default: true, urlPrefix: "ViewInChart" },
-		{ id: 'MFI', label: "MFI", default: true, urlPrefix: "ViewInChart" },
-		{ id: 'ROC', label: "ROC", default: true, urlPrefix: "ViewInChart" },
-		{ id: 'WilliamsR', label: "WilliamsR", default: true, urlPrefix: "ViewInChart" },
+		{ id: 'RsiSmooth', label: "RSI", default: true, urlPrefix: prefix },
+		{ id: 'FastStochastic', label: "Stochastic(F)", default: true, urlPrefix: prefix },
+		{ id: 'MACD', label: "MACD", default: true, urlPrefix: prefix },
+		{ id: 'Supertrend', label: "Supertrend", default: true, urlPrefix: prefix },
+		{ id: 'BOLLINGER', label: "Bollinger", default: true, urlPrefix: prefix },
+		{ id: 'PSAR', label: "PSAR", default: true, urlPrefix: prefix },
+		{ id: 'ADX', label: "ADX", default: true, urlPrefix: prefix },
+		{ id: 'AROON', label: "AROON", default: true, urlPrefix: prefix },
+		{ id: 'AwesomeOscillator', label: "AwesomeOsc", default: true, urlPrefix: prefix },
+		{ id: 'CCI', label: "CCI", default: true, urlPrefix: prefix },
+		{ id: 'CMF', label: "CMF", default: true, urlPrefix: prefix },
+		{ id: 'KeltnerBand', label: "KeltnerBand", default: true, urlPrefix: prefix },
+		{ id: 'MFI', label: "MFI", default: true, urlPrefix: prefix },
+		{ id: 'ROC', label: "ROC", default: true, urlPrefix: prefix },
+		{ id: 'WilliamsR', label: "WilliamsR", default: true, urlPrefix: prefix },
 	];
 
-
-	// ROA
-	// ROE
-	// ROCE
-	// ROIC
-	// PE ratio
-	// PB ratio
-	// PS ratio
-	// Debt to equity
-	// Shareholder Equity Ratio
-	// Current Ratio
-	// Cash Ratio
-	// Altman Z Score
-	// Piotroski F-Score
-
 	// FUNDA BUTTONS
+	// https://www.aiostag.com/US/ai/FundamentalDeepDive/AAPL/PriceToEarningRatio
+	// https://www.tsrbt1.com/rt/Financial/HDFCBANK/ReturnOnAsset
+
+	if (!jsu.isMigContext()) {
+		prefix = "Financial";
+	}
+	else {
+		prefix = "FundamentalDeepDive";
+	}
 	var FUNDA_INDI = [
 		{ id: 'FundamentalAnalysis', label: "All Fundamentals ", default: true, urlPrefix: "Stock" },
-		{ id: 'ReturnOnAsset', label: "ROA", default: true, urlPrefix: "Financial" },
-		{ id: 'ReturnOnEquity', label: "ROE", default: true, urlPrefix: "Financial" },
-		{ id: 'ReturnOnCapitalEmployed', label: "ROCE", default: true, urlPrefix: "Financial" },
-		{ id: 'ReturnOnInvestedCapital', label: "ROIC", default: true, urlPrefix: "Financial" },
-		{ id: 'PriceToEarningRatio', label: "PE Ratio", default: true, urlPrefix: "Financial" },
-		{ id: 'PriceToBookRatio', label: "Price To Book", default: true, urlPrefix: "Financial" },
-		{ id: 'PriceToSalesRatio', label: "Price To Sales", default: true, urlPrefix: "Financial" },
-		{ id: 'CurrentRatio', label: "Current Ratio", default: true, urlPrefix: "Financial" },
-		{ id: 'DebtToEquityRatio', label: "Debt to Eq Ratio", default: true, urlPrefix: "Financial" },
-		{ id: 'ShareholdersEquityRatio', label: "Sh Equity Ratio", default: true, urlPrefix: "Financial" },
-		{ id: 'CashRatio', label: "Cash Ratio", default: true, urlPrefix: "Financial" },
-		{ id: 'AltmanZScore', label: "Altman Z", default: true, urlPrefix: "Financial" },
-		{ id: 'PiotroskiFScore', label: "Piotroski F Score", default: true, urlPrefix: "Financial" },
-		{ id: 'EBITDAMargin', label: "EBITDA Margin", default: true, urlPrefix: "Financial" },
-		{ id: 'EVToEBITDA', label: "EV to EBITDA", default: true, urlPrefix: "Financial" },
-		{ id: 'NetProfitMargin', label: "Net Profit Margin", default: true, urlPrefix: "Financial" },
-		{ id: 'OperatingProfitMargin', label: "Ops Profit Margin", default: true, urlPrefix: "Financial" },
-		{ id: 'QuickRatio', label: "Quick Ratio", default: true, urlPrefix: "Financial" },
+		{ id: 'ReturnOnAsset', label: "ROA", default: true, urlPrefix: prefix },
+		{ id: 'ReturnOnEquity', label: "ROE", default: true, urlPrefix: prefix },
+		{ id: 'ReturnOnCapitalEmployed', label: "ROCE", default: true, urlPrefix: prefix },
+		{ id: 'ReturnOnInvestedCapital', label: "ROIC", default: true, urlPrefix: prefix },
+		{ id: 'PriceToEarningRatio', label: "PE Ratio", default: true, urlPrefix: prefix },
+		{ id: 'PriceToBookRatio', label: "Price To Book", default: true, urlPrefix: prefix },
+		{ id: 'PriceToSalesRatio', label: "Price To Sales", default: true, urlPrefix: prefix },
+		{ id: 'CurrentRatio', label: "Current Ratio", default: true, urlPrefix: prefix },
+		{ id: 'DebtToEquityRatio', label: "Debt to Eq Ratio", default: true, urlPrefix: prefix },
+		{ id: 'ShareholdersEquityRatio', label: "Sh Equity Ratio", default: true, urlPrefix: prefix },
+		{ id: 'CashRatio', label: "Cash Ratio", default: true, urlPrefix: prefix },
+		{ id: 'AltmanZScore', label: "Altman Z", default: true, urlPrefix: prefix },
+		{ id: 'PiotroskiFScore', label: "Piotroski F Score", default: true, urlPrefix: prefix },
+		{ id: 'EBITDAMargin', label: "EBITDA Margin", default: true, urlPrefix: prefix },
+		{ id: 'EVToEBITDA', label: "EV to EBITDA", default: true, urlPrefix: prefix },
+		{ id: 'NetProfitMargin', label: "Net Profit Margin", default: true, urlPrefix: prefix },
+		{ id: 'OperatingProfitMargin', label: "Ops Profit Margin", default: true, urlPrefix: prefix },
+		{ id: 'QuickRatio', label: "Quick Ratio", default: true, urlPrefix: prefix },
 	];
 
 	// FNO BUTTONS
@@ -104,12 +105,13 @@ var miIsh = (function () {  // mi Intelli search Helper
 
 	// MA BUTTONS
 	// * id is appended to end of button url - https://www.tsrbt1.com/rt/Stock/NIFTY/MovingAverage
-	let MA_CAT = [
-		{ id: 'MovingAverage', label: "SMA", default: true, urlPrefix: "Stock" },
-		{ id: 'MovingAverage', label: "EMA", default: true, urlPrefix: "Stock" },
-		{ id: 'MovingAverage', label: "WMA", default: true, urlPrefix: "Stock" },
-	];
+	// let MA_CAT = [
+	// 	{ id: 'MovingAverage', label: "SMA", default: true, urlPrefix: "Stock" },
+	// 	{ id: 'MovingAverage', label: "EMA", default: true, urlPrefix: "Stock" },
+	// 	{ id: 'MovingAverage', label: "WMA", default: true, urlPrefix: "Stock" },
+	// ];
 
+	let MA_CAT = [];
 
 
 
@@ -118,11 +120,11 @@ var miIsh = (function () {  // mi Intelli search Helper
 		{ id: 'FundamentalAnalysis', label: "Stock Fundamentals", urlPrefix: "Stock", urlSuffix: "FundamentalAnalysis", buttons: FUNDA_INDI, default: false, mappedParam: "funda" },
 		{ id: 'MovingAverage', label: "Stock Moving Average", urlPrefix: "Stock", urlSuffix: "MovingAverage", buttons: MA_CAT, default: true },
 		{ id: 'TechnicalAnalysis', label: "Stock Technicals", urlPrefix: "Stock", urlSuffix: "TechnicalAnalysis", buttons: TECH_INDI, default: true },
-		
+
 	];
 
-
-	if(!jsu.isMigContext()){
+	// do not show FNO in MIG
+	if (!jsu.isMigContext()) {
 		EQUITY_SUB_CAT.push({ id: 'FuturesAndOptions', label: "Futures & Options", urlPrefix: "Stock", urlSuffix: "FuturesAndOptions", buttons: FNO_CAT, default: false, mappedParam: "fno" },);
 	}
 
@@ -178,107 +180,234 @@ var miIsh = (function () {  // mi Intelli search Helper
 	];
 
 	var CHART_SUB_CAT = [
-		{ id: 'any', label: "All ",  urlPrefix: "Stock", urlSuffix: "InteractiveCharts", default: true, buttons: TICKS },
+		{ id: 'any', label: "All ", urlPrefix: "Stock", urlSuffix: "InteractiveCharts", default: true, buttons: TICKS },
 	];
 
 
-	let EQ_DEF_DATA = [
-		{
-			"id": "NIFTY", "label": "NIFTY - S&P CNX NIFTY - INDEX - INDIA",
-			"name": "S&P CNX NIFTY", "code": "NIFTY", "fno": "true",
-			"funda": "false", "sector": "INDEX", "industry": "Broad-Based Index",
-			"scId": "200000", "ecId": "10000", "ccId": "in"
-		},
-		{
-			"id": "BANKNIFTY", "label": "BANKNIFTY - BANK NIFTY - INDEX - INDIA",
-			"name": "BANK NIFTY", "code": "BANKNIFTY", "fno": "true",
-			"funda": "false", "sector": "INDEX", "industry": "Sectoral  Index",
-			"scId": "200000", "ecId": "10100", "ccId": "in"
-		},
-		{
-			"id": "RELIANCE", "label": "RELIANCE - Reliance Industries Ltd. - REFINERIES - INDIA",
-			"name": "Reliance Industries Ltd.", "code": "RELIANCE",
-			"fno": "true", "funda": "true", "sector": "Energy",
-			"industry": "Crude Oil & Natural Gas", "scId": "170", "ecId": "1", "ccId": "in"
-		},
+	let EQ_DEF_DATA = [];
 
-		{
-			"id": "HDFCBANK", "label": "HDFCBANK - HDFC Bank Ltd. - BANKS - INDIA",
-			"name": "HDFC Bank Ltd.", "code": "HDFCBANK", "fno": "true",
-			"funda": "true", "sector": "Financial", "industry": "Banking",
-			"scId": "121", "ecId": "93", "ccId": "in"
-		},
-		{
-			"id": "TCS", "label": "TCS - Tata Consultancy Services Ltd. - COMPUTERS - SOFTWARE - INDIA",
-			"name": "Tata Consultancy Services Ltd.", "code": "TCS",
-			"fno": "true", "funda": "true", "sector": "Technology",
-			"industry": "Computer Software", "scId": "133", "ecId": "19", "ccId": "in"
-		},
-		{
-			"id": "BHARTIARTL",
-			"label": "BHARTIARTL - Bharti Airtel Ltd. - TELECOMMUNICATION - SERVICES - INDIA",
-			"name": "Bharti Airtel Ltd.", "code": "BHARTIARTL", "fno": "true",
-			"funda": "true", "sector": "Communication", "industry": "Telecom Services",
-			"scId": "178", "ecId": "137", "ccId": "in"
-		},
-		{
-			"id": "ICICIBANK",
-			"label": "ICICIBANK - ICICI Bank Ltd. - BANKS - INDIA",
-			"name": "ICICI Bank Ltd.", "code": "ICICIBANK", "fno": "true",
-			"funda": "true", "sector": "Financial", "industry": "Banking",
-			"scId": "121", "ecId": "94", "ccId": "in"
+	if (!jsu.isMigContext()) {
+		EQ_DEF_DATA = [
+			{
+				"id": "NIFTY", "label": "NIFTY - S&P CNX NIFTY - INDEX - INDIA",
+				"name": "S&P CNX NIFTY", "code": "NIFTY", "fno": "true",
+				"funda": "false", "sector": "INDEX", "industry": "Broad-Based Index",
+				"scId": "200000", "ecId": "10000", "ccId": "in"
+			},
+			{
+				"id": "BANKNIFTY", "label": "BANKNIFTY - BANK NIFTY - INDEX - INDIA",
+				"name": "BANK NIFTY", "code": "BANKNIFTY", "fno": "true",
+				"funda": "false", "sector": "INDEX", "industry": "Sectoral  Index",
+				"scId": "200000", "ecId": "10100", "ccId": "in"
+			},
+			{
+				"id": "RELIANCE", "label": "RELIANCE - Reliance Industries Ltd. - REFINERIES - INDIA",
+				"name": "Reliance Industries Ltd.", "code": "RELIANCE",
+				"fno": "true", "funda": "true", "sector": "Energy",
+				"industry": "Crude Oil & Natural Gas", "scId": "170", "ecId": "1", "ccId": "in"
+			},
+
+			{
+				"id": "HDFCBANK", "label": "HDFCBANK - HDFC Bank Ltd. - BANKS - INDIA",
+				"name": "HDFC Bank Ltd.", "code": "HDFCBANK", "fno": "true",
+				"funda": "true", "sector": prefix, "industry": "Banking",
+				"scId": "121", "ecId": "93", "ccId": "in"
+			},
+			{
+				"id": "TCS", "label": "TCS - Tata Consultancy Services Ltd. - COMPUTERS - SOFTWARE - INDIA",
+				"name": "Tata Consultancy Services Ltd.", "code": "TCS",
+				"fno": "true", "funda": "true", "sector": "Technology",
+				"industry": "Computer Software", "scId": "133", "ecId": "19", "ccId": "in"
+			},
+			{
+				"id": "BHARTIARTL",
+				"label": "BHARTIARTL - Bharti Airtel Ltd. - TELECOMMUNICATION - SERVICES - INDIA",
+				"name": "Bharti Airtel Ltd.", "code": "BHARTIARTL", "fno": "true",
+				"funda": "true", "sector": "Communication", "industry": "Telecom Services",
+				"scId": "178", "ecId": "137", "ccId": "in"
+			},
+			{
+				"id": "ICICIBANK",
+				"label": "ICICIBANK - ICICI Bank Ltd. - BANKS - INDIA",
+				"name": "ICICI Bank Ltd.", "code": "ICICIBANK", "fno": "true",
+				"funda": "true", "sector": prefix, "industry": "Banking",
+				"scId": "121", "ecId": "94", "ccId": "in"
+			}
+		]
+	}
+	else {
+
+		if (jsu.isUsContext()) {
+			EQ_DEF_DATA = [
+				{
+					"id": "GSPC.INDX", "name": "S&P 500 Index",
+					"code": "GSPC.INDX", "fno": "false", "funda": "false",
+					"scId": "180", "ecId": "7737", "ccId": "US",
+					"label": "GSPC.INDX - S&P 500 Index - INDX - USA"
+				},
+				{
+					"id": "NDX.INDX", "name": "Nasdaq 100",
+					"code": "NDX.INDX", "fno": "false", "funda": "false",
+					"scId": "180", "ecId": "7746", "ccId": "US",
+					"label": "NDX.INDX - Nasdaq 100 - INDX - USA"
+				},
+				{
+					"id": "DJI.INDX", "name": "Dow Jones Industrial Average",
+					"code": "DJI.INDX", "fno": "false", "funda": "false",
+					"scId": "180", "ecId": "7739", "ccId": "US",
+					"label": "DJI.INDX - Dow Jones Industrial Average - INDX - USA"
+				},
+				{
+					"id": "AAPL", "name": "Apple Inc",
+					"code": "AAPL", "fno": "false", "funda": "true",
+					"scId": "145", "ecId": "26", "ccId": "US",
+					"label": "AAPL - Apple Inc - Technology - USA"
+				},
+				{
+					"id": "MSFT", "name": "Microsoft Corporation",
+					"code": "MSFT", "fno": "false", "funda": "true",
+					"scId": "36", "ecId": "4309", "ccId": "US",
+					"label": "MSFT - Microsoft Corporation - Technology - USA"
+				},
+				{
+					"id": "GOOGL", "name": "Alphabet Inc. A", "code": "GOOGL", "fno": "false", "funda": "true", "scId": "13", "ecId": "2889", "ccId": "US", "label": "GOOGL - Alphabet Inc. A - Communication Services - USA"
+				},
+				{
+					"id": "NVDA", "name": "NVIDIA Corporation", "code": "NVDA", "fno": "false", "funda": "true", "scId": "29", "ecId": "4619", "ccId": "US", "label": "NVDA - NVIDIA Corporation - Technology - USA"
+				},
+				{
+					"id": "AMZN", "name": "Amazon.com Inc", "code": "AMZN", "fno": "false", "funda": "true", "scId": "48", "ecId": "419", "ccId": "US", "label": "AMZN - Amazon.com Inc - Consumer Cyclical - USA"
+				},
+				{
+					"id": "TSLA", "name": "Tesla Inc", "code": "TSLA", "fno": "false", "funda": "true", "scId": "32", "ecId": "6492", "ccId": "US", "label": "TSLA - Tesla Inc - Consumer Cyclical - USA"
+				},
+				{
+					"id": "META", "name": "Meta Platforms Inc.", "code": "META", "fno": "false", "funda": "true", "scId": "13", "ecId": "4109", "ccId": "US", "label": "META - Meta Platforms Inc. - Communication Services - USA"
+				}
+			];
 		}
-	]
+		if (jsu.isUkContext()) {
+			EQ_DEF_DATA = [
+				{
+					"id": "AZN", "name": "AstraZeneca PLC", "code": "AZN", "fno": "false", "funda": "true", "scId": "47", "ecId": "1221", "ccId": "UK", "label": "AZN - AstraZeneca PLC - Healthcare - UK"
+				},
+				{
+					"id": "SHEL", "name": "Shell plc", "code": "SHEL", "fno": "false", "funda": "true", "scId": "49", "ecId": "2257", "ccId": "UK", "label": "SHEL - Shell plc - Energy - UK"
+				},
+				{
+					"id": "ULVR", "name": "Unilever PLC", "code": "ULVR", "fno": "false", "funda": "true", "scId": "70", "ecId": "2424", "ccId": "UK", "label": "ULVR - Unilever PLC - Consumer Defensive - UK"
+				},
+				{
+					"id": "RIO", "name": "Rio Tinto PLC", "code": "RIO", "fno": "false", "funda": "true", "scId": "4", "ecId": "2172", "ccId": "UK", "label": "RIO - Rio Tinto PLC - Basic Materials - UK"
+				},
+				{
+					"id": "BP", "name": "BP PLC", "code": "BP", "fno": "false", "funda": "true", "scId": "49", "ecId": "1298", "ccId": "UK", "label": "BP - BP PLC - Energy - UK"
+				}, {
+					"id": "GSK", "name": "GlaxoSmithKline PLC", "code": "GSK", "fno": "false", "funda": "true", "scId": "47", "ecId": "1670", "ccId": "UK", "label": "GSK - GlaxoSmithKline PLC - Healthcare - UK"
+				}
+			];
+		}
+		if (jsu.isCaContext()) {
+			EQ_DEF_DATA = [
+				{
+					"id": "RY", "name": "Royal Bank of Canada", "code": "RY", "fno": "false", "funda": "true", "scId": "37", "ecId": "814", "ccId": "CA", "label": "RY - Royal Bank of Canada - Financial Services - CANADA"
+				},
+				{
+					"id": "SHOP", "name": "Shopify Inc", "code": "SHOP", "fno": "false", "funda": "true", "scId": "48", "ecId": "839", "ccId": "CA", "label": "SHOP - Shopify Inc - Technology - CANADA"
+				},
+				{
+					"id": "TD", "name": "Toronto Dominion Bank", "code": "TD", "fno": "false", "funda": "true", "scId": "37", "ecId": "898", "ccId": "CA", "label": "TD - Toronto Dominion Bank - Financial Services - CANADA"
+				},
+				{
+					"id": "ENB", "name": "Enbridge Inc", "code": "ENB", "fno": "false", "funda": "true", "scId": "58", "ecId": "362", "ccId": "CA", "label": "ENB - Enbridge Inc - Energy - CANADA"
+				},
+				{
+					"id": "BN", "name": "Brookfield Corporation", "code": "BN", "fno": "false", "funda": "true", "scId": "2", "ecId": "134", "ccId": "CA", "label": "BN - Brookfield Corporation - Financial Services - CANADA"
+				},
+				{
+					"id": "BMO", "name": "Bank of Montreal", "code": "BMO", "fno": "false", "funda": "true", "scId": "37", "ecId": "130", "ccId": "CA", "label": "BMO - Bank of Montreal - Financial Services - CANADA"
+				}
 
+			];
+		}
+		if (jsu.isAuContext()) {
+			EQ_DEF_DATA = [
+				{
+					"id": "CBA", "name": "Commonwealth Bank Of Australia", "code": "CBA", "fno": "false", "funda": "true", "scId": "76", "ecId": "325", "ccId": "AU", "label": "CBA - Commonwealth Bank Of Australia - Financial Services - AUSTRALIA"
+				},
+				{
+					"id": "BHP", "name": "BHP Group Limited", "code": "BHP", "fno": "false", "funda": "true", "scId": "1", "ecId": "250", "ccId": "AU", "label": "BHP - BHP Group Limited - Basic Materials - AUSTRALIA"
+				},
+				{
+					"id": "WBC", "name": "Westpac Banking Corp", "code": "WBC", "fno": "false", "funda": "true", "scId": "76", "ecId": "1539", "ccId": "AU", "label": "WBC - Westpac Banking Corp - Financial Services - AUSTRALIA"
+				},
+				{
+					"id": "NAB", "name": "National Australia Bank Ltd", "code": "NAB", "fno": "false", "funda": "true", "scId": "76", "ecId": "1014", "ccId": "AU", "label": "NAB - National Australia Bank Ltd - Financial Services - AUSTRALIA"
+				},
+				{
+					"id": "ANZ", "name": "Australia and New Zealand Banking Group Ltd", "code": "ANZ", "fno": "false", "funda": "true", "scId": "76", "ecId": "129", "ccId": "AU", "label": "ANZ - Australia and New Zealand Banking Group Ltd - Financial Services - AUSTRALIA"
+				},
+				{
+					"id": "CSL", "name": "CSL Ltd", "code": "CSL", "fno": "false", "funda": "true", "scId": "4", "ecId": "418", "ccId": "AU", "label": "CSL - CSL Ltd - Healthcare - AUSTRALIA"
+				}
+
+			];
+		}
+	}
 
 	let SCR_DEF_DATA = [
 		{
-			"id": "https://www.tsrbt1.com/rt/Screener/Technical/SMAScreener/SMABullishCrossover/50SMACrossAbv200",
-			uri: "Screener/Technical/SMAScreener/SMABullishCrossover/50SMACrossAbv200",
-			"label": "50 SMA Cross Above 200"
-		},
-		{
-			"id": "https://www.tsrbt1.com/rt//Screener/Technical/OverboughtSold/RSISmooth/RSISmoothOSForMoreThan3Days",
 			uri: "Screener/Technical/OverboughtSold/RSISmooth/RSISmoothOSForMoreThan3Days",
 			"label": "RSI Oversold For More Than 3 Days"
 		},
 		{
-			"id": "https://www.tsrbt1.com/rt//Screener/Candlestick/BullishScreener/Bullish2Day/BullishEngulfing",
 			uri: "Screener/Candlestick/BullishScreener/Bullish2Day/BullishEngulfing",
 			"label": "Bullish Engulfing"
 		},
 		{
-			"id": "https://www.tsrbt1.com/rt//Screener/ChartPatterns/PopularChartPatterns/BullishPatterns/DoubleBottomPotential",
 			uri: "Screener/ChartPatterns/PopularChartPatterns/BullishPatterns/DoubleBottomPotential",
 			"label": "Double Bottom (Potential)"
 		},
 		{
-			"id": "https://www.tsrbt1.com/rt/Screener/ComboScreener/PriceActionScreeners/OpenRangeStrategiesScreeners",
-			uri: "Screener/ComboScreener/PriceActionScreeners/OpenRangeStrategiesScreeners",
-			"label": "Open Range Breakout"
-		},
-		// {
-		// 	"id": "https://www.tsrbt1.com/rt//Screener/ExpertScreener/PriceActionBased/Breakout",
-		// 	uri: "Screener/ExpertScreener/PriceActionBased/Breakout",
-		// 	"label": "Breakout Screener"
-		// },
-		{
-			"id": "https://www.tsrbt1.com/rt//Screener/ComboScreener/PriceActionScreeners/DemandZoneScreeners",
 			uri: "Screener/ComboScreener/PriceActionScreeners/DemandZoneScreeners",
 			"label": "Demand  Zone Screeners"
 		}
 
 	]
 
+	if (!jsu.isMigContext()) {
+		SCR_DEF_DATA.push(
+
+			{
+				uri: "Screener/Technical/SMAScreener/SMABullishCrossover/50SMACrossAbv200",
+				"label": "50 SMA Cross Above 200"
+			},
+			{
+				uri: "Screener/ComboScreener/PriceActionScreeners/OpenRangeStrategiesScreeners",
+				"label": "Open Range Breakout"
+			},
+		)
+	}
+	else {
+		SCR_DEF_DATA.push(
+			{
+				uri: "Screener/MovingAverage/SMAScreener/SMABullishCrossover/50SMACrossAbv200/Daily",
+				label: "50 SMA Cross Above 200"
+			},
+			{
+				uri: "Screener/HeikinAshi/HeikinAshiScreener/BullishHeikinAshi/BullishInitiation/Daily",
+				"label": "Heikin Ashi"
+			},
+		)
+	}
 
 
 
-
-	let EQ_SEARCH = { id: "equity", label: "Stock", inputPlaceholder: "Search a Stock", subCat: EQUITY_SUB_CAT, defData: EQ_DEF_DATA };
+	let EQ_SEARCH = { id: "equity", label: "Stock", inputPlaceholder: "Search a Stock", defData: EQ_DEF_DATA, subCat: EQUITY_SUB_CAT };
 
 	let SCR_SEARCH = { id: "screener", label: "Screener", inputPlaceholder: "Search a Screener", defData: SCR_DEF_DATA, subCat: [] };
 
-	let CH_SEARCH = { id: "chart", label: "Chart", inputPlaceholder: "Chart", defData: EQ_DEF_DATA,  subCat: CHART_SUB_CAT };
+	let CH_SEARCH = { id: "chart", label: "Chart", inputPlaceholder: "Chart", defData: EQ_DEF_DATA, subCat: CHART_SUB_CAT };
 
 
 	let EQ_CHART_SEARCH = {
@@ -330,18 +459,20 @@ var miIsh = (function () {  // mi Intelli search Helper
 			searchMenu.push(jsu.cloneObj(CHART_COMP_EQ_SEARCH));
 			defaultSel = 'indCh';
 
-		}else if (option === 'eqCh'  ||  option === 'indCh' || option === 'compEqCh'){
+		} else if (option === 'eqCh' || option === 'indCh' || option === 'compEqCh') {
 			searchMenu.push(jsu.cloneObj(EQ_CHART_SEARCH));
 			searchMenu.push(jsu.cloneObj(CHART_INDI_SEARCH));
 			searchMenu.push(jsu.cloneObj(CHART_COMP_EQ_SEARCH));
 			// defaultSel = 'eqCh';
 		} else if (context === 'ScrFilter' || htmlU.divExist('csDiv')) {     // csDiv   
-			searchMenu.push(jsu.cloneObj(CH_SEARCH));
+			searchMenu.push(jsu.cloneObj(CH_SEARCH)); // CH_SEARCH is the charts option on home page
 			searchMenu.push(jsu.cloneObj(CS_FILTER));
 			defaultSel = 'addFilter';
 		} else {
 
-			searchMenu.push(jsu.cloneObj(CH_SEARCH));
+			if (!jsu.isMigContext())
+				searchMenu.push(jsu.cloneObj(CH_SEARCH)); // CH_SEARCH is the charts option on home page
+
 			var defPref = localStorage.getItem('SearchPref');
 
 			if (defPref == 'screener') {
@@ -381,8 +512,6 @@ var miIsh = (function () {  // mi Intelli search Helper
 		return searchMenu;
 	}
 
-
-
 	function getContext() {
 
 		let href = window.location.href;
@@ -403,6 +532,29 @@ var miIsh = (function () {  // mi Intelli search Helper
 
 	}
 
+	// "id": "AA","name": "Alcoa Corp","code": "AA",
+	// "fno": "false","funda": "true","scId": "103",
+	// "ecId": "2","ccId": "US","sector": "Basic Materials",
+	// "industry": "Aluminum","label": "AA - Alcoa Corp - Basic Materials - USA"
+
+
+	function getMigContext(ccId) {
+
+		if (jsu.isMigContext()) {
+			if (ccId === "US") {
+				return '/US/ai/';
+			} else if (ccId === "UK") {
+				return '/UK/ai/';
+			} else if (ccId === "CA") {
+				return '/CA/ai/';
+			} else if (ccId === "AU") {
+				return '/AU/ai/';
+			}
+		}
+		else {
+			return '';
+		}
+	}
 
 
 	function getSearchBoxHeaderHtml(option, tsrSearchBoxId, searchMenu) {
@@ -806,6 +958,9 @@ var miIsh = (function () {  // mi Intelli search Helper
 
 		gsm: getSearchMenu,
 		ism: initSearchMenu,
+
+		gmc: getMigContext,
+
 		sbh: getSearchBoxHeaderHtml,
 		sbbh: getSearchBoxBodyHtml,
 		psb: paintSearchBox,

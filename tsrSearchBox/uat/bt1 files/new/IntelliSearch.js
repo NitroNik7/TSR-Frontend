@@ -87,7 +87,6 @@ var miIs = (function () {  // chart init Params
 
                 searchForm += `</div>
                                     <div class="miUpdatesBox text-center w-100 mx-3">
-                                        ${miIsh.wub()}
                                     </div>
                                 </div>
                             </div>

@@ -241,27 +241,35 @@ var miIsc = (function () {  // my Ui Head
         let className = 'tsrSearchBox';
 
         for (let sheet of document.styleSheets) {
-            // console.log(sheet.type, sheet.cssRules, "\n\n\n");
             if (sheet.ownerNode && sheet.ownerNode.tagName === 'STYLE') {
                 try {
                     for (let rule of sheet.cssRules) {
                         if (rule.selectorText && rule.selectorText.includes(`.${className}`)) {
+                            console.log(rule.selectorText, rule.style.cssText);
                             break;
 
                         }
-                    }
+                        // else {
+                        //     let style = document.createElement("style");
+                        //     style.innerHTML = tsr_search_box_css + `\n` + tsr_search_box_list_css + `\n` + tsr_search_box_media_query + `\n` + tsr_radio_btn_css;
 
+                        //     document.getElementsByTagName('head')[0].appendChild(style);
+                        //     break;
+
+                        // }
+                    }
+                    let style = document.createElement("style");
+                    style.innerHTML = tsr_search_box_css + `\n` + tsr_search_box_list_css + `\n` + tsr_search_box_media_query + `\n` + tsr_radio_btn_css;
+
+                    document.getElementsByTagName('head')[0].appendChild(style);
+                    break;
                 } catch (e) {
+
                     // Some stylesheets might be from different origins and not accessible
-                    console.warn('Cannot access stylesheet:', sheet.href);
+                    // console.warn('Cannot access stylesheet:', sheet.href);
                 }
                 break;
             }
-            let style = document.createElement("style");
-            style.innerHTML = tsr_search_box_css + `\n` + tsr_search_box_list_css + `\n` + tsr_search_box_media_query + `\n` + tsr_radio_btn_css;
-
-            document.getElementsByTagName('head')[0].appendChild(style);
-            break;
         }
     }
 

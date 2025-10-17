@@ -324,6 +324,8 @@ var miIs = (function () {  // chart init Params
 
                 miIsh.ots(searchCat, inputTextBoxId, tsrSearchBoxId);
 
+                console.log("file being used on bt1");
+
                 // Taken care in Radio with Actual Event ...
                 // attachEventListenersToRadioBtns();
 
