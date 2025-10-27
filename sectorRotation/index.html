@@ -378,18 +378,19 @@
                     <!-- Quick View End --> <!-- Content Wrapper Start -->
                     <div class="main-content">
                         <div>
-                            <h1 class="text-center">Sector Rotation</h1>
+                            <h2 class="text-center">Sector Rotation</h2>
 
-                            <hr style="margin:1px;height:1;padding:1px;color:#adb5bd;">
+                            <!-- <hr class="mx-auto" style="margin-bottom: 20px; height: 1px; padding: 1px;color: #0d6efd; width: 25%;"> -->
 
-                            <div id="controlPanel" class="row p-3">
+
+                            <div id="controlPanel" class="row container p-3 mx-auto">
 
                                 <div
-                                    class="col-12 col-md-4 py-3 d-flex justify-content-between justify-content-md-center">
-                                    <label for="type" class="me-3">
+                                    class="col-12 col-lg-3 py-3 d-flex justify-content-between justify-content-lg-center align-items-center">
+                                    <label for="type" class="me-3" style="font-size: 14px;">
                                         Type
                                     </label>
-                                    <select name="type" id="type">
+                                    <select class="form-select" style="width: max-content;" name="type" id="type">
                                         <option value="SectorialIndex">Sectorial Index</option>
                                         <option value="marketCap">By Market Cap</option>
                                         <option value="sectorIndustry">By Sector/Industry</option>
@@ -397,11 +398,11 @@
                                 </div>
 
                                 <div
-                                    class="col-12 col-md-4 py-3 d-flex justify-content-between justify-content-md-center">
-                                    <label for="type" class="me-3">
+                                    class="col-12 col-lg-3 py-3 d-flex justify-content-between justify-content-lg-center align-items-center">
+                                    <label for="type" class="me-3" style="font-size: 14px;">
                                         Compare with
                                     </label>
-                                    <select name="type" id="type">
+                                    <select class="form-select" style="width: max-content;" name="type" id="type">
                                         <option value="SectorialIndex">Bank Nifty</option>
                                         <option value="marketCap">Nifty IT</option>
                                         <option value="sectorIndustry">Nifty Pharma</option>
@@ -409,11 +410,11 @@
                                 </div>
 
                                 <div
-                                    class="col-12 col-md-4 py-3 d-flex justify-content-between justify-content-md-center">
-                                    <label for="type" class="me-3">
+                                    class="col-12 col-lg-3 py-3 d-flex justify-content-between justify-content-lg-center  align-items-center">
+                                    <label for="type" class="me-3" style="font-size: 14px;">
                                         Duration
                                     </label>
-                                    <select name="type" id="type">
+                                    <select class="form-select" style="width: max-content;" name="type" id="type">
 
                                         <option value="SectorialIndex">1 Day</option>
                                         <option value="marketCap">1 Week</option>
@@ -422,17 +423,28 @@
                                     </select>
                                 </div>
 
-                            </div>
+                                <div
+                                    class="col-12 col-lg-3 py-3 d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary" style="font-size: 16px;">
+                                        <i class="fas fa-play"></i>
+                                        &nbsp; Run
+                                    </button>
+                                </div>
 
+
+                            </div>
+                            <!-- 
                             <div class="d-flex justify-content-center">
                                 <button type="button" class="btn btn-outline-dark"
-                                    style="font-size: 16px;">Analyze</button>
-                            </div>
+                                    style="font-size: 16px;">
+                                    <i class="fas fa-play"></i>
+                                    &nbsp; Run
+                                </button>
+                            </div> -->
 
                         </div>
-                        <hr style="margin-bottom:20px;height:1;padding:1px;color: #0d6efd;">
-
-                        <div class="card shadow-sm">
+                        <hr>
+                        <!-- <div class="card shadow-sm">
                             <div class="card-header text-center">
                                 <h5 class="card-title">NIFTY</h5>
                             </div>
@@ -522,9 +534,9 @@
                                                     <span><span style="color:#008B00;;  ">Bullish</span></span>
                                                 </div>
 
-                                                <!-- <div class="d-flex justify-content-center" id="strRank"><span
+                                                <div class="d-flex justify-content-center" id="strRank"><span
                                                         style="font-size: 12x;  "> WHIRLPOOL is more bullish than 85.50 % of
-                                                        stocks </span></div> -->
+                                                        stocks </span></div>
 
 
 
@@ -543,16 +555,136 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <br>
 
+                            <div class="card shadow">
+                                <div class="card-header text-center bg-primary text-white">
+                                    <h5 class="card-title">NIFTY</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div
+                                            class="col-12 col-md-4 d-flex justify-content-between flex-md-column align-items-center">
+                                            <h6>
+                                                Day Change
+                                            </h6>
+
+                                            <p style="color: green;">
+                                                2%
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            class="col-12 col-md-4 d-flex justify-content-between  flex-md-column align-items-center">
+                                            <h6>
+                                                Period Change
+                                            </h6>
+
+                                            <p style="color: green;">
+                                                5%
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            class="col-12 col-md-4 d-flex justify-content-between  flex-md-column align-items-center">
+                                            <h6>
+                                                Market Cap Change
+                                            </h6>
+
+                                            <p style="color: red;">
+                                                2%
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <hr>    
+
+                                    <div class="row align-items-center">
+                                        <div class="col-12 col-md-6">
+                                            <h6 style="text-align:center; margin-bottom: 10px; font-weight: 600;">TSR
+                                                Strength Index</h6>
+                                            <div class="row tsr_strength_svg_container">
+                                                <div id="trendStrengthDiv" class="d-flex justify-content-center">
+
+                                                    <svg width="250" height="43">
+                                                        <defs>
+                                                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%"
+                                                                y2="0%" spreadMethod="pad">
+                                                                <stop offset="0%" stop-color="#ff0000" stop-opacity="1">
+                                                                </stop>
+                                                                <stop offset="50%" stop-color="#e6e600"
+                                                                    stop-opacity="1">
+                                                                </stop>
+                                                                <stop offset="100%" stop-color="#009900"
+                                                                    stop-opacity="1">
+                                                                </stop>
+                                                            </linearGradient>
+                                                        </defs>
+                                                        <g><text x="180" y="10" text-anchor="end"
+                                                                style="font-size: 12px; font-weight: bold;">Technical
+                                                                Strength
+                                                                Intraday</text></g>
+                                                        <g>
+                                                            <rect x="0" y="15" width="240" height="8"
+                                                                style="fill: url(&quot;#gradient&quot;);" rx="4"></rect>
+                                                        </g>
+                                                        <g>
+                                                            <line x1="158.88" y1="15" x2="158.88" y2="23"
+                                                                stroke-width="1" stroke-dasharray="2, 2"
+                                                                stroke="black "></line>
+                                                        </g>
+                                                        <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000"
+                                                            stroke="#000" stroke-width="1"
+                                                            transform="translate(158.88,25)">
+                                                        </path>
+                                                        <g><text x="10" y="34"
+                                                                style="font-size: 10px; font-weight: bold;">Sell</text>
+                                                        </g>
+                                                        <g><text x="230" y="34" text-anchor="end"
+                                                                style="font-size: 10px; font-weight: bold;">Buy</text>
+                                                        </g>
+                                                        <g><text x="134" y="34" text-anchor="end"
+                                                                style="font-size: 9px; font-weight: bold;">66.20%</text>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+
+                                                <div class="tsr_strength_values_container">
+                                                    <div class="d-flex justify-content-around" id="strSig">Signal
+                                                        <span><span style="color:#008B00;;  ">Bullish</span></span>
+                                                    </div>
+
+                                                    <!-- <div class="d-flex justify-content-center" id="strRank"><span
+                                                        style="font-size: 12x;  "> WHIRLPOOL is more bullish than 85.50 % of
+                                                        stocks </span></div> -->
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 d-flex justify-content-between flex-md-column align-items-center"
+                                            style="height: max-content;">
+                                            <h6>
+                                                Trending Tick
+                                            </h6>
+
+                                            <p>
+                                                1 Week
+                                            </p>
+                                        </div>
+                                    </div>
+
+                        </div>
+
                         <link rel="stylesheet" href="https://www.tsrbt1.com/static/tp/owl/owl.carousel.all.css">
                         <script src="https://www.tsrbt1.com/static/tp/owl/owl.carousel.min.js"></script>
                         <link rel="stylesheet" href="https://www.tsrbt1.com/static/tp/owl/owl.carousel.all.css">
                         <script src="https://www.tsrbt1.com/static/tp/owl/owl.carousel.min.js"></script>
 
-                        <div class="owl-carousel owl-theme priceGainerCarCss owl-loaded owl-drag">
+                        <!-- <div class="owl-carousel owl-theme priceGainerCarCss owl-loaded owl-drag">
                             <div class="owl-stage-outer">
                                 <div class="owl-stage">
 
@@ -626,9 +758,9 @@
 
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
 
-                                    <div class="owl-item" style="margin-right: 10px;">
+                        <!-- <div class="owl-item" style="margin-right: 10px;">
                                         <div class="item p-2">
                                             <div class="card shadow-sm">
 
@@ -841,7 +973,6 @@
                                         </div>
                                     </div>
 
-                                    
                                     <div class="owl-item" style="margin-right: 10px;">
                                         <div class="item p-2">
                                             <div class="card shadow-sm">
@@ -910,11 +1041,11 @@
 
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
 
-                                </div>
-                            </div>
-                            <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><i
+                        <!-- </div> -->
+                        <!-- </div> -->
+                        <!-- <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><i
                                         class="fa fa-chevron-left"></i></button><button type="button"
                                     role="presentation" class="owl-next"><i class="fa fa-chevron-right"></i></button>
                             </div>
@@ -922,15 +1053,15 @@
                                     class="owl-dot active"><span></span></button><button role="button"
                                     class="owl-dot"><span></span></button><button role="button"
                                     class="owl-dot"><span></span></button><button role="button"
-                                    class="owl-dot"><span></span></button></div>
-                        </div>
-                        <!-- Content Wrapper End -->
-
-
-
-
+                                    class="owl-dot"><span></span></button></div>  -->
                     </div>
-                </div> <!-- NG APP  align='center'-->
+                    <!-- Content Wrapper End -->
+
+
+
+
+                </div>
+            </div> <!-- NG APP  align='center'-->
 
 
 
