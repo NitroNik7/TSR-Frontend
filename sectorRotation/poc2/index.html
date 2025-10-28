@@ -633,7 +633,7 @@
                                         </div>
                                     </a>
                                 </div>
-                               <div class="item p-2" align="center">
+                                <div class="item p-2" align="center">
                                     <a href="#two" style="color:#9E9E9E">
                                         <div class="card shadow-lg p-2">
                                             <h6 class="fw-bold " style="margin-bottom:.1rem; ">NIFTY MEDIA</h6>
@@ -2348,6 +2348,24 @@
 
                         <script>
 
+                            //  function dragCallback(event) {
+                            //         console.log(event)
+                            //         event.preventDefault();
+                            //         event.stopImmediatePropagation();
+                            //     }
+
+                            // function dragCallback(event) {
+                            //     console.log(event.target);
+                            //     if(event.target.classList.contains("periodicReturns")){
+
+                            //         console.log(event.currentTarget, event.currentTarget.ondrag)
+
+                            //         event.preventDefault();
+                            //         event.stopPropagation();
+                            //     }
+                            // }
+
+
                             let sectorNav = {
                                 loop: false,
                                 margin: 10,
@@ -2359,7 +2377,8 @@
                                 margin: 10,
                                 autoplay: true,
                                 dots: true,
-                                nav: false
+                                nav: false,
+                                // onDrag: dragCallback,
                             };
 
                             var technicals = {
@@ -2393,14 +2412,44 @@
                                         }
                                     },
                                     URLhashListener: true,
-                                    startPosition: 'URLHash'
+                                    startPosition: 'URLHash',
 
                                     // navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"]
 
                                 });
                                 $(".periodicReturns").owlCarousel(periodicReturns);
+
+                                $(".periodicReturns").on('mousedown', '.owl-stage', function (event) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+
+                                });
+
+                                $(".periodicReturns").on('touchstart', '.owl-stage', function (e) {
+                                    e.preventDefault();
+                                    event.stopPropagation();
+                                });
+
                                 $(".technicals").owlCarousel(technicals);
 
+                                $(".technicals").on('mousedown', '.owl-stage', function (event) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+
+                                });
+
+                                $(".technicals").on('touchstart', '.owl-stage', function (e) {
+                                    e.preventDefault();
+                                    event.stopPropagation();
+                                });
+
+
+
+                                // $(".periodicReturns").on('drag.owl.carousel', function (event) {
+                                //     console.log(event)
+                                //     event.preventDefault();
+                                //     event.stopPropagation();
+                                // });
 
                                 $('.owl-prev').click(function () {
                                     $(".sectorNav").trigger('prev.owl.carousel', [300]);
