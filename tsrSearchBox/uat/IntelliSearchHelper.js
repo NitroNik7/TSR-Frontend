@@ -465,13 +465,16 @@ var miIsh = (function () {  // mi Intelli search Helper
 			searchMenu.push(jsu.cloneObj(CHART_COMP_EQ_SEARCH));
 			// defaultSel = 'eqCh';
 		} else if (context === 'ScrFilter' || htmlU.divExist('csDiv')) {     // csDiv   
-			searchMenu.push(jsu.cloneObj(CH_SEARCH)); // CH_SEARCH is the charts option on home page
+			if (!jsu.isMigContext()) {
+				searchMenu.push(jsu.cloneObj(CH_SEARCH)); // No CH_SEARCH in AIO for now
+			}
 			searchMenu.push(jsu.cloneObj(CS_FILTER));
 			defaultSel = 'addFilter';
 		} else {
 
-			if (!jsu.isMigContext())
-				searchMenu.push(jsu.cloneObj(CH_SEARCH)); // CH_SEARCH is the charts option on home page
+			if (!jsu.isMigContext()) {
+				searchMenu.push(jsu.cloneObj(CH_SEARCH)); // No CH_SEARCH in AIO for now
+			}
 
 			var defPref = localStorage.getItem('SearchPref');
 
@@ -516,7 +519,11 @@ var miIsh = (function () {  // mi Intelli search Helper
 
 		let href = window.location.href;
 
-		if ((href.indexOf('/InteractiveCharts') != -1)) {  // To work AIO
+		if ((href.indexOf('/InteractiveCharts') != -1)) {
+			return 'Chart';
+		}
+
+		if (jsu.isMigContext() && href.indexOf('/StockTechnicalCharts') != -1) { // For AIO
 			return 'Chart';
 		}
 
@@ -526,8 +533,12 @@ var miIsh = (function () {  // mi Intelli search Helper
 		}
 
 
-		if ((href.indexOf('/rt/CustomStockScreener') != -1)) { // To work AIO
+		if ((href.indexOf('/rt/CustomStockScreener') != -1)) {
 			return 'ScrFilter';
+		}
+
+		if (jsu.isMigContext() && href.indexOf('/AIOScreener') != -1) { // For AIO
+			return 'ScrFilter'
 		}
 
 	}
@@ -670,7 +681,7 @@ var miIsh = (function () {  // mi Intelli search Helper
 
 		html += `<div class="d-flex">`;
 
-		html += `   <input id="${inputTextBoxId}" type="text" class="form-control ui-autocomplete-input mx-2" placeholder="${searchCat.inputPlaceholder}" autocomplete="off" autofocus tabindex="0">`;
+		html += `   <input id="${inputTextBoxId}" type="text" class="form-control ui-autocomplete-input mx-2" placeholder="${searchCat.inputPlaceholder}" autocomplete="off" autofocus tabindex="0" oninput='miIs.fs(this.value)'>`;
 
 		html += `   <div id="${tsrSearchBoxId + "SelectWrapper"}" class="d-none d-md-flex"></div>`;
 		html += `</div>`;

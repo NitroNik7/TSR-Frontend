@@ -1,0 +1,2444 @@
+<html>
+
+<head>
+    <title>TSR - Technical Stock Screener, Charts, Fundamental, Live Alerts</title>
+    <meta name="description"
+        content="TSR - TopStockResearch is Indias leading Technical Stock Screener along with Fundamentals, Charts, Stock Strength Analyser, Pattern screener & live Alerts.">
+    <meta name="keywords"
+        content="TSR , TopStockResearch, Stock Screener, Technical Stock Screener, Fundamentals, Technical Analysis,  Nifty 50, Stock Screener India, Custom Screener, ChartPatterns, CandleStick ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href='https://www.topstockresearch.com/static/icon/TopStockResearch.ico' type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/aioCmnV0.0.0.9.css' />
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/responsive.css'>
+
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/mytsr_struct.css'>
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/css/v3/MintCommon.css'>
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/my.css'>
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/css/v3/MintControls.css'>
+
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="https://www.topstockresearch.com/static/tp/owl/owl.carousel.all.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='//code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/mint_cn_minV0.7.5.179.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/mintHtmlUtil.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintJsUtils.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintStkCommon.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintCommonValidator.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/mintCommonCss.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/utils.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintConstants.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/IndiField.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintTechIndiConstants.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintFundaIndiConstants.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintScrUtils.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/mintCore.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/miScreenerUtils.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/ActivityTracker.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/alertutils.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/DataInitializer.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/mintJsAds.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/AlertNgDialog.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/AlertNgUtils.js"></script>
+    <!-- <script src="https://www.topstockresearch.com/static/js/tsr/mipu/Aler<a href="">TCS</a>s.js"></script> -->
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/AlertSimpleStock.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipl   /mintJsAds.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintDataTable.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/utils.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/StockBasketUtils.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/migUi.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/aioIcons.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/search.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/IntelliSearch.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/IntelliSearchHelper.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/MiSearchCss.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/aio_cmnV0.0.0.43.js"></script>
+</head><!-- Space for GA Tag --><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10926652708"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-10926652708');
+</script>
+<style>
+    .dummyCss {
+        position: relative;
+        display: inline-block;
+    }
+</style>
+<script>   var userProf = { status: 'notSignedIn' };  </script>
+
+<body class="scrollable">
+    <div id="mainController">
+
+        <div style="display: none;">
+            <select class='selectpicker' id='userMkt' onchange="javascript:marketOnChange();">
+                <option value="IN" selected="selected" label="India">India</option>
+            </select>
+        </div>
+
+
+        <div class="app tsrsn-folded">
+            <div class="layout"><!--                <div id='dynHead'></div>-->
+                <div class="tsrhdr navbar">
+                    <div class="tsrhdr-container">
+                        <div class="nav-logo" id='navLogoDiv'>
+                            <a href="javascript:void(0);" class="tsrsn-fold-toggler" title='TSR (TopStockResearch.com)'>
+                                <div class="logo logo-dark"
+                                    style="background-image: url('https://www.topstockresearch.com/static/v21/img/tsr/TsrLogo.png')">
+                                </div>
+                            </a>
+                        </div>
+                        <div id='dynHead'></div>
+                    </div>
+                </div>
+                <!-- Header End-->
+                <div class="tsrsn expand-lg">
+                    <div class="tsrsn-inner">
+                        <div id="sideNavBarDiv">
+                            <ul class="tsrsn-menu scrollable">
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.topstockresearch.com/rt/Home'>
+                                        <span class='icon-holder' id='homeSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Home</span></a></li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='msSbDiv' aria-hidden='true'> </span> <span class='title'>Market
+                                            Screener</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener'>Market
+                                                Overview</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/PriceVolume'>Price
+                                                /
+                                                Volume</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HighsLows'>Highs
+                                                /
+                                                Lows</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/Returns'>Returns</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/RelativeStrength'>Relative
+                                                Price Strength</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/IndexAnalysis'>Index
+                                                Analysis</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/SectorAnalysis'>Sector
+                                                Analysis</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HeatMap'>Heat
+                                                Map</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/AdvanceDecline'>Advance
+                                                /Decline</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener'>Intraday
+                                                Strategies</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='strSbDiv' aria-hidden='true'> </span> <span class='title'>TSR Strength
+                                            Index</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                                        </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/TechnicalStrength'>Technical
+                                                Strength</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/FinancialStrength'>Financial
+                                                Strength</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/EODBetaVolatile'>EOD
+                                                Beta Volatile</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='csSbDiv' aria-hidden='true'> </span> <span class='title'>Candlestick
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='techSbDiv' aria-hidden='true'> </span> <span class='title'>Technical
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/OHLCScreeners'>OHLC
+                                                Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/OverboughtSold'>Overbought/Sold</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/Overlays'>Overlays</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/TrendIndicator'>Trend
+                                                Indicator</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/VolumeBasedIndicator'>Volume
+                                                Based Indicator</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/SMAScreener'>SMA
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/EMAScreener'>EMA
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/WMAScreener'>WMA
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/VwapScreener'>VWAP
+                                                Screener</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/PivotPoint'>Pivot
+                                                Point</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/FibonacciScreener'>Fibonacci
+                                                Screener</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='cpSbDiv' aria-hidden='true'> </span> <span class='title'>Chart
+                                            Patterns</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/PopularChartPatterns'>Popular
+                                                Chart Patterns</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Triangle'>Triangle</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Channel'>Channel</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Trendlines'>Trendlines</a>
+                                        </li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/NRWR'>NR
+                                                / WR</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='fundaSbDiv' aria-hidden='true'> </span> <span class='title'>Financial
+                                            Screener</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/FinHighlight'>Financial
+                                                Highlight</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/GuruRatios'>Guru
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/ValuationRatios'>Valuation
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/ProfitabilityRatios'>Profitability
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/SolvencyRatios'>Solvency
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/EfficiencyRatios'>Efficiency
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/IncStatGrowthYr'>Income
+                                                Statment Growth (Yr)</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/BalSheetGrowthYr'>Balance
+                                                Sheet Growth (Yr)</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/CashFlowStatGrowthYr'>Cash
+                                                Flow Stat Growth (Yr)</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='comboSbDiv' aria-hidden='true'> </span> <span class='title'>Combo
+                                            Screener </span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/PriceActionScreeners'>Price
+                                                Action Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish
+                                                Technical Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish
+                                                Technical Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/FundamentalScreener'>Fundamental
+                                                Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/MovingAverageScreeners'>Moving
+                                                Average Screeners</a></li>
+                                    </ul>
+                                </li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.topstockresearch.com/rt/CustomStockScreener.tsr'> <span
+                                            class='icon-holder' id='diysSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Custom Screener</span></a></li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='expsSbDiv' aria-hidden='true'> </span> <span class='title'>Expert
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/PriceActionBased'>Price
+                                                Action Strategies</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/TechIndiBased'>Technical
+                                                Indicator Strategies</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/MovingAverageStrategies'>Moving
+                                                Average Strategies</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/BTSTStrategies'>BTST
+                                                Strategies</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/BreakoutStrategies'>Breakout
+                                                Strategies</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/SwingTradingStrategies'>Swing
+                                                Trading Strategies</a></li>
+                                    </ul>
+                                </li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.topstockresearch.com/rt/InteractiveCharts.tsr'> <span
+                                            class='icon-holder' id='<a href="">TCS</a>bDiv' aria-hidden='true'> </span>
+                                        <span class='title'>Technical Charts</span></a></li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.topstockresearch.com/my/TsrPlans/'> <span class='icon-holder'
+                                            id='subsSbDiv' aria-hidden='true'> </span> <span class='title'>Premium
+                                            Plans</span></a></li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='fnoSbDiv' aria-hidden='true'> </span> <span class='title'>Futures And
+                                            Options</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures'>Futures
+                                                Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/CallOptions'>Call
+                                                Option Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutOptions'>Put
+                                                Option Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutCallRatio'>PCR
+                                                Screeners</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='tutSbDiv' aria-hidden='true'> </span> <span class='title'>Learn
+                                        </span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                                        </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://tutorials.topstockresearch.com'>Tutorials</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Ebooks/CandlestickPart1'>E-Books</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <script>var mcat = 'homeSb';</script> <!-- Page Container Start -->
+                <div class="page-container"> <!-- Quick View Start -->
+
+
+                    <div class="tsrqv1" id='helpNav'>
+                        <ul class="tsrqv-tabs nav nav-tabs nav-justified" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" data-bs-target="#myTsrLinkstab" role="tab"
+                                    data-bs-toggle="tab">
+                                    MyTSR Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myLinksTab" role="tab" data-bs-toggle="tab"
+                                    onClick='migUi.myLinks()'>
+                                    My Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myRecentActTab" role="tab"
+                                    data-bs-toggle="tab" onClick='migUi.myRecAct()'>
+                                    My Recent Activities
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content scrollable">
+                            <div id="myTsrLinksTab" role="tabpanel" class="tab-pane fade show active">
+                                <div id='myTsrLinks'> Loading</div>
+                            </div>
+                            <div id="myLinksTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myLinksDiv'> Loading ...</div>
+                            </div>
+                            <div id="myRecentActTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myRecentActivityDiv'> Loading ...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick View End --> <!-- Content Wrapper Start -->
+                    <div class="main-content">
+                        <div>
+                            <h2 class="text-center">
+                                Sector Rotation
+                                <i class="fas fa-sync"></i>
+                            </h2>
+
+                            <!-- <hr class="mx-auto" style="margin-bottom: 20px; height: 1px; padding: 1px;color: #0d6efd; width: 25%;"> -->
+
+
+                            <div id="controlPanel" class="row container p-3 mx-auto">
+
+                                <div
+                                    class="col-12 col-lg-3 py-3 d-flex justify-content-between justify-content-lg-center align-items-center">
+                                    <label for="type" class="me-3" style="font-size: 14px;">
+                                        Type
+                                    </label>
+                                    <select class="form-select" style="width: max-content;" name="type" id="type">
+                                        <option value="SectorialIndex">Sectorial Index</option>
+                                        <option value="marketCap">By Market Cap</option>
+                                        <option value="sectorIndustry">By Sector/Industry</option>
+                                    </select>
+                                </div>
+
+                                <div
+                                    class="col-12 col-lg-3 py-3 d-flex justify-content-between justify-content-lg-center align-items-center">
+                                    <label for="type" class="me-3" style="font-size: 14px;">
+                                        Compare with
+                                    </label>
+                                    <select class="form-select" style="width: max-content;" name="type" id="type">
+                                        <option value="SectorialIndex">Bank Nifty</option>
+                                        <option value="marketCap">Nifty IT</option>
+                                        <option value="sectorIndustry">Nifty Pharma</option>
+                                    </select>
+                                </div>
+
+                                <div
+                                    class="col-12 col-lg-3 py-3 d-flex justify-content-between justify-content-lg-center  align-items-center">
+                                    <label for="type" class="me-3" style="font-size: 14px;">
+                                        Duration
+                                    </label>
+                                    <select class="form-select" style="width: max-content;" name="type" id="type">
+
+                                        <option value="SectorialIndex">1 Day</option>
+                                        <option value="marketCap">1 Week</option>
+                                        <option value="sectorIndustry">1 Month</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="col-12 col-lg-3 py-3 d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary" style="font-size: 16px;">
+                                        <i class="fas fa-play"></i>
+                                        &nbsp; Run
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr>
+
+                        <br>
+
+                        <div class="card shadow">
+                            <div class="card-header text-center bg-primary text-white">
+                                <h5 class="card-title">NIFTY</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div
+                                        class="col-12 col-md-4 d-flex justify-content-between flex-md-column align-items-center">
+                                        <p>
+                                            Day Change
+                                        </p>
+
+                                        <h5 style="color: green;">
+                                            2%
+                                        </h5>
+                                    </div>
+
+                                    <div
+                                        class="col-12 col-md-4 d-flex justify-content-between  flex-md-column align-items-center">
+                                        <p>
+                                            Period Change
+                                        </p>
+
+                                        <h5 style="color: green;">
+                                            5%
+                                        </h5>
+                                    </div>
+
+                                    <div
+                                        class="col-12 col-md-4 d-flex justify-content-between  flex-md-column align-items-center">
+                                        <p>
+                                            Market Cap Change
+                                        </p>
+
+                                        <h5 style="color: green;">
+                                            2,034 Cr.
+                                        </h5>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="row align-items-center">
+                                    <div class="col-12 col-md-6">
+                                        <p style="text-align:center; margin-bottom: 10px; font-weight: 600;">TSR
+                                            Strength Index</p>
+                                        <div class="row tsr_strength_svg_container">
+                                            <div id="trendStrengthDiv" class="d-flex justify-content-center">
+
+                                                <svg width="250" height="43">
+                                                    <defs>
+                                                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%"
+                                                            spreadMethod="pad">
+                                                            <stop offset="0%" stop-color="#ff0000" stop-opacity="1">
+                                                            </stop>
+                                                            <stop offset="50%" stop-color="#e6e600" stop-opacity="1">
+                                                            </stop>
+                                                            <stop offset="100%" stop-color="#009900" stop-opacity="1">
+                                                            </stop>
+                                                        </linearGradient>
+                                                    </defs>
+                                                    <g><text x="180" y="10" text-anchor="end"
+                                                            style="font-size: 12px; font-weight: bold;">Technical
+                                                            Strength
+                                                            Intraday</text></g>
+                                                    <g>
+                                                        <rect x="0" y="15" width="240" height="8"
+                                                            style="fill: url(&quot;#gradient&quot;);" rx="4"></rect>
+                                                    </g>
+                                                    <g>
+                                                        <line x1="158.88" y1="15" x2="158.88" y2="23" stroke-width="1"
+                                                            stroke-dasharray="2, 2" stroke="black "></line>
+                                                    </g>
+                                                    <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000"
+                                                        stroke="#000" stroke-width="1" transform="translate(158.88,25)">
+                                                    </path>
+                                                    <g><text x="10" y="34"
+                                                            style="font-size: 10px; font-weight: bold;">Sell</text>
+                                                    </g>
+                                                    <g><text x="230" y="34" text-anchor="end"
+                                                            style="font-size: 10px; font-weight: bold;">Buy</text>
+                                                    </g>
+                                                    <g><text x="134" y="34" text-anchor="end"
+                                                            style="font-size: 9px; font-weight: bold;">66.20%</text>
+                                                    </g>
+                                                </svg>
+                                            </div>
+
+                                            <div class="tsr_strength_values_container">
+                                                <div class="d-flex justify-content-around" id="strSig">Signal
+                                                    <span><span style="color:#008B00;;  ">Bullish</span></span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 d-flex justify-content-between flex-md-column align-items-center"
+                                        style="height: max-content;">
+                                        <p>
+                                            Trending Tick
+                                        </p>
+
+                                        <a href="">
+                                            <h6>
+                                                1 Week
+                                            </h6>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- owl carousel -->
+                            <script src="https://www.topstockresearch.com/static/tp/owl/owl.carousel.min.js"></script>
+                        </div>
+
+                        <br>
+
+                        <!-- Sector section starts here -->
+
+
+                        <!-- <style>
+                            section .card:hover {
+                                transform: scale(1.25);
+                                transition: transform 0.3s ease;
+                                /* border: 1px solid ; */
+                            }
+                        </style> -->
+
+                        <div class="owl-nav d-flex align-items-center justify-content-center">
+                            <button type="button" role="presentation" class="owl-prev btn">
+                                <span aria-label="Previous">
+                                    <i class="fas fa-angle-left"></i>
+                                </span>
+                            </button>
+
+                            <div class="w-75 owl-carousel owl-theme sectorNav">
+                                <div class="item p-2" align="center">
+                                    <a href="#zero" style="color:#9E9E9E">
+                                        <div class="card shadow-lg p-2">
+                                            <h6 class="fw-bold " style="margin-bottom:.1rem; ">NIFTY IT</h6>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item p-2" align="center">
+                                    <a href="#one" style="color:#9E9E9E">
+                                        <div class="card shadow-lg p-2">
+                                            <h6 class="fw-bold " style="margin-bottom:.1rem; ">NIFTY AUTO</h6>
+                                        </div>
+                                    </a>
+                                </div>
+                               <div class="item p-2" align="center">
+                                    <a href="#two" style="color:#9E9E9E">
+                                        <div class="card shadow-lg p-2">
+                                            <h6 class="fw-bold " style="margin-bottom:.1rem; ">NIFTY MEDIA</h6>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item p-2" align="center">
+                                    <a href="#three" style="color:#9E9E9E">
+                                        <div class="card shadow-lg p-2">
+                                            <h6 class="fw-bold " style="margin-bottom:.1rem; ">NIFTY PHARMA</h6>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item p-2" align="center">
+                                    <a href="#four" style="color:#9E9E9E">
+                                        <div class="card shadow-lg p-2">
+                                            <h6 class="fw-bold " style="margin-bottom:.1rem; ">NIFTY FMCG</h6>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <button type="button" role="presentation" class="owl-next btn">
+                                <span aria-label="Next">
+                                    <i class="fas fa-angle-right"></i>
+                                </span>
+                            </button>
+                        </div>
+
+                        <br>
+
+
+                        <div class="owl-carousel owl-theme sectorCards">
+                            <div data-hash="zero">
+                                <div class="card shadow-sm">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5>
+                                            NIFTY IT
+                                        </h5>
+
+                                        <p style="margin: 0;">
+                                            Rank 1 of 14 Sectors
+                                        </p>
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- <div class="w-100"> -->
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Highlights</h6>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Relative Returns</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 15.73%</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Market Cap Change</h6>
+                                                    <b style="color: green; white-space: nowrap;">234 Cr.</b>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Up Times <i class="fas fa-long-arrow-alt-up"></i></h6>
+                                                    <b>5</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Down times <i class="fas fa-long-arrow-alt-down"></i></h6>
+                                                    <b>1</b>
+                                                </div>
+                                            </div><br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Price</h6>
+                                                    <b style="color: green; white-space: nowrap;"> 20,013.65</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Price Change %</h6>
+                                                    <b style="color: green; white-space: nowrap;"> 3.1 %</b>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Periodic Returns</h6>
+                                            </div>
+                                            <br>
+                                            <div class="owl-carousel owl-theme periodicReturns">
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1D</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 5.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1M</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 15.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>3M</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 1.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>6M</h6>
+                                                    <b style="color: red; white-space: nowrap;">+ 0.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1Y</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 5.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>5Y</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 2.73%</b>
+                                                </div>
+                                            </div>
+
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Analysis</h6>
+                                            </div>
+                                            <br>
+                                            <p>
+                                                The <b>NIFTY IT</b> Sector rose by <b style="color: green;">11.17%</b>
+                                                over the <b>quarter</b>, while the <b>Nifty 50</b> changed <b
+                                                    style="color: green">4.08%</b>
+                                            </p>
+
+                                        </section>
+
+
+                                        <section class="p-3">
+                                            <div>
+                                                <p style="text-align:center; margin-bottom: 10px; font-weight: 600;">TSR
+                                                    Strength Index</p>
+                                                <div class="row tsr_strength_svg_container">
+                                                    <div id="trendStrengthDiv" class="d-flex justify-content-center">
+
+                                                        <svg width="250" height="43">
+                                                            <defs>
+                                                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%"
+                                                                    y2="0%" spreadMethod="pad">
+                                                                    <stop offset="0%" stop-color="#ff0000"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                    <stop offset="50%" stop-color="#e6e600"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                    <stop offset="100%" stop-color="#009900"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                </linearGradient>
+                                                            </defs>
+                                                            <g><text x="180" y="10" text-anchor="end"
+                                                                    style="font-size: 12px; font-weight: bold;">Technical
+                                                                    Strength
+                                                                    Intraday</text></g>
+                                                            <g>
+                                                                <rect x="0" y="15" width="240" height="8"
+                                                                    style="fill: url(&quot;#gradient&quot;);" rx="4">
+                                                                </rect>
+                                                            </g>
+                                                            <g>
+                                                                <line x1="158.88" y1="15" x2="158.88" y2="23"
+                                                                    stroke-width="1" stroke-dasharray="2, 2"
+                                                                    stroke="black "></line>
+                                                            </g>
+                                                            <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000"
+                                                                stroke="#000" stroke-width="1"
+                                                                transform="translate(158.88,25)">
+                                                            </path>
+                                                            <g><text x="10" y="34"
+                                                                    style="font-size: 10px; font-weight: bold;">Sell</text>
+                                                            </g>
+                                                            <g><text x="230" y="34" text-anchor="end"
+                                                                    style="font-size: 10px; font-weight: bold;">Buy</text>
+                                                            </g>
+                                                            <g><text x="134" y="34" text-anchor="end"
+                                                                    style="font-size: 9px; font-weight: bold;">66.20%</text>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+
+                                                    <div class="tsr_strength_values_container">
+                                                        <div class="d-flex justify-content-around" id="strSig">Signal
+                                                            <span><span style="color:#008B00;;  ">Bullish</span></span>
+                                                        </div>
+                                                        <br>
+                                                        <div class="d-flex justify-content-center" id="strRank"><span
+                                                                style="font-size: 12x;  "> NIFTY IT is more bullish than
+                                                                85.50 % of
+                                                                stocks </span></div>
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <!-- </div> -->
+                                        <!-- <div class="w-100"> -->
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Technicals</h6>
+                                            </div>
+                                            <br>
+                                            <div class="owl-carousel owl-theme technicals">
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>RSI</h6>
+                                                    <b style="color: orange; white-space: nowrap;">58.18</b>
+                                                    <p style="color: orange;  margin: 0;">Neutral</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>MACD</h6>
+                                                    <b style="color: green; white-space: nowrap;">15.73</b>
+                                                    <p style="color: green;  margin: 0;">Bullish</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>ADX</h6>
+                                                    <b style="color: #ff9999; white-space: nowrap;"> 11.73</b>
+                                                    <p style="color: #ff9999;  margin: 0;">Mild Bearish</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>SMA</h6>
+                                                    <b style="color: black; white-space: nowrap;">0.73</b>
+                                                    <p style="color: black; margin: 0;"></p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>EMA</h6>
+                                                    <b style="color: #96C8A2; white-space: nowrap;">5.73</b>
+                                                    <p style="color: #96C8A2; margin: 0;">Mild Bullish</p>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Stocks</h6>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex flex-column justify-content-between">
+                                                <div class="w-100 p-3 text-center">
+                                                    <b>Out Performing</b>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">Returns</th>
+                                                                <th scope="col">Tech</th>
+                                                                <th scope="col">Chart</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><a href="">TCS</a></td>
+                                                                <td>13.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">WIPRO</a></td>
+                                                                <td>3.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">INFY</a></td>
+                                                                <td>0.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <a style="color: var(--primary-color,#006aff);" href="">
+                                                        Show more
+                                                    </a>
+                                                </div>
+                                                <div class="vr"></div>
+                                                <div class="w-100 p-3 text-center">
+                                                    <b>Under Performing</b>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">Returns</th>
+                                                                <th scope="col">Tech</th>
+                                                                <th scope="col">Chart</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><a href="">TCS</a></td>
+                                                                <td>13.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">WIPRO</a></td>
+                                                                <td>3.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">INFY</a></td>
+                                                                <td>0.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <a style="color: var(--primary-color,#006aff);" href="">
+                                                        Show more
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <!-- </div> -->
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div data-hash="one">
+                                <div class="card shadow-sm">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+
+                                        <h5>
+                                            NIFTY AUTO
+                                        </h5>
+
+                                        <p style="margin: 0;">
+                                            Rank 1 of 14 Sectors
+                                        </p>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <!-- <div class="w-100"> -->
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Highlights</h6>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Relative Returns</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 15.73%</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Market Cap Change</h6>
+                                                    <b style="color: green; white-space: nowrap;">234 Cr.</b>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Up Times <i class="fas fa-long-arrow-alt-up"></i></h6>
+                                                    <b>5</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Down times <i class="fas fa-long-arrow-alt-down"></i></h6>
+                                                    <b>1</b>
+                                                </div>
+                                            </div><br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Price</h6>
+                                                    <b style="color: green; white-space: nowrap;"> 20,013.65</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Price Change %</h6>
+                                                    <b style="color: green; white-space: nowrap;"> 3.1 %</b>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Periodic Returns</h6>
+                                            </div>
+                                            <br>
+                                            <div class="owl-carousel owl-theme periodicReturns">
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1D</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 5.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1M</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 15.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>3M</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 1.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>6M</h6>
+                                                    <b style="color: red; white-space: nowrap;">+ 0.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1Y</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 5.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>5Y</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 2.73%</b>
+                                                </div>
+                                            </div>
+
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Analysis</h6>
+                                            </div>
+                                            <br>
+                                            <p>
+                                                The <b>NIFTY IT</b> Sector rose by <b style="color: green;">11.17%</b>
+                                                over the <b>quarter</b>, while the <b>Nifty 50</b> changed <b
+                                                    style="color: green">4.08%</b>
+                                            </p>
+
+                                        </section>
+
+
+                                        <section class="p-3">
+                                            <div>
+                                                <p style="text-align:center; margin-bottom: 10px; font-weight: 600;">TSR
+                                                    Strength Index</p>
+                                                <div class="row tsr_strength_svg_container">
+                                                    <div id="trendStrengthDiv" class="d-flex justify-content-center">
+
+                                                        <svg width="250" height="43">
+                                                            <defs>
+                                                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%"
+                                                                    y2="0%" spreadMethod="pad">
+                                                                    <stop offset="0%" stop-color="#ff0000"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                    <stop offset="50%" stop-color="#e6e600"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                    <stop offset="100%" stop-color="#009900"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                </linearGradient>
+                                                            </defs>
+                                                            <g><text x="180" y="10" text-anchor="end"
+                                                                    style="font-size: 12px; font-weight: bold;">Technical
+                                                                    Strength
+                                                                    Intraday</text></g>
+                                                            <g>
+                                                                <rect x="0" y="15" width="240" height="8"
+                                                                    style="fill: url(&quot;#gradient&quot;);" rx="4">
+                                                                </rect>
+                                                            </g>
+                                                            <g>
+                                                                <line x1="158.88" y1="15" x2="158.88" y2="23"
+                                                                    stroke-width="1" stroke-dasharray="2, 2"
+                                                                    stroke="black "></line>
+                                                            </g>
+                                                            <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000"
+                                                                stroke="#000" stroke-width="1"
+                                                                transform="translate(158.88,25)">
+                                                            </path>
+                                                            <g><text x="10" y="34"
+                                                                    style="font-size: 10px; font-weight: bold;">Sell</text>
+                                                            </g>
+                                                            <g><text x="230" y="34" text-anchor="end"
+                                                                    style="font-size: 10px; font-weight: bold;">Buy</text>
+                                                            </g>
+                                                            <g><text x="134" y="34" text-anchor="end"
+                                                                    style="font-size: 9px; font-weight: bold;">66.20%</text>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+
+                                                    <div class="tsr_strength_values_container">
+                                                        <div class="d-flex justify-content-around" id="strSig">Signal
+                                                            <span><span style="color:#008B00;;  ">Bullish</span></span>
+                                                        </div>
+                                                        <br>
+                                                        <div class="d-flex justify-content-center" id="strRank"><span
+                                                                style="font-size: 12x;  "> NIFTY IT is more bullish than
+                                                                85.50 % of
+                                                                stocks </span></div>
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <!-- </div> -->
+                                        <!-- <div class="w-100"> -->
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Technicals</h6>
+                                            </div>
+                                            <br>
+                                            <div class="owl-carousel owl-theme technicals">
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>RSI</h6>
+                                                    <b style="color: orange; white-space: nowrap;">58.18</b>
+                                                    <p style="color: orange;  margin: 0;">Neutral</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>MACD</h6>
+                                                    <b style="color: green; white-space: nowrap;">15.73</b>
+                                                    <p style="color: green;  margin: 0;">Bullish</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>ADX</h6>
+                                                    <b style="color: #ff9999; white-space: nowrap;"> 11.73</b>
+                                                    <p style="color: #ff9999;  margin: 0;">Mild Bearish</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>SMA</h6>
+                                                    <b style="color: black; white-space: nowrap;">0.73</b>
+                                                    <p style="color: black; margin: 0;"></p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>EMA</h6>
+                                                    <b style="color: #96C8A2; white-space: nowrap;">5.73</b>
+                                                    <p style="color: #96C8A2; margin: 0;">Mild Bullish</p>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Stocks</h6>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex flex-column justify-content-between">
+                                                <div class="w-100 p-3 text-center">
+                                                    <b>Out Performing</b>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">Returns</th>
+                                                                <th scope="col">Tech</th>
+                                                                <th scope="col">Chart</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><a href="">TCS</a></td>
+                                                                <td>13.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">WIPRO</a></td>
+                                                                <td>3.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">INFY</a></td>
+                                                                <td>0.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <a style="color: var(--primary-color,#006aff);" href="">
+                                                        Show more
+                                                    </a>
+                                                </div>
+                                                <div class="vr"></div>
+                                                <div class="w-100 p-3 text-center">
+                                                    <b>Under Performing</b>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">Returns</th>
+                                                                <th scope="col">Tech</th>
+                                                                <th scope="col">Chart</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><a href="">TCS</a></td>
+                                                                <td>13.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">WIPRO</a></td>
+                                                                <td>3.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">INFY</a></td>
+                                                                <td>0.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <a style="color: var(--primary-color,#006aff);" href="">
+                                                        Show more
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <!-- </div> -->
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div data-hash="two">
+                                <div class="card shadow-sm">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+
+                                        <h5>
+                                            NIFTY MEDIA
+                                        </h5>
+
+                                        <p style="margin: 0;">
+                                            Rank 1 of 14 Sectors
+                                        </p>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <!-- <div class="w-100"> -->
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Highlights</h6>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Relative Returns</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 15.73%</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Market Cap Change</h6>
+                                                    <b style="color: green; white-space: nowrap;">234 Cr.</b>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Up Times <i class="fas fa-long-arrow-alt-up"></i></h6>
+                                                    <b>5</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Down times <i class="fas fa-long-arrow-alt-down"></i></h6>
+                                                    <b>1</b>
+                                                </div>
+                                            </div><br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Price</h6>
+                                                    <b style="color: green; white-space: nowrap;"> 20,013.65</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Price Change %</h6>
+                                                    <b style="color: green; white-space: nowrap;"> 3.1 %</b>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Periodic Returns</h6>
+                                            </div>
+                                            <br>
+                                            <div class="owl-carousel owl-theme periodicReturns">
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1D</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 5.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1M</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 15.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>3M</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 1.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>6M</h6>
+                                                    <b style="color: red; white-space: nowrap;">+ 0.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1Y</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 5.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>5Y</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 2.73%</b>
+                                                </div>
+                                            </div>
+
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Analysis</h6>
+                                            </div>
+                                            <br>
+                                            <p>
+                                                The <b>NIFTY IT</b> Sector rose by <b style="color: green;">11.17%</b>
+                                                over the <b>quarter</b>, while the <b>Nifty 50</b> changed <b
+                                                    style="color: green">4.08%</b>
+                                            </p>
+
+                                        </section>
+
+
+                                        <section class="p-3">
+                                            <div>
+                                                <p style="text-align:center; margin-bottom: 10px; font-weight: 600;">TSR
+                                                    Strength Index</p>
+                                                <div class="row tsr_strength_svg_container">
+                                                    <div id="trendStrengthDiv" class="d-flex justify-content-center">
+
+                                                        <svg width="250" height="43">
+                                                            <defs>
+                                                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%"
+                                                                    y2="0%" spreadMethod="pad">
+                                                                    <stop offset="0%" stop-color="#ff0000"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                    <stop offset="50%" stop-color="#e6e600"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                    <stop offset="100%" stop-color="#009900"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                </linearGradient>
+                                                            </defs>
+                                                            <g><text x="180" y="10" text-anchor="end"
+                                                                    style="font-size: 12px; font-weight: bold;">Technical
+                                                                    Strength
+                                                                    Intraday</text></g>
+                                                            <g>
+                                                                <rect x="0" y="15" width="240" height="8"
+                                                                    style="fill: url(&quot;#gradient&quot;);" rx="4">
+                                                                </rect>
+                                                            </g>
+                                                            <g>
+                                                                <line x1="158.88" y1="15" x2="158.88" y2="23"
+                                                                    stroke-width="1" stroke-dasharray="2, 2"
+                                                                    stroke="black "></line>
+                                                            </g>
+                                                            <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000"
+                                                                stroke="#000" stroke-width="1"
+                                                                transform="translate(158.88,25)">
+                                                            </path>
+                                                            <g><text x="10" y="34"
+                                                                    style="font-size: 10px; font-weight: bold;">Sell</text>
+                                                            </g>
+                                                            <g><text x="230" y="34" text-anchor="end"
+                                                                    style="font-size: 10px; font-weight: bold;">Buy</text>
+                                                            </g>
+                                                            <g><text x="134" y="34" text-anchor="end"
+                                                                    style="font-size: 9px; font-weight: bold;">66.20%</text>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+
+                                                    <div class="tsr_strength_values_container">
+                                                        <div class="d-flex justify-content-around" id="strSig">Signal
+                                                            <span><span style="color:#008B00;;  ">Bullish</span></span>
+                                                        </div>
+                                                        <br>
+                                                        <div class="d-flex justify-content-center" id="strRank"><span
+                                                                style="font-size: 12x;  "> NIFTY IT is more bullish than
+                                                                85.50 % of
+                                                                stocks </span></div>
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <!-- </div> -->
+                                        <!-- <div class="w-100"> -->
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Technicals</h6>
+                                            </div>
+                                            <br>
+                                            <div class="owl-carousel owl-theme technicals">
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>RSI</h6>
+                                                    <b style="color: orange; white-space: nowrap;">58.18</b>
+                                                    <p style="color: orange;  margin: 0;">Neutral</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>MACD</h6>
+                                                    <b style="color: green; white-space: nowrap;">15.73</b>
+                                                    <p style="color: green;  margin: 0;">Bullish</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>ADX</h6>
+                                                    <b style="color: #ff9999; white-space: nowrap;"> 11.73</b>
+                                                    <p style="color: #ff9999;  margin: 0;">Mild Bearish</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>SMA</h6>
+                                                    <b style="color: black; white-space: nowrap;">0.73</b>
+                                                    <p style="color: black; margin: 0;"></p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>EMA</h6>
+                                                    <b style="color: #96C8A2; white-space: nowrap;">5.73</b>
+                                                    <p style="color: #96C8A2; margin: 0;">Mild Bullish</p>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Stocks</h6>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex flex-column justify-content-between">
+                                                <div class="w-100 p-3 text-center">
+                                                    <b>Out Performing</b>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">Returns</th>
+                                                                <th scope="col">Tech</th>
+                                                                <th scope="col">Chart</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><a href="">TCS</a></td>
+                                                                <td>13.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">WIPRO</a></td>
+                                                                <td>3.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">INFY</a></td>
+                                                                <td>0.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <a style="color: var(--primary-color,#006aff);" href="">
+                                                        Show more
+                                                    </a>
+                                                </div>
+                                                <div class="vr"></div>
+                                                <div class="w-100 p-3 text-center">
+                                                    <b>Under Performing</b>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">Returns</th>
+                                                                <th scope="col">Tech</th>
+                                                                <th scope="col">Chart</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><a href="">TCS</a></td>
+                                                                <td>13.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">WIPRO</a></td>
+                                                                <td>3.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">INFY</a></td>
+                                                                <td>0.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <a style="color: var(--primary-color,#006aff);" href="">
+                                                        Show more
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <!-- </div> -->
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div data-hash="three">
+                                <div class="card shadow-sm">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+
+                                        <h5>
+                                            NIFTY PHARMA
+                                        </h5>
+
+                                        <p style="margin: 0;">
+                                            Rank 1 of 14 Sectors
+                                        </p>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <!-- <div class="w-100"> -->
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Highlights</h6>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Relative Returns</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 15.73%</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Market Cap Change</h6>
+                                                    <b style="color: green; white-space: nowrap;">234 Cr.</b>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Up Times <i class="fas fa-long-arrow-alt-up"></i></h6>
+                                                    <b>5</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Down times <i class="fas fa-long-arrow-alt-down"></i></h6>
+                                                    <b>1</b>
+                                                </div>
+                                            </div><br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Price</h6>
+                                                    <b style="color: green; white-space: nowrap;"> 20,013.65</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Price Change %</h6>
+                                                    <b style="color: green; white-space: nowrap;"> 3.1 %</b>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Periodic Returns</h6>
+                                            </div>
+                                            <br>
+                                            <div class="owl-carousel owl-theme periodicReturns">
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1D</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 5.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1M</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 15.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>3M</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 1.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>6M</h6>
+                                                    <b style="color: red; white-space: nowrap;">+ 0.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1Y</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 5.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>5Y</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 2.73%</b>
+                                                </div>
+                                            </div>
+
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Analysis</h6>
+                                            </div>
+                                            <br>
+                                            <p>
+                                                The <b>NIFTY IT</b> Sector rose by <b style="color: green;">11.17%</b>
+                                                over the <b>quarter</b>, while the <b>Nifty 50</b> changed <b
+                                                    style="color: green">4.08%</b>
+                                            </p>
+
+                                        </section>
+
+
+                                        <section class="p-3">
+                                            <div>
+                                                <p style="text-align:center; margin-bottom: 10px; font-weight: 600;">TSR
+                                                    Strength Index</p>
+                                                <div class="row tsr_strength_svg_container">
+                                                    <div id="trendStrengthDiv" class="d-flex justify-content-center">
+
+                                                        <svg width="250" height="43">
+                                                            <defs>
+                                                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%"
+                                                                    y2="0%" spreadMethod="pad">
+                                                                    <stop offset="0%" stop-color="#ff0000"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                    <stop offset="50%" stop-color="#e6e600"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                    <stop offset="100%" stop-color="#009900"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                </linearGradient>
+                                                            </defs>
+                                                            <g><text x="180" y="10" text-anchor="end"
+                                                                    style="font-size: 12px; font-weight: bold;">Technical
+                                                                    Strength
+                                                                    Intraday</text></g>
+                                                            <g>
+                                                                <rect x="0" y="15" width="240" height="8"
+                                                                    style="fill: url(&quot;#gradient&quot;);" rx="4">
+                                                                </rect>
+                                                            </g>
+                                                            <g>
+                                                                <line x1="158.88" y1="15" x2="158.88" y2="23"
+                                                                    stroke-width="1" stroke-dasharray="2, 2"
+                                                                    stroke="black "></line>
+                                                            </g>
+                                                            <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000"
+                                                                stroke="#000" stroke-width="1"
+                                                                transform="translate(158.88,25)">
+                                                            </path>
+                                                            <g><text x="10" y="34"
+                                                                    style="font-size: 10px; font-weight: bold;">Sell</text>
+                                                            </g>
+                                                            <g><text x="230" y="34" text-anchor="end"
+                                                                    style="font-size: 10px; font-weight: bold;">Buy</text>
+                                                            </g>
+                                                            <g><text x="134" y="34" text-anchor="end"
+                                                                    style="font-size: 9px; font-weight: bold;">66.20%</text>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+
+                                                    <div class="tsr_strength_values_container">
+                                                        <div class="d-flex justify-content-around" id="strSig">Signal
+                                                            <span><span style="color:#008B00;;  ">Bullish</span></span>
+                                                        </div>
+                                                        <br>
+                                                        <div class="d-flex justify-content-center" id="strRank"><span
+                                                                style="font-size: 12x;  "> NIFTY IT is more bullish than
+                                                                85.50 % of
+                                                                stocks </span></div>
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <!-- </div> -->
+                                        <!-- <div class="w-100"> -->
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Technicals</h6>
+                                            </div>
+                                            <br>
+                                            <div class="owl-carousel owl-theme technicals">
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>RSI</h6>
+                                                    <b style="color: orange; white-space: nowrap;">58.18</b>
+                                                    <p style="color: orange;  margin: 0;">Neutral</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>MACD</h6>
+                                                    <b style="color: green; white-space: nowrap;">15.73</b>
+                                                    <p style="color: green;  margin: 0;">Bullish</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>ADX</h6>
+                                                    <b style="color: #ff9999; white-space: nowrap;"> 11.73</b>
+                                                    <p style="color: #ff9999;  margin: 0;">Mild Bearish</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>SMA</h6>
+                                                    <b style="color: black; white-space: nowrap;">0.73</b>
+                                                    <p style="color: black; margin: 0;"></p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>EMA</h6>
+                                                    <b style="color: #96C8A2; white-space: nowrap;">5.73</b>
+                                                    <p style="color: #96C8A2; margin: 0;">Mild Bullish</p>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Stocks</h6>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex flex-column justify-content-between">
+                                                <div class="w-100 p-3 text-center">
+                                                    <b>Out Performing</b>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">Returns</th>
+                                                                <th scope="col">Tech</th>
+                                                                <th scope="col">Chart</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><a href="">TCS</a></td>
+                                                                <td>13.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">WIPRO</a></td>
+                                                                <td>3.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">INFY</a></td>
+                                                                <td>0.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <a style="color: var(--primary-color,#006aff);" href="">
+                                                        Show more
+                                                    </a>
+                                                </div>
+                                                <div class="vr"></div>
+                                                <div class="w-100 p-3 text-center">
+                                                    <b>Under Performing</b>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">Returns</th>
+                                                                <th scope="col">Tech</th>
+                                                                <th scope="col">Chart</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><a href="">TCS</a></td>
+                                                                <td>13.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">WIPRO</a></td>
+                                                                <td>3.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">INFY</a></td>
+                                                                <td>0.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <a style="color: var(--primary-color,#006aff);" href="">
+                                                        Show more
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <!-- </div> -->
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div data-hash="four">
+                                <div class="card shadow-sm">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+
+                                        <h5>
+                                            NIFTY FMCG
+                                        </h5>
+
+                                        <p style="margin: 0;">
+                                            Rank 1 of 14 Sectors
+                                        </p>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <!-- <div class="w-100"> -->
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Highlights</h6>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Relative Returns</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 15.73%</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Market Cap Change</h6>
+                                                    <b style="color: green; white-space: nowrap;">234 Cr.</b>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Up Times <i class="fas fa-long-arrow-alt-up"></i></h6>
+                                                    <b>5</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Down times <i class="fas fa-long-arrow-alt-down"></i></h6>
+                                                    <b>1</b>
+                                                </div>
+                                            </div><br>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="w-100">
+                                                    <h6>Price</h6>
+                                                    <b style="color: green; white-space: nowrap;"> 20,013.65</b>
+                                                </div>
+                                                <div class="w-100">
+                                                    <h6>Price Change %</h6>
+                                                    <b style="color: green; white-space: nowrap;"> 3.1 %</b>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Periodic Returns</h6>
+                                            </div>
+                                            <br>
+                                            <div class="owl-carousel owl-theme periodicReturns">
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1D</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 5.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1M</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 15.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>3M</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 1.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>6M</h6>
+                                                    <b style="color: red; white-space: nowrap;">+ 0.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>1Y</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 5.73%</b>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>5Y</h6>
+                                                    <b style="color: green; white-space: nowrap;">+ 2.73%</b>
+                                                </div>
+                                            </div>
+
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Analysis</h6>
+                                            </div>
+                                            <br>
+                                            <p>
+                                                The <b>NIFTY IT</b> Sector rose by <b style="color: green;">11.17%</b>
+                                                over the <b>quarter</b>, while the <b>Nifty 50</b> changed <b
+                                                    style="color: green">4.08%</b>
+                                            </p>
+
+                                        </section>
+
+
+                                        <section class="p-3">
+                                            <div>
+                                                <p style="text-align:center; margin-bottom: 10px; font-weight: 600;">TSR
+                                                    Strength Index</p>
+                                                <div class="row tsr_strength_svg_container">
+                                                    <div id="trendStrengthDiv" class="d-flex justify-content-center">
+
+                                                        <svg width="250" height="43">
+                                                            <defs>
+                                                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%"
+                                                                    y2="0%" spreadMethod="pad">
+                                                                    <stop offset="0%" stop-color="#ff0000"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                    <stop offset="50%" stop-color="#e6e600"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                    <stop offset="100%" stop-color="#009900"
+                                                                        stop-opacity="1">
+                                                                    </stop>
+                                                                </linearGradient>
+                                                            </defs>
+                                                            <g><text x="180" y="10" text-anchor="end"
+                                                                    style="font-size: 12px; font-weight: bold;">Technical
+                                                                    Strength
+                                                                    Intraday</text></g>
+                                                            <g>
+                                                                <rect x="0" y="15" width="240" height="8"
+                                                                    style="fill: url(&quot;#gradient&quot;);" rx="4">
+                                                                </rect>
+                                                            </g>
+                                                            <g>
+                                                                <line x1="158.88" y1="15" x2="158.88" y2="23"
+                                                                    stroke-width="1" stroke-dasharray="2, 2"
+                                                                    stroke="black "></line>
+                                                            </g>
+                                                            <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000"
+                                                                stroke="#000" stroke-width="1"
+                                                                transform="translate(158.88,25)">
+                                                            </path>
+                                                            <g><text x="10" y="34"
+                                                                    style="font-size: 10px; font-weight: bold;">Sell</text>
+                                                            </g>
+                                                            <g><text x="230" y="34" text-anchor="end"
+                                                                    style="font-size: 10px; font-weight: bold;">Buy</text>
+                                                            </g>
+                                                            <g><text x="134" y="34" text-anchor="end"
+                                                                    style="font-size: 9px; font-weight: bold;">66.20%</text>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+
+                                                    <div class="tsr_strength_values_container">
+                                                        <div class="d-flex justify-content-around" id="strSig">Signal
+                                                            <span><span style="color:#008B00;;  ">Bullish</span></span>
+                                                        </div>
+                                                        <br>
+                                                        <div class="d-flex justify-content-center" id="strRank"><span
+                                                                style="font-size: 12x;  "> NIFTY IT is more bullish than
+                                                                85.50 % of
+                                                                stocks </span></div>
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <!-- </div> -->
+                                        <!-- <div class="w-100"> -->
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Technicals</h6>
+                                            </div>
+                                            <br>
+                                            <div class="owl-carousel owl-theme technicals">
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>RSI</h6>
+                                                    <b style="color: orange; white-space: nowrap;">58.18</b>
+                                                    <p style="color: orange;  margin: 0;">Neutral</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>MACD</h6>
+                                                    <b style="color: green; white-space: nowrap;">15.73</b>
+                                                    <p style="color: green;  margin: 0;">Bullish</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>ADX</h6>
+                                                    <b style="color: #ff9999; white-space: nowrap;"> 11.73</b>
+                                                    <p style="color: #ff9999;  margin: 0;">Mild Bearish</p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>SMA</h6>
+                                                    <b style="color: black; white-space: nowrap;">0.73</b>
+                                                    <p style="color: black; margin: 0;"></p>
+                                                </div>
+                                                <div class="card d-flex flex-column p-3">
+                                                    <h6>EMA</h6>
+                                                    <b style="color: #96C8A2; white-space: nowrap;">5.73</b>
+                                                    <p style="color: #96C8A2; margin: 0;">Mild Bullish</p>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <section class="p-3">
+                                            <div style="border-bottom: 1px solid lightgrey;">
+                                                <h6>Stocks</h6>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex flex-column justify-content-between">
+                                                <div class="w-100 p-3 text-center">
+                                                    <b>Out Performing</b>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">Returns</th>
+                                                                <th scope="col">Tech</th>
+                                                                <th scope="col">Chart</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><a href="">TCS</a></td>
+                                                                <td>13.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">WIPRO</a></td>
+                                                                <td>3.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">INFY</a></td>
+                                                                <td>0.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <a style="color: var(--primary-color,#006aff);" href="">
+                                                        Show more
+                                                    </a>
+                                                </div>
+                                                <div class="vr"></div>
+                                                <div class="w-100 p-3 text-center">
+                                                    <b>Under Performing</b>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">Returns</th>
+                                                                <th scope="col">Tech</th>
+                                                                <th scope="col">Chart</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><a href="">TCS</a></td>
+                                                                <td>13.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">WIPRO</a></td>
+                                                                <td>3.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><a href="">INFY</a></td>
+                                                                <td>0.17%</td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href=""><span style="color:grey; font-size:12pt;"
+                                                                            class="fa fa-chart-line"></span></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <a style="color: var(--primary-color,#006aff);" href="">
+                                                        Show more
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <!-- </div> -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+
+                            let sectorNav = {
+                                loop: false,
+                                margin: 10,
+                                dots: false
+                            }
+
+                            var periodicReturns = {
+                                loop: true,
+                                margin: 10,
+                                autoplay: true,
+                                dots: true,
+                                nav: false
+                            };
+
+                            var technicals = {
+                                loop: true,
+                                margin: 10,
+                                autoplay: true,
+                                dots: true,
+                                nav: false
+                            };
+
+                            $(document).ready(function () {
+
+                                $(".sectorNav").owlCarousel(sectorNav);
+
+                                $(".sectorCards").owlCarousel({
+                                    loop: true,
+                                    margin: 20,
+                                    dots: false,
+                                    nav: false,
+                                    autoplay: true,
+                                    autoplayHoverPause: true,
+                                    responsive: {
+                                        0: {
+                                            items: 1
+                                        },
+                                        768: {
+                                            items: 2
+                                        },
+                                        1200: {
+                                            items: 3
+                                        }
+                                    },
+                                    URLhashListener: true,
+                                    startPosition: 'URLHash'
+
+                                    // navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"]
+
+                                });
+                                $(".periodicReturns").owlCarousel(periodicReturns);
+                                $(".technicals").owlCarousel(technicals);
+
+
+                                $('.owl-prev').click(function () {
+                                    $(".sectorNav").trigger('prev.owl.carousel', [300]);
+                                })
+                                // Go to the previous item
+                                $('.owl-next').click(function () {
+                                    // With optional speed parameter
+                                    // Parameters has to be in square bracket '[]'
+                                    $(".sectorNav").trigger('next.owl.carousel');
+                                })
+                            });
+
+
+                        </script>
+                        <!-- Content Wrapper End -->
+
+
+
+
+                    </div>
+                    <div style="height: 100vh;"></div>
+                </div> <!-- NG APP  align='center'-->
+
+
+
+
+
+</body>
+<script>   migUi.init(); </script>
+<div id='alertDialog' class='web_dialog'></div>
+<div id='artnuDiv'></div>
+<script src='https://www.topstockresearch.com/static/js/tsr/my/fav/mifav.js'></script>
+<script src='https://www.topstockresearch.com/static/js/tsr/my/fav_minV0.0.1.1.js'></script>
+<script
+    src='https://www.topstockresearch.com/static/js/tsr/mipu/mipu_minV0.0.0.71.js'"></script><script> misu.iar('null');   </script><div class="
+    modal fade" id="tsrUserRegModal" tabindex="-1">
+			        <div class="modal-dialog modal-dialog-centered">
+			            <div class="modal-content"  id='tsrUserRegModalContent'>
+			            </div>
+			        </div>
+			    </div><div id='usrRegDiv'></div>
