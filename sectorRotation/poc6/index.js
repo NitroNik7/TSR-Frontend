@@ -3,6 +3,11 @@ var sectorContainerId = "tsrSectorContainer";
 var sectorStocksTableId = "sectorStocksTable";
 
 function showSectorTable() {
+
+
+    let sectorCardNav = document.getElementById("sectorCardNav");
+    sectorCardNav.style.display = "none";
+
     let sectorContainer = document.getElementById(sectorContainerId);
 
     sectorContainer.innerHTML = `
@@ -541,6 +546,20 @@ function showSectorTable() {
 }
 
 function showSectorCard(option) {
+
+    let sectorCardNav = document.getElementById("sectorCardNav");
+    sectorCardNav.style.display = "flex";
+
+
+    let sectorNav = {
+        loop: true,
+        margin: 10,
+        dots: false
+    }
+
+    $(".sectorNav").owlCarousel(sectorNav);
+
+
     let sectorContainer = document.getElementById(sectorContainerId);
 
     sectorContainer.innerHTML = `
@@ -996,12 +1015,12 @@ function showSectorStockTable(element) {
 
     container.scrollIntoView();
 
-    setTimeout(function(){
+    setTimeout(function () {
         container.style.visibility = "visible";
         container.style.height = "75vh";
     }, 100);
 
-    
+
 
 };
 
