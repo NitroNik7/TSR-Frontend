@@ -583,10 +583,10 @@ function showSectorCard(option) {
 
                             <div class="mb-3 btn-group" role="group">
   <input type="radio" class="btn-check" name="btnradio" id="outPerformingStocks" autocomplete="off" checked>
-  <label class="btn btn-outline-primary" for="outPerformingStocks"  onclick="updateSectorStocksTable('outPerforming')">Out Performing</label>
+  <label class="btn btn-outline-secondary" for="outPerformingStocks"  onclick="updateSectorStocksTable('outPerforming')">Out Performing</label>
 
   <input type="radio" class="btn-check" name="btnradio" id="underPerformingStocks" autocomplete="off">
-  <label class="btn btn-outline-primary" for="underPerformingStocks" onclick="updateSectorStocksTable('underPerforming')">Under Performing</label>
+  <label class="btn btn-outline-secondary" for="underPerformingStocks" onclick="updateSectorStocksTable('underPerforming')">Under Performing</label>
 </div>
 
                             <table id="${sectorStocksTableId}" class="table">
