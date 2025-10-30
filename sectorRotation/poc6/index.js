@@ -12,187 +12,528 @@ function showSectorTable() {
                             </div>
 
 
-                            <div class="card-body p-3" style="max-height: 80vh; overflow-y: auto;">
+                            <div class="card-body p-3" style="max-height: 60vh; overflow-y: auto;">
                                 <table class="table table-striped">
-                                    <tr style="font-size: 14px;">
-                                        <th>Name</th>
-                                        <th>Market Cap Change</th>
-                                        <th>Outperforming</th>
-                                        <th>Underperforming</th>
-                                        <th>RSI Above 50% Stocks</th>
-                                        <th>MACD Above 50% Stocks</th>
-                                    </tr>
+                                    <thead style="font-size: 14px;">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Market Cap Change</th>
+                                            <th>Outperforming</th>
+                                            <th>Underperforming</th>
+                                            <th>RSI Above 50% Stocks</th>
+                                            <th>MACD Above 50% Stocks</th>
+                                        </th>
+                                    </thead>
 
-                                    <tr>
-                                        <td>
-                                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY IT')"
-                                                class="link-primary link-underline-primary link-offset-3">
-                                                NIFTY IT
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #31a745;">
-                                                20 Cr.
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #31a745;">
-                                                7
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #ff4f55;">
-                                                3
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                4
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                6
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY IT')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY IT
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    20 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    7
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    3
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    4
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    6
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <tr>
-                                        <td>
-                                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY MEDIA')"
-                                                class="link-primary link-underline-primary link-offset-3">
-                                                NIFTY MEDIA
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #31a745;">
-                                                7 Cr.
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #31a745;">
-                                                2
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #ff4f55;">
-                                                3
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                2
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                3
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY MEDIA')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY MEDIA
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    7 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    3
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    3
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <tr>
-                                        <td>
-                                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY AUTO')"
-                                                class="link-primary link-underline-primary link-offset-3">
-                                                NIFTY AUTO
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #31a745;">
-                                                5 Cr.
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #31a745;">
-                                                1
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #ff4f55;">
-                                                1
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                1
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                1
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY AUTO')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY AUTO
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    5 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    1
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <tr>
-                                        <td>
-                                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY FMCG')"
-                                                class="link-primary link-underline-primary link-offset-3">
-                                                NIFTY FMCG
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #31a745;">
-                                                2 Cr.
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #31a745;">
-                                                2
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #ff4f55;">
-                                                1
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                2
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                1
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY FMCG')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY FMCG
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    2 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    1
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <tr>
-                                        <td>
-                                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY PHARMA')"
-                                                class="link-primary link-underline-primary link-offset-3">
-                                                NIFTY PHARMA
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #ff4f55;">
-                                                1 Cr.
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #31a745;">
-                                                3
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="color: #ff4f55;">
-                                                2
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                1
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                4
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY PHARMA')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY PHARMA
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    1 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    3
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    4
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY IT')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY IT
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    20 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    7
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    3
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    4
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    6
+                                                </div>
+                                            </td>
+                                        </tr>
 
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY MEDIA')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY MEDIA
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    7 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    3
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    3
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY AUTO')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY AUTO
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    5 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    1
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY FMCG')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY FMCG
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    2 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    1
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY PHARMA')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY PHARMA
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    1 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    3
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    4
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY IT')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY IT
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    20 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    7
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    3
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    4
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    6
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY MEDIA')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY MEDIA
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    7 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    3
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    3
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY AUTO')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY AUTO
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    5 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    1
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY FMCG')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY FMCG
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    2 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    1
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY PHARMA')"
+                                                    class="link-primary link-underline-primary link-offset-3">
+                                                    NIFTY PHARMA
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    1 Cr.
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #31a745;">
+                                                    3
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="color: #ff4f55;">
+                                                    2
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    1
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    4
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
     `;
@@ -559,7 +900,7 @@ function showSectorCard(option) {
                                             </tbody>
                                         </table>
                                     </div>
-                                    <a style="color: var(--primary-color,#006aff);" onclick="showSectorStockTable(this)">
+                                    <a style="color: var(--primary-color,#006aff); cursor: pointer;" onclick="showSectorStockTable(this)">
                                         Show more
                                     </a>
                                 </div>

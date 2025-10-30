@@ -494,204 +494,212 @@
 
                         <br>
 
-                        <div class="container card shadow">
-                            <div class="card-header text-center"
-                                style="background: linear-gradient(135deg, #dbeafe, #f1f5ff) !important;">
-                                <h5 class="card-title" style="font-weight: 600;">
-                                    NIFTY
-                                </h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-
-
-                                    <div class="col-12 col-md-6 d-flex align-items-center">
-                                        <div>
-                                            <p
-                                                style="font-size: 22px; text-align:center; margin-bottom: 10px; font-weight: 600;">
-                                                TSR
-                                                Strength Index</p>
-                                            <div class="row tsr_strength_svg_container">
-                                                <div id="trendStrengthDiv" class="d-flex justify-content-center">
-
-                                                    <svg width="250" height="43">
-                                                        <defs>
-                                                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%"
-                                                                y2="0%" spreadMethod="pad">
-                                                                <stop offset="0%" stop-color="#ff0000" stop-opacity="1">
-                                                                </stop>
-                                                                <stop offset="50%" stop-color="#e6e600"
-                                                                    stop-opacity="1">
-                                                                </stop>
-                                                                <stop offset="100%" stop-color="#009900"
-                                                                    stop-opacity="1">
-                                                                </stop>
-                                                            </linearGradient>
-                                                        </defs>
-                                                        <g><text x="180" y="10" text-anchor="end"
-                                                                style="font-size: 12px; font-weight: bold;">Technical
-                                                                Strength
-                                                                Intraday</text></g>
-                                                        <g>
-                                                            <rect x="0" y="15" width="240" height="8"
-                                                                style="fill: url(&quot;#gradient&quot;);" rx="4"></rect>
-                                                        </g>
-                                                        <g>
-                                                            <line x1="158.88" y1="15" x2="158.88" y2="23"
-                                                                stroke-width="1" stroke-dasharray="2, 2"
-                                                                stroke="black "></line>
-                                                        </g>
-                                                        <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000"
-                                                            stroke="#000" stroke-width="1"
-                                                            transform="translate(158.88,25)">
-                                                        </path>
-                                                        <g><text x="10" y="34"
-                                                                style="font-size: 10px; font-weight: bold;">Sell</text>
-                                                        </g>
-                                                        <g><text x="230" y="34" text-anchor="end"
-                                                                style="font-size: 10px; font-weight: bold;">Buy</text>
-                                                        </g>
-                                                        <g><text x="134" y="34" text-anchor="end"
-                                                                style="font-size: 9px; font-weight: bold;">66.20%</text>
-                                                        </g>
-                                                    </svg>
-                                                </div>
-
-                                                <div class="tsr_strength_values_container">
-                                                    <div class="d-flex justify-content-around" id="strSig">Signal
-                                                        <span><span style="color:#008B00;;  ">Bullish</span></span>
-                                                    </div>
-                                                    <br>
-                                                    <div class="d-flex justify-content-center" id="strRank">
-                                                        <span style="font-size: 12x;  "> NIFTY IT is more
-                                                            bullish than
-                                                            85.50 % of
-                                                            stocks </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- <br><br>
-                                        <div class="d-flex justify-content-around"
-                                            style="height: max-content;">
-                                            <p>
-                                                Trending Tick
-                                            </p>
-
-                                            <a href="">
-                                                <h6>
-                                                    1 Week
-                                                </h6>
-                                            </a>
+                        <div class="accordion container-md" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header"
+                                    style="background: linear-gradient(135deg, #dbeafe, #f1f5ff) !important;">
+                                    <button class="accordion-button text-dark" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <span style="font-size: 18px; font-weight: 500;">
+                                                NIFTY
+                                            </span>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <!-- <div class="card-header text-center"
+                                            style="background: linear-gradient(135deg, #dbeafe, #f1f5ff) !important;">
+                                            <h5 class="card-title" style="font-weight: 600;">
+                                                NIFTY
+                                            </h5>
                                         </div> -->
-                                    </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 d-flex align-items-center">
+                                                    <div>
+                                                        <p
+                                                            style="font-size: 22px; text-align:center; margin-bottom: 10px; font-weight: 600;">
+                                                            TSR
+                                                            Strength Index</p>
+                                                        <div class="row tsr_strength_svg_container">
+                                                            <div id="trendStrengthDiv"
+                                                                class="d-flex justify-content-center">
 
-                                    <hr class="d-block d-md-none my-3">
+                                                                <svg width="250" height="43">
+                                                                    <defs>
+                                                                        <linearGradient id="gradient" x1="0%" y1="0%"
+                                                                            x2="100%" y2="0%" spreadMethod="pad">
+                                                                            <stop offset="0%" stop-color="#ff0000"
+                                                                                stop-opacity="1">
+                                                                            </stop>
+                                                                            <stop offset="50%" stop-color="#e6e600"
+                                                                                stop-opacity="1">
+                                                                            </stop>
+                                                                            <stop offset="100%" stop-color="#009900"
+                                                                                stop-opacity="1">
+                                                                            </stop>
+                                                                        </linearGradient>
+                                                                    </defs>
+                                                                    <g><text x="180" y="10" text-anchor="end"
+                                                                            style="font-size: 12px; font-weight: bold;">Technical
+                                                                            Strength
+                                                                            Intraday</text></g>
+                                                                    <g>
+                                                                        <rect x="0" y="15" width="240" height="8"
+                                                                            style="fill: url(&quot;#gradient&quot;);"
+                                                                            rx="4">
+                                                                        </rect>
+                                                                    </g>
+                                                                    <g>
+                                                                        <line x1="158.88" y1="15" x2="158.88" y2="23"
+                                                                            stroke-width="1" stroke-dasharray="2, 2"
+                                                                            stroke="black "></line>
+                                                                    </g>
+                                                                    <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z"
+                                                                        fill="#000" stroke="#000" stroke-width="1"
+                                                                        transform="translate(158.88,25)">
+                                                                    </path>
+                                                                    <g><text x="10" y="34"
+                                                                            style="font-size: 10px; font-weight: bold;">Sell</text>
+                                                                    </g>
+                                                                    <g><text x="230" y="34" text-anchor="end"
+                                                                            style="font-size: 10px; font-weight: bold;">Buy</text>
+                                                                    </g>
+                                                                    <g><text x="134" y="34" text-anchor="end"
+                                                                            style="font-size: 9px; font-weight: bold;">66.20%</text>
+                                                                    </g>
+                                                                </svg>
+                                                            </div>
 
-                                    <div class="col-12 mt-md-0 col-md-6 d-flex flex-column justify-content-around">
+                                                            <div class="tsr_strength_values_container">
+                                                                <div class="d-flex justify-content-around" id="strSig">
+                                                                    Signal
+                                                                    <span><span
+                                                                            style="color:#008B00;;  ">Bullish</span></span>
+                                                                </div>
+                                                                <br>
+                                                                <div class="d-flex justify-content-center" id="strRank">
+                                                                    <span style="font-size: 12x;  "> NIFTY IT is more
+                                                                        bullish than
+                                                                        85.50 % of
+                                                                        stocks </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                        <div class="row row-cols-2" style="text-align:center;">
-                                            <div class="col">
-                                                <!-- <div class="card text-bg-primary mb-3 d-flex flex-row" -->
-                                                <!-- style="max-width: 22rem; box-shadow:0 .5rem 1rem rgba(0, 0, 0, .15) !important"> -->
-                                                <div class="card-body justify-content-center">
-                                                    <h6>Price</h6>
-                                                    <div id="rsishlDiv">
-                                                        <h4 class="card-title fw-bold" style="color:#ff4c4c;  ">
-                                                            24,058</h4>
-                                                    </div>
-                                                </div>
-                                                <!-- </div> -->
-                                            </div>
-                                            <div class="col">
-                                                <!-- <div class="card text-bg-primary mb-3 d-flex flex-row"
+                                                <hr class="d-block d-md-none my-3">
+
+                                                <div
+                                                    class="col-12 mt-md-0 col-md-6 d-flex flex-column justify-content-around">
+
+                                                    <div class="row row-cols-2" style="text-align:center;">
+                                                        <div class="col">
+                                                            <!-- <div class="card text-bg-primary mb-3 d-flex flex-row" -->
+                                                            <!-- style="max-width: 22rem; box-shadow:0 .5rem 1rem rgba(0, 0, 0, .15) !important"> -->
+                                                            <div class="card-body justify-content-center">
+                                                                <h6>Price</h6>
+                                                                <div id="rsishlDiv">
+                                                                    <h4 class="card-title fw-bold"
+                                                                        style="color:#ff4c4c;  ">
+                                                                        24,058</h4>
+                                                                </div>
+                                                            </div>
+                                                            <!-- </div> -->
+                                                        </div>
+                                                        <div class="col">
+                                                            <!-- <div class="card text-bg-primary mb-3 d-flex flex-row"
                                                     style="max-width: 22rem; box-shadow:0 .5rem 1rem rgba(0, 0, 0, .15) !important"> -->
-                                                <div class="card-body justify-content-center">
-                                                    <h6>Day Change</h6>
-                                                    <div id="machlDiv">
-                                                        <h4 class="card-title fw-bold" style="color:#004F00;  ">
-                                                            23.90%</h4>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <!-- </div> -->
-                                            </div>
-                                            <div class="col">
-                                                <!-- <div class="card text-bg-primary mb-3  d-flex flex-row"
+                                                            <div class="card-body justify-content-center">
+                                                                <h6>Day Change</h6>
+                                                                <div id="machlDiv">
+                                                                    <h4 class="card-title fw-bold"
+                                                                        style="color:#004F00;  ">
+                                                                        23.90%</h4>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <!-- </div> -->
+                                                        </div>
+                                                        <div class="col">
+                                                            <!-- <div class="card text-bg-primary mb-3  d-flex flex-row"
                                                     style="max-width: 22rem; box-shadow:0 .5rem 1rem rgba(0, 0, 0, .15) !important"> -->
-                                                <div class="card-body justify-content-center">
-                                                    <h6>Period Change</h6>
-                                                    <div id="adxhlDiv">
-                                                        <h4 class="card-title fw-bold" style="color:orange;  ">24.98%
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                                <!-- </div> -->
-                                            </div>
-                                            <div class="col">
-                                                <!-- <div class="card text-bg-primary mb-3 d-flex flex-row"
+                                                            <div class="card-body justify-content-center">
+                                                                <h6>Period Change</h6>
+                                                                <div id="adxhlDiv">
+                                                                    <h4 class="card-title fw-bold"
+                                                                        style="color:orange;  ">
+                                                                        24.98%
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                            <!-- </div> -->
+                                                        </div>
+                                                        <div class="col">
+                                                            <!-- <div class="card text-bg-primary mb-3 d-flex flex-row"
                                                     style="max-width: 22rem; box-shadow:0 .5rem 1rem rgba(0, 0, 0, .15) !important"> -->
-                                                <div class="card-body justify-content-center">
-                                                    <h6>Market Cap Change</h6>
-                                                    <div id="stoshlDiv">
-                                                        <h4 class="card-title fw-bold" style="color:#ff4c4c;  ">
-                                                            93.25 Cr</h4>
+                                                            <div class="card-body justify-content-center">
+                                                                <h6>Market Cap Change</h6>
+                                                                <div id="stoshlDiv">
+                                                                    <h4 class="card-title fw-bold"
+                                                                        style="color:#ff4c4c;  ">
+                                                                        93.25 Cr</h4>
+                                                                </div>
+                                                            </div>
+                                                            <!-- </div> -->
+                                                        </div>
                                                     </div>
+
                                                 </div>
-                                                <!-- </div> -->
+
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
+                            </div>
+                            <!-- Sector section starts here -->
 
-                            <!-- owl carousel -->
+                            <br>
+
+                            <!-- Name -->
+                            <!-- Market Cap Change -->
+                            <!-- Outperforming -->
+                            <!-- Underperforming -->
+                            <!-- RSI Above 50% Stocks -->
+                            <!-- MACD Above 50% Stocks -->
+
+                            <div id="tsrSectorContainer" class="card container">
+
+
+                            </div>
+
+
+                            <script src="index.js"></script>
+
+
+                            <!-- Sector Section ends here -->
+                            <!-- Content Wrapper End -->
+
+
+                        </div>
+                        <div class="card m-3 container mx-auto" style="height: 75vh;">
+
+                            <div class="card-header">
+                                <h5>Chart</h5>
+                            </div>
+
+                        </div>
+
+                        
+                    </div> <!-- NG APP  align='center'-->
+
+
+
+   <!-- owl carousel -->
                             <script src="https://www.topstockresearch.com/static/tp/owl/owl.carousel.min.js"></script>
-                        </div>
-
-                        <br>
-
-                        <!-- Sector section starts here -->
-
-                        <br>
-
-                        <!-- Name -->
-                        <!-- Market Cap Change -->
-                        <!-- Outperforming -->
-                        <!-- Underperforming -->
-                        <!-- RSI Above 50% Stocks -->
-                        <!-- MACD Above 50% Stocks -->
-
-                        <div id="tsrSectorContainer" class="card container">
-
-
-                        </div>
-
-
-                        <script src="index.js"></script>
-
-
-                        <!-- Sector Section ends here -->
-                        <!-- Content Wrapper End -->
-
-
-
-
-                    </div>
-                    <div class="card m-3 container mx-auto"  style="height: 75vh;">
-
-                        <div class="card-header">
-                            <h5>Chart</h5>
-                        </div>
-
-                    </div>
-                </div> <!-- NG APP  align='center'-->
-
-
-
-
 
 </body>
 <script>   migUi.init(); </script>
