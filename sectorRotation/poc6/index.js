@@ -960,7 +960,7 @@ function showSectorCard(option) {
 
 
 
-    sectorContainer.scrollIntoView();
+    // sectorContainer.scrollIntoView();
     initializeCarousal();
 };
 
