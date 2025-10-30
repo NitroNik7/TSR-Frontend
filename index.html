@@ -5,115 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/aioCmnV0.0.0.9.css' />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script type='text/javascript' src='//code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-        crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="miSearchWrapper d-flex pt-1" style="box-sizing: border-box;">
-        <div style="width: auto;">
-            <input id="user_input" type="text" class="form-control " placeholder="Search (Ctrl + K)"
-                onclick="miIs.ssb('equity')" autocomplete="off" style="width:200px; margin:10px">
-        </div>
 
-        <div id="miUpdatesBox" class="text-center w-100" style="white-space: nowrap;">
-            <!-- 
-            <span class="my-1" style="font-size: 18px;">
-                Try out all new
-                <i>IntelliSearch</i>
-            </span>
-            <hr style="margin: auto; width: 50%;">
-            <div class="d-flex">
-                <a class="mx-3 w-100 d-block" href="">Search Stock</a>
-                <a class="mx-3 w-100 d-none d-md-block" href="">Search Screener</a>
-                <a class="mx-3 w-100 d-none d-lg-block" href="">Search Chart</a>
-            </div> -->
-        </div>
-    </div>
+    <script>
+    </script>
+
 
 
     <script>
-        let tsrUpdateJson = {
-            "heading": "New updates in TSR",
-            "list": [
-                {
-                    "label": "Delta Screener",
-                    "link": "www.tsr.com/deltascreeer"
-                },
-                {
-                    "label": "Gamma Screener",
-                    "link": "www.tsr.com/gammascreeer"
-                },
-                {
-                    "label": "Rho Screener",
-                    "link": "www.tsr.com/rhoscreeer"
-                },
-                {
-                    "label": "Vega Screener",
-                    "link": "www.tsr.com/vegascreeer"
-                }
-            ]
-        };
-
-        function writeToTsrUpdateBox() {
-            let tsrUpdateBox = document.getElementById("miUpdatesBox");
-
-            if (tsrUpdateJson) {
-
-
-                let html = "";
-
-                html += `<span class="my-1" style="font-size: 18px;"> ${tsrUpdateJson.heading} </span>`;
-
-
-                let list = tsrUpdateJson["list"];
-
-                if (list.length > 0) {
-                    html += `<hr style="margin: auto; width: 50%;">`;
-
-                    html += `<div class="d-flex">`;
-
-                    let linkStyles = [
-                        "mx-3 w-100 d-block",
-                        "mx-3 w-100 d-none d-md-block",
-                        "mx-3 w-100 d-none d-lg-block",
-                        "mx-3 w-100 d-none d-xl-block"
-                    ];
-
-                    for (let i = 0; i < list.length; i++) {
-                        if (list[i].link && list[i].link != "") {
-                            html += `<a class="${linkStyles[i]}" href="${list[i].link}">${list[i].label}</a>`
-                        }
-                        else {
-                            html += `<span>${list[i].label}</span>`;
-                        }
-                    }
-
-                    html += `</div>`;
-                }
-
-                tsrUpdateBox.innerHTML = html;
-
-            }
-        };
-
-        writeToTsrUpdateBox();
-
+        
     </script>
-
 
 </body>
 

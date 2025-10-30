@@ -1,6 +1,8 @@
 
 var sectorContainerId = "tsrSectorContainer";
 var sectorStocksTableId = "sectorStocksTable";
+        var sectorTableContainerId = "sectorTableContainer";
+
 
 function showSectorTable() {
 
@@ -9,541 +11,714 @@ function showSectorTable() {
     sectorCardNav.style.display = "none";
 
     let sectorContainer = document.getElementById(sectorContainerId);
+    sectorContainer.classList.add("card");
 
     sectorContainer.innerHTML = `
         
-                            <div class="card-header">
-                                <h5>Overview</h5>
-                            </div>
+    <div class="card-header">
+        <h5>Sector Comparison</h5>
+    </div>
 
 
-                            <div class="card-body p-3" style="max-height: 60vh; overflow-y: auto;">
-                                <table class="table table-striped">
-                                    <thead style="font-size: 14px;">
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Market Cap Change</th>
-                                            <th>Outperforming</th>
-                                            <th>Underperforming</th>
-                                            <th>RSI Above 50% Stocks</th>
-                                            <th>MACD Above 50% Stocks</th>
-                                        </th>
-                                    </thead>
+    <div class="card-body p-3" style="max-height: 60vh; overflow-y: auto;">
 
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY IT')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY IT
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    20 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    7
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    3
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    4
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    6
-                                                </div>
-                                            </td>
-                                        </tr>
+        <div>
+            <div class="mb-3 btn-group" role="group">
+                <input type="radio" class="btn-check" name="btnradio" id="outPerformingSectors" autocomplete="off"
+                    checked>
+                <label class="btn btn-outline-secondary" for="outPerformingSectors"
+                    onclick="updateSectorTable('outPerforming')">Out Performing</label>
 
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY MEDIA')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY MEDIA
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    7 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    3
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    3
-                                                </div>
-                                            </td>
-                                        </tr>
+                <input type="radio" class="btn-check" name="btnradio" id="underPerformingSectors" autocomplete="off">
+                <label class="btn btn-outline-secondary" for="underPerformingSectors"
+                    onclick="updateSectorTable('underPerforming')">Under Performing</label>
+            </div>
+        </div>
+        <div id="${sectorTableContainerId}">
 
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY AUTO')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY AUTO
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    5 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    1
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY FMCG')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY FMCG
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    2 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    1
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY PHARMA')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY PHARMA
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    1 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    3
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    4
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY IT')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY IT
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    20 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    7
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    3
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    4
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    6
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY MEDIA')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY MEDIA
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    7 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    3
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    3
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY AUTO')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY AUTO
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    5 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    1
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY FMCG')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY FMCG
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    2 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    1
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY PHARMA')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY PHARMA
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    1 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    3
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    4
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY IT')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY IT
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    20 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    7
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    3
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    4
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    6
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY MEDIA')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY MEDIA
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    7 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    3
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    3
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY AUTO')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY AUTO
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    5 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    1
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY FMCG')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY FMCG
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    2 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    1
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div style="cursor: pointer;" onclick="showSectorCard('NIFTY PHARMA')"
-                                                    class="link-primary link-underline-primary link-offset-3">
-                                                    NIFTY PHARMA
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    1 Cr.
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #31a745;">
-                                                    3
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="color: #ff4f55;">
-                                                    2
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    4
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+            
+        </div>
+    </div>
     `;
 
+    updateSectorTable('outPerforming');
+
 }
+
+function updateSectorTable(option) {
+
+            let sectorTable = document.getElementById(sectorTableContainerId);
+
+    if(option == 'outPerforming'){
+        sectorTable.innerHTML = `
+            <table class="table table-striped">
+                <thead style="font-size: 16px;">
+                    <tr>
+                        <th>Name</th>
+                        <th>Mkt Cap Change <br>
+
+                            <span style="font-weight: 400">
+                                (in Cr.)
+                            </span>
+                        </th>
+                        <th>
+                            Mkt Cap Change
+                            <br>
+                            <span style="font-weight: 400">
+                                (in %)
+                            </span>
+                        </th>
+
+                        <th>Out Performing</th>
+                        <th>Under Performing</th>
+                        <th>
+                            RSI Above 50
+                            <br>
+                            <span style="font-weight: 400">
+                                (in %)
+                            </span>
+                        </th>
+                        <th>MACD Above 50 <br>
+                            <span style="font-weight: 400">
+                                (in %)
+                            </span>
+                        </th>
+                        </th>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY IT')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY IT
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                20
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                20
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                7
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -3
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                4
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                6
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY MEDIA')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY MEDIA
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                7
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                7
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -3
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                3
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY AUTO')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY AUTO
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                5
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                5
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                1
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -1
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                1
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                1
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY FMCG')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY FMCG
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -1
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                1
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY PHARMA')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY PHARMA
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -1
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -1
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                3
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                1
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                4
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY IT')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY IT
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                20
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                20
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                7
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -3
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                4
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                6
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY MEDIA')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY MEDIA
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                7
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                7
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -3
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                3
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY AUTO')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY AUTO
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                5
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                1
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -1
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                1
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                1
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY FMCG')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY FMCG
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -1
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                1
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY PHARMA')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY PHARMA
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -1
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                3
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -2
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                1
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                4
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY IT')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY IT
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                20
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                7
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -3
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                4
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                6
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY MEDIA')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY MEDIA
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                7
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -3
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                3
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY AUTO')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY AUTO
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                5
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                1
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -1
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                1
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                1
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY FMCG')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY FMCG
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -1
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                2
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                1
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY PHARMA')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY PHARMA
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -1
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                3
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -2
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                1
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                4
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        `;
+    }
+    else if(option == 'underPerforming'){
+        sectorTable.innerHTML = `
+                <table class="table table-striped">
+                <thead style="font-size: 16px;">
+                    <tr>
+                        <th>Name</th>
+                        <th>Mkt Cap Change <br>
+
+                            <span style="font-weight: 400">
+                                (in Cr.)
+                            </span>
+                        </th>
+                        <th>
+                            Mkt Cap Change
+                            <br>
+                            <span style="font-weight: 400">
+                                (in %)
+                            </span>
+                        </th>
+
+                        <th>Out Performing</th>
+                        <th>Under Performing</th>
+                        <th>
+                            RSI Above 50
+                            <br>
+                            <span style="font-weight: 400">
+                                (in %)
+                            </span>
+                        </th>
+                        <th>MACD Above 50 <br>
+                            <span style="font-weight: 400">
+                                (in %)
+                            </span>
+                        </th>
+                        </th>
+                </thead>
+
+                <tbody>
+                    
+                    <tr>
+                        <td>
+                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY IT')"
+                                class="link-primary link-underline-primary link-offset-3">
+                                NIFTY IT
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                20
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                20
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #31a745;">
+                                7
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #ff4f55;">
+                                -3
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                4
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                6
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            `;
+    }
+
+            
+        }
+    
 
 function showSectorCard(option) {
 
@@ -561,9 +736,14 @@ function showSectorCard(option) {
 
 
     let sectorContainer = document.getElementById(sectorContainerId);
+    sectorContainer.classList.remove("card");
 
     sectorContainer.innerHTML = `
-        <div class="card-header d-flex justify-content-between align-items-center"
+        
+    <div class="owl-carousel owl-theme sectorCards mx-auto" style="width: 95%;">
+        <div class="container-md" data-hash="zero">
+            <div class="card shadow">
+                <div class="card-header d-flex justify-content-between align-items-center"
                     style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);">
 
 
@@ -614,12 +794,12 @@ function showSectorCard(option) {
                                 </div>
                                 <div class="d-flex justify-content-between mb-3">
                                     <div class="w-100 d-flex flex-column">
-                                        <span style="font-weight: 100;">Up Times <i
+                                        <span style="font-weight: 100;">Outperformers <i
                                                 class="fas fa-long-arrow-alt-up"></i></span>
                                         <h4>5</h4>
                                     </div>
                                     <div class="w-100 d-flex flex-column">
-                                        <span style="font-weight: 100;">Down times <i
+                                        <span style="font-weight: 100;">Underperformers <i
                                                 class="fas fa-long-arrow-alt-down"></i></span>
                                         <h4>1</h4>
                                     </div>
@@ -683,8 +863,7 @@ function showSectorCard(option) {
                                     <h6>Analysis</h6>
                                 </div>
                                 <p>
-                                    The <b>NIFTY IT</b> Sector rose by <b
-                                        style="color: green;">11.17%</b>
+                                    The <b>NIFTY IT</b> Sector rose by <b style="color: green;">11.17%</b>
                                     over the <b>quarter</b>, while the <b>Nifty 50</b> changed
                                     <b style="color: green">4.08%</b>
                                 </p>
@@ -694,27 +873,21 @@ function showSectorCard(option) {
 
                             <section>
                                 <div>
-                                    <p
-                                        style="text-align:center; margin-bottom: 10px; font-weight: 600;">
+                                    <p style="text-align:center; margin-bottom: 10px; font-weight: 600;">
                                         TSR
                                         Strength Index</p>
                                     <div class="row tsr_strength_svg_container">
-                                        <div id="trendStrengthDiv"
-                                            class="d-flex justify-content-center">
+                                        <div id="trendStrengthDiv" class="d-flex justify-content-center">
 
                                             <svg width="250" height="43">
                                                 <defs>
-                                                    <linearGradient id="gradient" x1="0%"
-                                                        y1="0%" x2="100%" y2="0%"
+                                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%"
                                                         spreadMethod="pad">
-                                                        <stop offset="0%" stop-color="#ff0000"
-                                                            stop-opacity="1">
+                                                        <stop offset="0%" stop-color="#ff0000" stop-opacity="1">
                                                         </stop>
-                                                        <stop offset="50%" stop-color="#e6e600"
-                                                            stop-opacity="1">
+                                                        <stop offset="50%" stop-color="#e6e600" stop-opacity="1">
                                                         </stop>
-                                                        <stop offset="100%" stop-color="#009900"
-                                                            stop-opacity="1">
+                                                        <stop offset="100%" stop-color="#009900" stop-opacity="1">
                                                         </stop>
                                                     </linearGradient>
                                                 </defs>
@@ -724,19 +897,16 @@ function showSectorCard(option) {
                                                         Intraday</text></g>
                                                 <g>
                                                     <rect x="0" y="15" width="240" height="8"
-                                                        style="fill: url(&quot;#gradient&quot;);"
-                                                        rx="4">
+                                                        style="fill: url(&quot;#gradient&quot;);" rx="4">
                                                     </rect>
                                                 </g>
                                                 <g>
-                                                    <line x1="158.88" y1="15" x2="158.88"
-                                                        y2="23" stroke-width="1"
+                                                    <line x1="158.88" y1="15" x2="158.88" y2="23" stroke-width="1"
                                                         stroke-dasharray="2, 2" stroke="black ">
                                                     </line>
                                                 </g>
-                                                <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z"
-                                                    fill="#000" stroke="#000" stroke-width="1"
-                                                    transform="translate(158.88,25)">
+                                                <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000" stroke="#000"
+                                                    stroke-width="1" transform="translate(158.88,25)">
                                                 </path>
                                                 <g><text x="10" y="34"
                                                         style="font-size: 10px; font-weight: bold;">Sell</text>
@@ -751,15 +921,12 @@ function showSectorCard(option) {
                                         </div>
 
                                         <div class="tsr_strength_values_container">
-                                            <div class="d-flex justify-content-around"
-                                                id="strSig">
+                                            <div class="d-flex justify-content-around" id="strSig">
                                                 Signal
-                                                <span><span
-                                                        style="color:#008B00;;  ">Bullish</span></span>
+                                                <span><span style="color:#008B00;;  ">Bullish</span></span>
                                             </div>
                                             <br>
-                                            <div class="d-flex justify-content-center"
-                                                id="strRank">
+                                            <div class="d-flex justify-content-center" id="strRank">
                                                 <span style="font-size: 12x;  "> NIFTY IT is
                                                     more
                                                     bullish than
@@ -842,8 +1009,7 @@ function showSectorCard(option) {
                                                     <td>13.17%</td>
                                                     <td>3.17%</td>
                                                     <td>
-                                                        <a href=""><span
-                                                                style="color:grey; font-size:12pt;"
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
                                                                 class="fa fa-chart-line"></span></a>
                                                     </td>
                                                 </tr>
@@ -853,8 +1019,7 @@ function showSectorCard(option) {
                                                     <td>13.17%</td>
                                                     <td>3.17%</td>
                                                     <td>
-                                                        <a href=""><span
-                                                                style="color:grey; font-size:12pt;"
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
                                                                 class="fa fa-chart-line"></span></a>
                                                     </td>
                                                 </tr>
@@ -864,8 +1029,7 @@ function showSectorCard(option) {
                                                     <td>13.17%</td>
                                                     <td>3.17%</td>
                                                     <td>
-                                                        <a href=""><span
-                                                                style="color:grey; font-size:12pt;"
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
                                                                 class="fa fa-chart-line"></span></a>
                                                     </td>
                                                 </tr>
@@ -889,8 +1053,7 @@ function showSectorCard(option) {
                                                     <td>13.17%</td>
                                                     <td>3.17%</td>
                                                     <td>
-                                                        <a href=""><span
-                                                                style="color:grey; font-size:12pt;"
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
                                                                 class="fa fa-chart-line"></span></a>
                                                     </td>
                                                 </tr>
@@ -900,8 +1063,7 @@ function showSectorCard(option) {
                                                     <td>13.17%</td>
                                                     <td>3.17%</td>
                                                     <td>
-                                                        <a href=""><span
-                                                                style="color:grey; font-size:12pt;"
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
                                                                 class="fa fa-chart-line"></span></a>
                                                     </td>
                                                 </tr>
@@ -911,15 +1073,15 @@ function showSectorCard(option) {
                                                     <td>13.17%</td>
                                                     <td>3.17%</td>
                                                     <td>
-                                                        <a href=""><span
-                                                                style="color:grey; font-size:12pt;"
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
                                                                 class="fa fa-chart-line"></span></a>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                    <a style="color: var(--primary-color,#006aff); cursor: pointer;" onclick="showSectorStockTable(this)">
+                                    <a style="color: var(--primary-color,#006aff); cursor: pointer;"
+                                        onclick="showSectorStockTable(this, 1)">
                                         Show more
                                     </a>
                                 </div>
@@ -930,32 +1092,1575 @@ function showSectorCard(option) {
                     </div>
 
                     <div class="row">
-                        <div class="sectorStocksContainer p-3" style=" visibility: hidden;
+                        <div id="sectorStocksContainer1" class="sectorStocksContainer p-3" style=" visibility: hidden;
                                 max-height: 75vh;
                                 height: 0px;
                                 overflow-y: auto;
                                 transition: height 0.5s ease-out;">
-                                
-                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
-                                    <h5>Stocks</h5>
-                                </div>
+
+                            <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                <h5>Stock Comparision</h5>
+                            </div>
 
 
                             <div class="mb-3 btn-group" role="group">
-  <input type="radio" class="btn-check" name="btnradio" id="outPerformingStocks" autocomplete="off" checked>
-  <label class="btn btn-outline-secondary" for="outPerformingStocks"  onclick="updateSectorStocksTable('outPerforming')">Out Performing</label>
+                                <input type="radio" class="btn-check" name="btnradio" id="outPerformingStocks"
+                                    autocomplete="off" checked>
+                                <label class="btn btn-outline-secondary" for="outPerformingStocks"
+                                    onclick="updateStocksTable('outPerforming', 1)">Out Performing</label>
 
-  <input type="radio" class="btn-check" name="btnradio" id="underPerformingStocks" autocomplete="off">
-  <label class="btn btn-outline-secondary" for="underPerformingStocks" onclick="updateSectorStocksTable('underPerforming')">Under Performing</label>
-</div>
+                                <input type="radio" class="btn-check" name="btnradio" id="underPerformingStocks"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="underPerformingStocks"
+                                    onclick="updateStocksTable('underPerforming', 1)">Under Performing</label>
+                            </div>
 
-                            <table id="${sectorStocksTableId}" class="table">
-                             
+                            <table id="${sectorStocksTableId}1" class="table">
+
                             </table>
                         </div>
-                        
+
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="container-md" data-hash="one">
+            <div class="card shadow">
+                <div class="card-header d-flex justify-content-between align-items-center"
+                    style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);">
+
+
+                    <div style="cursor: pointer" class="link-primary" onclick="showSectorTable()">
+                        <i class="fas fa-arrow-left"></i>
+                        &nbsp;
+                        Back
+                    </div>
+
+                    <h5 class="card-title" style="font-weight: 600;">
+                        ${option}
+                    </h5>
+
+                    <!-- <p style="border: 1px solid lightgray; border-radius: 50%; padding:0 5px 0 5px; margin: 0;"> -->
+
+                    <p style="margin: 0; color: gray;">
+
+                        <b>
+                            <!-- RANK 1 -->
+                            1<sup>st</sup> Rank
+                        </b>
+                    </p>
+
+
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col col-md-6 p-3">
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Highlights</h6>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">
+                                            Relative Returns
+                                        </span>
+                                        <h4 style="color: green; white-space: nowrap;">+ 15.73%
+                                        </h4>
+                                    </div>
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Market Cap Change</span>
+                                        <h4 style="color: green; white-space: nowrap;">234 Cr.
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Outperformers <i
+                                                class="fas fa-long-arrow-alt-up"></i></span>
+                                        <h4>5</h4>
+                                    </div>
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Underperformers <i
+                                                class="fas fa-long-arrow-alt-down"></i></span>
+                                        <h4>1</h4>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Price</span>
+                                        <h4 style="color: green; white-space: nowrap;">
+                                            20,013.65
+                                        </h4>
+                                    </div>
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Price Change %</span>
+                                        <h4 style="color: green; white-space: nowrap;"> 3.1 %
+                                        </h4>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Periodic Returns</h6>
+                                </div>
+                                <div class="owl-carousel owl-theme periodicReturns">
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>1D</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 5.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>1M</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 15.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>3M</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 1.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>6M</h6>
+                                        <h5 style="color: red; white-space: nowrap;">- 0.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>1Y</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 5.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>5Y</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 2.73%
+                                        </h5>
+                                    </div>
+                                </div>
+
+                            </section>
+
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Analysis</h6>
+                                </div>
+                                <p>
+                                    The <b>NIFTY IT</b> Sector rose by <b style="color: green;">11.17%</b>
+                                    over the <b>quarter</b>, while the <b>Nifty 50</b> changed
+                                    <b style="color: green">4.08%</b>
+                                </p>
+
+                            </section>
+
+
+                            <section>
+                                <div>
+                                    <p style="text-align:center; margin-bottom: 10px; font-weight: 600;">
+                                        TSR
+                                        Strength Index</p>
+                                    <div class="row tsr_strength_svg_container">
+                                        <div id="trendStrengthDiv" class="d-flex justify-content-center">
+
+                                            <svg width="250" height="43">
+                                                <defs>
+                                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%"
+                                                        spreadMethod="pad">
+                                                        <stop offset="0%" stop-color="#ff0000" stop-opacity="1">
+                                                        </stop>
+                                                        <stop offset="50%" stop-color="#e6e600" stop-opacity="1">
+                                                        </stop>
+                                                        <stop offset="100%" stop-color="#009900" stop-opacity="1">
+                                                        </stop>
+                                                    </linearGradient>
+                                                </defs>
+                                                <g><text x="180" y="10" text-anchor="end"
+                                                        style="font-size: 12px; font-weight: bold;">Technical
+                                                        Strength
+                                                        Intraday</text></g>
+                                                <g>
+                                                    <rect x="0" y="15" width="240" height="8"
+                                                        style="fill: url(&quot;#gradient&quot;);" rx="4">
+                                                    </rect>
+                                                </g>
+                                                <g>
+                                                    <line x1="158.88" y1="15" x2="158.88" y2="23" stroke-width="1"
+                                                        stroke-dasharray="2, 2" stroke="black ">
+                                                    </line>
+                                                </g>
+                                                <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000" stroke="#000"
+                                                    stroke-width="1" transform="translate(158.88,25)">
+                                                </path>
+                                                <g><text x="10" y="34"
+                                                        style="font-size: 10px; font-weight: bold;">Sell</text>
+                                                </g>
+                                                <g><text x="230" y="34" text-anchor="end"
+                                                        style="font-size: 10px; font-weight: bold;">Buy</text>
+                                                </g>
+                                                <g><text x="134" y="34" text-anchor="end"
+                                                        style="font-size: 9px; font-weight: bold;">66.20%</text>
+                                                </g>
+                                            </svg>
+                                        </div>
+
+                                        <div class="tsr_strength_values_container">
+                                            <div class="d-flex justify-content-around" id="strSig">
+                                                Signal
+                                                <span><span style="color:#008B00;;  ">Bullish</span></span>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex justify-content-center" id="strRank">
+                                                <span style="font-size: 12x;  "> NIFTY IT is
+                                                    more
+                                                    bullish than
+                                                    85.50 % of
+                                                    stocks </span>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+
+                        </div>
+
+
+                        <!-- <div style="min-width: 1px; background-color: lightgray; padding: 0;" class="d-none d-md-block col-md-2 vr"></div> -->
+
+
+                        <div class="col col-md-6 p-3">
+
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Technicals</h6>
+                                </div>
+                                <div class="owl-carousel owl-theme technicals">
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>RSI</h6>
+                                        <h4 style="color: orange; white-space: nowrap;">58.18
+                                        </h4>
+                                        <p style="color: orange;  margin: 0;">Neutral</p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>MACD</h6>
+                                        <h4 style="color: green; white-space: nowrap;">15.73
+                                        </h4>
+                                        <p style="color: green;  margin: 0;">Bullish</p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>ADX</h6>
+                                        <h4 style="color: #ff9999; white-space: nowrap;"> 11.73
+                                        </h4>
+                                        <p style="color: #ff9999;  margin: 0;">Mild Bearish</p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>SMA</h6>
+                                        <h4 style="color: black; white-space: nowrap;">0.73</h4>
+                                        <p style="color: black; margin: 0;"></p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>EMA</h6>
+                                        <h4 style="color: #96C8A2; white-space: nowrap;">5.73
+                                        </h4>
+                                        <p style="color: #96C8A2; margin: 0;">Mild Bullish</p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section>
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Stocks</h6>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-100 p-3 text-center">
+                                        <b>Out Performing</b>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">vs Nifty</th>
+                                                    <th scope="col">vs NIFTY IT</th>
+                                                    <th scope="col">Chart</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="">TCS</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">WIPRO</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">INFY</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="w-100 p-3 text-center">
+                                        <b>Under Performing</b>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">vs NIFTY</th>
+                                                    <th scope="col">vs NIFTY IT</th>
+                                                    <th scope="col">Chart</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="">TCS</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">WIPRO</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">INFY</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <a style="color: var(--primary-color,#006aff); cursor: pointer;"
+                                        onclick="showSectorStockTable(this, 2)">
+                                        Show more
+                                    </a>
+                                </div>
+                            </section>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div  id="sectorStocksContainer2"  class="sectorStocksContainer p-3" style=" visibility: hidden;
+                                max-height: 75vh;
+                                height: 0px;
+                                overflow-y: auto;
+                                transition: height 0.5s ease-out;">
+
+                            <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                <h5>Stock Comparision</h5>
+                            </div>
+
+
+                            <div class="mb-3 btn-group" role="group">
+                                <input type="radio" class="btn-check" name="btnradio" id="outPerformingStocks"
+                                    autocomplete="off" checked>
+                                <label class="btn btn-outline-secondary" for="outPerformingStocks"
+                                    onclick="updateStocksTable('outPerforming', 2)">Out Performing</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="underPerformingStocks"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="underPerformingStocks"
+                                    onclick="updateStocksTable('underPerforming', 2)">Under Performing</label>
+                            </div>
+
+                            <table id="${sectorStocksTableId}2" class="table">
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-md" data-hash="two">
+            <div class="card shadow">
+                <div class="card-header d-flex justify-content-between align-items-center"
+                    style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);">
+
+
+                    <div style="cursor: pointer" class="link-primary" onclick="showSectorTable()">
+                        <i class="fas fa-arrow-left"></i>
+                        &nbsp;
+                        Back
+                    </div>
+
+                    <h5 class="card-title" style="font-weight: 600;">
+                        ${option}
+                    </h5>
+
+                    <!-- <p style="border: 1px solid lightgray; border-radius: 50%; padding:0 5px 0 5px; margin: 0;"> -->
+
+                    <p style="margin: 0; color: gray;">
+
+                        <b>
+                            <!-- RANK 1 -->
+                            1<sup>st</sup> Rank
+                        </b>
+                    </p>
+
+
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col col-md-6 p-3">
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Highlights</h6>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">
+                                            Relative Returns
+                                        </span>
+                                        <h4 style="color: green; white-space: nowrap;">+ 15.73%
+                                        </h4>
+                                    </div>
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Market Cap Change</span>
+                                        <h4 style="color: green; white-space: nowrap;">234 Cr.
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Outperformers <i
+                                                class="fas fa-long-arrow-alt-up"></i></span>
+                                        <h4>5</h4>
+                                    </div>
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Underperformers <i
+                                                class="fas fa-long-arrow-alt-down"></i></span>
+                                        <h4>1</h4>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Price</span>
+                                        <h4 style="color: green; white-space: nowrap;">
+                                            20,013.65
+                                        </h4>
+                                    </div>
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Price Change %</span>
+                                        <h4 style="color: green; white-space: nowrap;"> 3.1 %
+                                        </h4>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Periodic Returns</h6>
+                                </div>
+                                <div class="owl-carousel owl-theme periodicReturns">
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>1D</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 5.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>1M</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 15.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>3M</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 1.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>6M</h6>
+                                        <h5 style="color: red; white-space: nowrap;">- 0.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>1Y</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 5.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>5Y</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 2.73%
+                                        </h5>
+                                    </div>
+                                </div>
+
+                            </section>
+
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Analysis</h6>
+                                </div>
+                                <p>
+                                    The <b>NIFTY IT</b> Sector rose by <b style="color: green;">11.17%</b>
+                                    over the <b>quarter</b>, while the <b>Nifty 50</b> changed
+                                    <b style="color: green">4.08%</b>
+                                </p>
+
+                            </section>
+
+
+                            <section>
+                                <div>
+                                    <p style="text-align:center; margin-bottom: 10px; font-weight: 600;">
+                                        TSR
+                                        Strength Index</p>
+                                    <div class="row tsr_strength_svg_container">
+                                        <div id="trendStrengthDiv" class="d-flex justify-content-center">
+
+                                            <svg width="250" height="43">
+                                                <defs>
+                                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%"
+                                                        spreadMethod="pad">
+                                                        <stop offset="0%" stop-color="#ff0000" stop-opacity="1">
+                                                        </stop>
+                                                        <stop offset="50%" stop-color="#e6e600" stop-opacity="1">
+                                                        </stop>
+                                                        <stop offset="100%" stop-color="#009900" stop-opacity="1">
+                                                        </stop>
+                                                    </linearGradient>
+                                                </defs>
+                                                <g><text x="180" y="10" text-anchor="end"
+                                                        style="font-size: 12px; font-weight: bold;">Technical
+                                                        Strength
+                                                        Intraday</text></g>
+                                                <g>
+                                                    <rect x="0" y="15" width="240" height="8"
+                                                        style="fill: url(&quot;#gradient&quot;);" rx="4">
+                                                    </rect>
+                                                </g>
+                                                <g>
+                                                    <line x1="158.88" y1="15" x2="158.88" y2="23" stroke-width="1"
+                                                        stroke-dasharray="2, 2" stroke="black ">
+                                                    </line>
+                                                </g>
+                                                <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000" stroke="#000"
+                                                    stroke-width="1" transform="translate(158.88,25)">
+                                                </path>
+                                                <g><text x="10" y="34"
+                                                        style="font-size: 10px; font-weight: bold;">Sell</text>
+                                                </g>
+                                                <g><text x="230" y="34" text-anchor="end"
+                                                        style="font-size: 10px; font-weight: bold;">Buy</text>
+                                                </g>
+                                                <g><text x="134" y="34" text-anchor="end"
+                                                        style="font-size: 9px; font-weight: bold;">66.20%</text>
+                                                </g>
+                                            </svg>
+                                        </div>
+
+                                        <div class="tsr_strength_values_container">
+                                            <div class="d-flex justify-content-around" id="strSig">
+                                                Signal
+                                                <span><span style="color:#008B00;;  ">Bullish</span></span>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex justify-content-center" id="strRank">
+                                                <span style="font-size: 12x;  "> NIFTY IT is
+                                                    more
+                                                    bullish than
+                                                    85.50 % of
+                                                    stocks </span>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+
+                        </div>
+
+
+                        <!-- <div style="min-width: 1px; background-color: lightgray; padding: 0;" class="d-none d-md-block col-md-2 vr"></div> -->
+
+
+                        <div class="col col-md-6 p-3">
+
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Technicals</h6>
+                                </div>
+                                <div class="owl-carousel owl-theme technicals">
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>RSI</h6>
+                                        <h4 style="color: orange; white-space: nowrap;">58.18
+                                        </h4>
+                                        <p style="color: orange;  margin: 0;">Neutral</p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>MACD</h6>
+                                        <h4 style="color: green; white-space: nowrap;">15.73
+                                        </h4>
+                                        <p style="color: green;  margin: 0;">Bullish</p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>ADX</h6>
+                                        <h4 style="color: #ff9999; white-space: nowrap;"> 11.73
+                                        </h4>
+                                        <p style="color: #ff9999;  margin: 0;">Mild Bearish</p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>SMA</h6>
+                                        <h4 style="color: black; white-space: nowrap;">0.73</h4>
+                                        <p style="color: black; margin: 0;"></p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>EMA</h6>
+                                        <h4 style="color: #96C8A2; white-space: nowrap;">5.73
+                                        </h4>
+                                        <p style="color: #96C8A2; margin: 0;">Mild Bullish</p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section>
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Stocks</h6>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-100 p-3 text-center">
+                                        <b>Out Performing</b>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">vs Nifty</th>
+                                                    <th scope="col">vs NIFTY IT</th>
+                                                    <th scope="col">Chart</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="">TCS</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">WIPRO</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">INFY</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="w-100 p-3 text-center">
+                                        <b>Under Performing</b>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">vs NIFTY</th>
+                                                    <th scope="col">vs NIFTY IT</th>
+                                                    <th scope="col">Chart</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="">TCS</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">WIPRO</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">INFY</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <a style="color: var(--primary-color,#006aff); cursor: pointer;"
+                                        onclick="showSectorStockTable(this, 3)">
+                                        Show more
+                                    </a>
+                                </div>
+                            </section>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div id="sectorStocksContainer3"  class="sectorStocksContainer p-3" style=" visibility: hidden;
+                                max-height: 75vh;
+                                height: 0px;
+                                overflow-y: auto;
+                                transition: height 0.5s ease-out;">
+
+                            <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                <h5>Stock Comparision</h5>
+                            </div>
+
+
+                            <div class="mb-3 btn-group" role="group">
+                                <input type="radio" class="btn-check" name="btnradio" id="outPerformingStocks"
+                                    autocomplete="off" checked>
+                                <label class="btn btn-outline-secondary" for="outPerformingStocks"
+                                    onclick="updateStocksTable('outPerforming', 3)">Out Performing</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="underPerformingStocks"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="underPerformingStocks"
+                                    onclick="updateStocksTable('underPerforming', 3)">Under Performing</label>
+                            </div>
+
+                            <table id="${sectorStocksTableId}3" class="table">
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-md" data-hash="three">
+            <div class="card shadow">
+                <div class="card-header d-flex justify-content-between align-items-center"
+                    style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);">
+
+
+                    <div style="cursor: pointer" class="link-primary" onclick="showSectorTable()">
+                        <i class="fas fa-arrow-left"></i>
+                        &nbsp;
+                        Back
+                    </div>
+
+                    <h5 class="card-title" style="font-weight: 600;">
+                        ${option}
+                    </h5>
+
+                    <!-- <p style="border: 1px solid lightgray; border-radius: 50%; padding:0 5px 0 5px; margin: 0;"> -->
+
+                    <p style="margin: 0; color: gray;">
+
+                        <b>
+                            <!-- RANK 1 -->
+                            1<sup>st</sup> Rank
+                        </b>
+                    </p>
+
+
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col col-md-6 p-3">
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Highlights</h6>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">
+                                            Relative Returns
+                                        </span>
+                                        <h4 style="color: green; white-space: nowrap;">+ 15.73%
+                                        </h4>
+                                    </div>
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Market Cap Change</span>
+                                        <h4 style="color: green; white-space: nowrap;">234 Cr.
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Outperformers <i
+                                                class="fas fa-long-arrow-alt-up"></i></span>
+                                        <h4>5</h4>
+                                    </div>
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Underperformers <i
+                                                class="fas fa-long-arrow-alt-down"></i></span>
+                                        <h4>1</h4>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Price</span>
+                                        <h4 style="color: green; white-space: nowrap;">
+                                            20,013.65
+                                        </h4>
+                                    </div>
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Price Change %</span>
+                                        <h4 style="color: green; white-space: nowrap;"> 3.1 %
+                                        </h4>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Periodic Returns</h6>
+                                </div>
+                                <div class="owl-carousel owl-theme periodicReturns">
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>1D</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 5.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>1M</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 15.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>3M</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 1.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>6M</h6>
+                                        <h5 style="color: red; white-space: nowrap;">- 0.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>1Y</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 5.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>5Y</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 2.73%
+                                        </h5>
+                                    </div>
+                                </div>
+
+                            </section>
+
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Analysis</h6>
+                                </div>
+                                <p>
+                                    The <b>NIFTY IT</b> Sector rose by <b style="color: green;">11.17%</b>
+                                    over the <b>quarter</b>, while the <b>Nifty 50</b> changed
+                                    <b style="color: green">4.08%</b>
+                                </p>
+
+                            </section>
+
+
+                            <section>
+                                <div>
+                                    <p style="text-align:center; margin-bottom: 10px; font-weight: 600;">
+                                        TSR
+                                        Strength Index</p>
+                                    <div class="row tsr_strength_svg_container">
+                                        <div id="trendStrengthDiv" class="d-flex justify-content-center">
+
+                                            <svg width="250" height="43">
+                                                <defs>
+                                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%"
+                                                        spreadMethod="pad">
+                                                        <stop offset="0%" stop-color="#ff0000" stop-opacity="1">
+                                                        </stop>
+                                                        <stop offset="50%" stop-color="#e6e600" stop-opacity="1">
+                                                        </stop>
+                                                        <stop offset="100%" stop-color="#009900" stop-opacity="1">
+                                                        </stop>
+                                                    </linearGradient>
+                                                </defs>
+                                                <g><text x="180" y="10" text-anchor="end"
+                                                        style="font-size: 12px; font-weight: bold;">Technical
+                                                        Strength
+                                                        Intraday</text></g>
+                                                <g>
+                                                    <rect x="0" y="15" width="240" height="8"
+                                                        style="fill: url(&quot;#gradient&quot;);" rx="4">
+                                                    </rect>
+                                                </g>
+                                                <g>
+                                                    <line x1="158.88" y1="15" x2="158.88" y2="23" stroke-width="1"
+                                                        stroke-dasharray="2, 2" stroke="black ">
+                                                    </line>
+                                                </g>
+                                                <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000" stroke="#000"
+                                                    stroke-width="1" transform="translate(158.88,25)">
+                                                </path>
+                                                <g><text x="10" y="34"
+                                                        style="font-size: 10px; font-weight: bold;">Sell</text>
+                                                </g>
+                                                <g><text x="230" y="34" text-anchor="end"
+                                                        style="font-size: 10px; font-weight: bold;">Buy</text>
+                                                </g>
+                                                <g><text x="134" y="34" text-anchor="end"
+                                                        style="font-size: 9px; font-weight: bold;">66.20%</text>
+                                                </g>
+                                            </svg>
+                                        </div>
+
+                                        <div class="tsr_strength_values_container">
+                                            <div class="d-flex justify-content-around" id="strSig">
+                                                Signal
+                                                <span><span style="color:#008B00;;  ">Bullish</span></span>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex justify-content-center" id="strRank">
+                                                <span style="font-size: 12x;  "> NIFTY IT is
+                                                    more
+                                                    bullish than
+                                                    85.50 % of
+                                                    stocks </span>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+
+                        </div>
+
+
+                        <!-- <div style="min-width: 1px; background-color: lightgray; padding: 0;" class="d-none d-md-block col-md-2 vr"></div> -->
+
+
+                        <div class="col col-md-6 p-3">
+
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Technicals</h6>
+                                </div>
+                                <div class="owl-carousel owl-theme technicals">
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>RSI</h6>
+                                        <h4 style="color: orange; white-space: nowrap;">58.18
+                                        </h4>
+                                        <p style="color: orange;  margin: 0;">Neutral</p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>MACD</h6>
+                                        <h4 style="color: green; white-space: nowrap;">15.73
+                                        </h4>
+                                        <p style="color: green;  margin: 0;">Bullish</p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>ADX</h6>
+                                        <h4 style="color: #ff9999; white-space: nowrap;"> 11.73
+                                        </h4>
+                                        <p style="color: #ff9999;  margin: 0;">Mild Bearish</p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>SMA</h6>
+                                        <h4 style="color: black; white-space: nowrap;">0.73</h4>
+                                        <p style="color: black; margin: 0;"></p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>EMA</h6>
+                                        <h4 style="color: #96C8A2; white-space: nowrap;">5.73
+                                        </h4>
+                                        <p style="color: #96C8A2; margin: 0;">Mild Bullish</p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section>
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Stocks</h6>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-100 p-3 text-center">
+                                        <b>Out Performing</b>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">vs Nifty</th>
+                                                    <th scope="col">vs NIFTY IT</th>
+                                                    <th scope="col">Chart</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="">TCS</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">WIPRO</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">INFY</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="w-100 p-3 text-center">
+                                        <b>Under Performing</b>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">vs NIFTY</th>
+                                                    <th scope="col">vs NIFTY IT</th>
+                                                    <th scope="col">Chart</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="">TCS</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">WIPRO</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">INFY</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <a style="color: var(--primary-color,#006aff); cursor: pointer;"
+                                        onclick="showSectorStockTable(this, 4)">
+                                        Show more
+                                    </a>
+                                </div>
+                            </section>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div id="sectorStocksContainer4"  class="sectorStocksContainer p-3" style=" visibility: hidden;
+                                max-height: 75vh;
+                                height: 0px;
+                                overflow-y: auto;
+                                transition: height 0.5s ease-out;">
+
+                            <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                <h5>Stock Comparision</h5>
+                            </div>
+
+
+                            <div class="mb-3 btn-group" role="group">
+                                <input type="radio" class="btn-check" name="btnradio" id="outPerformingStocks"
+                                    autocomplete="off" checked>
+                                <label class="btn btn-outline-secondary" for="outPerformingStocks"
+                                    onclick="updateStocksTable('outPerforming', 4)">Out Performing</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="underPerformingStocks"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="underPerformingStocks"
+                                    onclick="updateStocksTable('underPerforming', 4)">Under Performing</label>
+                            </div>
+
+                            <table id="${sectorStocksTableId}4" class="table">
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-md" data-hash="four">
+            <div class="card shadow">
+                <div class="card-header d-flex justify-content-between align-items-center"
+                    style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);">
+
+
+                    <div style="cursor: pointer" class="link-primary" onclick="showSectorTable()">
+                        <i class="fas fa-arrow-left"></i>
+                        &nbsp;
+                        Back
+                    </div>
+
+                    <h5 class="card-title" style="font-weight: 600;">
+                        ${option}
+                    </h5>
+
+                    <!-- <p style="border: 1px solid lightgray; border-radius: 50%; padding:0 5px 0 5px; margin: 0;"> -->
+
+                    <p style="margin: 0; color: gray;">
+
+                        <b>
+                            <!-- RANK 1 -->
+                            1<sup>st</sup> Rank
+                        </b>
+                    </p>
+
+
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col col-md-6 p-3">
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Highlights</h6>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">
+                                            Relative Returns
+                                        </span>
+                                        <h4 style="color: green; white-space: nowrap;">+ 15.73%
+                                        </h4>
+                                    </div>
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Market Cap Change</span>
+                                        <h4 style="color: green; white-space: nowrap;">234 Cr.
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Outperformers <i
+                                                class="fas fa-long-arrow-alt-up"></i></span>
+                                        <h4>5</h4>
+                                    </div>
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Underperformers <i
+                                                class="fas fa-long-arrow-alt-down"></i></span>
+                                        <h4>1</h4>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Price</span>
+                                        <h4 style="color: green; white-space: nowrap;">
+                                            20,013.65
+                                        </h4>
+                                    </div>
+                                    <div class="w-100 d-flex flex-column">
+                                        <span style="font-weight: 100;">Price Change %</span>
+                                        <h4 style="color: green; white-space: nowrap;"> 3.1 %
+                                        </h4>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Periodic Returns</h6>
+                                </div>
+                                <div class="owl-carousel owl-theme periodicReturns">
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>1D</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 5.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>1M</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 15.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>3M</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 1.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>6M</h6>
+                                        <h5 style="color: red; white-space: nowrap;">- 0.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>1Y</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 5.73%
+                                        </h5>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>5Y</h6>
+                                        <h5 style="color: green; white-space: nowrap;">+ 2.73%
+                                        </h5>
+                                    </div>
+                                </div>
+
+                            </section>
+
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Analysis</h6>
+                                </div>
+                                <p>
+                                    The <b>NIFTY IT</b> Sector rose by <b style="color: green;">11.17%</b>
+                                    over the <b>quarter</b>, while the <b>Nifty 50</b> changed
+                                    <b style="color: green">4.08%</b>
+                                </p>
+
+                            </section>
+
+
+                            <section>
+                                <div>
+                                    <p style="text-align:center; margin-bottom: 10px; font-weight: 600;">
+                                        TSR
+                                        Strength Index</p>
+                                    <div class="row tsr_strength_svg_container">
+                                        <div id="trendStrengthDiv" class="d-flex justify-content-center">
+
+                                            <svg width="250" height="43">
+                                                <defs>
+                                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%"
+                                                        spreadMethod="pad">
+                                                        <stop offset="0%" stop-color="#ff0000" stop-opacity="1">
+                                                        </stop>
+                                                        <stop offset="50%" stop-color="#e6e600" stop-opacity="1">
+                                                        </stop>
+                                                        <stop offset="100%" stop-color="#009900" stop-opacity="1">
+                                                        </stop>
+                                                    </linearGradient>
+                                                </defs>
+                                                <g><text x="180" y="10" text-anchor="end"
+                                                        style="font-size: 12px; font-weight: bold;">Technical
+                                                        Strength
+                                                        Intraday</text></g>
+                                                <g>
+                                                    <rect x="0" y="15" width="240" height="8"
+                                                        style="fill: url(&quot;#gradient&quot;);" rx="4">
+                                                    </rect>
+                                                </g>
+                                                <g>
+                                                    <line x1="158.88" y1="15" x2="158.88" y2="23" stroke-width="1"
+                                                        stroke-dasharray="2, 2" stroke="black ">
+                                                    </line>
+                                                </g>
+                                                <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000" stroke="#000"
+                                                    stroke-width="1" transform="translate(158.88,25)">
+                                                </path>
+                                                <g><text x="10" y="34"
+                                                        style="font-size: 10px; font-weight: bold;">Sell</text>
+                                                </g>
+                                                <g><text x="230" y="34" text-anchor="end"
+                                                        style="font-size: 10px; font-weight: bold;">Buy</text>
+                                                </g>
+                                                <g><text x="134" y="34" text-anchor="end"
+                                                        style="font-size: 9px; font-weight: bold;">66.20%</text>
+                                                </g>
+                                            </svg>
+                                        </div>
+
+                                        <div class="tsr_strength_values_container">
+                                            <div class="d-flex justify-content-around" id="strSig">
+                                                Signal
+                                                <span><span style="color:#008B00;;  ">Bullish</span></span>
+                                            </div>
+                                            <br>
+                                            <div class="d-flex justify-content-center" id="strRank">
+                                                <span style="font-size: 12x;  "> NIFTY IT is
+                                                    more
+                                                    bullish than
+                                                    85.50 % of
+                                                    stocks </span>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+
+                        </div>
+
+
+                        <!-- <div style="min-width: 1px; background-color: lightgray; padding: 0;" class="d-none d-md-block col-md-2 vr"></div> -->
+
+
+                        <div class="col col-md-6 p-3">
+
+                            <section class="mb-4">
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Technicals</h6>
+                                </div>
+                                <div class="owl-carousel owl-theme technicals">
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>RSI</h6>
+                                        <h4 style="color: orange; white-space: nowrap;">58.18
+                                        </h4>
+                                        <p style="color: orange;  margin: 0;">Neutral</p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>MACD</h6>
+                                        <h4 style="color: green; white-space: nowrap;">15.73
+                                        </h4>
+                                        <p style="color: green;  margin: 0;">Bullish</p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>ADX</h6>
+                                        <h4 style="color: #ff9999; white-space: nowrap;"> 11.73
+                                        </h4>
+                                        <p style="color: #ff9999;  margin: 0;">Mild Bearish</p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>SMA</h6>
+                                        <h4 style="color: black; white-space: nowrap;">0.73</h4>
+                                        <p style="color: black; margin: 0;"></p>
+                                    </div>
+                                    <div class="card d-flex flex-column p-3">
+                                        <h6>EMA</h6>
+                                        <h4 style="color: #96C8A2; white-space: nowrap;">5.73
+                                        </h4>
+                                        <p style="color: #96C8A2; margin: 0;">Mild Bullish</p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section>
+                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                    <h6>Stocks</h6>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-100 p-3 text-center">
+                                        <b>Out Performing</b>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">vs Nifty</th>
+                                                    <th scope="col">vs NIFTY IT</th>
+                                                    <th scope="col">Chart</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="">TCS</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">WIPRO</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">INFY</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="w-100 p-3 text-center">
+                                        <b>Under Performing</b>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">vs NIFTY</th>
+                                                    <th scope="col">vs NIFTY IT</th>
+                                                    <th scope="col">Chart</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="">TCS</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">WIPRO</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="">INFY</a></td>
+                                                    <td>13.17%</td>
+                                                    <td>3.17%</td>
+                                                    <td>
+                                                        <a href=""><span style="color:grey; font-size:12pt;"
+                                                                class="fa fa-chart-line"></span></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <a style="color: var(--primary-color,#006aff); cursor: pointer;"
+                                        onclick="showSectorStockTable(this, 5)">
+                                        Show more
+                                    </a>
+                                </div>
+                            </section>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div id="sectorStocksContainer5"  class="sectorStocksContainer p-3" style=" visibility: hidden;
+                                max-height: 75vh;
+                                height: 0px;
+                                overflow-y: auto;
+                                transition: height 0.5s ease-out;">
+
+                            <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                <h5>Stock Comparision</h5>
+                            </div>
+
+
+                            <div class="mb-3 btn-group" role="group">
+                                <input type="radio" class="btn-check" name="btnradio" id="outPerformingStocks"
+                                    autocomplete="off" checked>
+                                <label class="btn btn-outline-secondary" for="outPerformingStocks"
+                                    onclick="updateStocksTable('outPerforming', 5)">Out Performing</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="underPerformingStocks"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="underPerformingStocks"
+                                    onclick="updateStocksTable('underPerforming', 5)">Under Performing</label>
+                            </div>
+
+                            <table id="${sectorStocksTableId}5" class="table">
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     `;
 
 
@@ -965,6 +2670,27 @@ function showSectorCard(option) {
 };
 
 function initializeCarousal() {
+
+    var sectorCards = {
+        loop: true,
+        // margin: 20,
+        dots: false,
+        nav: false,
+        // autoplay: true,
+        // autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1
+            }
+        },
+        // URLhashListener: true,
+        // startPosition: 'URLHash',
+
+        // navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"]
+
+    }
+
+    $(".sectorCards").owlCarousel(sectorCards);
 
     var periodicReturns = {
         // loop: true,
@@ -1003,17 +2729,20 @@ function initializeCarousal() {
 
     $(".technicals").owlCarousel(technicals);
 
+
+
 };
 
-function showSectorStockTable(element) {
+function showSectorStockTable(element, suffix) {
 
     element.style.display = "none";
 
-    let container = document.getElementsByClassName("sectorStocksContainer")[0];
+    let container = document.getElementById("sectorStocksContainer" + suffix);
+    // document.getElementsByClassName("sectorStocksContainer")[0];
 
-    updateSectorStocksTable("outPerforming");
+    updateStocksTable("outPerforming", suffix);
 
-    container.scrollIntoView();
+    // container.scrollIntoView();
 
     setTimeout(function () {
         container.style.visibility = "visible";
@@ -1024,9 +2753,9 @@ function showSectorStockTable(element) {
 
 };
 
-function updateSectorStocksTable(option) {
+function updateStocksTable(option, suffix) {
 
-    let sectorStocksTable = document.getElementById(sectorStocksTableId);
+    let sectorStocksTable = document.getElementById(sectorStocksTableId + suffix);
     if (option == "outPerforming") {
         sectorStocksTable.innerHTML = `
             <thead>
