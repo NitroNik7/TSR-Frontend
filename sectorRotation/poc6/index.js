@@ -1,7 +1,7 @@
 
 var sectorContainerId = "tsrSectorContainer";
 var sectorStocksTableId = "sectorStocksTable";
-        var sectorTableContainerId = "sectorTableContainer";
+var sectorTableContainerId = "sectorTableContainer";
 
 
 function showSectorTable() {
@@ -47,9 +47,9 @@ function showSectorTable() {
 
 function updateSectorTable(option) {
 
-            let sectorTable = document.getElementById(sectorTableContainerId);
+    let sectorTable = document.getElementById(sectorTableContainerId);
 
-    if(option == 'outPerforming'){
+    if (option == 'outPerforming') {
         sectorTable.innerHTML = `
             <table class="table table-striped">
                 <thead style="font-size: 16px;">
@@ -633,7 +633,7 @@ function updateSectorTable(option) {
             </table>
         `;
     }
-    else if(option == 'underPerforming'){
+    else if (option == 'underPerforming') {
         sectorTable.innerHTML = `
                 <table class="table table-striped">
                 <thead style="font-size: 16px;">
@@ -716,9 +716,9 @@ function updateSectorTable(option) {
             `;
     }
 
-            
-        }
-    
+
+}
+
 
 function showSectorCard(option) {
 
@@ -754,7 +754,7 @@ function showSectorCard(option) {
                     </div>
 
                     <h5 class="card-title" style="font-weight: 600;">
-                        ${option}
+                        ${option} 
                     </h5>
 
                     <!-- <p style="border: 1px solid lightgray; border-radius: 50%; padding:0 5px 0 5px; margin: 0;"> -->
@@ -771,11 +771,21 @@ function showSectorCard(option) {
                 </div>
                 <div class="card-body">
 
+                    <div class="row text-center">
+                        
+                                    <h6 class="">
+                                        <a href="">
+                                            View in Depth Analysis
+                                            <i class="fas fa-external-link-square-alt"></i>
+                                        </a>
+                                    </h6>
+                    </div>
+
                     <div class="row">
 
                         <div class="col col-md-6 p-3">
                             <section class="mb-4">
-                                <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
+                                <div class="mb-3 d-flex justify-content-between" style="border-bottom: 1px solid lightgrey;">
                                     <h6>Highlights</h6>
                                 </div>
                                 <div class="d-flex justify-content-between mb-3">
@@ -2727,9 +2737,29 @@ function initializeCarousal() {
 
     $(".periodicReturns").owlCarousel(periodicReturns);
 
+    $(".periodicReturns").on('mousedown', '.owl-stage', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+    });
+
+    $(".periodicReturns").on('touchstart', '.owl-stage', function (e) {
+        e.preventDefault();
+        event.stopPropagation();
+    });
+
     $(".technicals").owlCarousel(technicals);
 
+    $(".technicals").on('mousedown', '.owl-stage', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
 
+    });
+
+    $(".technicals").on('touchstart', '.owl-stage', function (e) {
+        e.preventDefault();
+        event.stopPropagation();
+    });
 
 };
 
