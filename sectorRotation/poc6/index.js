@@ -25,7 +25,7 @@ function showSectorTable() {
 
                                     <tr>
                                         <td>
-                                            <div style="cursor: pointer;" onclick="showSectorCard()"
+                                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY IT')"
                                                 class="link-primary link-underline-primary link-offset-3">
                                                 NIFTY IT
                                             </div>
@@ -59,7 +59,7 @@ function showSectorTable() {
 
                                     <tr>
                                         <td>
-                                            <div style="cursor: pointer;" onclick=""
+                                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY MEDIA')"
                                                 class="link-primary link-underline-primary link-offset-3">
                                                 NIFTY MEDIA
                                             </div>
@@ -93,7 +93,7 @@ function showSectorTable() {
 
                                     <tr>
                                         <td>
-                                            <div style="cursor: pointer;" onclick=""
+                                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY AUTO')"
                                                 class="link-primary link-underline-primary link-offset-3">
                                                 NIFTY AUTO
                                             </div>
@@ -127,7 +127,7 @@ function showSectorTable() {
 
                                     <tr>
                                         <td>
-                                            <div style="cursor: pointer;" onclick=""
+                                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY FMCG')"
                                                 class="link-primary link-underline-primary link-offset-3">
                                                 NIFTY FMCG
                                             </div>
@@ -161,7 +161,7 @@ function showSectorTable() {
 
                                     <tr>
                                         <td>
-                                            <div style="cursor: pointer;" onclick=""
+                                            <div style="cursor: pointer;" onclick="showSectorCard('NIFTY PHARMA')"
                                                 class="link-primary link-underline-primary link-offset-3">
                                                 NIFTY PHARMA
                                             </div>
@@ -199,7 +199,7 @@ function showSectorTable() {
 
 }
 
-function showSectorCard() {
+function showSectorCard(option) {
     let sectorContainer = document.getElementById(sectorContainerId);
 
     sectorContainer.innerHTML = `
@@ -214,7 +214,7 @@ function showSectorCard() {
                     </div>
 
                     <h5 class="card-title" style="font-weight: 600;">
-                        NIFTY IT
+                        ${option}
                     </h5>
 
                     <!-- <p style="border: 1px solid lightgray; border-radius: 50%; padding:0 5px 0 5px; margin: 0;"> -->
