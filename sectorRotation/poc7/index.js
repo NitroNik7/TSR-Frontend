@@ -317,7 +317,7 @@ function updateSectorTable(option) {
     for (let i = 0; i < sectors.length; i++) {
         html += `<tr>`
         html += `   <td>`
-        html += `       <div style="cursor: pointer;" onclick="showSectorCard('opSec', ${i})" class="link-primary">`
+        html += `       <div style="cursor: pointer;" onclick="showSectorCard('${option}Sec', ${i})" class="link-primary">`
         html += sectors[i].name;
         html += `       </div`
         html += `   </td>`;
@@ -361,391 +361,570 @@ function updateSectorTable(option) {
 
 function showSectorCard(sec, secId) {
 
-    let sectorCardNav = document.getElementById("sectorCardNav");
-    sectorCardNav.style.display = "flex";
-
-
-    let sectorNav = {
-        loop: true,
-        margin: 10,
-        dots: false
-    }
-
-    $(".sectorNav").owlCarousel(sectorNav);
-
     let sectorContainer = document.getElementById(sectorTableContainerId);
     sectorContainer.classList.remove("card");
 
-    // showSectorCard('opSec', '${sectors[i].id}');
+    // clone data object
+    let sectors = [...sectorData[sec]];
+    sectors.sort((a, b) => b.mcChg - a.mcChg); // sorts sectors in ascending order wrt mcChg - required for ranking the sectors
 
     let sectorInFocus = sectorData[sec][secId];
 
     let html = "";
 
-    html += `<div class="owl-carousel owl-theme sectorCards mx-auto">`;
-    html += `   <div class="container-md" data-hash="zero">`;
-    html += `       <div class="card shadow">`
-    html += `           <div class="card-header d-flex justify-content-between align-items-center" style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);">`
-    html += `              <div style="cursor: pointer" class="link-primary" onclick="showSectorTable()">`
-    html += `                   <i class="fas fa-arrow-left"></i>`
-    html += `                   &nbsp`;
-    html += `                   Back`;
-    html += `               </div>`;
-    html += `               <h5 class="card-title" style="font-weight: 600;">`
-    html += `                   ${option}`
-    html += `               </h5>`
+    // sector menu code begins
 
-    html += `               <p style="margin: 0; color: gray;">`
+    html += `<div id="sectorMenuContainer" style="display: flex;" class="owl-nav align-items-center justify-content-center">`
 
-    html += `                   <b>`
-    html += `                       1<sup>st</sup> Rank`
-    html += `                   </b>`
-    html += `               </p>`
-    html += `           </div>`
-    html += `           <div class="card-body">`
+    html += `   <button type="button" role="presentation" class="owl-prev btn">`
+    html += `       <span aria-label="Previous">`
+    html += `           <i class="fas fa-angle-left"></i>`
+    html += `       </span>`
+    html += `   </button>`
 
-    html += `           <div class="row text-center">`
+    html += `   <div id="sectorMenuCarousal" class="w-75 owl-carousel owl-theme" >`
 
-    html += `<h6 class="">`
-    html += `<a href="">`
-    html += `View in Depth Analysis`
-    html += `<i class="fas fa-external-link-square-alt"></i>`
-    html += `</a>`
-    html += `</h6>`
-    html += `</div>`
+    for (let i = 0; i < sectors.length; i++) {
+        html += `   <div class="item p-2">`;
+        html += `       <a href="#${i}">`;
+        html += `           <div class="card flex-row justify-content-around shadow-sm p-2">`;
+        html += `               <span style="font-weight: 500;">`
+        html += sectors[i].name;
+        html += `               </span>`
+        html += `               <span style="color: gray;">`
 
-    html += `<div class="row">
+        if (i == 0) {
+            html += `               1 <sup> st</sup >`;
+        }
+        else if (i == 1) {
+            html += `               2 <sup> nd</sup >`;
+        }
+        else if (i == 2) {
+            html += `               3 <sup> rd</sup >`;
+        }
+        else {
+            html += `               ${i + 1} <sup>th</sup >`;
+        }
 
-                <div class="col col-md-6 p-3">
-                    <section class="mb-4">
-                        <div class="mb-3 d-flex justify-content-between"
-                            style="border-bottom: 1px solid lightgrey;">
-                            <h6>Highlights</h6>
-                        </div>
-                        <div class="d-flex justify-content-between mb-3">
-                            <div class="w-100 d-flex flex-column">
-                                <span style="font-weight: 100;">
-                                    Relative Returns
-                                </span>
-                                <h4 style="color: green; white-space: nowrap;">+ 15.73%
-                                </h4>
-                            </div>
-                            <div class="w-100 d-flex flex-column">
-                                <span style="font-weight: 100;">Market Cap Change</span>
-                                <h4 style="color: green; white-space: nowrap;">234 Cr.
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between mb-3">
-                            <div class="w-100 d-flex flex-column">
-                                <span style="font-weight: 100;">Outperformers <i
-                                    class="fas fa-long-arrow-alt-up"></i></span>
-                                <h4>5</h4>
-                            </div>
-                            <div class="w-100 d-flex flex-column">
-                                <span style="font-weight: 100;">Underperformers <i
-                                    class="fas fa-long-arrow-alt-down"></i></span>
-                                <h4>1</h4>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between mb-3">
-                            <div class="w-100 d-flex flex-column">
-                                <span style="font-weight: 100;">Price</span>
-                                <h4 style="color: green; white-space: nowrap;">
-                                    20,013.65
-                                </h4>
-                            </div>
-                            <div class="w-100 d-flex flex-column">
-                                <span style="font-weight: 100;">Price Change %</span>
-                                <h4 style="color: green; white-space: nowrap;"> 3.1 %
-                                </h4>
-                            </div>
-                        </div>
-                    </section>
+        html += `               </span>`
+        html += `           </div>`
+        html += `       </a>`
+        html += `   </div>`
+    }
 
-                    <section class="mb-4">
-                        <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
-                            <h6>Periodic Returns</h6>
-                        </div>
-                        <div class="owl-carousel owl-theme periodicReturns">
-                            <div class="card d-flex flex-column p-3">
-                                <h6>1D</h6>
-                                <h5 style="color: green; white-space: nowrap;">+ 5.73%
-                                </h5>
-                            </div>
-                            <div class="card d-flex flex-column p-3">
-                                <h6>1M</h6>
-                                <h5 style="color: green; white-space: nowrap;">+ 15.73%
-                                </h5>
-                            </div>
-                            <div class="card d-flex flex-column p-3">
-                                <h6>3M</h6>
-                                <h5 style="color: green; white-space: nowrap;">+ 1.73%
-                                </h5>
-                            </div>
-                            <div class="card d-flex flex-column p-3">
-                                <h6>6M</h6>
-                                <h5 style="color: red; white-space: nowrap;">- 0.73%
-                                </h5>
-                            </div>
-                            <div class="card d-flex flex-column p-3">
-                                <h6>1Y</h6>
-                                <h5 style="color: green; white-space: nowrap;">+ 5.73%
-                                </h5>
-                            </div>
-                            <div class="card d-flex flex-column p-3">
-                                <h6>5Y</h6>
-                                <h5 style="color: green; white-space: nowrap;">+ 2.73%
-                                </h5>
-                            </div>
-                        </div>
+    html += `   </div>`;
 
-                    </section>
+    html += `   <button type = "button" role = "presentation" class="owl-next btn">`;
+    html += `       <span aria-label="Next">`;
+    html += `           <i class="fas fa-angle-right"></i>`;
+    html += `       </span>`;
+    html += `   </button>`;
+    html += `</div>`;
 
-                    <section class="mb-4">
-                        <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
-                            <h6>Analysis</h6>
-                        </div>
-                        <p>
-                            The <b>NIFTY IT</b> Sector rose by <b style="color: green;">11.17%</b>
-                            over the <b>quarter</b>, while the <b>Nifty 50</b> changed
-                            <b style="color: green">4.08%</b>
-                        </p>
+    // sector menu code ends
 
-                    </section>
+    // --------------------------------------------------------------------
+
+    // sector card carousal code starts
+
+    html += `<div id="sectorCardsCarousal" class="owl-carousel owl-theme mx-auto">`;
+    // selected sector first
+    html += paintSectorCard(sectors, secId);
 
 
-                    <section>
-                        <div>
-                            <p style="text-align:center; margin-bottom: 10px; font-weight: 600;">
-                                TSR
-                                Strength Index</p>
-                            <div class="row tsr_strength_svg_container">
-                                <div id="trendStrengthDiv" class="d-flex justify-content-center">
+    for (let i = 0; i < sectors.length; i++) {
+        if (secId != i) {
+            html += paintSectorCard(sectors, i);
+        }
+    }
+    html += `</div>`;
 
-                                    <svg width="250" height="43">
-                                        <defs>
-                                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%"
-                                                spreadMethod="pad">
-                                                <stop offset="0%" stop-color="#ff0000" stop-opacity="1">
-                                                </stop>
-                                                <stop offset="50%" stop-color="#e6e600" stop-opacity="1">
-                                                </stop>
-                                                <stop offset="100%" stop-color="#009900" stop-opacity="1">
-                                                </stop>
-                                            </linearGradient>
-                                        </defs>
-                                        <g><text x="180" y="10" text-anchor="end"
-                                            style="font-size: 12px; font-weight: bold;">Technical
-                                            Strength
-                                            Intraday</text></g>
-                                        <g>
-                                            <rect x="0" y="15" width="240" height="8"
-                                                style="fill: url(&quot;#gradient&quot;);" rx="4">
-                                            </rect>
-                                        </g>
-                                        <g>
-                                            <line x1="158.88" y1="15" x2="158.88" y2="23" stroke-width="1"
-                                                stroke-dasharray="2, 2" stroke="black ">
-                                            </line>
-                                        </g>
-                                        <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000" stroke="#000"
-                                            stroke-width="1" transform="translate(158.88,25)">
-                                        </path>
-                                        <g><text x="10" y="34"
-                                            style="font-size: 10px; font-weight: bold;">Sell</text>
-                                        </g>
-                                        <g><text x="230" y="34" text-anchor="end"
-                                            style="font-size: 10px; font-weight: bold;">Buy</text>
-                                        </g>
-                                        <g><text x="134" y="34" text-anchor="end"
-                                            style="font-size: 9px; font-weight: bold;">66.20%</text>
-                                        </g>
-                                    </svg>
-                                </div>
-
-                                <div class="tsr_strength_values_container">
-                                    <div class="d-flex justify-content-around" id="strSig">
-                                        Signal
-                                        <span><span style="color:#008B00;;  ">Bullish</span></span>
-                                    </div>
-                                    <br>
-                                        <div class="d-flex justify-content-center" id="strRank">
-                                            <span style="font-size: 12x;  "> NIFTY IT is
-                                                more
-                                                bullish than
-                                                85.50 % of
-                                                stocks </span>
-                                        </div>
+    sectorContainer.innerHTML = html;
 
 
+    // sector card carousal code end
 
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-
-                </div>
-
-
-                <!-- <div style="min-width: 1px; background-color: lightgray; padding: 0;" class="d-none d-md-block col-md-2 vr"></div> -->
-
-
-                <div class="col col-md-6 p-3">
-
-                    <section class="mb-4">
-                        <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
-                            <h6>Technicals</h6>
-                        </div>
-                        <div class="owl-carousel owl-theme technicals">
-                            <div class="card d-flex flex-column p-3">
-                                <h6>RSI</h6>
-                                <h4 style="color: orange; white-space: nowrap;">58.18
-                                </h4>
-                                <p style="color: orange;  margin: 0;">Neutral</p>
-                            </div>
-                            <div class="card d-flex flex-column p-3">
-                                <h6>MACD</h6>
-                                <h4 style="color: green; white-space: nowrap;">15.73
-                                </h4>
-                                <p style="color: green;  margin: 0;">Bullish</p>
-                            </div>
-                            <div class="card d-flex flex-column p-3">
-                                <h6>ADX</h6>
-                                <h4 style="color: #ff9999; white-space: nowrap;"> 11.73
-                                </h4>
-                                <p style="color: #ff9999;  margin: 0;">Mild Bearish</p>
-                            </div>
-                            <div class="card d-flex flex-column p-3">
-                                <h6>SMA</h6>
-                                <h4 style="color: black; white-space: nowrap;">0.73</h4>
-                                <p style="color: black; margin: 0;"></p>
-                            </div>
-                            <div class="card d-flex flex-column p-3">
-                                <h6>EMA</h6>
-                                <h4 style="color: #96C8A2; white-space: nowrap;">5.73
-                                </h4>
-                                <p style="color: #96C8A2; margin: 0;">Mild Bullish</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section>
-                        <div class="mb-3" style="border-bottom: 1px solid lightgrey;">
-                            <h6>Stocks</h6>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-100 p-3 text-center">
-                                <b>Out Performing</b>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">vs Nifty</th>
-                                            <th scope="col">vs NIFTY IT</th>
-                                            <th scope="col">Chart</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><a href="">TCS</a></td>
-                                            <td>13.17%</td>
-                                            <td>3.17%</td>
-                                            <td>
-                                                <a href=""><span style="color:grey; font-size:12pt;"
-                                                    class="fa fa-chart-line"></span></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><a href="">WIPRO</a></td>
-                                            <td>13.17%</td>
-                                            <td>3.17%</td>
-                                            <td>
-                                                <a href=""><span style="color:grey; font-size:12pt;"
-                                                    class="fa fa-chart-line"></span></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><a href="">INFY</a></td>
-                                            <td>13.17%</td>
-                                            <td>3.17%</td>
-                                            <td>
-                                                <a href=""><span style="color:grey; font-size:12pt;"
-                                                    class="fa fa-chart-line"></span></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="w-100 p-3 text-center">
-                                <b>Under Performing</b>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">vs NIFTY</th>
-                                            <th scope="col">vs NIFTY IT</th>
-                                            <th scope="col">Chart</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><a href="">TCS</a></td>
-                                            <td>13.17%</td>
-                                            <td>3.17%</td>
-                                            <td>
-                                                <a href=""><span style="color:grey; font-size:12pt;"
-                                                    class="fa fa-chart-line"></span></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><a href="">WIPRO</a></td>
-                                            <td>13.17%</td>
-                                            <td>3.17%</td>
-                                            <td>
-                                                <a href=""><span style="color:grey; font-size:12pt;"
-                                                    class="fa fa-chart-line"></span></a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><a href="">INFY</a></td>
-                                            <td>13.17%</td>
-                                            <td>3.17%</td>
-                                            <td>
-                                                <a href=""><span style="color:grey; font-size:12pt;"
-                                                    class="fa fa-chart-line"></span></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <a style="color: var(--primary-color,#006aff); cursor: pointer;"
-                                onclick="showSectorStockTable(this, 1)">
-                                Show more
-                            </a>
-                        </div>
-                    </section>
-
-                </div>
-
-            </div>
-
-
-        </div >
-            </div >
-        </div >
-        `
 
     // TO DO SHOW MORE STOCKS
-    html += `</div > `;
 
 
 
     // sectorContainer.scrollIntoView();
     initializeCarousal();
 };
+
+function initializeCarousal() {
+
+    // sector Menu navigation code starts here
+
+    let sectorNav = {
+        loop: true,
+        margin: 10,
+        dots: false
+    };
+
+    $("#sectorMenuCarousal").owlCarousel(sectorNav);
+
+
+    $('.owl-prev').click(function () {
+        $("#sectorMenuCarousal").trigger('prev.owl.carousel', [300]);
+    });
+    $('.owl-next').click(function () {
+        $("#sectorMenuCarousal").trigger('next.owl.carousel', [300]); // [300] - optional speed parameter
+    });
+
+    // sector Menu navigation code ends here
+
+
+    var sectorCards = {
+        loop: true,
+        // margin: 20,
+        dots: false,
+        nav: false,
+        // autoplay: true,
+        // autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1
+            }
+        },
+        // URLhashListener: true,
+        // startPosition: 'URLHash',
+    }
+
+    $("#sectorCardsCarousal").owlCarousel(sectorCards);
+
+    var periodicReturns = {
+        // loop: true,
+        margin: 10,
+        // autoplay: true,
+        dots: true,
+        nav: false,
+        responsive: {
+            0: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    };
+
+    $(".periodicReturns").owlCarousel(periodicReturns);
+
+    $(".periodicReturns").on('mousedown', '.owl-stage', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+    });
+
+    $(".periodicReturns").on('touchstart', '.owl-stage', function (e) {
+        e.preventDefault();
+        event.stopPropagation();
+    });
+
+    var technicals = {
+        // loop: true,
+        margin: 10,
+        // autoplay: true,
+        dots: true,
+        nav: false,
+        responsive: {
+            0: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    };
+
+    $(".technicals").owlCarousel(technicals);
+
+    $(".technicals").on('mousedown', '.owl-stage', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+    });
+
+    $(".technicals").on('touchstart', '.owl-stage', function (e) {
+        e.preventDefault();
+        event.stopPropagation();
+    });
+};
+
+function paintSectorCard(sectors, i) {
+    let html = "";
+
+    html += `   <div class="container-md" data-hash="${i}">`;
+    html += `       <div class="card shadow">`;
+
+    html += `           <div class="card-header d-flex justify-content-between align-items-center" style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);">`;
+
+    html += `               <div style="cursor: pointer" class="link-primary" onclick="paintSectorTableContainer()">`
+    html += `                   <i class="fas fa-arrow-left"></i>`
+    html += `                       &nbsp;`
+    html += `                       Back`
+    html += `               </div>`
+
+    html += `               <h5 class="card-title" style="font-weight: 600;">`
+    html += sectors[i].name;
+    html += `               </h5>`
+
+    html += `               <p style="margin: 0; color: gray;">`
+    html += `                   <b>`
+    if (i == 0) {
+        html += `               1 <sup> st</sup >`;
+    }
+    else if (i == 1) {
+        html += `               2 <sup> nd</sup >`;
+    }
+    else if (i == 2) {
+        html += `               3 <sup> rd</sup >`;
+    }
+    else {
+        html += `               ${i + 1} <sup>th</sup >`;
+    }
+    html += `                   </b>`
+    html += `               </p>`
+    html += `           </div>`;
+
+
+    // ---------------------------------------------------------------------
+
+
+    html += `           <div class="card-body">`;
+    html += `               <div class="row text-center">`;
+    html += `                   <h6 class="">`;
+    html += `                       <a href="">`
+    html += `                           View in Depth Analysis`
+    html += `                           <i class="fas fa-external-link-square-alt"></i>`
+    html += `                       </a>`
+    html += `                   </h6>`
+    html += `               </div>`;
+
+    if (sectors[i].secIdx) {
+
+        html += `           <div class="row">`
+
+        html += `               <div class="col col-md-6 p-3">`
+        html += `                   <section class="mb-4">`
+        html += `                       <div class="mb-3 d-flex justify-content-between" style="border-bottom: 1px solid lightgrey;">`
+        html += `                           <h6>Highlights</h6>`
+        html += `                       </div>`
+        html += `                       <div class="d-flex justify-content-between mb-3">`
+        html += `                           <div class="w-100 d-flex flex-column">`
+        html += `                               <span style="font-weight: 100;">`
+        html += `                                   Relative Returns`
+        html += `                               </span>`
+        html += `                               <h4 style="color: black; white-space: nowrap;">${getRoundedValue(sectors[i]["idxVals"]["relRtn"])}</h4>`
+        html += `                           </div>`
+        html += `                           <div class="w-100 d-flex flex-column">`
+        html += `                               <span style="font-weight: 100;">Market Cap Change</span>`
+        html += `                               <h4 style="color: black; white-space: nowrap;">${getRoundedValue(sectors[i]["mcChg"])}`
+        html += `                               </h4>`
+        html += `                           </div > `
+        html += `                       </div>`;
+        html += `                       <div class="d-flex justify-content-between mb-3" >`
+        html += `                           <div class="w-100 d-flex flex-column">`
+        html += `                               <span style="font-weight: 100;">`
+        html += `                                   Outperformers`
+        html += `                                   <i class="fas fa-long-arrow-alt-up"></i>`
+        html += `                               </span>`
+        html += `                               <h4>${sectors[i]["opEq"]}</h4>`;
+        html += `                           </div>`;
+        html += `                           <div class="w-100 d-flex flex-column">`;
+        html += `                               <span style="font-weight: 100;">`;
+        html += `                                   Underperformers`;
+        html += `                                   <i class="fas fa-long-arrow-alt-down"></i>`
+        html += `                               </span>`;
+        html += `                               <h4>${sectors[i]["upEq"]}</h4>`
+        html += `                           </div>`
+        html += `                       </div>`
+        html += `                       <div class="d-flex justify-content-between mb-3">`
+        html += `                           <div class="w-100 d-flex flex-column">`
+        html += `                               <span style="font-weight: 100;">Price</span>`
+        html += `                                   <h4 style="color: black; white-space: nowrap;">`
+        html += getRoundedValue(sectors[i]["idxVals"]["price"]);
+        html += `                                   </h4>`
+        html += `                           </div>`
+        html += `                           <div class="w-100 d-flex flex-column">`
+        html += `                               <span style="font-weight: 100;">Price Change %</span>`
+        html += `                                   <h4 style="color: black; white-space: nowrap;">`
+        html += getRoundedValue(sectors[i]["idxVals"]["priceChange"]) + " %";
+        html += `                                   </h4>`
+        html += `                               </div>`
+        html += `                       </div>`
+        html += `               </section>`;
+
+        html += `           <section class="mb-4">`
+        html += `               <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
+        html += `                   <h6>Periodic Returns</h6>`
+        html += `               </div>`
+        html += `               <div class="owl-carousel owl-theme periodicReturns">`;
+
+        for (let j = 0; j < sectors[i]["idxVals"]["rtnList"].length; j++) {
+            html += `               <div class="card d-flex flex-column p-3">`
+            html += `                   <h6>`
+            html += "P";
+            html += `                   </h6>`
+            html += `                   <h5 style="color: black; white-space: nowrap;">`
+            html += getRoundedValue(sectors[i]["idxVals"]["rtnList"][j]["rtn"]);
+            html += `                   </h5>`
+            html += `               </div>`;
+        };
+        html += `               </div>`
+        html += `           </section>`;
+
+        html += `           <section class="mb-4">`;
+
+        if (paramDefined(sectors["NIFTY"])) {
+
+            html += `               <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
+            html += `                   <h6>Analysis</h6>`;
+            html += `               </div>`;
+            //         // "vsNifty": 5.060425853536746
+            html += `               <p>`;
+            html += `                   The <b>${sectors[i]["name"]}</b> Sector is ahead of <b>NIFTY</b> by `;
+            html += `                   <b style="color: black;">${sectors[i]["vsNifty"]} %</b>`;
+            html += `               </p>`;
+
+            html += `           </section>`;
+        }
+
+        html += `           <section id="tsrStrengthIndex">`;
+        // mintHtmlUtil.dlg({ divId: 'trendStrengthDivNIFTY', rank: 0.572, title: 'Technical Strength Live', leftLabel: 'Sell', rightLabel: 'Buy', width: 250, height: 8 });
+        html += `           </section>`;
+
+        html += `       </div>`;
+
+
+        html += `       <div class="col col-md-6 p-3">`;
+
+        html += `           <section class="mb-4">`;
+        html += `               <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`;
+        html += `                   <h6>Technicals</h6>`;
+        html += `               </div>`;
+        html += `               <div class="owl-carousel owl-theme technicals">`;
+
+        let keys = Object.keys(sectors[i]["idxVals"]);
+
+        for (let j = 0; j < keys.length; j++) {
+            if (keys[j] == "ma1" || keys[j] == "ma2" || keys[j] == "rsi" || keys[j] == "macd" || keys[j] == "signal" || keys[j] == "st") {
+                html += `                   <div class="card d-flex flex-column p-3">`;
+                html += `                       <h6>${keys[j].toUpperCase()}</h6>`;
+                html += `                       <h4 style="color: orange; white-space: nowrap;">`;
+                html += getRoundedValue(sectors[i]["idxVals"][keys[j]]);
+                html += `                       </h4>`;
+                //             // html += `                       <p style="color: orange;  margin: 0;">Neutral</p>`
+                html += `                   </div>`;
+            }
+        }
+
+        html += `               </div>`;
+        html += `           </section>`;
+    }
+
+
+    html += `               <section>`
+    html += `                   <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
+    html += `                       <h6>Stocks</h6>`
+    html += `                   </div>`
+    html += `                   <div class="text-center">`
+    html += `                       <div class="w-100 p-3 text-center">`
+    html += `                           <b>Out Performing</b>`
+    html += `                           <table class="table table-striped">`
+    html += `                               <thead>`;
+    html += `                                   <tr>`;
+    html += `                                       <th scope="col">Name</th>`
+    html += `                                       <th scope="col">vs NIFTY</th>`
+    html += `                                       <th scope="col">vs ${sectors[i].name}</th>`
+    html += `                                       <th scope="col">Chart</th>`
+    html += `                                   </tr>`;
+    html += `                               </thead>`;
+    html += `                               <tbody>`;
+
+    for (let j = 0; j < sectors[i]["opEqList"].length; j++) {
+
+        if (j > 2) {
+            break;
+        }
+
+        html += `                               <tr>`;
+        html += `                                   <td>${sectors[i].opEqList[j]["id"]}</td>`;
+        html += `                                   <td>${getRoundedValue(sectors[i].opEqList[j]["vsNifty"])}</td>`;
+        html += `                                   <td>${getRoundedValue(sectors[i].opEqList[j]["vsIdx"])}</td>`;
+        html += `                                   <td>`
+        html += `                                       <a href="">`
+        html += `                                           <span style="color:grey; font-size:12pt; class="fa fa-chart-line">`
+        html += `                                           </span>`
+        html += `                                       </a>`;
+        html += `                                   </td>`;
+        html += `                               </tr>`;
+    }
+
+    html += `                               </tbody>`;
+    html += `                           </table>`;
+    html += `                       </div>`
+    html += `                       <div class="w-100 p-3 text-center">`
+    html += `                           <b>Under Performing</b>`
+    html += `                           <table class="table table-striped">`
+    html += `                               <thead>`
+    html += `                                   <tr>`
+    html += `                                       <th scope="col">Name</th>`
+    html += `                                       <th scope="col">vs NIFTY</th>`
+    html += `                                       <th scope="col">vs ${sectors[i].name}</th>`
+    html += `                                       <th scope="col">Chart</th>`
+    html += `                                   </tr>`
+    html += `                               </thead>`
+    html += `                               <tbody>`;
+
+    for (let j = 0; j < sectors[i]["upEqList"].length; j++) {
+
+        if (j > 2) {
+            break;
+        }
+
+        html += `                               <tr>`;
+        html += `                                   <td>${sectors[i].upEqList[j]["id"]}</td>`;
+        html += `                                   <td>${getRoundedValue(sectors[i].upEqList[j]["vsNifty"])}</td>`;
+        html += `                                   <td>${getRoundedValue(sectors[i].upEqList[j]["vsIdx"])}</td>`;
+        html += `                                   <td>`
+        html += `                                       <a href="">`
+        html += `                                           <span style="color:grey; font-size:12pt; class="fa fa-chart-line">`
+        html += `                                           </span>`
+        html += `                                       </a>`;
+        html += `                                   </td>`;
+        html += `                               </tr>`;
+    }
+
+    html += `                               </tbody>`;
+    html += `                           </table>`;
+    html += `                       </div>`;
+    html += `                       <a style="color: var(--primary-color,#006aff); cursor: pointer;" onclick="showSectorStockTable(this, 1)">`;
+    html += `                               Show more`;
+    html += `                       </a>`;
+    html += `                   </div>`;
+    html += `               </section>`;
+
+
+    html += `               </div> `;
+
+
+    html += `<div class="row">`;
+
+    html += ``;
+
+    html += '</div>';
+
+
+
+    html += `           </div> `;
+    html += `       </div>`;
+    html += `   </div> `;
+    html += `</div> `;
+
+    return html;
+}
+
+
+function showSectorStockTable(element, suffix) {
+
+    element.style.display = "none";
+
+    let container = document.getElementById("sectorStocksContainer" + suffix);
+    // document.getElementsByClassName("sectorStocksContainer")[0];
+
+
+    // container.scrollIntoView();
+
+    setTimeout(function () {
+        container.style.visibility = "visible";
+        container.style.height = "75vh";
+    }, 100);
+
+};
+
+function updateStocksTable(secType, suffix) {
+
+    let sectors = sectorData[secType];
+
+    let html = "";
+    if (secType == "outPerforming") {
+        html += `<thead>`;
+        html += `   <tr>`
+        html += `       <th>Name</th>`
+        html += `       <th>vs NIFTY</th>`
+        html += `       <th>vs NIFTY IT</th>`
+        html += `   </tr>`
+        html += `</thead>`
+
+        html += `<tbody>`
+        html += `   <tr>
+                        <td>TCS</td>
+                        <td>23</td>
+                        <td>67</td>
+                        <td>Bullish</td>
+                        <td>12</td>
+                        <td>221</td>
+                    </tr>`;
+        html += `</tbody>`;
+    } else if (secType == "underPerforming") {
+        sectorStocksTable.innerHTML =
+            html += `<thead> `;
+        html += `   <tr> `
+        html += `       <th> Name</th> `
+        html += `       <th> vs NIFTY</th> `
+        html += `       <th> vs NIFTY IT</th> `
+        html += `   </tr> `
+        html += `</thead> `
+
+        html += `<tbody>
+                <tr>
+                    <td>TCS</td>
+                    <td>23</td>
+                    <td>67</td>
+                    <td>Bullish</td>
+                    <td>12</td>
+                    <td>221</td>
+                </tr>
+                <tr>
+                    <td>INFY</td>
+                    <td>18</td>
+                    <td>54</td>
+                    <td>Bullish</td>
+                    <td>8</td>
+                    <td>198</td>
+                </tr>
+                <tr>
+                    <td>WIPRO</td>
+                    <td>12</td>
+                    <td>45</td>
+                    <td>Neutral</td>
+                    <td>5</td>
+                    <td>142</td>
+                </tr>
+                <tr>
+                    <td>HCLTECH</td>
+                    <td>20</td>
+                    <td>60</td>
+                    <td>Bullish</td>
+                    <td>10</td>
+                    <td>210</td>
+                </tr>
+                <tr>
+                    <td>LT</td>
+                    <td>9</td>
+                    <td>38</td>
+                    <td>Bearish</td>
+                    <td>3</td>
+                    <td>95</td>
+                </tr>
+            </tbody >
+            `;
+    }
+}
+
+// fields required for completion
+// 1. Screener analysis links
+// 2. 

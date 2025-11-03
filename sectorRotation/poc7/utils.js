@@ -11,6 +11,8 @@ async function getData(url) {
 
 function getRoundedValue(val) {
 
+    if(typeof val == "number")
+
     // Recheck later
     if (val > 9999999) {
         val = val / 10000000;
