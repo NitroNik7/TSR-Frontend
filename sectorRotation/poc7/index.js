@@ -18,7 +18,7 @@ function init() {
 
         // let url = `https://www.tsrbt1.com:8080/TsrWeb/tmp/SectorRotation.jsp?id=${duration}&type=${sectorType}`;
 
-        let url = `http://127.0.0.1:5500/TSR/sectorRotation/poc7/AllSectorRotation.jsp ${duration} ${sectorType}.json`;
+        let url = `https://nitronik7.github.io/TSR-Frontend/sectorRotation/poc7/AllSectorRotation.jsp ${duration} ${sectorType}.json`;
 
 
         getData(url).then(data => {
@@ -999,7 +999,9 @@ function paintStockSection(sec, stockType, secId, stockId) {
 
         let sector = sectors[secId];
 
-        let url = `http://127.0.0.1:5500/TSR/sectorRotation/poc7/OneSectorRotation.jsp ${duration} ${sectorType} ${sector["code"]}.json`; +
+        
+        // let url = `http://127.0.0.1:5500/TSR/sectorRotation/poc7/OneSectorRotation.jsp ${duration} ${sectorType} ${sector["code"]}.json`;
+        let url = `https://nitronik7.github.io/TSR-Frontend/sectorRotation/poc7/OneSectorRotation.jsp ${duration} ${sectorType} ${sector["code"]}.json`;
 
             getData(url).then(data => {
 
