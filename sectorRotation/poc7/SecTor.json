@@ -1,81 +1,2116 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{"statusCode":"success","statusMsg":"Has Records","NIFTY":{
-"id": "NIFTY","name": "S&P CNX NIFTY","code": "NIFTY","fno": "true","funda": "false","scId": "200000","ecId": "10000","ccId": "in","sector": "INDEX","industry": "Broad-Based_Index","pts":2.0,"price":25795.19921875,"priceChange":-0.3715564643997913,"techStrength":0.616,"techPosi":"NIFTY is more bullish than 30.24 % of stocks ","rtnList":[{"rtn":0.09046076474795114},{"rtn":0.09596637413221774},{"rtn":0.5188621982527638},{"rtn":0.4866075293171418},{"rtn":1.0334280114668855},{"rtn":0.7082762696108648},{"rtn":-0.3242549885114852},{"rtn":-0.22938228222702883},{"rtn":0.41101111433247695},{"rtn":0.5414057490946028},{"rtn":-0.24733478796930483}]},"ma1":13,"ma2":34,"opSec":[{
-"id": "NIFTY_METAL","name": "Nifty Metal","code": "NIFTY_METAL","fno": "false","funda": "false","scId": "200000","ecId": "8000","ccId": "in","sector": "INDEX","industry": "Sectoral_Index","secIdx":"true","idxVals":{"ma1":10214.044,"ma2":10039.502,"rsi":63.06284745194979,"macd":125.8878356945016,"signal":0.0,"st":9952.22777613919,"price":10347.5,"priceChange":1.0320470750084647,"techStrength":0.7359223300970874,"techPosi":"NIFTY_METAL is more bullish than 35.00 % of stocks ","rtnList":[{"rtn":0.08795246825680327},{"rtn":0.4022841969594313},{"rtn":-0.07353445965528999},{"rtn":-0.8544636923178863},{"rtn":0.6772381612106088},{"rtn":1.0003182554389392},{"rtn":-0.9855658949106925},{"rtn":-0.4287872143448813},{"rtn":-0.9144299407746473},{"rtn":2.167416714965718},{"rtn":-0.19888541479074823}],"relRtn":0.0},"vsNifty":5.060425853536746,"pts":7.0,"opEqList":[{
-"id": "HINDALCO","name": "Hindalco Industries Ltd.","code": "HINDALCO","fno": "true","funda": "true","scId": "117","ecId": "252","ccId": "in","sector": "Metals","industry": "Aluminium_Products","pts":13.25,"vsNifty":15.598447673181292,"vsIdx":10.538021819644545},{
-"id": "NATIONALUM","name": "National Aluminium Co. Ltd.","code": "NATIONALUM","fno": "true","funda": "true","scId": "117","ecId": "295","ccId": "in","sector": "Metals","industry": "Aluminium_Products","pts":13.25,"vsNifty":15.777737980355914,"vsIdx":10.717312126819166},{
-"id": "VEDL","name": "Vedanta Ltd","code": "VEDL","fno": "true","funda": "true","scId": "157","ecId": "165","ccId": "in","sector": "Metals","industry": "Mining","pts":13.25,"vsNifty":6.878792070938728,"vsIdx":1.818366217401981},{
-"id": "APLAPOLLO","name": "APL Apollo Tubes Ltd.","code": "APLAPOLLO","fno": "true","funda": "true","scId": "174","ecId": "2270","ccId": "in","sector": "Metals","industry": "Steel_Tubes_Pipes","pts":10.25,"vsNifty":1.1071286622503869,"vsIdx":-3.9532971912863593},{
-"id": "TATASTEEL","name": "Tata Steel Ltd.","code": "TATASTEEL","fno": "true","funda": "true","scId": "174","ecId": "17","ccId": "in","sector": "Metals","industry": "Finished_Steel","pts":7.0,"vsNifty":3.7790546414714075,"vsIdx":-1.2813712120653387}],"opEq":10,"upEqList":[{
-"id": "JINDALSTEL","name": "Jindal Steel Limited","code": "JINDALSTEL","fno": "true","funda": "true","scId": "174","ecId": "39","ccId": "in","sector": "Metals","industry": "Sponge_Iron","pts":-9.75,"vsNifty":-2.1504782229477226,"vsIdx":-7.210904076484469},{
-"id": "NMDC","name": "NMDC Ltd.","code": "NMDC","fno": "true","funda": "true","scId": "157","ecId": "164","ccId": "in","sector": "Metals","industry": "Minerals","pts":0.0,"vsNifty":-0.9457460507848348,"vsIdx":-6.006171904321581},{
-"id": "ADANIENT","name": "Adani Enterprises Ltd.","code": "ADANIENT","fno": "true","funda": "true","scId": "183","ecId": "303","ccId": "in","sector": "Financial","industry": "Trading","pts":0.0,"vsNifty":-6.919918797680886,"vsIdx":-11.980344651217631}],"upEq":3,"rtnPos":0.0,"mcChg":9.916298669429863E11,"ma1":0.45454545454545453,"ma2":0.7272727272727273,"adx":0.6363636363636364,"rsi":0.6363636363636364,"macds":0.9090909090909091,"macd0":0.9090909090909091,"st":0.9090909090909091},{
-"id": "NIFTY_REALITY","name": "Nifty Realty","code": "NIFTY_REALITY","fno": "false","funda": "false","scId": "200000","ecId": "9300","ccId": "in","sector": "INDEX","industry": "Sectoral_Index","secIdx":"true","idxVals":{"ma1":919.4375,"ma2":907.4092,"rsi":66.14941608367522,"macd":5.758471763236466,"signal":0.0,"st":898.571611669585,"price":940.9000244140625,"priceChange":0.18100640810644603,"techStrength":0.7019607843137254,"techPosi":"NIFTY_REALITY is more bullish than 38.98 % of stocks ","rtnList":[{"rtn":0.19201917496149656},{"rtn":-0.08526836309529037},{"rtn":0.476574265813253},{"rtn":0.10184522078296827},{"rtn":1.9008043385233442},{"rtn":3.0449765938568683},{"rtn":-0.9422404462590138},{"rtn":0.016724850813922318},{"rtn":1.6725251833165502},{"rtn":0.7425176854833525},{"rtn":-1.8279676539002094}],"relRtn":0.0},"vsNifty":-4.924919995467853,"pts":7.5,"opEqList":[{
-"id": "GODREJPROP","name": "Godrej Properties Ltd.","code": "GODREJPROP","fno": "true","funda": "true","scId": "134","ecId": "1934","ccId": "in","sector": "Construction","industry": "Real_Estate","pts":9.75,"vsNifty":-3.99751479755473,"vsIdx":0.9274051979131226},{
-"id": "OBEROIRLTY","name": "Oberoi Realty Ltd.","code": "OBEROIRLTY","fno": "true","funda": "true","scId": "134","ecId": "2122","ccId": "in","sector": "Construction","industry": "Real_Estate","pts":8.5,"vsNifty":-5.721332564626589,"vsIdx":-0.7964125691587367},{
-"id": "PRESTIGE","name": "Prestige Estates Projects Ltd.","code": "PRESTIGE","fno": "true","funda": "true","scId": "134","ecId": "2105","ccId": "in","sector": "Construction","industry": "Real_Estate","pts":8.5,"vsNifty":0.37875463801350095,"vsIdx":5.303674633481354},{
-"id": "PHOENIXLTD","name": "Phoenix Mills Ltd.","code": "PHOENIXLTD","fno": "true","funda": "true","scId": "134","ecId": "818","ccId": "in","sector": "Construction","industry": "Real_Estate","pts":2.0,"vsNifty":13.137292406151412,"vsIdx":18.062212401619263}],"opEq":4,"upEqList":[{
-"id": "LODHA","name": "Lodha Developers Limited","code": "LODHA","fno": "true","funda": "true","scId": "134","ecId": "3883","ccId": "in","sector": "Construction","industry": "Construction","pts":-7.5,"vsNifty":-14.477802261320575,"vsIdx":-9.552882265852723},{
-"id": "DLF","name": "DLF Ltd.","code": "DLF","fno": "true","funda": "true","scId": "134","ecId": "129","ccId": "in","sector": "Construction","industry": "Real_Estate","pts":-2.0,"vsNifty":-9.74098075562871,"vsIdx":-4.816060760160857}],"upEq":2,"rtnPos":0.0,"mcChg":-2.1073374966180078E11,"ma1":1.0,"ma2":0.8333333333333334,"adx":0.8333333333333334,"rsi":0.8333333333333334,"macds":0.6666666666666666,"macd0":0.6666666666666666,"st":0.8333333333333334},{
-"id": "NIFTY_CONSUM","name": "Nifty Consumption","code": "NIFTY_CONSUM","fno": "false","funda": "false","scId": "200000","ecId": "7800","ccId": "in","sector": "INDEX","industry": "Sectoral_Index","secIdx":"true","idxVals":{"ma1":12446.867,"ma2":12323.893,"rsi":60.737058338843134,"macd":60.99242463773554,"signal":0.0,"st":12318.635947599676,"price":12520.2001953125,"priceChange":-0.37319202934870704,"techStrength":0.615686274509804,"techPosi":"NIFTY_CONSUM is more bullish than 49.85 % of stocks ","rtnList":[{"rtn":-0.5287423454721045},{"rtn":-0.04034820298283092},{"rtn":0.14420793922854439},{"rtn":1.1014715832457098},{"rtn":1.0858971208993877},{"rtn":0.9870400728830192},{"rtn":-0.2959673640463869},{"rtn":-0.16605663970200427},{"rtn":0.4718887369658556},{"rtn":0.35867460080628644},{"rtn":-0.34435570871968946}],"relRtn":0.0},"vsNifty":3.3448703834268945,"pts":3.0,"opEqList":[{
-"id": "BLUESTARCO","name": "Blue Star Ltd.","code": "BLUESTARCO","fno": "true","funda": "true","scId": "135","ecId": "459","ccId": "in","sector": "Consumer_Durable","industry": "ACs_Refrigerators","pts":13.75,"vsNifty":10.774353364734035,"vsIdx":7.42948298130714},{
-"id": "VOLTAS","name": "Voltas Ltd.","code": "VOLTAS","fno": "true","funda": "true","scId": "135","ecId": "301","ccId": "in","sector": "Consumer_Durable","industry": "ACs_Refrigerators","pts":9.75,"vsNifty":4.3218947760776345,"vsIdx":0.9770243926507396},{
-"id": "AMBER","name": "Amber Enterprises India Ltd.","code": "AMBER","fno": "true","funda": "true","scId": "158","ecId": "3257","ccId": "in","sector": "Consumer_Durable","industry": "Consumer_Electronics","pts":6.75,"vsNifty":9.908767455116061,"vsIdx":6.5638970716891665},{
-"id": "TITAN","name": "Titan Company Ltd.","code": "TITAN","fno": "true","funda": "true","scId": "151","ecId": "268","ccId": "in","sector": "Consumer_Durable","industry": "Gems_Jewellery","pts":2.0,"vsNifty":3.6900655208196844,"vsIdx":0.34519513739278995},{
-"id": "KALYANKJIL","name": "Kalyan Jewellers India Ltd.","code": "KALYANKJIL","fno": "true","funda": "true","scId": "151","ecId": "3866","ccId": "in","sector": "Consumer_Durable","industry": "Gems_Jewellery","pts":1.0,"vsNifty":-22.125785369875903,"vsIdx":-25.470655753302797}],"opEq":7,"upEqList":[{
-"id": "HAVELLS","name": "Havell's India Ltd.","code": "HAVELLS","fno": "true","funda": "true","scId": "141","ecId": "494","ccId": "in","sector": "Engineering","industry": "Switching_Equipment","pts":-7.5,"vsNifty":-6.616663873157547,"vsIdx":-9.961534256584441},{
-"id": "DIXON","name": "Dixon Technologies (India) Ltd.","code": "DIXON","fno": "true","funda": "true","scId": "141","ecId": "3155","ccId": "in","sector": "Engineering","industry": "Electronic_Equipments","pts":-7.0,"vsNifty":-10.546791155312194,"vsIdx":-13.89166153873909}],"upEq":2,"rtnPos":0.0,"mcChg":-5.414064484517578E9,"ma1":0.8888888888888888,"ma2":0.6666666666666666,"adx":0.5555555555555556,"rsi":0.6666666666666666,"macds":0.4444444444444444,"macd0":0.4444444444444444,"st":0.5555555555555556},{
-"id": "NIFTY_PSU_BANK","name": "Nifty PSU Bank","code": "NIFTY_PSU_BANK","fno": "false","funda": "false","scId": "200000","ecId": "8600","ccId": "in","sector": "INDEX","industry": "Sectoral_Index","secIdx":"true","idxVals":{"ma1":7709.228,"ma2":7491.1235,"rsi":64.90708551089278,"macd":152.04068712423378,"signal":0.0,"st":7518.231609508031,"price":7817.39990234375,"priceChange":-0.7358427827830323,"techStrength":0.652,"techPosi":"NIFTY_PSU_BANK is more bullish than 34.60 % of stocks ","rtnList":[{"rtn":0.280777424995141},{"rtn":-0.057907607197892584},{"rtn":2.868271610620193},{"rtn":-0.6503007641033979},{"rtn":-0.4447708461874567},{"rtn":1.6665582525669718},{"rtn":-1.5225687532163534},{"rtn":0.23584800911718917},{"rtn":1.6712245949309783},{"rtn":0.6094226476512955},{"rtn":-0.7951185717817703}],"relRtn":0.0},"vsNifty":6.795842403227896,"pts":3.0,"opEqList":[{
-"id": "BANKINDIA","name": "Bank of India","code": "BANKINDIA","fno": "true","funda": "true","scId": "121","ecId": "84","ccId": "in","sector": "Financial","industry": "Banking","pts":2.5,"vsNifty":13.824362476811663,"vsIdx":7.028520073583767},{
-"id": "INDIANB","name": "Indian Bank","code": "INDIANB","fno": "true","funda": "true","scId": "121","ecId": "96","ccId": "in","sector": "Financial","industry": "Banking","pts":2.5,"vsNifty":22.820477950609217,"vsIdx":16.024635547381322},{
-"id": "SBIN","name": "State Bank of India","code": "SBIN","fno": "true","funda": "true","scId": "121","ecId": "105","ccId": "in","sector": "Financial","industry": "Banking","pts":2.0,"vsNifty":7.9612244277069255,"vsIdx":1.1653820244790296},{
-"id": "UNIONBANK","name": "Union Bank of India","code": "UNIONBANK","fno": "true","funda": "true","scId": "121","ecId": "111","ccId": "in","sector": "Financial","industry": "Banking","pts":1.0,"vsNifty":-5.132481148333215,"vsIdx":-11.92832355156111}],"opEq":4,"upEqList":[{
-"id": "PNB","name": "Punjab National Bank","code": "PNB","fno": "true","funda": "true","scId": "121","ecId": "103","ccId": "in","sector": "Financial","industry": "Banking","pts":-1.5,"vsNifty":2.7403633593077674,"vsIdx":-4.055479043920128},{
-"id": "CANBK","name": "Canara Bank","code": "CANBK","fno": "true","funda": "true","scId": "121","ecId": "86","ccId": "in","sector": "Financial","industry": "Banking","pts":-1.5,"vsNifty":7.8140083873162975,"vsIdx":1.0181659840884016},{
-"id": "BANKBARODA","name": "Bank of Baroda","code": "BANKBARODA","fno": "true","funda": "true","scId": "121","ecId": "83","ccId": "in","sector": "Financial","industry": "Banking","pts":-1.5,"vsNifty":4.909274159766079,"vsIdx":-1.8865682434618165}],"upEq":3,"rtnPos":0.0,"mcChg":1.3915094953908418E12,"ma1":0.8571428571428571,"ma2":1.0,"adx":1.0,"rsi":1.0,"macds":1.0,"macd0":1.0,"st":1.0},{
-"id": "NIFTY_FIN_SERV","name": "Nifty Fin Service","code": "NIFTY_FIN_SERV","fno": "false","funda": "false","scId": "200000","ecId": "7700","ccId": "in","sector": "INDEX","industry": "Sectoral_Index","secIdx":"true","idxVals":{"ma1":27167.045,"ma2":26785.562,"rsi":67.01439722093096,"macd":245.20288439131295,"signal":0.0,"st":26903.05692547585,"price":27395.30078125,"priceChange":-0.5856958274239973,"techStrength":0.61,"techPosi":"NIFTY_FIN_SERV is more bullish than 72.62 % of stocks ","rtnList":[{"rtn":0.0722612537965884},{"rtn":0.11379826307465779},{"rtn":-0.1201935096355875},{"rtn":0.5748484183162289},{"rtn":1.1428808892324969},{"rtn":0.907623639623794},{"rtn":-0.21163479964217066},{"rtn":0.1601955176979811},{"rtn":0.4411656584209625},{"rtn":0.25472453005650536},{"rtn":-0.45150327739402646}],"relRtn":0.0},"vsNifty":-1.6347481312603918,"pts":3.0,"opEqList":[{
-"id": "CHOLAFIN","name": "Cholamandalam Investment and Finance Company","code": "CHOLAFIN","fno": "true","funda": "true","scId": "147","ecId": "2022","ccId": "in","sector": "Financial","industry": "Hire_Purchase","pts":12.75,"vsNifty":8.819098593497694,"vsIdx":10.453846724758085},{
-"id": "SHRIRAMFIN","name": "Shriram Finance Ltd.","code": "SHRIRAMFIN","fno": "true","funda": "true","scId": "149","ecId": "576","ccId": "in","sector": "Financial","industry": "Equipment_Leasing","pts":8.5,"vsNifty":10.00202757589057,"vsIdx":11.636775707150962},{
-"id": "ICICIGI","name": "ICICI Lombard General Insurance Company Ltd.","code": "ICICIGI","fno": "true","funda": "true","scId": "139","ecId": "3164","ccId": "in","sector": "Financial","industry": "Insurance","pts":8.0,"vsNifty":1.6372491602081696,"vsIdx":3.271997291468561},{
-"id": "SBICARD","name": "SBI Cards & Payment Services Ltd.","code": "SBICARD","fno": "true","funda": "true","scId": "147","ecId": "3662","ccId": "in","sector": "Financial","industry": "Investment_Services","pts":7.5,"vsNifty":1.946173305261763,"vsIdx":3.5809214365221544},{
-"id": "AXISBANK","name": "Axis Bank Ltd.","code": "AXISBANK","fno": "true","funda": "true","scId": "121","ecId": "82","ccId": "in","sector": "Financial","industry": "Banking","pts":2.5,"vsNifty":10.480039857187064,"vsIdx":12.114787988447455}],"opEq":8,"upEqList":[{
-"id": "RECLTD","name": "REC Ltd.","code": "RECLTD","fno": "true","funda": "true","scId": "149","ecId": "582","ccId": "in","sector": "Financial","industry": "State_Financial_Corp","pts":-7.5,"vsNifty":-10.902407682886528,"vsIdx":-9.267659551626135},{
-"id": "HDFCAMC","name": "HDFC Asset Management Company Ltd.","code": "HDFCAMC","fno": "true","funda": "true","scId": "147","ecId": "3392","ccId": "in","sector": "Financial","industry": "Investment_Services","pts":-7.5,"vsNifty":-3.2756611393808712,"vsIdx":-1.6409130081204797},{
-"id": "HDFCLIFE","name": "HDFC Life Insurance Company Ltd.","code": "HDFCLIFE","fno": "true","funda": "true","scId": "158","ecId": "3208","ccId": "in","sector": "Financial","industry": "Insurance","pts":-7.0,"vsNifty":-5.876403501885851,"vsIdx":-4.241655370625459},{
-"id": "LICHSGFIN","name": "LIC Housing Finance Ltd.","code": "LICHSGFIN","fno": "true","funda": "true","scId": "148","ecId": "559","ccId": "in","sector": "Financial","industry": "Housing_Finance","pts":-6.5,"vsNifty":-8.651501437247038,"vsIdx":-7.016753305986646},{
-"id": "PFC","name": "Power Finance Corporation Ltd.","code": "PFC","fno": "true","funda": "true","scId": "149","ecId": "581","ccId": "in","sector": "Financial","industry": "State_Financial_Corp","pts":-6.0,"vsNifty":-9.688128338180068,"vsIdx":-8.053380206919675}],"upEq":12,"rtnPos":0.0,"mcChg":1.7271039578793047E12,"ma1":0.65,"ma2":0.7,"adx":0.55,"rsi":0.7,"macds":0.6,"macd0":0.6,"st":0.6}],"upSec":[{
-"id": "NIFTY_FMCG","name": "Nifty FMCG","code": "NIFTY_FMCG","fno": "false","funda": "false","scId": "200000","ecId": "9000","ccId": "in","sector": "INDEX","industry": "Sectoral_Index","secIdx":"true","idxVals":{"ma1":55851.11,"ma2":55675.49,"rsi":57.83124284142831,"macd":-37.77062372637377,"signal":0.0,"st":55236.80254346951,"price":56348.1015625,"priceChange":-0.7473647171470181,"techStrength":0.614,"techPosi":"NIFTY_FMCG is more bullish than 47.52 % of stocks ","rtnList":[{"rtn":0.2884639934087454},{"rtn":0.021202499189377107},{"rtn":-0.03408354387166152},{"rtn":1.3651688088580434},{"rtn":2.0186766708997865},{"rtn":0.9866462594244013},{"rtn":-0.4774720805936444},{"rtn":-0.8960019466438232},{"rtn":0.4734277399351979},{"rtn":0.39970355582465633},{"rtn":-0.5008717107914529}],"relRtn":0.0},"vsNifty":-0.6337975641369216,"pts":-2.0,"opEqList":[{
-"id": "NESTLEIND","name": "Nestle India Ltd.","code": "NESTLEIND","fno": "true","funda": "true","scId": "150","ecId": "1947","ccId": "in","sector": "FMCG","industry": "Dairy_products","pts":8.0,"vsNifty":7.492163840182478,"vsIdx":8.1259614043194},{
-"id": "MARICO","name": "Marico Ltd.","code": "MARICO","fno": "true","funda": "true","scId": "163","ecId": "173","ccId": "in","sector": "FMCG","industry": "Vegetable_oils","pts":7.0,"vsNifty":-0.2444156730076532,"vsIdx":0.38938189112926835},{
-"id": "UNITDSPR","name": "United Spirits Ltd.","code": "UNITDSPR","fno": "true","funda": "true","scId": "123","ecId": "882","ccId": "in","sector": "FMCG","industry": "Liquors","pts":6.5,"vsNifty":-1.2624567626362653,"vsIdx":-0.6286591984993437},{
-"id": "ITC","name": "I T C Ltd.","code": "ITC","fno": "true","funda": "true","scId": "130","ecId": "286","ccId": "in","sector": "FMCG","industry": "Tobacco_Products","pts":4.5,"vsNifty":-1.254198347719931,"vsIdx":-0.6204007835830094}],"opEq":4,"upEqList":[{
-"id": "COLPAL","name": "Colgate Palmolive (India) Ltd.","code": "COLPAL","fno": "true","funda": "true","scId": "163","ecId": "959","ccId": "in","sector": "FMCG","industry": "Cosmetics_Toiletries","pts":-10.25,"vsNifty":-3.814712512117389,"vsIdx":-3.1809149479804675},{
-"id": "GODREJCP","name": "Godrej Consumer Products Ltd.","code": "GODREJCP","fno": "true","funda": "true","scId": "163","ecId": "171","ccId": "in","sector": "FMCG","industry": "Cosmetics_Toiletries","pts":-8.5,"vsNifty":-10.60235851951602,"vsIdx":-9.968560955379099},{
-"id": "PATANJALI","name": "Patanjali Foods Ltd.","code": "PATANJALI","fno": "true","funda": "true","scId": "173","ecId": "3643","ccId": "in","sector": "FMCG","industry": "Vegetable_oils","pts":-7.5,"vsNifty":-11.123658390878958,"vsIdx":-10.489860826742037},{
-"id": "HINDUNILVR","name": "Hindustan Unilever Ltd.","code": "HINDUNILVR","fno": "true","funda": "true","scId": "163","ecId": "588","ccId": "in","sector": "FMCG","industry": "Cosmetics_Toiletries","pts":-7.5,"vsNifty":0.2990837018300616,"vsIdx":0.9328812659669832},{
-"id": "DABUR","name": "Dabur India Ltd.","code": "DABUR","fno": "true","funda": "true","scId": "163","ecId": "147","ccId": "in","sector": "FMCG","industry": "Cosmetics_Toiletries","pts":-7.0,"vsNifty":-3.725050427174557,"vsIdx":-3.0912528630376355}],"upEq":8,"rtnPos":0.0,"mcChg":4.6902164000359766E11,"ma1":0.6666666666666666,"ma2":0.6666666666666666,"adx":0.5833333333333334,"rsi":0.6666666666666666,"macds":0.4166666666666667,"macd0":0.4166666666666667,"st":0.5},{
-"id": "NIFTYIT","name": "Nifty IT","code": "NIFTYIT","fno": "false","funda": "false","scId": "200000","ecId": "9700","ccId": "in","sector": "INDEX","industry": "Sectoral_Index","secIdx":"true","idxVals":{"ma1":35399.535,"ma2":35324.27,"rsi":58.59202020627025,"macd":-8.678441947039403,"signal":0.0,"st":34441.973530353906,"price":35986.3984375,"priceChange":-0.25556180396924166,"techStrength":0.598,"techPosi":"NIFTYIT is more bullish than 86.08 % of stocks ","rtnList":[{"rtn":2.206246958945081},{"rtn":0.020398662697763543},{"rtn":0.9782417845494193},{"rtn":-1.6335050652146526},{"rtn":0.365237864731678},{"rtn":0.5307479278457028},{"rtn":-0.3280490144211766},{"rtn":-0.7815439565683371},{"rtn":-0.05444640526544761},{"rtn":1.1248255574096981},{"rtn":1.5062225356379746}],"relRtn":0.0},"vsNifty":-3.338575584829965,"pts":-2.0,"opEqList":[{
-"id": "COFORGE","name": "Coforge Ltd.","code": "COFORGE","fno": "true","funda": "true","scId": "133","ecId": "63","ccId": "in","sector": "Technology","industry": "Computer_Software","pts":7.0,"vsNifty":2.0868023242556597,"vsIdx":5.425377909085625},{
-"id": "OFSS","name": "Oracle Financial Services Software Ltd.","code": "OFSS","fno": "true","funda": "true","scId": "133","ecId": "1501","ccId": "in","sector": "Technology","industry": "Computer_Software","pts":2.5,"vsNifty":-7.10904403936347,"vsIdx":-3.770468454533505},{
-"id": "HCLTECH","name": "HCL Technologies Ltd.","code": "HCLTECH","fno": "true","funda": "true","scId": "133","ecId": "648","ccId": "in","sector": "Technology","industry": "Computer_Software","pts":2.0,"vsNifty":-1.8237475678478667,"vsIdx":1.5148280169820982},{
-"id": "PERSISTENT","name": "Persistent Systems Ltd.","code": "PERSISTENT","fno": "true","funda": "true","scId": "133","ecId": "1995","ccId": "in","sector": "Technology","industry": "Computer_Software","pts":2.0,"vsNifty":9.676338032907235,"vsIdx":13.0149136177372},{
-"id": "MPHASIS","name": "MphasiS Ltd.","code": "MPHASIS","fno": "true","funda": "true","scId": "133","ecId": "61","ccId": "in","sector": "Technology","industry": "Computer_Software","pts":1.0,"vsNifty":3.3081422739713955,"vsIdx":6.6467178588013605}],"opEq":5,"upEqList":[{
-"id": "TECHM","name": "Tech Mahindra Ltd.","code": "TECHM","fno": "true","funda": "true","scId": "133","ecId": "72","ccId": "in","sector": "Technology","industry": "Computer_Software","pts":-7.5,"vsNifty":-5.921263829291045,"vsIdx":-2.5826882444610804},{
-"id": "WIPRO","name": "Wipro Ltd.","code": "WIPRO","fno": "true","funda": "true","scId": "133","ecId": "73","ccId": "in","sector": "Technology","industry": "Computer_Software","pts":-5.5,"vsNifty":-10.131548368571302,"vsIdx":-6.792972783741337},{
-"id": "TCS","name": "Tata Consultancy Services Ltd.","code": "TCS","fno": "true","funda": "true","scId": "133","ecId": "19","ccId": "in","sector": "Technology","industry": "Computer_Software","pts":-2.5,"vsNifty":-5.618906225703277,"vsIdx":-2.280330640873312},{
-"id": "INFY","name": "Infosys Ltd.","code": "INFY","fno": "true","funda": "true","scId": "133","ecId": "58","ccId": "in","sector": "Technology","industry": "Computer_Software","pts":-2.5,"vsNifty":-4.670700936019408,"vsIdx":-1.3321253511894433},{
-"id": "LTIM","name": "LTIMindtree Ltd.","code": "LTIM","fno": "true","funda": "true","scId": "133","ecId": "2904","ccId": "in","sector": "Technology","industry": "Computer_Software","pts":-1.5,"vsNifty":3.6057950048142593,"vsIdx":6.944370589644224}],"upEq":5,"rtnPos":0.0,"mcChg":-3.822620633038906E11,"ma1":0.7,"ma2":0.7,"adx":0.3,"rsi":0.7,"macds":0.5,"macd0":0.5,"st":0.7}]}
-
+{
+    "statusCode": "success",
+    "statusMsg": "Has Records",
+    "NIFTY": {
+        "id": "NIFTY",
+        "name": "S&P CNX NIFTY",
+        "code": "NIFTY",
+        "fno": "true",
+        "funda": "false",
+        "scId": "200000",
+        "ecId": "10000",
+        "ccId": "in",
+        "sector": "INDEX",
+        "industry": "Broad-Based_Index",
+        "pts": -6.25,
+        "price": 25722.099609375,
+        "priceChange": -0.6016785320791816,
+        "techStrength": 0.7442307692307693,
+        "techPosi": "NIFTY is more bullish than 92.49 % of stocks ",
+        "rtnList": [
+            {
+                "rtn": -0.6759049767395522
+            },
+            {
+                "rtn": 0.4538104094678242
+            },
+            {
+                "rtn": -0.11515164416223889
+            },
+            {
+                "rtn": 0.6625278958914805
+            },
+            {
+                "rtn": -0.3715564643997913
+            },
+            {
+                "rtn": 0.09046076474795114
+            },
+            {
+                "rtn": 0.09596637413221774
+            },
+            {
+                "rtn": 0.5188621982527638
+            },
+            {
+                "rtn": 0.4866075293171418
+            },
+            {
+                "rtn": 1.0334280114668855
+            },
+            {
+                "rtn": 0.7082762696108648
+            }
+        ]
+    },
+    "ma1": 13,
+    "ma2": 34,
+    "opSec": [
+        {
+            "id": "NIFTY_PSU_BANK",
+            "name": "Nifty PSU Bank",
+            "code": "NIFTY_PSU_BANK",
+            "fno": "false",
+            "funda": "false",
+            "scId": "200000",
+            "ecId": "8600",
+            "ccId": "in",
+            "sector": "INDEX",
+            "industry": "Sectoral_Index",
+            "secIdx": "true",
+            "idxVals": {
+                "ma1": 7915.5527,
+                "ma2": 7642.843,
+                "rsi": 74.55962797187922,
+                "macd": 177.8067377773571,
+                "signal": 0.0,
+                "st": 7746.324515347152,
+                "price": 8184.35009765625,
+                "priceChange": 1.5585555781758957,
+                "techStrength": 0.612,
+                "techPosi": "NIFTY_PSU_BANK is more bullish than 71.72 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": -0.37950904661344587
+                    },
+                    {
+                        "rtn": 0.0222597786809279
+                    },
+                    {
+                        "rtn": 1.213918782395269
+                    },
+                    {
+                        "rtn": 2.2162100207775937
+                    },
+                    {
+                        "rtn": -0.7358427827830323
+                    },
+                    {
+                        "rtn": 0.280777424995141
+                    },
+                    {
+                        "rtn": -0.057907607197892584
+                    },
+                    {
+                        "rtn": 2.868271610620193
+                    },
+                    {
+                        "rtn": -0.6503007641033979
+                    },
+                    {
+                        "rtn": -0.4447708461874567
+                    },
+                    {
+                        "rtn": 1.6665582525669718
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 15.612107136872275,
+            "pts": 8.0,
+            "opEqList": [
+                {
+                    "id": "INDIANB",
+                    "name": "Indian Bank",
+                    "code": "INDIANB",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "96",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": 14.75,
+                    "vsNifty": 34.27039385193745,
+                    "vsIdx": 18.658286715065174
+                },
+                {
+                    "id": "UCOBANK",
+                    "name": "UCO Bank",
+                    "code": "UCOBANK",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "110",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": 14.25,
+                    "vsNifty": 7.62947099263647,
+                    "vsIdx": -7.982636144235805
+                },
+                {
+                    "id": "BANKBARODA",
+                    "name": "Bank of Baroda",
+                    "code": "BANKBARODA",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "83",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": 13.75,
+                    "vsNifty": 13.187827590060834,
+                    "vsIdx": -2.424279546811441
+                },
+                {
+                    "id": "PNB",
+                    "name": "Punjab National Bank",
+                    "code": "PNB",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "103",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": 13.25,
+                    "vsNifty": 12.765167126594566,
+                    "vsIdx": -2.8469400102777094
+                },
+                {
+                    "id": "UNIONBANK",
+                    "name": "Union Bank of India",
+                    "code": "UNIONBANK",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "111",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": 13.25,
+                    "vsNifty": 9.672323324832885,
+                    "vsIdx": -5.939783812039391
+                }
+            ],
+            "opEq": 12,
+            "upEqList": [],
+            "upEq": 0,
+            "rtnPos": 0.0,
+            "mcChg": 2.71865000702866E12,
+            "ma1": 1.0,
+            "ma2": 1.0,
+            "adx": 0.9166666666666666,
+            "rsi": 1.0,
+            "macds": 1.0,
+            "macd0": 1.0,
+            "st": 1.0
+        },
+        {
+            "id": "NIFTY_OIL_GAS",
+            "name": "Nifty Oil And Gas",
+            "code": "NIFTY_OIL_GAS",
+            "fno": "false",
+            "funda": "false",
+            "scId": "200000",
+            "ecId": "4700",
+            "ccId": "in",
+            "sector": "INDEX",
+            "industry": "Other_Index",
+            "secIdx": "true",
+            "idxVals": {
+                "ma1": 11732.877,
+                "ma2": 11517.383,
+                "rsi": 73.81162604616455,
+                "macd": 131.98670770200545,
+                "signal": 0.0,
+                "st": 11588.575314726442,
+                "price": 11990.2001953125,
+                "priceChange": 0.07344554393145496,
+                "techStrength": 0.6854368932038835,
+                "techPosi": "NIFTY_OIL_GAS is more bullish than 83.40 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": -0.12170397945148383
+                    },
+                    {
+                        "rtn": 2.1231709509018484
+                    },
+                    {
+                        "rtn": -0.45423454729854706
+                    },
+                    {
+                        "rtn": 1.5158309989031316
+                    },
+                    {
+                        "rtn": 0.19652970644116916
+                    },
+                    {
+                        "rtn": -0.56909232648974
+                    },
+                    {
+                        "rtn": 0.048870411846268225
+                    },
+                    {
+                        "rtn": 1.424590035004086
+                    },
+                    {
+                        "rtn": 0.03915222517695395
+                    },
+                    {
+                        "rtn": 0.5441084786165846
+                    },
+                    {
+                        "rtn": 0.7278354306979907
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 2.6132144149011785,
+            "pts": 7.5,
+            "opEqList": [
+                {
+                    "id": "ONGC",
+                    "name": "Oil & Natural Gas Corporation Ltd.",
+                    "code": "ONGC",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "159",
+                    "ecId": "203",
+                    "ccId": "in",
+                    "sector": "Energy",
+                    "industry": "Crude_Oil_Natural_Gas",
+                    "pts": 12.25,
+                    "vsNifty": 2.111765103739298,
+                    "vsIdx": -0.5014493111618803
+                },
+                {
+                    "id": "HINDPETRO",
+                    "name": "Hindustan Petroleum Corporation Ltd.",
+                    "code": "HINDPETRO",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "170",
+                    "ecId": "198",
+                    "ccId": "in",
+                    "sector": "Energy",
+                    "industry": "Crude_Oil_Natural_Gas",
+                    "pts": 10.0,
+                    "vsNifty": 9.902248103599874,
+                    "vsIdx": 7.289033688698695
+                },
+                {
+                    "id": "IOC",
+                    "name": "Indian Oil Corporation Ltd.",
+                    "code": "IOC",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "170",
+                    "ecId": "200",
+                    "ccId": "in",
+                    "sector": "Energy",
+                    "industry": "Crude_Oil_Natural_Gas",
+                    "pts": 10.0,
+                    "vsNifty": 10.075765762783925,
+                    "vsIdx": 7.462551347882747
+                },
+                {
+                    "id": "IGL",
+                    "name": "Indraprastha Gas Ltd.",
+                    "code": "IGL",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "153",
+                    "ecId": "199",
+                    "ccId": "in",
+                    "sector": "Services",
+                    "industry": "Storage_Distribution",
+                    "pts": 4.5,
+                    "vsNifty": -0.49073122172001904,
+                    "vsIdx": -3.1039456366211975
+                },
+                {
+                    "id": "BPCL",
+                    "name": "Bharat Petroleum Corporation Ltd.",
+                    "code": "BPCL",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "170",
+                    "ecId": "194",
+                    "ccId": "in",
+                    "sector": "Energy",
+                    "industry": "Crude_Oil_Natural_Gas",
+                    "pts": 3.0,
+                    "vsNifty": 4.50015549806956,
+                    "vsIdx": 1.8869410831683817
+                }
+            ],
+            "opEq": 7,
+            "upEqList": [
+                {
+                    "id": "GUJGASLTD",
+                    "name": " Gujarat Gas Co. Ltd.",
+                    "code": "GUJGASLTD",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "153",
+                    "ecId": "2599",
+                    "ccId": "in",
+                    "sector": "Energy",
+                    "industry": "Crude_Oil_Natural_Gas",
+                    "pts": -10.5,
+                    "vsNifty": -11.365078279692732,
+                    "vsIdx": -13.97829269459391
+                },
+                {
+                    "id": "CASTROLIND",
+                    "name": "Castrol (India) Ltd.",
+                    "code": "CASTROLIND",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "165",
+                    "ecId": "398",
+                    "ccId": "in",
+                    "sector": "Energy",
+                    "industry": "Lubricants_etc",
+                    "pts": -10.0,
+                    "vsNifty": -14.441877190010436,
+                    "vsIdx": -17.055091604911613
+                },
+                {
+                    "id": "ATGL",
+                    "name": "Adani Total Gas Ltd.",
+                    "code": "ATGL",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "158",
+                    "ecId": "3432",
+                    "ccId": "in",
+                    "sector": "NA",
+                    "industry": "NA",
+                    "pts": -7.5,
+                    "vsNifty": 0.7013339393226747,
+                    "vsIdx": -1.9118804755785037
+                },
+                {
+                    "id": "AEGISLOG",
+                    "name": "Aegis Logistics Ltd.",
+                    "code": "AEGISLOG",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "185",
+                    "ecId": "841",
+                    "ccId": "in",
+                    "sector": "Services",
+                    "industry": "Transport_Support_Services",
+                    "pts": -6.75,
+                    "vsNifty": 0.3800444743790976,
+                    "vsIdx": -2.233169940522081
+                },
+                {
+                    "id": "PETRONET",
+                    "name": "Petronet LNG Ltd.",
+                    "code": "PETRONET",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "153",
+                    "ecId": "705",
+                    "ccId": "in",
+                    "sector": "Energy",
+                    "industry": "Crude_Oil_Natural_Gas",
+                    "pts": -1.5,
+                    "vsNifty": -6.262408249789162,
+                    "vsIdx": -8.875622664690342
+                }
+            ],
+            "upEq": 8,
+            "rtnPos": 0.0,
+            "mcChg": 2.0166697798311094E12,
+            "ma1": 0.6666666666666666,
+            "ma2": 0.6666666666666666,
+            "adx": 0.5333333333333333,
+            "rsi": 0.6666666666666666,
+            "macds": 0.7333333333333333,
+            "macd0": 0.7333333333333333,
+            "st": 0.7333333333333333
+        },
+        {
+            "id": "NIFTY_REALITY",
+            "name": "Nifty Realty",
+            "code": "NIFTY_REALITY",
+            "fno": "false",
+            "funda": "false",
+            "scId": "200000",
+            "ecId": "9300",
+            "ccId": "in",
+            "sector": "INDEX",
+            "industry": "Sectoral_Index",
+            "secIdx": "true",
+            "idxVals": {
+                "ma1": 935.5453,
+                "ma2": 918.1497,
+                "rsi": 63.94626375818031,
+                "macd": 11.819499970869877,
+                "signal": 0.0,
+                "st": 910.2253943890798,
+                "price": 947.5499877929688,
+                "priceChange": -0.3523016652731729,
+                "techStrength": 0.7372549019607844,
+                "techPosi": "NIFTY_REALITY is more bullish than 91.36 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 0.042085682699894794
+                    },
+                    {
+                        "rtn": 0.6246056072998204
+                    },
+                    {
+                        "rtn": -1.0527469304045154
+                    },
+                    {
+                        "rtn": 1.461366738571688
+                    },
+                    {
+                        "rtn": 0.18100640810644603
+                    },
+                    {
+                        "rtn": 0.19201917496149656
+                    },
+                    {
+                        "rtn": -0.08526836309529037
+                    },
+                    {
+                        "rtn": 0.476574265813253
+                    },
+                    {
+                        "rtn": 0.10184522078296827
+                    },
+                    {
+                        "rtn": 1.9008043385233442
+                    },
+                    {
+                        "rtn": 3.0449765938568683
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 0.007278656215245594,
+            "pts": 3.0,
+            "opEqList": [
+                {
+                    "id": "SOBHA",
+                    "name": "Sobha Ltd.",
+                    "code": "SOBHA",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "134",
+                    "ecId": "120",
+                    "ccId": "in",
+                    "sector": "Construction",
+                    "industry": "Real_Estate",
+                    "pts": 13.75,
+                    "vsNifty": -2.669418472111132,
+                    "vsIdx": -2.676697128326377
+                },
+                {
+                    "id": "OBEROIRLTY",
+                    "name": "Oberoi Realty Ltd.",
+                    "code": "OBEROIRLTY",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "134",
+                    "ecId": "2122",
+                    "ccId": "in",
+                    "sector": "Construction",
+                    "industry": "Real_Estate",
+                    "pts": 13.25,
+                    "vsNifty": 5.240581304728623,
+                    "vsIdx": 5.233302648513378
+                },
+                {
+                    "id": "LODHA",
+                    "name": "Lodha Developers Limited",
+                    "code": "LODHA",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "134",
+                    "ecId": "3883",
+                    "ccId": "in",
+                    "sector": "Construction",
+                    "industry": "Construction",
+                    "pts": 7.25,
+                    "vsNifty": -6.587164501894314,
+                    "vsIdx": -6.59444315810956
+                },
+                {
+                    "id": "ANANTRAJ",
+                    "name": "Anant Raj Ltd.",
+                    "code": "ANANTRAJ",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "134",
+                    "ecId": "128",
+                    "ccId": "in",
+                    "sector": "Construction",
+                    "industry": "Real_Estate",
+                    "pts": 2.5,
+                    "vsNifty": 10.28301595854709,
+                    "vsIdx": 10.275737302331844
+                }
+            ],
+            "opEq": 4,
+            "upEqList": [
+                {
+                    "id": "RAYMOND",
+                    "name": "Raymond Ltd.",
+                    "code": "RAYMOND",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "180",
+                    "ecId": "832",
+                    "ccId": "in",
+                    "sector": "Textiles",
+                    "industry": "Cloth",
+                    "pts": -9.75,
+                    "vsNifty": -17.99237997754537,
+                    "vsIdx": -17.999658633760614
+                },
+                {
+                    "id": "PHOENIXLTD",
+                    "name": "Phoenix Mills Ltd.",
+                    "code": "PHOENIXLTD",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "134",
+                    "ecId": "818",
+                    "ccId": "in",
+                    "sector": "Construction",
+                    "industry": "Real_Estate",
+                    "pts": -7.25,
+                    "vsNifty": 9.531859209135918,
+                    "vsIdx": 9.524580552920673
+                },
+                {
+                    "id": "DLF",
+                    "name": "DLF Ltd.",
+                    "code": "DLF",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "134",
+                    "ecId": "129",
+                    "ccId": "in",
+                    "sector": "Construction",
+                    "industry": "Real_Estate",
+                    "pts": -5.75,
+                    "vsNifty": -7.421178557926668,
+                    "vsIdx": -7.428457214141914
+                },
+                {
+                    "id": "PRESTIGE",
+                    "name": "Prestige Estates Projects Ltd.",
+                    "code": "PRESTIGE",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "134",
+                    "ecId": "2105",
+                    "ccId": "in",
+                    "sector": "Construction",
+                    "industry": "Real_Estate",
+                    "pts": -4.25,
+                    "vsNifty": 3.4162465525433783,
+                    "vsIdx": 3.4089678963281327
+                },
+                {
+                    "id": "BRIGADE",
+                    "name": "Brigade Enterprises Limit ",
+                    "code": "BRIGADE",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "134",
+                    "ecId": "454",
+                    "ccId": "in",
+                    "sector": "Construction",
+                    "industry": "Real_Estate",
+                    "pts": -2.75,
+                    "vsNifty": -0.8840348132071405,
+                    "vsIdx": -0.8913134694223861
+                }
+            ],
+            "upEq": 6,
+            "rtnPos": 0.0,
+            "mcChg": 1.6036834852254102E11,
+            "ma1": 0.8,
+            "ma2": 0.8,
+            "adx": 0.8,
+            "rsi": 0.8,
+            "macds": 0.8,
+            "macd0": 0.8,
+            "st": 0.8
+        },
+        {
+            "id": "NIFTY_METAL",
+            "name": "Nifty Metal",
+            "code": "NIFTY_METAL",
+            "fno": "false",
+            "funda": "false",
+            "scId": "200000",
+            "ecId": "8000",
+            "ccId": "in",
+            "sector": "INDEX",
+            "industry": "Sectoral_Index",
+            "secIdx": "true",
+            "idxVals": {
+                "ma1": 10447.044,
+                "ma2": 10192.8545,
+                "rsi": 65.25135528191481,
+                "macd": 154.41818691431584,
+                "signal": 0.0,
+                "st": 10262.81479099297,
+                "price": 10612.2001953125,
+                "priceChange": -1.0904820291368629,
+                "techStrength": 0.602,
+                "techPosi": "NIFTY_METAL is more bullish than 70.41 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": -0.4481540680816516
+                    },
+                    {
+                        "rtn": 1.710988857757733
+                    },
+                    {
+                        "rtn": 1.232421254900329
+                    },
+                    {
+                        "rtn": 1.1568030472336313
+                    },
+                    {
+                        "rtn": 1.0320470750084647
+                    },
+                    {
+                        "rtn": 0.08795246825680327
+                    },
+                    {
+                        "rtn": 0.4022841969594313
+                    },
+                    {
+                        "rtn": -0.07353445965528999
+                    },
+                    {
+                        "rtn": -0.8544636923178863
+                    },
+                    {
+                        "rtn": 0.6772381612106088
+                    },
+                    {
+                        "rtn": 1.0003182554389392
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 10.437597226870396,
+            "pts": 3.0,
+            "opEqList": [
+                {
+                    "id": "APLAPOLLO",
+                    "name": "APL Apollo Tubes Ltd.",
+                    "code": "APLAPOLLO",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "174",
+                    "ecId": "2270",
+                    "ccId": "in",
+                    "sector": "Metals",
+                    "industry": "Steel_Tubes_Pipes",
+                    "pts": 11.25,
+                    "vsNifty": 8.03394790086328,
+                    "vsIdx": -2.403649326007116
+                },
+                {
+                    "id": "WELCORP",
+                    "name": "Welspun Corp Ltd.",
+                    "code": "WELCORP",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "174",
+                    "ecId": "2007",
+                    "ccId": "in",
+                    "sector": "Metals",
+                    "industry": "Steel_Tubes_Pipes",
+                    "pts": 9.75,
+                    "vsNifty": -0.10719956864522695,
+                    "vsIdx": -10.544796795515623
+                },
+                {
+                    "id": "HINDALCO",
+                    "name": "Hindalco Industries Ltd.",
+                    "code": "HINDALCO",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "117",
+                    "ecId": "252",
+                    "ccId": "in",
+                    "sector": "Metals",
+                    "industry": "Aluminium_Products",
+                    "pts": 2.5,
+                    "vsNifty": 20.27618503461198,
+                    "vsIdx": 9.838587807741584
+                },
+                {
+                    "id": "TATASTEEL",
+                    "name": "Tata Steel Ltd.",
+                    "code": "TATASTEEL",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "174",
+                    "ecId": "17",
+                    "ccId": "in",
+                    "sector": "Metals",
+                    "industry": "Finished_Steel",
+                    "pts": 2.5,
+                    "vsNifty": 11.914589771710398,
+                    "vsIdx": 1.4769925448400016
+                },
+                {
+                    "id": "JINDALSTEL",
+                    "name": "Jindal Steel Limited",
+                    "code": "JINDALSTEL",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "174",
+                    "ecId": "39",
+                    "ccId": "in",
+                    "sector": "Metals",
+                    "industry": "Sponge_Iron",
+                    "pts": 2.0,
+                    "vsNifty": 6.698339385979613,
+                    "vsIdx": -3.739257840890783
+                }
+            ],
+            "opEq": 7,
+            "upEqList": [
+                {
+                    "id": "VEDL",
+                    "name": "Vedanta Ltd",
+                    "code": "VEDL",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "157",
+                    "ecId": "165",
+                    "ccId": "in",
+                    "sector": "Metals",
+                    "industry": "Mining",
+                    "pts": -6.25,
+                    "vsNifty": 12.101181959945661,
+                    "vsIdx": 1.6635847330752647
+                },
+                {
+                    "id": "HINDCOPPER",
+                    "name": "Hindustan Copper Ltd.",
+                    "code": "HINDCOPPER",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "157",
+                    "ecId": "1942",
+                    "ccId": "in",
+                    "sector": "Metals",
+                    "industry": "Other_Non-Ferrous_Metal",
+                    "pts": -5.75,
+                    "vsNifty": 35.968301994549236,
+                    "vsIdx": 25.53070476767884
+                },
+                {
+                    "id": "ADANIENT",
+                    "name": "Adani Enterprises Ltd.",
+                    "code": "ADANIENT",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "183",
+                    "ecId": "303",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Trading",
+                    "pts": -5.0,
+                    "vsNifty": -1.7815257368425623,
+                    "vsIdx": -12.219122963712959
+                },
+                {
+                    "id": "NMDC",
+                    "name": "NMDC Ltd.",
+                    "code": "NMDC",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "157",
+                    "ecId": "164",
+                    "ccId": "in",
+                    "sector": "Metals",
+                    "industry": "Minerals",
+                    "pts": -3.5,
+                    "vsNifty": 3.2122573333799167,
+                    "vsIdx": -7.22533989349048
+                },
+                {
+                    "id": "LLOYDSME",
+                    "name": "Lloyds Metals And Energy Ltd",
+                    "code": "LLOYDSME",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "174",
+                    "ecId": "4826",
+                    "ccId": "in",
+                    "sector": "Metals",
+                    "industry": "Sponge_Iron",
+                    "pts": -3.5,
+                    "vsNifty": -17.135925434166943,
+                    "vsIdx": -27.573522661037337
+                }
+            ],
+            "upEq": 8,
+            "rtnPos": 0.0,
+            "mcChg": 1.9984631516581484E12,
+            "ma1": 0.6666666666666666,
+            "ma2": 0.7333333333333333,
+            "adx": 0.7333333333333333,
+            "rsi": 0.7333333333333333,
+            "macds": 0.9333333333333333,
+            "macd0": 0.9333333333333333,
+            "st": 0.9333333333333333
+        },
+        {
+            "id": "NIFTY_PVT_BANK",
+            "name": "Nifty Pvt Bank",
+            "code": "NIFTY_PVT_BANK",
+            "fno": "false",
+            "funda": "false",
+            "scId": "200000",
+            "ecId": "6600",
+            "ccId": "in",
+            "sector": "INDEX",
+            "industry": "Sectoral_Index",
+            "secIdx": "true",
+            "idxVals": {
+                "ma1": 28155.006,
+                "ma2": 27693.254,
+                "rsi": 56.5670744675396,
+                "macd": 370.92774046201123,
+                "signal": 0.0,
+                "st": 27830.92692114771,
+                "price": 28050.69921875,
+                "priceChange": -0.7508117317831563,
+                "techStrength": 0.7048543689320388,
+                "techPosi": "NIFTY_PVT_BANK is more bullish than 86.59 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": -0.7392864818116635
+                    },
+                    {
+                        "rtn": 0.13504621285387727
+                    },
+                    {
+                        "rtn": 0.0781310470618918
+                    },
+                    {
+                        "rtn": 0.2738698320096843
+                    },
+                    {
+                        "rtn": -0.8117743621018361
+                    },
+                    {
+                        "rtn": 0.4931920709731574
+                    },
+                    {
+                        "rtn": -0.003167289063014212
+                    },
+                    {
+                        "rtn": 0.6653720021171838
+                    },
+                    {
+                        "rtn": 0.3682062193621368
+                    },
+                    {
+                        "rtn": 1.4750804747520811
+                    },
+                    {
+                        "rtn": 0.11373565346168087
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": -0.28697869481862837,
+            "pts": -0.5,
+            "opEqList": [
+                {
+                    "id": "IDFCFIRSTB",
+                    "name": "IDFC First Bank Ltd.",
+                    "code": "IDFCFIRSTB",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "2615",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": 14.25,
+                    "vsNifty": 15.069990881060804,
+                    "vsIdx": 15.356969575879432
+                },
+                {
+                    "id": "RBLBANK",
+                    "name": "RBL Bank",
+                    "code": "RBLBANK",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "2929",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": 11.75,
+                    "vsNifty": 18.45545118392203,
+                    "vsIdx": 18.74242987874066
+                },
+                {
+                    "id": "FEDERALBNK",
+                    "name": "Federal Bank Ltd.",
+                    "code": "FEDERALBNK",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "75",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": 8.0,
+                    "vsNifty": 13.033960913289075,
+                    "vsIdx": 13.320939608107704
+                },
+                {
+                    "id": "YESBANK",
+                    "name": "Yes Bank Ltd.",
+                    "code": "YESBANK",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "341",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": 7.75,
+                    "vsNifty": 16.339385159845584,
+                    "vsIdx": 16.626363854664213
+                },
+                {
+                    "id": "INDUSINDBK",
+                    "name": "IndusInd Bank Ltd.",
+                    "code": "INDUSINDBK",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "76",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": 2.5,
+                    "vsNifty": -4.364095657616497,
+                    "vsIdx": -4.077116962797869
+                }
+            ],
+            "opEq": 5,
+            "upEqList": [
+                {
+                    "id": "ICICIBANK",
+                    "name": "ICICI Bank Ltd.",
+                    "code": "ICICIBANK",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "94",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": -10.25,
+                    "vsNifty": -13.038140474818906,
+                    "vsIdx": -12.751161780000277
+                },
+                {
+                    "id": "BANDHANBNK",
+                    "name": "Bandhan Bank Ltd.",
+                    "code": "BANDHANBNK",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "3295",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": -9.25,
+                    "vsNifty": -10.704769029571516,
+                    "vsIdx": -10.417790334752887
+                },
+                {
+                    "id": "KOTAKBANK",
+                    "name": "Kotak Mahindra Bank Ltd.",
+                    "code": "KOTAKBANK",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "99",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": -6.75,
+                    "vsNifty": 2.3959502611800785,
+                    "vsIdx": 2.682928955998707
+                },
+                {
+                    "id": "HDFCBANK",
+                    "name": "HDFC Bank Ltd.",
+                    "code": "HDFCBANK",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "93",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": -5.5,
+                    "vsNifty": -6.011230579381827,
+                    "vsIdx": -5.724251884563199
+                },
+                {
+                    "id": "AXISBANK",
+                    "name": "Axis Bank Ltd.",
+                    "code": "AXISBANK",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "82",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": -2.5,
+                    "vsNifty": 11.536611418457774,
+                    "vsIdx": 11.823590113276403
+                }
+            ],
+            "upEq": 5,
+            "rtnPos": 0.0,
+            "mcChg": -2.2131103375839844E11,
+            "ma1": 0.6,
+            "ma2": 0.7,
+            "adx": 0.8,
+            "rsi": 0.7,
+            "macds": 0.9,
+            "macd0": 0.9,
+            "st": 0.6
+        }
+    ],
+    "upSec": [
+        {
+            "id": "NIFTY_MEDIA",
+            "name": "Nifty Media",
+            "code": "NIFTY_MEDIA",
+            "fno": "false",
+            "funda": "false",
+            "scId": "200000",
+            "ecId": "8100",
+            "ccId": "in",
+            "sector": "INDEX",
+            "industry": "Sectoral_Index",
+            "secIdx": "true",
+            "idxVals": {
+                "ma1": 1549.0039,
+                "ma2": 1570.6686,
+                "rsi": 41.65790612298542,
+                "macd": -16.97230613611599,
+                "signal": 0.0,
+                "st": 1598.7369870259445,
+                "price": 1538.3499755859375,
+                "priceChange": -1.3214007011868685,
+                "techStrength": 0.21800000000000003,
+                "techPosi": "NIFTY_MEDIA is more bearish than 97.26 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": -0.2910168742005117
+                    },
+                    {
+                        "rtn": 1.6282654374972525
+                    },
+                    {
+                        "rtn": 0.14972019146956475
+                    },
+                    {
+                        "rtn": -0.2564736857665506
+                    },
+                    {
+                        "rtn": -0.4041775858425433
+                    },
+                    {
+                        "rtn": 0.31462702471213105
+                    },
+                    {
+                        "rtn": 0.5643099162888395
+                    },
+                    {
+                        "rtn": 0.8719399982150551
+                    },
+                    {
+                        "rtn": -1.5611826357604268
+                    },
+                    {
+                        "rtn": 0.28909866310703264
+                    },
+                    {
+                        "rtn": -0.5170463725965423
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": -9.261779387961482,
+            "pts": -6.5,
+            "opEqList": [
+                {
+                    "id": "TIPSMUSIC",
+                    "name": "Tips Music Limited",
+                    "code": "TIPSMUSIC",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "155",
+                    "ecId": "413",
+                    "ccId": "in",
+                    "sector": "Services",
+                    "industry": "Recreational_Services",
+                    "pts": 1.75,
+                    "vsNifty": -14.009730638520299,
+                    "vsIdx": -4.747951250558816
+                }
+            ],
+            "opEq": 1,
+            "upEqList": [
+                {
+                    "id": "NAZARA",
+                    "name": "Nazara Technologies Ltd.",
+                    "code": "NAZARA",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "155",
+                    "ecId": "3868",
+                    "ccId": "in",
+                    "sector": "Services",
+                    "industry": "Media_Entertainment",
+                    "pts": -10.5,
+                    "vsNifty": -24.762532039407496,
+                    "vsIdx": -15.500752651446014
+                },
+                {
+                    "id": "SAREGAMA",
+                    "name": "Saregama India Ltd",
+                    "code": "SAREGAMA",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "155",
+                    "ecId": "409",
+                    "ccId": "in",
+                    "sector": "Services",
+                    "industry": "Recreational_Services",
+                    "pts": -9.5,
+                    "vsNifty": -9.727157063521904,
+                    "vsIdx": -0.4653776755604202
+                },
+                {
+                    "id": "HATHWAY",
+                    "name": "Hathway Cable & Datacom Ltd.",
+                    "code": "HATHWAY",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "155",
+                    "ecId": "1971",
+                    "ccId": "in",
+                    "sector": "Communication",
+                    "industry": "Telecom_Services",
+                    "pts": -9.5,
+                    "vsNifty": -11.66129955585785,
+                    "vsIdx": -2.399520167896367
+                },
+                {
+                    "id": "NETWORK18",
+                    "name": "Network18 Media & Investments Ltd.",
+                    "code": "NETWORK18",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "155",
+                    "ecId": "555",
+                    "ccId": "in",
+                    "sector": "Services",
+                    "industry": "Recreational_Services",
+                    "pts": -8.5,
+                    "vsNifty": -17.562601283301433,
+                    "vsIdx": -8.30082189533995
+                },
+                {
+                    "id": "DISHTV",
+                    "name": "Dish TV India Limited",
+                    "code": "DISHTV",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "155",
+                    "ecId": "115",
+                    "ccId": "in",
+                    "sector": "Services",
+                    "industry": "Recreational_Services",
+                    "pts": -8.5,
+                    "vsNifty": -21.62866518999683,
+                    "vsIdx": -12.366885802035348
+                }
+            ],
+            "upEq": 9,
+            "rtnPos": 0.0,
+            "mcChg": -5.227018888608765E10,
+            "ma1": 0.2,
+            "ma2": 0.2,
+            "adx": 0.8,
+            "rsi": 0.2,
+            "macds": 0.2,
+            "macd0": 0.2,
+            "st": 0.2
+        },
+        {
+            "id": "NIFTY_PHARMA",
+            "name": "Nifty Pharma",
+            "code": "NIFTY_PHARMA",
+            "fno": "false",
+            "funda": "false",
+            "scId": "200000",
+            "ecId": "8800",
+            "ccId": "in",
+            "sector": "INDEX",
+            "industry": "Sectoral_Index",
+            "secIdx": "true",
+            "idxVals": {
+                "ma1": 22256.25,
+                "ma2": 22158.777,
+                "rsi": 49.866328527601915,
+                "macd": 75.62352779293425,
+                "signal": 0.0,
+                "st": 21853.152825303037,
+                "price": 22175.400390625,
+                "priceChange": -0.5507118620670566,
+                "techStrength": 0.6951456310679611,
+                "techPosi": "NIFTY_PHARMA is more bullish than 85.04 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": -0.5907082909356753
+                    },
+                    {
+                        "rtn": 0.808051921353955
+                    },
+                    {
+                        "rtn": -0.26669176239886017
+                    },
+                    {
+                        "rtn": -0.20977662323321747
+                    },
+                    {
+                        "rtn": -0.5511202329307457
+                    },
+                    {
+                        "rtn": -0.1532264206623885
+                    },
+                    {
+                        "rtn": 0.33778593846462635
+                    },
+                    {
+                        "rtn": 0.8362598874876184
+                    },
+                    {
+                        "rtn": 0.6813564000827793
+                    },
+                    {
+                        "rtn": 0.20808728119179642
+                    },
+                    {
+                        "rtn": 0.08213348552428335
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": -6.466921994062947,
+            "pts": -0.5,
+            "opEqList": [
+                {
+                    "id": "AUROPHARMA",
+                    "name": "Aurobindo Pharma Ltd.",
+                    "code": "AUROPHARMA",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "143",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": 12.75,
+                    "vsNifty": -3.9298475511638475,
+                    "vsIdx": 2.5370744428990997
+                },
+                {
+                    "id": "DIVISLAB",
+                    "name": "Divi's Laboratories Ltd.",
+                    "code": "DIVISLAB",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "278",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": 9.0,
+                    "vsNifty": -1.6903244509338182,
+                    "vsIdx": 4.776597543129129
+                },
+                {
+                    "id": "LUPIN",
+                    "name": "Lupin Ltd.",
+                    "code": "LUPIN",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "152",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": 4.0,
+                    "vsNifty": -2.0676735011454395,
+                    "vsIdx": 4.399248492917508
+                },
+                {
+                    "id": "BIOCON",
+                    "name": "Biocon Ltd.",
+                    "code": "BIOCON",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "145",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": 2.5,
+                    "vsNifty": -8.781903774995742,
+                    "vsIdx": -2.314981780932795
+                },
+                {
+                    "id": "LAURUSLABS",
+                    "name": "Laurus Labs Ltd.",
+                    "code": "LAURUSLABS",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "3010",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": 2.0,
+                    "vsNifty": 5.21870887635149,
+                    "vsIdx": 11.685630870414437
+                }
+            ],
+            "opEq": 5,
+            "upEqList": [
+                {
+                    "id": "ABBOTINDIA",
+                    "name": "Abbott India Ltd.",
+                    "code": "ABBOTINDIA",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "1936",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": -13.75,
+                    "vsNifty": -19.575347126122544,
+                    "vsIdx": -13.108425132059597
+                },
+                {
+                    "id": "MANKIND",
+                    "name": "Mankind Pharma Ltd.",
+                    "code": "MANKIND",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "4713",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": -12.75,
+                    "vsNifty": -10.987067967027002,
+                    "vsIdx": -4.520145972964055
+                },
+                {
+                    "id": "IPCALAB",
+                    "name": "Ipca Laboratories Ltd.",
+                    "code": "IPCALAB",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "721",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": -11.75,
+                    "vsNifty": -17.60352086402252,
+                    "vsIdx": -11.136598869959576
+                },
+                {
+                    "id": "NATCOPHARM",
+                    "name": "Natco Pharma Ltd.",
+                    "code": "NATCOPHARM",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "735",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": -10.75,
+                    "vsNifty": -17.85340321760266,
+                    "vsIdx": -11.386481223539715
+                },
+                {
+                    "id": "JBCHEPHARM",
+                    "name": "J.B. Chemicals & Pharmaceuticals Ltd.",
+                    "code": "JBCHEPHARM",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "1066",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": -10.75,
+                    "vsNifty": -8.768084604331879,
+                    "vsIdx": -2.3011626102689324
+                }
+            ],
+            "upEq": 15,
+            "rtnPos": 0.0,
+            "mcChg": -4.5612400550650195E11,
+            "ma1": 0.5,
+            "ma2": 0.4,
+            "adx": 0.3,
+            "rsi": 0.45,
+            "macds": 0.45,
+            "macd0": 0.45,
+            "st": 0.35
+        },
+        {
+            "id": "NIFTY_CONSUM",
+            "name": "Nifty Consumption",
+            "code": "NIFTY_CONSUM",
+            "fno": "false",
+            "funda": "false",
+            "scId": "200000",
+            "ecId": "7800",
+            "ccId": "in",
+            "sector": "INDEX",
+            "industry": "Sectoral_Index",
+            "secIdx": "true",
+            "idxVals": {
+                "ma1": 12483.857,
+                "ma2": 12374.887,
+                "rsi": 50.3739431311385,
+                "macd": 78.96966556227228,
+                "signal": 0.0,
+                "st": 12318.635947599676,
+                "price": 12415.5,
+                "priceChange": -0.6839452843772498,
+                "techStrength": 0.7627450980392156,
+                "techPosi": "NIFTY_CONSUM is more bullish than 94.46 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": -0.6011132716560813
+                    },
+                    {
+                        "rtn": 0.21115370255869792
+                    },
+                    {
+                        "rtn": -0.4094732070891042
+                    },
+                    {
+                        "rtn": 0.6509480577675841
+                    },
+                    {
+                        "rtn": -0.37319202934870704
+                    },
+                    {
+                        "rtn": -0.5287423454721045
+                    },
+                    {
+                        "rtn": -0.04034820298283092
+                    },
+                    {
+                        "rtn": 0.14420793922854439
+                    },
+                    {
+                        "rtn": 1.1014715832457098
+                    },
+                    {
+                        "rtn": 1.0858971208993877
+                    },
+                    {
+                        "rtn": 0.9870400728830192
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 1.9110523924339518,
+            "pts": -0.5,
+            "opEqList": [
+                {
+                    "id": "CERA",
+                    "name": "Cera Sanitaryware",
+                    "code": "CERA",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "190",
+                    "ecId": "637",
+                    "ccId": "in",
+                    "sector": "Construction",
+                    "industry": "Granite_and_Ceramic_tiles",
+                    "pts": 6.5,
+                    "vsNifty": -8.717198632284983,
+                    "vsIdx": -10.628251024718935
+                },
+                {
+                    "id": "WHIRLPOOL",
+                    "name": "Whirpool Of India Ltd.",
+                    "code": "WHIRLPOOL",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "135",
+                    "ecId": "1953",
+                    "ccId": "in",
+                    "sector": "Consumer_Durable",
+                    "industry": "ACs_Refrigerators",
+                    "pts": 2.0,
+                    "vsNifty": 0.9820184355261308,
+                    "vsIdx": -0.929033956907821
+                },
+                {
+                    "id": "AMBER",
+                    "name": "Amber Enterprises India Ltd.",
+                    "code": "AMBER",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "158",
+                    "ecId": "3257",
+                    "ccId": "in",
+                    "sector": "Consumer_Durable",
+                    "industry": "Consumer_Electronics",
+                    "pts": 0.0,
+                    "vsNifty": -2.9342061085746987,
+                    "vsIdx": -4.845258501008651
+                }
+            ],
+            "opEq": 3,
+            "upEqList": [
+                {
+                    "id": "HAVELLS",
+                    "name": "Havell's India Ltd.",
+                    "code": "HAVELLS",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "141",
+                    "ecId": "494",
+                    "ccId": "in",
+                    "sector": "Engineering",
+                    "industry": "Switching_Equipment",
+                    "pts": -11.75,
+                    "vsNifty": -4.297374916341875,
+                    "vsIdx": -6.208427308775827
+                },
+                {
+                    "id": "CROMPTON",
+                    "name": "Crompton Greaves Ltd.",
+                    "code": "CROMPTON",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "141",
+                    "ecId": "2702",
+                    "ccId": "in",
+                    "sector": "Consumer_Durable",
+                    "industry": "Consumer_Electronics",
+                    "pts": -11.5,
+                    "vsNifty": -16.327664878349047,
+                    "vsIdx": -18.238717270783
+                },
+                {
+                    "id": "DIXON",
+                    "name": "Dixon Technologies (India) Ltd.",
+                    "code": "DIXON",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "141",
+                    "ecId": "3155",
+                    "ccId": "in",
+                    "sector": "Engineering",
+                    "industry": "Electronic_Equipments",
+                    "pts": -10.5,
+                    "vsNifty": -11.849225862748453,
+                    "vsIdx": -13.760278255182405
+                },
+                {
+                    "id": "CENTURYPLY",
+                    "name": "Century Plyboards (India) Ltd.",
+                    "code": "CENTURYPLY",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "134",
+                    "ecId": "953",
+                    "ccId": "in",
+                    "sector": "FMCG",
+                    "industry": "Wood",
+                    "pts": -8.5,
+                    "vsNifty": -0.7134978762274757,
+                    "vsIdx": -2.6245502686614275
+                },
+                {
+                    "id": "BATAINDIA",
+                    "name": "Bata India Ltd.",
+                    "code": "BATAINDIA",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "154",
+                    "ecId": "396",
+                    "ccId": "in",
+                    "sector": "FMCG",
+                    "industry": "Footwear",
+                    "pts": -7.0,
+                    "vsNifty": -13.982679323369174,
+                    "vsIdx": -15.893731715803126
+                }
+            ],
+            "upEq": 13,
+            "rtnPos": 0.0,
+            "mcChg": 1.3841879630554297E11,
+            "ma1": 0.3333333333333333,
+            "ma2": 0.4,
+            "adx": 0.5333333333333333,
+            "rsi": 0.3333333333333333,
+            "macds": 0.5333333333333333,
+            "macd0": 0.5333333333333333,
+            "st": 0.6
+        },
+        {
+            "id": "IDX_SEC_FIN_SER_25_50",
+            "name": "Nifty Financial Service Index 25 50",
+            "code": "IDX_SEC_FIN_SER_25_50",
+            "fno": "false",
+            "funda": "false",
+            "scId": "200000",
+            "ecId": "3400",
+            "ccId": "in",
+            "sector": "INDEX",
+            "industry": "Other_Index",
+            "secIdx": "true",
+            "idxVals": {
+                "ma1": 29524.63,
+                "ma2": 29115.352,
+                "rsi": 57.00680946370912,
+                "macd": 313.922588516706,
+                "signal": 0.0,
+                "st": 29066.405784405055,
+                "price": 29475.599609375,
+                "priceChange": -0.716780892368988,
+                "techStrength": 0.7203883495145631,
+                "techPosi": "IDX_SEC_FIN_SER_25_50 is more bullish than 88.95 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": -0.7229630945542644
+                    },
+                    {
+                        "rtn": 0.7207668515135952
+                    },
+                    {
+                        "rtn": -0.21777821974936928
+                    },
+                    {
+                        "rtn": 0.48290580335821887
+                    },
+                    {
+                        "rtn": -0.3824895302246165
+                    },
+                    {
+                        "rtn": 0.02860257931908642
+                    },
+                    {
+                        "rtn": 0.0771194564265534
+                    },
+                    {
+                        "rtn": 0.048854119519655556
+                    },
+                    {
+                        "rtn": 0.36011727586814035
+                    },
+                    {
+                        "rtn": 0.6997364682435122
+                    },
+                    {
+                        "rtn": 1.269652478448276
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": -0.7623176600184061,
+            "pts": -0.5,
+            "opEqList": [
+                {
+                    "id": "SHRIRAMFIN",
+                    "name": "Shriram Finance Ltd.",
+                    "code": "SHRIRAMFIN",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "149",
+                    "ecId": "576",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Equipment_Leasing",
+                    "pts": 16.0,
+                    "vsNifty": 14.86196314327518,
+                    "vsIdx": 15.624280803293585
+                },
+                {
+                    "id": "SBIN",
+                    "name": "State Bank of India",
+                    "code": "SBIN",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "105",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": 9.5,
+                    "vsNifty": 13.781400775522155,
+                    "vsIdx": 14.54371843554056
+                }
+            ],
+            "opEq": 2,
+            "upEqList": [
+                {
+                    "id": "ICICIBANK",
+                    "name": "ICICI Bank Ltd.",
+                    "code": "ICICIBANK",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "121",
+                    "ecId": "94",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Banking",
+                    "pts": -10.25,
+                    "vsNifty": -13.038140474818906,
+                    "vsIdx": -12.2758228148005
+                },
+                {
+                    "id": "ICICIPRULI",
+                    "name": "ICICI Prudential Life Insurance Company",
+                    "code": "ICICIPRULI",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "147",
+                    "ecId": "2947",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Insurance",
+                    "pts": -9.75,
+                    "vsNifty": -7.87718534432045,
+                    "vsIdx": -7.114867684302045
+                },
+                {
+                    "id": "HDFCLIFE",
+                    "name": "HDFC Life Insurance Company Ltd.",
+                    "code": "HDFCLIFE",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "158",
+                    "ecId": "3208",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "Insurance",
+                    "pts": -8.25,
+                    "vsNifty": -6.981268936987883,
+                    "vsIdx": -6.218951276969477
+                },
+                {
+                    "id": "RECLTD",
+                    "name": "REC Ltd.",
+                    "code": "RECLTD",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "149",
+                    "ecId": "582",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "State_Financial_Corp",
+                    "pts": -7.5,
+                    "vsNifty": -9.000178425421034,
+                    "vsIdx": -8.237860765402626
+                },
+                {
+                    "id": "PFC",
+                    "name": "Power Finance Corporation Ltd.",
+                    "code": "PFC",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "149",
+                    "ecId": "581",
+                    "ccId": "in",
+                    "sector": "Financial",
+                    "industry": "State_Financial_Corp",
+                    "pts": -7.5,
+                    "vsNifty": -5.485234123765942,
+                    "vsIdx": -4.722916463747536
+                }
+            ],
+            "upEq": 17,
+            "rtnPos": 0.0,
+            "mcChg": 2.635521353469039E12,
+            "ma1": 0.3684210526315789,
+            "ma2": 0.5789473684210527,
+            "adx": 0.631578947368421,
+            "rsi": 0.5789473684210527,
+            "macds": 0.631578947368421,
+            "macd0": 0.631578947368421,
+            "st": 0.5789473684210527
+        },
+        {
+            "id": "NIFTY_HEALTHCARE",
+            "name": "Nifty Healthcare",
+            "code": "NIFTY_HEALTHCARE",
+            "fno": "false",
+            "funda": "false",
+            "scId": "200000",
+            "ecId": "3800",
+            "ccId": "in",
+            "sector": "INDEX",
+            "industry": "Other_Index",
+            "secIdx": "true",
+            "idxVals": {
+                "ma1": 14803.933,
+                "ma2": 14699.945,
+                "rsi": 48.43209380386004,
+                "macd": 86.46123623783622,
+                "signal": 0.0,
+                "st": 14591.082124102875,
+                "price": 14693.2998046875,
+                "priceChange": -0.8943847081378516,
+                "techStrength": 0.7456310679611651,
+                "techPosi": "NIFTY_HEALTHCARE is more bullish than 92.64 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": -0.7039020117540687
+                    },
+                    {
+                        "rtn": 0.6532273152848451
+                    },
+                    {
+                        "rtn": -0.18907419876071144
+                    },
+                    {
+                        "rtn": -0.00403429624888638
+                    },
+                    {
+                        "rtn": -0.8267356323292117
+                    },
+                    {
+                        "rtn": -0.3278784562882415
+                    },
+                    {
+                        "rtn": 0.22597097411495137
+                    },
+                    {
+                        "rtn": 0.9093974883645283
+                    },
+                    {
+                        "rtn": 0.7570225671894675
+                    },
+                    {
+                        "rtn": 0.37892578191435083
+                    },
+                    {
+                        "rtn": 0.1137398557131348
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": -5.106921289376434,
+            "pts": -0.5,
+            "opEqList": [
+                {
+                    "id": "AUROPHARMA",
+                    "name": "Aurobindo Pharma Ltd.",
+                    "code": "AUROPHARMA",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "143",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": 12.75,
+                    "vsNifty": -3.9298475511638475,
+                    "vsIdx": 1.177073738212586
+                },
+                {
+                    "id": "DIVISLAB",
+                    "name": "Divi's Laboratories Ltd.",
+                    "code": "DIVISLAB",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "278",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": 9.0,
+                    "vsNifty": -1.6903244509338182,
+                    "vsIdx": 3.416596838442615
+                },
+                {
+                    "id": "LUPIN",
+                    "name": "Lupin Ltd.",
+                    "code": "LUPIN",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "152",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": 4.0,
+                    "vsNifty": -2.0676735011454395,
+                    "vsIdx": 3.039247788230994
+                },
+                {
+                    "id": "BIOCON",
+                    "name": "Biocon Ltd.",
+                    "code": "BIOCON",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "145",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": 2.5,
+                    "vsNifty": -8.781903774995742,
+                    "vsIdx": -3.6749824856193083
+                },
+                {
+                    "id": "LAURUSLABS",
+                    "name": "Laurus Labs Ltd.",
+                    "code": "LAURUSLABS",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "3010",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": 2.0,
+                    "vsNifty": 5.21870887635149,
+                    "vsIdx": 10.325630165727924
+                }
+            ],
+            "opEq": 5,
+            "upEqList": [
+                {
+                    "id": "ABBOTINDIA",
+                    "name": "Abbott India Ltd.",
+                    "code": "ABBOTINDIA",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "1936",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": -13.75,
+                    "vsNifty": -19.575347126122544,
+                    "vsIdx": -14.46842583674611
+                },
+                {
+                    "id": "MANKIND",
+                    "name": "Mankind Pharma Ltd.",
+                    "code": "MANKIND",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "4713",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": -12.75,
+                    "vsNifty": -10.987067967027002,
+                    "vsIdx": -5.880146677650569
+                },
+                {
+                    "id": "IPCALAB",
+                    "name": "Ipca Laboratories Ltd.",
+                    "code": "IPCALAB",
+                    "fno": "false",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "721",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": -11.75,
+                    "vsNifty": -17.60352086402252,
+                    "vsIdx": -12.496599574646089
+                },
+                {
+                    "id": "DRREDDY",
+                    "name": "Dr. Reddy's Laboratories Ltd.",
+                    "code": "DRREDDY",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "166",
+                    "ecId": "149",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Drugs_Pharma",
+                    "pts": -10.0,
+                    "vsNifty": -9.573947939232005,
+                    "vsIdx": -4.467026649855571
+                },
+                {
+                    "id": "FORTIS",
+                    "name": "Fortis Healthcare Ltd.",
+                    "code": "FORTIS",
+                    "fno": "true",
+                    "funda": "true",
+                    "scId": "158",
+                    "ecId": "377",
+                    "ccId": "in",
+                    "sector": "Healthcare",
+                    "industry": "Health_Services",
+                    "pts": -8.75,
+                    "vsNifty": 15.462189584352366,
+                    "vsIdx": 20.5691108737288
+                }
+            ],
+            "upEq": 15,
+            "rtnPos": 0.0,
+            "mcChg": -3.302640813546836E11,
+            "ma1": 0.45,
+            "ma2": 0.5,
+            "adx": 0.3,
+            "rsi": 0.45,
+            "macds": 0.65,
+            "macd0": 0.65,
+            "st": 0.5
+        }
+    ]
+}

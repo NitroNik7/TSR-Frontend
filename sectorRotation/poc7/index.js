@@ -5,6 +5,8 @@ var sectorDurationSelectId = "tsrSectorRotationDurationSelect";
 var sectorData;
 
 // Start
+init();
+
 function init() {
     let sectorTypeSelect = document.getElementById(sectorTypeSelectId);
 
@@ -16,7 +18,8 @@ function init() {
 
         // let url = `https://www.tsrbt1.com:8080/TsrWeb/tmp/SectorRotation.jsp?id=${duration}&type=${sectorType}`;
 
-        let url = 'https://www.tsrbt1.com/test/Nikhil/SectorRotation/poc7/SecTor.json'
+        let url = `http://127.0.0.1:5500/TSR/sectorRotation/poc7/AllSectorRotation.jsp ${duration} ${sectorType}.json`;
+
 
         getData(url).then(data => {
 
@@ -314,6 +317,9 @@ function updateSectorTable(option) {
 
     html += `<tbody>`;
 
+    sectors.sort((a, b) => b.mcChg - a.mcChg); // sorts sectors in ascending order wrt mcChg - required for ranking the sectors
+
+
     for (let i = 0; i < sectors.length; i++) {
         html += `<tr>`
         html += `   <td>`
@@ -366,9 +372,8 @@ function showSectorCard(sec, secId) {
 
     // clone data object
     let sectors = [...sectorData[sec]];
-    sectors.sort((a, b) => b.mcChg - a.mcChg); // sorts sectors in ascending order wrt mcChg - required for ranking the sectors
 
-    let sectorInFocus = sectorData[sec][secId];
+    // let sectorInFocus = sectorData[sec][secId];
 
     let html = "";
 
@@ -388,10 +393,10 @@ function showSectorCard(sec, secId) {
         html += `   <div class="item p-2">`;
         html += `       <a href="#${i}">`;
         html += `           <div class="card flex-row justify-content-around shadow-sm p-2">`;
-        html += `               <span style="font-weight: 500;">`
+        html += `               <span style="font-weight: 500; white-space: nowrap;">`
         html += sectors[i].name;
         html += `               </span>`
-        html += `               <span style="color: gray;">`
+        html += `               <span style="color: gray; white-space: nowrap;">`
 
         if (i == 0) {
             html += `               1 <sup> st</sup >`;
@@ -455,12 +460,25 @@ function showSectorCard(sec, secId) {
 
 function initializeCarousal() {
 
+    console.log("initializeCarousal +  running")
+
     // sector Menu navigation code starts here
 
     let sectorNav = {
         loop: true,
         margin: 10,
-        dots: false
+        dots: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            576: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        },
     };
 
     $("#sectorMenuCarousal").owlCarousel(sectorNav);
@@ -553,6 +571,8 @@ function initializeCarousal() {
     });
 };
 
+
+let stockTableBtnId = "stockTableShowButton";
 function paintSectorCard(sectors, i) {
     let html = "";
 
@@ -603,10 +623,9 @@ function paintSectorCard(sectors, i) {
     html += `                   </h6>`
     html += `               </div>`;
 
-    if (sectors[i].secIdx) {
+    html += `           <div class="row">`;
 
-        html += `           <div class="row">`
-
+    if (paramDefined(sectors[i].secIdx) && sectors[i].secIdx) {
         html += `               <div class="col col-md-6 p-3">`
         html += `                   <section class="mb-4">`
         html += `                       <div class="mb-3 d-flex justify-content-between" style="border-bottom: 1px solid lightgrey;">`
@@ -655,7 +674,7 @@ function paintSectorCard(sectors, i) {
         html += `                                   </h4>`
         html += `                               </div>`
         html += `                       </div>`
-        html += `               </section>`;
+        html += `                   </section>`;
 
         html += `           <section class="mb-4">`
         html += `               <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
@@ -665,9 +684,9 @@ function paintSectorCard(sectors, i) {
 
         for (let j = 0; j < sectors[i]["idxVals"]["rtnList"].length; j++) {
             html += `               <div class="card d-flex flex-column p-3">`
-            html += `                   <h6>`
-            html += "P";
-            html += `                   </h6>`
+            // html += `                   <h6>`
+            // html += "P";
+            // html += `                   </h6>`
             html += `                   <h5 style="color: black; white-space: nowrap;">`
             html += getRoundedValue(sectors[i]["idxVals"]["rtnList"][j]["rtn"]);
             html += `                   </h5>`
@@ -676,9 +695,9 @@ function paintSectorCard(sectors, i) {
         html += `               </div>`
         html += `           </section>`;
 
-        html += `           <section class="mb-4">`;
 
         if (paramDefined(sectors["NIFTY"])) {
+            html += `           <section class="mb-4">`;
 
             html += `               <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
             html += `                   <h6>Analysis</h6>`;
@@ -723,15 +742,25 @@ function paintSectorCard(sectors, i) {
 
         html += `               </div>`;
         html += `           </section>`;
+
     }
 
-
+    // section starts
     html += `               <section>`
     html += `                   <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
     html += `                       <h6>Stocks</h6>`
     html += `                   </div>`
-    html += `                   <div class="text-center">`
-    html += `                       <div class="w-100 p-3 text-center">`
+
+    if (paramDefined(sectors[i].secIdx) && sectors[i].secIdx) {
+        html += `               <div class="text-center">`
+        html += `                   <div class="w-100 p-3 text-center">`
+    }
+    else {
+        html += `               <div class="text-center row">`
+        html += `                   <div class="col-12 col-md-6 p-3 text-center">`
+    }
+
+
     html += `                           <b>Out Performing</b>`
     html += `                           <table class="table table-striped">`
     html += `                               <thead>`;
@@ -751,13 +780,14 @@ function paintSectorCard(sectors, i) {
         }
 
         html += `                               <tr>`;
-        html += `                                   <td>${sectors[i].opEqList[j]["id"]}</td>`;
+        
+        html += `                                   <td>${sectors[i].opEqList[j]["name"]}</td>`;
         html += `                                   <td>${getRoundedValue(sectors[i].opEqList[j]["vsNifty"])}</td>`;
         html += `                                   <td>${getRoundedValue(sectors[i].opEqList[j]["vsIdx"])}</td>`;
         html += `                                   <td>`
         html += `                                       <a href="">`
-        html += `                                           <span style="color:grey; font-size:12pt; class="fa fa-chart-line">`
-        html += `                                           </span>`
+        html += `                                           <i style="color:grey; font-size:12pt;" class="fa fa-chart-line">`
+        html += `                                           </i>`
         html += `                                       </a>`;
         html += `                                   </td>`;
         html += `                               </tr>`;
@@ -766,7 +796,15 @@ function paintSectorCard(sectors, i) {
     html += `                               </tbody>`;
     html += `                           </table>`;
     html += `                       </div>`
-    html += `                       <div class="w-100 p-3 text-center">`
+
+
+    if (paramDefined(sectors[i].secIdx) && sectors[i].secIdx) {
+        html += `                   <div class="w-100 p-3 text-center">`
+    }
+    else {
+        html += `                   <div class="col-12 col-md-6 p-3 text-center">`
+    }
+
     html += `                           <b>Under Performing</b>`
     html += `                           <table class="table table-striped">`
     html += `                               <thead>`
@@ -791,8 +829,8 @@ function paintSectorCard(sectors, i) {
         html += `                                   <td>${getRoundedValue(sectors[i].upEqList[j]["vsIdx"])}</td>`;
         html += `                                   <td>`
         html += `                                       <a href="">`
-        html += `                                           <span style="color:grey; font-size:12pt; class="fa fa-chart-line">`
-        html += `                                           </span>`
+        html += `                                           <i style="color:grey; font-size:12pt"; class="fa fa-chart-line">`
+        html += `                                           </i>`
         html += `                                       </a>`;
         html += `                                   </td>`;
         html += `                               </tr>`;
@@ -801,128 +839,235 @@ function paintSectorCard(sectors, i) {
     html += `                               </tbody>`;
     html += `                           </table>`;
     html += `                       </div>`;
-    html += `                       <a style="color: var(--primary-color,#006aff); cursor: pointer;" onclick="showSectorStockTable(this, 1)">`;
+
+
+
+    html += `                       <a id="${stockTableBtnId + i}" style="color: var(--primary-color,#006aff); cursor: pointer;" onclick="paintStockComparisonTable('op', 'op', ${i}, true)">`;
     html += `                               Show more`;
     html += `                       </a>`;
+
     html += `                   </div>`;
+
+    // section ends
     html += `               </section>`;
 
-
+    // row ends
     html += `               </div> `;
 
+    html += `<div id="${stockTableContainerId + i}" class="row">`;
 
-    html += `<div class="row">`;
-
-    html += ``;
+    // html += getStockComparisonTable("op", sectors[i]);
 
     html += '</div>';
 
+    html += `<div class="${stockContainerId + i} row">`;
 
+    // html += getStockComparisonTable("op", sectors[i]);
+
+    html += '</div>';
 
     html += `           </div> `;
     html += `       </div>`;
     html += `   </div> `;
-    html += `</div> `;
-
+    if (paramDefined(sectors[i].secIdx) && sectors[i].secIdx) {
+        html += `</div>`;
+    }
     return html;
 }
 
+let stockTableContainerId = "stockComparisonTableContainer";
+let stockContainerId = "stockContainer";
 
-function showSectorStockTable(element, suffix) {
+function paintStockComparisonTable(sec, stockType, secId, show) {
 
-    element.style.display = "none";
+    let sectors = [...sectorData[sec + "Sec"]];
 
-    let container = document.getElementById("sectorStocksContainer" + suffix);
-    // document.getElementsByClassName("sectorStocksContainer")[0];
+    let sector = sectors[secId];
 
 
-    // container.scrollIntoView();
+    let container = document.getElementById(stockTableContainerId + secId);
 
-    setTimeout(function () {
-        container.style.visibility = "visible";
-        container.style.height = "75vh";
-    }, 100);
+    container.classList.add("p-3");
+
+    let stockTableBtn = document.getElementById(stockTableBtnId + secId);
+    stockTableBtn.style.display = "none";
+
+    if (!show) {
+        stockTableBtn.style.display = "block";
+
+
+        container.innerHTML = "";
+        return;
+    }
+
+    let html = "";
+
+    // Radio buttons
+    html += ``
+    html += `   <div>`;
+    html += `       <div class="mb-3 btn-group" role="group">`;
+    if (stockType == "op") {
+        html += `       <input type="radio" class="btn-check" name="btnradio" id="outPerformingStocks${secId}" autocomplete="off" checked>`;
+    }
+    else {
+        html += `       <input type="radio" class="btn-check" name="btnradio" id="outPerformingStocks${secId}" autocomplete="off">`;
+    }
+    html += `           <label class="btn btn-outline-secondary" for="outPerformingStocks${secId}" onclick="paintStockComparisonTable('${sec}','op', ${secId}, true)">Out Performing</label>`;
+    if (stockType == "up") {
+        html += `       <input type="radio" class="btn-check" name="btnradio" id="underPerformingStocks${secId}" autocomplete="off" checked>`;
+    }
+    else {
+        html += `       <input type="radio" class="btn-check" name="btnradio" id="underPerformingStocks${secId}" autocomplete="off">`;
+    }
+    html += `           <label class="btn btn-outline-secondary" for="underPerformingStocks${secId}" onclick="paintStockComparisonTable('${sec}','up', ${secId}, true)">Under Performing</label>`;
+    html += `       </div>`;
+    html += `   </div>`;
+
+    // table
+    let tableFields = ["Name", "Price", "Change %", "vs NIFTY", "1Y Returns", "RS wrt  Idx Chg %", "Market Cap", "PE", "EMA 200"];
+
+    if (sector.secIdx) {
+        tableFields.splice(2, 0, `vs ${sector.name}`);
+    }
+
+    html += `                             <table class="table table-striped">`
+    html += `                               <thead>`;
+    html += `                                   <tr>`;
+    for (let i = 0; i < tableFields.length; i++) {
+        html += `                                   <th scope="col">${tableFields[i]}</th>`
+    }
+    html += `                                   </tr>`;
+    html += `                               </thead>`;
+    html += `                               <tbody>`;
+
+    let stockList = sector[stockType + "EqList"];
+
+    for (let i = 0; i < stockList.length; i++) {
+        html += `<tr>`;
+
+        let keys = Object.keys(stockList[i]);
+        for (let j = 0; j < keys.length; j++) {
+
+            if (keys[j] == "name") {
+                html += `<td>
+                           <a class="link-primary" onclick="paintStockSection('${sec}', '${stockType}', ${secId}, ${i})"> ${getRoundedValue(stockList[i][keys[j]])} </a>
+                    </td>`;
+            }
+
+            if (keys[j] == "vsNifty" || keys[j] == "vsIdx") {
+                html += `<td>${getRoundedValue(stockList[i][keys[j]])}</td>`;
+            }
+        }
+
+        html += `<td>-</td>`;
+        html += `<td>-</td>`;
+        html += `<td>-</td>`;
+        html += `<td>-</td>`;
+        html += `<td>-</td>`;
+        html += `<td>-</td>`;
+        html += `<td>-</td>`;
+        html += `</tr>`;
+    }
+
+    html += `                               </tbody>`;
+    html += `                             </table>`;
+
+    html += `                   <div class="text-center">`
+    html += `                       <a style="color: var(--primary-color,#006aff); cursor: pointer;" onclick="paintStockComparisonTable('${sec}', '${stockType}', ${secId}, false)">`;
+    html += `                               Show less`;
+    html += `                       </a>`;
+    html += `                   </div>`;
+
+    container.innerHTML = html;
 
 };
 
-function updateStocksTable(secType, suffix) {
+function paintStockSection(sec, stockType, secId, stockId) {
 
-    let sectors = sectorData[secType];
+    // GET DATA For sector
 
-    let html = "";
-    if (secType == "outPerforming") {
-        html += `<thead>`;
-        html += `   <tr>`
-        html += `       <th>Name</th>`
-        html += `       <th>vs NIFTY</th>`
-        html += `       <th>vs NIFTY IT</th>`
-        html += `   </tr>`
-        html += `</thead>`
 
-        html += `<tbody>`
-        html += `   <tr>
-                        <td>TCS</td>
-                        <td>23</td>
-                        <td>67</td>
-                        <td>Bullish</td>
-                        <td>12</td>
-                        <td>221</td>
-                    </tr>`;
-        html += `</tbody>`;
-    } else if (secType == "underPerforming") {
-        sectorStocksTable.innerHTML =
-            html += `<thead> `;
-        html += `   <tr> `
-        html += `       <th> Name</th> `
-        html += `       <th> vs NIFTY</th> `
-        html += `       <th> vs NIFTY IT</th> `
-        html += `   </tr> `
-        html += `</thead> `
+    let sectorTypeSelect = document.getElementById(sectorTypeSelectId);
 
-        html += `<tbody>
-                <tr>
-                    <td>TCS</td>
-                    <td>23</td>
-                    <td>67</td>
-                    <td>Bullish</td>
-                    <td>12</td>
-                    <td>221</td>
-                </tr>
-                <tr>
-                    <td>INFY</td>
-                    <td>18</td>
-                    <td>54</td>
-                    <td>Bullish</td>
-                    <td>8</td>
-                    <td>198</td>
-                </tr>
-                <tr>
-                    <td>WIPRO</td>
-                    <td>12</td>
-                    <td>45</td>
-                    <td>Neutral</td>
-                    <td>5</td>
-                    <td>142</td>
-                </tr>
-                <tr>
-                    <td>HCLTECH</td>
-                    <td>20</td>
-                    <td>60</td>
-                    <td>Bullish</td>
-                    <td>10</td>
-                    <td>210</td>
-                </tr>
-                <tr>
-                    <td>LT</td>
-                    <td>9</td>
-                    <td>38</td>
-                    <td>Bearish</td>
-                    <td>3</td>
-                    <td>95</td>
-                </tr>
-            </tbody >
-            `;
+    let durationSelect = document.getElementById(sectorDurationSelectId);
+
+    if (paramDefined(sectorTypeSelect) && paramDefined(durationSelect)) {
+        let sectorType = sectorTypeSelect.value;
+        let duration = durationSelect.value;
+
+        let sectors = [...sectorData[sec + "Sec"]];
+
+        let sector = sectors[secId];
+
+        let url = `http://127.0.0.1:5500/TSR/sectorRotation/poc7/OneSectorRotation.jsp ${duration} ${sectorType} ${sector["code"]}.json`; +
+
+            getData(url).then(data => {
+
+                sector = data;
+
+                let stockList = sector[stockType + "EqList"];
+                let stock = stockList[stockId];
+
+                let stockContainers = document.getElementsByClassName(stockContainerId + secId);
+
+                for (let i = 0; i < stockContainers.length; i++) {
+                    stockContainers[i].classList.add("p-3");
+
+                    let html = "";
+                    html += `                   <section class="mb-4">`
+                    html += `                       <div class="mb-3 text-center" style="border-bottom: 1px solid lightgrey;">`
+                    html += `                           <h4>${stock["name"]}</h4>`
+                    html += `                       </div>`
+                    html += `                       <div class="d-flex justify-content-between mb-3">`
+                    html += `                           <div class="w-100 d-flex flex-column">`
+                    html += `                               <span style="font-weight: 100;">`
+                    html += `                                   Relative Returns`
+                    html += `                               </span>`
+                    html += `                               <h4 style="color: black; white-space: nowrap;">${getRoundedValue(stock["eqVals"]["relRtn"])}</h4>`
+                    html += `                           </div>`
+                    html += `                       </div>`;
+
+                    html += `                       <div class="d-flex justify-content-between mb-3">`
+                    html += `                           <div class="w-100 d-flex flex-column">`
+                    html += `                               <span style="font-weight: 100;">Price</span>`
+                    html += `                                   <h4 style="color: black; white-space: nowrap;">`
+                    html += getRoundedValue(stock["eqVals"]["price"]);
+                    html += `                                   </h4>`
+                    html += `                           </div>`
+                    html += `                           <div class="w-100 d-flex flex-column">`
+                    html += `                               <span style="font-weight: 100;">Price Change %</span>`
+                    html += `                                   <h4 style="color: black; white-space: nowrap;">`
+                    html += getRoundedValue(stock["eqVals"]["priceChange"]) + " %";
+                    html += `                                   </h4>`
+                    html += `                               </div>`
+                    html += `                       </div>`
+                    html += `                   </section>`;
+
+                    html += `           <section class="mb-4">`
+                    html += `               <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
+                    html += `                   <h6>Periodic Returns</h6>`
+                    html += `               </div>`
+                    html += `               <div class="owl-carousel owl-theme periodicReturns">`;
+
+                    for (let j = 0; j < stock["eqVals"]["rtnList"].length; j++) {
+                        html += `               <div class="card d-flex flex-column p-3">`
+                        // html += `                   <h6>`
+                        // html += "P";
+                        // html += `                   </h6>`
+                        html += `                   <h5 style="color: black; white-space: nowrap;">`
+                        html += getRoundedValue(stock["eqVals"]["rtnList"][j]["rtn"]);
+                        html += `                   </h5>`
+                        html += `               </div>`;
+                    };
+                    html += `               </div>`
+                    html += `           </section>`;
+
+                    stockContainers[i].innerHTML = html;
+                }
+
+            });
     }
+
 }
 
 // fields required for completion

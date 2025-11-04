@@ -11,18 +11,18 @@ async function getData(url) {
 
 function getRoundedValue(val) {
 
-    if(typeof val == "number")
+    if (typeof val == "number") {
+        // Recheck later
+        if (val > 9999999) {
+            val = val / 10000000;
+        }
 
-    // Recheck later
-    if (val > 9999999) {
-        val = val / 10000000;
+        if (val < -9999999) {
+            val = val / 10000000;
+        }
+
+        val = Math.round(val * 100) / 100;
     }
-
-    if (val < -9999999) {
-        val = val / 10000000;
-    }
-
-    val = Math.round(val * 100) / 100;
 
     return val;
 }
