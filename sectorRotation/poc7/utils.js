@@ -55,3 +55,14 @@ function paramDefined(param) {
 
     return false;
 }
+
+
+
+function saveDataToLocalStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+function getDataFromLocalStorage(key) {
+    const cachedData = localStorage.getItem(key);
+    return cachedData ? JSON.parse(cachedData) : null;
+}

@@ -17,8 +17,8 @@ function init() {
         let duration = durationSelect.value;
 
         // let url = `https://www.tsrbt1.com:8080/TsrWeb/tmp/SectorRotation.jsp?id=${duration}&type=${sectorType}`;
-        let url = `http://127.0.0.1:5500/TSR/sectorRotation/poc7/AllSectorRotation.jsp ${duration} ${sectorType}.json`;
-        // let url = `https://nitronik7.github.io/TSR-Frontend/sectorRotation/poc7/AllSectorRotation.jsp ${duration} ${sectorType}.json`;
+        // let url = `http://127.0.0.1:5500/poc7/AllSectorRotation.jsp ${duration} ${sectorType}.json`;
+        let url = `https://nitronik7.github.io/TSR-Frontend/sectorRotation/poc7/AllSectorRotation.jsp ${duration} ${sectorType}.json`;
 
 
         getData(url).then(data => {
@@ -319,48 +319,59 @@ function updateSectorTable(option) {
 
     sortSectors(sectors);
 
-    for (let i = 0; i < sectors.length; i++) {
-        html += `<tr>`
-        html += `   <td>`
-        html += `       <div style="cursor: pointer;" onclick="showSectorCard('${option}', ${i})" class="link-primary">`
-        html += sectors[i].name;
-        html += `       </div`
+    if (sectors.length == 0) {
+
+        html += `<tr>`;
+        html += `   <td colspan="10" class="text-center">`;
+        html += `       No records`;
         html += `   </td>`;
-        html += `   <td>`;
-        html += getColoredValue(sectors[i]["mcChg"]);
-        html += `   </td>`;
-        html += `   <td>`;
-        html += getColoredValue(sectors[i]["opEq"]);
-        html += `   </td>`;
-        html += `   <td>`;
-        html += getColoredValue(sectors[i]["upEq"]);
-        html += `   </td>`;
-        html += `   <td>`;
-        html += getColoredValue(sectors[i]["ma1"]);
-        html += `   </td>`;
-        html += `   <td>`;
-        html += getColoredValue(sectors[i]["ma2"]);
-        html += `   </td>`;
-        html += `   <td>`;
-        html += getColoredValue(sectors[i]["adx"]);
-        html += `   </td>`;
-        html += `   <td>`;
-        html += getColoredValue(sectors[i]["rsi"]);
-        html += `   </td>`;
-        html += `   <td>`;
-        html += getColoredValue(sectors[i]["macds"]);
-        html += `   </td>`;
-        html += `   <td>`;
-        html += getColoredValue(sectors[i]["macd0"]);
-        html += `   </td>`;
-        html += `</tr>`
+        html += `</tr>`;
+    }
+    else {
+        for (let i = 0; i < sectors.length; i++) {
+            html += `<tr>`
+            html += `   <td>`
+            html += `       <div style="cursor: pointer;" onclick="showSectorCard('${option}', ${i})" class="link-primary">`
+            html += sectors[i].name;
+            html += `       </div`
+            html += `   </td>`;
+            html += `   <td>`;
+            html += getColoredValue(sectors[i]["mcChg"]);
+            html += `   </td>`;
+            html += `   <td>`;
+            html += getColoredValue(sectors[i]["opEq"]);
+            html += `   </td>`;
+            html += `   <td>`;
+            html += getColoredValue(sectors[i]["upEq"]);
+            html += `   </td>`;
+            html += `   <td>`;
+            html += getColoredValue(sectors[i]["ma1"]);
+            html += `   </td>`;
+            html += `   <td>`;
+            html += getColoredValue(sectors[i]["ma2"]);
+            html += `   </td>`;
+            html += `   <td>`;
+            html += getColoredValue(sectors[i]["adx"]);
+            html += `   </td>`;
+            html += `   <td>`;
+            html += getColoredValue(sectors[i]["rsi"]);
+            html += `   </td>`;
+            html += `   <td>`;
+            html += getColoredValue(sectors[i]["macds"]);
+            html += `   </td>`;
+            html += `   <td>`;
+            html += getColoredValue(sectors[i]["macd0"]);
+            html += `   </td>`;
+            html += `</tr>`
+        }
     }
 
 
     html += `</tbody>`
     html += `</table>`;
-
     sectorTable.innerHTML = html;
+
+
 }
 
 function sortSectors(sectors) {
@@ -381,9 +392,22 @@ function showSectorCard(sec, secId) {
 
     let html = "";
 
+    // 
+    html += `<div class="text-center">`
+
+    html += `   <a class="link-primary" style="text-decoration: underline;" onclick="paintSectorTableContainer()">`
+    html += `       <i class="fas fa-arrow-left"></i>`;
+    html += `       &nbsp;`
+    html += `       Back to Sector Comparison`;
+    html += `   </a>`;
+
+    html += `</div>`;
+
+
+
     // sector menu code begins
 
-    html += `<div id="sectorMenuContainer" style="display: flex;" class="owl-nav align-items-center justify-content-center">`
+    html += `<div id="sectorMenuContainer" style="display: flex;" class="owl-nav align-items-center justify-content-center my-3">`
 
     html += `   <button type="button" role="presentation" class="owl-prev btn sectorMenuCarousalPrev">`
     html += `       <span aria-label="Previous">`
@@ -397,7 +421,7 @@ function showSectorCard(sec, secId) {
         html += `   <div class="item p-2">`;
         html += `       <a href="#${i}">`;
         html += `           <div class="card flex-row justify-content-around shadow-sm p-2">`;
-        html += `               <span style="font-weight: 500; white-space: nowrap;">`
+        html += `               <span style="font-weight: 500;">`
         html += sectors[i].name;
         html += `               </span>`
         html += `               <span style="color: gray; white-space: nowrap;">`
@@ -516,10 +540,10 @@ function initializeCarousal() {
     $("#sectorCardsCarousal").owlCarousel(sectorCards);
 
     $('.sectorCardsCarousalPrev').click(function () {
-        $("#sectorCardsCarousal").trigger('prev.owl.carousel', [300]);
+        $("#sectorCardsCarousal").trigger('prev.owl.carousel');
     });
     $('.sectorCardsCarousalNext').click(function () {
-        $("#sectorCardsCarousal").trigger('next.owl.carousel', [300]); // [300] - optional speed parameter
+        $("#sectorCardsCarousal").trigger('next.owl.carousel'); // [300] - optional speed parameter
     });
 
     var periodicReturns = {
@@ -590,7 +614,6 @@ function paintSectorCard(sec, sectors, i) {
     html += `       <div class="card shadow">`;
 
     html += `           <div class="card-header d-flex justify-content-between align-items-center" style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);">`;
-    //  onclick="paintSectorTableContainer()"
     html += `               <div style="cursor: pointer" class="link-primary sectorCardsCarousalPrev">`
     html += `                   <i class="fas fa-arrow-left"></i>`
     html += `                       &nbsp;`
@@ -729,7 +752,74 @@ function paintSectorCard(sec, sectors, i) {
         }
 
         html += `           <section id="tsrStrengthIndex">`;
-        // mintHtmlUtil.dlg({ divId: 'trendStrengthDivNIFTY', rank: 0.572, title: 'Technical Strength Live', leftLabel: 'Sell', rightLabel: 'Buy', width: 250, height: 8 });
+        html += `                           <div>
+                                                <p style="font-size: 22px; text-align:center; margin-bottom: 10px; font-weight: 600;"> TSR Strength Index
+                                                </p>
+                                                <div class="row tsr_strength_svg_container">
+                                                    <div id="trendStrengthDiv" class="d-flex justify-content-center">
+
+                                                        <svg width="250" height="43">
+                                                        <defs>
+                                                            <linearGradient id="gradient" x1="0%" y1="0%"
+                                                                x2="100%" y2="0%" spreadMethod="pad">
+                                                                <stop offset="0%" stop-color="#ff0000"
+                                                                    stop-opacity="1">
+                                                                </stop>
+                                                                <stop offset="50%" stop-color="#e6e600"
+                                                                    stop-opacity="1">
+                                                                </stop>
+                                                                <stop offset="100%" stop-color="#009900"
+                                                                    stop-opacity="1">
+                                                                </stop>
+                                                            </linearGradient>
+                                                        </defs>
+                                                        <g><text x="180" y="10" text-anchor="end"
+                                                            style="font-size: 12px; font-weight: bold;">Technical
+                                                            Strength
+                                                            Intraday</text></g>
+                                                        <g>
+                                                            <rect x="0" y="15" width="240" height="8"
+                                                                style="fill: url(&quot;#gradient&quot;);"
+                                                                rx="4">
+                                                            </rect>
+                                                        </g>
+                                                        <g>
+                                                            <line x1="158.88" y1="15" x2="158.88" y2="23"
+                                                                stroke-width="1" stroke-dasharray="2, 2"
+                                                                stroke="black "></line>
+                                                        </g>
+                                                        <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z"
+                                                            fill="#000" stroke="#000" stroke-width="1"
+                                                            transform="translate(158.88,25)">
+                                                        </path>
+                                                        <g><text x="10" y="34"
+                                                            style="font-size: 10px; font-weight: bold;">Sell</text>
+                                                        </g>
+                                                        <g><text x="230" y="34" text-anchor="end"
+                                                            style="font-size: 10px; font-weight: bold;">Buy</text>
+                                                        </g>
+                                                        <g><text x="134" y="34" text-anchor="end"
+                                                            style="font-size: 9px; font-weight: bold;">66.20%</text>
+                                                        </g>
+                                                        </svg>
+                                                    </div>
+
+                                                    <div class="tsr_strength_values_container">
+                                                    <div class="d-flex justify-content-around" id="strSig">
+                                                        Signal
+                                                        <span><span
+                                                            style="color:#008B00;;  ">Bullish</span></span>
+                                                    </div>
+                                                    <br>
+                                                        <div class="d-flex justify-content-center" id="strRank">
+                                                            <span style="font-size: 12x;  "> NIFTY IT is more
+                                                                bullish than
+                                                                85.50 % of
+                                                                stocks </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> `
         html += `           </section>`;
 
         html += `       </div>`;
@@ -784,7 +874,10 @@ function paintSectorCard(sec, sectors, i) {
     html += `                                   <tr>`;
     html += `                                       <th scope="col">Name</th>`
     html += `                                       <th scope="col">vs NIFTY</th>`
-    html += `                                       <th scope="col">vs ${sectors[i].name}</th>`
+    if (paramDefined(sectors[i].secIdx) && sectors[i].secIdx) {
+
+        html += `                                       <th scope="col">vs ${sectors[i].name}</th>`
+    }
     html += `                                       <th scope="col">Chart</th>`
     html += `                                   </tr>`;
     html += `                               </thead>`;
@@ -792,28 +885,48 @@ function paintSectorCard(sec, sectors, i) {
 
     let stockList = sectors[i]["opEqList"];
 
-    for (let j = 0; j < stockList.length; j++) {
+    if (stockList.length == 0) {
+
+        html += `<tr>`;
+
+        if (paramDefined(sectors[i].secIdx) && sectors[i].secIdx) {
+
+            html += `   <td colspan="4" class="text-center">`;
+        }
+        else {
+            html += `   <td colspan="3" class="text-center">`;
+
+        } html += `       No records`;
+        html += `   </td>`;
+        html += `</tr>`;
+    }
+    else {
+        for (let j = 0; j < stockList.length; j++) {
 
 
-        if (j > 2) {
-            break;
+            if (j > 2) {
+                break;
+            }
+
+            html += `                               <tr>`;
+            html += `<td>
+                           <a class="link-primary" onclick="processStockSection('${sec}', 'op', ${i}, ${j}, true)"> ${getRoundedValue(stockList[j]["name"])} </a>
+                    </td>`;
+            html += `                                   <td>${getRoundedValue(sectors[i].opEqList[j]["vsNifty"])}</td>`;
+            if (paramDefined(sectors[i].secIdx) && sectors[i].secIdx) {
+
+                html += `                                   <td>${getRoundedValue(sectors[i].opEqList[j]["vsIdx"])}</td>`;
+            }
+            html += `                                   <td>`
+            html += `                                       <a href="">`
+            html += `                                           <i style="color:grey; font-size:12pt;" class="fa fa-chart-line">`
+            html += `                                           </i>`
+            html += `                                       </a>`;
+            html += `                                   </td>`;
+            html += `                               </tr>`;
         }
 
-        html += `                               <tr>`;
-        html += `<td>
-                           <a class="link-primary" onclick="paintStockSection('${sec}', 'op', ${i}, ${j})"> ${getRoundedValue(stockList[j]["name"])} </a>
-                    </td>`;
-        html += `                                   <td>${getRoundedValue(sectors[i].opEqList[j]["vsNifty"])}</td>`;
-        html += `                                   <td>${getRoundedValue(sectors[i].opEqList[j]["vsIdx"])}</td>`;
-        html += `                                   <td>`
-        html += `                                       <a href="">`
-        html += `                                           <i style="color:grey; font-size:12pt;" class="fa fa-chart-line">`
-        html += `                                           </i>`
-        html += `                                       </a>`;
-        html += `                                   </td>`;
-        html += `                               </tr>`;
     }
-
     html += `                               </tbody>`;
     html += `                           </table>`;
     html += `                       </div>`
@@ -832,34 +945,56 @@ function paintSectorCard(sec, sectors, i) {
     html += `                                   <tr>`
     html += `                                       <th scope="col">Name</th>`
     html += `                                       <th scope="col">vs NIFTY</th>`
-    html += `                                       <th scope="col">vs ${sectors[i].name}</th>`
+    if (paramDefined(sectors[i].secIdx) && sectors[i].secIdx) {
+        html += `                                       <th scope="col">vs ${sectors[i].name}</th>`
+    }
     html += `                                       <th scope="col">Chart</th>`
     html += `                                   </tr>`
     html += `                               </thead>`
     html += `                               <tbody>`;
 
     stockList = sectors[i]["upEqList"];
-    for (let j = 0; j < stockList.length; j++) {
+    if (stockList.length == 0) {
 
-        if (j > 2) {
-            break;
+        html += `<tr>`;
+        if (paramDefined(sectors[i].secIdx) && sectors[i].secIdx) {
+
+            html += `   <td colspan="4" class="text-center">`;
+        }
+        else {
+            html += `   <td colspan="3" class="text-center">`;
+
+        }
+        html += `       No records`;
+        html += `   </td>`;
+        html += `</tr>`;
+    }
+    else {
+        for (let j = 0; j < stockList.length; j++) {
+
+            if (j > 2) {
+                break;
+            }
+
+            html += `                               <tr>`;
+            html += `                                   <td>
+                                                            <a class="link-primary" onclick="processStockSection('${sec}', 'up', ${i}, ${j}, true)"> ${getRoundedValue(stockList[j]["name"])} </a>
+                                                        </td>`;
+            html += `                                   <td>${getRoundedValue(sectors[i].upEqList[j]["vsNifty"])}</td>`;
+            if (paramDefined(sectors[i].secIdx) && sectors[i].secIdx) {
+
+                html += `                                   <td>${getRoundedValue(sectors[i].upEqList[j]["vsIdx"])}</td>`;
+            }
+            html += `                                   <td>`
+            html += `                                       <a href="">`
+            html += `                                           <i style="color:grey; font-size:12pt"; class="fa fa-chart-line">`
+            html += `                                           </i>`
+            html += `                                       </a>`;
+            html += `                                   </td>`;
+            html += `                               </tr>`;
         }
 
-        html += `                               <tr>`;
-        html += `<td>
-                           <a class="link-primary" onclick="paintStockSection('${sec}', 'up', ${i}, ${j})"> ${getRoundedValue(stockList[j]["name"])} </a>
-                    </td>`;
-        html += `                                   <td>${getRoundedValue(sectors[i].upEqList[j]["vsNifty"])}</td>`;
-        html += `                                   <td>${getRoundedValue(sectors[i].upEqList[j]["vsIdx"])}</td>`;
-        html += `                                   <td>`
-        html += `                                       <a href="">`
-        html += `                                           <i style="color:grey; font-size:12pt"; class="fa fa-chart-line">`
-        html += `                                           </i>`
-        html += `                                       </a>`;
-        html += `                                   </td>`;
-        html += `                               </tr>`;
     }
-
     html += `                               </tbody>`;
     html += `                           </table>`;
     html += `                       </div>`;
@@ -936,8 +1071,10 @@ function paintStockComparisonTable(sec, stockType, secId, show) {
     if (!show) {
         stockTableBtn.style.display = "block";
 
+        for (let i = 0; i < containers.length; i++) {
+            containers[i].innerHTML = "";
+        }
 
-        container.innerHTML = "";
         return;
     }
 
@@ -982,6 +1119,7 @@ function paintStockComparisonTable(sec, stockType, secId, show) {
     html += `                               <tbody>`;
 
     let stockList = sector[stockType + "EqList"];
+    
 
     for (let i = 0; i < stockList.length; i++) {
         html += `<tr>`;
@@ -991,7 +1129,7 @@ function paintStockComparisonTable(sec, stockType, secId, show) {
 
             if (keys[j] == "name") {
                 html += `<td>
-                           <a class="link-primary" onclick="paintStockSection('${sec}', '${stockType}', ${secId}, ${i})"> ${getRoundedValue(stockList[i][keys[j]])} </a>
+                           <a class="link-primary" onclick="processStockSection('${sec}', '${stockType}', ${secId}, ${i}, true)"> ${getRoundedValue(stockList[i][keys[j]])} </a>
                     </td>`;
             }
 
@@ -1025,10 +1163,16 @@ function paintStockComparisonTable(sec, stockType, secId, show) {
     }
 };
 
-function paintStockSection(sec, stockType, secId, stockId) {
+function processStockSection(secOp, stockType, secId, stockId, show) {
 
-    // GET DATA For sector
+    let stockContainers = document.getElementsByClassName(stockContainerId + secId);
 
+    if (!show) {
+        for (let i = 0; i < stockContainers.length; i++) {
+            stockContainers[i].innerHTML = "";
+        }
+        return;
+    }
 
     let sectorTypeSelect = document.getElementById(sectorTypeSelectId);
 
@@ -1039,112 +1183,134 @@ function paintStockSection(sec, stockType, secId, stockId) {
         let sectorType = sectorTypeSelect.value;
         let duration = durationSelect.value;
 
-        let sectors = [...sectorData[sec + "Sec"]];
+        let sectors = [...sectorData[secOp + "Sec"]];
 
         let sector = sectors[secId];
 
 
-        let url = `http://127.0.0.1:5500/TSR/sectorRotation/poc7/OneSectorRotation.jsp ${duration} ${sectorType} ${sector["code"]}.json`;
-        // let url = `https://nitronik7.github.io/TSR-Frontend/sectorRotation/poc7/OneSectorRotation.jsp ${duration} ${sectorType} ${sector["code"]}.json`;
+        // let url = `http://127.0.0.1:5500/TSR/sectorRotation/poc7/OneSectorRotation.jsp ${duration} ${sectorType} ${sector["code"]}.json`;
+        let url = `https://nitronik7.github.io/TSR-Frontend/sectorRotation/poc7/OneSectorRotation.jsp ${duration} ${sectorType} ${sector["code"]}.json`;
 
-        getData(url).then(data => {
+        // GET DATA For sector
 
-            sector = data;
+        if (paramDefined(getDataFromLocalStorage("sectorStocks"))) {
 
-            let stockList = sector[stockType + "EqList"];
-            let stock = stockList[stockId];
+            secData = getDataFromLocalStorage("sectorStocks"); // data retrieved from cache
 
-            let stockContainers = document.getElementsByClassName(stockContainerId + secId);
+            paintStockSection(secOp, sector, secData, stockContainers, stockType, secId, stockId);
+        }
+        else {
+            getData(url).then(data => {
 
-            for (let i = 0; i < stockContainers.length; i++) {
-                stockContainers[i].classList.add("p-3");
+                saveDataToLocalStorage("sectorStocks", data); // caching data 
 
-                let html = "";
-                html += `                   <section class="mb-4">`
-                html += `                       <div class="mb-3 text-center" style="border-bottom: 1px solid lightgrey;">`
-                html += `                           <h4>${stock["name"]}</h4>`
-                html += `                       </div>`
-                html += `                       <div class="d-flex justify-content-between mb-3">`
-                html += `                           <div class="w-100 d-flex flex-column">`
-                html += `                               <span style="font-weight: 100;">`
-                html += `                                   Relative Returns`
-                html += `                               </span>`
-                html += `                               <h4 style="color: black; white-space: nowrap;">${getRoundedValue(stock["eqVals"]["relRtn"])}</h4>`
-                html += `                           </div>`
-                html += `                           <div class="w-100 d-flex flex-column">`
-                html += `                               <span style="font-weight: 100;">Price</span>`
-                html += `                                   <h4 style="color: black; white-space: nowrap;">`
-                html += getRoundedValue(stock["eqVals"]["price"]);
-                html += `                                   </h4>`
-                html += `                           </div>`
-                html += `                           <div class="w-100 d-flex flex-column">`
-                html += `                               <span style="font-weight: 100;">Price Change %</span>`
-                html += `                                   <h4 style="color: black; white-space: nowrap;">`
-                html += getRoundedValue(stock["eqVals"]["priceChange"]) + " %";
-                html += `                                   </h4>`
-                html += `                           </div>`
-                html += `                       </div>`;
-                html += `                   </section>`;
+                secData = data;
 
-                html += `   <div class="row">`
-                html += `       <div class="col-12 col-md-6">`
-                html += `           <section class="mb-4">`
-                html += `               <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
-                html += `                   <h6>Periodic Returns</h6>`
-                html += `               </div>`
-                html += `               <div class="owl-carousel owl-theme periodicReturns">`;
-
-                for (let j = 0; j < stock["eqVals"]["rtnList"].length; j++) {
-                    html += `               <div class="card d-flex flex-column p-3">`
-                    // html += `                   <h6>`
-                    // html += "P";
-                    // html += `                   </h6>`
-                    html += `                   <h5 style="color: black; white-space: nowrap;">`
-                    html += getRoundedValue(stock["eqVals"]["rtnList"][j]["rtn"]);
-                    html += `                   </h5>`
-                    html += `               </div>`;
-                };
-                html += `               </div>`
-                html += `           </section>`;
-                html += `       </div>`
-
-                html += `       <div class="col-12 col-md-6">`
-                html += `           <section class="mb-4">`;
-                html += `               <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`;
-                html += `                   <h6>Technicals</h6>`;
-                html += `               </div>`;
-                html += `               <div class="owl-carousel owl-theme technicals">`;
-
-                let keys = Object.keys(sectors[i]["idxVals"]);
-
-                for (let j = 0; j < keys.length; j++) {
-                    if (keys[j] == "ma1" || keys[j] == "ma2" || keys[j] == "rsi" || keys[j] == "macd" || keys[j] == "signal" || keys[j] == "st") {
-                        html += `                   <div class="card d-flex flex-column p-3">`;
-                        html += `                       <h6>${keys[j].toUpperCase()}</h6>`;
-                        html += `                       <h4 style="color: orange; white-space: nowrap;">`;
-                        html += getRoundedValue(sectors[i]["idxVals"][keys[j]]);
-                        html += `                       </h4>`;
-                        //             // html += `                       <p style="color: orange;  margin: 0;">Neutral</p>`
-                        html += `                   </div>`;
-                    }
-                }
-
-                html += `               </div>`;
-                html += `           </section>`;
-                html += `       </div>`
-
-
-                html += `   </div>`
-
-
-                stockContainers[i].innerHTML = html;
-                initializeCarousal();
-            }
-
-        });
+                paintStockSection(secOp, sector, secData, stockContainers, stockType, secId, stockId);
+            });
+        }
     };
+}
+
+function paintStockSection(secOp, sector, secData, stockContainers, stockType, secId, stockId) {
+
+    let stockList = secData[stockType + "EqList"];
+    let stock = stockList[stockId];
 
 
+    for (let i = 0; i < stockContainers.length; i++) {
+
+        stockContainers[i].classList.add("p-3");
+
+        let html = "";
+        html += `                   <section class="mb-4">`
+        html += `                       <div class="mb-3 text-center" style="border-bottom: 1px solid lightgrey;">`
+        html += `                           <h4>${stock["name"]}</h4>`
+        html += `                       </div>`
+        html += `                       <div class="d-flex justify-content-between mb-3">`
+        html += `                           <div class="w-100 d-flex flex-column">`
+        html += `                               <span style="font-weight: 100;">`
+        html += `                                   Relative Returns`
+        html += `                               </span>`
+        html += `                               <h4 style="color: black; white-space: nowrap;">${getRoundedValue(stock["eqVals"]["relRtn"])}</h4>`
+        html += `                           </div>`
+        html += `                           <div class="w-100 d-flex flex-column">`
+        html += `                               <span style="font-weight: 100;">Price</span>`
+        html += `                                   <h4 style="color: black; white-space: nowrap;">`
+        html += getRoundedValue(stock["eqVals"]["price"]);
+        html += `                                   </h4>`
+        html += `                           </div>`
+        html += `                           <div class="w-100 d-flex flex-column">`
+        html += `                               <span style="font-weight: 100;">Price Change %</span>`
+        html += `                                   <h4 style="color: black; white-space: nowrap;">`
+        html += getRoundedValue(stock["eqVals"]["priceChange"]) + " %";
+        html += `                                   </h4>`
+        html += `                           </div>`
+        html += `                       </div>`;
+        html += `                   </section>`;
+
+        html += `   <div class="row">`
+        html += `       <div class="col-12 col-md-6">`
+        html += `           <section class="mb-4">`
+        html += `               <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
+        html += `                   <h6>Periodic Returns</h6>`
+        html += `               </div>`
+        html += `               <div class="owl-carousel owl-theme periodicReturns">`;
+
+        for (let j = 0; j < stock["eqVals"]["rtnList"].length; j++) {
+            html += `               <div class="card d-flex flex-column p-3">`
+            // html += `                   <h6>`
+            // html += "P";
+            // html += `                   </h6>`
+            html += `                   <h5 style="color: black; white-space: nowrap;">`
+            html += getRoundedValue(stock["eqVals"]["rtnList"][j]["rtn"]);
+            html += `                   </h5>`
+            html += `               </div>`;
+        };
+        html += `               </div>`
+        html += `           </section>`;
+        html += `       </div>`
+
+        html += `       <div class="col-12 col-md-6">`
+        html += `           <section class="mb-4">`;
+        html += `               <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`;
+        html += `                   <h6>Technicals</h6>`;
+        html += `               </div>`;
+        html += `               <div class="owl-carousel owl-theme technicals">`;
+
+        let keys = Object.keys(sector["idxVals"]);
+
+        for (let j = 0; j < keys.length; j++) {
+            if (keys[j] == "ma1" || keys[j] == "ma2" || keys[j] == "rsi" || keys[j] == "macd" || keys[j] == "signal" || keys[j] == "st") {
+                html += `                   <div class="card d-flex flex-column p-3">`;
+                html += `                       <h6>${keys[j].toUpperCase()}</h6>`;
+                html += `                       <h4 style="color: orange; white-space: nowrap;">`;
+                html += getRoundedValue(sector["idxVals"][keys[j]]);
+                html += `                       </h4>`;
+                //             // html += `                       <p style="color: orange;  margin: 0;">Neutral</p>`
+                html += `                   </div>`;
+            }
+        }
+
+        html += `               </div>`;
+        html += `           </section>`;
+        html += `       </div>`
+
+
+        html += `   </div>`;
+
+
+
+        html += `                   <div class="text-center">`
+        html += `                       <a style="color: var(--primary-color,#006aff); cursor: pointer;" onclick="processStockSection('${secOp}', '${stockType}', ${secId}, ${stockId}, false)">`;
+        html += `                               Hide`;
+        html += `                       </a>`;
+        html += `                   </div>`;
+
+
+        stockContainers[i].innerHTML = html;
+        initializeCarousal();
+    }
 }
 
 // fields required for completion
