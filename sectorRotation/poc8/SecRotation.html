@@ -1,0 +1,77 @@
+<!-- sector Rotation code starts here -->
+
+
+<div id="tsrSectorRotationContainer">
+    <div class="pt-3" style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);">
+      <div align='right'><span style="color:grey;font-size:12;"> Beta Release. Some change are Expected, Suggestion Welcomed &nbsp;&nbsp;&nbsp; </span></div>
+        <h1 class="text-center" style="color: midnightblue;">
+            AI Powered Sector
+            <img src="https://www.topstockresearch.com/static/img/FeaturedProduct/sectorRotation.png" alt="Sector Rotation" style="width: 100px; height: 100px;">
+            Rotation
+        </h1>
+
+
+
+        <div id="tsrSectorRotationCtrlPanel" class="row container mx-auto bg-white d-flex justify-content-around"
+            style="border-radius: 15px;">
+
+            <div
+                class="col-12 col-lg-3 py-3 d-flex justify-content-between justify-content-lg-center align-items-center">
+                <label for="type" class="me-3" style="font-size: 14px;">
+                    Type
+                </label>
+                <select id="tsrSectorRotationTypeSelect" class="form-select" style="width: max-content;"
+                    name="tsrSectorRotationTypeSelect">
+                    <option value="industry">By Industry</option>
+                    <option value="secIdx">Sectorial Index</option>
+                    <option value="sector">By Sector</option>
+                    <!-- <option value="marketCap">By Market Cap</option> -->
+                </select>
+            </div>
+
+            <div
+                class="col-12 col-lg-3 py-3 d-flex justify-content-between justify-content-lg-center  align-items-center">
+                <label for="type" class="me-3" style="font-size: 14px;">
+                    Duration
+                </label>
+                <select id="tsrSectorRotationDurationSelect" class="form-select" style="width: max-content;"
+                    name="tsrSectorRotationDurationSelect">
+
+                </select>
+            </div>
+
+            <div class="col-12 col-lg-3 py-3 d-flex justify-content-center">
+                <button type="button" class="btn btn-primary" style="font-size: 16px;" onclick="miSrn.init()">
+                    <i class="fas fa-play"></i>
+                    &nbsp; Run
+                </button>
+            </div>
+        </div>
+
+        <div id="secRotToastContainer" class="text-center my-3"></div>
+
+        <hr>
+    </div>
+
+    <div id="tsrBaseSectorContainer" class="mb-3 container-md">
+
+    </div>
+
+    <div id="tsrSectorTableContainer" class="container-md">
+
+    </div>
+
+    <div id="tsrSectorCardContainer" class="container-md">
+
+    </div>
+
+</div>
+
+
+
+<div id="tsrSectorRotationChartContainer" class="m-3 container-md mx-auto">
+
+
+</div>
+
+<!-- sector Rotation code ends -->
