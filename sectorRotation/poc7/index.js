@@ -2,12 +2,16 @@
 var sectorTypeSelectId = "tsrSectorRotationTypeSelect";
 var sectorDurationSelectId = "tsrSectorRotationDurationSelect";
 
+var toolsContainerId = "tsrToolsContainer";
+
 var sectorData;
 
 // Start
 init();
 
 function init() {
+    paintTsrToolsContainer();
+
     let sectorTypeSelect = document.getElementById(sectorTypeSelectId);
 
     let durationSelect = document.getElementById(sectorDurationSelectId);
@@ -31,6 +35,83 @@ function init() {
         });
 
     }
+}
+
+function paintTsrToolsContainer() {
+    let toolsContainer = document.getElementById(toolsContainerId);
+
+    let tools = [
+        { "id": "Heatmap", "url": "#" },
+        { "id": "Market Overview", "url": "#" },
+        { "id": "Advance / Decline", "url": "#" },
+        { "id": "Custom Screener", "url": "#" },
+        { "id": "Technical Charts", "url": "#" },
+    ];
+
+    let html = "";
+
+    html += `<h5 style="color:  midnightblue;" class="text-center">`;
+    html += `   Also from TSR`;
+    html += `</h5>`;
+
+    html += `<div id="tsrToolsMenuContainer" style="display: flex;" class="owl-nav align-items-center justify-content-center my-3">`
+
+    html += `   <button id="tsrToolsCarousalPrev" type="button" role="presentation" class="owl-prev btn">`
+    html += `       <span aria-label="Previous">`
+    html += `           <i class="fas fa-angle-left"></i>`
+    html += `       </span>`
+    html += `   </button>`
+
+    html += `<div id="tsrToolsCarousal" class="owl-carousel owl-theme">`;
+    for (let i = 0; i < tools.length; i++) {
+        html += `   <div class="item p-2">`;
+        html += `       <a href="#${tools[i]['url']}" target="_blank">`;
+        html += `           <div class="card flex-row justify-content-around shadow-sm p-2">`;
+        html += `               <span style="font-weight: 500; color:  #2a67ca;">`
+        html += tools[i]["id"];
+        html += `               </span>`
+        html += `           </div>`
+        html += `       </a>`
+        html += `   </div>`
+    }
+    html += `</div>`;
+
+    html += `   <button id="tsrToolsCarousalNext" type="button" role="presentation" class="owl-next btn">`;
+    html += `       <span aria-label="Next">`;
+    html += `           <i class="fas fa-angle-right"></i>`;
+    html += `       </span>`;
+    html += `   </button>`;
+    html += `</div>`;
+
+    toolsContainer.innerHTML = html;
+
+    let sectorNav = {
+        loop: true,
+        margin: 10,
+        dots: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            576: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        },
+    };
+
+    $("#tsrToolsCarousal").owlCarousel(sectorNav);
+
+    $('#tsrToolsCarousalPrev').click(function () {
+        $("#tsrToolsCarousal").trigger('prev.owl.carousel', [300]);
+    });
+    $('#tsrToolsCarousalNext').click(function () {
+        $("#tsrToolsCarousal").trigger('next.owl.carousel', [300]); // [300] - optional speed parameter
+    });
+
+
 }
 
 var accordionId = "tsrBaseSectorAccordion";
@@ -614,35 +695,35 @@ function paintSectorCard(sec, sectors, i) {
     html += `       <div class="card shadow">`;
 
     html += `           <div class="card-header d-flex justify-content-between align-items-center" style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);">`;
-    html += `               <div style="cursor: pointer" class="link-primary sectorCardsCarousalPrev">`
+    html += `               <div style="cursor: pointer; white-space: nowrap;" class="link-primary sectorCardsCarousalPrev">`
     html += `                   <i class="fas fa-arrow-left"></i>`
     html += `                       &nbsp;`
     html += `                       Prev`
     html += `               </div>`
 
-    html += `               <h5 class="card-title" style="font-weight: 600;">`
+    html += `               <h5 class="card-title text-center" style="font-weight: 600;">`
     html += `               <p style="margin: 0;">`
     html += sectors[i].name;
-    html += `                   <b>`
+    html += `                       <b class="d-none d-sm-inline">`
     if (i == 0) {
-        html += `               <sup style="color: gray;"> 1 <sup>st</sup></sup >`;
+        html += `                       <sup style="color: gray;"> 1 <sup>st</sup></sup >`;
     }
     else if (i == 1) {
-        html += `              <sup style="color: gray;"> 2 <sup>nd</sup></sup >`;
+        html += `                       <sup style="color: gray;"> 2 <sup>nd</sup></sup >`;
     }
     else if (i == 2) {
-        html += `               <sup style="color: gray;">3 <sup>rd</sup></sup >`;
+        html += `                       <sup style="color: gray;">3 <sup>rd</sup></sup >`;
     }
     else {
-        html += `               <sup style="color: gray;">${i + 1} <sup>th</sup></sup >`;
+        html += `                       <sup style="color: gray;">${i + 1} <sup>th</sup></sup >`;
     }
-    html += `                   </b>`
+    html += `                       </b>`
     html += `               </p>`
     html += `               </h5>`
 
 
 
-    html += `               <div style="cursor: pointer" class="link-primary sectorCardsCarousalNext">`
+    html += `               <div style="cursor: pointer; white-space: nowrap;" class="link-primary sectorCardsCarousalNext">`
     html += `                       Next`
     html += `                       &nbsp;`
     html += `                   <i class="fas fa-arrow-right"></i>`
@@ -1119,7 +1200,7 @@ function paintStockComparisonTable(sec, stockType, secId, show) {
     html += `                               <tbody>`;
 
     let stockList = sector[stockType + "EqList"];
-    
+
 
     for (let i = 0; i < stockList.length; i++) {
         html += `<tr>`;

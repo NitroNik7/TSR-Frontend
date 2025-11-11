@@ -4,7 +4,8 @@ var json;
 var jPlist = [];
 
 var miSrn = (function () {  // chart init Params
-
+    
+    var toolsContainerId = "tsrToolsContainer";
     var sectorTypeSelectId = "tsrSectorRotationTypeSelect";
     var sectorDurationSelectId = "tsrSectorRotationDurationSelect";
     var baseSectorContainerId = "tsrBaseSectorContainer";
@@ -26,6 +27,8 @@ var miSrn = (function () {  // chart init Params
     init();
 
     function init() {
+
+        paintTsrToolsContainer();
 
         defStk = null;
         json = null;
@@ -101,6 +104,84 @@ var miSrn = (function () {  // chart init Params
 
         }
     }
+
+    function paintTsrToolsContainer() {
+        let toolsContainer = document.getElementById(toolsContainerId);
+
+        let tools = [
+            { "id": "Heatmap", "url": "#" },
+            { "id": "Market Overview", "url": "#" },
+            { "id": "Advance / Decline", "url": "#" },
+            { "id": "Custom Screener", "url": "#" },
+            { "id": "Technical Charts", "url": "#" },
+        ];
+
+        let html = "";
+
+        html += `<h5 style="color:  midnightblue;" class="text-center">`;
+        html += `   Also from TSR`;
+        html += `</h5>`;
+
+        html += `<div id="tsrToolsMenuContainer" style="display: flex;" class="owl-nav align-items-center justify-content-center my-3">`
+
+        html += `   <button id="tsrToolsCarousalPrev" type="button" role="presentation" class="owl-prev btn">`
+        html += `       <span aria-label="Previous">`
+        html += `           <i class="fas fa-angle-left"></i>`
+        html += `       </span>`
+        html += `   </button>`
+
+        html += `<div id="tsrToolsCarousal" class="owl-carousel owl-theme">`;
+        for (let i = 0; i < tools.length; i++) {
+            html += `   <div class="item p-2">`;
+            html += `       <a href="#${tools[i]['url']}" target="_blank">`;
+            html += `           <div class="card flex-row justify-content-around shadow-sm p-2">`;
+            html += `               <span style="font-weight: 500; color:  #2a67ca;">`
+            html += tools[i]["id"];
+            html += `               </span>`
+            html += `           </div>`
+            html += `       </a>`
+            html += `   </div>`
+        }
+        html += `</div>`;
+
+        html += `   <button id="tsrToolsCarousalNext" type="button" role="presentation" class="owl-next btn">`;
+        html += `       <span aria-label="Next">`;
+        html += `           <i class="fas fa-angle-right"></i>`;
+        html += `       </span>`;
+        html += `   </button>`;
+        html += `</div>`;
+
+        toolsContainer.innerHTML = html;
+
+        let sectorNav = {
+            loop: true,
+            margin: 10,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                576: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            },
+        };
+
+        $("#tsrToolsCarousal").owlCarousel(sectorNav);
+
+        $('#tsrToolsCarousalPrev').click(function () {
+            $("#tsrToolsCarousal").trigger('prev.owl.carousel', [300]);
+        });
+        $('#tsrToolsCarousalNext').click(function () {
+            $("#tsrToolsCarousal").trigger('next.owl.carousel', [300]); // [300] - optional speed parameter
+        });
+
+
+    }
+
 
     function paintBaseSectorCardDiv() {
 
@@ -184,7 +265,7 @@ var miSrn = (function () {  // chart init Params
         html += `</div>`;
 
         // Radio buttons
-        html += `<div class="card-body p-3" style="max-height: 60vh;">`;
+        html += `<div class="card-body p-3">`;
         html += `   <div>`;
         html += `       <div class="mb-3 btn-group" role="group">`;
         html += `           <input type="radio" class="btn-check" name="btnradio" id="outPerformingSectors" autocomplete="off" checked>`;
@@ -379,7 +460,7 @@ var miSrn = (function () {  // chart init Params
             html += `       <a style="color:#04a1f4;cursor:pointer" onclick="miSrn.pc('${secType}', 0, 'sectorList', '', true, 'tile', true);" oncontextmenu="return false;">  <span class="fas fa-chart-line"></span> Tile  </a>`
             html += `   </div>`
         }
-        html += `           <div>`
+        html += `           <div class="my-2">`
         html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
         html += `                       <span style="color: red;">*</span>`
         html += `                           Sector / Index rating utilizes only Stocks beyond certain Market Capital`
@@ -645,7 +726,7 @@ var miSrn = (function () {  // chart init Params
 
         html += `           <div class="card-header d-flex justify-content-between align-items-center" style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);">`;
         if (i != 0) {
-            html += `               <div style="cursor: pointer" class="link-primary sectorCardsCarousalPrev">`
+            html += `               <div style="cursor: pointer; white-space: nowrap;" class="link-primary sectorCardsCarousalPrev">`
             html += `                   <i class="fas fa-arrow-left"></i>`
             html += `                       &nbsp;`
             html += `                       Prev`
@@ -655,26 +736,26 @@ var miSrn = (function () {  // chart init Params
         html += `               <h5 class="card-title" style="font-weight: 600;">`
         html += `               <p style="margin: 0;">`
         html += sectors[i].name;
-        html += `                   <b>`
+        html += `                       <b class="d-none d-sm-inline">`
         if (i == 0) {
-            html += `               <sup style="color: gray;"> 1 <sup>st</sup></sup >`;
+            html += `                       <sup style="color: gray;"> 1 <sup>st</sup></sup >`;
         }
         else if (i == 1) {
-            html += `              <sup style="color: gray;"> 2 <sup>nd</sup></sup >`;
+            html += `                       <sup style="color: gray;"> 2 <sup>nd</sup></sup >`;
         }
         else if (i == 2) {
-            html += `               <sup style="color: gray;">3 <sup>rd</sup></sup >`;
+            html += `                       <sup style="color: gray;">3 <sup>rd</sup></sup >`;
         }
         else {
-            html += `               <sup style="color: gray;">${i + 1} <sup>th</sup></sup >`;
+            html += `                       <sup style="color: gray;">${i + 1} <sup>th</sup></sup >`;
         }
-        html += `                   </b>`
+        html += `                       </b>`
         html += `               </p>`
         html += `               </h5>`
 
 
         if (i != sectors.length - 1) {
-            html += `               <div style="cursor: pointer" class="link-primary sectorCardsCarousalNext">`
+            html += `               <div style="cursor: pointer; white-space: nowrap;" class="link-primary sectorCardsCarousalNext">`
             html += `                       Next`
             html += `                       &nbsp;`
             html += `                   <i class="fas fa-arrow-right"></i>`
@@ -1236,12 +1317,14 @@ var miSrn = (function () {  // chart init Params
 
         html += `                       <div class="d-flex flex-column flex-md-row justify-content-between">`
 
-        html += `                           <div>`
-        html += `                               View Chart `;
-        html += `                                   <a style="color:#04a1f4;cursor:pointer" onclick=" miSrn.pss('${secType}', '${stockType}', ${secId}, '', false); miSrn.pc('${secType}', ${secId}, '${stockType}List', '', true, 'inline', true);" oncontextmenu="return false;"> <span class="fas fa-chart-line"></span> Inline </a>`
-        html += `&emsp;|&emsp;`;
-        html += `                                   <a style="color:#04a1f4;cursor:pointer" onclick=" miSrn.pss('${secType}', '${stockType}', ${secId}, '', false); miSrn.pc('${secType}', ${secId}, '${stockType}List', '', true, 'tile', true);" oncontextmenu="return false;">  <span class="fas fa-chart-line"></span> Tile  </a>`
-        html += `                           </div>`
+        if(stockList.length > 0){
+            html += `                           <div>`
+            html += `                               View Chart `;
+            html += `                                   <a style="color:#04a1f4;cursor:pointer" onclick=" miSrn.pss('${secType}', '${stockType}', ${secId}, '', false); miSrn.pc('${secType}', ${secId}, '${stockType}List', '', true, 'inline', true);" oncontextmenu="return false;"> <span class="fas fa-chart-line"></span> Inline </a>`
+            html += `&emsp;|&emsp;`;
+            html += `                                   <a style="color:#04a1f4;cursor:pointer" onclick=" miSrn.pss('${secType}', '${stockType}', ${secId}, '', false); miSrn.pc('${secType}', ${secId}, '${stockType}List', '', true, 'tile', true);" oncontextmenu="return false;">  <span class="fas fa-chart-line"></span> Tile  </a>`
+            html += `                           </div>`
+        }
 
         html += `   <div class="d-flex flex-column text-end mt-2">`
         html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
@@ -1253,7 +1336,7 @@ var miSrn = (function () {  // chart init Params
         html += `                           Show all - includes Stocks across all Market Cap. Maximum of 20 stocks are shown`
         html += `                   </p>`
         html += `   </div>`
-                html += `                           </div>`
+        html += `                           </div>`
 
 
         html += `                   <div class="text-center mt-3">`
@@ -1327,14 +1410,8 @@ var miSrn = (function () {  // chart init Params
 
     function paintStockSection(secType, sector, stockContainer, stockType, secId, stockCode) {
 
-        // showSectorCard(secType, secId);
-
         let stockList = sectorData[stockType + "List"];
-        // let stock = stockList[stockId];
         let stock = mintJsUtil.getObjFrmArrByField(stockList, "code", stockCode)
-
-
-        // for (let i = 0; i < stockContainer.length; i++) {
 
         stockContainer.classList.add("p-3");
 
@@ -1358,7 +1435,7 @@ var miSrn = (function () {  // chart init Params
         html += `                           </div>`
         html += `                       </div>`
         html += `                   </div>`
-        html += `                 <div class="col-12 col-md-6">`
+        html += `                 <div class="col-12 col-md-6 my-3 my-md-0">`
         html += `                   <section class="mb-4">`
         html += `                       <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
         html += `                            <h6>Highlights</h6>`
@@ -1419,7 +1496,7 @@ var miSrn = (function () {  // chart init Params
         html += `                 </div>`
 
 
-        html += `   <div class="col-12 col-md-6">`
+        html += `   <div class="col-12 col-md-6 my-3 my-md-0">`
         html += `           <section class="mb-4">`
         html += `               <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
         html += `                   <h6>${allSectorDataClone["rtnFreq"]} Returns</h6>`
@@ -1478,11 +1555,9 @@ var miSrn = (function () {  // chart init Params
                 html += `                       <h4 style="color: orange; white-space: nowrap;">`;
                 html += miSrnUtils.grv(stock["eqVals"][keys[j]]);
                 html += `                       </h4>`;
-                //             // html += `                       <p style="color: orange;  margin: 0;">Neutral</p>`
                 html += `                   </div>`;
 
             }
-
         }
 
         html += `               </div>`;
@@ -1514,20 +1589,7 @@ var miSrn = (function () {  // chart init Params
         initializeCarousal();
     }
 
-    // function addLoaderToChart() {
-    //     let container = document.getElementById(chartContainerId);
-    //     let html = "";
-    //     let gifUrl = mintJsUtil.getBaseUrl() + "/static/img/LoadingMedium.gif";
-    //     html += `<div>`
-    //     html += `   <img src="${gifUrl}" title="loading"></img>`;
-    //     html += `</div>`
-
-    //     container.innerHTML = html;
-    // }
-
     function paintChart(secType, secId, stockListType, stockCode, all, chartType, scrollTo) {
-
-        // addLoaderToChart();
 
         defStk = null;
         json = null;
