@@ -29,7 +29,7 @@ function init() {
 
             sectorData = data;
 
-            paintBaseSectorAccordion();
+            paintBaseSectorCardDiv();
 
             paintSectorTableContainer();
         });
@@ -50,9 +50,9 @@ function paintTsrToolsContainer() {
 
     let html = "";
 
-    html += `<h5 style="color:  midnightblue;" class="text-center">`;
-    html += `   Also from TSR`;
-    html += `</h5>`;
+    // html += `<h5 style="color:  midnightblue;" class="text-center">`;
+    // html += `   Also from TSR`;
+    // html += `</h5>`;
 
     html += `<div id="tsrToolsMenuContainer" style="display: flex;" class="owl-nav align-items-center justify-content-center my-3">`
 
@@ -114,178 +114,76 @@ function paintTsrToolsContainer() {
 
 }
 
-var accordionId = "tsrBaseSectorAccordion";
-function paintBaseSectorAccordion() {
+var baseSectorContainerId = "tsrBaseSectorContainer";
 
-    let accordionDiv = document.getElementById(accordionId);
+function paintBaseSectorCardDiv() {
+
+    let baseSectorCardDiv = document.getElementById(baseSectorContainerId);
 
     let baseSector = "NIFTY";
 
     // create accordion only if NIFTY (base sector) exists
-    if (paramDefined(accordionDiv) && paramDefined(sectorData[baseSector])) {
+    if (paramDefined(baseSectorCardDiv) && paramDefined(sectorData[baseSector])) {
 
         let html = ``;
 
-        html += `<div class="accordion container-md" id="accordionExample">`;
 
-        html += `   <div class="accordion-item">`;
-        html += `       <h2 class="accordion-header" style="background: linear-gradient(135deg, #dbeafe, #f1f5ff) !important;">`;
-        html += `           <button class="accordion-button text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">`;
-        html += `               <span style="font-size: 18px; font-weight: 500;">`;
-        html += sectorData[baseSector].id;
-        html += `               </span >`
-        html += `               <div class="ms-5 d-flex align-items-center" style="font-size: 18px; ">`
+        html += `<div class="card">`
+        html += `   <div class="card-header d-flex justify-content-between">`
+        html += `       <h5 class="card-title">`
+        html += baseSector;
+        html += `       </h5>`
 
-        if (sectorData[baseSector].priceChange > 0) {
-            html += `<div class="d-flex fw-bold align=items-center" style="color: #31a745;">`;
-            html += getRoundedValue(sectorData[baseSector].price);
-            html += `</div>`;
-            html += `<div class="d-flex fw-bold align=items-center" style="color: #31a745;">`;
-            html += "emsp;" + getRoundedValue(sectorData[baseSector].priceChange) + "&nbsp; <i class='fas fa-long-arrow-alt-up'></i>";
-            html += `</div>`;
-        }
-        else if (sectorData[baseSector].priceChange < 0) {
+        html += `       <div class="text-center">`
+        html += `           <a href="#" class="mx-1" style="color: midnightblue;" target="_blank">Chart <i class="fa fa-chart-line"></i></a>`
+        html += `           <a href="#" class="mx-1"  style="color: midnightblue;" target="_blank">Overview <i class="fas fa-external-link-alt"></i></a>`
+        html += `       </div>`
+        html += `   </div>`
 
-            html += `<div class="d-flex fw-bold align=items-center" style="color: #ff9999;">`;
-            html += getRoundedValue(sectorData[baseSector].price);
-            html += `</div>`;
-            html += `<div class="d-flex fw-bold align=items-center" style="color: #ff9999;">`;
-            html += "&emsp;" + getRoundedValue(sectorData[baseSector].priceChange) + "&nbsp; <i class='fas fa-long-arrow-alt-down'></i>";
-            html += `</div>`;
-        }
-        else {
-            html += `<div class="d-flex fw-bold align=items-center" style="color: black;">`;
-            html += getRoundedValue(sectorData[baseSector].price);
-            html += `</div>`;
-            html += `<div class="d-flex fw-bold align=items-center" style="color: black;">`;
-            html += "emsp;" + getRoundedValue(sectorData[baseSector].priceChange) + "";
-            html += `</div>`;
-        }
+        html += `   <div class="card-body">`
+        html += `       <div class="d-flex flex-column flex-md-row justify-content-around">`
+        html += `           <div>`
+        html += `              <div id="trendStrengthDivNIFTY" class="d-flex justify-content-center"><svg width="240" height="43"><defs><linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%" spreadMethod="pad"><stop offset="0%" stop-color="#ff0000" stop-opacity="1"></stop><stop offset="50%" stop-color="#e6e600" stop-opacity="1"></stop><stop offset="100%" stop-color="#009900" stop-opacity="1"></stop></linearGradient></defs><g><text x="180" y="10" text-anchor="end" style="font-size: 12px; font-weight: bold;">Technical Strength Daily</text></g><g><rect x="0" y="15" width="230" height="8" rx="4" style="fill: url(&quot;#gradient&quot;);"></rect></g><g><line x1="135.7" y1="15" x2="135.7" y2="23" stroke-width="1" stroke-dasharray="2, 2" stroke="black "></line></g><path d="M0,-7.019L6.079,3.51L-6.079,3.51Z" fill="#000" stroke="#000" stroke-width="1" transform="translate(135.7,25)"></path><g><text x="10" y="34" style="font-size: 10px; font-weight: bold;">Sell</text></g><g><text x="220" y="34" text-anchor="end" style="font-size: 10px; font-weight: bold;">Buy</text></g><g><text x="129" y="34" text-anchor="end" style="font-size: 9px; font-weight: bold;">59.00%</text></g></svg></div>`
+        html += `               <div class="tsr_strength_values_container">`
+        html += `                   <div class="d-flex justify-content-center" id="strRank">`
+        html += `                       <span style="font-size: 14px;"> ${sectorData[baseSector]["techPosi"]} </span>`
+        html += `                   </div>`
         html += `               </div>`
-        html += `           </button>`
-        html += `       </h2>`
-        html += `       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">`
-        html += `           <div class="accordion-body">`
-        html += `               <div class="card-body">`
-        html += `                   <div class="row">`
-        html += `                       <div class="col-12 col-md-6 d-flex align-items-center">`
-        html += `                           <div>
-                                                <p style="font-size: 22px; text-align:center; margin-bottom: 10px; font-weight: 600;"> TSR Strength Index
-                                                </p>
-                                                <div class="row tsr_strength_svg_container">
-                                                    <div id="trendStrengthDiv" class="d-flex justify-content-center">
+        html += `           </div>`
 
-                                                        <svg width="250" height="43">
-                                                        <defs>
-                                                            <linearGradient id="gradient" x1="0%" y1="0%"
-                                                                x2="100%" y2="0%" spreadMethod="pad">
-                                                                <stop offset="0%" stop-color="#ff0000"
-                                                                    stop-opacity="1">
-                                                                </stop>
-                                                                <stop offset="50%" stop-color="#e6e600"
-                                                                    stop-opacity="1">
-                                                                </stop>
-                                                                <stop offset="100%" stop-color="#009900"
-                                                                    stop-opacity="1">
-                                                                </stop>
-                                                            </linearGradient>
-                                                        </defs>
-                                                        <g><text x="180" y="10" text-anchor="end"
-                                                            style="font-size: 12px; font-weight: bold;">Technical
-                                                            Strength
-                                                            Intraday</text></g>
-                                                        <g>
-                                                            <rect x="0" y="15" width="240" height="8"
-                                                                style="fill: url(&quot;#gradient&quot;);"
-                                                                rx="4">
-                                                            </rect>
-                                                        </g>
-                                                        <g>
-                                                            <line x1="158.88" y1="15" x2="158.88" y2="23"
-                                                                stroke-width="1" stroke-dasharray="2, 2"
-                                                                stroke="black "></line>
-                                                        </g>
-                                                        <path d="M0,-7.019L6.079,3.51L-6.079,3.51Z"
-                                                            fill="#000" stroke="#000" stroke-width="1"
-                                                            transform="translate(158.88,25)">
-                                                        </path>
-                                                        <g><text x="10" y="34"
-                                                            style="font-size: 10px; font-weight: bold;">Sell</text>
-                                                        </g>
-                                                        <g><text x="230" y="34" text-anchor="end"
-                                                            style="font-size: 10px; font-weight: bold;">Buy</text>
-                                                        </g>
-                                                        <g><text x="134" y="34" text-anchor="end"
-                                                            style="font-size: 9px; font-weight: bold;">66.20%</text>
-                                                        </g>
-                                                        </svg>
-                                                    </div>
+        html += `           <div class="text-center my-2 my-md-0">`
+        html += `               <h6>Price</h6>`
+        html += `               <h5>`
+        html += getColoredValue(sectorData[baseSector]["price"]);
+        html += `               </h5>`
+        html += `           </div>`
+        html += `           <div class="text-center my-2 my-md-0">`
+        html += `               <h6>Price Change %</h6>`
+        html += `               <h5>`
+        html += getColoredValue(sectorData[baseSector]["priceChange"]);
+        html += `               </h5>`
+        html += `           </div>`
+        html += `           <div class="text-center my-2 my-md-0">`
+        html += `               <h6>Period Change %</h6>`
+        html += `               <h5>`
+        html += getColoredValue(1.765);
+        html += `               </h5>`
+        html += `           </div>`
+        html += `       </div>`
+        html += `   </div>`
+        html += `</div>`;
 
-                                                    <div class="tsr_strength_values_container">
-                                                    <div class="d-flex justify-content-around" id="strSig">
-                                                        Signal
-                                                        <span><span
-                                                            style="color:#008B00;;  ">Bullish</span></span>
-                                                    </div>
-                                                    <br>
-                                                        <div class="d-flex justify-content-center" id="strRank">
-                                                            <span style="font-size: 12x;  "> NIFTY IT is more
-                                                                bullish than
-                                                                85.50 % of
-                                                                stocks </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> `
-        html += `                       </div>`
-        html += `<hr class="d-block d-md-none my-3">`
+        baseSectorCardDiv.innerHTML = html;
 
-        html += `                       <div class="col-12 mt-md-0 col-md-6 d-flex flex-column justify-content-around">`
-
-        html += `                           <div class="row row-cols-2" style="text-align:center;">`
-
-        html += `                               <div class="col">`
-        html += `                                   <div class="card-body justify-content-center">`
-        html += `                                       <h6>Period Change</h6>`
-        html += `                                   </div>`
-        html += `                                   <h4 class="card-title fw-bold" style="color:#004F00;  ">`;
-        html += sectorData[baseSector].periodChg;
-        html += `                                   </h4>`
-        html += `                               </div>`
-        html += `                               <div class="col">`
-        html += `                                   <div class="card-body justify-content-center">`;
-        html += `                                       <h6>Market Cap Change</h6>`;
-        html += `                                   </div>`;
-        html += `                                   <h4 class="card-title fw-bold" style="color:orange;  ">`
-        html += sectorData[baseSector].marketCapChg;
-        html += `                                   </h4>`;
-        html += `                               </div>`;
-        html += `                               <div class="col">`
-        html += `                                   <div class="card-body justify-content-center">`;
-        html += `                                       <h6>MA 1</h6>`;
-        html += `                                   </div>`;
-        html += `                                   <h4 class="card-title fw-bold" style="color:orange;  ">`
-        html += sectorData[baseSector].marketCapChg;
-        html += `                                   </h4>`;
-        html += `                               </div>`;
-        html += `                               <div class="col">`
-        html += `                                   <div class="card-body justify-content-center">`;
-        html += `                                       <h6>MA 2</h6>`;
-        html += `                                   </div>`;
-        html += `                                   <h4 class="card-title fw-bold" style="color:orange;  ">`
-        html += sectorData[baseSector].marketCapChg;
-        html += `                                   </h4>`;
-        html += `                               </div>`;
-        html += `                           </div>`;
-        html += `                       </div>`;
-        html += `                   </div>`;
-        html += `               </div>`;
-        html += `         </div>`;
-        html += `   </div>`;
-        html += `</div>`
-        html += `</div>`
-
-        accordionDiv.innerHTML = html;
+        // mintHtmlUtil.dlg({
+        //     divId: 'trendStrengthDiv' + baseSector,
+        //     rank: miSrnUtils.grv(sectorData[baseSector]["techStrength"]),
+        //     title: 'Technical Strength Daily',
+        //     leftLabel: 'Sell',
+        //     rightLabel: 'Buy',
+        //     width: 240,
+        //     height: 8
+        // });
     }
 
 }
@@ -697,8 +595,10 @@ function paintSectorCard(sec, sectors, i) {
     html += `           <div class="card-header d-flex justify-content-between align-items-center" style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);">`;
     html += `               <div style="cursor: pointer; white-space: nowrap;" class="link-primary sectorCardsCarousalPrev">`
     html += `                   <i class="fas fa-arrow-left"></i>`
+    html += `                   <span class="d-none d-md-inline">`
     html += `                       &nbsp;`
     html += `                       Prev`
+    html += `                   <span>`
     html += `               </div>`
 
     html += `               <h5 class="card-title text-center" style="font-weight: 600;">`
@@ -724,8 +624,10 @@ function paintSectorCard(sec, sectors, i) {
 
 
     html += `               <div style="cursor: pointer; white-space: nowrap;" class="link-primary sectorCardsCarousalNext">`
+    html += `                   <span class="d-none d-md-inline">`
     html += `                       Next`
     html += `                       &nbsp;`
+    html += `                   </span>`
     html += `                   <i class="fas fa-arrow-right"></i>`
     html += `               </div>`
     html += `           </div>`;

@@ -4,7 +4,7 @@ var json;
 var jPlist = [];
 
 var miSrn = (function () {  // chart init Params
-    
+
     var toolsContainerId = "tsrToolsContainer";
     var sectorTypeSelectId = "tsrSectorRotationTypeSelect";
     var sectorDurationSelectId = "tsrSectorRotationDurationSelect";
@@ -118,9 +118,9 @@ var miSrn = (function () {  // chart init Params
 
         let html = "";
 
-        html += `<h5 style="color:  midnightblue;" class="text-center">`;
-        html += `   Also from TSR`;
-        html += `</h5>`;
+        // html += `<h5 style="color:  midnightblue;" class="text-center">`;
+        // html += `   Also from TSR`;
+        // html += `</h5>`;
 
         html += `<div id="tsrToolsMenuContainer" style="display: flex;" class="owl-nav align-items-center justify-content-center my-3">`
 
@@ -200,6 +200,10 @@ var miSrn = (function () {  // chart init Params
             html += `       <h5 class="card-title">`
             html += baseSector;
             html += `       </h5>`
+            html += `       <div class="text-center">`
+            html += `           <a href="#" class="mx-1" style="color: midnightblue;" target="_blank">Chart <i class="fa fa-chart-line"></i></a>`
+            html += `           <a href="#" class="mx-1"  style="color: midnightblue;" target="_blank">Overview <i class="fas fa-external-link-alt"></i></a>`
+            html += `       </div>`
             html += `   </div>`
 
             html += `   <div class="card-body">`
@@ -216,19 +220,19 @@ var miSrn = (function () {  // chart init Params
             html += `           <div class="text-center my-2 my-md-0">`
             html += `               <h6>Price</h6>`
             html += `               <h5>`
-            html += miSrnUtils.grv(allSectorDataClone[baseSector]["price"]);
+            html += miSrnUtils.gcv(allSectorDataClone[baseSector]["price"]);
             html += `               </h5>`
             html += `           </div>`
             html += `           <div class="text-center my-2 my-md-0">`
             html += `               <h6>Price Change %</h6>`
             html += `               <h5>`
-            html += miSrnUtils.grv(allSectorDataClone[baseSector]["priceChange"]);
+            html += miSrnUtils.gcv(allSectorDataClone[baseSector]["priceChange"]);
             html += `               </h5>`
             html += `           </div>`
             html += `           <div class="text-center my-2 my-md-0">`
             html += `               <h6>Period Change %</h6>`
             html += `               <h5>`
-            html += miSrnUtils.grv(allSectorDataClone[baseSector]["periodReturn"]);
+            html += miSrnUtils.gcv(allSectorDataClone[baseSector]["periodReturn"]);
             html += `               </h5>`
             html += `           </div>`
             html += `       </div>`
@@ -728,8 +732,10 @@ var miSrn = (function () {  // chart init Params
         if (i != 0) {
             html += `               <div style="cursor: pointer; white-space: nowrap;" class="link-primary sectorCardsCarousalPrev">`
             html += `                   <i class="fas fa-arrow-left"></i>`
+            html += `                   <span class="d-none d-md-inline">`
             html += `                       &nbsp;`
             html += `                       Prev`
+            html += `                   </span>`
             html += `               </div>`
         }
 
@@ -756,8 +762,10 @@ var miSrn = (function () {  // chart init Params
 
         if (i != sectors.length - 1) {
             html += `               <div style="cursor: pointer; white-space: nowrap;" class="link-primary sectorCardsCarousalNext">`
+            html += `                   <span class="d-none d-md-inline">`
             html += `                       Next`
             html += `                       &nbsp;`
+            html += `                   </span>`
             html += `                   <i class="fas fa-arrow-right"></i>`
             html += `               </div>`
         }
@@ -1315,9 +1323,9 @@ var miSrn = (function () {  // chart init Params
 
         html += `                        </div>`
 
-        html += `                       <div class="d-flex flex-column flex-md-row justify-content-between">`
+        html += `                       <div class="d-flex flex-column flex-md-row justify-content-between my-2">`
 
-        if(stockList.length > 0){
+        if (stockList.length > 0) {
             html += `                           <div>`
             html += `                               View Chart `;
             html += `                                   <a style="color:#04a1f4;cursor:pointer" onclick=" miSrn.pss('${secType}', '${stockType}', ${secId}, '', false); miSrn.pc('${secType}', ${secId}, '${stockType}List', '', true, 'inline', true);" oncontextmenu="return false;"> <span class="fas fa-chart-line"></span> Inline </a>`
@@ -1425,7 +1433,7 @@ var miSrn = (function () {  // chart init Params
         html += `                           <h4>`
         html += `                               ${stock["name"]}`
         html += `                           </h4>`
-        html += `                           <div class="text-center">`
+        html += `                           <div style="white-space: nowrap;" class="text-center">`
         html += `                               View Analysis`
         html += `                               <a href="${techUrl}" target="_blank" class="text-primary" oncontextmenu="return false;">`
         html += `                                   <span class="fas fa-chart-line"></span> Tech </a> |`
@@ -1522,7 +1530,7 @@ var miSrn = (function () {  // chart init Params
         html += `           </section>`;
 
         html += `           <section class="mb-4">`;
-        html += `               <div class="mb-3 d-flex justify-content-between align-items-center" style="border-bottom: 1px solid lightgrey;">`
+        html += `               <div class="mb-3 d-flex justify-content-between align-items-center flex-column flex-sm-row" style="border-bottom: 1px solid lightgrey;">`
         html += `                   <h6>Technicals</h6>`
         html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
         html += `                       <span style="color: red;">*</span>`
