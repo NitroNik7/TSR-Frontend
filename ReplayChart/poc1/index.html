@@ -1,0 +1,859 @@
+<html>
+
+<head>
+    <title>Free Interactive Chart of Narayana Hrudayalaya Ltd with Technical indicator</title>
+    <meta name="description"
+        content="Free Interactive Chart of Narayana Hrudayalaya Ltd (NH) with combination of technical indicator like RSI, MACD, MA, EMA, volume, Bollinger, MFI, ROC, Williams %R, trend line, weekly monthly and daily period, line ,candle , OHLC choice and ability to save chart settings">
+    <meta name="keywords"
+        content="Interactive Chart, Narayana Hrudayalaya Ltd, Charts, RSI, MACD, Moving Average, Stochastic, Pivot Point, Trend, EMA,Bollinger Band ,NH, IN, IN ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href='https://www.topstockresearch.com/static/icon/TopStockResearch.ico' type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/aioCmnV0.0.0.9.css' />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='//code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/mint_cn_minV0.7.5.181.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/aio_cmnV0.0.0.43.js"></script>
+</head>
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-20026022-1']);
+    _gaq.push(['_setDomainName', 'topstockresearch.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10KWGPV9XG"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-10KWGPV9XG');
+</script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10926652708"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-10926652708');
+</script>
+<style>
+    .dummyCss {
+        position: relative;
+        display: inline-block;
+    }
+</style>
+<script>   var userProf = { status: 'signedIn', sal: 'Dear', fName: 'Nitro', refCode: 'null', expDt: '17_Sep_2026', sub: 'TRADER_PRO' };  </script>
+
+<body class="scrollable">
+    <div id="mainController">
+
+        <div style="display: none;">
+            <select class='selectpicker' id='userMkt' onchange="javascript:marketOnChange();">
+                <option value="IN" selected="selected" label="India">India</option>
+            </select>
+        </div>
+
+
+        <div class="app tsrsn-folded">
+            <div class="layout"><!--                <div id='dynHead'></div>-->
+                <div class="tsrhdr navbar">
+                    <div class="tsrhdr-container">
+                        <div class="nav-logo" id='navLogoDiv'>
+                            <a href="javascript:void(0);" class="tsrsn-fold-toggler" title='TSR (TopStockResearch.com)'>
+                                <div class="logo logo-dark"
+                                    style="background-image: url('https://www.topstockresearch.com/static/v21/img/tsr/TsrLogo.png')">
+                                </div>
+                            </a>
+                        </div>
+                        <div id='dynHead'></div>
+                    </div>
+                </div>
+                <!-- Header End-->
+                <div class="tsrsn expand-lg">
+                    <div class="tsrsn-inner">
+                        <div id="sideNavBarDiv">
+                            <ul class="tsrsn-menu scrollable">
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.TopStockResearch.com/rt/Home'> <span class='icon-holder'
+                                            id='homeSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Home</span></a></li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='msSbDiv' aria-hidden='true'> </span> <span class='title'>Market
+                                            Screener</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener'>Market
+                                                Overview</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/PriceVolume'>Price
+                                                / Volume</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HighsLows'>Highs
+                                                / Lows</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/Returns'>Returns</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/RelativeStrength'>Relative
+                                                Price Strength</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/IndexAnalysis'>Index
+                                                Analysis</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/SectorRotation'>Sector
+                                                Rotation</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/SectorAnalysis'>Sector
+                                                Analysis</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HeatMap'>Heat
+                                                Map</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/AdvanceDecline'>Advance
+                                                /Decline</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener'>Intraday
+                                                Strategies</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='strSbDiv' aria-hidden='true'> </span> <span class='title'>TSR Strength
+                                            Index</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                                        </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/TechnicalStrength'>Technical
+                                                Strength</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/FinancialStrength'>Financial
+                                                Strength</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/EODBetaVolatile'>EOD
+                                                Beta Volatile</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='csSbDiv' aria-hidden='true'> </span> <span class='title'>Candlestick
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='techSbDiv' aria-hidden='true'> </span> <span class='title'>Technical
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/OHLCScreeners'>OHLC
+                                                Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/OverboughtSold'>Overbought/Sold</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/Overlays'>Overlays</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/TrendIndicator'>Trend
+                                                Indicator</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/VolumeBasedIndicator'>Volume
+                                                Based Indicator</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/SMAScreener'>SMA
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/EMAScreener'>EMA
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/WMAScreener'>WMA
+                                                Screener</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/PivotPoint'>Pivot
+                                                Point</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/VwapScreener'>VWAP
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/FibonacciScreener'>Fibonacci
+                                                Screener</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='cpSbDiv' aria-hidden='true'> </span> <span class='title'>Chart
+                                            Patterns</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/PopularChartPatterns'>Popular
+                                                Chart Patterns</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Triangle'>Triangle</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Channel'>Channel</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Trendlines'>Trendlines</a>
+                                        </li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/NRWR'>NR
+                                                / WR</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='fundaSbDiv' aria-hidden='true'> </span> <span class='title'>Financial
+                                            Screener</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/FinHighlight'>Financial
+                                                Highlight</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/GuruRatios'>Guru
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/ValuationRatios'>Valuation
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/ProfitabilityRatios'>Profitability
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/SolvencyRatios'>Solvency
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/EfficiencyRatios'>Efficiency
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/IncStatGrowthYr'>Income
+                                                Statment Growth (Yr)</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/BalSheetGrowthYr'>Balance
+                                                Sheet Growth (Yr)</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/CashFlowStatGrowthYr'>Cash
+                                                Flow Stat Growth (Yr)</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='comboSbDiv' aria-hidden='true'> </span> <span class='title'>Combo
+                                            Screener </span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/PriceActionScreeners'>Price
+                                                Action Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish
+                                                Technical Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish
+                                                Technical Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/FundamentalScreener'>Fundamental
+                                                Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/MovingAverageScreeners'>Moving
+                                                Average Screeners</a></li>
+                                    </ul>
+                                </li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.TopStockResearch.com/rt/CustomStockScreener.tsr'> <span
+                                            class='icon-holder' id='diysSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Custom Screener</span></a></li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='expsSbDiv' aria-hidden='true'> </span> <span class='title'>Expert
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/PriceActionBased'>Price
+                                                Action Strategies</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/TechIndiBased'>Technical
+                                                Indicator Strategies</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/MovingAverageStrategies'>Moving
+                                                Average Strategies</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/BTSTStrategies'>BTST
+                                                Strategies</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/BreakoutStrategies'>Breakout
+                                                Strategies</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/SwingTradingStrategies'>Swing
+                                                Trading Strategies</a></li>
+                                    </ul>
+                                </li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.TopStockResearch.com/rt/InteractiveCharts.tsr'> <span
+                                            class='icon-holder' id='tcSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Technical Charts</span></a></li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.TopStockResearch.com/my/TsrPlans/'> <span class='icon-holder'
+                                            id='subsSbDiv' aria-hidden='true'> </span> <span class='title'>Premium
+                                            Plans</span></a></li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='fnoSbDiv' aria-hidden='true'> </span> <span class='title'>Futures And
+                                            Options</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures'>Futures
+                                                Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/CallOptions'>Call
+                                                Option Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutOptions'>Put
+                                                Option Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutCallRatio'>PCR
+                                                Screeners</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='tutSbDiv' aria-hidden='true'> </span> <span class='title'>Learn
+                                        </span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                                        </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://tutorials.TopStockResearch.com'>Tutorials</a></li>
+                                        <li><a href='https://www.TopStockResearch.com/rt/Ebooks'>E-Books</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <script>var mcat = 'homeSb';</script> <!-- Page Container Start -->
+                <div class="page-container"> <!-- Quick View Start -->
+
+
+                    <div class="tsrqv1" id='helpNav'>
+                        <ul class="tsrqv-tabs nav nav-tabs nav-justified" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" data-bs-target="#myTsrLinkstab" role="tab"
+                                    data-bs-toggle="tab">
+                                    MyTSR Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myLinksTab" role="tab" data-bs-toggle="tab"
+                                    onClick='migUi.myLinks()'>
+                                    My Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myRecentActTab" role="tab"
+                                    data-bs-toggle="tab" onClick='migUi.myRecAct()'>
+                                    My Recent Activities
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content scrollable">
+                            <div id="myTsrLinksTab" role="tabpanel" class="tab-pane fade show active">
+                                <div id='myTsrLinks'> Loading</div>
+                            </div>
+                            <div id="myLinksTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myLinksDiv'> Loading ...</div>
+                            </div>
+                            <div id="myRecentActTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myRecentActivityDiv'> Loading ...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick View End --> <!-- Content Wrapper Start -->
+                    <div class="main-content">
+                        <div class="container-fluid aioRowPad">
+                            <div class="row   ">
+                                <div class="col-md-12">
+                                    <div id="premServiceDiv" style="text-align:justify;"> </div>
+
+
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div id='dynSearch'>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <script>var mtppp = '55216592129371346675985';</script>
+                            <div class='owl-carousel owl-theme menuCss' align='center'>
+                                <div class="item p-2" align='center'>
+                                    <div class="card shadow p-2">
+                                        <div align='center'> <a
+                                                href='https://www.topstockresearch.com/rt/Stock/NH/BirdsEyeView'
+                                                title='Birds Eye View of Narayana Hrudayalaya Ltd'
+                                                style='color:#9E9E9E;font-size:14px;'><img
+                                                    src='https://www.topstockresearch.com/static/mig/img/equity/BirdsEyeView.png'
+                                                    class="img-responsive img-fluid"
+                                                    alt='Birds Eye View of Narayana Hrudayalaya Ltd'
+                                                    name='Birds Eye View of Narayana Hrudayalaya Ltd'
+                                                    style='width:fit-content'
+                                                    title='Birds Eye View of Narayana Hrudayalaya Ltd'>Birds's Eye</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item p-2" align='center'>
+                                    <div class="card shadow p-2">
+                                        <div align='center'> <a
+                                                href='https://www.topstockresearch.com/rt/Stock/NH/TechnicalAnalysis'
+                                                title='Technical Analysis of Narayana Hrudayalaya Ltd'
+                                                style='color:#9E9E9E;font-size:14px;'><img
+                                                    src='https://www.topstockresearch.com/static/mig/img/equity/TechnicalAnalysis.png'
+                                                    class="img-responsive img-fluid"
+                                                    alt='Technical Analysis of Narayana Hrudayalaya Ltd'
+                                                    name='Technical Analysis of Narayana Hrudayalaya Ltd'
+                                                    style='width:fit-content'
+                                                    title='Technical Analysis of Narayana Hrudayalaya Ltd'>Technicals</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item p-2" align='center'>
+                                    <div class="card shadow p-2">
+                                        <div align='center'> <a
+                                                href='https://www.topstockresearch.com/rt/Stock/NH/MovingAverage'
+                                                title='Moving Average Analysis of Narayana Hrudayalaya Ltd'
+                                                style='color:#9E9E9E;font-size:14px;'><img
+                                                    src='https://www.topstockresearch.com/static/mig/img/equity/MovingAverage.png'
+                                                    class="img-responsive img-fluid"
+                                                    alt='Moving Average Analysis of Narayana Hrudayalaya Ltd'
+                                                    name='Moving Average Analysis of Narayana Hrudayalaya Ltd'
+                                                    style='width:fit-content'
+                                                    title='Moving Average Analysis of Narayana Hrudayalaya Ltd'>MovingAverage</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item p-2" align='center'>
+                                    <div class="card shadow p-2">
+                                        <div align='center'> <a
+                                                href='https://www.topstockresearch.com/rt/Stock/NH/Candlestick'
+                                                title='Candle Stick Charts of Narayana Hrudayalaya Ltd'
+                                                style='color:#9E9E9E;font-size:14px;'><img
+                                                    src='https://www.topstockresearch.com/static/mig/img/equity/Candlestick.png'
+                                                    class="img-responsive img-fluid"
+                                                    alt='Candle Stick Charts of Narayana Hrudayalaya Ltd'
+                                                    name='Candle Stick Charts of Narayana Hrudayalaya Ltd'
+                                                    style='width:fit-content'
+                                                    title='Candle Stick Charts of Narayana Hrudayalaya Ltd'>Candlestick</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item p-2" align='center'>
+                                    <div class="card shadow p-2">
+                                        <div align='center'> <a
+                                                href='https://www.topstockresearch.com/rt/Stock/NH/PivotPoint'
+                                                title='Pivot / Fibonacci Levels of Narayana Hrudayalaya Ltd'
+                                                style='color:#9E9E9E;font-size:14px;'><img
+                                                    src='https://www.topstockresearch.com/static/mig/img/equity/PivotPoint.png'
+                                                    class="img-responsive img-fluid"
+                                                    alt='Pivot / Fibonacci Levels of Narayana Hrudayalaya Ltd'
+                                                    name='Pivot / Fibonacci Levels of Narayana Hrudayalaya Ltd'
+                                                    style='width:fit-content'
+                                                    title='Pivot / Fibonacci Levels of Narayana Hrudayalaya Ltd'>PivotPoint</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item p-2" align='center'>
+                                    <div class="card shadow p-2">
+                                        <div align='center'> <a
+                                                href='https://www.topstockresearch.com/rt/Stock/NH/FundamentalAnalysis'
+                                                title='Fundamental Analysis of Narayana Hrudayalaya Ltd'
+                                                style='color:#9E9E9E;font-size:14px;'><img
+                                                    src='https://www.topstockresearch.com/static/mig/img/equity/FundamentalAnalysis.png'
+                                                    class="img-responsive img-fluid"
+                                                    alt='Fundamental Analysis of Narayana Hrudayalaya Ltd'
+                                                    name='Fundamental Analysis of Narayana Hrudayalaya Ltd'
+                                                    style='width:fit-content'
+                                                    title='Fundamental Analysis of Narayana Hrudayalaya Ltd'>Fundamentals</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item p-2" align='center'>
+                                    <div class="card shadow p-2">
+                                        <div align='center'> <a
+                                                href='https://www.topstockresearch.com/rt/Stock/NH/FinancialStatements'
+                                                title='Financial Statements of Narayana Hrudayalaya Ltd'
+                                                style='color:#9E9E9E;font-size:14px;'><img
+                                                    src='https://www.topstockresearch.com/static/mig/img/equity/FinancialStatements.png'
+                                                    class="img-responsive img-fluid"
+                                                    alt='Financial Statements of Narayana Hrudayalaya Ltd'
+                                                    name='Financial Statements of Narayana Hrudayalaya Ltd'
+                                                    style='width:fit-content'
+                                                    title='Financial Statements of Narayana Hrudayalaya Ltd'>Fin
+                                                Statements</a> </div>
+                                    </div>
+                                </div>
+                                <div class="item p-2" align='center'>
+                                    <div class="card shadow p-2">
+                                        <div align='center'> <a
+                                                href='https://www.topstockresearch.com/rt/Stock/NH/BetaAndVolatility'
+                                                title='Beta And Volatility of Narayana Hrudayalaya Ltd'
+                                                style='color:#9E9E9E;font-size:14px;'><img
+                                                    src='https://www.topstockresearch.com/static/mig/img/equity/BetaAndVolatility.png'
+                                                    class="img-responsive img-fluid"
+                                                    alt='Beta And Volatility of Narayana Hrudayalaya Ltd'
+                                                    name='Beta And Volatility of Narayana Hrudayalaya Ltd'
+                                                    style='width:fit-content'
+                                                    title='Beta And Volatility of Narayana Hrudayalaya Ltd'>Beta&Vols</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div align='right'> <a onclick="misu.atc('NH','alert','scr');"
+                                    class="btn btn-outline-dark primary btn-sm" title="Alerts"
+                                    onkeypress="JavaScript:myTsrScreener.screenNow('alertNew');"><span
+                                        class="fas fa-bell" style="color:##ff9800;"></span> Alert </a></div>
+                            <h3 align='center'>Interactive Charts of Narayana Hrudayalaya Ltd (NH) with Technical
+                                Indicators</h3>
+                            <script> var eqDef = { name: 'Narayana Hrudayalaya Ltd', code: 'NH', freq: 'null' };</script>
+                            <script src='//cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js'></script>
+                            <link rel="stylesheet"
+                                href="https://www.topstockresearch.com/static/css/v1/tsrchartsNgV0.0.5.css">
+                            <script
+                                src="https://www.topstockresearch.com/static/js/chart/tsr_charts_minV0.9.2.190.js"></script>
+                            <script src='//cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js'></script>
+                            <link rel="stylesheet"
+                                href="https://www.topstockresearch.com/static/css/v1/tsrchartsNgV0.0.5.css">
+                            <script
+                                src="https://www.topstockresearch.com/static/js/chart/tsr_charts_minV0.9.2.190.js"></script>
+                            <script>
+                                var json = flexParamToHtml('cf=D&period=3M');
+                                var defStk = { name: 'Narayana Hrudayalaya Ltd', code: 'NH', scId: 189, ecId: 2650 };
+                                $('#chartWrap').height('500px');
+                                (function defer() {
+                                    if ((window.jQuery) && (window.d3)) {
+                                        myTsrChartInit.init(defStk, json, 'inline');
+                                    } else {
+                                        console.log('jQ !yet load');
+                                        setTimeout(function () { defer() }, 50);
+                                    }
+                                })();
+                            </script>
+                            <!-- replay popup code starts here -->
+                            
+                            
+                            <div id='chartPanel1' class="chartPanel" style="height: 80vh; width: 80vw;">
+                                <button onclick="showReplayPopup(true)">
+                                    Replay
+                                </button>
+                            </div>
+
+                            <script src="index.js"></script>
+
+                            <!-- code ends here -->
+                            <br /><br />
+                            <div id='datagrid' class='datagrid'>
+                                <h3>Quick Overview of Interactive Charts</h3><iframe width='560' height='315'
+                                    src='https://www.youtube.com/embed/bU1QTRjm4pA?start=4' title='YouTube video player'
+                                    frameborder='0'
+                                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                                    allowfullscreen></iframe>
+                            </div><br />
+                            <div id='ytVideoDiv'></div>
+                            <div class="row mt-1">
+                                <div class="col-md-12 d-none d-md-block text-center">
+
+                                    <nav class="d-flex justify-content-center" aria-label="Page navigation example">
+                                        <ul class="pagination">
+                                            <span class="align-content-center">
+                                                Stock Listing
+                                            </span>&nbsp;&nbsp;&nbsp;<li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/A'
+                                                    class="page-link">A</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/B'
+                                                    class="page-link">B</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/C'
+                                                    class="page-link">C</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/D'
+                                                    class="page-link">D</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/E'
+                                                    class="page-link">E</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/F'
+                                                    class="page-link">F</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/G'
+                                                    class="page-link">G</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/H'
+                                                    class="page-link">H</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/I'
+                                                    class="page-link">I</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/J'
+                                                    class="page-link">J</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/K'
+                                                    class="page-link">K</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/L'
+                                                    class="page-link">L</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/M'
+                                                    class="page-link">M</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/N'
+                                                    class="page-link">N</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/O'
+                                                    class="page-link">O</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/P'
+                                                    class="page-link">P</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/Q'
+                                                    class="page-link">Q</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/R'
+                                                    class="page-link">R</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/S'
+                                                    class="page-link">S</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/T'
+                                                    class="page-link">T</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/U'
+                                                    class="page-link">U</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/V'
+                                                    class="page-link">V</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/W'
+                                                    class="page-link">W</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/X'
+                                                    class="page-link">X</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/Y'
+                                                    class="page-link">Y</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='https://www.topstockresearch.com/rt/StockAlphabeticalListing/Z'
+                                                    class="page-link">Z</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+
+                                </div>
+                            </div>
+                            <script> let tsrUpdateJson = { "heading": "STRATEGIES", "list": [{ "label": "BTST", "link": "https://www.topstockresearch.com/rt/Screener/ExpertScreener/BTSTStrategies" }, { "label": "Breakout", "link": "https://www.topstockresearch.com/rt/Screener/ExpertScreener/BreakoutStrategies" }, { "label": "Swing", "link": "https://www.topstockresearch.com/rt/Screener/ExpertScreener/SwingTradingStrategies" }] }</script>
+                            <hr />
+                            <footer class=" text-light" style='background-color: #f2f2f2;text-decoration:underline'>
+                                <div class="container" style="margin-left: 10px;">
+                                    <br>
+                                    <div class="row">
+                                        <h3 style="color:black">Quick Links</h3>
+                                        <div>
+                                            <span style="color:black"><b>TSR Support</b><br /> <span><a
+                                                        href='https://www.TopStockResearch.com/my/UserManagement?act=rfd'
+                                                        style="color:black"> Request For Demo <i
+                                                            class="fas fa-pencil-alt"></i></a></span>
+                                                <span><a href='https://www.TopStockResearch.com/my/UserManagement?act=contactUs'
+                                                        style="color:black"> | Contact Us <i
+                                                            class="fas fa-envelope"></i></a></span>
+                                                <br /> For Support Call us @ +91 922 655 760 3/4/5 between 10 AM to 6 PM
+                                                , Mon - Sat <i class="fas fa-phone-alt"></i>
+                                                <br /><b>TSR Videos</b> <span style='font-size:27px;color:#f44336;'><i
+                                                        class="fab fa-youtube"></i> </span> <br /> <a
+                                                    style='cursor : pointer ;color:black'
+                                                    onClick="mintHtmlUtil.sytv('ytVideoDiv',  'v4Hp02h_XXQ')"><span
+                                                        style=''>English (New)</span></a>&nbsp;&nbsp;&nbsp; | <a
+                                                    style='cursor : pointer ;color:black'
+                                                    onClick="mintHtmlUtil.sytv('ytVideoDiv',  'U4Epx5HvIfU')"><span
+                                                        style=''>हिंदी (New)</span> </a><br /> <a
+                                                    style='cursor : pointer ;color:black'
+                                                    onClick="mintHtmlUtil.sytv('ytVideoDiv',  'Z8RFbA3w0yo')"><span
+                                                        style=''>English (Classic MyTSR)</span></a>&nbsp;&nbsp;&nbsp; |
+                                                <a style='cursor : pointer ;color:black'
+                                                    onClick="mintHtmlUtil.sytv('ytVideoDiv',  'Uc-gJ__FM64')"><span
+                                                        style=' '>हिंदी (Classic MyTSR)</span> </a> |
+                                                <br /><br /><b>Global Markets</b> <br /> <a
+                                                    href='https://www.StockAio.com/US/ai/Home'
+                                                    style='cursor : pointer ;color:black'><span style=''>US Stock
+                                                        Screener & Analysis</span> <img
+                                                        src="//www.StockAIo.com/static/img/flags/USFlag.png"
+                                                        style="max-height:18px;"> </a><br /> <a
+                                                    href='https://www.StockAio.com/UK/ai/Home'
+                                                    style='cursor : pointer ;color:black'><span style=''>UK Stock
+                                                        Screener & Analysis</span> <img
+                                                        src="//www.StockAIo.com/static/img/flags/UKFlag.png"
+                                                        style="max-height:18px;"> </a>
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <br />
+                                                <span><a href='https://www.topstockresearch.com/rt/Home'
+                                                        style="color:black">Home</a></span>
+
+                                                <span class="ms-1"><a
+                                                        href="https://www.topstockresearch.com/Disclaimer.html"
+                                                        style="color:black">| Disclaimer</a></span>
+
+                                                <span class="ms-1"><a
+                                                        href="https://www.topstockresearch.com/TermsAndConditions.html"
+                                                        style="color:black">| Terms &amp; Conditions </a></span>
+
+                                                <span class="ms-1"><a
+                                                        href="https://www.topstockresearch.com/PrivacyPolicy.html"
+                                                        style="color:black">| Privacy </a></span>
+
+
+                                            </div>
+
+                                            <h7 style="text-align:center;line-height: 28px;color:#9E9E9E"> Happy to
+                                                provide Premium Analytics Since 2010 @TopStockResearch</h7>
+                                            <h7 style="text-align:center;line-height: 28px;color:#9E9E9E"> Minting
+                                                Innovation (Mintnovate) in Stock Analytics </h7>
+                                            <h7 style="color:#9E9E9E;text-align:center;line-height: 28px;">All rights
+                                                reserved by Mintnovate Market Research Limited</h7>
+                                        </div>
+                                    </div>
+                            </footer>
+                        </div>
+                    </div>
+                    <!-- Content Wrapper End -->
+
+
+
+
+                </div>
+            </div> <!-- NG APP  align='center'-->
+
+
+
+
+
+</body>
+<script>   migUi.init(); </script>
+<div id='alertDialog' class='web_dialog'></div>
+<div id='artnuDiv'></div>
+<script src='https://www.topstockresearch.com/static/js/tsr/my/fav_minV0.0.1.1.js'></script>
+<script
+    src='https://www.topstockresearch.com/static/js/tsr/mipu/mipu_minV0.0.0.71.js'"></script><script> misu.iar('stock', 'null');   </script><div class="
+    modal fade" id="tsrUserRegModal" tabindex="-1">
+			        <div class="modal-dialog modal-dialog-centered">
+			            <div class="modal-content"  id='tsrUserRegModalContent'>
+			            </div>
+			        </div>
+			    </div><div id='usrRegDiv'></div>	<link rel="stylesheet" href='https://www.topstockresearch.com/static/tp/owl/owl.carousel.all.css'>
+<script  src='https://www.topstockresearch.com/static/tp/owl/owl.carousel.min.js'></script>
+<script>var tickOpt = {
+        loop: false,
+        margin: 5,
+        navText: ["<i class='fa fa-chevron-left' ></i>", "<i class='fa fa-chevron-right' ></i>"],
+        autoplay: false,
+        responsive: {
+            0: {
+                nav: false,
+                items: 3
+            },
+            600: {
+                nav: false,
+                items: 5
+            },
+            1000: {
+                items: 10
+            }
+        }
+    }; $('.tickCss').owlCarousel(tickOpt)</script>
+<link rel="stylesheet" href='https://www.topstockresearch.com/static/tp/owl/owl.carousel.all.css'>
+<script src='https://www.topstockresearch.com/static/tp/owl/owl.carousel.min.js'></script>
+<script>var menuOpt = {
+        loop: false,
+        margin: 5,
+        navText: ["<i class='fa fa-chevron-left' ></i>", "<i class='fa fa-chevron-right' ></i>"],
+        autoplay: false,
+        responsive: {
+            0: {
+                nav: false,
+                items: 2
+            },
+            400: {
+                nav: false,
+                items: 3
+            },
+            600: {
+                nav: false,
+                items: 4
+            },
+            1000: {
+                items: 6
+            },
+            1200: {
+                items: 8
+            }
+        }
+    }; $('.menuCss').owlCarousel(menuOpt)</script>
+<link rel="stylesheet" type="text/css" href='https://www.topstockresearch.com/static/css/tp/datatables.min.css' />
+<script type="text/javascript" src='https://www.topstockresearch.com/static/js/tp/datatables.min.js'></script>
