@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="dropdown-center">
+        <button id="tsrChReplayPeriod" class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            data-bs-auto-close="outside" aria-expanded="false">
+            Select Period
+        </button>
+        <ul class="dropdown-menu">
+            <li><button class="btn btn-sm" onclick="updateRelayPeriod('chart')">From Chart</button></li>
+            <li>
+                <div class="dropend">
+                    <button type="button" class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false" data-bs-auto-close="outside" data-bs-offset="-41,28">
+                        Select Start Date
+                    </button>
+                    <form class="dropdown-menu p-2 text-end">
+                        <div class="input-group input-group-sm form-floating mb-2">
+                            <input type="datetime-local" class="form-control" id="tsrReplayStartDate" required>
+                            <label for="tsrReplayStartDate" class="form-label">Select Date & Time</label>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm"
+                            onclick="updateRelayPeriod('startDate')">Next</button>
+                    </form>
+                </div>
+            </li>
+            <li>
+                <div class="dropend">
+                    <button type="button" class="btn dropdown-toggle btn-sm" data-bs-toggle="dropdown"
+                        aria-expanded="false" data-bs-auto-close="outside" data-bs-offset="-70,60">
+                        Select Ticks
+                    </button>
+                    <form class="dropdown-menu p-2 text-end">
+                        <div class="input-group input-group-sm form-floating mb-2">
+                            <input type="number" class="form-control" id="tsrReplayTicks" size="4" value="10" required>
+                            <label for="tsrReplayTicks" class="form-label">Enter Ticks</label>
+                        </div>
+
+                        <button type="number" class="btn btn-secondary btn-sm"
+                            onclick="updateRelayPeriod('tick')">Next</button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <span style="font-size: 12px;">Autorun</span>
+        <div class="d-flex">
+            <button id="tsrReplayPlayPauseBtn" class="btn" data-toggle="tooltip" data-placement="top" title="Play">
+                <i class="fas fa-play"></i>
+            </button>
+            <select class="form-select form-select-sm" aria-label="Small select example">
+                <option value="0.5">0.5x</option>
+                <option value="0.75">0.75x</option>
+                <option selected>1x</option>
+                <option value="2">2x</option>
+                <option value="5">5x</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="vr"></div>
+
+    <div>
+        <span style="font-size: 12px;">Manual run</span>
+        <div class="d-flex">
+            <button id="tsrReplayStepBackwardBtn" class="btn" data-toggle="tooltip" data-placement="top" title="Previous">
+                <i class="fas fa-step-backward"></i>
+            </button>
+            <button id="tsrReplayStepForwardBtn" class="btn" data-toggle="tooltip" data-placement="top" title="Next">
+                <i class="fas fa-step-forward"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="vr"></div>
+
+    <div>
+        <button id="tsrReplayRestartBtn" class="btn" data-toggle="tooltip" data-placement="top" title="Restart">
+            <i class="fas fa-redo"></i>
+        </button>
+    </div>
+
+    <script>
+        var replayPeriodId = "tsrChReplayPeriod";
+
+        function updateRelayPeriod(option) {
+            let button = document.getElementById(replayPeriodId);
+
+            let html = "";
+            if (option == "tick") {
+                let input = document.getElementById("tsrReplayTicks");
+                html += "Last " + input.value + " Ticks";
+            } else if (option == "startDate") {
+                let input = document.getElementById("tsrReplayStartDate");
+                html += "Start Date <br>" + input.value;
+            } else {
+                html += "From Chart";
+            }
+            button.innerHTML = html;
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+
+</html>

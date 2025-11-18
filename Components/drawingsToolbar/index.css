@@ -1,0 +1,35 @@
+#tsrChart {
+    position: relative;
+}
+
+.tsr_chart_toolbar {
+    display: flex;
+    z-index: 999;
+    position: absolute;
+    /* top: 12vh; */
+    left: 40vw;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0px 3px 5px 0px #888888;
+}
+
+.tsr_chart_toolbar_box {
+    padding: 5px;
+    background-color: white;
+    align-content: center;
+    border-radius: 5px;
+}
+
+.tsr_chart_toolbar_box button:hover {
+    background-color: lightblue;
+    opacity: 0.8;
+}
+
+.tsr_chart_toolbar_box button {
+    border: none;
+    background: none;
+    height: 100%;
+    width: 100%;
+}
