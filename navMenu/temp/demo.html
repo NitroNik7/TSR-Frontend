@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Vertical Nav with Hover Submenu</title>
+    <style>
+        /* Container for nav */
+        .vertical-nav {
+            width: 200px;
+            background: #333;
+            padding: 0;
+            margin: 0;
+        }
+
+        .vertical-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .vertical-nav li {
+            position: relative;
+            /* for positioning the submenu */
+        }
+
+        .vertical-nav>ul>li>a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+        }
+
+        .vertical-nav>ul>li>a:hover {
+            background: #444;
+        }
+
+        /* Submenu (hidden by default) */
+        .vertical-nav li .submenu {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            /* or adjust if you want it inside */
+            background: #555;
+            min-width: 150px;
+            z-index: 1000;
+            /* so it floats above other things */
+        }
+
+        .vertical-nav li:hover>.submenu {
+            display: block;
+        }
+
+        .submenu li a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .submenu li a:hover {
+            background: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="vertical-nav">
+        <ul>
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">Services</a>
+                <ul class="submenu">
+                    <li><a href="#">Web Design</a></li>
+                    <li><a href="#">SEO</a></li>
+                    <li><a href="#">Marketing</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">About</a>
+                <ul class="submenu">
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">History</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+</body>
+
+</html>
