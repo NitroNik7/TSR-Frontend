@@ -43,7 +43,7 @@ var miChTb = (function () {
             html += `   <i class="fas fa-grip-vertical"></i>`;
             html += `</div>`;
 
-            html += `<div style="border-left: 1px solid lightgray; margin-left: 3px; margin-right: 3px;">`;
+            html += `<div style="border-left: 1px solid lightrgba(0, 0, 0, 0.7); margin-left: 3px; margin-right: 3px;">`;
             html += `</div>`;
         }
 
@@ -184,15 +184,15 @@ var miChTb = (function () {
 
         html += `      <div class="text-center mx-2">`
         html += `         <div class="d-flex">`
-        html += `             <button id="${stepBackwardBtnId}" class="btn" style="margin: 0; font-size: 20px;"  title="Step Backward"  onclick="">`
+        html += `             <button id="${stepBackwardBtnId}" class="btn" style="margin: 0; font-size: 20px; color: rgba(0, 0, 0, 0.7);"  title="Step Backward"  onclick="">`
         html += `                 <i class="fas fa-step-backward"></i>`
         html += `             </button>`
 
-        html += `              <button id="${playPauseBtnId}" class="btn" style="margin: 0; font-size: 20px;" title="Play" onclick="miChTb.rr()">`
+        html += `              <button id="${playPauseBtnId}" class="btn" style="margin: 0; font-size: 20px; color: rgba(0, 0, 0, 0.7);" title="Play" onclick="miChTb.rr()">`
         html += `                  <i class="fas fa-play"></i>`
         html += `              </button>`
 
-        html += `             <button id="${stepForwardBtnId}" class="btn" style="margin: 0; font-size: 20px;"  title="Step Forward"  onclick="">`
+        html += `             <button id="${stepForwardBtnId}" class="btn" style="margin: 0; font-size: 20px; color: rgba(0, 0, 0, 0.7);"  title="Step Forward"  onclick="">`
         html += `                 <i class="fas fa-step-forward"></i>`
         html += `             </button>`
 
@@ -252,31 +252,31 @@ var miChTb = (function () {
         let html = "";
         if (option == "tick") {
             let input = document.getElementById(tickInputId);
-            if (input.value > 100) {
+            if (validateTick(input.value)) {
+                fbDiv.innerHTML = "";
+                html += "Last " + input.value + " Ticks";
+            } else {
                 fbDiv.innerHTML = `
                     <hr style="margin: 5px 0;">
                    <span style="color:red">Please enter valid value</span>
                 `;
 
                 html += "Last N Ticks";
-            } else {
-                fbDiv.innerHTML = "";
-                html += "Last " + input.value + " Ticks";
             }
         } else if (option == "startDate") {
             let input = document.getElementById(startDateInputId);
-            // if (input.value ) {
-            //     fbDiv.innerHTML = `
-            //         <hr style="margin: 5px 0;">
-            //        <span style="color:red">Please enter valid value</span>
-            //     `;
-            //      html+="Start Date";
-            // }
-            // else {
-            fbDiv.innerHTML = "";
-            let date = new Date(input.value);
-            html += "Start Date <br>" + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
-            // }
+            if (validateDate(input.value)) {
+                fbDiv.innerHTML = "";
+                let date = new Date(input.value);
+                html += "Start Date <br>" + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
+            }
+            else {
+                //     fbDiv.innerHTML = `
+                //         <hr style="margin: 5px 0;">
+                //        <span style="color:red">Please enter valid value</span>
+                //     `;
+                //      html+="Start Date";
+            }
         } else {
             fbDiv.innerHTML = "";
             html += "Candle on Chart";
@@ -293,8 +293,10 @@ var miChTb = (function () {
         let html = "";
         if (!play) {
             play = true;
+            playPauseBtn.setAttribute("title", "Pause");
             html += `<i class="fas fa-pause"></i>`;
         } else {
+            playPauseBtn.setAttribute("title", "Play");
             html += `<i class="fas fa-play"></i>`;
             play = false;
         }
@@ -308,6 +310,14 @@ var miChTb = (function () {
         let html = "";
 
         fbDiv.innerHTML = html;
+    }
+
+    function validateTick(tick) {
+
+    }
+
+    function validateDate(dateStr) {
+
     }
 
 
