@@ -6,6 +6,12 @@ var miChTb = (function () {
     var replayPeriodId = "tsrChReplayPeriod";
     var playPauseBtnId = "tsrReplayPlayPauseBtn";
     var fbDivId = "tsrReplayFbDiv";
+    var startDateInputId = "tsrReplayStartDate";
+    var tickInputId = "tsrReplayTicks";
+    var stepForwardBtnId = "tsrReplayStepForwardBtn";
+    var stepBackwardBtnId = "tsrReplayStepBackwardBtn";
+    var speedSelectId = "tsrReplaySpeedSelect";
+    var restartBtnId = "tsrReplayRestartBtn";
 
     var play = false;
 
@@ -33,7 +39,7 @@ var miChTb = (function () {
         let html = "";
 
         if (!miChTbUtils.im()) {
-            html += `<div id=${toolbarDraggerId} class='tsr_chart_toolbar_box'>`;
+            html += `<div id=${toolbarDraggerId} class='tsr_chart_toolbar_dragger'>`;
             html += `   <i class="fas fa-grip-vertical"></i>`;
             html += `</div>`;
 
@@ -50,14 +56,16 @@ var miChTb = (function () {
         let distanceFromTop = chartContainer.getBoundingClientRect().top + window.scrollY;
         // let offset = 0.15 * window.innerHeight;
 
-        let leftOffset = chartContainer.getBoundingClientRect().left + window.scrollX;
+        let leftOffset = chartContainer.getBoundingClientRect().left + window.scrollX - 20;
 
         if (miChTbUtils.im()) {
             toolbar.style.top = (distanceFromTop + 50) + "px";
             toolbar.style.left = leftOffset + "px";
+            toolbar.style.scale = "0.8";
         } else {
             toolbar.style.top = (distanceFromTop + 50) + "px";
             toolbar.style.left = "40vw";
+            toolbar.style.scale = "1";
         }
 
         if (!miChTbUtils.im()) {
@@ -135,35 +143,35 @@ var miChTb = (function () {
         html += `             <button id="${replayPeriodId}" class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" title="Select Replay Period">`
         html += `                  Select Period`
         html += `              </button>`
-        html += `              <ul class="dropdown-menu">`
-        html += `                  <li>`
+        html += `              <ul class="dropdown-menu"  style="width: max-content; min-width:unset;">`
+        html += `                  <li style="width: max-content;">`
         html += `                      <button class="btn btn-sm" onclick="miChTb.urp('chart')">Candle on Chart</button>`
         html += `                  </li>`
-        html += `                  <li>`
+        html += `                  <li style="width: max-content;">`
         html += `                      <div class="dropend">`
         html += `                          <button type="button" class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-offset="-41,28">`
-        html += `                              Select Start Date`
+        html += `                               Start Date`
         html += `                          </button>`
         html += `                          <form class="dropdown-menu p-2 text-end">`
-        html += `                              <div class="input-group input-group-sm form-floating mb-2">`
-        html += `                                  <input type="datetime-local" class="form-control" id="tsrReplayStartDate" required>`
-        html += `                                  <label for="tsrReplayStartDate" class="form-label">Select Date & Time</label>`
+        html += `                              <div class="form-floating mb-2">`
+        html += `                                  <input type="datetime-local" class="form-control" id="${startDateInputId}" value="${getCurrentDateTime()}" required>`
+        html += `                                  <label for="${startDateInputId}" class="form-label">Select Date & Time</label>`
         html += `                              </div>`
-        html += `                              <button type="button" class="btn btn-secondary btn-sm" onclick="miChTb.urp('startDate')">Next</button>`
+        html += `                              <button type="button" class="btn btn-secondary btn-sm" onclick="miChTb.urp('startDate')">Apply</button>`
         html += `                          </form>`
         html += `                      </div>`
         html += `                  </li>`
-        html += `                  <li>`
+        html += `                  <li style="width: max-content;">`
         html += `                      <div class="dropend">`
-        html += `                          <button type="button" class="btn dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-offset="-70,60">`
+        html += `                          <button type="button" class="btn dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-offset="-70,20">` // offset (Y,X)
         html += `                              Last N Ticks`
         html += `                          </button>`
         html += `                          <form class="dropdown-menu p-2 text-end">`
-        html += `                              <div class="input-group input-group-sm form-floating mb-2">`
-        html += `                                  <input type="number" class="form-control" id="tsrReplayTicks" size="4" value="10" required>`
-        html += `                                  <label for="tsrReplayTicks" class="form-label">Enter Ticks</label>`
+        html += `                              <div class="form-floating mb-2 d-flex align-items-center justify-content-between">`
+        html += `                                  <input type="number" class="form-control" id="${tickInputId}" value="10" required>`
+        html += `                                  <label for="${tickInputId}" class="form-label">Enter Ticks</label>`
         html += `                              </div>`
-        html += `                              <button type="button" class="btn btn-secondary btn-sm" style="margin: 0;"  onclick="miChTb.urp('tick')">Next</button>`
+        html += `                              <button type="button" class="btn btn-secondary btn-sm" style="margin: 0;"  onclick="miChTb.urp('tick')">Apply</button>`
         html += `                          </form>`
         html += `                      </div>`
         html += `                  </li>`
@@ -176,7 +184,7 @@ var miChTb = (function () {
 
         html += `      <div class="text-center mx-2">`
         html += `         <div class="d-flex">`
-        html += `             <button id="tsrReplayStepBackwardBtn" class="btn" style="margin: 0; font-size: 20px;"  title="Step Backward"  onclick="">`
+        html += `             <button id="${stepBackwardBtnId}" class="btn" style="margin: 0; font-size: 20px;"  title="Step Backward"  onclick="">`
         html += `                 <i class="fas fa-step-backward"></i>`
         html += `             </button>`
 
@@ -184,12 +192,12 @@ var miChTb = (function () {
         html += `                  <i class="fas fa-play"></i>`
         html += `              </button>`
 
-        html += `             <button id="tsrReplayStepForwardBtn" class="btn" style="margin: 0; font-size: 20px;"  title="Step Forward"  onclick="">`
+        html += `             <button id="${stepForwardBtnId}" class="btn" style="margin: 0; font-size: 20px;"  title="Step Forward"  onclick="">`
         html += `                 <i class="fas fa-step-forward"></i>`
         html += `             </button>`
 
 
-        html += `              <select id="tsrReplaySpeedSelect" class="form-select form-select-sm mx-1" style="border:none;" aria-label="Small select example" title="Select Speed" onchange="">`
+        html += `              <select id="${speedSelectId}" class="form-select form-select-sm mx-1" style="min-width: fit-content; font-size: 16px; font-weight: 500;" aria-label="Small select example" title="Select Speed" onchange="">`
         html += `                  <option value="0.5">0.5x</option>`
         html += `                  <option value="0.75">0.75x</option>`
         html += `                  <option selected>1x</option>`
@@ -198,7 +206,7 @@ var miChTb = (function () {
         html += `              </select>`
 
 
-        html += `         <button id="tsrReplayRestartBtn" class="btn" style="margin: 0;"  title="Restart"  onclick="">`
+        html += `         <button id="${restartBtnId}" class="btn" style="margin: 0;"  title="Restart"  onclick="">`
         html += `             <i class="fas fa-redo"></i>`
         html += `         </button>`
 
@@ -215,8 +223,7 @@ var miChTb = (function () {
         html += `   </div>`;
 
         html += `       <div class="text-center" id="${fbDivId}">`
-        // html+=`             <hr style="margin: 5px 0;">`
-        // html += `           <span style="color:red">Please select valid option</span>`
+
         html += `       </div>`;
 
         return html;
@@ -232,16 +239,44 @@ var miChTb = (function () {
 
     }
 
+    function getCurrentDateTime() {
+
+        const now = new Date();
+        return `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}T09:15`;
+    }
+
     function updateRelayPeriod(option) {
         let button = document.getElementById(replayPeriodId);
+        let fbDiv = document.getElementById(fbDivId);
 
         let html = "";
         if (option == "tick") {
-            let input = document.getElementById("tsrReplayTicks");
-            html += "Last " + input.value + " Ticks";
+            let input = document.getElementById(tickInputId);
+            if (input.value > 100) {
+                fbDiv.innerHTML = `
+                    <hr style="margin: 5px 0;">
+                   <span style="color:red">Please enter valid value</span>
+                `;
+
+                html += "Last N Ticks";
+            } else {
+                html += "Last " + input.value + " Ticks";
+            }
         } else if (option == "startDate") {
-            let input = document.getElementById("tsrReplayStartDate");
-            html += "Start Date <br>" + input.value;
+
+
+            let input = document.getElementById(startDateInputId);
+            // if (input.value ) {
+            //     fbDiv.innerHTML = `
+            //         <hr style="margin: 5px 0;">
+            //        <span style="color:red">Please enter valid value</span>
+            //     `;
+            //      html+="Start Date";
+            // }
+            // else {
+            let date = new Date(input.value);
+            html += "Start Date <br>" + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
+            // }
         } else {
             html += "Candle on Chart";
         }

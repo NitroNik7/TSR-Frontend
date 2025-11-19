@@ -4,7 +4,7 @@
 
 .tsr_chart_toolbar {
     display: flex;
-    z-index: 999;
+    z-index: 99;
     position: absolute;
     background-color: white;
     border: 1px solid lightgray;
@@ -13,9 +13,11 @@
     box-shadow: 0px 3px 5px 0px #888888;
 }
 
-.tsr_chart_toolbar_box {
+.tsr_chart_toolbar_dragger {
     padding: 5px;
     background-color: white;
     align-content: center;
     border-radius: 5px;
+    color: gray;
+    cursor: grab;
 }
