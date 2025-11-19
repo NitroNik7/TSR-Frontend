@@ -260,11 +260,10 @@ var miChTb = (function () {
 
                 html += "Last N Ticks";
             } else {
+                fbDiv.innerHTML = "";
                 html += "Last " + input.value + " Ticks";
             }
         } else if (option == "startDate") {
-
-
             let input = document.getElementById(startDateInputId);
             // if (input.value ) {
             //     fbDiv.innerHTML = `
@@ -274,10 +273,13 @@ var miChTb = (function () {
             //      html+="Start Date";
             // }
             // else {
+            // fbDiv.innerHTML = "";
+
             let date = new Date(input.value);
             html += "Start Date <br>" + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
             // }
         } else {
+            fbDiv.innerHTML = "";
             html += "Candle on Chart";
         }
         button.innerHTML = html;
