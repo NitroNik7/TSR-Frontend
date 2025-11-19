@@ -273,8 +273,7 @@ var miChTb = (function () {
             //      html+="Start Date";
             // }
             // else {
-            // fbDiv.innerHTML = "";
-
+            fbDiv.innerHTML = "";
             let date = new Date(input.value);
             html += "Start Date <br>" + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
             // }
