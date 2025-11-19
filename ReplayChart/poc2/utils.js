@@ -8,7 +8,17 @@ var miChTbUtils = (function () {
         return false;
     }
 
+
+    function isMobile() {
+        if (window.innerWidth < 768) {
+            return true;
+        }
+
+        return false;
+    }
+
     return {
         pd: paramDefined,
+        im: isMobile
     }
 })();
