@@ -33,7 +33,7 @@
         display: inline-block;
     }
 </style>
-<script>   var userProf = { status: 'signedIn', sal: 'Dear', fName: 'Nitro', refCode: 'null', expDt: '17_Sep_2026', sub: 'TRADER_PRO' };  </script>
+<script>   var userProf = { status: 'signedIn', sal: 'Dear', fName: 'Nikhil', refCode: 'null', expDt: '' };  </script>
 
 <body class="scrollable">
     <div id="mainController">
@@ -60,420 +60,49 @@
                     </div>
                 </div>
                 <!-- Header End-->
+                <div class="tsrsn expand-lg">
+                    <div class="tsrsn-inner">
+                        <div id="sideNavBarDiv">
 
-                <!-- NAV MENU CODE STARTS HERE -->
+                            <style>
+                                .tsrsn:hover {
+                                    width: 70px !important;
+                                }
 
-                <style>
-                    .navMenuContainer {
-                        position: fixed;
-                        top: 60px;
-                        bottom: 0px;
-                        z-index: 1000;
+                                .tsrsn .nav-item:hover {
+                                    background: gray;
+                                    
+                                }
+                            </style>
 
-                    }
+                            <!-- nav menu code starts here -->
 
-                    nav {
-                        position: relative;
-                        width: 70px;
-                        height: 100%;
-                        background: linear-gradient(0deg, #09124f 0, #090979 30%, #006fbf 100%);
-                    }
-
-                    nav ul {
-                        list-style: none;
-                        padding: 0;
-                        margin: 0;
-                    }
-
-                    nav li {
-                        position: relative;
-                        /* for positioning the submenu */
-                    }
-
-                    nav>ul>li>a {
-                        padding: 5px;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        color: white;
-                        text-decoration: none;
-                        margin: 5px 0;
-                        font-size: 12px;
-                        text-align: center;
-                        line-height: 16px;
-
-                    }
-
-                    nav>ul>li>a:hover {
-                        background: white;
-                        color: black;
-                    }
-
-                    nav>ul>li>a:hover svg {
-                        fill: black;
-                    }
-
-                    /* Submenu (hidden by default) */
-                    nav li .submenu {
-                        display: none;
-                        position: absolute;
-                        top: 0;
-                        left: 100%;
-                        /* or adjust if you want it inside */
-                        background: white;
-                        min-width: 150px;
-                        border: 1px solid lightgray;
-                        /* so it floats above other things */
-                        font-size: 14px;
-                        font-weight: 600;
-
-                    }
-
-                    nav li:hover>.submenu {
-                        display: block;
-
-                    }
-
-                    .submenu li a {
-                        display: block;
-                        padding: 10px;
-                        color: black;
-                        text-decoration: none;
-                    }
-
-                    .submenu li a:hover {
-                        background: linear-gradient(0deg, #09124f 0, #090979 30%, #006fbf 100%);
-                        color: white;
-                    }
-                </style>
-
-                <div class="navMenuContainer">
-                    <nav>
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <span>
-                                        <svg height="32" viewBox="0 0 288 288" fill="white"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M144 75.6696L41.2862 160.346C41.2862 160.466 41.2562 160.642 41.1961 160.881C41.1373 161.119 41.106 161.292 41.106 161.414V247.158C41.106 250.254 42.2379 252.937 44.501 255.196C46.7634 257.457 49.4426 258.594 52.5391 258.594H121.133V189.997H166.868V258.597H235.461C238.557 258.597 241.24 257.462 243.499 255.196C245.762 252.94 246.898 250.255 246.898 247.158V161.414C246.898 160.939 246.833 160.58 246.718 160.346L144 75.6696Z">
-                                            </path>
-                                            <path
-                                                d="M286.013 141.053L246.894 108.541V35.6573C246.894 33.9911 246.358 32.6208 245.283 31.5484C244.217 30.4772 242.847 29.9417 241.177 29.9417H206.88C205.212 29.9417 203.842 30.4772 202.769 31.5484C201.698 32.6208 201.164 33.9917 201.164 35.6573V70.4908L157.577 34.048C153.771 30.9515 149.244 29.4036 144.004 29.4036C138.764 29.4036 134.238 30.9515 130.428 34.048L1.98466 141.053C0.793988 142.004 0.141402 143.284 0.0200197 144.892C-0.100737 146.499 0.315341 147.902 1.26951 149.092L12.3447 162.311C13.2989 163.383 14.5477 164.038 16.0963 164.277C17.526 164.398 18.9556 163.98 20.3853 163.027L144 59.9512L267.616 163.027C268.571 163.858 269.819 164.272 271.368 164.272H271.904C273.45 164.037 274.697 163.378 275.656 162.309L286.732 149.091C287.685 147.899 288.102 146.498 287.978 144.889C287.856 143.286 287.201 142.006 286.013 141.053Z">
-                                            </path>
-                                        </svg>
-
-                                    </span>
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='msSbDiv' aria-hidden='true'></span>
-                                    Market Screener</a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener'>Market
-                                                Overview</a></li>
-                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/PriceVolume'>Price
-                                                / Volume</a></li>
-                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HighsLows'>Highs
-                                                / Lows</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/Returns'>Returns</a>
-                                        </li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/RelativeStrength'>Relative
-                                                Price Strength</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/IndexAnalysis'>Index
-                                                Analysis</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/SectorRotation'>Sector
-                                                Rotation</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/SectorAnalysis'>Sector
-                                                Analysis</a></li>
-                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HeatMap'>Heat
-                                                Map</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/AdvanceDecline'>Advance
-                                                /Decline</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener'>Intraday
-                                                Strategies</a></li>
-                                    </ul>
+                            <div class="tsrsn expand-lg">
+                                <div class="tsrsn-inner">
+                                    <div id="sideNavBarDiv">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a href='https://www.TopStockResearch.com/rt/Home'>
+                                                    <span class='icon-holder' id='homeSbDiv' aria-hidden='true'></span>
+                                                    <br>
+                                                    <span class='title'>Home</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="javascript:void(0);">
+                                                    <span class='icon-holder' id='msSbDiv' aria-hidden='true'> </span>
+                                                    <br>
+                                                    <span class='title'>Market Screener</span>
+                                                </a>
+                                            </li>
+                                    </div>
                                 </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='strSbDiv' aria-hidden='true'> </span>
-                                    TSR Strength Index</a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/TechnicalStrength'>Technical
-                                                Strength</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/FinancialStrength'>Financial
-                                                Strength</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/EODBetaVolatile'>EOD
-                                                Beta Volatile</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='csSbDiv' aria-hidden='true'> </span>
-                                    CandleStick Screeners
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='techSbDiv' aria-hidden='true'> </span>
-                                    Technical Screeners
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/OHLCScreeners'>OHLC
-                                                Screeners</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/OverboughtSold'>Overbought/Sold</a>
-                                        </li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/Overlays'>Overlays</a>
-                                        </li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/TrendIndicator'>Trend
-                                                Indicator</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/VolumeBasedIndicator'>Volume
-                                                Based Indicator</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/SMAScreener'>SMA
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/EMAScreener'>EMA
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/WMAScreener'>WMA
-                                                Screener</a></li>
-                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/PivotPoint'>Pivot
-                                                Point</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/VwapScreener'>VWAP
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/FibonacciScreener'>Fibonacci
-                                                Screener</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='cpSbDiv' aria-hidden='true'>
-                                    </span>
-                                    Chart Patterns
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/PopularChartPatterns'>Popular
-                                                Chart Patterns</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Triangle'>Triangle</a>
-                                        </li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Channel'>Channel</a>
-                                        </li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Trendlines'>Trendlines</a>
-                                        </li>
-                                        <li><a href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/NRWR'>NR
-                                                / WR</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='fundaSbDiv' aria-hidden='true'> </span>
-                                    Financial Screener
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/FinHighlight'>Financial
-                                                Highlight</a></li>
-                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/GuruRatios'>Guru
-                                                Ratios</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/ValuationRatios'>Valuation
-                                                Ratios</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/ProfitabilityRatios'>Profitability
-                                                Ratios</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/SolvencyRatios'>Solvency
-                                                Ratios</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/EfficiencyRatios'>Efficiency
-                                                Ratios</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/IncStatGrowthYr'>Income
-                                                Statment Growth (Yr)</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/BalSheetGrowthYr'>Balance
-                                                Sheet Growth (Yr)</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/CashFlowStatGrowthYr'>Cash
-                                                Flow Stat Growth (Yr)</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='comboSbDiv' aria-hidden='true'> </span> 
-                                    Combo Screener
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/PriceActionScreeners'>Price
-                    Action Screeners</a></li>
-            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish
-                    Technical Screeners</a></li>
-            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish
-                    Technical Screeners</a></li>
-            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/FundamentalScreener'>Fundamental
-                    Screeners</a></li>
-            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/MovingAverageScreeners'>Moving
-                    Average Screeners</a></li>
-        </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href='https://www.TopStockResearch.com/rt/CustomStockScreener.tsr'>
-            <span class='icon-holder' id='diysSbDiv' aria-hidden='true'> </span> <span class='title'>Custom
-                Screener</span></a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='csSbDiv' aria-hidden='true'> </span>
-                                    CandleStick Screeners
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='csSbDiv' aria-hidden='true'> </span>
-                                    CandleStick Screeners
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='csSbDiv' aria-hidden='true'> </span>
-                                    CandleStick Screeners
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='csSbDiv' aria-hidden='true'> </span>
-                                    CandleStick Screeners
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='csSbDiv' aria-hidden='true'> </span>
-                                    CandleStick Screeners
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
+                            </div>
+
+                            <!-- code ends here -->
+                        </div>
+                    </div>
                 </div>
-
-
-
-                <!-- CODE ENDS HERE -->
-
                 <script>var mcat = 'homeSb';</script> <!-- Page Container Start -->
                 <div class="page-container"> <!-- Quick View Start -->
 
@@ -528,7 +157,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <script>var mtppp = '31436563929379977095443';</script>
+                            <script>var mtppp = '52407561852337003415951';</script>
                             <div id='fakeAppDiv'></div>
                             <div class='row'>
                                 <div class="mt-3 d-flex justify-content-center text-center">
@@ -547,9 +176,9 @@
                                                 }
                                             </style>
                                             <div id='displayChartData' align='center'
-                                                style='margin:1px;padding1px; font-size:12px'></div>
+                                                style='margin:1px;padding:1px; font-size:12px'></div>
                                             <div id='Period' align='center'
-                                                style='margin:1px;padding1px; font-size:10px'> <a
+                                                style='margin:1px;padding:1px; font-size:10px'> <a
                                                     onClick="lc.pc ('1D');">1D</a>&nbsp;&nbsp;&nbsp;<a
                                                     onClick="lc.pc ('1W');"><b>1W</b></a>&nbsp;&nbsp;&nbsp;<a
                                                     onClick="lc.pc ('2W');"><b>2W</b></a>&nbsp;&nbsp;&nbsp;<a
@@ -559,7 +188,7 @@
                                                     onClick="lc.pc ('2Y');"><b>2Y</b></a>&nbsp;&nbsp;&nbsp;<a
                                                     onClick="lc.pc ('5Y');"><b>5Y</b></a>&nbsp;&nbsp;&nbsp; </div>
                                             <div id='SimpleChartsDiv'
-                                                style=' width:100%; height:400px;  font: 14px; "Helvetica Neue", Helvetica, Arial, sans-serif;margin:0px'>
+                                                style=' width:100%; height:400px;  font: 14px; margin:0px'>
                                             </div>
                                         </div>
                                     </div>
@@ -598,100 +227,100 @@
                                                 <div class='owl-carousel owl-theme priceGainerCarCss'>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/JPPOWER/BirdsEyeView'>
-                                                                <h6>JPPOWER</h6>
-                                                                <h3 class='fw-bold text-success'>6.63 %</h3><small
-                                                                    class='fw-light h6 '>18.81 / 1.17</small><br /><span
-                                                                    style='color:#ff4c4c;  '>Bearish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/LATENTVIEW/BirdsEyeView'>
-                                                                <h6>LATENTVIEW</h6>
-                                                                <h3 class='fw-bold text-success'>6.30 %</h3><small
-                                                                    class='fw-light h6 '>499.5 /
-                                                                    29.60</small><br /><span
-                                                                    style='color:#96C8A2;  '>Mild Bullish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/ABREL/BirdsEyeView'>
-                                                                <h6>ABREL</h6>
-                                                                <h3 class='fw-bold text-success'>4.19 %</h3><small
-                                                                    class='fw-light h6 '>1822.0 /
-                                                                    73.30</small><br /><span
-                                                                    style='color:#ff9999;  '>Neutral</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/ENDURANCE/BirdsEyeView'>
-                                                                <h6>ENDURANCE</h6>
-                                                                <h3 class='fw-bold text-success'>3.93 %</h3><small
-                                                                    class='fw-light h6 '>2718.0 /
-                                                                    102.90</small><br /><span
-                                                                    style='color:#ff4c4c;  '>Bearish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/INTELLECT/BirdsEyeView'>
-                                                                <h6>INTELLECT</h6>
-                                                                <h3 class='fw-bold text-success'>3.92 %</h3><small
-                                                                    class='fw-light h6 '>1131.0 /
-                                                                    42.70</small><br /><span
-                                                                    style='color:orange;  '>Mild Bearish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/INFY/BirdsEyeView'>
-                                                                <h6>INFY</h6>
-                                                                <h3 class='fw-bold text-success'>3.48 %</h3><small
-                                                                    class='fw-light h6 '>1538.2 /
-                                                                    51.80</small><br /><span
-                                                                    style='color:#ff9999;  '>Neutral</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/MOTHERSON/BirdsEyeView'>
-                                                                <h6>MOTHERSON</h6>
-                                                                <h3 class='fw-bold text-success'>3.46 %</h3><small
-                                                                    class='fw-light h6 '>112.73 /
-                                                                    3.77</small><br /><span
+                                                                href='https://www.topstockresearch.com/rt/Stock/BBTC/BirdsEyeView'>
+                                                                <h6>BBTC</h6>
+                                                                <h3 class='fw-bold text-success'>9.76 %</h3><small
+                                                                    class='fw-light h6 '>2022.7 /
+                                                                    179.90</small><br /><span
                                                                     style='color:#008B00;  '>Bullish</span>
                                                             </a></div>
                                                     </div>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/PERSISTENT/BirdsEyeView'>
-                                                                <h6>PERSISTENT</h6>
-                                                                <h3 class='fw-bold text-success'>3.41 %</h3><small
-                                                                    class='fw-light h6 '>6287.0 /
-                                                                    207.50</small><br /><span
-                                                                    style='color:#96C8A2;  '>Mild Bullish</span>
+                                                                href='https://www.topstockresearch.com/rt/Stock/GMRAIRPORT/BirdsEyeView'>
+                                                                <h6>GMRAIRPORT</h6>
+                                                                <h3 class='fw-bold text-success'>6.18 %</h3><small
+                                                                    class='fw-light h6 '>103.72 /
+                                                                    6.04</small><br /><span
+                                                                    style='color:#004F00;  '>Strong Bullish</span>
                                                             </a></div>
                                                     </div>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/BSOFT/BirdsEyeView'>
-                                                                <h6>BSOFT</h6>
-                                                                <h3 class='fw-bold text-success'>3.28 %</h3><small
-                                                                    class='fw-light h6 '>392.3 /
-                                                                    12.45</small><br /><span
-                                                                    style='color:orange;  '>Mild Bearish</span>
+                                                                href='https://www.topstockresearch.com/rt/Stock/SAPPHIRE/BirdsEyeView'>
+                                                                <h6>SAPPHIRE</h6>
+                                                                <h3 class='fw-bold text-success'>4.34 %</h3><small
+                                                                    class='fw-light h6 '>262.15 /
+                                                                    10.90</small><br /><span
+                                                                    style='color:#ff9999;  '>Neutral</span>
                                                             </a></div>
                                                     </div>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/LALPATHLAB/BirdsEyeView'>
-                                                                <h6>LALPATHLAB</h6>
-                                                                <h3 class='fw-bold text-success'>3.15 %</h3><small
-                                                                    class='fw-light h6 '>3283.0 /
-                                                                    100.40</small><br /><span
+                                                                href='https://www.topstockresearch.com/rt/Stock/GRAPHITE/BirdsEyeView'>
+                                                                <h6>GRAPHITE</h6>
+                                                                <h3 class='fw-bold text-success'>3.96 %</h3><small
+                                                                    class='fw-light h6 '>596.4 /
+                                                                    22.70</small><br /><span
+                                                                    style='color:#008B00;  '>Bullish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.topstockresearch.com/rt/Stock/DEVYANI/BirdsEyeView'>
+                                                                <h6>DEVYANI</h6>
+                                                                <h3 class='fw-bold text-success'>3.86 %</h3><small
+                                                                    class='fw-light h6 '>148.08 /
+                                                                    5.51</small><br /><span style='color:orange;  '>Mild
+                                                                    Bearish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.topstockresearch.com/rt/Stock/PRAJIND/BirdsEyeView'>
+                                                                <h6>PRAJIND</h6>
+                                                                <h3 class='fw-bold text-success'>3.30 %</h3><small
+                                                                    class='fw-light h6 '>344.75 /
+                                                                    11.00</small><br /><span
+                                                                    style='color:#008B00;  '>Bullish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.topstockresearch.com/rt/Stock/KPRMILL/BirdsEyeView'>
+                                                                <h6>KPRMILL</h6>
+                                                                <h3 class='fw-bold text-success'>3.25 %</h3><small
+                                                                    class='fw-light h6 '>1121.6 /
+                                                                    35.30</small><br /><span
+                                                                    style='color:#008B00;  '>Bullish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.topstockresearch.com/rt/Stock/ATHERENERG/BirdsEyeView'>
+                                                                <h6>ATHERENERG</h6>
+                                                                <h3 class='fw-bold text-success'>3.08 %</h3><small
+                                                                    class='fw-light h6 '>668.45 /
+                                                                    20.00</small><br /><span
+                                                                    style='color:#008B00;  '>Bullish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.topstockresearch.com/rt/Stock/KIRLOSENG/BirdsEyeView'>
+                                                                <h6>KIRLOSENG</h6>
+                                                                <h3 class='fw-bold text-success'>2.86 %</h3><small
+                                                                    class='fw-light h6 '>1141.6 /
+                                                                    31.70</small><br /><span
+                                                                    style='color:#004F00;  '>Strong Bullish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.topstockresearch.com/rt/Stock/M&MFIN/BirdsEyeView'>
+                                                                <h6>M&MFIN</h6>
+                                                                <h3 class='fw-bold text-success'>2.77 %</h3><small
+                                                                    class='fw-light h6 '>322.9 / 8.70</small><br /><span
                                                                     style='color:#008B00;  '>Bullish</span>
                                                             </a></div>
                                                     </div>
@@ -751,29 +380,29 @@
                                                         <td><a href='https://www.topstockresearch.com/rt/Stock/NIFTY/BirdsEyeView'
                                                                 alt='S&P CNX NIFTY' title='S&P CNX NIFTY'>NIFTY</a>
                                                         </td>
-                                                        <td>25977.10 </td>
-                                                        <td>67.00 </td>
+                                                        <td>25910.10 </td>
+                                                        <td>-103.301 </td>
                                                         <td>
-                                                            <font color='green'>0.259 %</font>
+                                                            <font color='red'>0.397 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td><a href='https://www.topstockresearch.com/rt/Stock/NIFTY_FIN_SERV/BirdsEyeView'
                                                                 alt='Nifty Fin Service'
                                                                 title='Nifty Fin Service'>NIFTY_FIN_SERV</a> </td>
-                                                        <td>27528.10 </td>
-                                                        <td>-18.701 </td>
+                                                        <td>27546.80 </td>
+                                                        <td>-99.398 </td>
                                                         <td>
-                                                            <font color='red'>0.068 %</font>
+                                                            <font color='red'>0.360 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td><a href='https://www.topstockresearch.com/rt/Stock/NIFTYIT/BirdsEyeView'
                                                                 alt='Nifty IT' title='Nifty IT'>NIFTYIT</a> </td>
-                                                        <td>36855.60 </td>
-                                                        <td>880.40 </td>
+                                                        <td>35975.20 </td>
+                                                        <td>-400.000 </td>
                                                         <td>
-                                                            <font color='green'>2.45 %</font>
+                                                            <font color='red'>1.10 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -787,46 +416,7 @@
                                             <h5 class="card-title">Best Performing Index </h5>
                                         </div>
                                         <div class="card-body">
-                                            <div class='table-responsive'>
-                                                <table class='table table-hover table-striped'>
-                                                    <tr>
-                                                        <th>Code </th>
-                                                        <th>Close </th>
-                                                        <th>Change </th>
-                                                        <th>Change % </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/NIFTYIT/BirdsEyeView'
-                                                                alt='Nifty IT' title='Nifty IT'>NIFTYIT</a> </td>
-                                                        <td>36855.60 </td>
-                                                        <td>880.40 </td>
-                                                        <td>
-                                                            <font color='green'>2.45 %</font>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/NIFTY_MIDCAP_SELECT/BirdsEyeView'
-                                                                alt='Nifty Midcap Select'
-                                                                title='Nifty Midcap Select'>NIFTY_MIDCAP_SELECT</a>
-                                                        </td>
-                                                        <td>13969.00 </td>
-                                                        <td>51.80 </td>
-                                                        <td>
-                                                            <font color='green'>0.372 %</font>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/NIFTY_CONSUM/BirdsEyeView'
-                                                                alt='Nifty Consumption'
-                                                                title='Nifty Consumption'>NIFTY_CONSUM</a> </td>
-                                                        <td>12462.20 </td>
-                                                        <td>31.00 </td>
-                                                        <td>
-                                                            <font color='green'>0.249 %</font>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
+                                            <div class='table-responsive'>No Records Found.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -845,33 +435,33 @@
                                                         <th>Change % </th>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/NIFTY_MEDIA/BirdsEyeView'
-                                                                alt='Nifty Media' title='Nifty Media'>NIFTY_MEDIA</a>
-                                                        </td>
-                                                        <td>1469.95 </td>
-                                                        <td>-12.300 </td>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/NIFTY_REALITY/BirdsEyeView'
+                                                                alt='Nifty Realty'
+                                                                title='Nifty Realty'>NIFTY_REALITY</a> </td>
+                                                        <td>927.30 </td>
+                                                        <td>-18.050 </td>
                                                         <td>
-                                                            <font color='red'>0.830 %</font>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/NIFTY_MICROCAP_250/BirdsEyeView'
-                                                                alt='Nifty Microcap 250'
-                                                                title='Nifty Microcap 250'>NIFTY_MICROCAP_250</a> </td>
-                                                        <td>23439.20 </td>
-                                                        <td>-83.102 </td>
-                                                        <td>
-                                                            <font color='red'>0.353 %</font>
+                                                            <font color='red'>1.91 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/NIFTY_SMALLCAP_250/BirdsEyeView'
-                                                                alt='NIFTY Smallcap 250'
-                                                                title='NIFTY Smallcap 250'>NIFTY_SMALLCAP_250</a> </td>
-                                                        <td>16965.70 </td>
-                                                        <td>-57.102 </td>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/NIFTY_METAL/BirdsEyeView'
+                                                                alt='Nifty Metal' title='Nifty Metal'>NIFTY_METAL</a>
+                                                        </td>
+                                                        <td>10383.70 </td>
+                                                        <td>-112.100 </td>
                                                         <td>
-                                                            <font color='red'>0.335 %</font>
+                                                            <font color='red'>1.07 %</font>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/NIFTY_SMALLCAP_50/BirdsEyeView'
+                                                                alt='NIFTY Smallcap 50'
+                                                                title='NIFTY Smallcap 50'>NIFTY_SMALLCAP_50</a> </td>
+                                                        <td>8805.95 </td>
+                                                        <td>-92.500 </td>
+                                                        <td>
+                                                            <font color='red'>1.04 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -971,102 +561,102 @@
                                                 <div class='owl-carousel owl-theme priceLoserCarCss'>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/KEC/BirdsEyeView'>
-                                                                <h6>KEC</h6>
-                                                                <h3 class='fw-bold text-danger'>-5.76 %</h3><small
-                                                                    class='fw-light h6 '>736.7 /
-                                                                    -45.000</small><br /><span
-                                                                    style='color:#ff9999;  '>Neutral</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/HBLENGINE/BirdsEyeView'>
-                                                                <h6>HBLENGINE</h6>
-                                                                <h3 class='fw-bold text-danger'>-5.59 %</h3><small
-                                                                    class='fw-light h6 '>971.2 /
-                                                                    -57.500</small><br /><span
-                                                                    style='color:#008B00;  '>Bullish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/INOXINDIA/BirdsEyeView'>
-                                                                <h6>INOXINDIA</h6>
-                                                                <h3 class='fw-bold text-danger'>-4.93 %</h3><small
-                                                                    class='fw-light h6 '>1148.5 /
-                                                                    -59.600</small><br /><span
-                                                                    style='color:#96C8A2;  '>Mild Bullish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/SAREGAMA/BirdsEyeView'>
-                                                                <h6>SAREGAMA</h6>
-                                                                <h3 class='fw-bold text-danger'>-4.14 %</h3><small
-                                                                    class='fw-light h6 '>380.15 /
-                                                                    -16.400</small><br /><span
+                                                                href='https://www.topstockresearch.com/rt/Stock/TARIL/BirdsEyeView'>
+                                                                <h6>TARIL</h6>
+                                                                <h3 class='fw-bold text-danger'>-7.63 %</h3><small
+                                                                    class='fw-light h6 '>307.9 /
+                                                                    -25.450</small><br /><span
                                                                     style='color:#ff4c4c;  '>Bearish</span>
                                                             </a></div>
                                                     </div>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/CUB/BirdsEyeView'>
-                                                                <h6>CUB</h6>
-                                                                <h3 class='fw-bold text-danger'>-3.94 %</h3><small
-                                                                    class='fw-light h6 '>267.77 /
-                                                                    -10.990</small><br /><span
-                                                                    style='color:#004F00;  '>Strong Bullish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/WAAREEENER/BirdsEyeView'>
-                                                                <h6>WAAREEENER</h6>
-                                                                <h3 class='fw-bold text-danger'>-3.33 %</h3><small
-                                                                    class='fw-light h6 '>3172.5 /
-                                                                    -109.400</small><br /><span
-                                                                    style='color:#ff9999;  '>Neutral</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/GMDCLTD/BirdsEyeView'>
-                                                                <h6>GMDCLTD</h6>
-                                                                <h3 class='fw-bold text-danger'>-3.23 %</h3><small
-                                                                    class='fw-light h6 '>525.95 /
-                                                                    -17.550</small><br /><span
-                                                                    style='color:#ff4c4c;  '>Bearish</span>
-                                                            </a></div>
-                                                    </div>
-                                                    <div class='item p-2'>
-                                                        <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/COHANCE/BirdsEyeView'>
-                                                                <h6>COHANCE</h6>
-                                                                <h3 class='fw-bold text-danger'>-3.06 %</h3><small
-                                                                    class='fw-light h6 '>578.2 /
-                                                                    -18.250</small><br /><span
+                                                                href='https://www.topstockresearch.com/rt/Stock/KAYNES/BirdsEyeView'>
+                                                                <h6>KAYNES</h6>
+                                                                <h3 class='fw-bold text-danger'>-5.58 %</h3><small
+                                                                    class='fw-light h6 '>5889.0 /
+                                                                    -348.000</small><br /><span
                                                                     style='color:#C0C0C0;  '>Strong Bearish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.topstockresearch.com/rt/Stock/IGIL/BirdsEyeView'>
+                                                                <h6>IGIL</h6>
+                                                                <h3 class='fw-bold text-danger'>-5.05 %</h3><small
+                                                                    class='fw-light h6 '>320.6 /
+                                                                    -17.050</small><br /><span
+                                                                    style='color:#C0C0C0;  '>Strong Bearish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.topstockresearch.com/rt/Stock/RELINFRA/BirdsEyeView'>
+                                                                <h6>RELINFRA</h6>
+                                                                <h3 class='fw-bold text-danger'>-5.00 %</h3><small
+                                                                    class='fw-light h6 '>179.67 /
+                                                                    -9.460</small><br /><span
+                                                                    style='color:#ff4c4c;  '>Bearish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.topstockresearch.com/rt/Stock/SKFINDIA/BirdsEyeView'>
+                                                                <h6>SKFINDIA</h6>
+                                                                <h3 class='fw-bold text-danger'>-4.10 %</h3><small
+                                                                    class='fw-light h6 '>1976.8 /
+                                                                    -84.500</small><br /><span
+                                                                    style='color:#ff4c4c;  '>Bearish</span>
                                                             </a></div>
                                                     </div>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
                                                                 href='https://www.topstockresearch.com/rt/Stock/GPIL/BirdsEyeView'>
                                                                 <h6>GPIL</h6>
-                                                                <h3 class='fw-bold text-danger'>-2.87 %</h3><small
-                                                                    class='fw-light h6 '>257.4 /
-                                                                    -7.600</small><br /><span
+                                                                <h3 class='fw-bold text-danger'>-4.02 %</h3><small
+                                                                    class='fw-light h6 '>265.0 /
+                                                                    -11.100</small><br /><span
                                                                     style='color:orange;  '>Mild Bearish</span>
                                                             </a></div>
                                                     </div>
                                                     <div class='item p-2'>
                                                         <div class='card shadow-lg p-2'><a
-                                                                href='https://www.topstockresearch.com/rt/Stock/CONCORDBIO/BirdsEyeView'>
-                                                                <h6>CONCORDBIO</h6>
-                                                                <h3 class='fw-bold text-danger'>-2.77 %</h3><small
-                                                                    class='fw-light h6 '>1459.7 /
-                                                                    -41.600</small><br /><span
+                                                                href='https://www.topstockresearch.com/rt/Stock/APLLTD/BirdsEyeView'>
+                                                                <h6>APLLTD</h6>
+                                                                <h3 class='fw-bold text-danger'>-3.72 %</h3><small
+                                                                    class='fw-light h6 '>913.55 /
+                                                                    -35.300</small><br /><span
                                                                     style='color:orange;  '>Mild Bearish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.topstockresearch.com/rt/Stock/HONASA/BirdsEyeView'>
+                                                                <h6>HONASA</h6>
+                                                                <h3 class='fw-bold text-danger'>-3.60 %</h3><small
+                                                                    class='fw-light h6 '>288.1 /
+                                                                    -10.750</small><br /><span
+                                                                    style='color:#96C8A2;  '>Mild Bullish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.topstockresearch.com/rt/Stock/INOXWIND/BirdsEyeView'>
+                                                                <h6>INOXWIND</h6>
+                                                                <h3 class='fw-bold text-danger'>-3.55 %</h3><small
+                                                                    class='fw-light h6 '>140.92 /
+                                                                    -5.190</small><br /><span
+                                                                    style='color:#C0C0C0;  '>Strong Bearish</span>
+                                                            </a></div>
+                                                    </div>
+                                                    <div class='item p-2'>
+                                                        <div class='card shadow-lg p-2'><a
+                                                                href='https://www.topstockresearch.com/rt/Stock/GMDCLTD/BirdsEyeView'>
+                                                                <h6>GMDCLTD</h6>
+                                                                <h3 class='fw-bold text-danger'>-3.54 %</h3><small
+                                                                    class='fw-light h6 '>543.5 /
+                                                                    -19.950</small><br /><span
+                                                                    style='color:#ff4c4c;  '>Bearish</span>
                                                             </a></div>
                                                     </div>
                                                 </div><span style='font-size:8pt;color:grey;  '>Symbol /Price Change % /
@@ -1122,33 +712,33 @@
                                                         <th>Change % </th>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/PRECOT/BirdsEyeView'
-                                                                alt='Precot Ltd.' title='Precot Ltd.'>PRECOT</a> </td>
-                                                        <td>463.95 </td>
-                                                        <td>22.70 </td>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/TGL/BirdsEyeView'
+                                                                alt='Teerth Gopicon Ltd.'
+                                                                title='Teerth Gopicon Ltd.'>TGL</a> </td>
+                                                        <td>56.50 </td>
+                                                        <td>2.95 </td>
                                                         <td>
-                                                            <font color='green'>5.14 %</font>
+                                                            <font color='green'>5.51 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/ZENITHSTL/BirdsEyeView'
-                                                                alt='Zenith Steel Pipes & Industries Ltd.'
-                                                                title='Zenith Steel Pipes & Industries Ltd.'>ZENITHSTL</a>
-                                                        </td>
-                                                        <td>8.00 </td>
-                                                        <td>0.200 </td>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/SANGANI/BirdsEyeView'
+                                                                alt='Sangani Hospitals Ltd.'
+                                                                title='Sangani Hospitals Ltd.'>SANGANI</a> </td>
+                                                        <td>70.35 </td>
+                                                        <td>2.85 </td>
                                                         <td>
-                                                            <font color='green'>2.56 %</font>
+                                                            <font color='green'>4.22 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/AKSHAR/BirdsEyeView'
-                                                                alt='Akshar Spintex Ltd.'
-                                                                title='Akshar Spintex Ltd.'>AKSHAR</a> </td>
-                                                        <td>0.560 </td>
-                                                        <td>0.010 </td>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/BEARDSELL/BirdsEyeView'
+                                                                alt='Beardsell Ltd' title='Beardsell Ltd'>BEARDSELL</a>
+                                                        </td>
+                                                        <td>33.25 </td>
+                                                        <td>1.18 </td>
                                                         <td>
-                                                            <font color='green'>1.82 %</font>
+                                                            <font color='green'>3.68 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -1176,34 +766,33 @@
                                                         <th>Change % </th>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/OSELDEVICE/BirdsEyeView'
-                                                                alt='Osel Devices Limited'
-                                                                title='Osel Devices Limited'>OSELDEVICE</a> </td>
-                                                        <td>747.45 </td>
-                                                        <td>41.85 </td>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/DTL/BirdsEyeView'
+                                                                alt='Diensten Tech Ltd.'
+                                                                title='Diensten Tech Ltd.'>DTL</a> </td>
+                                                        <td>167.40 </td>
+                                                        <td>10.00 </td>
                                                         <td>
-                                                            <font color='green'>5.93 %</font>
+                                                            <font color='green'>6.35 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/ANLON/BirdsEyeView'
-                                                                alt='Anlon Technology Solutions Ltd.'
-                                                                title='Anlon Technology Solutions Ltd.'>ANLON</a> </td>
-                                                        <td>407.00 </td>
-                                                        <td>12.00 </td>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/PREMIER/BirdsEyeView'
+                                                                alt='Premier' title='Premier'>PREMIER</a> </td>
+                                                        <td>3.37 </td>
+                                                        <td>0.160 </td>
                                                         <td>
-                                                            <font color='green'>3.04 %</font>
+                                                            <font color='green'>4.98 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/THEINVEST/BirdsEyeView'
-                                                                alt='The Investment Trust of India Ltd.'
-                                                                title='The Investment Trust of India Ltd.'>THEINVEST</a>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/SABEVENTS/BirdsEyeView'
+                                                                alt='SAB Events & Governance Now Media Ltd.'
+                                                                title='SAB Events & Governance Now Media Ltd.'>SABEVENTS</a>
                                                         </td>
-                                                        <td>129.15 </td>
-                                                        <td>2.35 </td>
+                                                        <td>6.20 </td>
+                                                        <td>0.280 </td>
                                                         <td>
-                                                            <font color='green'>1.85 %</font>
+                                                            <font color='green'>4.73 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -1231,33 +820,34 @@
                                                         <th>Change % </th>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/K2INFRA/BirdsEyeView'
-                                                                alt='K2 Infragen Ltd.'
-                                                                title='K2 Infragen Ltd.'>K2INFRA</a> </td>
-                                                        <td>67.75 </td>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/SETUINFRA/BirdsEyeView'
+                                                                alt='Setubandhan Infrastructure Ltd.'
+                                                                title='Setubandhan Infrastructure Ltd.'>SETUINFRA</a>
+                                                        </td>
+                                                        <td>0.540 </td>
+                                                        <td>0.040 </td>
+                                                        <td>
+                                                            <font color='green'>8.00 %</font>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/TGL/BirdsEyeView'
+                                                                alt='Teerth Gopicon Ltd.'
+                                                                title='Teerth Gopicon Ltd.'>TGL</a> </td>
+                                                        <td>56.50 </td>
                                                         <td>3.20 </td>
                                                         <td>
-                                                            <font color='green'>4.96 %</font>
+                                                            <font color='green'>6.00 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/JAIPURKURT/BirdsEyeView'
-                                                                alt='Nandani Creation Ltd.'
-                                                                title='Nandani Creation Ltd.'>JAIPURKURT</a> </td>
-                                                        <td>34.49 </td>
-                                                        <td>1.19 </td>
-                                                        <td>
-                                                            <font color='green'>3.57 %</font>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/SITINET/BirdsEyeView'
+                                                                alt='Siti Networks' title='Siti Networks'>SITINET</a>
                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/ROSSTECH/BirdsEyeView'
-                                                                alt='Rossell Techsys Limited'
-                                                                title='Rossell Techsys Limited'>ROSSTECH</a> </td>
-                                                        <td>697.05 </td>
-                                                        <td>20.40 </td>
+                                                        <td>0.440 </td>
+                                                        <td>0.020 </td>
                                                         <td>
-                                                            <font color='green'>3.01 %</font>
+                                                            <font color='green'>4.76 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -1290,34 +880,34 @@
                                                         <th>Change % </th>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/M&MFIN/TechnicalAnalysis'
-                                                                alt='Mahindra & Mahindra Financial Services Ltd.'
-                                                                title='Mahindra & Mahindra Financial Services Ltd.'>M&MFIN</a>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/HUDCO/TechnicalAnalysis'
+                                                                alt='Housing & Urban Development Corporation Ltd.'
+                                                                title='Housing & Urban Development Corporation Ltd.'>HUDCO</a>
                                                         </td>
-                                                        <td>330.95 </td>
-                                                        <td>8.05 </td>
+                                                        <td>243.93 </td>
+                                                        <td>4.79 </td>
                                                         <td>
-                                                            <font color='green'>2.49 %</font>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/HEROMOTOCO/TechnicalAnalysis'
-                                                                alt='Hero MotoCorp Ltd.'
-                                                                title='Hero MotoCorp Ltd.'>HEROMOTOCO</a> </td>
-                                                        <td>5892.50 </td>
-                                                        <td>93.00 </td>
-                                                        <td>
-                                                            <font color='green'>1.60 %</font>
+                                                            <font color='green'>2.00 %</font>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/NH/TechnicalAnalysis'
-                                                                alt='Narayana Hrudayalaya Ltd'
-                                                                title='Narayana Hrudayalaya Ltd'>NH</a> </td>
-                                                        <td>1996.50 </td>
-                                                        <td>44.80 </td>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/GMRAIRPORT/TechnicalAnalysis'
+                                                                alt='GMR Airports Limited'
+                                                                title='GMR Airports Limited'>GMRAIRPORT</a> </td>
+                                                        <td>103.72 </td>
+                                                        <td>6.04 </td>
                                                         <td>
-                                                            <font color='green'>2.30 %</font>
+                                                            <font color='green'>6.18 %</font>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/AUBANK/TechnicalAnalysis'
+                                                                alt='Au Small Finance Bank Ltd.'
+                                                                title='Au Small Finance Bank Ltd.'>AUBANK</a> </td>
+                                                        <td>920.15 </td>
+                                                        <td>7.45 </td>
+                                                        <td>
+                                                            <font color='green'>0.816 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -1420,13 +1010,13 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/HINDALCO/FundamentalAnalysis'
-                                                                alt='Hindalco Industries Ltd.'
-                                                                title='Hindalco Industries Ltd.'>HINDALCO</a> </td>
-                                                        <td>797.15 </td>
-                                                        <td>-10.000 </td>
+                                                        <td><a href='https://www.topstockresearch.com/rt/Stock/MAHSEAMLES/FundamentalAnalysis'
+                                                                alt='Maharashtra Seamless Ltd.'
+                                                                title='Maharashtra Seamless Ltd.'>MAHSEAMLES</a> </td>
+                                                        <td>565.20 </td>
+                                                        <td>1.80 </td>
                                                         <td>
-                                                            <font color='red'>1.24 %</font>
+                                                            <font color='green'>0.319 %</font>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -1448,7 +1038,7 @@
                                 lc.lc(10000, 200000, 'SimpleChartsDiv', { "period": "3M", "name": "Nifty 50" });
 
                             </script>
-                            <script> mintHtmlUtil.dlg({ divId: 'niftyTechStr', rank: 0.632, title: 'Nifty Tech Index', leftLabel: 'Low', rightLabel: 'High', width: 200, height: 8 }); mintHtmlUtil.dlg({ divId: 'bankNiftyTechStr', rank: 0.63, title: ' Bank Nifty Tech Index', leftLabel: 'Low', rightLabel: 'High', width: 200, height: 8 });</script>
+                            <script> mintHtmlUtil.dlg({ divId: 'niftyTechStr', rank: 0.6196078431372549, title: 'Nifty Tech Index', leftLabel: 'Low', rightLabel: 'High', width: 200, height: 8 }); mintHtmlUtil.dlg({ divId: 'bankNiftyTechStr', rank: 0.6739999999999999, title: ' Bank Nifty Tech Index', leftLabel: 'Low', rightLabel: 'High', width: 200, height: 8 });</script>
                             <div id='heatMapAdsDiv' align='center'><a
                                     href='https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY50'><img
                                         src='https://www.TopStockResearch.com/static/img/Campaign/HeatMapCreative.gif'
@@ -3160,7 +2750,7 @@
 <div id='artnuDiv'></div>
 <script src='https://www.topstockresearch.com/static/js/tsr/my/fav_minV0.0.1.1.js'></script>
 <script
-    src='https://www.topstockresearch.com/static/js/tsr/mipu/mipu_minV0.0.0.71.js'"></script><script> misu.iar();   </script><div class="
+    src='https://www.topstockresearch.com/static/js/tsr/mipu/mipu_minV0.0.0.71.js'"></script><script> misu.iar('null');   </script><div class="
     modal fade" id="tsrUserRegModal" tabindex="-1">
 			        <div class="modal-dialog modal-dialog-centered">
 			            <div class="modal-content"  id='tsrUserRegModalContent'>

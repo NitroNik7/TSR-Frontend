@@ -25,8 +25,39 @@
     <script src="https://www.topstockresearch.com/static/js/tsr/common/mint_cn_minV0.7.5.181.js"></script>
     <script src="https://www.topstockresearch.com/static/mig/js/aio_cmnV0.0.0.43.js"></script>
 </head>
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-20026022-1']);
+    _gaq.push(['_setDomainName', 'topstockresearch.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
 
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10KWGPV9XG"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-10KWGPV9XG');
+</script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10926652708"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-10926652708');
+</script>
 <style>
     .dummyCss {
         position: relative;
@@ -65,412 +96,332 @@
 
                 <style>
                     .navMenuContainer {
+                        width: 70px;
                         position: fixed;
-                        top: 60px;
-                        bottom: 0px;
+                        top: 65px;
+                        height: 100%;
+                        display: flex;
                         z-index: 1000;
-
                     }
 
-                    nav {
-                        position: relative;
+                    .navSideBar {
                         width: 70px;
-                        height: 100%;
                         background: linear-gradient(0deg, #09124f 0, #090979 30%, #006fbf 100%);
                     }
 
-                    nav ul {
+                    .navSideBar>ul {
                         list-style: none;
                         padding: 0;
-                        margin: 0;
+                        overflow: auto;
+                        
+                        height: 100%;
                     }
 
-                    nav li {
-                        position: relative;
-                        /* for positioning the submenu */
+                    .navSideBar>ul::-webkit-scrollbar {
+                        width: 4px;
+                        background: white;
+                    }   
+                    .navSideBar>ul::-webkit-scrollbar-track {
+                        background-color: white;
+                    }   
+                    .navSideBar>ul::-webkit-scrollbar-track-piece {
+                        background-color: white;
+                    }   
+                    .navSideBar>ul>li>ul {
+                        display: none;
+                        position: fixed;
+                        left: 70px;
+                        list-style: none;
+                        padding: 0;
+                        background: linear-gradient(0deg, #09124f 0, #090979 30%, #006fbf 100%);
+                        border: 1px solid gray;
+                        padding: 0;
                     }
 
-                    nav>ul>li>a {
-                        padding: 5px;
+                    .navSideBar>ul>li>ul>li {
+                        padding: 10px;
+                    }
+
+                    .navSideBar>ul>li>ul>li>a {
+                        color: white;
+                        font-size: 14px;
+                    }
+
+                    .navSideBar>ul>li>a {
                         display: flex;
                         flex-direction: column;
-                        align-items: center;
-                        color: white;
-                        text-decoration: none;
-                        margin: 5px 0;
-                        font-size: 12px;
+                        font-size: 10px;
                         text-align: center;
-                        line-height: 16px;
-
                     }
 
-                    nav>ul>li>a:hover {
-                        background: white;
-                        color: black;
+                    .navSideBar>ul>li{
+                        display: flex;
+                        justify-content: center;
                     }
 
-                    nav>ul>li>a:hover svg {
-                        fill: black;
-                    }
-
-                    /* Submenu (hidden by default) */
-                    nav li .submenu {
-                        display: none;
-                        position: absolute;
-                        top: 0;
-                        left: 100%;
-                        /* or adjust if you want it inside */
-                        background: white;
-                        min-width: 150px;
-                        border: 1px solid lightgray;
-                        /* so it floats above other things */
-                        font-size: 14px;
-                        font-weight: 600;
-
-                    }
-
-                    nav li:hover>.submenu {
-                        display: block;
-
-                    }
-
-                    .submenu li a {
-                        display: block;
-                        padding: 10px;
-                        color: black;
-                        text-decoration: none;
-                    }
-
-                    .submenu li a:hover {
-                        background: linear-gradient(0deg, #09124f 0, #090979 30%, #006fbf 100%);
+                    .navSideBar>ul>li:hover>a {
                         color: white;
+                    }
+
+                    .navSideBar>ul>li:hover>ul {
+                        display: block;
+                    }
+
+                    .navSideBar>ul>li>ul>li:hover{
+                        background: white;
+                        
+                    }
+                    
+                    .navSideBar>ul>li>ul>li:hover>a{
+                        color: black;
+
                     }
                 </style>
 
                 <div class="navMenuContainer">
-                    <nav>
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <span>
-                                        <svg height="32" viewBox="0 0 288 288" fill="white"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M144 75.6696L41.2862 160.346C41.2862 160.466 41.2562 160.642 41.1961 160.881C41.1373 161.119 41.106 161.292 41.106 161.414V247.158C41.106 250.254 42.2379 252.937 44.501 255.196C46.7634 257.457 49.4426 258.594 52.5391 258.594H121.133V189.997H166.868V258.597H235.461C238.557 258.597 241.24 257.462 243.499 255.196C245.762 252.94 246.898 250.255 246.898 247.158V161.414C246.898 160.939 246.833 160.58 246.718 160.346L144 75.6696Z">
-                                            </path>
-                                            <path
-                                                d="M286.013 141.053L246.894 108.541V35.6573C246.894 33.9911 246.358 32.6208 245.283 31.5484C244.217 30.4772 242.847 29.9417 241.177 29.9417H206.88C205.212 29.9417 203.842 30.4772 202.769 31.5484C201.698 32.6208 201.164 33.9917 201.164 35.6573V70.4908L157.577 34.048C153.771 30.9515 149.244 29.4036 144.004 29.4036C138.764 29.4036 134.238 30.9515 130.428 34.048L1.98466 141.053C0.793988 142.004 0.141402 143.284 0.0200197 144.892C-0.100737 146.499 0.315341 147.902 1.26951 149.092L12.3447 162.311C13.2989 163.383 14.5477 164.038 16.0963 164.277C17.526 164.398 18.9556 163.98 20.3853 163.027L144 59.9512L267.616 163.027C268.571 163.858 269.819 164.272 271.368 164.272H271.904C273.45 164.037 274.697 163.378 275.656 162.309L286.732 149.091C287.685 147.899 288.102 146.498 287.978 144.889C287.856 143.286 287.201 142.006 286.013 141.053Z">
-                                            </path>
-                                        </svg>
-
-                                    </span>
-                                    Home
-                                </a>
+                    <div class="navSideBar">
+                        <ul class="nav flex-column">
+                            <li class='nav-item' style='margin-top:6px;'><a
+                                    href='https://www.TopStockResearch.com/rt/Home'> <span class='icon-holder'
+                                        id='homeSbDiv' aria-hidden='true'> </span> <span class='title'>Home</span></a>
                             </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='msSbDiv' aria-hidden='true'></span>
-                                    Market Screener</a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener'>Market
-                                                Overview</a></li>
-                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/PriceVolume'>Price
-                                                / Volume</a></li>
-                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HighsLows'>Highs
-                                                / Lows</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/Returns'>Returns</a>
-                                        </li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/RelativeStrength'>Relative
-                                                Price Strength</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/IndexAnalysis'>Index
-                                                Analysis</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/SectorRotation'>Sector
-                                                Rotation</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/SectorAnalysis'>Sector
-                                                Analysis</a></li>
-                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HeatMap'>Heat
-                                                Map</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/AdvanceDecline'>Advance
-                                                /Decline</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener'>Intraday
-                                                Strategies</a></li>
-                                    </ul>
-                                </div>
+                            <li class="nav-item dropdown" style='margin-top:6px;'>
+                                <a href="javascript:void(0);"><span class='icon-holder' id='msSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Market
+                                        Screener</span></a>
+                                <ul>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener'>Market
+                                            Overview</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/PriceVolume'>Price
+                                            / Volume</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HighsLows'>Highs
+                                            / Lows</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/Returns'>Returns</a>
+                                    </li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/RelativeStrength'>Relative
+                                            Price Strength</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/IndexAnalysis'>Index
+                                            Analysis</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/SectorRotation'>Sector
+                                            Rotation</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/SectorAnalysis'>Sector
+                                            Analysis</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HeatMap'>Heat
+                                            Map</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/AdvanceDecline'>Advance
+                                            /Decline</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener'>Intraday
+                                            Strategies</a></li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='strSbDiv' aria-hidden='true'> </span>
-                                    TSR Strength Index</a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/TechnicalStrength'>Technical
-                                                Strength</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/FinancialStrength'>Financial
-                                                Strength</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/EODBetaVolatile'>EOD
-                                                Beta Volatile</a></li>
-                                    </ul>
-                                </div>
+                            <li class="nav-item dropdown" style='margin-top:6px;'>
+                                <a href="javascript:void(0);"><span class='icon-holder' id='strSbDiv'
+                                        aria-hidden='true'> </span> <span class='title'>TSR Strength
+                                        Index</span></a>
+                                <ul>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/TechnicalStrength'>Technical
+                                            Strength</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/FinancialStrength'>Financial
+                                            Strength</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/EODBetaVolatile'>EOD
+                                            Beta Volatile</a></li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='csSbDiv' aria-hidden='true'> </span>
-                                    CandleStick Screeners
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <li class="nav-item dropdown" style='margin-top:6px;'>
+                                <a href="javascript:void(0);"><span class='icon-holder' id='csSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Candlestick
+                                        Screeners</span></a>
+                                <ul>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
+                                            Screener</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
+                                            Screener</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='techSbDiv' aria-hidden='true'> </span>
-                                    Technical Screeners
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/OHLCScreeners'>OHLC
-                                                Screeners</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/OverboughtSold'>Overbought/Sold</a>
-                                        </li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/Overlays'>Overlays</a>
-                                        </li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/TrendIndicator'>Trend
-                                                Indicator</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/VolumeBasedIndicator'>Volume
-                                                Based Indicator</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/SMAScreener'>SMA
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/EMAScreener'>EMA
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/WMAScreener'>WMA
-                                                Screener</a></li>
-                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/PivotPoint'>Pivot
-                                                Point</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/VwapScreener'>VWAP
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Technical/FibonacciScreener'>Fibonacci
-                                                Screener</a></li>
-                                    </ul>
-                                </div>
+                            <li class="nav-item dropdown" style='margin-top:6px;'>
+                                <a href="javascript:void(0);"><span class='icon-holder' id='techSbDiv'
+                                        aria-hidden='true'> </span> <span class='title'>Technical
+                                        Screeners</span></a>
+                                <ul>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/OHLCScreeners'>OHLC
+                                            Screeners</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/OverboughtSold'>Overbought/Sold</a>
+                                    </li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/Overlays'>Overlays</a>
+                                    </li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/TrendIndicator'>Trend
+                                            Indicator</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/VolumeBasedIndicator'>Volume
+                                            Based Indicator</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/SMAScreener'>SMA
+                                            Screener</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/EMAScreener'>EMA
+                                            Screener</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/WMAScreener'>WMA
+                                            Screener</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/PivotPoint'>Pivot
+                                            Point</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/VwapScreener'>VWAP
+                                            Screener</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/FibonacciScreener'>Fibonacci
+                                            Screener</a></li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='cpSbDiv' aria-hidden='true'>
-                                    </span>
-                                    Chart Patterns
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/PopularChartPatterns'>Popular
-                                                Chart Patterns</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Triangle'>Triangle</a>
-                                        </li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Channel'>Channel</a>
-                                        </li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Trendlines'>Trendlines</a>
-                                        </li>
-                                        <li><a href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/NRWR'>NR
-                                                / WR</a></li>
-                                    </ul>
-                                </div>
+                            <li class="nav-item dropdown" style='margin-top:6px;'>
+                                <a href="javascript:void(0);"><span class='icon-holder' id='cpSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Chart
+                                        Patterns</span></a>
+                                <ul>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/PopularChartPatterns'>Popular
+                                            Chart Patterns</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Triangle'>Triangle</a>
+                                    </li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Channel'>Channel</a>
+                                    </li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Trendlines'>Trendlines</a>
+                                    </li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/NRWR'>NR
+                                            / WR</a></li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='fundaSbDiv' aria-hidden='true'> </span>
-                                    Financial Screener
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/FinHighlight'>Financial
-                                                Highlight</a></li>
-                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/GuruRatios'>Guru
-                                                Ratios</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/ValuationRatios'>Valuation
-                                                Ratios</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/ProfitabilityRatios'>Profitability
-                                                Ratios</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/SolvencyRatios'>Solvency
-                                                Ratios</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/EfficiencyRatios'>Efficiency
-                                                Ratios</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/IncStatGrowthYr'>Income
-                                                Statment Growth (Yr)</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/BalSheetGrowthYr'>Balance
-                                                Sheet Growth (Yr)</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Financial/CashFlowStatGrowthYr'>Cash
-                                                Flow Stat Growth (Yr)</a></li>
-                                    </ul>
-                                </div>
+                            <li class="nav-item dropdown" style='margin-top:6px;'>
+                                <a href="javascript:void(0);"><span class='icon-holder' id='fundaSbDiv'
+                                        aria-hidden='true'> </span> <span class='title'>Financial
+                                        Screener</span></a>
+                                <ul>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/FinHighlight'>Financial
+                                            Highlight</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/GuruRatios'>Guru
+                                            Ratios</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/ValuationRatios'>Valuation
+                                            Ratios</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/ProfitabilityRatios'>Profitability
+                                            Ratios</a></li>
+                                    <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/SolvencyRatios'>Solvency
+                                            Ratios</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/EfficiencyRatios'>Efficiency
+                                            Ratios</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/IncStatGrowthYr'>Income
+                                            Statment Growth (Yr)</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/BalSheetGrowthYr'>Balance
+                                            Sheet Growth (Yr)</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/CashFlowStatGrowthYr'>Cash
+                                            Flow Stat Growth (Yr)</a></li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='comboSbDiv' aria-hidden='true'> </span> 
-                                    Combo Screener
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/PriceActionScreeners'>Price
-                    Action Screeners</a></li>
-            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish
-                    Technical Screeners</a></li>
-            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish
-                    Technical Screeners</a></li>
-            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/FundamentalScreener'>Fundamental
-                    Screeners</a></li>
-            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/MovingAverageScreeners'>Moving
-                    Average Screeners</a></li>
-        </ul>
-                                </div>
+                            <li class="nav-item dropdown" style='margin-top:6px;'>
+                                <a href="javascript:void(0);"><span class='icon-holder' id='comboSbDiv'
+                                        aria-hidden='true'> </span> <span class='title'>Combo
+                                        Screener </span></a>
+                                <ul>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/PriceActionScreeners'>Price
+                                            Action Screeners</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish
+                                            Technical Screeners</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish
+                                            Technical Screeners</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/FundamentalScreener'>Fundamental
+                                            Screeners</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/MovingAverageScreeners'>Moving
+                                            Average Screeners</a></li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href='https://www.TopStockResearch.com/rt/CustomStockScreener.tsr'>
-            <span class='icon-holder' id='diysSbDiv' aria-hidden='true'> </span> <span class='title'>Custom
-                Screener</span></a>
+                            <li class='nav-item' style='margin-top:6px;'><a
+                                    href='https://www.TopStockResearch.com/rt/CustomStockScreener.tsr'> <span
+                                        class='icon-holder' id='diysSbDiv' aria-hidden='true'> </span> <span
+                                        class='title'>Custom Screener</span></a></li>
+                            <li class="nav-item dropdown" style='margin-top:6px;'>
+                                <a href="javascript:void(0);"><span class='icon-holder' id='expsSbDiv'
+                                        aria-hidden='true'> </span> <span class='title'>Expert
+                                        Screeners</span></a>
+                                <ul>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/PriceActionBased'>Price
+                                            Action Strategies</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/TechIndiBased'>Technical
+                                            Indicator Strategies</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/MovingAverageStrategies'>Moving
+                                            Average Strategies</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/BTSTStrategies'>BTST
+                                            Strategies</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/BreakoutStrategies'>Breakout
+                                            Strategies</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/SwingTradingStrategies'>Swing
+                                            Trading Strategies</a></li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='csSbDiv' aria-hidden='true'> </span>
-                                    CandleStick Screeners
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <li class='nav-item' style='margin-top:6px;'><a
+                                    href='https://www.TopStockResearch.com/rt/InteractiveCharts.tsr'> <span
+                                        class='icon-holder' id='tcSbDiv' aria-hidden='true'> </span> <span
+                                        class='title'>Technical Charts</span></a></li>
+                            <li class='nav-item' style='margin-top:6px;'><a
+                                    href='https://www.TopStockResearch.com/my/TsrPlans/'> <span class='icon-holder'
+                                        id='subsSbDiv' aria-hidden='true'> </span> <span class='title'>Premium
+                                        Plans</span></a></li>
+                            <li class="nav-item dropdown" style='margin-top:6px;'>
+                                <a href="javascript:void(0);"><span class='icon-holder' id='fnoSbDiv'
+                                        aria-hidden='true'> </span> <span class='title'>Futures And
+                                        Options</span></a>
+                                <ul>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures'>Futures
+                                            Screeners</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/CallOptions'>Call
+                                            Option Screeners</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutOptions'>Put
+                                            Option Screeners</a></li>
+                                    <li><a
+                                            href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutCallRatio'>PCR
+                                            Screeners</a></li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='csSbDiv' aria-hidden='true'> </span>
-                                    CandleStick Screeners
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='csSbDiv' aria-hidden='true'> </span>
-                                    CandleStick Screeners
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='csSbDiv' aria-hidden='true'> </span>
-                                    CandleStick Screeners
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class='icon-holder' id='csSbDiv' aria-hidden='true'> </span>
-                                    CandleStick Screeners
-                                </a>
-                                <div class="submenu">
-                                    <ul>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
-                                                Screener</a></li>
-                                        <li><a
-                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <li class="nav-item dropdown" style='margin-top:6px;'>
+                                <a href="javascript:void(0);"><span class='icon-holder' id='tutSbDiv'
+                                        aria-hidden='true'> </span> <span class='title'>Learn
+                                    </span></a>
+                                <ul>
+                                    <li><a href='https://tutorials.TopStockResearch.com'>Tutorials</a></li>
+                                    <li><a href='https://www.TopStockResearch.com/rt/Ebooks'>E-Books</a></li>
+                                </ul>
                             </li>
                         </ul>
-                    </nav>
+                    </div>
                 </div>
-
-
 
                 <!-- CODE ENDS HERE -->
 
@@ -547,9 +498,9 @@
                                                 }
                                             </style>
                                             <div id='displayChartData' align='center'
-                                                style='margin:1px;padding1px; font-size:12px'></div>
+                                                style='margin:1px;padding: 1px; font-size:12px'></div>
                                             <div id='Period' align='center'
-                                                style='margin:1px;padding1px; font-size:10px'> <a
+                                                style='margin:1px;padding: 1px; font-size:10px'> <a
                                                     onClick="lc.pc ('1D');">1D</a>&nbsp;&nbsp;&nbsp;<a
                                                     onClick="lc.pc ('1W');"><b>1W</b></a>&nbsp;&nbsp;&nbsp;<a
                                                     onClick="lc.pc ('2W');"><b>2W</b></a>&nbsp;&nbsp;&nbsp;<a
@@ -559,7 +510,7 @@
                                                     onClick="lc.pc ('2Y');"><b>2Y</b></a>&nbsp;&nbsp;&nbsp;<a
                                                     onClick="lc.pc ('5Y');"><b>5Y</b></a>&nbsp;&nbsp;&nbsp; </div>
                                             <div id='SimpleChartsDiv'
-                                                style=' width:100%; height:400px;  font: 14px; "Helvetica Neue", Helvetica, Arial, sans-serif;margin:0px'>
+                                                style=' width:100%; height:400px;  font: 14px; margin:0px'>
                                             </div>
                                         </div>
                                     </div>
