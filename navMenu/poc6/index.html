@@ -919,8 +919,8 @@
                         let visibleHeight = navList.clientHeight;
                         let actualHeight = navList.scrollHeight;
 
-                        let scrolledHeightFromTop = navList.scrollTop;
-                        let scrollHeight = actualHeight - visibleHeight;
+                        let scrolledHeightFromTop = Math.round(navList.scrollTop);
+                        let scrollHeight = Math.round(actualHeight - visibleHeight);
 
                         if (scrollHeight > scrolledHeightFromTop) {
                             navList.scrollBy(0, actualHeight);
