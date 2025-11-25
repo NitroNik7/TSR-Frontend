@@ -1,0 +1,175 @@
+@media (max-width:1024px){
+    .navbar-header {
+        width: 100%;
+        text-align: center;
+	}
+    .navbar-brand {
+        display: block;
+        float: none;
+    }
+     
+
+}
+
+@media (max-width:991px){
+	 .TsrLogo{
+    	 display: none;
+    }
+    .pageHead{
+       display: none;
+    }
+    h1{
+        font-size:18px;
+        margin:5px 5px 5px 10px; padding:2px;
+    }
+
+    th.v992, td.v992{
+      display: none;
+      width: 0;
+      height: 0;
+      opacity: 0;
+      visibility: collapse;
+    }
+   
+
+    
+}
+
+@media (min-width: 991px){
+    .navbar-brand {
+        display: none;
+    }
+}
+
+
+.container.no-gutter{
+   padding-right: 0px;
+   padding-left: 0px;
+   margin:0px 0px 0px 0px;
+}
+
+@media (min-width: 768px){
+    .mobileDiv {
+        display: none;
+    }
+}
+/* vertAdv  */
+
+@media (max-width: 767px){
+   
+    /*.btn{
+      font-size: 90%;
+      padding:4px 9px;
+      line-height: .7;
+    }*/
+ .hideForMobile{
+       display: none;
+    }
+    
+th.v768, td.v768{
+      display: none;
+      width: 0;
+      height: 0;
+      opacity: 0;
+      visibility: collapse;
+    }
+
+}
+
+@media (max-width: 640px){
+   
+    h1{
+        font-size:16px;
+        margin:1px 0px 5px 5px; padding:1px;
+    }
+    p {
+      word-wrap:break-word
+      max-width:320px
+      white-space:normal;
+
+    }
+}
+
+
+
+
+/*@media (max-width: 990px){
+  body{
+    width: 1024px;
+
+  }
+
+}*/
+/*@media (min-width:1024px) {    
+    body .container{
+        width:1200px;
+    }
+}*/
+
+
+#header  {padding: 0px 0px 0px 10px;margin:0px 0px 0px 0px;  width: 100%;  text-align: center;
+ position:relative;overflow: hidden;
+
+}
+
+#header h2 {
+ margin:4px 4px 4px 4px; padding:4px; font-family:verdana; font-weight:normal; color:#00557F; font-size:12px;width: auto; text-align:left;
+}
+
+ h2 {
+ margin:4px 4px 4px 4px; padding:0px; font-family:verdana; font-weight:normal; color:#00557F; font-size:16px;width: auto; 
+}
+
+/* no-gutters Class Rules */
+.row.no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.row.no-gutter [class*='col-']:not(:first-child),
+.row.no-gutter [class*='col-']:not(:last-child) {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+img { 
+  max-width: 100%;
+  /*max-height: 100%;*/
+}
+
+.btn{
+  line-height: 1.2;
+}
+
+
+.firstcol
+{
+min-width:180px;
+max-width:200px;
+
+color:#000;
+text-align:left;
+}
+
+
+
+
+ul.share-buttons{
+  list-style: none;
+  padding: 0;
+}
+
+ul.share-buttons li{
+  display: inline;
+}
+
+ul.share-buttons .sr-only {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}

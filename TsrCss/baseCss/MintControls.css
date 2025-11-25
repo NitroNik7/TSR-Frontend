@@ -1,0 +1,70 @@
+
+/* Consolidated  MyScreener and tsrchars,css in One */
+
+
+.miCtrl input{
+	border-radius: 4px;	
+	box-shadow: inset 0px 0px 0px 0px red;
+	text-shadow: none;
+	border-color: #C0C0C0;
+	padding-left: 5px;
+	background-color:white;	
+}
+
+
+.miCtrl select{
+	border-radius: 4px;	
+	height: 24px;
+	box-shadow: inset 0px 0px 0px 0px red;
+	text-shadow: none;
+	border-color: #C0C0C0;
+	background-color:white;	
+
+}
+
+.miCtrl input[type=checkbox] , input[type=radio] {
+	-webkit-appearance: none;
+	  -moz-appearance: none;
+	  -o-appearance: none;
+	  appearance:none;
+	height: 15px;
+	width: 15px; 
+	background-color: white;	
+	border: 1px solid grey;
+}
+
+.miCtrl input[type=checkbox]:checked    {
+    background-color: greenyellow;
+	
+}
+
+.miCtrl  input[type=radio] {
+	-webkit-appearance: none;
+	  -moz-appearance: none;
+	  -o-appearance: none;
+	  appearance:none;
+	height: 15px;
+	width: 15px; 
+	background-color: white;	
+	border: 1px solid grey;
+	border-radius: 12px;	
+}
+
+.miCtrl input[type=radio]:checked    {
+    background-color: greenyellow;
+	
+}
+
+.miCtrl button{
+	border-radius: 4px;	
+	height: 24px;
+	box-shadow: inset 0px 0px 0px 0px red;
+	text-shadow: none;
+	border-color: #C0C0C0;
+	background-color:white;
+}
+
+
+
+
+

@@ -1,0 +1,51 @@
+
+
+
+CSS in Scope ...
+
+
+
+aioCmnV0.0.0.1.css ---  
+
+Common
+
+1.  /static/mig/css/responsive.css
+
+2. static/mig/css/mytsr_struct.css
+
+
+3. /static/mig/css/my.css
+
+4. /static/css/v3/MintCommon.css
+
+
+5. /static/css/v3/MintControls.css
+
+
+Mint Charts
+
+
+/static/css/v3/MintCharts.css
+
+
+
+
+
+Mint Screener
+
+/static/css/v3/MintScreener.css
+
+
+
+cat responsive.css mytsr_struct.css my.css ../../css/v3/MintCommon.css ../../css/v3/MintControls.css > aioCmnV0.0.0.6.css
+
+
+
+
+java -jar $GOOG_CSS_COMPILER --output-file aioCmnV0.0.0.5.css responsive.css mytsr_struct.css my.css ../../css/v3/MintCommon.css ../../css/v3/MintControls.css
+
+
+
+java -jar  /opt/tools/closure-stylesheets.jar   --output-file aioCmnV0.0.0.5.css responsive.css mytsr_struct.css my.css ../../css/v3/MintCommon.css ../../css/v3/MintControls.css
+
+

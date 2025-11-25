@@ -1,0 +1,339 @@
+
+    body {
+
+    }
+
+    text {
+    }
+
+    text.symbol {
+        fill: #0b5595;
+        font-size :13px;
+    }
+
+
+
+
+
+  #tsrChartId path  {
+
+        stroke-width: 1 !important;;
+
+
+
+
+    }
+
+	path.line {
+        fill: none;
+
+    }
+
+   .close{
+	opacity: 1;  /* helps to remove hyper link */
+	font-size :11px;
+	color : grey;
+	pointer-events:none;  /* helps to remove hyper link */
+
+   }
+
+
+    .indicator-plot path.line {
+        fill: none;
+        stroke-width: 1;
+    }
+/*
+    button {
+        position: absolute;
+        right: 110px;
+        top: 25px;
+    }
+*/
+
+    .analysis path, .analysis circle {
+        stroke: grey;
+        stroke-width: 1;
+    }
+
+
+    .interaction path, .interaction circle {
+        pointer-events: all;
+    }
+
+    .interaction .body {
+        cursor: move;
+    }
+
+    .crosshair {
+        cursor: crosshair;
+    }
+
+    .crosshair path.wire {
+        stroke: #9E9E9E;
+        stroke-dasharray: 2, 2;
+    }
+
+    .crosshair .axisannotation path {
+        fill: #DDDDDD; opacity: 1;
+    }
+
+
+   .horiLine path {
+
+    }
+    .horiLines .interaction path {
+        pointer-events: all;
+        cursor: ns-resize;
+    }
+
+.horiLines .axisannotation path {
+        fill: #DDDDDD; opacity: 1;
+    }
+
+    .mouseover .horiLine path {
+        stroke-width: 1.5;
+    }
+
+    .dragging .horiLine path {
+        stroke: maroon;
+    }
+
+   .vertiLine path {
+
+    }
+    .vertiLines .interaction path {
+        pointer-events: all;
+        cursor: ns-resize;
+    }
+   .mouseover .vertiLine path {
+        stroke-width: 1.5;
+    }
+    .dragging .vertiLine path {
+        stroke: maroon;
+    }
+
+    path.line {
+        stroke-linejoin: miter;
+    }
+
+/* TrendLine*/
+      .trendline circle {
+        stroke-width: 0;
+        display: none;
+    }
+
+    .mouseover .trendline path {
+        stroke-width: 1.5;
+    }
+
+    .mouseover .trendline circle {
+        stroke-width: 5;
+        display: inline;
+    }
+
+    .dragging .trendline path, .dragging .trendline circle {
+        stroke: darkblue;
+    }
+
+  .interaction path, .interaction circle {
+        pointer-events: all;
+    }
+
+    .interaction .body {
+        cursor: move;
+    }
+
+    .trendlines .interaction .start, .trendlines .interaction .end {
+        cursor: nwse-resize;
+    }
+
+   .ppLines  path {
+         stroke:  #a27f16;stroke-width: 1; stroke-dasharray: 5, 5;
+    }
+
+   .ppAnno  path {
+        stroke: red;stroke-width: 1;
+	fill: yellow;opacity: 1;!important;stroke:2;font-weight:2;
+    }
+
+
+
+.chartPanel {
+    border: 2px solid #DDDDDD;
+    border-radius: 15px;
+
+    padding:10px;
+    background-color: #fafafa;
+}
+
+
+
+
+.chartControl{
+font-family: sans-serif;
+	    font-size: 10pt;
+
+
+
+}
+
+
+
+.colorTable {
+
+
+
+  top: 5%;
+  left: 50%;
+  position: absolute;
+  padding: 0;
+border: 1px solid #D3D3D3;
+	opacity: 1;
+background-color: white;
+
+
+}
+
+.colorTable table{
+ border-spacing: 1px;
+ border-color: gray;
+ border-collapse:separate;
+
+}
+
+.colorTable td{
+ padding: 1px; height: 1px;
+}
+
+
+/*  chart Styling */
+
+.colorBtn{
+position:relative;
+border-radius: 12px;
+height: 40px;
+margin: 0 auto;
+}
+
+
+.indiPadding >tbody>tr>td {
+padding-top: 2px;    !important;
+}
+
+.indiMargin {
+margin: 6px;
+}
+
+.symbol{
+	color:blue;
+	fill: none;
+        stroke-width: 1;
+}
+
+
+
+.cc_settings        {
+            display: none;
+            position: fixed;
+            width: 20px;
+            height:20px;
+
+	    font-family: sans-serif;
+	    font-size: 12pt;
+		opacity: 1;
+        }
+
+.innerTable{
+	background-color:transparent;
+	background: none;
+
+}
+
+.innerTable td, .borderless th {
+    border: none;
+    padding: 0px !important;
+
+
+}
+
+
+.techIndiSetting{
+border-radius: 8px; border: 2px solid #DDDDDD; padding:5px; justify-content-center align-items-center; width:100%;
+
+}
+
+
+div.myTsrDivTable {
+  border: 1px solid #E1EEF4;
+  background-color: #F9F9F9;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+.divTable.myTsrDivTable .divTableCell, .divTable.myTsrDivTable .divTableHead {
+  border: 0px solid #E1EEF4;
+  padding: 3px 2px;
+}
+.divTable.myTsrDivTable .divTableBody .divTableCell {
+  font-size: 13px;
+}
+.divTable.myTsrDivTable .divTableRow:nth-child(even) {
+  background: #FFFFFF;
+}
+.divTable.myTsrDivTable .divTableHeading {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+.divTable.myTsrDivTable .divTableHeading .divTableHead {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+.divTable.myTsrDivTable .divTableHeading .divTableHead:first-child {
+  border-left: none;
+}
+
+.myTsrDivTable .tableFootStyle {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}
+.myTsrDivTable .tableFootStyle {
+  font-size: 14px;
+}
+.myTsrDivTable .tableFootStyle .links {
+	 text-align: right;
+}
+.myTsrDivTable .tableFootStyle .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+.myTsrDivTable.outerTableFooter {
+  border-top: none;
+}
+.myTsrDivTable.outerTableFooter .tableFootStyle {
+  padding: 3px 5px;
+}
+/* DivTable.com */
+.divTable{ display: table; }
+.divTableRow { display: table-row; }
+.divTableHeading { display: table-header-group;}
+.divTableCell, .divTableHead { display: table-cell}
+.divTableHeading { display: table-header-group;}
+.divTableFoot { display: table-footer-group;}
+.divTableBody { display: table-row-group;}
+.divTableCell .align-bottom{
+  vertical-align : unset;
+}
