@@ -615,136 +615,173 @@ var migUi = (function () {  // my Ui Head
 			navList.style.height = (window.innerHeight - navCntrRect.top) + "px";
 		}
 
-		let items = document.querySelectorAll(".tsrNavMenuList>li");
+		let menuItems = document.querySelectorAll(".tsrNavMenuList>li"); // all menu items on left side nav bar
 
 		// * below code handles hover and clicks on nav menu items
 		if (!navMenuInit) {
-			for (let i = 0; i < items.length; i++) {
-				let item = items[i]; // menu item on left side nav bar
+			for (let i = 0; i < menuItems.length; i++) {
+				let menuItem = menuItems[i];
 
-				let subMenuList = item.querySelector("ul"); // sub menu list for above item
+				let subMenu = menuItem.querySelector("ul"); // sub menu list for a menu item
 
-				if (subMenuList != null) {
-					item.addEventListener("mouseover", function (e) {
+				if (subMenu != null) {
+					menuItem.addEventListener("mouseenter", function (e) {
 						if (window.innerWidth > 576) {
-							showSubMenuList(e, navMenuCntr, subMenuList, item);
+							showSubMenuList(e, navMenuCntr, subMenu, menuItem);
 						}
 					});
 
-
-
-					item.addEventListener("pointerdown", function (e) { // nav menu should be operable with both mouse(for windows below 576px width) & touch enabled devices
-
-						if(isTouchEnabled() || window.innerWidth < 576){
-
-							if (subMenuList.style.display == "none" || subMenuList.style.display == "") {
-								hideAllSubMenuLists(items);
-								showSubMenuList(e, navMenuCntr, subMenuList, item);
-							} else {
-								hideSubMenuList(e, navMenuCntr, subMenuList, item);
-							}
+					// for making nav menu operable with both mouse(for windows below 576px width) & touch enabled devices
+					menuItem.addEventListener("pointerdown", function (e) { 
+						if (subMenu.style.display == "none" || subMenu.style.display == "") {
+							showMenuListMob(subMenu, menuItems, menuItem);
+						} else {
+							hideSubMenuList(e, navMenuCntr, subMenu, menuItem);
 						}
-
 					});
 
-					item.addEventListener("mouseleave", function (e) {
+					menuItem.addEventListener("mouseleave", function (e) {
 						if (window.innerWidth > 576) {
-							hideSubMenuList(e, navMenuCntr, subMenuList, item)
+							hideSubMenuList(e, navMenuCntr, subMenu, menuItem);
 						}
 					});
-
-
 				}
 			}
 
 			document.body.addEventListener("pointerdown", function (e) {
 
 				let isOutsideClick = true;
-				for (let i = 0; i < items.length; i++) {
-					let item = items[i]; // menu item on left side nav bar
+				for (let i = 0; i < menuItems.length; i++) {
+					let item = menuItems[i]; // menu item on left side nav bar
 					let subMenuList = item.querySelector("ul"); // sub menu list for above item
 
 					// * if target is not the navItem, subMenuList or scrollBtn
-					if ((e.target == item || item.contains(e.target)) || subMenuList != null && (e.target == subMenuList || subMenuList.contains(e.target)) && (e.target == btn || btn.contains(e.target))) {
+					if ((e.target == item || item.contains(e.target)) ||
+						subMenuList != null && (e.target == subMenuList || subMenuList.contains(e.target)) &&
+						(e.target == btn || btn.contains(e.target))) {
+
 						isOutsideClick = false;
 						break;
 					}
 				}
 
 				if (isOutsideClick) {
-					hideAllSubMenuLists(items);
+					hideAllSubMenuLists(menuItems, -1);
 				}
 			});
 
 
-			function showSubMenuList(e, navMenuCntr, subMenuList, item) {
+			function showSubMenuList(e, navMenuCntr, subMenu, menuItem) {
 
 				navMenuCntr.style.zIndex = "1001"; // ! discuss later
-				subMenuList.style.display = "block";
+				subMenu.style.display = "block";
 
-				let arrow = item.querySelector(".arrow");
-				arrow.style.transform = "rotate(90deg)";
+				// this forces browser reflow - browser calculates position and geometry of certain parts of a webpage again
+				void subMenu.offsetHeight; // required for opacity transition
 
-				void subMenuList.offsetHeight; // repaint for opacity change transition
+				subMenu.style.opacity = "1";
+				subMenu.style.height = "auto";
 
-				subMenuList.style.opacity = "1";
-				subMenuList.style.height = "auto";
+				if (window.innerWidth > 576) {
+					let menuItemRect = menuItem.getBoundingClientRect();
+					let subMenuRect = subMenu.getBoundingClientRect();
 
-				let itemRect = item.getBoundingClientRect();
-				let subMenuRect = subMenuList.getBoundingClientRect();
+					// if sub menu overflows then show it going up from menu item bottom
+					if (menuItemRect.top + subMenuRect.height > window.innerHeight) {
+						subMenu.style.bottom = window.innerHeight - menuItemRect.bottom;
+						subMenu.style.top = "auto";
 
-				if (itemRect.top + subMenuRect.height > window.innerHeight) { // if sub menu overflows then show it going up from menu item bottom
-					subMenuList.style.bottom = window.innerHeight - itemRect.bottom;
-					subMenuList.style.top = "auto";
+						subMenuRect = subMenu.getBoundingClientRect();
+						// if subMenu height overflows on top
+						if (subMenuRect.height > menuItemRect.bottom) {
+							subMenu.style.top = menuItemRect.top - (subMenuRect.height - menuItemRect.bottom);
+							subMenu.style.bottom = "auto";
 
-					subMenuRect = subMenuList.getBoundingClientRect();
-					if (subMenuRect.height > itemRect.bottom) { // if subMenu height overflows on top
-						subMenuList.style.top = itemRect.top - (subMenuRect.height - itemRect.bottom);
-						subMenuList.style.bottom = "auto";
-
-						subMenuList.style.maxHeight = 0.7 * window.innerHeight; // subMenu can have max 70% height of window, to avoid clipping
-						subMenuList.style.overflowY = "auto";
+							// subMenu can have max 70% height of window, to avoid clipping
+							subMenu.style.maxHeight = 0.7 * window.innerHeight;
+						}
+					} else {
+						subMenu.style.top = menuItemRect.top;
+						subMenu.style.bottom = "auto";
 					}
-				} else {
-					subMenuList.style.top = itemRect.top;
-					subMenuList.style.bottom = "auto";
 				}
 			};
 
-			function hideSubMenuList(e, navMenuCntr, subMenuList, item) {
+			function showMenuListMob(subMenu, menuItems, menuItem) {
+
+				// this condition is required for following cases:
+				// 1. for desktop/laptop with browser window width < 576
+				// 2. for touch devices i.e. tablets, mobiles etc.
+				if (isTouchEnabled() || window.innerWidth < 576) {
+
+					subMenu.style.display = "block";
+					subMenu.style.opacity = "1";
+					subMenu.style.height = "auto";
+
+					// ---------- height animation ------------------
+					let height = subMenu.getBoundingClientRect().height;
+					subMenu.style.height = "0";
+					void subMenu.offsetHeight; // browser reflow
+					subMenu.style.height = height + "px";
+
+					// for preventing accidental clicks on mobile view
+					subMenu.style.pointerEvents = "none";
+					setTimeout(function () {
+						subMenu.style.pointerEvents = "auto";
+					}, 100);
+
+					// for hiding all open sub menu's except selected one
+					setTimeout(function () {
+						hideAllSubMenuLists(menuItems, i);
+					}, 100);
+
+					let arrow = menuItem.querySelector(".arrow");
+					arrow.style.transform = "rotate(90deg)";
+				}
+			}
+
+			function hideSubMenuList(e, navMenuCntr, subMenu, menuItem) {
 				if (e.type == "pointerdown") {
-					if (!(subMenuList == e.target || subMenuList.contains(e.target))) { // check if click target is not navItem and is outside subMenu 
+					// check if click target is outside subMenu 
+					if (!(subMenu == e.target || subMenu.contains(e.target))) {
 
-						subMenuList.style.display = "none";
-						subMenuList.style.opacity = "0";
-						subMenuList.style.height = "0";
+						subMenu.style.opacity = "0";
+						subMenu.style.height = "0";
 						navMenuCntr.style.zIndex = "1000";
+						setTimeout(function () {
+							subMenu.style.display = "none";
+							// timeout value should match with transition duration on .tsrNavSubMenuList in CSS
+						}, 300);
 
-						let arrow = item.querySelector(".arrow");
-						if (arrow != null) {
-							arrow.style.transform = "rotate(0deg)";
+						let arrowEle = menuItem.querySelector(".arrow");
+						if (arrowEle != null) {
+							arrowEle.style.transform = "rotate(0deg)";
 						}
 					}
-				} else { // condition executes when mouseleave event is fired
-					subMenuList.style.display = "none";
-					subMenuList.style.opacity = "0";
-					subMenuList.style.height = "0";
+				} else {
+					subMenu.style.display = "none";
+					subMenu.style.opacity = "0";
+					subMenu.style.height = "0";
 
 					navMenuCntr.style.zIndex = "1000";
 				}
 			}
 
-			function hideAllSubMenuLists(items) {
-				for (let i = 0; i < items.length; i++) {
-					let item = items[i]; // menu item on left side nav bar
-					let subMenuList = item.querySelector("ul"); // sub menu list for above item
+			function hideAllSubMenuLists(menuItems, selectedItemIdx) {
+				for (let i = 0; i < menuItems.length; i++) {
+					if (selectedItemIdx != i) {
+						let menuItem = menuItems[i]; // menu item on left side nav bar
+						let subMenuList = menuItem.querySelector("ul"); // sub menu list for above item
 
-					if (subMenuList != null) {
-						subMenuList.style.display = "none";
-						let arrow = item.querySelector(".arrow");
-						if (arrow != null) {
+						if (subMenuList != null) {
+							subMenuList.style.display = "none";
+							subMenuList.style.height = "0";
 
-							arrow.style.transform = "rotate(0deg)";
+							let arrowEle = menuItem.querySelector(".arrow");
+							if (arrowEle != null) {
+
+								arrowEle.style.transform = "rotate(0deg)";
+							}
 						}
 					}
 				}
