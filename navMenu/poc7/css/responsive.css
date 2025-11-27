@@ -1,0 +1,321 @@
+ 
+
+ 
+/*
+  side-nav-   --> tsrsn
+
+  .header  -- tsrhdr
+
+  .quick-view - tsrqv
+
+  .dropdown .tsrmdd -- TSR Menu Drop Down
+
+*/
+
+
+@media only screen and (min-width: 992px) { .tsrsn-folded .tsrsn { width: 70px; }
+  .tsrsn-folded .tsrsn .tsrsn-inner .tsrsn-menu { overflow-x: hidden; }
+  .tsrsn-folded .tsrsn .tsrsn-inner .tsrsn-menu > li.tsrsn-header { display: none; }
+  .tsrsn-folded .tsrsn .tsrsn-inner .tsrsn-menu > li > a { padding-left: 20px; }
+  .tsrsn-folded .tsrsn .tsrsn-inner .tsrsn-menu > li > a .title { display: none; }
+  .tsrsn-folded .tsrsn .tsrsn-inner .tsrsn-menu li.dropdown .arrow { opacity: 0; }
+  .tsrsn-folded .tsrsn .tsrsn-inner .tsrsn-menu li.dropdown.open ul.dropdown-menu { display: none !important; }
+  .tsrsn-folded .tsrsn:hover { width: 275px; }
+  .tsrsn-folded .tsrsn:hover .tsrsn-inner .tsrsn-menu > li.tsrsn-header { display: block; }
+  .tsrsn-folded .tsrsn:hover .tsrsn-inner .tsrsn-menu > li > a .title { display: inline-block; }
+  .tsrsn-folded .tsrsn:hover .tsrsn-inner .tsrsn-menu li.dropdown .arrow { opacity: 1; }
+  .tsrsn-folded .tsrsn:hover .tsrsn-inner .tsrsn-menu li.open > ul.dropdown-menu { display: block !important; }
+  .tsrsn-folded .page-container { padding-left: 70px; }
+  
+
+ 
+}
+
+@media only screen and (max-width: 992px) { .tsrhdr { width: 100%; } .tsrhdr .tsrhdr-container .nav-logo { width: 0px; padding: 0px; } .tsrhdr .tsrhdr-container .nav-left > li > a, .tsrhdr .tsrhdr-container .nav-right > li > a { padding: 0 10px; } 
+  .tsrhdr .tsrhdr-container .nav-left .user-profile, .tsrhdr .tsrhdr-container .nav-right .user-profile { border-right: 0px; border-left: 0px; }
+  .tsrhdr .tsrhdr-container .nav-left .user-profile .profile-img, .tsrhdr .tsrhdr-container .nav-right .user-profile .profile-img { width: 30px; margin-right: 0px; }
+  
+  .tsrsn .tsrsn-inner .tsrsn-menu li.dropdown .arrow { right: 25px; }
+  .tsrsn-folded .tsrsn { left: -275px; }
+
+  .page-container { padding-left: 0px; }
+  .page-container .main-content { padding: 85px 10px 10px 10px; }
+  .tsrsn-folded .page-container { padding-left: 0px; }
+  
+
+  
+
+
+}
+
+@media only screen and (min-width: 767px) { .tsrhdr .tsrhdr-container .nav-left > li > a.tsrsn-fold-toggler, .tsrhdr .tsrhdr-container .nav-right > li > a.tsrsn-fold-toggler { display: block; }
+  .tsrhdr .tsrhdr-container .nav-left > li > a.tsrsn-expand-toggler, .tsrhdr .tsrhdr-container .nav-right > li > a.tsrsn-expand-toggler { display: none; }
+  
+  .col-md-4.delete{
+    width: 0;
+  }
+  
+    .wlcoFont {font-size: 14px;}
+   
+     /*#SmallHead { display: none; }
+
+     #smallSearch { display: none; }*/
+}
+
+
+@media only screen and (max-width: 767px) { .tsrhdr .tsrhdr-container .nav-left > li > a.tsrsn-fold-toggler, .tsrhdr .tsrhdr-container .nav-right > li > a.tsrsn-fold-toggler { display: none; }
+  .tsrhdr .tsrhdr-container .nav-left > li > a.tsrsn-expand-toggler, .tsrhdr .tsrhdr-container .nav-right > li > a.tsrsn-expand-toggler { display: block; }
+  .tsrhdr .tsrhdr-container .nav-right .dropdown.dropdown-animated.scale-left .dropdown-menu { right: -40px !important; }
+  .tsrhdr .tsrhdr-container .search-input input { width: 85px; }
+  .tsrhdr .tsrhdr-container .search-input .search-predict { left: 40px; }
+
+  .tsrsn { left: -275px; }
+  .tsrsn-folded .tsrhdr .tsrhdr-container .nav-logo { width: 0px; overflow: hidden; }
+  .tsrsn-expand { overflow: hidden; }
+  .tsrsn-expand .tsrsn { left: 0; }
+  .tsrsn-expand .tsrhdr .tsrhdr-container .nav-logo { width: 0px; }
+  .tsrsn-expand .tsrhdr .tsrhdr-container .nav-left > li > a.tsrsn-expand-toggler i:before { content: "\F004D"; }
+  .tsrsn-backdrop { position: fixed; width: 100%; height: 100%; top: 0; left: 0; right: 0; bottom: 0; background: #515365; /* The Fallback */ background: rgba(81, 83, 101, 0.5); }
+  
+  .dropdown-menu.dropdown-lg { min-width: 280px; }
+  .dropdown-menu.dropdown-xl { min-width: 280px; }
+  .dropdown-menu.dropdown-grid.col-3 > li { flex-basis: 50%; }
+  .dropdown-menu.dropdown-grid.col-4 > li { flex-basis: 50%; }
+  
+  
+  
+  .tsrqv { width: 270px; }
+  .tsrqv .nav-tabs > li > button { padding: 0px 15px; }
+
+  .page-container .page-header .tsrhdr-title { border-right: 0px; display: block; margin-bottom: 15px; }
+  .page-container .page-header .tsrhdr-sub-title { padding-left: 0px; display: block; }
+  
+  .content-footer .footer { text-align: center; }
+  .content-footer .footer .go-right { float: none; margin-top: 15px; display: block; }
+
+  .col-md-4.delete{
+    height: 0;
+  }
+
+  /*.card .nav-buttons{
+    flex-direction: column;
+  }*/
+  
+    .wlcoFont {font-size: 12px;}
+
+
+
+/*#MediumHead { display: none; }*/
+
+
+
+}
+
+
+/* new nav menu code starts here */
+
+.tsrNavMenuCntr {
+    position: fixed;
+    top: 65px;
+    /* height: 100%; */
+    z-index: 1000;
+    transition: width 0.2s ease-in-out;
+    overflow-x: hidden;
+}
+
+.tsrNavMenuSideBar {
+    width: 100%;
+    background: linear-gradient(0deg, #09124f 0, #090979 30%, #006fbf 100%);
+    text-align: center;
+}
+
+.tsrNavMenuSideBar>button {
+    position: fixed;
+    bottom: 5px;
+    left: 15px;
+    min-height: 50px;
+}
+
+.tsrNavMenuSideBar button:focus {
+    box-shadow: none;
+}
+
+.tsrNavMenuList {
+    list-style: none;
+    padding: 0;
+    overflow: auto;
+    /* height: 80%; */
+    scrollbar-width: none !important;
+    scroll-behavior: smooth;
+}
+
+.tsrNavMenuList::-webkit-scrollbar {
+    width: 0px !important;
+    height: 0px !important;
+}
+
+.tsrNavMenuItem {
+    display: flex;
+    width: 100%;
+    margin: 10px 0px 10px 0;
+}
+
+.tsrNavMenuItem .nav-item {
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    background: none;
+    border: none;
+}
+
+.tsrNavMenuItem:hover>button,
+.tsrNavMenuItem:hover>a {
+    color: yellow;
+}
+
+.tsrNavMenuItem:focus>button,
+.tsrNavMenuItem:focus>a {
+    color: yellow;
+}
+
+.tsrNavMenuItem:hover>button svg,
+.tsrNavMenuItem:hover>a svg {
+    fill: yellow;
+    stroke: yellow;
+}
+
+.tsrNavSubMenuList {
+    display: none;
+    list-style: none;
+    padding: 0;
+    opacity: 0;
+    height: 0;
+    transition: opacity 0.3s, height 0.5s ease-in-out;
+}
+
+.tsrNavSubMenuItem {
+    padding: 10px;
+    height: 40px;
+}
+
+.tsrNavSubMenuItem:hover {
+    background: white;
+}
+
+.tsrNavSubMenuItem>a {
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+}
+
+.tsrNavSubMenuItem:hover>a {
+    color: black;
+    font-size: 15px;
+}
+
+
+@media only screen and (max-width: 576px) {
+
+    .tsrMobileNavMenu {
+        width: 270px !important;
+    }
+
+    .tsrNavMenuCntr {
+        display: flex;
+        width: 0px;
+    }
+
+    .tsrNavMenuItem {
+
+        flex-direction: column;
+        justify-content: end;
+    }
+
+    .tsrNavMenuItem .nav-item {
+        display: flex;
+        font-size: 16px;
+        align-items: center;
+    }
+
+    .tsrNavMenuItem>button .icon-holder,
+    .tsrNavMenuItem>a .icon-holder {
+        width: 15%;
+    }
+
+    .tsrNavMenuItem>button svg,
+    .tsrNavMenuItem>a svg {
+        height: 32;
+    }
+
+    .tsrNavMenuItem>button .title,
+    .tsrNavMenuItem>a .title {
+        width: 70%;
+        text-align: start;
+        margin-left: 10px;
+    }
+
+    .tsrNavMenuItem>button .arrow,
+    .tsrNavMenuItem>a .arrow {
+        width: 15%;
+    }
+
+    .tsrNavSubMenuList {
+        position: static;
+        margin-left: 40px;
+    }
+
+    .tsrNavSubMenuItem {
+        text-align: start;
+    }
+
+}
+
+@media only screen and (min-width: 576px) {
+
+    .page-container {
+        padding-left: 70px !important;
+    }
+
+    .tsrNavMenuCntr {
+        display: flex;
+        width: 70px !important;
+    }
+
+    .tsrNavMenuItem {
+        justify-content: center;
+    }
+
+    .tsrNavMenuItem .nav-item {
+        display: flex;
+        flex-direction: column;
+        font-size: 10px;
+    }
+
+    .tsrNavMenuItem>button svg,
+    .tsrNavMenuItem>a svg {
+        height: 28;
+    }
+
+    .tsrNavMenuItem>button .arrow,
+    .tsrNavMenuItem>a .arrow {
+        display: none;
+    }
+
+    .tsrNavSubMenuList {
+        position: fixed;
+        left: 70px;
+        background: linear-gradient(0deg, #09124f 0, #090979 0%, #006fbf 100%);
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+
+/* code ends here */
+
+
