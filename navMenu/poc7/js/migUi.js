@@ -632,7 +632,7 @@ var migUi = (function () {  // my Ui Head
 					});
 
 					// for making nav menu operable with both mouse(for windows below 576px width) & touch enabled devices
-					menuItem.addEventListener("pointerdown", function (e) { 
+					menuItem.addEventListener("pointerdown", function (e) {
 						if (subMenu.style.display == "none" || subMenu.style.display == "") {
 							showMenuListMob(subMenu, menuItems, menuItem, i);
 						} else {
@@ -686,15 +686,16 @@ var migUi = (function () {  // my Ui Head
 					let menuItemRect = menuItem.getBoundingClientRect();
 					let subMenuRect = subMenu.getBoundingClientRect();
 
-					// if sub menu overflows then show it going up from menu item bottom
+					// * if sub menu overflows at window bottom, then display it upwards from menu item bottom
 					if (menuItemRect.top + subMenuRect.height > window.innerHeight) {
 						subMenu.style.bottom = window.innerHeight - menuItemRect.bottom;
 						subMenu.style.top = "auto";
 
 						subMenuRect = subMenu.getBoundingClientRect();
-						// if subMenu height overflows on top
+						// * if subMenu height overflows at window top
 						if (subMenuRect.height > menuItemRect.bottom) {
-							subMenu.style.top = menuItemRect.top - (subMenuRect.height - menuItemRect.bottom);
+							// subMenu.style.top = menuItemRect.top - (subMenuRect.height - menuItemRect.bottom);
+							subMenu.style.top = menuItemRect.top;
 							subMenu.style.bottom = "auto";
 
 							// subMenu can have max 70% height of window, to avoid clipping
@@ -719,21 +720,28 @@ var migUi = (function () {  // my Ui Head
 					subMenu.style.height = "auto";
 
 					// ---------- height animation ------------------
-					let height = subMenu.getBoundingClientRect().height;
-					subMenu.style.height = "0";
-					void subMenu.offsetHeight; // browser reflow
-					subMenu.style.height = height + "px";
+					if (window.innerWidth < 576) {
+						let height = subMenu.getBoundingClientRect().height;
+						subMenu.style.height = "0";
+						void subMenu.offsetHeight; // browser reflow
+						subMenu.style.height = height + "px";
+					}
 
 					// for preventing accidental clicks on mobile view
-					subMenu.style.pointerEvents = "none";
-					setTimeout(function () {
-						subMenu.style.pointerEvents = "auto";
-					}, 100);
+					if (window.innerWidth < 576) {
 
-					// for hiding all open sub menu's except selected one
-					setTimeout(function () {
+						subMenu.style.pointerEvents = "none";
+						setTimeout(function () {
+							subMenu.style.pointerEvents = "auto";
+						}, 300);
+
+						// for hiding all open sub menu's except selected one
+						setTimeout(function () {
+							hideAllSubMenuLists(menuItems, i);
+						}, 300);
+					} else {
 						hideAllSubMenuLists(menuItems, i);
-					}, 100);
+					}
 
 					let arrowEle = menuItem.querySelector(".arrow");
 					arrowEle.style.transform = "rotate(90deg)";
