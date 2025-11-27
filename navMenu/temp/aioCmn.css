@@ -457,7 +457,7 @@
     }
 
     .tsrNavMenuList {
-        scrollbar-width: none !important;
+        /* scrollbar-width: none !important; */
         scroll-behavior: smooth;
     }
 

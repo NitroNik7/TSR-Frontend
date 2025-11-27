@@ -11,7 +11,6 @@ var migUi = (function () {  // my Ui Head
 
 	var myMenuIcon = '';
 
-	var navMenuInit = false;
 
 	function init() {
 
@@ -28,7 +27,6 @@ var migUi = (function () {  // my Ui Head
 		// registerAutoSelect();
 		// mintHtmlUtil.escapeDiv(event, )
 
-		navMenuInit = true;
 	}
 
 
