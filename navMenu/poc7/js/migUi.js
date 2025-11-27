@@ -739,6 +739,7 @@ var migUi = (function () {  // my Ui Head
 					arrow.style.transform = "rotate(90deg)";
 				}
 			}
+			
 
 			function hideSubMenuList(e, navMenuCntr, subMenu, menuItem) {
 				if (e.type == "pointerdown") {
