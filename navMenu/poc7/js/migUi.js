@@ -562,7 +562,7 @@ var migUi = (function () {  // my Ui Head
 		navMenuCntr.style.height = (window.innerHeight - navCntrRect.top) + "px";
 
 		let navList = document.querySelector(".tsrNavMenuList");
-		
+
 		// * if else for down arrow btn (scroll btn) working
 		if (window.innerWidth > 576) {
 			navList.style.height = (window.innerHeight - navCntrRect.top - 60) + "px"; // this gives 60px height to btn
@@ -594,8 +594,8 @@ var migUi = (function () {  // my Ui Head
 					let visibleHeight = navList.clientHeight;
 					let actualHeight = navList.scrollHeight;
 
-				let scrolledHeightFromTop = Math.round(navList.scrollTop);
-				let scrollHeight = Math.round(actualHeight - visibleHeight);
+					let scrolledHeightFromTop = Math.round(navList.scrollTop);
+					let scrollHeight = Math.round(actualHeight - visibleHeight);
 
 					if (scrollHeight > scrolledHeightFromTop) {
 						btn.innerHTML = `<i class="fas fa-caret-down"></i>`;
@@ -634,7 +634,8 @@ var migUi = (function () {  // my Ui Head
 
 
 					item.addEventListener("pointerdown", function (e) { // for width below 576px - nav menu should be operable with both mouse/touch
-						if(window.innerWidth < 576){
+						if(isTouchEnabled() || window.innerWidth < 576){
+
 							if (subMenuList.style.display == "none" || subMenuList.style.display == "") {
 								hideAllSubMenuLists(items);
 								showSubMenuList(e, navMenuCntr, subMenuList, item);
@@ -809,6 +810,12 @@ var migUi = (function () {  // my Ui Head
 
 	}
 
+
+	function isTouchEnabled() { // detects whether device is a touch screen
+		return ('ontouchstart' in window) ||
+			(navigator.maxTouchPoints > 0) ||
+			(navigator.msMaxTouchPoints > 0);
+	}
 
 
 
