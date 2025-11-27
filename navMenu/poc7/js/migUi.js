@@ -634,7 +634,7 @@ var migUi = (function () {  // my Ui Head
 					// for making nav menu operable with both mouse(for windows below 576px width) & touch enabled devices
 					menuItem.addEventListener("pointerdown", function (e) { 
 						if (subMenu.style.display == "none" || subMenu.style.display == "") {
-							showMenuListMob(subMenu, menuItems, menuItem);
+							showMenuListMob(subMenu, menuItems, menuItem, i);
 						} else {
 							hideSubMenuList(e, navMenuCntr, subMenu, menuItem);
 						}
@@ -707,7 +707,7 @@ var migUi = (function () {  // my Ui Head
 				}
 			};
 
-			function showMenuListMob(subMenu, menuItems, menuItem) {
+			function showMenuListMob(subMenu, menuItems, menuItem, i) {
 
 				// this condition is required for following cases:
 				// 1. for desktop/laptop with browser window width < 576
@@ -735,11 +735,11 @@ var migUi = (function () {  // my Ui Head
 						hideAllSubMenuLists(menuItems, i);
 					}, 100);
 
-					let arrow = menuItem.querySelector(".arrow");
-					arrow.style.transform = "rotate(90deg)";
+					let arrowEle = menuItem.querySelector(".arrow");
+					arrowEle.style.transform = "rotate(90deg)";
 				}
 			}
-			
+
 
 			function hideSubMenuList(e, navMenuCntr, subMenu, menuItem) {
 				if (e.type == "pointerdown") {
