@@ -84,6 +84,9 @@ var migUi = (function () {  // my Ui Head
 
             htmlU.addMsgToDiv('dynHead', true, html);
             aioIcons.init();
+
+
+            // intChUi.ep();
         }
         else {
             if (width < 576) {
