@@ -78,7 +78,7 @@ var migUi = (function () {  // my Ui Head
         let href = window.location.href;
 
         if ((!jsu.isMigContext() && href.indexOf('/InteractiveCharts') != -1)) {
-            html = intChUi.gicnm;
+            html = intChUi.gich;
             let dynHead = document.getElementById("dynHead");
             dynHead.classList.add("tsrIntChHeader");
 
