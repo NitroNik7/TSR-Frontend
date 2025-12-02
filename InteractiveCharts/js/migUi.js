@@ -86,7 +86,7 @@ var migUi = (function () {  // my Ui Head
             aioIcons.init();
 
 
-            // intChUi.ep();
+            intChUi.amh();
         }
         else {
             if (width < 576) {
