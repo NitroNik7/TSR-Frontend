@@ -96,8 +96,17 @@ var migUi1 = function () {
             $("#upsa").addClass("show")
         }, urm: function () { var g = h.getMyTsrUrl() + "/user/QuickRegis"; h.dlhrtd({}, g, "usrRegDiv", !1, null, null, null) }, sni: l
     }
-}(); $(window).on("load", function () { $(window).on("resize", function () { migUi.sni() }); window.matchMedia("(orientation: portrait)").addEventListener("change", function (f) { migUi.sni() }) }); $(window).resize(function () { isMobile() ? "Android" !== mintJsUtil.opsy() && migUi.ph() : migUi.ph() });
-window.onkeyup = function (f) { mintHtmlUtil.escapeDiv(f, ["chart_dialog", "custDialog", "dialog", "alertDialog"]) }; 
+}();
+
+// $(window).on("load", function () {
+//      $(window).on("resize", function () { migUi.sni() }); 
+//      window.matchMedia("(orientation: portrait)").addEventListener("change", function (f) { 
+//         migUi.sni() 
+//     }) 
+// }); 
+
+// $(window).resize(function () { isMobile() ? "Android" !== mintJsUtil.opsy() && migUi.ph() : migUi.ph() });
+// window.onkeyup = function (f) { mintHtmlUtil.escapeDiv(f, ["chart_dialog", "custDialog", "dialog", "alertDialog"]) };
 
 
 
@@ -189,7 +198,7 @@ var aioIcons1 = function () {
                 }
             }, si: f
         }
-}(); 
+}();
 
 
 var miSrch = function () {
@@ -229,10 +238,10 @@ var miSrch = function () {
             a.id ? C.getRootUrl() + "/" : C.getBaseUrl() : C.getBaseWwwUrl() + "/rt/"; var d = [], u = "", z = ""; switch (a.id) {
                 case "screener": return b = b.filter(function (p) { p.defaultUrl = c + p.uri; p.code = p.label; return p }), t(a, b, d); case "indCh": case "addFilter": case "eqCh": return t(a, b, d, c); default: if (document.getElementById("tsrSearchBoxSelect")) for (var F = document.getElementById("tsrSearchBoxSelect").value, x = a.subCat, B = {}, m = 0; m < x.length; B = { $jscomp$loop$prop$mappedParam$22: B.$jscomp$loop$prop$mappedParam$22 }, m++)if (x[m].id == F) {
                     w(x[m].buttons) &&
-                    (d = x[m].buttons); w(x[m].urlPrefix) && (u = x[m].urlPrefix); w(x[m].urlSuffix) && (z = x[m].urlSuffix); if (!x[m].default && (B.$jscomp$loop$prop$mappedParam$22 = x[m].mappedParam, w(B.$jscomp$loop$prop$mappedParam$22))) return b = b.filter(function (p) { return function (q) { if (q[p.$jscomp$loop$prop$mappedParam$22] && "boolean" == typeof q[p.$jscomp$loop$prop$mappedParam$22] || "true" == q[p.$jscomp$loop$prop$mappedParam$22]) return q.defaultUrl = c + miIsh.gmc(q.ccId) + u + "/" + q.code + "/" + z, q } }(B)), t(a, b, d, c); b = b.filter(function (p) {
-                        p.defaultUrl =
-                        c + miIsh.gmc(p.ccId) + u + "/" + p.code + "/" + z; return p
-                    }); return t(a, b, d, c)
+                        (d = x[m].buttons); w(x[m].urlPrefix) && (u = x[m].urlPrefix); w(x[m].urlSuffix) && (z = x[m].urlSuffix); if (!x[m].default && (B.$jscomp$loop$prop$mappedParam$22 = x[m].mappedParam, w(B.$jscomp$loop$prop$mappedParam$22))) return b = b.filter(function (p) { return function (q) { if (q[p.$jscomp$loop$prop$mappedParam$22] && "boolean" == typeof q[p.$jscomp$loop$prop$mappedParam$22] || "true" == q[p.$jscomp$loop$prop$mappedParam$22]) return q.defaultUrl = c + miIsh.gmc(q.ccId) + u + "/" + q.code + "/" + z, q } }(B)), t(a, b, d, c); b = b.filter(function (p) {
+                            p.defaultUrl =
+                                c + miIsh.gmc(p.ccId) + u + "/" + p.code + "/" + z; return p
+                        }); return t(a, b, d, c)
                 }
             }
     } function t(a, b, c, d) {
@@ -367,10 +376,10 @@ var miSrch = function () {
                             a += '       <div class="mishRadioBtnCircle" >', c[d].default && (a += '       <div class="mishRadioBtnInnerCircle" >', a += "       </div>"), a += "       </div>", a += '       <div class="mishRadioBtnLabel">', a += c[d].label, a += "       </div>", a += "</div>"; return b = '<div id="' + (b + 'Header" class="d-flex justify-content-between">') + (a + '</div><button class="btn-close" style="margin: 5px;" tabindex="-1 " onclick ="miIs.cd(\'') + (b + "')\"></button></div>")
                     }, sbbh: function (a, b, c) {
                         a = '<hr style="margin: 1rem;"><div class="d-flex">   <input id="' +
-                        (b + '" type="text" class="form-control ui-autocomplete-input mx-2" placeholder="' + a.inputPlaceholder + '" autocomplete="off" autofocus tabindex="0">'); return a + ('   <div id="' + (c + 'SelectWrapper" class="d-none d-md-flex"></div></div><div class="mt-3">\n\t                <ul id="')) + (c + 'List" class="' + (c + 'List"></ul>\n\t            </div> '))
+                            (b + '" type="text" class="form-control ui-autocomplete-input mx-2" placeholder="' + a.inputPlaceholder + '" autocomplete="off" autofocus tabindex="0">'); return a + ('   <div id="' + (c + 'SelectWrapper" class="d-none d-md-flex"></div></div><div class="mt-3">\n\t                <ul id="')) + (c + 'List" class="' + (c + 'List"></ul>\n\t            </div> '))
                     }, psb: function (a, b, c) {
                         a = '\n\t            <dialog id="' + c + '" class="border rounded p-0 ' + c + '" \n\t    \t\tonclick="miIs.sbc(event)" \n\t    \t\tonkeydown="miIs.kpsb(event, \'' +
-                        b + "', '" + c + '\')"\n\t    \t\tonmouseover="miIsh.epe(this)" \n\t    \t\tontouchstart="miIsh.epe(this)">\n\t\t\t   <div id="' + (c + 'content" class="p-3" style="overflowY: hidden;">') + a; a += "   </div>"; a += "</dialog>"; document.getElementById(c + "Wrapper").innerHTML = a; document.getElementById(c).showModal(); document.body.style.overflowY = "hidden"
+                            b + "', '" + c + '\')"\n\t    \t\tonmouseover="miIsh.epe(this)" \n\t    \t\tontouchstart="miIsh.epe(this)">\n\t\t\t   <div id="' + (c + 'content" class="p-3" style="overflowY: hidden;">') + a; a += "   </div>"; a += "</dialog>"; document.getElementById(c + "Wrapper").innerHTML = a; document.getElementById(c).showModal(); document.body.style.overflowY = "hidden"
                     }, ots: function (a, b, c) {
                         var d = document.getElementById(b); d.value = ""; b = document.getElementById(c + "SelectWrapper"); var u = document.createElement("select"); u.id = c + "Select";
                         u.onchange = function () { d.focus(); d.value = ""; miIs.fs(d.value) }; u.classList.add("form-select"); u.setAttribute("tabindex", "0"); c = []; a.subCat && (c = a.subCat); if (void 0 != c && null != c && 0 != c.length) { 1 == c.length ? (u.setAttribute("disabled", ""), b.style.display = "none", u.style.display = "none") : b.style.width = "40%"; for (a = 0; a < c.length; a++) { var z = document.createElement("option"); z.value = c[a].id; z.text = c[a].label; u.appendChild(z) } b.appendChild(u) } miIs.fs(d.value)

@@ -1,3 +1,31 @@
+// Flow:
+/**
+ * migUi.init() is called when HTML loads - i.e. page is loaded
+ * 
+ * 
+ * * printHeader() - prints nav menu and top header of page, also initializes myTsrMenu icons in TSR context
+ * if(page != interactiveCharts)
+     then prints the top header for mobile (width < 576) or desktop (width > 576)
+ * else
+     then prints interactive chart header
+ 
+ * * sideNavDropDownInit() - adds interactivity to nav menu using event listeners and onClicks for either mobile or desktop
+ * if(page != interactiveCharts)
+     then adds hover and click functionality for both mobile and desktop nav menu
+ * else
+     then add onclick functionality to interactive chart header nav menu for both mobile and desktop
+
+ * both of the above () - printHeader(), sideNavDropDownInit() are called again if window is resized / device orientation is changed
+ * 
+ * * navMenuInit - this boolean variable indicates whether event listeners are already added to nav menu items or not
+ * relevant to all pages except interactiveCharts page
+ * when sideNavDropDownInit() is called for the first time by migUi.init() - event listeners are attached to nav menu(present in html)
+ * then, we set navMenuInit = true
+ * As nav menu html is already present in html, we do not need to reset navMenuInit's value to reattach event listeners when window is resized / device orientation is changed
+ * 
+ * 
+*/
+
 var migUi = (function () {  // my Ui Head
 
     var htmlU = mintHtmlUtil;
@@ -28,10 +56,6 @@ var migUi = (function () {  // my Ui Head
         navMenuInit = true;
     }
 
-
-
-
-
     function printHeader() {
 
         var width = window.innerWidth;
@@ -54,9 +78,12 @@ var migUi = (function () {  // my Ui Head
         let href = window.location.href;
 
         if ((!jsu.isMigContext() && href.indexOf('/InteractiveCharts') != -1)) {
-            html = getIntChNavMenu();
+            html = intChUi.gicnm;
             let dynHead = document.getElementById("dynHead");
             dynHead.classList.add("tsrIntChHeader");
+
+            htmlU.addMsgToDiv('dynHead', true, html);
+            aioIcons.init();
         }
         else {
             if (width < 576) {
@@ -152,13 +179,11 @@ var migUi = (function () {  // my Ui Head
                 html += '</div>'	// Final
             }
 
+            htmlU.addMsgToDiv('dynHead', true, html);
             htmlU.addMsgToDiv('dynSearch', true, search);
-
         }
 
         if (!jsu.isMigContext()) {
-
-
             // <div class="modal fade" id="tsrUserRegModal" tabindex="-1">
             //     <div class="modal-dialog modal-dialog-centered">
             //         <div class="modal-content" id="tsrUserRegModalContent">
@@ -166,32 +191,21 @@ var migUi = (function () {  // my Ui Head
             //         </div>
             //     </div>
             // </div>
-
-
         }
-
-
-
-        htmlU.addMsgToDiv('dynHead', true, html);
         // htmlU.addMsgToDiv('myMenuIcon' , true, myMenuIcon);
-
 
         htmlU.divShow('navLogoDiv');
         if (width < 576) {
             htmlU.divHide('navLogoDiv');
         }
-        // aioIcons.iti();
 
         if (!jsu.isMigContext()) {
             aioIcons.iti();
         }
 
-        // registerAutoSelect();
         miSrch.ras();
 
         // html+= '<div id="tsrSearchBoxWrapper"></div>'
-
-
         // '<div id="tsrSearchBoxWrapper"></div>'
     }
 
@@ -200,25 +214,17 @@ var migUi = (function () {  // my Ui Head
 
         var html = '';
 
-
         // if(!jsu.isMigContext()){
-
         html += flag();
-
-
         html += getUserHead();
-
         html += '<span style="text-align:right; margin:10px;">'
             // + contract + ' '
             + myMenuIcon + " "
             + '  </span>'
-
         // }else{
 
         // 	html+=  getUserHead()   ;//if(jsu.isRtContext()) ? getTsrUserHead() :  getMigUserHead();
         // }
-
-
 
         /*
 
@@ -245,8 +251,6 @@ var migUi = (function () {  // my Ui Head
         if (!jsu.isMigContext()) {
             return ''
         }
-
-
 
         var defFlag = 'USFlag';
 
@@ -314,404 +318,6 @@ var migUi = (function () {  // my Ui Head
 
     }
 
-    function getIntChNavMenu() {
-        let html = "";
-
-        html += `
-                <style>
-                    .tsrIntChHeader {
-                        height: 40px;
-                        border-bottom: 1px solid #8080805e;
-                    }
-
-                    .chartPanel {
-                        /* border: 2px solid #DDD; */
-                        border-radius: 0px !important;
-                        padding: 0 !important;
-                    }
-
-                    /* old classes */
-                    .page-container {
-                        padding-left: 0px !important;
-                    }
-
-                    .main-content {
-                        padding: 0 !important;
-                    }
-
-                    .container-fluid {
-                        padding: 0 !important;
-                    }
-
-                    .tsrIntChPanelMenu{
-                        list-style: none !important; 
-                        padding-left: 0 !important;
-                    }
-
-                    .tsrIntChPanelMenu>li{
-                        width: 100%;
-                    }
-
-                    .tsrIntChPanelMenu>li>a{
-                        position: relative;
-                        display: block;
-                    	padding: 10px 0 10px 0;
-                        font-weight: 500;
-                        font-size: 15px;
-                        white-space: nowrap;
-                        color: #fff;
-                        -webkit-transition: .3s;
-                        -moz-transition: .3s;
-                        -o-transition: .3s;
-                        -ms-transition: .3s;
-                    }
-                      
-                    .tsrIntChPanelMenu>li>a>.arrow{
-                        position: absolute;
-                        right: 10px;
-                    }
-
-                    .tsrIntChPanelMenu li a.dropdown-toggle:after { 
-                        display: none; border-radius: 0px; 
-                    }
-
-                    .tsrIntChPanelMenu>li>ul{
-                    	position: relative;
-                        padding: 0;
-                        padding-left: 30px;
-                        width: 100%;
-	                    border: 0;
-	                    box-shadow: none;
-	                    background-color: transparent;
-                    }
-
-                    .tsrIntChPanelMenu>li>ul>li>a{
-                        color: #fff;
-                    }
-
-                </style>
-            `;
-        html += `
-                <nav class="navbar fixed-top navbar-light bg-light" style="padding: 0;">
-                    <div class="container-fluid" style="justify-content: start;">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                            aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-
-                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel"
-                            style="width: 275px;">
-                            <div class="offcanvas-header">
-                                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                                    <img src="//www.topstockresearch.com/static/v21/img/tsr/TsrLogo.png" alt="TSR - TopStockresearch"
-                                        name="TSR - TopStockresearch" height="40px;" style="vertical-align:top">
-                                </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body" style="background: linear-gradient(0deg,#09124f 0,#090979 30%,#006fbf 100%);">`
-        html += `
-                                <ul class="tsrIntChPanelMenu">
-                                    <li class='nav-item' style='margin-top:6px;'><a href='https://www.TopStockResearch.com/rt/Home'> <span
-                                                class='icon-holder' id='homeSbDiv' aria-hidden='true'> </span> <span class='title'>Home</span></a></li>
-                                    <li class="nav-item dropdown" style='margin-top:6px;'>
-                                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='msSbDiv' aria-hidden='true'>
-                                            </span> <span class='title'>Market
-                                                Screener</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener'>Market
-                                                    Overview</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/PriceVolume'>Price
-                                                    / Volume</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HighsLows'>Highs
-                                                    / Lows</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/Returns'>Returns</a>
-                                            </li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/RelativeStrength'>Relative
-                                                    Price Strength</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/IndexAnalysis'>Index
-                                                    Analysis</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/SectorRotation'>Sector
-                                                    Rotation</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/SectorAnalysis'>Sector
-                                                    Analysis</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HeatMap'>Heat
-                                                    Map</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/AdvanceDecline'>Advance
-                                                    /Decline</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener'>Intraday
-                                                    Strategies</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item dropdown" style='margin-top:6px;'>
-                                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='strSbDiv'
-                                                aria-hidden='true'> </span> <span class='title'>TSR Strength
-                                                Index</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
-                                            </span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/TechnicalStrength'>Technical
-                                                    Strength</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/FinancialStrength'>Financial
-                                                    Strength</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/EODBetaVolatile'>EOD
-                                                    Beta Volatile</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item dropdown" style='margin-top:6px;'>
-                                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='csSbDiv' aria-hidden='true'>
-                                            </span> <span class='title'>Candlestick
-                                                Screeners</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
-                                                    Screener</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
-                                                    Screener</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item dropdown" style='margin-top:6px;'>
-                                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='techSbDiv'
-                                                aria-hidden='true'> </span> <span class='title'>Technical
-                                                Screeners</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/OHLCScreeners'>OHLC
-                                                    Screeners</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/OverboughtSold'>Overbought/Sold</a>
-                                            </li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/Overlays'>Overlays</a>
-                                            </li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/TrendIndicator'>Trend
-                                                    Indicator</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/VolumeBasedIndicator'>Volume
-                                                    Based Indicator</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/SMAScreener'>SMA
-                                                    Screener</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/EMAScreener'>EMA
-                                                    Screener</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/WMAScreener'>WMA
-                                                    Screener</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/PivotPoint'>Pivot
-                                                    Point</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/VwapScreener'>VWAP
-                                                    Screener</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/FibonacciScreener'>Fibonacci
-                                                    Screener</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item dropdown" style='margin-top:6px;'>
-                                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='cpSbDiv' aria-hidden='true'>
-                                            </span> <span class='title'>Chart
-                                                Patterns</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/PopularChartPatterns'>Popular
-                                                    Chart Patterns</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Triangle'>Triangle</a>
-                                            </li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Channel'>Channel</a>
-                                            </li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Trendlines'>Trendlines</a>
-                                            </li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/NRWR'>NR
-                                                    / WR</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item dropdown" style='margin-top:6px;'>
-                                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='fundaSbDiv'
-                                                aria-hidden='true'> </span> <span class='title'>Financial
-                                                Screener</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/FinHighlight'>Financial
-                                                    Highlight</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/GuruRatios'>Guru
-                                                    Ratios</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/ValuationRatios'>Valuation
-                                                    Ratios</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/ProfitabilityRatios'>Profitability
-                                                    Ratios</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/SolvencyRatios'>Solvency
-                                                    Ratios</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/EfficiencyRatios'>Efficiency
-                                                    Ratios</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/IncStatGrowthYr'>Income
-                                                    Statment Growth (Yr)</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/BalSheetGrowthYr'>Balance
-                                                    Sheet Growth (Yr)</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/CashFlowStatGrowthYr'>Cash
-                                                    Flow Stat Growth (Yr)</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item dropdown" style='margin-top:6px;'>
-                                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='comboSbDiv'
-                                                aria-hidden='true'> </span> <span class='title'>Combo
-                                                Screener </span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/PriceActionScreeners'>Price
-                                                    Action Screeners</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish
-                                                    Technical Screeners</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish
-                                                    Technical Screeners</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/FundamentalScreener'>Fundamental
-                                                    Screeners</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ComboScreener/MovingAverageScreeners'>Moving
-                                                    Average Screeners</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class='nav-item' style='margin-top:6px;'><a href='https://www.TopStockResearch.com/rt/CustomStockScreener.tsr'>
-                                            <span class='icon-holder' id='diysSbDiv' aria-hidden='true'> </span> <span class='title'>Custom
-                                                Screener</span></a></li>
-                                    <li class="nav-item dropdown" style='margin-top:6px;'>
-                                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='expsSbDiv'
-                                                aria-hidden='true'> </span> <span class='title'>Expert
-                                                Screeners</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/PriceActionBased'>Price
-                                                    Action Strategies</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/TechIndiBased'>Technical
-                                                    Indicator Strategies</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/MovingAverageStrategies'>Moving
-                                                    Average Strategies</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/BTSTStrategies'>BTST
-                                                    Strategies</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/BreakoutStrategies'>Breakout
-                                                    Strategies</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/SwingTradingStrategies'>Swing
-                                                    Trading Strategies</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class='nav-item' style='margin-top:6px;'><a href='https://www.TopStockResearch.com/rt/InteractiveCharts.tsr'>
-                                            <span class='icon-holder' id='tcSbDiv' aria-hidden='true'> </span> <span class='title'>Technical
-                                                Charts</span></a></li>
-                                    <li class='nav-item' style='margin-top:6px;'><a href='https://www.TopStockResearch.com/my/TsrPlans/'> <span
-                                                class='icon-holder' id='subsSbDiv' aria-hidden='true'> </span> <span class='title'>Premium
-                                                Plans</span></a></li>
-                                    <li class="nav-item dropdown" style='margin-top:6px;'>
-                                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='fnoSbDiv'
-                                                aria-hidden='true'> </span> <span class='title'>Futures And
-                                                Options</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures'>Futures
-                                                    Screeners</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/CallOptions'>Call
-                                                    Option Screeners</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutOptions'>Put
-                                                    Option Screeners</a></li>
-                                            <li><a href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutCallRatio'>PCR
-                                                    Screeners</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item dropdown" style='margin-top:6px;'>
-                                        <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='tutSbDiv'
-                                                aria-hidden='true'> </span> <span class='title'>Learn
-                                            </span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
-                                            </span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href='https://tutorials.TopStockResearch.com'>Tutorials</a></li>
-                                            <li><a href='https://www.TopStockResearch.com/rt/Ebooks'>E-Books</a></li>
-                                        </ul>
-                                    </li>`
-
-        /*
-// <ul class="tsrIntChPanelMenu">
-//     <li class='nav-item' style='margin-top:6px;'><a href='https://www.TopStockResearch.com/rt/Home'> <span
-//         class='icon-holder' id='homeSbDiv' aria-hidden='true'> </span> <span class='title'>Home</span></a></li>
-//     <li class="nav-item dropdown" style='margin-top:6px;'>
-//         <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder' id='msSbDiv' aria-hidden='true'>
-//         </span> <span class='title'>Market
-//             Screener</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i> </span></a>
-//         <ul class="dropdown-menu">
-//             <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener'>Market
-//                 Overview</a></li>
-//             <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/PriceVolume'>Price
-//                 / Volume</a></li>
-//             <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HighsLows'>Highs
-//                 / Lows</a></li>
-//             <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/Returns'>Returns</a>
-//             </li>
-//             <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/RelativeStrength'>Relative
-//                 Price Strength</a></li>
-//             <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/IndexAnalysis'>Index
-//                 Analysis</a></li>
-//             <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/SectorRotation'>Sector
-//                 Rotation</a></li>
-//             <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/SectorAnalysis'>Sector
-//                 Analysis</a></li>
-//             <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HeatMap'>Heat
-//                 Map</a></li>
-//             <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/AdvanceDecline'>Advance
-//                 /Decline</a></li>
-//             <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener'>Intraday
-//                 Strategies</a></li>
-//         </ul>
-//     </li>
-
-
-let navMenuLinks = {
-    "Home": {
-        iconHolderId: "",
-        label: "",
-        url: "",
-        dropdown: false,
-    },
-    "Markets": {
-        iconHolderId: "",
-        label: "",
-        url: "",
-        dropdown: true,
-        subMenu: [{
-            label: "",
-            url: ""
-        }]
-    },
-};
-
-
-
-html += `               <ul class="tsrIntChPanelMenu">`;
-
-let keys = Object.keys(navMenuLinks);
-
-for (let i = 0; i < keys.length; i++) {
-    html += `<li class='nav-item'>`;
-    html += `
-            <a href='${navMenuLinks[keys[i]]["url"]}'> 
-                <span class='icon-holder' id='${navMenuLinks[keys[i]["iconHolderId"]]}Div' aria-hidden='true'> </span> 
-                <span class='title'>${navMenuLinks[keys[i]["label"]]}</span>`
-    if (navMenuLinks[keys[i]["dropdown"]]) {
-        html += `<span class="arrow"> <i class="fa fa-solid fa-chevron-right"></i> </span>`
-    }
-    html += `</a>`
-
-    if (navMenuLinks[keys[i]["dropdown"]]) {
-        let subMenu = navMenuLinks[keys[i]]["subMenu"];
-
-        html += `<ul class="dropdown-menu"> `
-        for (let j = 0; j < subMenu.length; j++) {
-            html += `   
-                    <li>
-                        <a href='${subMenu[j].url}'>
-                            ${subMenu[j].label}
-                        </a>
-                    </li> `;
-        }
-        html += `</ul> `;
-    };
-    html += `</li>`
-}
-*/
-        html += '               </ul>';
-
-        html += `           </div>
-                        </div>
-                    </div>
-                </nav>
-            `;
-
-
-        return html;
-    }
-
-
 
 
     function getUserHead() {
@@ -761,8 +367,6 @@ for (let i = 0; i < keys.length; i++) {
 
     }
 
-
-
     function getSignedIn() {
 
         var heelo = (jsu.isRtContext() || jsu.isMyContext()) ? 'Namaste/Hello' : 'Hello';
@@ -783,7 +387,6 @@ for (let i = 0; i < keys.length; i++) {
 
         return html;
     }
-
 
     function getLoginIn() {
         var html = ''
@@ -818,7 +421,6 @@ for (let i = 0; i < keys.length; i++) {
         html += '						      </li>'
         return html;
     }
-
 
     function getPlan() {
 
@@ -869,8 +471,6 @@ for (let i = 0; i < keys.length; i++) {
 
     }
 
-
-
     function getRefCode() {
         var html = '';
 
@@ -892,8 +492,6 @@ for (let i = 0; i < keys.length; i++) {
         return html;
     }
 
-
-
     function getHelp() {
 
         return '<a onclick="' + objName + '.help();">'
@@ -904,7 +502,6 @@ for (let i = 0; i < keys.length; i++) {
 
     function getFav() {
         return '<a href="#Favorites" title="Favorites"><span style="color:#DC143C;" class="fa fa-heart fa-2x"></span></a>'
-
     }
 
     function getAutoRefresh() {
@@ -927,12 +524,8 @@ for (let i = 0; i < keys.length; i++) {
 
     }
 
-
-
-
     var expand = "<i class='fas fa-angle-double-right' style='color:#6c757d'></i> <span style='color:white;font-size:1px;'>Expand</span>";
     var contract = "<i class='fas fa-angle-double-left' style='color:#6c757d'></i> <span style='color:white;font-size:1px;'>contract</span>";
-
 
     // function getSideToggle(){
 
@@ -942,15 +535,12 @@ for (let i = 0; i < keys.length; i++) {
     //     	+	'</a>'
     // }
 
-
-
+    // below function adds event listeners to nav menu items for expected behaviour
     function sideNavDropDownInit() {
 
         let href = window.location.href;
 
-        if ((!jsu.isMigContext() && href.indexOf('/InteractiveCharts') == -1)) {
-
-
+        if ((!jsu.isMigContext() && href.indexOf('/InteractiveCharts') == -1)) { // Current page is not interactive charts...
             let navMenuCntr = document.querySelector(".tsrNavMenuCntr");
 
             let navCntrRect = navMenuCntr.getBoundingClientRect();
@@ -1010,10 +600,9 @@ for (let i = 0; i < keys.length; i++) {
                 navList.style.height = (window.innerHeight - navCntrRect.top) + "px";
             }
 
-            let menuItems = document.querySelectorAll(".tsrNavMenuList>li"); // all menu items on left side nav bar
-
             // * below code handles hover and clicks on nav menu items
-            if (!navMenuInit) { // to prevent event listeners from being attached multiple times
+            if (!navMenuInit) { // * to prevent event listeners from being attached multiple times
+                let menuItems = document.querySelectorAll(".tsrNavMenuList>li"); // all menu items on left side nav bar
                 for (let i = 0; i < menuItems.length; i++) {
                     let menuItem = menuItems[i];
 
@@ -1048,6 +637,7 @@ for (let i = 0; i < keys.length; i++) {
                         });
                     }
                 }
+
 
                 document.body.addEventListener("pointerdown", function (e) {
 
@@ -1211,38 +801,28 @@ for (let i = 0; i < keys.length; i++) {
                     }
                 }
             }
-
         }
-
-        // Mobile Side Nav Item Dropdown Control
-        // $('.tsrsn .tsrIntChPanelMenu li a').on('click', function (e) {
-        $('.tsrIntChPanelMenu li a').on('click', function (e) {
-
-
-            if ($(this).parent().hasClass("open")) {
-
-                $(this).parent().children('.dropdown-menu').slideUp(200, function () {
-                    $(this).parent().removeClass("open");
-                });
-
-
-
-            } else {
-                $(this).parent().parent().children('li.open').children('.dropdown-menu').slideUp(200);
-                $(this).parent().parent().children('li.open').children('a').removeClass('open');
-                $(this).parent().parent().children('li.open').removeClass("open");
-                $(this).parent().children('.dropdown-menu').slideDown(200, function () {
-                    $(this).parent().addClass("open");
-                });
-
-            }
-        });
+        else { // Is interactive charts...
+            $('.tsrIntChPanelMenu li a').on('click', function (e) {
+                if ($(this).parent().hasClass("open")) {
+                    $(this).parent().children('.dropdown-menu').slideUp(200, function () {
+                        $(this).parent().removeClass("open");
+                    });
+                } else {
+                    $(this).parent().parent().children('li.open').children('.dropdown-menu').slideUp(200);
+                    $(this).parent().parent().children('li.open').children('a').removeClass('open');
+                    $(this).parent().parent().children('li.open').removeClass("open");
+                    $(this).parent().children('.dropdown-menu').slideDown(200, function () {
+                        $(this).parent().addClass("open");
+                    });
+                }
+            });
+        }
 
         var html = createQuickLinks();
         if (jsu.isRtContext()) {
             html += getUsOffer();
         }
-
 
         htmlU.addMsgToDiv('myTsrLinks', true, html);
         $("#myTsrLinks").css('margin', '10px');
@@ -1251,9 +831,6 @@ for (let i = 0; i < keys.length; i++) {
         // if(!jsu.isMigContext()){
         // aioIcons.iti(); 
         // }
-
-
-
     }
 
 
@@ -1399,8 +976,6 @@ for (let i = 0; i < keys.length; i++) {
         return html;
     }
 
-
-
     function getSettingsLinks() {
 
         var html = '';
@@ -1414,11 +989,6 @@ for (let i = 0; i < keys.length; i++) {
 
         return html;
     }
-
-
-
-
-
 
     function help() {
 
@@ -1458,8 +1028,6 @@ for (let i = 0; i < keys.length; i++) {
 
     }
 
-
-
     function leftSideMiniToggle() {
 
         if ($('.tsrsn-backdrop').length) {
@@ -1484,7 +1052,6 @@ for (let i = 0; i < keys.length; i++) {
 
     }
 
-
     function leftSideLargeToggle() {
 
         $('.app').toggleClass("tsrsn-folded");
@@ -1500,15 +1067,12 @@ for (let i = 0; i < keys.length; i++) {
 
     }
 
-
-
     var MY_LINKS = [
         { id: 'myScrQlDiv', label: 'My Screeners', favType: SRC_SCR },
         { id: 'myStratQlDiv', label: 'My Strategies', favType: SRC_CSS },
         { id: 'myWlQlDiv', label: 'My Watchlist', favType: SRC_WL },
         { id: 'myPfQlDiv', label: 'My Portfolio', favType: SRC_PF },
     ];
-
 
     function myLinks() {
 
@@ -1547,7 +1111,6 @@ for (let i = 0; i < keys.length; i++) {
         }
     }
 
-
     function myRecentActivies() {
 
         var eqhtml = act.ged();
@@ -1575,8 +1138,6 @@ for (let i = 0; i < keys.length; i++) {
 
     }
 
-
-
     /*
     	
             function initBreadCrumbs(){
@@ -1594,12 +1155,7 @@ for (let i = 0; i < keys.length; i++) {
     	
     */
 
-
-
     function getUsOffer() {
-
-
-
 
         var html = '<div align="center">';
 
@@ -1629,15 +1185,11 @@ for (let i = 0; i < keys.length; i++) {
 
     function addShow() {
         // HACK As drop down was not working ONLY in Interactive Chart of TSR , working in AIO  :( why?? Nikhil the savior
-
-
         $('#upsul').addClass('show');
         $('#upsa').addClass('show');
     }
 
     // User registration Model
-
-
     function userRegistrationModal() {
 
         // jsu.dlhrtd();
@@ -1645,8 +1197,6 @@ for (let i = 0; i < keys.length; i++) {
         // htmlU.divHide(  'upsul');
 
         // let url = jsu.getStaticUrl()+'/template/user/UserRegistration.html';   ///web/static/template/user/UserRegistration.html
-
-
         let url = jsu.getMyTsrUrl() + '/user/QuickRegis';
 
         jsu.dlhrtd({}, url, 'usrRegDiv', false, null, null, null);
@@ -1665,48 +1215,63 @@ for (let i = 0; i < keys.length; i++) {
         myLinks: myLinks,
         myRecAct: myRecentActivies,
         addShow: addShow,
-
         urm: userRegistrationModal,
         sni: sideNavDropDownInit,
-
-
-
-
     }
 
 })(); // module 	
 
-$(window).on('load', function () {
-    // Only wire up the resize handler after loading is complete to prevent fire of resize before page is loaded.
-    $(window).on('resize', function () {
-        migUi.sni();
+// $(window).on('load', function () {
+//     // Only wire up the resize handler after loading is complete to prevent fire of resize before page is loaded.
+//     $(window).on('resize', function () {
+//         migUi.sni();
+//     });
+//     window.matchMedia("(orientation: portrait)").addEventListener("change", (e) => { // detect device orientation change
+//         migUi.sni();
+//     });
+// });
 
+// $(window).resize(function () {
+//     // window.innerWidth() 
+//     if (isMobile()) {
+
+//         if (mintJsUtil.opsy() === 'Android') {
+//             // affectes Search text Box
+//         } else {
+//             migUi.ph();
+//         }
+//     } else {
+//         migUi.ph();
+//     }
+// });
+
+$(window).on('load', function () {
+
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer); // Clear any previous timer
+        resizeTimer = setTimeout(() => {
+            if (isMobile()) {
+                if (mintJsUtil.opsy() === 'Android') {
+                    // affectes Search text Box
+                } else {
+                    migUi.ph();
+                }
+            } else {
+                migUi.ph();
+            }
+            migUi.sni(); // sni() is called for showing/hiding scroll btn
+        }, 250); // Execute after 250ms of no further resize events
     });
 
     window.matchMedia("(orientation: portrait)").addEventListener("change", (e) => { // detect device orientation change
-        migUi.sni();
-
-    });
-});
-
-$(window).resize(function () {
-    // window.innerWidth() 
-
-
-
-    if (isMobile()) {
-
-        if (mintJsUtil.opsy() === 'Android') {
-            // affectes Search text Box
-        } else {
-            migUi.ph();
-        }
-    } else {
         migUi.ph();
-    }
+        migUi.sni();
+    });
 
 
 });
+
 
 
 window.onkeyup = function (event) {
