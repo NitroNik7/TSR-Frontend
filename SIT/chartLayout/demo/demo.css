@@ -1,0 +1,31 @@
+
+.chart_top_layout {
+    display: flex;
+    width: 100%;
+    height: 70vh;
+    
+}
+
+.chart_top_center_divider{
+    width: 10px;
+    cursor: col-resize;
+    
+}
+
+.chart_top_layout_right {
+    position: relative;
+    /* right: 0; */
+    /* height: auto; */
+    width: 30%;
+    background: lightblue;
+    min-width: 300px;
+
+}
+
+
+.chart_top_layout_left {
+    background: lightcoral;
+    width: 70%;
+    min-width: 300px;
+    
+}

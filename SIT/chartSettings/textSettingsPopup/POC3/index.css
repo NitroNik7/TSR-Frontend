@@ -1,0 +1,44 @@
+
+/* New Css for text settings popups */
+.ch_text_settings_popup{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    z-index: 1001;
+    width: 250px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0,0,0,.2);
+}
+
+/* Existing CSS */
+.chCusSetRow{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.chCusSetRow input[type=number]{
+    width: 50px;
+}
+
+.chCusSetRow input[type=number]:focus {
+    outline: auto;
+}
+
+
+.chartTypeSttgContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* margin: 5px; */
+}
+
+
+.ch_settings_panel {
+    display: flex;
+    flex-direction: column;
+}

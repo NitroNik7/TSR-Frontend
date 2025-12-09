@@ -1,0 +1,322 @@
+/*
+
+  CHANGES DONE
+
+  chart_type_option_selector -->  chDdOptSel
+
+  choose_chart_type_option_wrapper -->  chDDoptWrap
+
+  lineChartSettingRow  --> chCusSetRow
+  ch_sp_chartSettingRow --> chCusSetRow
+
+*/
+
+
+.chartPanel {
+    border: 2px solid #DDDDDD;
+    border-radius: 15px;
+
+    padding:0 10 10 10;
+    /* background-color: #fafafa; */
+}
+
+.ch_set_hr{
+  margin: 1rem 0;
+}
+
+/* .search_select_indicator, */
+.ch_settings_popup {
+    display: none;
+    position: fixed;
+    top: 10%;
+    margin: auto;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid lightgray;
+    z-index: 999;
+    overflow: hidden;
+    box-sizing: content-box;
+    box-shadow: 2px 2px 10px black !important;
+    min-height: 500px;
+}
+
+/* Used in saved Settings indicator */
+.ch_sttg_popup_settingsOptionHeader,
+.ch_mch_settingsOptionHeader {
+    background-color: #7e7e7e;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+    height:35px;
+}
+
+
+.ch_settings_panel {
+    display: flex;
+    flex-direction: column;
+    padding: unset;
+    height: unset;
+}
+
+.ch_settings_panel input {
+    height: unset !important;
+    font-family: unset !important;
+    font-size: unset !important;
+    background-color: white !important;
+
+}
+
+.ch_settings_option_menu {
+    /* width: max-content; */
+    border-right: 1px solid lightgray;
+    background: lightgrey;
+    width: 100%;
+    display: flex;
+    /* border-bottom: 2px solid gray; */
+}
+
+
+
+.ch_settings_option_menu ul {
+    display: flex;
+    width: 400px;
+    justify-content: space-evenly;
+    white-space: nowrap;
+    overflow-x: hidden;
+    padding: 0 !important;
+    margin-bottom: 0;
+}
+
+.ch_settings_option_menu ul .divider,
+.chDDoptWrap ul .divider {
+    height: 1px;
+    overflow: hidden;
+    border-bottom: 1px solid lightgray;
+    padding: 0px !important;
+}
+
+.ch_settings_option_menu ul li,
+.chDDoptWrap ul li {
+    width: 100%;
+    list-style-type: none;
+    padding: 3px 0px 3px 0px;
+    cursor: pointer;
+    color: black;
+}
+
+.ch_settings_panel ul .active {
+    background-color: whitesmoke;
+    color: black;
+    font-weight: 500;
+}
+
+#settingsOptionMenuUl>* {
+    border-right: 3px solid gray;
+    text-align: center;
+}
+
+.ch_settings_option_menu ul li>*,
+.chDDoptWrap ul li>* {
+    padding: 0 10px 0 10px;
+    font-size: medium;
+}
+
+.ch_settings_option_menu ul li:hover,
+.chDDoptWrap ul li:hover {
+    background-color: grey;
+    color: white;
+    font-weight: 500;
+}
+
+.ch_settings_option_content {
+    background-color: #f2f2f2;
+    padding: 15px;
+    min-width: 300px;
+    height: 460px;
+}
+
+.ch_setting_controls_div>* {
+    height: 400px;
+    overflow-y: auto;
+}
+
+
+
+.ch_sttg_container {
+    padding: 10px;
+    background-color: white;
+    max-height: 430px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.chartTypeSttgContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* margin: 5px; */
+}
+
+.chCusSetRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* .chCusSetRow span{
+    font-weight: 500;
+} */
+
+.chCusSetRow input:focus {
+    outline: auto;
+}
+
+/* * For chart type option selector  */
+.chDdOptSel {
+    font-weight: 600;
+    width: max-content;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.chDdOptSel:focus {
+    outline: auto;
+}
+
+.chDDoptWrap ul {
+    display: none;
+    padding: 0 !important;
+    margin: 0;
+    width: max-content;
+    border: 1px solid lightgray;
+    position: fixed;
+    background: white;
+    z-index: 999;
+
+
+}
+
+.ch_sttg_saveChartTypeAsDefaultWrapper {
+    margin-left: 10px;
+}
+
+.ch_sttg_checkbox {
+    background-color: initial;
+    cursor: pointer;
+    appearance: auto !important;
+    box-sizing: border-box;
+    margin: 3px 3px 3px 4px;
+    padding: initial;
+    border: initial;
+}
+
+
+.ch_sttg_toggle_container {
+    text-align: center;
+}
+
+.ch_sttg_volume_toggle {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+}
+
+.ch_sttg_volume_toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ch_sttg_toggle_slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 17px;
+}
+
+.ch_sttg_toggle_slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.ch_sttg_toggle_slider {
+    background-color: #2196F3;
+}
+
+input:checked+.ch_sttg_toggle_slider:before {
+    transform: translateX(13px);
+}
+
+.ch_sttg_radioButtons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ch_sttg_radioButtons input {
+    background-color: initial !important;
+    cursor: default;
+    appearance: auto !important;
+    box-sizing: border-box;
+    margin: 3px 3px 0px 5px;
+    padding: initial;
+    border: initial !important;
+}
+
+
+/*
+ */
+
+.ch_sttg_chartTypeAccordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    /* padding: 18px; */
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.4s;
+    border-bottom: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+
+.ch_sttg_chartTypeAccordion:hover {
+    background-color: #ccc;
+}
+
+.ch_sttg_chartTypePanel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    border-top: none;
+}

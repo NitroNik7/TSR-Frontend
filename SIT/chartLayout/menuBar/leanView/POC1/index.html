@@ -1,0 +1,625 @@
+<html>
+
+<head>
+    <title>Interactive Stock Charts For US Market</title>
+    <meta name="description"
+        content="Interactive Stock Charts For US Market with Technical Indicators & Financial Data in One View">
+    <meta name="keywords"
+        content="Interactive Charts, Charts, Technical Chart, Free Chart, Stock Charts, Financial Charts, Popular Charts, Candlestick Chart, Heikin Ashi Chart, OHLC Chart, Line Chart ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href='https://www.stockaio.com/static/mig/icon/StockAio.ico' type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' type='text/css' href='https://www.stockaio.com/static/mig/css/aioCmnV0.0.0.7.css' />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='//code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+    <script src="https://www.stockaio.com/static/js/tsr/common/mint_cn_minV0.7.5.126.js"></script>
+    <script src="https://www.stockaio.com/static/mig/js/aio_cmnV0.0.0.33.js"></script>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3K4ELS3GT3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-3K4ELS3GT3');
+</script>
+<script>
+    var userProf = {
+        status: 'notSignedIn'
+    };
+</script>
+
+<body class="scrollable">
+    <div id="mainController">
+        <div style="display: none;">
+            <select class='selectpicker' id='userMkt' onchange="javascript:marketOnChange();">
+                <option value="IN" selected="selected" label="India">India</option>
+            </select>
+        </div>
+        <div class="app tsrsn-folded">
+            <div class="layout">
+                <!--                <div id='dynHead'></div>-->
+                <div class="tsrhdr navbar">
+                    <div class="tsrhdr-container">
+                        <div class="nav-logo" id='navLogoDiv'>
+                            <a href="javascript:void(0);" class="tsrsn-fold-toggler" title='Stock AIO (All In One)'>
+                                <div class="logo logo-dark"
+                                    style="background-image: url('https://www.stockaio.com/static/img/StockAioLogo.png')">
+                                </div>
+                            </a>
+                        </div>
+                        <div id='dynHead'></div>
+                    </div>
+                </div>
+                <!-- Header End-->
+                <div class="tsrsn expand-lg">
+                    <div class="tsrsn-inner">
+                        <div id="sideNavBarDiv">
+                            <ul class="tsrsn-menu scrollable">
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.stockaio.com/US/ai/Home'> <span class='icon-holder'
+                                            id='homeSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Home</span></a></li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='msSbDiv' aria-hidden='true'> </span> <span class='title'>Market
+                                            Screener</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://www.stockaio.com/US/ai/Screener/Markets/PriceVolume'>Price
+                                                / Volume</a>
+                                        </li>
+                                        <li><a href='https://www.stockaio.com/US/ai/Screener/Markets/HighsLows'>Highs /
+                                                Lows</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/Markets/Returns'>Returns</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='strSbDiv' aria-hidden='true'> </span> <span class='title'>AIO Strength
+                                            Index</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                                        </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/TSRStrengthIndex/TechnicalStrength'>Technical
+                                                Strength</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/TSRStrengthIndex/FinancialStrength'>Financial
+                                                Strength</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='csSbDiv' aria-hidden='true'> </span> <span class='title'>Candlestick
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/Candlestick/BullishScreener'>Bullish
+                                                Screener</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/Candlestick/BearishScreener'>Bearish
+                                                Screener</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/Candlestick/Consolidation'>Consolidation</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='techSbDiv' aria-hidden='true'> </span> <span class='title'>Technical
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://www.stockaio.com/US/ai/Screener/Technical/OHLCScreeners'>OHLC
+                                                Screeners</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/Technical/OverboughtSold'>Overbought/Sold</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/Technical/Indicators'>Indicators</a>
+                                        </li>
+                                        <li><a href='https://www.stockaio.com/US/ai/Screener/Technical/PivotPoint'>Pivot
+                                                Point</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='maSbDiv' aria-hidden='true'> </span> <span class='title'>Moving Average
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://www.stockaio.com/US/ai/Screener/MovingAverage/SMAScreener'>SMA
+                                                Screener</a>
+                                        </li>
+                                        <li><a href='https://www.stockaio.com/US/ai/Screener/MovingAverage/EMAScreener'>EMA
+                                                Screener</a>
+                                        </li>
+                                        <li><a href='https://www.stockaio.com/US/ai/Screener/MovingAverage/WMAScreener'>WMA
+                                                Screener</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='cpSbDiv' aria-hidden='true'> </span> <span class='title'>Chart
+                                            Patterns</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/ChartPatterns/PopularChartPatterns'>Popular
+                                                Chart Patterns</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/ChartPatterns/Triangle'>Triangle</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/ChartPatterns/Channel'>Channel</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/ChartPatterns/Trendlines'>Trendlines</a>
+                                        </li>
+                                        <li><a href='https://www.stockaio.com/US/ai/Screener/ChartPatterns/NRWR'>NR /
+                                                WR</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='fundaSbDiv' aria-hidden='true'> </span> <span class='title'>Financial
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://www.stockaio.com/US/ai/Screener/Financial/FinHighlight'>Financial
+                                                Highlight</a>
+                                        </li>
+                                        <li><a href='https://www.stockaio.com/US/ai/Screener/Financial/GuruRatios'>Guru
+                                                Ratios</a>
+                                        </li>
+                                        <li><a href='https://www.stockaio.com/US/ai/Screener/Financial/ValuationRatio'>Valuation
+                                                Ratio </a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/Financial/ProfitabilityRatio'>Profitability
+                                                Ratio</a>
+                                        </li>
+                                        <li><a href='https://www.stockaio.com/US/ai/Screener/Financial/SolvencyRatios'>Solvency
+                                                Ratios</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/Financial/EfficiencyRatios'>Efficiency
+                                                Ratios</a>
+                                        </li>
+                                        <li><a href='https://www.stockaio.com/US/ai/Screener/Financial/IncStatGrowthYr'>Income
+                                                Statement Growth (Yr)</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/Financial/BalSheetGrowthYr'>Balance
+                                                Sheet Growth (Yr)</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/Financial/CashFlowStatGrowthYr'>Cash
+                                                Flow Statement Growth (Yr)</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='haSbDiv' aria-hidden='true'> </span> <span class='title'>Heikin Ashi
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/HeikinAshi/HeikinAshiScreener'>Heikin
+                                                Ashi Screener</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.stockaio.com/US/ai/AIOScreener'> <span class='icon-holder'
+                                            id='diysSbDiv' aria-hidden='true'> </span> <span class='title'>Custom
+                                            Screener</span></a>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='comboSbDiv' aria-hidden='true'> </span> <span class='title'>Combo
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/ComboScreener/PriceActionScreeners'>Price
+                                                Action Screeners</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish
+                                                Technical Screeners</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish
+                                                Technical Screeners</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.stockaio.com/US/ai/Screener/ComboScreener/FundamentalScreener'>Fundamental
+                                                Screeners</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.stockaio.com/US/ai/StockTechnicalCharts'> <span
+                                            class='icon-holder' id='tcSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Technical Charts</span></a></li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.StockAio.com/US/ai/SubscriptionPlans'> <span
+                                            class='icon-holder' id='subsSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Premium Plans</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    var mcat = 'homeSb';
+                </script> <!-- Page Container Start -->
+                <div class="page-container">
+                    <!-- Quick View Start -->
+                    <div class="tsrqv1" id='helpNav'>
+                        <ul class="tsrqv-tabs nav nav-tabs nav-justified" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" data-bs-target="#myTsrLinkstab" role="tab"
+                                    data-bs-toggle="tab">
+                                    MyTSR Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myLinksTab" role="tab" data-bs-toggle="tab"
+                                    onClick='migUi.myLinks()'>
+                                    My Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myRecentActTab" role="tab"
+                                    data-bs-toggle="tab" onClick='migUi.myRecAct()'>
+                                    My Recent Activities
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content scrollable">
+                            <div id="myTsrLinksTab" role="tabpanel" class="tab-pane fade show active">
+                                <div id='myTsrLinks'> Loading</div>
+                            </div>
+                            <div id="myLinksTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myLinksDiv'> Loading ...</div>
+                            </div>
+                            <div id="myRecentActTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myRecentActivityDiv'> Loading ...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick View End -->
+                    <!-- Content Wrapper Start -->
+                    <div class="main-content">
+                        <div class="container-fluid aioRowPad">
+                            <div class="row   ">
+                                <div class="col-md-12">
+                                    <div id="premServiceDiv" style="text-align:justify;"> </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div id='dynSearch'>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                var mtppp = null;
+                            </script>
+                            <h3 align='center'>Interactive Stock Charts For US Market</h3>
+                            <div id='Html5'>
+                                <div id='chartPanel' class="chartPanel miCtrl">
+                                    <div id="chartFocus" style="margin:1px ; padding:1px; height:1px;width:1px"
+                                        tabindex='1'></div>
+                                    <div id="chartControlsEdit">
+
+                                        <!-- Chart controls code starts here -->
+
+                                        <link rel="stylesheet" href="index.css">
+                                        <div id="chCtrlMenuBarTop" class="ch_ctrl_menu_bar_top">
+                                            <div id="chCtrlMenuBarTopLeft" class="ch_ctrl_menu_bar_top_left">
+                                                <div>
+                                                    <input type="text" name="" id="" placeholder="Search">
+                                                </div>
+                                                <div>
+                                                    <div id="chCtrlTickQuickSettings">
+                                                        <button id="chCtrlTick1mBtn" class="ch_ctrl_menu_bar_button">
+                                                            <span>1m</span>
+                                                        </button>
+                                                        <button id="chCtrlTick1dBtn" class="ch_ctrl_menu_bar_button">
+                                                            <span>1D</span>
+                                                        </button>
+                                                    </div>
+                                                    <div id="chooseTicksOptionWrapper" class="chDdOptWrap"
+                                                        style="display: inline-block;">
+                                                        <div id="tickOptionSelector" class="chDdOptSel"
+                                                            onclick="showTickOptions()" title="Ticks">
+                                                            <span>1m</span>
+                                                            <span>
+                                                                <i class="fas fa-caret-down"></i>
+                                                            </span>
+                                                        </div>
+                                                        <ul id="tickOptionList"></ul>
+                                                    </div>
+                                                    <!-- <div id="favTicksWrapper" style="display: inline-block;">
+                                                        <button style="display: inline-block;">1m</button>
+                                                        <button style="display: inline-block;">1m</button>
+                                                        <button style="display: inline-block;">1m</button>
+                                                    </div> -->
+                                                </div>
+                                                <div>
+                                                    <div id="chCtrlChartTypeQuickSettings">
+                                                        <button id="chCtrlChartTypeLineBtn" class="ch_ctrl_menu_bar_button">
+                                                            <!-- <span>Line</span> -->
+                                                             <img style="height: 30; width: 30;" src="https://www.tsrsit.com/Test/Nikhil/frontend/chartLayout/menuBar/leanView/POC1/media/line.png" alt="">
+                                                        </button>
+                                                        <button id="chCtrlChartTypeCandleBtn" class="ch_ctrl_menu_bar_button">
+                                                            <!-- <span>Candle</span> -->
+                                                             <img style="height: 30; width: 30;" src="https://www.tsrsit.com/Test/Nikhil/frontend/chartLayout/menuBar/leanView/POC1/media/hollowCandles.png" alt="">
+                                                        </button>
+                                                    </div>
+                                                    
+                                                    <div id="chooseChartTypeOptionWrapper" class="chDDoptWrap">
+                                                        <div id="chartTypeOptionSelector" class="chDdOptSel"
+                                                            onclick="showChartTypeOptions()" title="Chart type">
+                                                            <span class="ch_ctrl_dropdownButtonSpan" style="width: 50px;">Hollow Candles</span>
+                                                            <span>
+                                                                <i class="fas fa-caret-down"></i>
+                                                            </span>
+                                                        </div>
+                                                        <ul id="chartTypeOptionList">
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div id="chCtrlFrequencyQuickSettings">
+                                                        <button id="chCtrlFrequency3mBtn" class="ch_ctrl_menu_bar_button">
+                                                            <span>3M</span>
+                                                        </button>
+                                                        <button id="chCtrlFrequency1YBtn" class="ch_ctrl_menu_bar_button">
+                                                            <span>1Y</span>
+                                                        </button>
+                                                    </div>
+                                                    
+                                                    <div id="chooseFequencyOptionWrapper" class="chDDoptWrap">
+                                                        <div id="frequencyOptionSelector" class="chDdOptSel"
+                                                            onclick="showFrequencyOptions()" title="Range">
+                                                            <span>1D</span>
+                                                            <span>
+                                                                <i class="fas fa-caret-down"></i>
+                                                            </span>
+                                                        </div>
+                                                        <ul id="frequencyOptionList">
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="chCtrlIndicatorQuickSettings">
+                                                        <button id="chCtrlIndicatorRsiBtn" class="ch_ctrl_menu_bar_button">
+                                                            <span>RSI</span>
+                                                        </button>
+                                                        <button id="chCtrlIndicatorMacdBtn" class="ch_ctrl_menu_bar_button">
+                                                            <span>MACD</span>
+                                                        </button>
+                                                    </div>
+                                                    <button class="ch_ctrl_menu_bar_button" title="Indicators & Moving Averages">
+                                                        <!-- Indicators -->
+                                                         <!-- stroke="#797979" -->
+                                                        <svg height="20" viewBox="0 0 288 288" fill="none" stroke="black" xmlns="http://www.w3.org/2000/svg"><g><path d="M19.3101 187.074L74.3545 93.274L146.78 130.294L175.751 43.9139L251.074 75.994L282.94 1.95398L283.666 0.484009" stroke-width="16.5597"></path><path d="M282.53 226L21.002 230.103" stroke-width="2.29167" stroke-miterlimit="8" stroke-linecap="square" stroke-dasharray="6.88 2.29"></path><path d="M279.53 184L18.002 188.103" stroke-width="10.3125" stroke-miterlimit="8"></path><path d="M23 262C28.91 240.11 34.8301 218.22 45.8101 210.83C56.8001 203.44 78.1301 212.25 88.9001 217.65C99.6701 223.05 102 238.4 110.45 243.24C118.89 248.07 130.09 250.91 139.59 246.65C149.1 242.38 158.6 222.77 167.48 217.65C176.35 212.53 182.26 211.11 192.82 215.95C203.38 220.78 218.8 242.67 230.84 246.65C242.88 250.63 257.03 245.51 265.06 239.83C273.09 234.14 276.04 223.34 279 212.53" stroke-width="13.75" stroke-miterlimit="8"></path><path d="M14.5 1.5L14.4997 276.933" stroke-width="20.625" stroke-miterlimit="8"></path><path d="M285.93 267.5L10.4971 268.001" stroke-width="20.625" stroke-miterlimit="8"></path></g></svg>
+                                                    </button>
+                                                </div>
+                                                <div id="chooseSettingsOptionContainer">
+                                                    <div id="chooseSettingsOptionWrapper" class="chDDoptWrap">
+                                                        <div id="mySettingsOptionSelector" class="chDdOptSel"
+                                                            onclick="showMySettingsOptions()" title="Saved Settings">
+                                                            <span class="ch_ctrl_dropdownButtonSpan" style="width: 60px;">Settings</span>
+                                                            <span>
+                                                                <i class="fas fa-caret-down"></i>
+                                                            </span>
+                                                        </div>
+                                                        <ul id="mySettingsOptionList">
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div id="chooseStockOptionContainer">
+                                                    <div id="chooseStockOptionWrapper" class="chDDoptWrap">
+                                                        <div id="stockOptionSelector" class="chDdOptSel"
+                                                            onclick="showMyStockOptions()" title="Watchlist stocks">
+                                                            <span class="ch_ctrl_dropdownButtonSpan" style="width: 50px">Stocks</span>
+                                                            <span>
+                                                                <i class="fas fa-caret-down"></i>
+                                                            </span>
+                                                        </div>
+                                                        <ul id="stockOptionList">
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div id="chCtrlDrawingContainer">
+                                                    <div id="chooseDrawingOptionWrapper" class="chDDoptWrap">
+                                                        <div id="drawingOptionSelector" class="chDdOptSel"
+                                                            onclick="showDrawingOptions()" title="Drawings">
+                                                            <span >
+
+                                                                <i class="fas fa-pencil-alt"></i>
+                                                            </span>
+                                                            <span>
+                                                                <i class="fas fa-caret-down"></i>
+                                                            </span>
+
+                                                            
+                                                        </div>
+                                                        <ul id="drawingsOptionList">
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div style="padding: 10px; font-size: medium; color: #717171;" >
+                                                    <i class="fas fa-undo"></i>
+                                                </div>
+
+                                            </div>
+                                            <div id="chCtrlMenuBarTopRight" class="ch_ctrl_menu_bar_top_right"
+                                            style="float: inline-end;">
+                                                <!-- <div>
+                                                    <button style="border: none;" class="ch_ctrl_menu_bar_button">
+                                                        <img style="height: 25px; width: 35px;" src="https://www.tsrsit.com/Test/Nikhil/frontend/chartLayout/menuBar/leanView/POC1/media/inline.png" alt="">
+                                                    </button> 
+                                                </div> -->
+                                                <div id="chCtrlCompareContainer">
+                                                    <button class="ch_ctrl_menu_bar_button" style="font-weight: 400;">
+                                                        Compare
+                                                    </button>
+                                                    <!-- <span>Compare</span>     -->
+                                                    <!-- <button style="border: none;" class="ch_ctrl_menu_bar_button">
+                                                        <img style="height: 20px" src="https://www.tsrsit.com/Test/Nikhil/frontend/chartLayout/menuBar/leanView/POC1/media/tile.png" alt="">
+                                                    </button> -->
+                                                </div>
+                                                <div id="chCtrlSaveContainer">
+                                                    <div class="ch_saveBtnDropdownWrapper" >
+                                                        <button class="ch_saveSettingsDropdown ch_ctrl_menu_bar_button"
+                                                            id="ch_saveSettingsDropdown" onclick="chsmgr.osp()" style="border: none;">
+                                                            <i class="fas fa-save"></i>
+                                                            <i class="fa  fa-chevron-down"
+                                                                id="ch_saveSettingsDropdownIcon"></i>
+
+                                                        </button>
+                                                        <div id="ch_savePopupWrapper" class="ch_savePopupWrapper"></div>
+                                                    </div>
+                                                </div>
+                                                <div  id="chCtrlFullscreenContainer">
+                                                    <button class="ch_ctrl_menu_bar_button" style="border: none;">
+                                                        <i class="fas fa-expand"></i>
+                                                    </button>
+                                                </div>
+                                                <div  id="chCtrlSettingsContainer" class="ch_settings_wrapper"
+                                                    style="border: none;">
+                                                    <button type="button" id="chSettingsBtn" class="ch_ctrl_menu_bar_button"
+                                                        onclick="showChartSettingsPopup()" style="border: none;">
+                                                        <i class="fas fa-cog"></i>
+                                                    </button>
+
+                                                </div>
+                                                
+
+                                            </div>
+                                        </div>
+                                        <script src="index.js"></script>
+                                        <script
+                                            src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
+                                            integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
+                                            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+                                        <!-- Chart controls code ends here -->
+
+                                    </div>
+
+                                    <div id='chartLoading'></div>
+                                    <div id='chartFeedBack' style='text-align:center'></div>
+                                    <div id='panel' align='center'>
+                                    </div>
+                                    <div id='selectedValues' align='center'
+                                        style='padding:0px;margin:3px; font-size: 8pt;height:12px; '> </div>
+                                    <div id='settingsDiv' style='padding:0px;margin:0px;'> </div>
+                                    <div id='chartWrap'>
+                                        <div id='tsrchart' style="font-size:10px;width:100%">
+                                        </div>
+                                        <!-- <div id = 'settings'> </div> -->
+                                    </div>
+                                    <div id="chart_dialog" class="cc_dialog miCtrl">
+                                    </div>
+                                    <div id='imgDiv'> </div>
+                                </div>
+                            </div>
+                            <script src='//cdnjs.cloudflare.com/ajax/libs/d3/4.1.0/d3.min.js'></script>
+                            <link rel="stylesheet" href="https://www.stockaio.com/static/css/v3/miChartV0.0.0.3.css">
+                            <script src="https://www.stockaio.com/static/js/chart/tsr_charts_minV0.9.2.124.js"></script>
+                            <script>
+                                $('#chartWrap').height('1000px');
+                                (function defer() {
+                                    if ((window.jQuery) && (window.d3)) {
+                                        myTsrChartInit.init(null);
+                                    } else {
+                                        console.log('jQ !yet load');
+                                        setTimeout(function () {
+                                            defer()
+                                        }, 50);
+                                    }
+                                })();
+                            </script>
+                            <div id='ytVideoDiv'></div>
+                            <br /><br /><b>Note</b> : All Data Generated at the End of
+                            Trading Hours (EOD Data)
+                            <hr />
+                            <footer class=" text-light" style='background-color: #f2f2f2;'>
+                                <div class="container" style="margin-left: 10px;">
+                                    <br>
+                                    <div class="row">
+                                        <div>
+                                            <h3 style="color:black">Quick Links</h3>
+                                            <span><a href="https://www.stockaio.com" style="color:black">Home</a></span>
+                                            <span><a href='https://www.stockaio.com/US/ai/UserManagement?action=contactUs'
+                                                    style="color:black">| Contact Us</a></span>
+                                            <span class="ms-1"><a href="https://www.stockaio.com/Disclaimer.html"
+                                                    style="color:black">| Disclaimer</a></span>
+                                            <span class="ms-1"><a
+                                                    href="https://www.stockaio.com/TermsAndConditions.html"
+                                                    style="color:black">| Terms &amp; Conditions </a></span>
+                                            <span class="ms-1"><a href="https://www.stockaio.com/PrivacyPolicy.html"
+                                                    style="color:black">| Privacy </a></span>
+                                            <span class="ms-1"><a href=https://www.topstockresearch.com
+                                                    style="color:black">| Indian Market Analysis </a></span>
+                                        </div>
+                                        <h6 style="color:grey;text-align:left;line-height: 28px;">All rights reserved by
+                                            Mintnovate Market Research Limited
+                                        </h6>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div>
+                    <!-- Content Wrapper End -->
+                </div>
+            </div>
+            <!-- NG APP  align='center'-->
+</body>
+<script>
+    migUi.init();
+</script>
+<div id='alertDialog' class='web_dialog'></div>
+<script src='https://www.stockaio.com/static/js/tsr/my/fav_minV0.0.1.1.js'></script>
+<script src='https://www.stockaio.com/static/js/tsr/mipu/mipu_minV0.0.0.39.js'"></script><script> misu.iar('null');   </script>
+
+
+
+    

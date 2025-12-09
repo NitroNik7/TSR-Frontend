@@ -1,0 +1,185 @@
+   
+
+   /*
+		my.css   --  None Taken
+
+		mytsr.css  -- 
+			1. Web_dialog 
+
+   */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.align_right{
+            text-align: right;
+        }
+.Level2HeadingStyle{
+	        font-weight: bold;
+	        font-size: 15pt;
+	        color: #2D84A7;
+	        line-height: 20px;
+        }
+
+
+/* Datagrid --  Left for lagacy Reason */
+
+
+.datagrid {background: #fff; overflow-x:auto;  border: 1px solid #DDD; -webkit-border-radius: 3px;
+ -moz-border-radius: 3px; border-radius: 3px; 
+box-shadow:2px 3px 8px 0px #ada6a6;
+margin :3px;
+
+
+}
+
+
+/* myscreener */
+
+
+/*
+
+
+.migform select{
+	border-radius: 4px;	
+	height: 36px;
+	box-shadow: inset 0px 0px 0px 0px red;
+	text-shadow: none;
+	border-color: #C0C0C0;
+	background-color:white;	}
+
+|
+
+
+.screenerControl input{
+	border-radius: 4px;	
+	box-shadow: inset 0px 0px 0px 0px red;
+	text-shadow: none;
+	border-color: #C0C0C0;
+	padding-left: 5px;
+	background-color:white;	
+}
+
+
+
+.screenerControl select{
+	border-radius: 4px;	
+	height: 24px;
+	box-shadow: inset 0px 0px 0px 0px red;
+	text-shadow: none;
+	border-color: #C0C0C0;
+	background-color:white;	
+
+}
+
+.screenerControl input[type=checkbox] , input[type=radio] {
+	-webkit-appearance: none;
+	  -moz-appearance: none;
+	  -o-appearance: none;
+	  appearance:none;
+	height: 15px;
+	width: 15px; 
+	background-color: white;	
+	border: 1px solid grey;
+}
+
+.screenerControl input[type=checkbox]:checked    {
+    background-color: greenyellow;
+	
+}
+
+.screenerControl  input[type=radio] {
+	-webkit-appearance: none;
+	  -moz-appearance: none;
+	  -o-appearance: none;
+	  appearance:none;
+	height: 15px;
+	width: 15px; 
+	background-color: white;	
+	border: 1px solid grey;
+	border-radius: 12px;	
+}
+
+.screenerControl input[type=radio]:checked    {
+    background-color: greenyellow;
+	
+}
+
+
+
+.screenerControl button{
+	height: 20px;
+	box-shadow: inset 0px 0px 0px 0px red;
+	text-shadow: none;
+}
+
+
+*/
+
+
+
+
+/* For charts */
+
+ .ppLines  path {
+        stroke: #F7BEC0;stroke-width: 1; stroke-dasharray: 5, 5;
+	fill: yellow;opacity: 1;
+    }
+   .ppAnno  path {
+        stroke: red;stroke-width: 1; 
+	fill: yellow;opacity: 1;!important;stroke:2;font-weight:2;
+    }
+    
+    
+    
+    
+/*  NEW  */    
+
+/*
+
+.sub-heading h4 {
+    text-transform: uppercase;
+    position: relative;
+    padding: 5px;
+    margin: 0;
+    color: #080808;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+.sub-heading h4:before {
+    position: absolute;
+    left: 5px;
+    bottom: 0;
+    width: 100px;
+    height: 2px;
+    content: "";
+    background-color: #090977;
+}
+
+.sub-heading h4 span {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 3em;
+    padding-left: 0.25em;
+    color: rgba(0, 0, 0, 0.4);
+    padding-bottom: 10px;
+}
+
+*/

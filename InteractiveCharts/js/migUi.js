@@ -60,13 +60,15 @@ var migUi = (function () {  // my Ui Head
 
         var width = window.innerWidth;
 
-        var logo = '';
+        var logo = jsu.getLogo(true);
 
+        /*
         if (jsu.isRtContext() || jsu.isMyContext()) {
             logo = '<img src="' + jsu.getStaticUrl() + '/v21/img/tsr/TsrLogo.png" alt="TSR - TopStockresearch"  name="TSR - TopStockresearch" height="45px;" style="vertical-align:top">';
         } else {
             logo = '<img src="' + jsu.getStaticUrl() + '/img/StockAioLogo.png" alt="Stock AIO"  name="Stock All In One" height="45px;" style="vertical-align:top">';
         }
+        */
 
         var html = '';
         var search = ''
@@ -77,16 +79,24 @@ var migUi = (function () {  // my Ui Head
 
         let href = window.location.href;
 
-        if ((!jsu.isMigContext() && href.indexOf('/InteractiveCharts') != -1)) {
-            html = intChUi.gich;
-            let dynHead = document.getElementById("dynHead");
-            dynHead.classList.add("tsrIntChHeader");
+        if (href.indexOf('/StockTechnicalCharts') > 0 || href.indexOf('/InteractiveCharts') > 0) {
 
-            htmlU.addMsgToDiv('dynHead', true, html);
+            intChUi.init();
+            // html = intChUi.gich;
+            // let dynHead = document.getElementById("dynHead");
+            // dynHead.classList.add("tsrIntChHeader");
+
+            // htmlU.addMsgToDiv('dynHead', true, html);
             aioIcons.init();
 
 
-            intChUi.amh();
+            // intChUi.amh();
+            // intChUi.csd();
+
+            // let searchInput = document.querySelector("#user_input");
+            // searchInput.onclick = null;
+            // searchInput.onclick = miIs.ssb('eqCh');
+
         }
         else {
             if (width < 576) {
@@ -202,9 +212,12 @@ var migUi = (function () {  // my Ui Head
             htmlU.divHide('navLogoDiv');
         }
 
-        if (!jsu.isMigContext()) {
-            aioIcons.iti();
-        }
+
+        // if (jsu.isMigContext()) {
+
+        // }else{
+        aioIcons.iti();
+        // }
 
         miSrch.ras();
 
@@ -543,7 +556,7 @@ var migUi = (function () {  // my Ui Head
 
         let href = window.location.href;
 
-        if ((!jsu.isMigContext() && href.indexOf('/InteractiveCharts') == -1)) { // Current page is not interactive charts...
+         if (! (href.indexOf('/StockTechnicalCharts') >0 || href.indexOf('/InteractiveCharts') >0 )) { // Current page is not interactive charts...
             let navMenuCntr = document.querySelector(".tsrNavMenuCntr");
 
             let navCntrRect = navMenuCntr.getBoundingClientRect();
@@ -614,7 +627,7 @@ var migUi = (function () {  // my Ui Head
                     if (subMenu != null) {
                         menuItem.addEventListener("mouseenter", function (e) {
                             if (window.innerWidth > 576) {
-                                showSubMenuList(e, navMenuCntr, subMenu, menuItem);
+                                showSubMenuList(e, navMenuCntr, subMenu, menuItem, i);
                             }
                         });
 
@@ -622,12 +635,12 @@ var migUi = (function () {  // my Ui Head
                         menuItem.addEventListener("pointerdown", function (e) {
                             if (subMenu.style.display == "none" || subMenu.style.display == "") {
                                 if (e.pointerType == "mouse") {
-                                    showSubMenuList(e, navMenuCntr, subMenu, menuItem);
+                                    showSubMenuList(e, navMenuCntr, subMenu, menuItem, i);
                                 } else {
                                     showMenuListMob(subMenu, menuItems, menuItem, i);
                                 }
                             } else {
-                                if (e.pointerType != "mouse" && window.innerWidth < 576) {
+                                if (window.innerWidth < 576) {
                                     hideSubMenuList(e, navMenuCntr, subMenu, menuItem);
                                 }
                             }
@@ -665,7 +678,7 @@ var migUi = (function () {  // my Ui Head
                 });
 
 
-                function showSubMenuList(e, navMenuCntr, subMenu, menuItem) {
+                function showSubMenuList(e, navMenuCntr, subMenu, menuItem, i) {
 
                     navMenuCntr.style.zIndex = "1001"; // ! discuss later
                     subMenu.style.display = "block";
@@ -678,6 +691,15 @@ var migUi = (function () {  // my Ui Head
 
                     if (window.innerWidth > 576) {
                         alignMenu(menuItem, subMenu);
+                    } else {
+                        // ---------- height animation ------------------
+                        let height = subMenu.getBoundingClientRect().height;
+                        subMenu.style.height = "0";
+                        void subMenu.offsetHeight; // browser reflow
+                        subMenu.style.height = height + "px";
+
+                        // for hiding all open sub menu's except selected one
+                        hideAllSubMenuLists(menuItems, i);
                     }
                 };
 
@@ -1028,6 +1050,7 @@ var migUi = (function () {  // my Ui Head
             htmlU.divHide('helpNav');
         });
 
+         aioIcons.iti();
 
     }
 
@@ -1220,6 +1243,7 @@ var migUi = (function () {  // my Ui Head
         addShow: addShow,
         urm: userRegistrationModal,
         sni: sideNavDropDownInit,
+        guh: getUserHead,
     }
 
 })(); // module 	
@@ -1251,7 +1275,7 @@ var migUi = (function () {  // my Ui Head
 $(window).on('load', function () {
 
     let resizeTimer;
-    window.addEventListener("resize", () => {
+    $(window).on("resize", () => {
         clearTimeout(resizeTimer); // Clear any previous timer
         resizeTimer = setTimeout(() => {
             if (isMobile()) {

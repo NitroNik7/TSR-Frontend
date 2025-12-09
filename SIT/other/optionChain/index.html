@@ -1,0 +1,1202 @@
+<html>
+
+<head>
+    <title>Comprehensive Futures Screener of Stock Traded in NSE</title>
+    <meta name="description"
+        content="Detailed Futures Screener of Stock Traded in NSE including High Open Interest, Short Covering, Highest Premium, Most Traded, Rollovers, Long Buildup, Fresh Shorts, Liquidation.">
+    <meta name="keywords"
+        content="stock Futures , futures screener, Short Covering, Highest Premium, Most Traded, Rollovers, Long Buildup, Fresh Shorts, Liquidation, FNO ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href='https://www.topstockresearch.com/static/icon/TopStockResearch.ico' type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/aioCmnV0.0.0.9.css' />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='//code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/mint_cn_minV0.7.5.142.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/aio_cmnV0.0.0.34.js"></script>
+</head>
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-20026022-1']);
+    _gaq.push(['_setDomainName', 'topstockresearch.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10KWGPV9XG"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-10KWGPV9XG');
+</script>
+<script>   var userProf = { status: 'signedIn', sal: 'Dear', fName: 'Nikhil Harpale', refCode: 'null', expDt: '14_Feb_2025', sub: 'EXPIRED' };  </script>
+
+<body class="scrollable">
+    <div id="mainController">
+
+        <div style="display: none;">
+            <select class='selectpicker' id='userMkt' onchange="javascript:marketOnChange();">
+                <option value="IN" selected="selected" label="India">India</option>
+            </select>
+        </div>
+
+
+        <div class="app tsrsn-folded">
+            <div class="layout"><!--                <div id='dynHead'></div>-->
+                <div class="tsrhdr navbar">
+                    <div class="tsrhdr-container">
+                        <div class="nav-logo" id='navLogoDiv'>
+                            <a href="javascript:void(0);" class="tsrsn-fold-toggler" title='TSR (TopStockResearch.com)'>
+                                <div class="logo logo-dark"
+                                    style="background-image: url('https://www.topstockresearch.com/static/v21/img/tsr/TsrLogo.png')">
+                                </div>
+                            </a>
+                        </div>
+                        <div id='dynHead'></div>
+                    </div>
+                </div>
+                <!-- Header End-->
+                <div class="tsrsn expand-lg">
+                    <div class="tsrsn-inner">
+                        <div id="sideNavBarDiv">
+                            <ul class="tsrsn-menu scrollable">
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.topstockresearch.com/rt/Home'> <span class='icon-holder'
+                                            id='homeSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Home</span></a></li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='msSbDiv' aria-hidden='true'> </span> <span class='title'>Market
+                                            Screener</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/PriceVolume'>Price
+                                                / Volume</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HighsLows'>Highs
+                                                / Lows</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/Returns'>Returns</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/IndexAnalysis'>Index
+                                                Analysis</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Markets/SectorAnalysis'>Sector
+                                                Analysis</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Markets/HeatMap'>Heat
+                                                Map</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='strSbDiv' aria-hidden='true'> </span> <span class='title'>TSR Strength
+                                            Index</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                                        </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/TechnicalStrength'>Technical
+                                                Strength</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/FinancialStrength'>Financial
+                                                Strength</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/EODBetaVolatile'>EOD
+                                                Beta Volatile</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='csSbDiv' aria-hidden='true'> </span> <span class='title'>Candlestick
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='techSbDiv' aria-hidden='true'> </span> <span class='title'>Technical
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/OHLCScreeners'>OHLC
+                                                Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/OverboughtSold'>Overbought/Sold</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/Overlays'>Overlays</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/TrendIndicator'>Trend
+                                                Indicator</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/VolumeBasedIndicator'>Volume
+                                                Based Indicator</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/SMAScreener'>SMA
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/EMAScreener'>EMA
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/WMAScreener'>WMA
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/VwapScreener'>VWAP
+                                                Screener</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Technical/PivotPoint'>Pivot
+                                                Point</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Technical/EODFibonacci'>EOD
+                                                Fibonacci</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='cpSbDiv' aria-hidden='true'> </span> <span class='title'>Chart
+                                            Patterns</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/PopularChartPatterns'>Popular
+                                                Chart Patterns</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Triangle'>Triangle</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Channel'>Channel</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Trendlines'>Trendlines</a>
+                                        </li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/NRWR'>NR
+                                                / WR</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='fundaSbDiv' aria-hidden='true'> </span> <span class='title'>Financial
+                                            Screener</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/FinHighlight'>Financial
+                                                Highlight</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/Financial/GuruRatios'>Guru
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/ValuationRatios'>Valuation
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/ProfitabilityRatios'>Profitability
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/SolvencyRatios'>Solvency
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/EfficiencyRatios'>Efficiency
+                                                Ratios</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/IncStatGrowthYr'>Income
+                                                Statment Growth (Yr)</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/BalSheetGrowthYr'>Balance
+                                                Sheet Growth (Yr)</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/Financial/CashFlowStatGrowthYr'>Cash
+                                                Flow Stat Growth (Yr)</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='comboSbDiv' aria-hidden='true'> </span> <span class='title'>Combo
+                                            Screener </span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/PriceActionScreeners'>Price
+                                                Action Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish
+                                                Technical Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish
+                                                Technical Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/FundamentalScreener'>Fundamental
+                                                Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ComboScreener/MovingAverageScreeners'>Moving
+                                                Average Screeners</a></li>
+                                    </ul>
+                                </li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.topstockresearch.com/rt/CustomStockScreener.tsr'> <span
+                                            class='icon-holder' id='diysSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Custom Screener</span></a></li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='expsSbDiv' aria-hidden='true'> </span> <span class='title'>Expert
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/PriceActionBased'>Price
+                                                Action Strategies</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/TechIndiBased'>Technical
+                                                Indicator Strategies</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/MovingAverageStrategies'>Moving
+                                                Average Strategies</a></li>
+                                    </ul>
+                                </li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.topstockresearch.com/rt/InteractiveCharts.tsr'> <span
+                                            class='icon-holder' id='tcSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Technical Charts</span></a></li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.topstockresearch.com/my/TsrPlans/'> <span class='icon-holder'
+                                            id='subsSbDiv' aria-hidden='true'> </span> <span class='title'>Premium
+                                            Plans</span></a></li>
+                                <li class="nav-item dropdown open" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='fnoSbDiv' aria-hidden='true'> </span> <span class='title'>Futures And
+                                            Options</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+
+                                    <h1>Hi</h1>
+
+                                    <ul class="dropdown-menu">
+                                        <li class="active"><a
+                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures'>Futures
+                                                Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/CallOptions'>Call
+                                                Option Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutOptions'>Put
+                                                Option Screeners</a></li>
+                                        <li><a
+                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutCallRatio'>PCR
+                                                Screeners</a></li>
+                                    </ul>
+                                </li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://tutorials.topstockresearch.com'> <span class='icon-holder'
+                                            id='tutSbDiv' aria-hidden='true'> </span> <span class='title'>Learn
+                                        </span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <script>var mcat = 'fnoSb';</script> <!-- Page Container Start -->
+                <div class="page-container"> <!-- Quick View Start -->
+
+
+                    <div class="tsrqv1" id='helpNav'>
+                        <ul class="tsrqv-tabs nav nav-tabs nav-justified" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" data-bs-target="#myTsrLinkstab" role="tab"
+                                    data-bs-toggle="tab">
+                                    MyTSR Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myLinksTab" role="tab" data-bs-toggle="tab"
+                                    onClick='migUi.myLinks()'>
+                                    My Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myRecentActTab" role="tab"
+                                    data-bs-toggle="tab" onClick='migUi.myRecAct()'>
+                                    My Recent Activities
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content scrollable">
+                            <div id="myTsrLinksTab" role="tabpanel" class="tab-pane fade show active">
+                                <div id='myTsrLinks'> Loading</div>
+                            </div>
+                            <div id="myLinksTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myLinksDiv'> Loading ...</div>
+                            </div>
+                            <div id="myRecentActTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myRecentActivityDiv'> Loading ...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick View End --> <!-- Content Wrapper Start -->
+                    <div class="main-content">
+                        <div class="container-fluid aioRowPad">
+                            <div class="row   ">
+                                <div class="col-md-12">
+                                    <div id="premServiceDiv" style="text-align:justify;"> </div>
+
+
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div id='dynSearch'>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <script>var mtppp = '44122022734994120250481';</script>
+
+                            <!-- Option Chain code starts here -->
+
+
+                            <style>
+                                .option-chain {
+                                    overflow-y: auto;
+                                    max-height: 400px;
+                                    /* Set a max height for scrolling */
+                                }
+
+                                thead th {
+                                    position: sticky;
+                                    top: 0;
+                                    z-index: 10;
+                                    /* Ensure the header is above other content */
+                                }
+
+                                .price_bar {
+                                    position: relative;
+                                    width: 80%;
+                                    min-width: 240px;
+                                    height: 6px;
+                                    background-color: #c3bfbf;
+                                    border-radius: 25px;
+                                    margin: 10px 0;
+                                }
+
+                                .price_bar_current_price {
+                                    position: absolute;
+                                    top: 6px;
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 10px solid transparent;
+                                    border-right: 10px solid transparent;
+                                    border-bottom: 10px solid black;
+                                    left: 50%;
+                                    /* This will be updated by JS */
+                                    transform: translateX(-50%);
+                                }
+                            </style>
+
+                            <div class="container-fluid ">
+                                <!-- Header -->
+                                <div class="stock-info mb-4">
+                                    <h1 id="stock-name">Nifty</h1>
+                                    <div class="row stock_values_container">
+                                        <div class="d-flex flex-column flex-sm-row justify-content-between">
+                                            <div class="d-flex flex-column justify-content-center mb-2 mb-sm-0">
+                                                <h2 style="color: gray; margin: 0;">
+                                                    <span>23456</span> |
+                                                    <span>10.23%</span>
+                                                </h2>
+                                                <div class="text-sm-center">
+                                                    <span style="font-size: 12px; color: slategray;">Current
+                                                        Price</span>
+                                                    <span style="font-size: 12px; color: slategray;">|</span>
+                                                    <span style="font-size: 12px; color: slategray;">Price Change</span>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="price_bar_container d-flex flex-column mt-1" style="width: max-content;">
+                                                <div class="text-start fw-bold" style="color: gray" id="priceBarRangeAboveMd">Week's Range</div>
+                                                <div class="d-flex flex-column">
+                                                    <div class="price_bar" id="priceBarAboveMd">
+                                                        <div class="price_bar_current_price" id="priceBarCurrentPriceAboveMd" style="left: 72.96px;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between">
+                                                        <div id="lowPriceAboveMd">23000 <span style="font-size: 12px; color: slategray;">| Low</span>
+                                                        </div>
+                                                        <div id="highPriceAboveMd">24500 <span style="font-size: 12px; color: slategray;">| High</span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="option-chain">
+                                    <h3 class="mb-4">Option Chain</h3>
+                                    <table class="table table-bordered">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th colspan="3" class="text-center">CALLS</th>
+                                                <th colspan="1" class="text-center"></th>
+                                                <th colspan="3" class="text-center">PUTS</th>
+                                            </tr>
+                                            <tr>
+                                                <th>OI</th>
+                                                <th>Volume</th>
+                                                <th>LTP</th>
+                                                <th>Strike Price</th>
+                                                <th>LTP</th>
+                                                <th>Volume</th>
+                                                <th>OI</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1000</td>
+                                                <td>200</td>
+                                                <td>$5.00</td>
+                                                <td>$150.00</td>
+                                                <td>$4.50</td>
+                                                <td>150</td>
+                                                <td>900</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1200</td>
+                                                <td>250</td>
+                                                <td>$6.00</td>
+                                                <td>$155.00</td>
+                                                <td>$5.50</td>
+                                                <td>180</td>
+                                                <td>1100</td>
+                                            </tr>
+                                            <!-- Add more rows as needed -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+
+                            <!-- Option Chain code ends here -->
+                            <!-- <nav class="breadcrumb-custom"><span class="navdropdown"><a class="nav-link dropdown-toggle"
+                                        role="button" id="cont" data-bs-toggle="dropdown" aria-expanded="false"
+                                        href="#">Futures Screeners</a>
+                                    <ul class="dropdown-menu" aria-labelledby="cont">
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/CallOptions'
+                                                class="dropdown-item">Call Option Screeners</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutOptions'
+                                                class="dropdown-item">Put Option Screeners</a></li>
+                                        <li><a href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutCallRatio'
+                                                class="dropdown-item">PCR Screeners</a></li>
+                                    </ul>
+                                </span></nav>
+                            <h5>Comprehensive Futures Screener of Stock Traded in NSE</h5>
+                            <div class='row gy-3'>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Increase in Open Interest</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Future Increase in Open Interest, Expiry 27/02/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/IncreaseinOpenInterest/IncreaseinOINearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Future Increase in Open Interest, Expiry 27/03/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/IncreaseinOpenInterest/IncreaseinOINextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Future Increase in Open Interest, Expiry 24/04/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/IncreaseinOpenInterest/IncreaseinOIFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">High Contracts</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Futures High Contract Volume, Expiry 27/02/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/HighContracts/HighContractVolumeNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Futures High Contract Volume, Expiry 27/03/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/HighContracts/HighContractVolumeNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Futures High Contract Volume, Expiry 24/04/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/HighContracts/HighContractVolumeFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Stock Futures Top Gainers</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Futures Top Gainers, Expiry 27/02/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesTopGainers/GainersNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Futures Top Gainers, Expiry 27/03/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesTopGainers/GainersNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Futures Top Gainers, Expiry 24/04/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesTopGainers/GainersFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Decrease in Open Interest</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Future Decrease in Open Interest, Expiry 27/02/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/DecreaseinOpenInterest/DecreaseinOINearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Future Decrease in Open Interest, Expiry 27/03/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/DecreaseinOpenInterest/DecreaseinOINextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Future Decrease in Open Interest, Expiry 24/04/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/DecreaseinOpenInterest/DecreaseinOIFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Futures with High Turnover</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Futures High Turnover, Expiry 27/02/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/FutureswithHighTurnover/TurnoverNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Futures High Turnover, Expiry 27/03/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/FutureswithHighTurnover/TurnoverNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Futures High Turnover, Expiry 24/04/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/FutureswithHighTurnover/TurnoverFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Stock Futures Top Losers</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Futures Top Losers, Expiry 27/02/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesTopLosers/LosersNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Futures Top Losers, Expiry 27/03/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesTopLosers/LosersNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Futures Top Losers, Expiry 24/04/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesTopLosers/LosersFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Stock Futures Highest Premium</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Highest Premium Stock Futures, Expiry 27/02/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesHighestPremium/PremiumStockNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Highest Premium Stock Futures, Expiry 27/03/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesHighestPremium/PremiumStockNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Highest Premium Stock Futures, Expiry 24/04/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesHighestPremium/PremiumStockFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Stock Futures Highest Discount</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Highest Discount Stock Futures, Expiry 27/02/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesHighestDiscount/DiscountStockNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Highest Discount Stock Futures, Expiry 27/03/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesHighestDiscount/DiscountStockNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Highest Discount Stock Futures, Expiry 24/04/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesHighestDiscount/DiscountStockFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Stock Futures Rollovers</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Highest Rollover Stock Futures</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesRollovers/HighestRolloverStock'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Lowest Rollover Stock Futures</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesRollovers/LowestRolloverStock'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Highest Rollover Cost Stock Futures</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesRollovers/HighestRolloverCostStock'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Lowest Rollover Cost Stock Futures</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesRollovers/LowestRolloverCostStock'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Stock Futures Accumulation</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Position Build Up Stock Futures, Expiry 27/02/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesAccumulation/PositionBuildUpStockNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Position Build Up Stock Futures, Expiry 27/03/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesAccumulation/PositionBuildUpStockNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Position Build Up Stock Futures, Expiry 24/04/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesAccumulation/PositionBuildUpStockFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Stock Futures Short Covering</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Short Covering Stock Futures, Expiry 27/02/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesShortCovering/ShortCoveringStockNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Short Covering Stock Futures, Expiry 27/03/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesShortCovering/ShortCoveringStockNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Short Covering Stock Futures, Expiry 24/04/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesShortCovering/ShortCoveringStockFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Stock Futures Liquidation</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Position Unwinding Stock Futures, Expiry 27/02/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesLiquidation/PositionUnwindingStockNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Position Unwinding Stock Futures, Expiry 27/03/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesLiquidation/PositionUnwindingStockNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Position Unwinding Stock Futures, Expiry 24/04/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesLiquidation/PositionUnwindingStockFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Stock Futures Fresh Shorts</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Fresh Shorts Stock Futures, Expiry 27/02/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesFreshShorts/FreshShortsStockNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Fresh Shorts Stock Futures, Expiry 27/03/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesFreshShorts/FreshShortsStockNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Fresh Shorts Stock Futures, Expiry 24/04/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesFreshShorts/FreshShortsStockFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Stock Futures Pivot Point</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Standard Pivot Point of Stock Futures, Expiry 27/02/2025
+                                                        </td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesStandardPivotPoint/StandardNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Standard Pivot Point of Stock Futures, Expiry 27/03/2025
+                                                        </td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesStandardPivotPoint/StandardNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Standard Pivot Point of Stock Futures, Expiry 24/04/2025
+                                                        </td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesStandardPivotPoint/StandardFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Stock Futures Camarilla Pivot Point</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Camarilla Pivot Point of Stock Futures, Expiry 27/02/2025
+                                                        </td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesCamarillaPivotPoint/CamarillaNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Camarilla Pivot Point of Stock Futures, Expiry 27/03/2025
+                                                        </td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesCamarillaPivotPoint/CamarillaNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Camarilla Pivot Point of Stock Futures, Expiry 24/04/2025
+                                                        </td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesCamarillaPivotPoint/CamarillaFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Stock Futures Fibonacci Pivot Point</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Fibonacci Pivot Point of Stock Futures, Expiry 27/02/2025
+                                                        </td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesFibonacciPivotPoint/FibonacciNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Fibonacci Pivot Point of Stock Futures, Expiry 27/03/2025
+                                                        </td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesFibonacciPivotPoint/FibonacciNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Fibonacci Pivot Point of Stock Futures, Expiry 24/04/2025
+                                                        </td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesFibonacciPivotPoint/FibonacciFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Stock Futures Woodies Pivot Point</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Woodies Pivot Point of Stock Futures, Expiry 27/02/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesWoodiesPivotPoint/WoodiesNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Woodies Pivot Point of Stock Futures, Expiry 27/03/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesWoodiesPivotPoint/WoodiesNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Woodies Pivot Point of Stock Futures, Expiry 24/04/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesWoodiesPivotPoint/WoodiesFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-lg-4 col-md-12 col-sm-12'>
+                                    <div class='card shadow-lg'>
+                                        <div class='card-header'>
+                                            <h5 class="card-title">Stock Futures Demark Pivot Point</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class='table-responsive'>
+                                                <table class="table table-striped table-hover">
+                                                    <tr>
+                                                        <td>Demark Pivot Point of Stock Futures, Expiry 27/02/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesDemarkPivotPoint/DemarkNearMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Demark Pivot Point of Stock Futures, Expiry 27/03/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesDemarkPivotPoint/DemarkNextMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Demark Pivot Point of Stock Futures, Expiry 24/04/2025</td>
+                                                        <td><a
+                                                                href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures/StockFuturesDemarkPivotPoint/DemarkFarMonthExpiryDate'>Screener</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- ResponsiveBanner -->
+                            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1475183452914196"
+                                data-ad-slot="7874765732" data-ad-format="horizontal"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                            <div id='ytVideoDiv'></div>
+                            <hr />
+                            <footer class=" text-light" style='background-color: #f2f2f2;text-decoration:underline'>
+                                <div class="container" style="margin-left: 10px;">
+                                    <br>
+                                    <div class="row">
+                                        <h3 style="color:black">Quick Links</h3>
+                                        <div>
+                                            <span style="color:black"><b>TSR Support</b><br /> <span><a
+                                                        href='https://www.topstockresearch.com/my/UserManagement?act=rfd'
+                                                        style="color:black"> Request For Demo <i
+                                                            class="fas fa-pencil-alt"></i></a></span>
+                                                <span><a href='https://www.topstockresearch.com/my/UserManagement?act=contactUs'
+                                                        style="color:black"> | Contact Us <i
+                                                            class="fas fa-envelope"></i></a></span>
+                                                <br /> For Support Call us @ +91 922 655 760 3/4/5 between 10 AM to 6 PM
+                                                , Mon - Sat <i class="fas fa-phone-alt"></i>
+                                                <br /><b>TSR Videos</b> <span style='font-size:27px;color:#f44336;'><i
+                                                        class="fab fa-youtube"></i> </span> <br /> <a
+                                                    style='cursor : pointer ;color:black'
+                                                    onClick="mintHtmlUtil.sytv('ytVideoDiv',  'v4Hp02h_XXQ')"><span
+                                                        style=''>English (New)</span></a>&nbsp;&nbsp;&nbsp; | <a
+                                                    style='cursor : pointer ;color:black'
+                                                    onClick="mintHtmlUtil.sytv('ytVideoDiv',  'U4Epx5HvIfU')"><span
+                                                        style=''>हिंदी (New)</span> </a><br /> <a
+                                                    style='cursor : pointer ;color:black'
+                                                    onClick="mintHtmlUtil.sytv('ytVideoDiv',  'Z8RFbA3w0yo')"><span
+                                                        style=''>English (Classic MyTSR)</span></a>&nbsp;&nbsp;&nbsp; |
+                                                <a style='cursor : pointer ;color:black'
+                                                    onClick="mintHtmlUtil.sytv('ytVideoDiv',  'Uc-gJ__FM64')"><span
+                                                        style=' '>हिंदी (Classic MyTSR)</span> </a> |
+                                                <br /><br /><b>Global Markets</b> <br /> <a
+                                                    href='https://www.StockAio.com/US/ai/Home'
+                                                    style='cursor : pointer ;color:black'><span style=''>US Stock
+                                                        Screener & Analysis</span> <img
+                                                        src="//www.StockAIo.com/static/img/flags/USFlag.png"
+                                                        style="max-height:18px;"> </a><br /> <a
+                                                    href='https://www.StockAio.com/UK/ai/Home'
+                                                    style='cursor : pointer ;color:black'><span style=''>UK Stock
+                                                        Screener & Analysis</span> <img
+                                                        src="//www.StockAIo.com/static/img/flags/UKFlag.png"
+                                                        style="max-height:18px;"> </a>
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <br />
+                                                <span><a href='https://www.topstockresearch.com/rt/Home'
+                                                        style="color:black">Home</a></span>
+
+                                                <span class="ms-1"><a
+                                                        href="https://www.topstockresearch.com/Disclaimer.html"
+                                                        style="color:black">| Disclaimer</a></span>
+
+                                                <span class="ms-1"><a
+                                                        href="https://www.topstockresearch.com/TermsAndConditions.html"
+                                                        style="color:black">| Terms &amp; Conditions </a></span>
+
+                                                <span class="ms-1"><a
+                                                        href="https://www.topstockresearch.com/PrivacyPolicy.html"
+                                                        style="color:black">| Privacy </a></span>
+
+
+                                            </div>
+
+                                            <h7 style="text-align:center;line-height: 28px;color:#9E9E9E"> Happy to
+                                                provide Premium Analytics Since 2010 @TopStockResearch</h7>
+                                            <h7 style="color:#9E9E9E;text-align:center;line-height: 28px;">All rights
+                                                reserved by Mintnovate Market Research Limited</h7>
+                                        </div>
+                                    </div>
+                            </footer>
+                        </div>
+                    </div>
+                    <!-- Content Wrapper End -->
+
+
+
+
+                </div>
+            </div> <!-- NG APP  align='center'-->
+
+
+
+
+
+</body>
+<script>   migUi.init(); </script>
+<div id='alertDialog' class='web_dialog'></div>
+<script src='https://www.topstockresearch.com/static/js/tsr/my/fav_minV0.0.1.1.js'></script>
+<script
+    src='https://www.topstockresearch.com/static/js/tsr/mipu/mipu_minV0.0.0.39.js'"></script><script> misu.iar('scr');   </script><div id='custDialog' class='cc_dialog'  > </div><div id='cs_dialog' class='cc_dialog'  > </div><div id="
+    dialog" class="web_dialog"> </div>
+<div id="dialog" class="custDialog"> </div>
+<script  src='//cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js'></script>
+<link rel="stylesheet" href="https://www.topstockresearch.com/static/css/v1/tsrchartsNgV0.0.5.css">
+<script src="https://www.topstockresearch.com/static/js/chart/tsr_charts_minV0.9.2.147.js"></script>
+<script>var fineTune = false;</script>
+<script>mintHtmlUtil.divHide('psLoadingDiv')</script>
+<script src='https://www.topstockresearch.com/static/js/tsr/lc/tsr_simple_charts_minV0.3.3.js'></script>
+<link rel="stylesheet" href='https://www.topstockresearch.com/static/css/v1/sch_minV0.0.7.css'>

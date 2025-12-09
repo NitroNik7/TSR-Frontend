@@ -1,0 +1,320 @@
+.ch_saveBtnDropdownWrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+    border-radius: 4px;
+    width: max-content;
+    box-sizing: content-box;
+    border: 1px silver solid;
+    box-shadow: 0px 0px 1px 1px;
+}
+
+.ch_saveSettingsOption {
+    border: 0;
+    border-right: 2px dotted black !important;
+    border-radius: 0px !important;
+}
+
+.ch_saveSettingsDropdown {
+    height: 100%;
+    padding: 5px 5px 5px 5px !important;
+    border: 0px;
+    border-radius: 0px !important;
+    background: none !important;
+}
+
+.ch_savePopupWrapper {
+    position: absolute;
+    display: none;
+    box-sizing: content-box;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6) !important;
+    background-color: white;
+    z-index: 1;
+}
+
+.ch_saveOptionsDiv {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    transition: 1s;
+
+}
+
+.ch_saveOptionsDiv ul {
+    padding: 0 !important;
+    margin-bottom: 0;
+}
+
+.ch_saveOptionsDiv ul .divider {
+    height: 1px;
+    overflow: hidden;
+    border-bottom: 1px solid lightgray;
+    padding: 0px !important;
+}
+
+.ch_saveOptionsDiv ul li {
+    list-style-type: none;
+    padding: 10px 0px 10px 0px;
+    cursor: pointer;
+}
+
+.ch_saveOptionsDiv ul li>* {
+    padding: 0 10px 0 10px;
+    font-size: medium;
+}
+
+.ch_saveOptionsDiv ul li:hover {
+    background-color: lightgray;
+    color: black;
+    font-weight: 500;
+}
+
+.ch_sp_savedSettingsListItem {
+    display: flex;
+    align-items: center;
+}
+
+.ch_sp_savedSettingsListItem > span {
+    width: 70%;
+}
+
+
+.ch_sp_settingApplied {
+    display: none;
+    padding: 0 0 0 5px !important;
+}
+
+.ch_sp_updateSavedSettingsBtn {
+    display: none;
+    border: none;
+    position: absolute;
+    right: 10;
+    z-index: 999;
+}
+
+.ch_sp_savedSettingsListItem:hover .ch_sp_settingApplied {
+    display: block !important;
+}
+
+.ch_sp_savedSettingsListItem:hover .ch_sp_updateSavedSettingsBtn {
+    display: block !important;
+}
+
+.ch_sp_savedSettingsListItem > * {
+    
+    max-width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.ch_sp_savedSettingsListItem:hover {
+    background-color: #006bbc;
+    color: white;
+}
+
+::backdrop {
+    /* background: rgba(255, 255, 255, 0.75); */
+    background-color: rgb(0 0 0 / 32%);
+}
+
+:modal {
+    border: 1px solid #006bbc;
+    border-radius: 28px;
+    padding: 0px;
+    width: 500px;
+}
+
+.ch_sp_settingsOptionContent {
+    padding: 25px;
+}
+
+.ch_sp_settingsOptionContent table tr td,
+th {
+    border: 1px solid lightgray;
+    text-align: center;
+}
+
+.ch_sp_shareSettings {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ch_sp_shareSettings>* {
+    padding: 10px;
+    font-size: 30px;
+}
+
+.ch_sp_settingsOptionHeader {
+    background-color: #006bbc;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 13px;
+}
+
+.ch_sp_accordion {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.ch_sp_accordionSection {
+    /* background-color: lightgray !important; */
+    cursor: pointer;
+    padding: 13px !important;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-weight: 500;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.ch_sp_active {
+    background-color: lightgray !important;
+}
+
+.ch_sp_accordionSection:hover {
+    background-color: lightgray;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.ch_sp_accordionPanel {
+    position: relative;
+    padding: 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    text-align: center;
+}
+
+.ch_sp_optionInput {
+    height: 48px !important;
+    border: 1px solid #c2c7d0 !important;
+    width: 80% !important;
+    padding: 15px !important;
+    font-size: 16px !important;
+}
+
+.ch_sp_optionInput:focus {
+    outline: auto;
+}
+
+.ch_sp_optionInput:not(:placeholder-shown)+label,
+.ch_sp_optionInput:focus+label {
+    top: 5px;
+    background-color: white;
+    /* padding: 5px 0px 0px 0px; */
+}
+
+.ch_sp_accordionPanel label {
+    position: absolute;
+    top: 30px;
+    left: 70px;
+    color: gray;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.ch_sp_accordionPanel button {
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid #00000050;
+    margin-top: 15px;
+}
+
+.ch_sp_accordionPanel button:hover {
+    background-color: gray;
+    border: 2px solid gray;
+    color: white;
+}
+
+.ch_sp_accordionPanel select {
+    height: 40px;
+    outline: black;
+    font-weight: 500;
+    width: 60%;
+}
+
+.ch_sp_accordionPanel select:focus {
+    height: 40px;
+    outline: 2px solid black;
+
+}
+
+.ch_sp_accordionPanel select option {
+    max-width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.ch_sp_toastNotification {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: #006bbc;
+    font-weight: 500;
+    padding: 10px 20px;
+    /* margin-top: 10px; */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    animation: ch_sp_toast_slideIn 0.5s ease-out;
+    min-width: 50px;
+    position: relative;
+}
+
+/* Slide-in animation */
+@keyframes ch_sp_toast_slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ch_sp_toastNotification span {
+    font-size: 11pt;
+}
+
+/* Close button */
+.ch_sp_toastNotification .ch_close-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.ch_sp_toastNotification .ch_close-btn:hover {
+    color: #ff5c5c;
+}
+
+.ch_sp_toastAction {
+    color: blue;
+
+}
+
+.ch_sp_toastAction:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .ch_sp_updateSavedSettingsBtn {
+        display: block !important;
+    }
+}

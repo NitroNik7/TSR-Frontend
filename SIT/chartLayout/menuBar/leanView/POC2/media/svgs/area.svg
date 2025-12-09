@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+    <rect width="50" height="50" fill="none"></rect>
+    <path d="M5 40 L15 20 L25 30 L35 10 L45 25 L45 40 Z" fill="gray" style="/* stroke: currentColor; *//* stroke-width: 3; */fill: lightgray;"></path>
+    <path d="M5 40 L15 20 L25 30 L35 10 L45 25" fill="none" style="stroke: black;stroke-width: 3;"></path>
+</svg>

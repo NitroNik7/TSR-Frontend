@@ -1,0 +1,150 @@
+.ch_ctrl_menu_bar_top {
+    border-bottom: 1px solid lightgray;
+    padding: 3px;
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ch_ctrl_menu_bar_top_left,
+.ch_ctrl_menu_bar_top_right {
+    display: inline-block;
+}
+
+.ch_ctrl_menu_bar_top_left input {
+    border: none;
+    font-size: 16px;
+    width: 150px;
+    /* border-bottom: 1px solid lightgray; */
+
+}
+
+.ch_ctrl_menu_bar_top_left>div {
+    display: inline-flex;
+    align-items: baseline;
+    border-right: 2px solid lightgray;
+}
+
+.ch_ctrl_menu_bar_top_right>div {
+    display: inline-block;
+    border-right: 2px solid lightgray;
+}
+
+.ch_ctrl_menu_bar_top_left .chDdOptSel {
+    font-weight: 400;
+    width: max-content;
+    padding: 5px;
+    cursor: pointer;
+
+}
+
+.ch_ctrl_menu_bar_button{
+    height: 32px;
+    font-weight: 400;
+}
+
+.ch_ctrl_menu_bar_top .ch_ctrl_dropdownButtonSpan{
+    display: inline-flex;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.chDDoptWrap ul {
+    display: none;
+    padding: 0 !important;
+    margin: 0;
+    width: max-content;
+    border: 1px solid lightgray;
+    position: fixed;
+    background: white;
+    z-index: 999;
+}
+
+.chDDoptWrap ul li {
+    width: 100%;
+    list-style-type: none;
+    padding: 3px 0px 3px 0px;
+    cursor: pointer;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chDDoptWrap ul li:hover {
+    background-color: grey;
+    color: white;
+    font-weight: 500;
+}
+
+.chDDoptWrap ul li>* {
+    padding: 0 10px 0 10px;
+    font-size: medium;
+}
+
+
+
+
+.ch_ctrl_menu_bar_top_left button,
+.ch_ctrl_menu_bar_top_right button {
+    border: none;
+}
+
+@media screen and (max-width: 1350px){
+
+    #chCtrlIndicatorMacdBtn,
+    #chCtrlFrequency1YBtn,
+    #chCtrlChartTypeCandleBtn,
+    #chCtrlTick1dBtn{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1150px){
+
+    #chCtrlIndicatorRsiBtn,
+    #chCtrlFrequency3mBtn,
+    #chCtrlChartTypeLineBtn,
+    #chCtrlTick1mBtn{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1025px) {
+    #chooseStockOptionContainer{
+        display: none;
+    }
+}
+@media screen and (max-width: 850px) {
+    #chooseSettingsOptionContainer{
+        display: none;
+    }
+}
+@media screen and (max-width: 700px) {
+    #chCtrlDrawingContainer{
+        display: none;
+    }
+    #chCtrlDrawingContainer + div{
+        display: none;
+    }
+}
+@media screen and (max-width: 600px) {
+    #chCtrlFullscreenContainer,
+    #chCtrlSettingsContainer,
+    #chCtrlCompareContainer{
+        display: none;
+    }
+    #chCtrlDrawingContainer + div{
+        display: none;
+    }
+
+    #chCtrlSaveContainer{
+        border-right: none;
+    }
+}
+@media screen and (max-width: 475px) {
+    .ch_ctrl_menu_bar_top_left input{
+        width: 60px;
+    }
+}

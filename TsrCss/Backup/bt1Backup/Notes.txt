@@ -1,0 +1,58 @@
+Files backed up
+
+JS: 
+1.  web-static-mig-js/
+    a. aio_cmnV0.0.0.43.js
+
+CSS:
+1.  web-static-mig-css/
+    a. aioCmnV0.0.0.9.css
+    b. responsive.css
+
+HTML:
+    
+
+
+
+
+
+
+-------------------------------------------------------
+
+
+Files Replaced:
+
+JS: 
+1. 
+
+CSS:
+1.  
+
+HTML:
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------
+
+
+
+
+
+Files added:
+
+
+JS: 
+1.  
+
+CSS:
+1.  
+
+HTML:
+

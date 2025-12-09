@@ -1,0 +1,814 @@
+<html>
+
+<head>
+    <title>Interactive Stock Charts, Fin/Tech Data in One View, 5 Min to 10 Yr</title>
+    <meta name="description"
+        content="Free Interactive Stock Charts (5 Min to Quarterly charts) with Technical Indicators & Financial data in one view supports Drawing like trendline, Fibonacci, custom color setting, Save Template, Share With Friends on Social Media">
+    <meta name="keywords"
+        content=" Interactive Charts, Custom Chart, Technical Chart, Free Chart, Stock Charts, financial charts, real time chart, one minute chart ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href='https://www.tsrsit.com/static/icon/TopStockResearch.ico' type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' type='text/css' href='https://www.tsrsit.com/static/mig/css/aioCmnV0.0.0.7.css' />
+    <link rel='stylesheet' type='text/css' href='https://www.tsrsit.com/static/mig/css/responsive.css'>
+
+    <link rel='stylesheet' type='text/css' href='https://www.tsrsit.com/static/mig/css/mytsr_struct.css'>
+    <link rel='stylesheet' type='text/css' href='https://www.tsrsit.com/static/css/v3/MintCommon.css'>
+    <link rel='stylesheet' type='text/css' href='https://www.tsrsit.com/static/mig/css/my.css'>
+    <link rel='stylesheet' type='text/css' href='https://www.tsrsit.com/static/css/v3/MintControls.css'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='//code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+    <script src="https://www.tsrsit.com/static/js/tsr/common/mint_cn_minV0.7.5.128.js"></script>
+    <script src="https://www.tsrsit.com/static/mig/js/aio_cmnV0.0.0.33.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/utils.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/common/MintConstants.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/common/mintHtmlUtil.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/common/MintJsUtils.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/common/MintStkCommon.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/common/MintCommonValidator.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/mipu/mintCore.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/mipu/miScreenerUtils.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/mipu/ActivityTracker.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/mipu/alertutils.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/mipu/DataInitializer.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/mipu/mintJsAds.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/mipl   /mintJsAds.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/common/MintDataTable.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/utils.js"></script>
+    <script src="https://www.tsrsit.com/static/js/tsr/common/StockBasketUtils.js"></script>
+    <script src="https://www.tsrsit.com/static/mig/js/migUi.js"></script>
+    <script src="https://www.tsrsit.com/static/mig/js/aioIcons.js"></script>
+    <script src="https://www.tsrsit.com/static/mig/js/search.js"></script>
+</head><!-- Space for GA Tag -->
+<script>
+    var userProf = {
+        status: 'signedIn',
+        sal: 'Mr.',
+        fName: 'email8',
+        refCode: 'EM8_INT',
+        expDt: '01_Apr_2029',
+        sub: 'TRADER_PRO'
+    };
+</script>
+
+<body class="scrollable">
+    <div id="mainController">
+
+        <div style="display: none;">
+            <select class='selectpicker' id='userMkt' onchange="javascript:marketOnChange();">
+                <option value="IN" selected="selected" label="India">India</option>
+            </select>
+        </div>
+
+
+        <div class="app tsrsn-folded">
+            <div class="layout">
+                <!--                <div id='dynHead'></div>-->
+                <div class="tsrhdr navbar">
+                    <div class="tsrhdr-container">
+                        <div class="nav-logo" id='navLogoDiv'>
+                            <a href="javascript:void(0);" class="tsrsn-fold-toggler" title='TSR (TopStockResearch.com)'>
+                                <div class="logo logo-dark"
+                                    style="background-image: url('https://www.tsrsit.com/static/v21/img/tsr/TsrLogo.png')">
+                                </div>
+                            </a>
+                        </div>
+                        <div id='dynHead'></div>
+                    </div>
+                </div>
+                <!-- Header End-->
+                <div class="tsrsn expand-lg">
+                    <div class="tsrsn-inner">
+                        <div id="sideNavBarDiv">
+                            <ul class="tsrsn-menu scrollable">
+                                <li class='nav-item' style='margin-top:6px;'><a href='https://www.tsrsit.com/rt/Home'>
+                                        <span class='icon-holder' id='homeSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Home</span></a></li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='msSbDiv' aria-hidden='true'> </span> <span class='title'>Market
+                                            Screener</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Markets/PriceVolume'>Price /
+                                                Volume</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Markets/HighsLows'>Highs /
+                                                Lows</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Markets/Returns'>Returns</a>
+                                        </li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Markets/IndexAnalysis'>Index
+                                                Analysis</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Markets/SectorAnalysis'>Sector
+                                                Analysis</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Markets/HeatMap'>Heat Map</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='strSbDiv' aria-hidden='true'> </span> <span class='title'>TSR Strength
+                                            Index</span><span class="arrow"><i class="fa fa-solid fa-chevron-right"></i>
+                                        </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/TSRStrengthIndex/TechnicalStrength'>Technical
+                                                Strength</a></li>
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/TSRStrengthIndex/FinancialStrength'>Financial
+                                                Strength</a></li>
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/TSRStrengthIndex/EODBetaVolatile'>EOD
+                                                Beta Volatile</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='csSbDiv' aria-hidden='true'> </span> <span class='title'>Candlestick
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Candlestick/BullishScreener'>Bullish
+                                                Screener</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Candlestick/BearishScreener'>Bearish
+                                                Screener</a></li>
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='techSbDiv' aria-hidden='true'> </span> <span class='title'>Technical
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Technical/OHLCScreeners'>OHLC
+                                                Screeners</a></li>
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/Technical/OverboughtSold'>Overbought/Sold</a>
+                                        </li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Technical/Overlays'>Overlays</a>
+                                        </li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Technical/TrendIndicator'>Trend
+                                                Indicator</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Technical/VolumeBasedIndicator'>Volume
+                                                Based Indicator</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Technical/SMAScreener'>SMA
+                                                Screener</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Technical/EMAScreener'>EMA
+                                                Screener</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Technical/WMAScreener'>WMA
+                                                Screener</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Technical/PivotPoint'>Pivot
+                                                Point</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Technical/VwapScreener'>VWAP
+                                                Screener</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Technical/EODFibonacci'>EOD
+                                                Fibonacci</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='cpSbDiv' aria-hidden='true'> </span> <span class='title'>Chart
+                                            Patterns</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/ChartPatterns/PopularChartPatterns'>Popular
+                                                Chart Patterns</a></li>
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/ChartPatterns/Triangle'>Triangle</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/ChartPatterns/Channel'>Channel</a>
+                                        </li>
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/ChartPatterns/Trendlines'>Trendlines</a>
+                                        </li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/ChartPatterns/NRWR'>NR / WR</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='fundaSbDiv' aria-hidden='true'> </span> <span class='title'>Financial
+                                            Screener</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Financial/FinHighlight'>Financial
+                                                Highlight</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Financial/GuruRatios'>Guru
+                                                Ratios</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Financial/ValuationRatios'>Valuation
+                                                Ratios</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Financial/ProfitabilityRatios'>Profitability
+                                                Ratios</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Financial/SolvencyRatios'>Solvency
+                                                Ratios</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Financial/EfficiencyRatios'>Efficiency
+                                                Ratios</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Financial/IncStatGrowthYr'>Income
+                                                Statment Growth (Yr)</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Financial/BalSheetGrowthYr'>Balance
+                                                Sheet Growth (Yr)</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/Financial/CashFlowStatGrowthYr'>Cash
+                                                Flow Stat Growth (Yr)</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='comboSbDiv' aria-hidden='true'> </span> <span class='title'>Combo
+                                            Screener </span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/ComboScreener/PriceActionScreeners'>Price
+                                                Action Screeners</a></li>
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish
+                                                Technical Screeners</a></li>
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish
+                                                Technical Screeners</a></li>
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/ComboScreener/FundamentalScreener'>Fundamental
+                                                Screeners</a></li>
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/ComboScreener/MovingAverageScreeners'>Moving
+                                                Average Screeners</a></li>
+                                    </ul>
+                                </li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.tsrsit.com/rt/CustomStockScreener.tsr'> <span
+                                            class='icon-holder' id='diysSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Custom Screener</span></a></li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='expsSbDiv' aria-hidden='true'> </span> <span class='title'>Expert
+                                            Screeners</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/ExpertScreener/PriceActionBased'>Price
+                                                Action Strategies</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/ExpertScreener/TechIndiBased'>Technical
+                                                Indicator Strategies</a></li>
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/ExpertScreener/MovingAverageStrategies'>Moving
+                                                Average Strategies</a></li>
+                                        <li><a
+                                                href='https://www.tsrsit.com/rt/Screener/ExpertScreener/FundamentalStrategies'>Fundamental
+                                                Strategies</a></li>
+                                    </ul>
+                                </li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.tsrsit.com/rt/InteractiveCharts.tsr'> <span
+                                            class='icon-holder' id='tcSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Technical Charts</span></a></li>
+                                <li class='nav-item' style='margin-top:6px;'><a
+                                        href='https://www.tsrsit.com/my/TsrPlans/'> <span class='icon-holder'
+                                            id='subsSbDiv' aria-hidden='true'> </span> <span class='title'>Premium
+                                            Plans</span></a></li>
+                                <li class="nav-item dropdown" style='margin-top:6px;'>
+                                    <a href="javascript:void(0);" class="dropdown-toggle"><span class='icon-holder'
+                                            id='fnoSbDiv' aria-hidden='true'> </span> <span class='title'>Futures And
+                                            Options</span><span class="arrow"><i
+                                                class="fa fa-solid fa-chevron-right"></i> </span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/FuturesAndOptions/Futures'>Futures
+                                                Screeners</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/FuturesAndOptions/CallOptions'>Call
+                                                Option Screeners</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/FuturesAndOptions/PutOptions'>Put
+                                                Option Screeners</a></li>
+                                        <li><a href='https://www.tsrsit.com/rt/Screener/FuturesAndOptions/PutCallRatio'>PCR
+                                                Screeners</a></li>
+                                    </ul>
+                                </li>
+                                <li class='nav-item' style='margin-top:6px;'><a href='https://tutorials.tsrsit.com'>
+                                        <span class='icon-holder' id='tutSbDiv' aria-hidden='true'> </span> <span
+                                            class='title'>Learn </span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    var mcat = 'homeSb';
+                </script> <!-- Page Container Start -->
+                <div class="page-container">
+                    <!-- Quick View Start -->
+
+
+                    <div class="tsrqv1" id='helpNav'>
+                        <ul class="tsrqv-tabs nav nav-tabs nav-justified" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" data-bs-target="#myTsrLinkstab" role="tab"
+                                    data-bs-toggle="tab">
+                                    MyTSR Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myLinksTab" role="tab" data-bs-toggle="tab"
+                                    onClick='migUi.myLinks()'>
+                                    My Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myRecentActTab" role="tab"
+                                    data-bs-toggle="tab" onClick='migUi.myRecAct()'>
+                                    My Recent Activities
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content scrollable">
+                            <div id="myTsrLinksTab" role="tabpanel" class="tab-pane fade show active">
+                                <div id='myTsrLinks'> Loading</div>
+                            </div>
+                            <div id="myLinksTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myLinksDiv'> Loading ...</div>
+                            </div>
+                            <div id="myRecentActTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myRecentActivityDiv'> Loading ...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick View End -->
+                    <!-- Content Wrapper Start -->
+                    <div class="main-content">
+                        <div class="container-fluid aioRowPad">
+                            <div class="row   ">
+                                <div class="col-md-12">
+                                    <div id="premServiceDiv" style="text-align:justify;"> </div>
+
+
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div id='dynSearch'>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                var mtppp = '9445506411412009880768';
+                            </script>
+                            <link rel="stylesheet"
+                                href='https://www.tsrsit.com/static/css/v1/tsr_combined_minV0.9.0.css'>
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+                            </script>
+                            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+
+                            <!-- Owl Carousel -->
+                            <script src='https://www.tsrsit.com/static/v21/js/owl/owl.carousel.min.js'></script>
+
+                            <!-- Font Awesome -->
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
+                                integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
+                                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+                            <!-- main JS -->
+                            <script src='https://www.tsrsit.com/static/js/tsr/common/mint_cn_minV0.7.5.128.js'></script>
+                            <script src='https://www.tsrsit.com/static/js/tsr/mipu/mipu_minV0.0.0.39.js'"></script>	<script src='https://www.tsrsit.com/static/js/tsr/common/MintConstants.js'></script>	<script src='https://www.tsrsit.com/static/js/tsr/common/MintJsUtils.js'></script>	<script src='https://www.tsrsit.com/static/js/tsr/common/mintHtmlUtil.js'></script>	<script src='https://www.tsrsit.com/static/js/tsr/common/MintStkCommon.js'></script>	<script src='https://www.tsrsit.com/static/js/tsr/mipu/mintCore.js'></script>	<script src='https://www.tsrsit.com/static/js/tsr/mipu/miScreenerUtils.js'></script>	<script src='https://www.tsrsit.com/static/js/tsr/mipu/ActivityTracker.js'></script>	<script src='https://www.tsrsit.com/static/js/tsr/mipu/alertutils.js'></script>	<script src='https://www.tsrsit.com/static/js/tsr/mipu/DataInitializer.js'></script>	<script src='https://www.tsrsit.com/static/js/tsr/mipu/mintJsAds.js'></script>	<script src='https://www.tsrsit.com/static/js/tsr/tsrWeb.js'></script>	<script src='https://www.tsrsit.com/static/my/static/v1/js/user/userMgmt.js'></script>	<!-- JavaScript Bundle with Popper -->
+<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+                                integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+                                crossorigin="anonymous"></script>
+
+                            <script src='https://www.tsrsit.com/static/v21/js/tsr/tsrspcV0.1.0.4.js'></script>
+                            <script src='https://www.tsrsit.com/static/js/tsr/tsr_web_minV0.5.7.7.js'></script>
+                            <script src='https://www.tsrsit.com/static/js/tsr/tsrWeb.js'></script>
+                            <script src='https://www.tsrsit.com/static/V21/js/tsr/tsrspc.js'></script>
+                            <script src='//cdnjs.cloudflare.com/ajax/libs/d3/4.1.0/d3.min.js'></script>
+                            <link rel="stylesheet" href="https://www.tsrsit.com/static/css/v1/tsrchartsV0.4.7.css">
+                            <script src="https://www.tsrsit.com/static/js/chart/tsr_charts_minV0.9.2.129.js"></script>
+                            <link rel="stylesheet" href="https://www.tsrsit.com/static/css/v1/tsrcharts.css">
+                            <script src="https://www.tsrsit.com/static/js/d3.v4.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/constants.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/chartUtils.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/init.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/utils.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/baseControls.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/htmlUtils.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/tsrCharts.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/css.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/datas.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/drawindicators.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/draw.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/ChartSettings.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/saveSvgAsPng.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/DataLoader.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/ChartScrUtils/myTsrChartUtils.js">
+                            </script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/ChartScrUtils/ChartPopupUtils.js">
+                            </script>
+                            <h1 align='center'> Interactive Stock Charts, Fin/Tech Data in One View, 5 Min to 10 Yr
+                            </h1>
+                            <script src='//cdnjs.cloudflare.com/ajax/libs/d3/4.1.0/d3.min.js'></script>
+                            <link rel="stylesheet" href="https://www.tsrsit.com/static/css/v1/tsrchartsV0.4.7.css">
+                            <script src="https://www.tsrsit.com/static/js/chart/tsr_charts_minV0.9.2.129.js"></script>
+                            <link rel="stylesheet" href="https://www.tsrsit.com/static/css/v1/tsrcharts.css">
+                            <script src="https://www.tsrsit.com/static/js/d3.v4.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/constants.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/chartUtils.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/init.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/utils.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/baseControls.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/htmlUtils.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/tsrCharts.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/css.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/datas.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/drawindicators.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/draw.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/ChartSettings.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/saveSvgAsPng.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/DataLoader.js"></script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/ChartScrUtils/myTsrChartUtils.js">
+                            </script>
+                            <script src="https://www.tsrsit.com/static/js/tsr/chart/ChartScrUtils/ChartPopupUtils.js">
+                            </script>
+                            <div class='row no-gutter'>
+                                <div class='col-lg-4 col-md-4 col-sm-4'>
+                                    <div id='tsaRnkDiv'></div>
+                                    <div align='center'> <button class="btn btn-dark  btn-sm btn_margin"
+                                            onClick="loadTDetails();"> View Analysis </button></div>
+                                </div>
+                                <div class='col-lg-4 col-md-4 col-sm-4'>
+                                    <div id='tsaRnkDivLabel'></div>
+                                </div>
+                            </div>
+                            <span style="color:green; font-size:20pt;" class="fa  fa-info-circle"></span>We have
+                            introduced VWAP / AVWAP / MVWAP / TWAP , WMA / DEMA / WSMA / Hull MA ... in charts
+                            <br /><span style="color:grey; font-size:8pt;">Tech Data values can be viewed with mouse
+                                hover, while Financial data, Fibonacci & Pivot Data are displayed below the
+                                Charts</span>
+                            <link rel='stylesheet' type='text/css'
+                                href='https://www.tsrsit.com/static/css/v3/MintControls.css'>
+                            <div id='chartPanel' class="chartPanel miCtrl">
+
+                                <div id="chartFocus" style="margin:1px ; padding:1px; height:1px;width:1px"
+                                    tabindex='1'></div>
+
+                                <div id='chartControls'>
+                                    
+                                </div>
+                                <!-- Add indicator button code starts here -->
+
+                                <link rel="stylesheet" href="nikhilsIndex.css">
+                                            <div class="search_select_indicator_container">
+                                                <button id="addIndicatorsButton"
+                                                    class="add_indicators_button">Indicators</button>
+                                                <div id="searchSelectIndicator" class="search_select_indicator">
+                                                    <div id="indicatorCategories" class="indicator_categories">
+                                                        <button id="allIndicators" class="all_indicators"
+                                                            onclick="populateSelectOptions()"><i
+                                                                class="fa-solid fa-book"></i>&nbsp; Library</button>
+                                                        <button id="selectedIndicators" class="selected_indicators"
+                                                            onclick="showActiveIndicators()">
+                                                            <!-- <i class="fa-solid fa-toggle-on"></i> -->
+                                                            <p id="selectedIndicatorsCount" style="margin: 0;"><i
+                                                                    class="fa-solid fa-circle-check"></i>&nbsp;Active
+                                                                (0)</p>
+                                                        </button>
+                                                    </div>
+
+                                                    <div id="indiSearchSelect" class="indi_search_select">
+                                                        <div id="closePopupButton" class="close_popup_button"
+                                                            onclick="closeIndiPopup()">
+                                                            <i class="fa-solid fa-xmark"></i>
+                                                        </div>
+                                                        <hr style="border: 0.2px solid; margin: 8px; cursor: default;">
+                                                        <h4 id="noActiIndi" style="margin: 0; font-size: 16px;">No
+                                                            Active Indicator</h4>
+                                                        <input type="text" id="searchIndicator" class="search_indicator"
+                                                            placeholder="&#x1F50E;&#xFE0E; Search">
+                                                        <div class="indicator_list_container">
+                                                            <div id="indicatorListFilter" class="indicator_list_filter">
+                                                                <!-- Select box for the list of options -->
+
+                                                                <!-- <select id="indicatorList" class="indicator_list"
+                                                                    multiple> -->
+                                                                    <!-- Options will be populated dynamically -->
+                                                                <!-- </select> -->
+
+                                                                <div id="indicatorListDivs" class="indicator_list"
+                                                                    style="display: none; flex-direction: column;">
+                                                                    <!-- Options will be populated dynamically -->
+                                                                </div>
+
+                                                                <div id="activeIndicatorListDivs" class="indicator_list"
+                                                                    style="display: none; flex-direction: column;">
+                                                                    <!-- Options will be populated dynamically -->
+                                                                </div>
+
+                                                                <!-- Alphabet filter buttons -->
+                                                                <div class="filterIndicator" id="indicatorFilter">
+                                                                    <!-- * Filter Button -->
+                                                                    <!-- data-* format is used to define custom html element attribute -->
+                                                                    <button class="filter-btn" id="resetFilter"
+                                                                        data-letter="*">
+                                                                        <i class="fa-solid fa-asterisk"></i>
+                                                                    </button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="A">A</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="B">B</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="C">C</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="D">D</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="E">E</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="F">F</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="G">G</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="H">H</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="I">I</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="J">J</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="K">K</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="L">L</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="M">M</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="N">N</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="O">O</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="P">P</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="Q">Q</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="R">R</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="S">S</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="T">T</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="U">U</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="V">V</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="W">W</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="X">X</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="Y">Y</button>
+                                                                    <button class="filter-btn"
+                                                                        data-letter="Z">Z</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Not using activeIndicators Div 
+                                                Will populate indicatorsList when Active indicators are to be shown 
+                                            -->
+                                                    </div>
+                                                    <!-- Needed -->
+                                                    <div id="selectedIndiSettings" class="selected_indi_settings">
+                                                        <!-- To be Modified -->
+                                                        <div class="navigationOptions">
+                                                            <div id="backButton" class="back_button"
+                                                                onclick="showIndiList()" style="display: none;">
+                                                                <i class="fa-solid fa-arrow-left"></i>
+                                                            </div>
+                                                            <div id="closeButton" class="close_button"
+                                                                onclick="closeIndiPopup()">
+                                                                <i class="fa-solid fa-xmark"></i>
+                                                            </div>
+                                                            <br>
+                                                            <hr
+                                                                style="border: 0.2px solid; margin: 8px; margin-top: 12px; cursor: default;">
+                                                        </div>
+
+                                                        <!-- <hr style="border: 1px solid !important; opacity: 1 !important"> -->
+
+                                                        <div class="selectedIndiSettingsContainer">
+                                                            <div id="indiSettingsContainer"
+                                                                class="indiSettingsContainer">
+                                                                <div id="indiSettingsBox" class="indi_settings_box">
+
+                                                                </div>
+                                                                <div id="indiInfoBox" class="indi_info_box">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="add_update_delete_box" id="addUpdateDeleteBox">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script src="nikhilsIndex.js"></script>
+
+                                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                                                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                                                crossorigin="anonymous"></script>
+                                            <!-- What does crossorigin = "anonymous" mean ? -->
+                                            <script src="https://kit.fontawesome.com/2f5672fabd.js"
+                                                crossorigin="anonymous"></script>
+
+                                <!-- Add indicator button code ends here -->
+                                <div id='chartLoading'></div>
+
+                                <div id='chartFeedBack' style='text-align:center'></div>
+
+                                <div id='panel' align='center'>
+
+                                </div>
+
+                                <div id='selectedValues' align='center'
+                                    style='padding:0px;margin:3px; font-size: 8pt;height:12px; '> </div>
+
+                                <div id='settingsDiv' style='padding:0px;margin:0px;'> </div>
+
+                                <div id='chartWrap'>
+
+                                    <div id='tsrchart' style="font-size:10px;width:100%">
+
+                                    </div>
+
+                                    <!-- <div id = 'settings'> </div> -->
+
+                                </div>
+
+
+                                <div id="chart_dialog" class="cc_dialog miCtrl">
+
+                                </div>
+
+                                <div id='imgDiv'> </div>
+
+                            </div>
+
+                            <script>
+                                $('body').css('max-width', '100%');
+                                (function defer() {
+                                    if ((window.jQuery) && (window.d3)) {
+                                        myTsrChartInit.init(null);
+                                        mintStkCommon.lts();
+                                    } else {
+                                        console.log('jQ !yet load');
+                                        setTimeout(function () {
+                                            defer()
+                                        }, 50);
+                                    }
+                                })();
+
+                                function updateChart(type, id, freq, period) {
+                                    mintStkCommon.ssc(type, id, freq, period);
+                                }
+
+                                function loadTDetails() {
+                                    mintStkCommon.ltsd(chartDetails.freq)
+                                }
+                            </script><br />
+                            <div id='chartAnalDiv'>
+                                <div id='finDataDiv' class='table-responsive'></div>
+                                <div id='fibShowValDiv' class='table-responsive'></div>
+                                <div id='ppShowValDiv' class='table-responsive'></div>
+                                <div id='smaRankDiv'></div>
+                                <div id='emaRankDiv'></div>
+                                <div id='indiRankDiv'>
+                                    <div id='obosRankDiv'></div>
+                                    <div id='chartPatternsDiv'></div><br />
+                                    <div class='col-lg-12 col-md-12 col-sm-12'>
+                                        <div class='card shadow-lg'>
+                                            <div class='card-header'>
+                                                <h5 class="card-title">Quick Overview of Interactive Charts</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class='table-responsive'><iframe width='560' height='315'
+                                                        src='https://www.youtube.com/embed/bU1QTRjm4pA?start=4'
+                                                        title='YouTube video player' frameborder='0'
+                                                        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                                                        allowfullscreen></iframe></div>
+                                            </div>
+                                        </div>
+                                    </div><br />
+                                    <div align='left'> Intraday Charts are updated every 5 Min with snapshot data,
+                                        Financial data (Consolidated) in crores &nbsp;&nbsp;&nbsp;&nbsp; <a
+                                            href='http://community.tsrsit.com/mytsr/InteractiveChartFeedback.html'>Feedback
+                                            On Charts</a></div><br />
+                                </div>
+                                <h3>Supported Feature of Custom Stock Charts</h3>
+                                <ol>
+                                    <li>Supported Frequency 5 Minute to Quarterly Stock Charts</l1>
+                                    <li>Financial Data and Technical data in One single Chart View</l1>
+                                    <li>Supported Frequency 5 Minute to Quarterly</l1>
+                                    <li>Save Custom Settings</l1>
+                                    <li>Save Charts</l1>
+                                    <li>Compare Stocks with Peers/Index</l1>
+                                    <li>Customise chart Colors/ Settings</l1>
+                                    <li>Charts are by default in Auto refresh mode during market hours</l1>
+                                </ol>
+                                <div id='ytVideoDiv'></div>
+                                <hr />
+                                <footer class=" text-light" style='background-color: #f2f2f2;text-decoration:underline'>
+                                    <div class="container" style="margin-left: 10px;">
+                                        <br>
+                                        <div class="row">
+                                            <h3 style="color:black">Quick Links</h3>
+                                            <div>
+                                                <span style="color:black"><b>TSR Support</b><br /> <span><a
+                                                            href='https://www.tsrsit.com/my/UserManagement?act=rfd'
+                                                            style="color:black"> Request For Demo <i
+                                                                class="fas fa-pencil-alt"></i></a></span>
+                                                    <span><a href='https://www.tsrsit.com/my/UserManagement?act=contactUs'
+                                                            style="color:black"> | Contact Us <i
+                                                                class="fas fa-envelope"></i></a></span>
+                                                    <br /> For Support Call us @ +91 922 655 760 3/4/5 between 10 AM to
+                                                    6 PM , Mon - Sat <i class="fas fa-phone-alt"></i>
+                                                    <br /><b>TSR Videos</b> <span
+                                                        style='font-size:27px;color:#f44336;'><i
+                                                            class="fab fa-youtube"></i> </span> <br /> <a
+                                                        style='cursor : pointer ;color:black'
+                                                        onClick="mintHtmlUtil.sytv('ytVideoDiv',  'v4Hp02h_XXQ')"><span
+                                                            style=''>English (New)</span></a>&nbsp;&nbsp;&nbsp; | <a
+                                                        style='cursor : pointer ;color:black'
+                                                        onClick="mintHtmlUtil.sytv('ytVideoDiv',  'U4Epx5HvIfU')"><span
+                                                            style=''>हिंदी (New)</span> </a><br /> <a
+                                                        style='cursor : pointer ;color:black'
+                                                        onClick="mintHtmlUtil.sytv('ytVideoDiv',  'Z8RFbA3w0yo')"><span
+                                                            style=''>English (Classic
+                                                            MyTSR)</span></a>&nbsp;&nbsp;&nbsp; | <a
+                                                        style='cursor : pointer ;color:black'
+                                                        onClick="mintHtmlUtil.sytv('ytVideoDiv',  'Uc-gJ__FM64')"><span
+                                                            style=' '>हिंदी (Classic MyTSR)</span> </a> |
+                                                    <br /><br /><b>Global Markets</b> <br /> <a
+                                                        href='https://www.StockAio.com/US/ai/Home'
+                                                        style='cursor : pointer ;color:black'><span style=''>US Stock
+                                                            Screener & Analysis</span> <img
+                                                            src="//www.StockAIo.com/static/img/flags/USFlag.png"
+                                                            style="max-height:18px;"> </a><br /> <a
+                                                        href='https://www.StockAio.com/UK/ai/Home'
+                                                        style='cursor : pointer ;color:black'><span style=''>UK Stock
+                                                            Screener & Analysis</span> <img
+                                                            src="//www.StockAIo.com/static/img/flags/UKFlag.png"
+                                                            style="max-height:18px;"> </a>
+                                            </div>
+                                            <div class="row">
+                                                <div>
+                                                    <br />
+                                                    <span><a href='https://www.tsrsit.com/rt/Home'
+                                                            style="color:black">Home</a></span>
+
+                                                    <span class="ms-1"><a href="https://www.tsrsit.com/Disclaimer.html"
+                                                            style="color:black">| Disclaimer</a></span>
+
+                                                    <span class="ms-1"><a
+                                                            href="https://www.tsrsit.com/TermsAndConditions.html"
+                                                            style="color:black">| Terms &amp; Conditions </a></span>
+
+                                                    <span class="ms-1"><a
+                                                            href="https://www.tsrsit.com/PrivacyPolicy.html"
+                                                            style="color:black">| Privacy </a></span>
+
+
+                                                </div>
+
+                                                <h7 style="text-align:center;line-height: 28px;color:#9E9E9E"> Happy to
+                                                    provide Premium Analytics Since 2010 @TopStockResearch</h7>
+                                                <h7 style="color:#9E9E9E;text-align:center;line-height: 28px;">All
+                                                    rights reserved by Mintnovate Market Research Limited</h7>
+                                            </div>
+                                        </div>
+                                </footer>
+                            </div>
+                        </div>
+                        <!-- Content Wrapper End -->
+
+
+
+
+                    </div>
+                </div> <!-- NG APP  align='center'-->
+
+
+
+
+
+</body>
+<script>
+    migUi.init();
+</script>
+<div id='alertDialog' class='web_dialog'></div>
+<script src='https://www.tsrsit.com/static/js/tsr/my/fav/mifav.js'></script>
+<script src='https://www.tsrsit.com/static/js/tsr/my/fav_minV0.0.1.1.js'></script>
+<script src='https://www.tsrsit.com/static/js/tsr/mipu/mipu_minV0.0.0.39.js'"></script><script> misu.iar();   </script>
