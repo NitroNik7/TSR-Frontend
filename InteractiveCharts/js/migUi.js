@@ -60,7 +60,9 @@ var migUi = (function () {  // my Ui Head
 
         var width = window.innerWidth;
 
-        var logo = jsu.getLogo(true);
+        // TODO - uncomment below line
+        var logo = ''
+        // var logo = jsu.getLogo(true);
 
         /*
         if (jsu.isRtContext() || jsu.isMyContext()) {

@@ -18,7 +18,7 @@ var splitLayout = (function () {
             let resizer, resizerId;
             let collapseBtn, collapseBtnId;
 
-            let resizerHeight = 7;  // should match with .row_resizer CSS
+            let resizerHeight = 3;  // should match with .row_resizer CSS
             let rowHeight = (element.height() - (noOfDivs - 1) * resizerHeight) / noOfDivs;
             for (let i = 1; i <= noOfDivs; i++) {
                 rowId = elementName + `Row` + i;
@@ -27,7 +27,7 @@ var splitLayout = (function () {
                 if (i == 1) {
                     // Creating first child div / first row 
                     element.append(`
-                    <div class='row' id='${rowId}' style='background-color:` + backgroundColors[i - 1] + `; height: ` + rowHeight + `px; flex-grow: 1;'>
+                    <div class='row' id='${rowId}' style='background-color: white; height: ` + rowHeight + `px; flex-grow: 1;'>
                         
                     </div>
                 `);
@@ -47,10 +47,10 @@ var splitLayout = (function () {
                     $(resizer).on("mousedown", mouseDownHandler);
 
                     element.append(`
-                <div class='row' id='${rowId}' style='background-color:` + backgroundColors[i - 1] + `; height: ` + rowHeight + `px;'>
-                    
-                </div>
-            `);
+                        <div class='row' id='${rowId}' style='background-color: white; height: ` + rowHeight + `px;'>
+                            
+                        </div>
+                    `);
 
                     collapseBtn = "#" + collapseBtnId;
 
@@ -59,19 +59,17 @@ var splitLayout = (function () {
                     let prevRow = "#" + elementName + `Row` + (i - 1);
 
                     $(collapseBtn).on("click", function (e) {
-                        // console.log("event fired b4 collapse is clicked");
-
                         collapseDiv(e, $(prevRow), $(row));
                     });
                 } else {
                     // Creating last child div / bottom row 
                     element.append(`
-                <div class='row_resizer' id='${resizerId}'>
-                    <button class="collapse_btn" id='${collapseBtnId}'  style='padding: 5px 5px 15px 5px;'>
-                        <i class="fas fa-caret-down"></i>
-                    </button>
-                </div>
-            `);
+                        <div class='row_resizer' id='${resizerId}'>
+                            <button class="collapse_btn" id='${collapseBtnId}'  style='padding: 5px 5px 15px 5px;'>
+                                <i class="fas fa-caret-down"></i>
+                            </button>
+                        </div>
+                    `);
 
                     resizer = "#" + resizerId;
                     collapseBtn = "#" + collapseBtnId;
@@ -79,18 +77,16 @@ var splitLayout = (function () {
                     $(resizer).on("mousedown", mouseDownHandler);
 
                     element.append(`
-                <div class='row' id='${rowId}' style='background-color:` + backgroundColors[i - 1] + `; height: ` + rowHeight + `px;'>
+                        <div class='row' id='${rowId}' style='background-color: white; height: ` + rowHeight + `px;'>
 
-                </div>
-            `);
+                        </div>
+                    `);
 
                     // below variables should have local scope only for correct element passing to collapseDiv()
                     let row = "#" + rowId;
                     let prevRow = "#" + elementName + `Row` + (i - 1);
 
                     $(collapseBtn).on("click", function (e) {
-                        // console.log("event fired b4 collapse is clicked");
-
                         collapseDiv(e, $(prevRow), $(row));
                     });
                 }
@@ -100,12 +96,12 @@ var splitLayout = (function () {
                 "display": "flex"
             });
 
-            let resizerWidth = 7; // should match with .col_resizer CSS
+            let resizerWidth = 3; // should match with .col_resizer CSS
 
-            let elementWidth = (0.30 * element.width()) - (noOfDivs - 1) * resizerWidth;
+            let elementWidth = (0.30 * element.width()) - (noOfDivs - 1) * resizerWidth; // width = 30% of parent container - (7 * no of resizers)
             // let elementWidth = element.width() - ((noOfDivs - 1) * 7);
 
-            let colWidth = elementWidth / noOfDivs;
+            let colWidth = elementWidth / (noOfDivs - 1);
             let colId;
             let resizer, resizerId;
             let collapseBtn, collapseBtnId;
@@ -115,31 +111,31 @@ var splitLayout = (function () {
                 collapseBtnId = elementName + "ColCollapseBtn" + i;
                 if (i == 1) {
                     // Appending first child div / column
-                    // (0.70 * element.width())
+                    // width = (0.70 * element.width()) i.e. 70% of parent container
                     element.append(`
-                <div class='column' id="${colId}" style='background-color:` + backgroundColors[i - 1] + `; width: ` + (0.70 * element.width()) + `px; flex-grow: 1;'>
-                    
-                </div> 
-            `);
+                        <div class='column' id="${colId}" style='background-color: white; width: ` + (0.70 * element.width()) + `px; flex-grow: 1;'>
+                            
+                        </div> 
+                    `);
 
                 } else if (i > 1 && i < noOfDivs) {
                     // Appending resizer and collapseBtn and subsequent child div / middle column
                     element.append(`
-                <div class='col_resizer' id="${resizerId}">
-                    <button class="collapse_btn" id="${collapseBtnId}"  style='left: 10px;'>
-                        <i class="fas fa-caret-right"></i>
-                    </button>
-                </div>
-            `);
+                            <div class='col_resizer' id="${resizerId}">
+                                <button class="collapse_btn" id="${collapseBtnId}"  style='left: 10px;'>
+                                    <i class="fas fa-caret-right"></i>
+                                </button>
+                            </div>
+                        `);
                     resizer = "#" + resizerId;
                     $(resizer).on("mousedown", mouseDownHandler);
 
                     collapseBtn = "#" + collapseBtnId;
 
                     element.append(`
-                <div class='column' id='${colId}' style='background - color: ` + backgroundColors[i - 1] + `; width: ` + colWidth + `px; '>
-                    
-                </div >
+                        <div class='column' id='${colId}' style='background - color:  white; width: ` + colWidth + `px;'>
+                            
+                        </div>
                     `);
 
                     // below variables should have local scope only for correct element passing to collapseDiv()
@@ -154,11 +150,11 @@ var splitLayout = (function () {
 
                     // Appending last resizer and collapseBtn
                     element.append(`
-                    <div class="col_resizer" id = "${resizerId}"> 
-                        <button class="collapse_btn" id="${collapseBtnId}"  style='left: 10px;'>
-                            <i class="fas fa-caret-right"></i>
-                    </button>
-                </div>
+                        <div class="col_resizer" id = "${resizerId}"> 
+                            <button class="collapse_btn" id="${collapseBtnId}"  style='left: 10px;'>
+                                <i class="fas fa-caret-right"></i>
+                            </button>
+                        </div>
                     `);
 
                     resizer = "#" + resizerId;
@@ -169,15 +165,15 @@ var splitLayout = (function () {
 
                     // Appending last child div / column
                     element.append(`
-                    <div class="column" id = "${colId}" style = 'background-color:` + backgroundColors[i - 1] + `; width: ` + colWidth + `px;' >
+                        <div class="column" id = "${colId}" style = 'background-color: white; width: ` + colWidth + `px;'>
 
-                </div>
+                        </div>
                     `);
 
                     // below variables should have local scope only for correct element passing to collapseDiv()
                     let col = "#" + colId;
                     let prevCol = "#" + elementName + `Column` + (i - 1);
-                    $(collapseBtn).on("click", function (e) {
+                    $(collapseBtn).on("click", function (e) { 
                         collapseDiv(e, $(prevCol), $(col));
                     });
                 }
@@ -283,8 +279,8 @@ var splitLayout = (function () {
             if (postDiv.width() == 0) { // if div is collapsed
 
                 collapseBtn.innerHTML = '<i class="fas fa-caret-right"></i>';
-                newPrevDivWidth = prevDiv.width() - 300 + 'px';
-                newPostDivWidth = 300 + 'px';
+                newPrevDivWidth = (0.70 *  prevDiv.width()) + 'px';
+                newPostDivWidth = (0.30 *  prevDiv.width()) + 'px';
 
                 prevDiv.width(newPrevDivWidth);
                 postDiv.width(newPostDivWidth);
@@ -326,8 +322,8 @@ var splitLayout = (function () {
             if (postDiv.height() == 0) {
                 collapseBtn.innerHTML = '<i class="fas fa-caret-down"></i>';
 
-                newPrevDivHeight = prevDiv.height() - 100 + 'px';
-                newPostDivHeight = 100 + 'px';
+                newPrevDivHeight = (0.50 * prevDiv.height()) + 'px';
+                newPostDivHeight = (0.50 * prevDiv.height()) + 'px';
 
                 prevDiv.height(newPrevDivHeight);
                 postDiv.height(newPostDivHeight);
