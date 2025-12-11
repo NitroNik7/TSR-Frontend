@@ -510,7 +510,7 @@ var intChUi = (function () {
         if (window.innerWidth > 992) {
             if (!isLayoutLoaded) {
                 chContainer.html("");
-
+                /*
                 html += `
                     <div id='chartPanel' class="chartPanel " >
 
@@ -552,19 +552,25 @@ var intChUi = (function () {
 
                     </div>
                 `;
+                */
+
+                html = "";
 
                 let topBar = true;
 
-                let temp = "";
-                temp = `
-                    <div id="${chPanelWrapperId + 'TopBar'}">
+                let layoutHtml = "";
+                layoutHtml = `
+                    <div id="${chPanelWrapperId + 'TopBar'}" style="border: 1px solid lightgray; border-bottom: none;">
                     </div>
 
                     <div id="${chPanelWrapperId + 'Row'}" class="h-100">
 
                     </div>
+
+                     <div id="${chPanelWrapperId + 'BottomBar'}" style="border: 1px solid lightgray;">
+                    </div>
                 `
-                chContainer.append(temp);
+                chContainer.append(layoutHtml);
                 if (topBar) {
                     createTopBar();
                 }
@@ -593,8 +599,9 @@ var intChUi = (function () {
                 let chPanel = document.getElementById(chPanelWrapperId + 'Row' + "Column1Child1Row1");
                 chPanel.innerHTML = html;
 
+                createRightBar();
 
-                createTilesBar();
+                createBottomBar();
 
                 // hack - to keep bottom div collapsed
                 let collapse_btn = document.getElementById(chPanelWrapperId + 'Row' + "Column1Child1RowCollapseBtn2");
@@ -605,7 +612,6 @@ var intChUi = (function () {
                 // return html;
                 isLayoutLoaded = true;
             }
-
         }
         else {
             html += `
@@ -656,10 +662,7 @@ var intChUi = (function () {
             chContainer.html(html);
 
             reDraw();
-
             isLayoutLoaded = false;
-
-
         }
         //     isLayoutLoaded = true;
         // }
@@ -667,35 +670,43 @@ var intChUi = (function () {
 
     function createTopBar() {
         let html = "";
-        html = `<div id='chartControls' ></div>`;
+        // html = `<div id='chartControls' ></div>`;
+        html += chPanelControlsHtml;
         let chContainer = $('#' + chPanelWrapperId + 'TopBar');
         chContainer.append(html);
-
     }
 
     function createLeftBar() {
-
         let chContainer = $('#' + chPanelWrapperId + 'Row');
 
         let leftBarHtml = `
-            <div id="drawingsBar" style="width: 50px; border-left: 1px solid lightgray;">
-
+            <div id="leftBar" style="width: 50px; border-right: 1px solid lightgray;">
             </div>
         `
         chContainer.append(leftBarHtml);
     }
 
-    function createTilesBar() {
+    function createRightBar() {
 
         let chContainer = $('#' + chPanelWrapperId + 'Row');
+        let rightBarHtml = `
+            <div id="rightBar" style="width: 50px; border-left: 1px solid lightgray;">
 
+            </div>
+        `
+        chContainer.append(rightBarHtml);
+    }
 
-        let tilesBarHtml = `
-                    <div id="tilesBar" style="width: 50px; border-left: 1px solid lightgray;">
+    function createBottomBar() {
+        let chContainer = $('#' + chPanelWrapperId + 'BottomBar');
 
-                    </div>
-                `
-        chContainer.append(tilesBarHtml);
+        let bottomBarHtml = `
+            <div id="bottomBar" style="height: 50px; border-left: 1px solid lightgray;">
+                            ${chPanelControlVerticalHtml}
+            </div>
+        `;
+
+        chContainer.append(bottomBarHtml);
     }
 
     return {

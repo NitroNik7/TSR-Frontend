@@ -38,6 +38,8 @@ var migUi = (function () {  // my Ui Head
 
     var navMenuInit = false;
 
+    var myTsrBtnId = "myTsrLinksBtn";
+
     function init() {
 
         // setSideMenu();
@@ -60,9 +62,7 @@ var migUi = (function () {  // my Ui Head
 
         var width = window.innerWidth;
 
-        // TODO - uncomment below line
-        var logo = ''
-        // var logo = jsu.getLogo(true);
+        var logo = jsu.getLogo(true);  
 
         /*
         if (jsu.isRtContext() || jsu.isMyContext()) {
@@ -77,7 +77,8 @@ var migUi = (function () {  // my Ui Head
 
         var myTopDiv = jsu.isMigContext() ? 'myAioTopDiv' : 'myTsrSbTopDiv';
 
-        myMenuIcon = '<a> <span class="icon-holder" style="align-items: center;" id="' + myTopDiv + '" aria-hidden="true"> </a>';
+        // myMenuIcon = '<a onclick="' + objName + '.help();"><span class="icon-holder" style="align-items: center;" id="' + myTopDiv + '" aria-hidden="true"> </a>'; // old
+        myMenuIcon = '<a> <span class="icon-holder" style="align-items: center;" id="' + myTopDiv + '" aria-hidden="true"> </a>'; // new
 
         let href = window.location.href;
 
@@ -115,7 +116,8 @@ var migUi = (function () {  // my Ui Head
 
                 html += '		</b></span>'
                     + '</div>'
-                html += '<div style="margin-top:5px;" align="right"  class="d-flex align-items-center justify-content-end h-100">'
+                // html += '<div  style="margin-top:5px;" align="right">' // old
+                html += '<div style="margin-top:5px; display: flex; justify-content: end; align-items: center;" class="h-100">' // new
                 html += getAioText(width);
                 // html+= myMenuIcon
                 html += "</div>";
@@ -179,12 +181,9 @@ var migUi = (function () {  // my Ui Head
 
                 // */
                 // html+='</div>'	// align right div
-                html += '<div style="text-align:right; width: max-content;" class="d-flex align-items-center h-100 float-end">';
-
+                // html += '<div style="text-align:right;">'; // old
+                html += '<div style="text-align:right; width: max-content;" class="d-flex align-items-center h-100 float-end">'; // new
                 html += getAioText(width);
-
-
-                // + contract + ' '
                 html += '</div>'	// col
                 html += '</div>'	// col
 
@@ -197,39 +196,6 @@ var migUi = (function () {  // my Ui Head
                 html += '</div>'	// ROW
 
                 html += '</div>'	// Final
-
-                html += `
-                    <style>
-
-                        .myTsrLinksBtn{
-                            font-size: 14px;
-                        }
-
-                        .myTsrLinksBtn:hover {
-                            background-color: white;
-                            font-weight: bold;
-                            cursor: pointer;
-                            color: black;
-                            transition: all 0.2s;
-                            scale: 1.15;
-                        }
-
-
-                        /*
-                            .myTsrLinksBtn:hover svg {
-                                fill: silver;
-                            }
-                        */
-
-
-                        .myTsrLinksBtn svg {
-                            margin: 0 3px 0px 3px;
-                        }
-
-                        
-                    </style>
-                
-                `
             }
 
             htmlU.addMsgToDiv('dynHead', true, html);
@@ -269,17 +235,47 @@ var migUi = (function () {  // my Ui Head
     function getAioText(width) {
 
         var html = '';
-        // myMenuIcon = '<a > <span class="icon-holder" style="align-items: center;" id="' + myTopDiv + '" aria-hidden="true"> </a>';
+
+
+        // Adding below CSS style for myTsr btn (beside user profile icon)
+        html += `
+            <style>
+                #${myTsrBtnId}{
+                    font-size: 14px;
+                }
+
+                #${myTsrBtnId}:hover {
+                    cursor: pointer;
+                    transition: all 0.2s;
+                    scale: 1.10;
+                }
+
+                #${myTsrBtnId} svg {
+                    margin: 0 3px 0px 3px;
+                }
+            </style>
+        `
 
         // if(!jsu.isMigContext()){
+        /* OLD
+            html += flag();
+            html += getUserHead();
+            html += '<span style="text-align:right; margin:10px;">'
+                // + contract + ' '
+                + myMenuIcon + " "
+                + '  </span>'
+        */
+        // NEW
         html += flag();
-        html += `<div class="d-flex align-items-center" style="text-align: center; border-right: 3px solid #ff9800; padding-right: 10px; margin-right: 10px;" onclick="${objName}.help();">`
-        html += `   <div class="myTsrLinksBtn">`
-        html += myMenuIcon + " "
+        html += `<div style="display: flex; align-items: center;  text-align: center; border-right: 3px solid darkgray; padding-right: 10px; margin-right: 10px;" onclick="${objName}.help();">`
+        html += `   <div id="${myTsrBtnId}">`
+        html += myMenuIcon
         html += `       <hr style="margin: 3px;">`
-        html += '       <b style="color: gray; font-size: 12px; text-align: center;">My TSR<b>';
+        html += '       <b style="color: gray; font-size: 12px; text-align: center;">'
+        html += '           My Settings'
+        html += '       <b>';
         html += `   </div>`
-        html += `   <span class="ms-2" style="color: darkgoldenrod;">`;
+        html += `   <span style="color: goldenrod; margin-left: 8px;">`;
         html += `       <i class="fas fa-caret-down"></i>`;
         html += `   </span>`;
         html += `</div>`
@@ -901,7 +897,7 @@ var migUi = (function () {  // my Ui Head
         htmlU.addMsgToDiv('myTsrLinks', true, html);
         $("#myTsrLinks").css('margin', '10px');
 
-        // ! test later
+        // ! check whether its required later
         // if(!jsu.isMigContext()){
         // aioIcons.iti(); 
         // }
