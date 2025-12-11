@@ -60,24 +60,28 @@ var migUi = (function () {  // my Ui Head
 
         var width = window.innerWidth;
 
-        var logo = '';
+        // TODO - uncomment below line
+        var logo = ''
+        // var logo = jsu.getLogo(true);
 
+        /*
         if (jsu.isRtContext() || jsu.isMyContext()) {
             logo = '<img src="' + jsu.getStaticUrl() + '/v21/img/tsr/TsrLogo.png" alt="TSR - TopStockresearch"  name="TSR - TopStockresearch" height="45px;" style="vertical-align:top">';
         } else {
             logo = '<img src="' + jsu.getStaticUrl() + '/img/StockAioLogo.png" alt="Stock AIO"  name="Stock All In One" height="45px;" style="vertical-align:top">';
         }
+        */
 
         var html = '';
         var search = ''
 
         var myTopDiv = jsu.isMigContext() ? 'myAioTopDiv' : 'myTsrSbTopDiv';
 
-        myMenuIcon = '<a onclick="' + objName + '.help();"><span class="icon-holder" style="align-items: center;" id="' + myTopDiv + '" aria-hidden="true"> </a>';
+        myMenuIcon = '<a onclick="' + objName + '.help();"> <span class="icon-holder" style="align-items: center;" id="' + myTopDiv + '" aria-hidden="true"> </a>';
 
         let href = window.location.href;
 
-        if ((!jsu.isMigContext() && href.indexOf('/InteractiveCharts') != -1)) {
+        if (href.indexOf('/StockTechnicalCharts') > 0 || href.indexOf('/InteractiveCharts') > 0) {
 
             intChUi.init();
             // html = intChUi.gich;
@@ -111,7 +115,7 @@ var migUi = (function () {  // my Ui Head
 
                 html += '		</b></span>'
                     + '</div>'
-                html += '<div  style="margin-top:5px;" align="right">'
+                html += '<div  style="margin-top:5px;" align="right"  class="d-flex align-items-center justify-content-end h-100">'
                 html += getAioText(width);
                 // html+= myMenuIcon
                 html += "</div>";
@@ -174,7 +178,7 @@ var migUi = (function () {  // my Ui Head
 
                 // */
                 // html+='</div>'	// align right div
-                html += '<div style="text-align:right;">';
+                html += '<div style="text-align:right;"  class="d-flex align-items-center justify-content-end h-100">';
                 html += getAioText(width);
                 html += '</div>'	// col
                 html += '</div>'	// col
@@ -210,9 +214,12 @@ var migUi = (function () {  // my Ui Head
             htmlU.divHide('navLogoDiv');
         }
 
-        if (!jsu.isMigContext()) {
-            aioIcons.iti();
-        }
+
+        // if (jsu.isMigContext()) {
+
+        // }else{
+        aioIcons.iti();
+        // }
 
         miSrch.ras();
 
@@ -228,7 +235,7 @@ var migUi = (function () {  // my Ui Head
         // if(!jsu.isMigContext()){
         html += flag();
         html += getUserHead();
-        html += '<span style="text-align:right; margin:10px;">'
+        html += '<span style="text-align:center; ">'
             // + contract + ' '
             + myMenuIcon + " "
             + '  </span>'
@@ -343,7 +350,7 @@ var migUi = (function () {  // my Ui Head
         html += '			<li onClick="migUi.addShow();" class="user-profile dropdown dropdown-animated scale-left">'
         html += '						   <a href="" id="upsa" class="dropdown-toggle" data-bs-toggle="dropdown" style="margin-right:10px">'
         // html +='						   <i class="fas fa-user fa-2x "></i>'
-        html += '<span class="fas fa-user fa" style="margin-top:10px;font-size:30px;"></span>'
+        html += '<span class="fas fa-user fa" style="font-size:25px;"></span>'
 
         html += '						   </a>'
         // To change width set syle in ul 
@@ -551,7 +558,7 @@ var migUi = (function () {  // my Ui Head
 
         let href = window.location.href;
 
-        if ((!jsu.isMigContext() && href.indexOf('/InteractiveCharts') == -1)) { // Current page is not interactive charts...
+        if (!(href.indexOf('/StockTechnicalCharts') > 0 || href.indexOf('/InteractiveCharts') > 0)) { // Current page is not interactive charts...
             let navMenuCntr = document.querySelector(".tsrNavMenuCntr");
 
             let navCntrRect = navMenuCntr.getBoundingClientRect();
@@ -622,7 +629,7 @@ var migUi = (function () {  // my Ui Head
                     if (subMenu != null) {
                         menuItem.addEventListener("mouseenter", function (e) {
                             if (window.innerWidth > 576) {
-                                showSubMenuList(e, navMenuCntr, subMenu, menuItem);
+                                showSubMenuList(e, navMenuCntr, subMenu, menuItem, i);
                             }
                         });
 
@@ -630,7 +637,7 @@ var migUi = (function () {  // my Ui Head
                         menuItem.addEventListener("pointerdown", function (e) {
                             if (subMenu.style.display == "none" || subMenu.style.display == "") {
                                 if (e.pointerType == "mouse") {
-                                    showSubMenuList(e, navMenuCntr, subMenu, menuItem);
+                                    showSubMenuList(e, navMenuCntr, subMenu, menuItem, i);
                                 } else {
                                     showMenuListMob(subMenu, menuItems, menuItem, i);
                                 }
@@ -673,7 +680,7 @@ var migUi = (function () {  // my Ui Head
                 });
 
 
-                function showSubMenuList(e, navMenuCntr, subMenu, menuItem) {
+                function showSubMenuList(e, navMenuCntr, subMenu, menuItem, i) {
 
                     navMenuCntr.style.zIndex = "1001"; // ! discuss later
                     subMenu.style.display = "block";
@@ -692,6 +699,9 @@ var migUi = (function () {  // my Ui Head
                         subMenu.style.height = "0";
                         void subMenu.offsetHeight; // browser reflow
                         subMenu.style.height = height + "px";
+
+                        // for hiding all open sub menu's except selected one
+                        hideAllSubMenuLists(menuItems, i);
                     }
                 };
 
@@ -1042,6 +1052,7 @@ var migUi = (function () {  // my Ui Head
             htmlU.divHide('helpNav');
         });
 
+        aioIcons.iti();
 
     }
 
@@ -1266,7 +1277,7 @@ var migUi = (function () {  // my Ui Head
 $(window).on('load', function () {
 
     let resizeTimer;
-    window.addEventListener("resize", () => {
+    $(window).on("resize", () => {
         clearTimeout(resizeTimer); // Clear any previous timer
         resizeTimer = setTimeout(() => {
             if (isMobile()) {

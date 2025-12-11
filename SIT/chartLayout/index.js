@@ -8,7 +8,7 @@ var splitLayout = (function () {
     // elementName - for giving ID to children
     // layout - value is set to horizontal to create columns, else set to vertical to create rows 
     // noOfDivs - no. of children to be created
-    function createLayout(element, elementName, layout, noOfDivs) {
+    function createLayout(element, elementName, layout, noOfDivs, callback) {
         if (layout == "vertical") { // vertical layout
             element.css({
                 "display": "flex",
@@ -44,7 +44,12 @@ var splitLayout = (function () {
                     `);
                     resizer = "#" + resizerId;
 
-                    $(resizer).on("mousedown", mouseDownHandler);
+                    $(resizer).on("mousedown", function (e) {
+                        mouseDownHandler(e, callback);
+                        if (!isEmptyOrUndefined(callback)) {
+                            callback();
+                        }
+                    });
 
                     element.append(`
                         <div class='row' id='${rowId}' style='background-color: white; height: ` + rowHeight + `px;'>
@@ -59,7 +64,7 @@ var splitLayout = (function () {
                     let prevRow = "#" + elementName + `Row` + (i - 1);
 
                     $(collapseBtn).on("click", function (e) {
-                        collapseDiv(e, $(prevRow), $(row));
+                        collapseDiv(e, $(prevRow), $(row), callback);
                     });
                 } else {
                     // Creating last child div / bottom row 
@@ -74,7 +79,12 @@ var splitLayout = (function () {
                     resizer = "#" + resizerId;
                     collapseBtn = "#" + collapseBtnId;
 
-                    $(resizer).on("mousedown", mouseDownHandler);
+                    $(resizer).on("mousedown", function (e) {
+                        mouseDownHandler(e, callback);
+                        if (!isEmptyOrUndefined(callback)) {
+                            callback();
+                        }
+                    });
 
                     element.append(`
                         <div class='row' id='${rowId}' style='background-color: white; height: ` + rowHeight + `px;'>
@@ -87,7 +97,7 @@ var splitLayout = (function () {
                     let prevRow = "#" + elementName + `Row` + (i - 1);
 
                     $(collapseBtn).on("click", function (e) {
-                        collapseDiv(e, $(prevRow), $(row));
+                        collapseDiv(e, $(prevRow), $(row), callback);
                     });
                 }
             }
@@ -128,7 +138,12 @@ var splitLayout = (function () {
                             </div>
                         `);
                     resizer = "#" + resizerId;
-                    $(resizer).on("mousedown", mouseDownHandler);
+                    $(resizer).on("mousedown", function (e) {
+                        mouseDownHandler(e, callback);
+                        if (!isEmptyOrUndefined(callback)) {
+                            callback();
+                        }
+                    });
 
                     collapseBtn = "#" + collapseBtnId;
 
@@ -142,7 +157,7 @@ var splitLayout = (function () {
                     let col = "#" + colId;
                     let prevCol = "#" + elementName + `Column` + (i - 1);
                     $(collapseBtn).on("click", function (e) {
-                        collapseDiv(e, $(prevCol), $(col));
+                        collapseDiv(e, $(prevCol), $(col), callback);
                     });
                 } else {
                     resizerId = elementName + "ColResizer" + i;
@@ -158,7 +173,12 @@ var splitLayout = (function () {
                     `);
 
                     resizer = "#" + resizerId;
-                    $(resizer).on("mousedown", mouseDownHandler);
+                    $(resizer).on("mousedown", function (e) {
+                        mouseDownHandler(e, callback);
+                        if (!isEmptyOrUndefined(callback)) {
+                            callback();
+                        }
+                    });
 
                     collapseBtn = "#" + collapseBtnId;
 
@@ -173,8 +193,8 @@ var splitLayout = (function () {
                     // below variables should have local scope only for correct element passing to collapseDiv()
                     let col = "#" + colId;
                     let prevCol = "#" + elementName + `Column` + (i - 1);
-                    $(collapseBtn).on("click", function (e) { 
-                        collapseDiv(e, $(prevCol), $(col));
+                    $(collapseBtn).on("click", function (e) {
+                        collapseDiv(e, $(prevCol), $(col), callback);
                     });
                 }
             }
@@ -182,15 +202,16 @@ var splitLayout = (function () {
     }
 
     // TODO: recheck
-    const mouseDownHandler = function mouseDownHandler(e) {
-        // Executes, when e.target is a row resizer, otherwise else part executes for column resizer
-        if ($(e.target).attr('class').indexOf("row_resizer") != -1) {
+    const mouseDownHandler = function mouseDownHandler(e, callback) {
+        // Executes, when e.currentTarget is a row resizer, otherwise else part executes for column resizer
+        // TODO Check condition
+        if ($(e.currentTarget).attr('class').toLowerCase().indexOf("row_resizer") != -1) {
             yCord = e.clientY;
 
-            let id = "#" + e.target.id;
+            let id = "#" + e.currentTarget.id;
 
             // execute only when, mousedown target is not collapseBtn
-            if (id.indexOf("collapseBtn") == -1) {
+            if (id.toLowerCase().indexOf("collapsebtn") == -1) {
                 rowBelow = $(id).next()[0];
                 rowAbove = $(id).prev()[0];
                 if (rowBelow.offsetHeight == 0)
@@ -198,6 +219,9 @@ var splitLayout = (function () {
 
                 if (!isEmptyOrUndefined(rowAbove) && !isEmptyOrUndefined(rowBelow)) {
                     $(document.body).on("mousemove", (e) => {
+                        if (!isEmptyOrUndefined(callback)) {
+                            callback();
+                        }
                         rowMouseMoveHandler(e, rowAbove, rowBelow);
                     });
                     $(document.body).on("mouseup", mouseUpHandler);
@@ -206,14 +230,17 @@ var splitLayout = (function () {
         } else {
             xCord = e.clientX;
 
-            let id = "#" + e.target.id;
+            let id = "#" + e.currentTarget.id;
 
-            if (id.indexOf("collapseBtn") == -1) {
+            if (id.toLowerCase().indexOf("collapsebtn") == -1) {
                 colAfter = $(id).next()[0];
                 colBefore = $(id).prev()[0];
 
                 if (!isEmptyOrUndefined(colAfter) && !isEmptyOrUndefined(colBefore)) {
                     $(document.body).on("mousemove", (e) => {
+                        if (!isEmptyOrUndefined(callback)) {
+                            callback();
+                        }
                         colMouseMoveHandler(e, colAfter, colBefore);
                     });
                     $(document.body).on("mouseup", mouseUpHandler);
@@ -261,26 +288,29 @@ var splitLayout = (function () {
         $(document.body).off("mouseup");
     }
 
-    function collapseDiv(e, prevDiv, postDiv) {
+    function collapseDiv(e, prevDiv, postDiv, callback) {
         let collapseBtn = $(`#${e.currentTarget.id}`)[0];
+        
+        postDiv.css({
+            transition: "0.2s ease"
+        });
+        prevDiv.css({
+            transition: "0.2s ease"
+        });
 
         let newPrevDivWidth, newPostDivWidth;
         let newPrevDivHeight, newPostDivHeight;
+        
+        
         // Optimize condition
         if (prevDiv.attr("class").indexOf("col") != -1 && postDiv.attr("class").indexOf("col") != -1) { // if col_resizer
 
-            postDiv.css({
-                transition: "0.2s ease"
-            });
-            prevDiv.css({
-                transition: "0.2s ease"
-            });
             // 300px width TBD when div is expanded
             if (postDiv.width() == 0) { // if div is collapsed
 
                 collapseBtn.innerHTML = '<i class="fas fa-caret-right"></i>';
-                newPrevDivWidth = (0.70 *  prevDiv.width()) + 'px';
-                newPostDivWidth = (0.30 *  prevDiv.width()) + 'px';
+                newPrevDivWidth = (0.70 * prevDiv.width()) + 'px';
+                newPostDivWidth = (0.30 * prevDiv.width()) + 'px';
 
                 prevDiv.width(newPrevDivWidth);
                 postDiv.width(newPostDivWidth);
@@ -292,9 +322,13 @@ var splitLayout = (function () {
 
                 collapseBtn.style.left = "10px";
 
-                prevDiv.next().on("mousedown", mouseDownHandler);
-            }
-            else { // if div is already open
+                prevDiv.next().on("mousedown", function (e) {
+                    mouseDownHandler(e, callback);
+                    if (!isEmptyOrUndefined(callback)) {
+                        callback();
+                    }
+                });
+            } else { // if div is already open
                 collapseBtn.innerHTML = '<i class="fas fa-caret-left"></i>';
                 newPrevDivWidth = prevDiv.width() + postDiv.width() + 'px';
                 newPostDivWidth = '0px';
@@ -312,12 +346,6 @@ var splitLayout = (function () {
             }
         } else {
             // Collapse div functionality for vertical divs to be implemented...
-            postDiv.css({
-                transition: "0.2s ease"
-            });
-            prevDiv.css({
-                transition: "0.2s ease"
-            });
             // Height TBD when div is expanded
             if (postDiv.height() == 0) {
                 collapseBtn.innerHTML = '<i class="fas fa-caret-down"></i>';
@@ -328,10 +356,13 @@ var splitLayout = (function () {
                 prevDiv.height(newPrevDivHeight);
                 postDiv.height(newPostDivHeight);
 
-                prevDiv.next().on("mousedown", mouseDownHandler);
-            }
-            // If div is expanded
-            else {
+                prevDiv.next().on("mousedown", function (e) {
+                    mouseDownHandler(e, callback);
+                    if (!isEmptyOrUndefined(callback)) {
+                        callback();
+                    }
+                });
+            } else { // If div is expanded
                 collapseBtn.innerHTML = '<i class="fas fa-caret-up"></i>';
 
                 newPrevDivHeight = prevDiv.height() + postDiv.height() + 'px';
@@ -342,6 +373,12 @@ var splitLayout = (function () {
 
                 prevDiv.next().off("mousedown");
             }
+        }
+
+        if (!isEmptyOrUndefined(callback)) {
+            setTimeout(function () {
+                callback();
+            }, 200); // timeout required as we have given transition 0.2s to div's
         }
     }
 
