@@ -410,8 +410,9 @@ var migUi = (function () {  // my Ui Head
             html += getLoginIn();
         }
 
-
-        html += getBrokers()
+        if (!jsu.isMigContext()) {
+            html += getBrokers()
+        }
 
         html += getPlan();
 
@@ -448,6 +449,8 @@ var migUi = (function () {  // my Ui Head
         html += '						         <span>View Profile</span>'
         html += '						         </a>'
         html += '						      </li>'
+
+        html += '						      <li role="separator" class="divider"></li>'
 
         return html;
     }
@@ -490,11 +493,35 @@ var migUi = (function () {  // my Ui Head
     function getBrokers() {
 
         var html = "";
-        html += '						      <li role="separator" class="divider"></li>'
 
-        html += `<li onclick=""> `
-        html += '   <div style="margin: 12px 0 12px 20px;"> Manage Trading accounts </div>'
-        html += `</li>`;
+        userProf.broker = false;
+
+        if (userProf.status === 'signedIn' && userProf.broker) { // user is signedIn and connected with broker
+            html += `<li onclick=""> `;
+            html += `   <a href="">`
+            html += `       Manage Trading accounts`;
+            html += `   </a>`
+            html += `</li> `;
+        }
+        else if (!userProf.broker) { // user is not connected to any broker
+            html += '<li>';
+            html += '   <a data-bs-toggle="modal" data-bs-target="#tsrUserRegModal" onclick="migUi.urm()">';
+            html += '       <i class="far fa-handshake"></i>';
+            html += '       <span> Connect with Broker</span>';
+            html += '   </a>';
+            html += '</li>';
+        }
+        else { // user is not signed in neither connected to any broker
+            html += '<li>';
+            html += '   <a data-bs-toggle="modal" data-bs-target="#tsrUserSelBrokerModal">';
+            html += '       <i class="far fa-handshake"></i>';
+            html += '       <span> Login with Broker </span>';
+            html += '   </a>';
+            html += '</li>';
+
+        }
+        html += '<li role="separator" class="divider"></li>';
+
 
 
         return html;
@@ -538,7 +565,6 @@ var migUi = (function () {  // my Ui Head
         }
 
         var html = '';
-        html += '						      <li role="separator" class="divider"></li>'
         html += '						      <li>'
         html += '						         <div style="margin: 20px"> '
         html += '						           ' + plan
@@ -553,7 +579,6 @@ var migUi = (function () {  // my Ui Head
         var html = '';
 
         if (jsu.isNotNull(userProf.refCode)) {
-            html += '						      <li role="separator" class="divider"></li>'
             html += '						      <li>'
             html += '						         <div style="margin: 20px"> Referal Code : <b>' + userProf.refCode + '</b><br>                                    </div>'
             html += '						      </li>'
@@ -565,6 +590,7 @@ var migUi = (function () {  // my Ui Head
             html += '						         <span>View My Referrals</span>'
             html += '						         </a>'
             html += '						      </li>'
+            html += '						      <li role="separator" class="divider"></li>'
         }
 
         return html;
@@ -643,10 +669,10 @@ var migUi = (function () {  // my Ui Head
 
                     if (scrollHeight > scrolledHeightFromTop) {
                         navList.scrollBy(0, actualHeight);
-                        btn.innerHTML = `<i class="fas fa-caret-up"></i>`;
+                        btn.innerHTML = `< i class="fas fa-caret-up" ></i > `;
                     } else {
                         navList.scrollBy(0, -scrollHeight);
-                        btn.innerHTML = `<i class="fas fa-caret-down"></i>`;
+                        btn.innerHTML = `< i class="fas fa-caret-down" ></i > `;
                     }
 
                     isProgramaticScroll = true;
@@ -661,10 +687,10 @@ var migUi = (function () {  // my Ui Head
                         let scrollHeight = Math.round(actualHeight - visibleHeight);
 
                         if (scrollHeight > scrolledHeightFromTop) {
-                            btn.innerHTML = `<i class="fas fa-caret-down"></i>`;
+                            btn.innerHTML = `< i class="fas fa-caret-down" ></i > `;
 
                         } else {
-                            btn.innerHTML = `<i class="fas fa-caret-up"></i>`;
+                            btn.innerHTML = `< i class="fas fa-caret-up" ></i > `;
 
                         }
                     }

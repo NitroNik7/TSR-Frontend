@@ -469,21 +469,7 @@ var migUi = (function () {  // my Ui Head
         html += '						         </a>'
 
         html += '						      </li>'
-        html += '						      <li role="separator" class="divider"></li>'
 
-        // login with broker starts here
-        if (!jsu.isMigContext()) { // if not mig context
-            html += '						      <li>'
-
-            html += '						         <a data-bs-toggle="modal" data-bs-target="#tsrUserRegModal" onclick="migUi.urm()">'
-
-            html += '						            <i class="far fa-handshake"></i>'
-            html += '						            <span> Connect with Broker</span>'
-            html += '						         </a>'
-
-
-            html += '						      </li>'
-        }
 
         return html;
     }
