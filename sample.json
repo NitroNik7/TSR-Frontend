@@ -1,0 +1,36 @@
+{
+    "login": {
+        "url": "https://api.upstox.com/v2/login/authorization/dialog",
+        "redirectUrl": "",
+        "httpMethod": "GET",
+        "sync": false
+    },
+    "logOff": {
+        "url": "https://api.upstox.com/v2/logout",
+        "redirectUrl": "",
+        "httpMethod": "DELETE",
+        "sync": true
+    },
+    "authToken": {
+        "url": "https://api.upstox.com/v2/login/authorization/token",
+        "redirectUrl": "",
+        "httpMethod": "POST",
+        "sync": true
+    },
+    "userProfile": {
+        "url": "https://api.upstox.com/v2/user/profile",
+        "redirectUrl": "",
+        "httpMethod": "GET",
+        "sync": false
+    },
+    "placeOrder": {
+        "url": "",
+        "redirectUrl": "",
+        "httpMethod": "",
+        "sync": true
+    }
+}
+
+
+
+// {"login": { "url": "DUMMY", "redirectUrl": "DUMMY", "httpMethod": "GET", "sync": true }, "logOff": { "url": "DUMMY", "redirectUrl": "DUMMY", "httpMethod": "POST", "sync": true }, "authToken": { "url": "DUMMY", "redirectUrl": "DUMMY", "httpMethod": "GET", "sync": true }, "placeOrder": { "url": "DUMMY", "redirectUrl": "", "httpMethod": "", "sync": true }}
