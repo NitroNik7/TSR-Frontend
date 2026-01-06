@@ -452,7 +452,8 @@
                             <option value="1">TSR (Y) & Broker (N)</option>
                             <option value="2">TSR (N) & Broker (Y)</option>
                             <option value="3">TSR (N) & Broker > 1</option>
-                            <option value="4">TSR (Y) & Broker > 1</option>
+                            <option value="4">TSR (Y) & Broker (Y)</option>
+                            <option value="5">TSR (Y) & Broker > 1</option>
                         </select>
 
                         <h3 class="text-center">Broker Dashboard</h3>
@@ -790,6 +791,80 @@
                                                 </div>
                                             </div>
                                     `;
+                                } else if (value == "4") {
+                                    html += `
+
+                                            <div class="container">
+                                                <div class="card">
+                                                   <div class="card-header d-flex justify-content-between">
+                                                        <h5 class="card-title">
+                                                            Trade with TSR
+                                                        </h5>
+                                                        <button class="btn btn-sm btn-outline-primary">
+                                                            Logout from all Brokers
+                                                        </button>
+                                                    </div>
+                                                    <div class="card-body text-center d-flex flex-column align-items-center">
+                                                        <h6>
+                                                            You are connected to below accounts
+                                                        </h6>
+                                                        
+                                                        <div class="w-100">
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">Broker</th>
+                                                                        <th scope="col">Unlink</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><img style="height: 25px;" src="/static/img/broker/UpStoxLogo.png" alt="UpStox"></td>
+                                                                        <td><button class="btn btn-sm btn-outline-primary">Logout</button></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+
+                                                        <div class="my-3 w-100">
+                                                            <h6>You may also login with multiple brokers</h6>
+                                                            <div>
+                                                                <div class="my-slider">
+                                                                    <div><img style="height: 25px;" src="/test/Nikhil/tsrBroker/manageAcc/assets/Kite.png" alt="Kite"></div>
+                                                                    <div><img style="height: 25px;" src="/test/Nikhil/tsrBroker/manageAcc/assets/Dhan.png" alt="Dhan"></div>
+                                                                    <div><img style="height: 25px;" src="/test/Nikhil/tsrBroker/manageAcc/assets/AngelOne.png" alt="Angel One"></div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        
+                                                        <div class="w-75 mx-auto border rounded-3 border-1 mb-3 p-2 border-success"
+                                                            style="background-color: #f5fff5;">
+                                                            <div class="row">
+                                                                <div class="col-12 d-flex flex-column text-start">
+                                                                    <h5 style="color: green;">
+                                                                        Here is what you can do on connecting with a broker
+                                                                    </h5>
+
+                                                                    <ul style="color: #004b00; font-size: 15px;">
+                                                                        <li>
+                                                                            Buy/Sell stocks directly from the TSR platform
+                                                                        </li>
+                                                                        <li>
+                                                                            Buy/Sell stocks by leveraging powerful tools from TSR to achieve your trading goals
+                                                                        </li>
+                                                                    </ul>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    `
                                 } else {
                                     html += `
 
@@ -1044,6 +1119,15 @@
                                         "swipeAngle": false,
                                         "speed": 400
                                     });
+                                } else if (value == "4") {
+                                    var slider = tns({
+                                        "container": ".my-slider",
+                                        "items": 3,
+                                        "slideBy": "page",
+                                        "mouseDrag": true,
+                                        "swipeAngle": false,
+                                        "speed": 400
+                                    });
                                 } else {
                                     var slider = tns({
                                         "container": ".my-slider",
@@ -1080,7 +1164,7 @@
 
                         <div id="manageAccountContainer">
 
-                            
+
 
                         </div>
 
