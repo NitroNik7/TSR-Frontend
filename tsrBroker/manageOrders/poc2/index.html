@@ -1363,22 +1363,27 @@
 
                                                                             html += `           </div>
                                                                                             </div>`;
-                                                                            html += `       <div id="${orderContainerId}" class="p-3" style="height: 50vh; max-height: 300px; overflow-y: auto;">`
+                                                                            html += `       <div id="${orderContainerId}" class="px-3" style="height: 50vh; max-height: 300px; overflow-y: auto;">`
                                                                             html += appendOrderHtml(0, stockName, lastKnownPrice, type);
+                                                                            html += appendOrderHtml(1, stockName, lastKnownPrice, type);
+                                                                            html += appendOrderHtml(2, stockName, lastKnownPrice, type);
+                                                                            html += appendOrderHtml(3, stockName, lastKnownPrice, type);
                                                                             html += `       </div>`
                                                                             html += `       <div  style="position: sticky;bottom: 0px;background: white;padding: 10px;border-top: 1px solid lightgray;">`;
 
-                                                                            html += `           <div class="border-bottom my-2" style="color: gray; height: 100px; overflow-y: auto;">`;
-                                                                            html += `               Please Note:`
-                                                                            html += `               <ul style="margin-bottom: 0;">
-                                                                                                        <li>Lorem ipsum dolor sit amet.</li>
-                                                                                                        <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, consequuntur.</li>
-                                                                                                    </ul>`
-                                                                            html += `           </div>`;
                                                                             html += `           <div class="d-flex justify-content-between">
-                                                                                                    <button class="btn btn-outline-danger">Cancel <i class="fas fa-times"></i></button>
-                                                                                                    <button class="btn btn-outline-primary">Place <i class="fas fa-arrow-right"></i></button>
-                                                                                                </div>`;
+                                                                                                    <button class="btn btn-outline-danger">Cancel <i class="fas fa-times"></i></button>`
+                                                                            html += `               <div class="text-center">`
+                                                                            html += `                   <div>`
+                                                                            html += `                       <span>Data last updated on: 3:52 pm</span>`
+                                                                            html += `                   </div>`
+                                                                            html += `                   <div id="fbDiv">`
+                                                                            html += `                       <span style="color: red;"><b>Order could not be placed. Please enter valid price</b></span>`
+                                                                            html += `                   </div>`
+
+                                                                            html += `               </div>`
+                                                                            html += `               <button class="btn btn-outline-primary">Place <i class="fas fa-arrow-right"></i></button>`
+                                                                            html += `           </div>`;
                                                                             html += `       </div>`;
                                                                             html += `</div>`;
                                                                         }
@@ -1443,10 +1448,9 @@
                                                                                             </button>`
                                                                         html += `       </div>`
                                                                         html += `   </div>`
-                                                                        html += `   <br>`
-                                                                        html += `   <div class="d-flex justify-content-around">`
-                                                                        html += `       <div class="d-flex justify-content-between align-items-center" style="width: 55%;">`
-                                                                        html += `           <span style="color: gray;">Type</span>
+                                                                        html += `   <div class="d-flex justify-content-around mt-3">`
+                                                                        html += `       <div class="d-flex justify-content-between align-items-center" style="width: 45%;">`
+                                                                        html += `           
                                                                                             <div>
                                                                                                 <input type="radio" name="${orderTypeRadioGroupId}" id="${marketOrderBtnId}" style="-webkit-appearance: auto;" checked="" onchange="enablePrice(false, '${priceInputId}')">
                                                                                                 <label for="${marketOrderBtnId}">&nbsp;Market</label>
@@ -1479,8 +1483,8 @@
                                                                                     </div>`
 
                                                                         html += `       <div class=" d-flex align-items-center">
-                                                                                            <label for="${advancedOptionsCheckId}">Advanced&nbsp;</label>
-                                                                                            <input type="checkbox" name="${advancedOptionsCheckId}" id="${advancedOptionsCheckId}" onchange="showAdvancedOptions(this, ${row}, '${advancedOptionsContainerId}')">
+                                                                            <input type="checkbox" name="${advancedOptionsCheckId}" id="${advancedOptionsCheckId}" onchange="showAdvancedOptions(this, ${row}, '${advancedOptionsContainerId}')">
+                                                                            <label for="${advancedOptionsCheckId}">&nbsp;<b>More</b></label>
                                                                                         </div>`
                                                                         html += `   </div>`
                                                                         html += `   <div id="${advancedOptionsContainerId}" class="d-flex flex-column mt-2">
@@ -1491,7 +1495,7 @@
 
                                                                     }
 
-                                                                    function deleteOrder(orderRowId){
+                                                                    function deleteOrder(orderRowId) {
                                                                         let row = document.getElementById(orderRowId);
                                                                         // remove row
                                                                     }
