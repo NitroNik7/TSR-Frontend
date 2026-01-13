@@ -1395,7 +1395,7 @@
                                                                             html += `</div>`;
                                                                         }
                                                                         else {
-                                                                            html += `<div style="width: 350px;">`
+                                                                            html += `<div>`
                                                                             html += `
                                                                                 <table style="width: 100%; border: 0px;" cellpadding="3" cellspacing="0">
                                                                                     <tbody>
@@ -1478,9 +1478,12 @@
                                                                         container.style.display = "block";
 
                                                                         if (window.innerWidth < breakpointWidth) {
-                                                                            container.style.width = "354px";
+                                                                            container.style.minWidth = "350px";
+                                                                            container.style.maxWidth = "90%";
                                                                         } else {
                                                                             container.style.width = "654px";
+                                                                            container.style.minWidth = "unset";
+                                                                            container.style.maxWidth = "unset";
                                                                         }
 
                                                                     }
