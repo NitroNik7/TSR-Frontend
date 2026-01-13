@@ -1,0 +1,44 @@
+{
+  "generateConsent": {
+    "url": "https://auth.dhan.co/partner/generate-consent",
+    "redirectUrl": "",
+    "httpMethod": "GET",
+    "sync": true
+  },
+  "login": {
+    "url": "https://auth.dhan.co/consent-login",
+    "redirectUrl": "",
+    "httpMethod": "GET",
+    "sync": false
+  },
+  "accessToken": {
+    "url": "https://auth.dhan.co/partner/consume-consent",
+    "redirectUrl": "",
+    "httpMethod": "GET",
+    "sync": false
+  },
+  "userProfile": {
+    "url": "https://api.dhan.co/v2/profile",
+    "redirectUrl": "",
+    "httpMethod": "GET",
+    "sync": true
+  },
+  "placeOrder": {
+    "url": "https://api.dhan.co/v2/orders",
+    "redirectUrl": "",
+    "httpMethod": "GET",
+    "sync": true
+  },
+  "modifyOrder": {
+    "url": "https://api.dhan.co/v2/orders",
+    "redirectUrl": "",
+    "httpMethod": "PUT",
+    "sync": true
+  },
+  "cancelOrder": {
+    "url": " https://api.dhan.co/v2/orders",
+    "redirectUrl": "",
+    "httpMethod": "DELETE",
+    "sync": true
+  }
+}
