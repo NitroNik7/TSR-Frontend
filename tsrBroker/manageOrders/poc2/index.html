@@ -1340,25 +1340,55 @@
 
                                                                             // popup body starts here
                                                                             let brokerRadioGroupId = "brokerGroup";
+                                                                            let tsrMockRadioBtnId = "tsrMockTradeRadioBtn";
                                                                             let brokerRadioBtnId = "brokerRadioBtn";
                                                                             let orderContainerId = "orderContainer";
 
                                                                             html += `<div>`;
                                                                             html += `   <div class="d-flex justify-content-between px-3 py-2 border-bottom ">`
 
-                                                                            html += `       <div class="d-flex align-items-center">
-                                                                                                Broker
-                                                                                                <div class="d-flex">`
+                                                                            html += `       `;
+                                                                            html += `       <div class="d-flex align-items-center">`
+                                                                            // html += `           <span class="mx-3"><b>TSR</b></span>`
+                                                                            html += `           <div class="d-flex">`
 
-                                                                            for (let i = 0; i < brokers.length; i++) {
-                                                                                html += `           <div class="mx-3">
-                                                                                    <input type="radio" name="${brokerRadioGroupId}" id="${brokerRadioBtnId + i}" style="-webkit-appearance: auto;"`
-                                                                                if (i == 0) {
-                                                                                    html += `           checked `;
+
+                                                                            userProf = { status: 'signedIn', fName: 'upstoxUserName', sub: 'null', brokerLogin: true, brokerList: [{ "id": "UpStox" }, { "id": "Dhan" }] };
+                                                                            if ((userProf["status"] != "signedIn" && userProf["brokerLogin"] == false)) {
+                                                                                html += `               <div class="mx-3">`
+                                                                                html += `                   <span>`
+                                                                                html += `                       <a href="">Sign in</a> to place Trade or Add to mock portfolio`
+                                                                                html += `                   </span>`;
+                                                                                html += `               </div>`
+
+                                                                            } else if (userProf["status"] == "signedIn" && userProf["brokerLogin"] == false) {
+                                                                                html += `               <div class="mx-3">
+                                                                                                            <input type="radio" name="${brokerRadioGroupId}" id="${tsrMockRadioBtnId}" style="-webkit-appearance: auto;" checked="">`
+                                                                                html += `                   <label for="${tsrMockRadioBtnId}">&nbsp;Mock</label>
+                                                                                                        </div>`
+                                                                                html += `               <div class="vr"></div>`
+                                                                                html += `               <div class="mx-3">`
+                                                                                html += `                   <span>`
+                                                                                html += `                       <a href="">Sign in with broker</a> to place live trades`
+                                                                                html += `                   </span>`;
+                                                                                html += `               </div>`
+                                                                            } else {
+                                                                                html += `               <div class="mx-3">
+                                                                                                            <input type="radio" name="${brokerRadioGroupId}" id="${tsrMockRadioBtnId}" style="-webkit-appearance: auto;">`
+                                                                                html += `                   <label for="${tsrMockRadioBtnId}">&nbsp;Mock</label>
+                                                                                                        </div>`
+                                                                                html += `               <div class="vr"></div>`
+                                                                                // html += `               <span class="mx-3"><b>Broker</b></span>`
+                                                                                for (let i = 0; i < brokers.length; i++) {
+                                                                                    html += `           <div class="mx-3">
+                                                                                        <input type="radio" name="${brokerRadioGroupId}" id="${brokerRadioBtnId + i}" style="-webkit-appearance: auto;"`
+                                                                                    if (i == 0) {
+                                                                                        html += `           checked `;
+                                                                                    }
+                                                                                    html += `               >`
+                                                                                    html += `               <label for="${brokerRadioBtnId + i}">&nbsp;${brokers[i]["id"]}</label>
+                                                                                                        </div>`
                                                                                 }
-                                                                                html += `               >`
-                                                                                html += `               <label for="${brokerRadioBtnId + i}">&nbsp;${brokers[i]["id"]}</label>
-                                                                                                    </div>`
                                                                             }
 
                                                                             html += `           </div>
