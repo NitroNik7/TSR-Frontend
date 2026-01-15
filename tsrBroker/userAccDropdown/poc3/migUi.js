@@ -458,7 +458,7 @@ var migUi = (function () {  // my Ui Head
             html += getLoginIn();
 
             console.log("neither", userProf);
-        } else if(userProf.demo) {
+        } else if (userProf.demo) {
             // * signed in with TSR and broker both
             tsrLogin = true;
             brokerLogin = true;
@@ -682,7 +682,11 @@ var migUi = (function () {  // my Ui Head
                 html += '						      </li>'
 
                 logoutModalFooter.innerHTML = `
-                    <button type="button" class="btn btn-primary">Logout from All</button>
+                    <div class="d-flex justify-content-around w-100">
+                        <button type="button" class="btn btn-outline-primary">Logout from Upstox</button>
+                        <button type="button" class="btn btn-outline-primary">Logout from Dhan</button>
+                        <button type="button" class="btn btn-outline-primary">Logout from All Brokers</button>
+                    </div>
                 `;
 
             }
