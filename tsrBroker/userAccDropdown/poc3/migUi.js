@@ -526,7 +526,8 @@ var migUi = (function () {  // my Ui Head
         var html = '';
 
         html += '						      <li>'
-        html += '						         <div style="margin: 20px"> <b>' + heelo + ',<br> ' + userProf.sal + ' ' + userProf.fName + '</b><br>                                    </div>'
+
+        html += '						         <div style="margin: 20px"> <b>' + heelo + ',<br> ' + (userProf.sal == "undefined" ? "" : userProf.sal) + ' ' + userProf.fName + '</b><br>                                    </div>'
         html += '						      </li>'
         html += '						      <li role="separator" class="divider"></li>'
 
