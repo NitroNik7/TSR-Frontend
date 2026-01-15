@@ -658,7 +658,7 @@ var migUi = (function () {  // my Ui Head
 
             logoutModalFooter.innerHTML = `
             <div class="d-flex justify-content-around w-100">
-                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Logout from All</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Logout from All</button>
                 <button type="button" class="btn btn-outline-primary">Logout from Brokers</button>
                 <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Logout from TSR</button>
             </div>
@@ -685,7 +685,7 @@ var migUi = (function () {  // my Ui Head
                     <div class="d-flex justify-content-around w-100">
                         <button type="button" class="btn btn-outline-primary">Logout from Upstox</button>
                         <button type="button" class="btn btn-outline-primary">Logout from Dhan</button>
-                        <button type="button" class="btn btn-outline-primary">Logout from All Brokers</button>
+                        <button type="button" class="btn btn-primary">Logout from All Brokers</button>
                     </div>
                 `;
 
