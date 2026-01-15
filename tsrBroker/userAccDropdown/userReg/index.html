@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Reg POC 4</title>
+
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css">
+
+    <!-- Google sign in -->
+    <meta name="referrer" content="no-referrer-when-downgrade" /> <!-- For testing -->
+
+    <!-- Step 1 - import Google Identity Services client library -->
+    <script src="https://accounts.google.com/gsi/client" async></script>
+
+    <style>
+        .nav-logo .logo {
+            width: 54px;
+            /* background-position: center; */
+            height: 60px;
+        }
+
+        /* .nav-logo .logo-dark,.logo-white {
+    background-image: url("../img/Logo-sm.png")!important
+} */
+    </style>
+</head>
+
+<body>
+
+    <style>
+        .line-container {
+            align-items: center;
+        }
+
+        .line {
+            border-top: 1px solid #ccc;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 900px) {
+            .modal-content {
+                min-width: unset !important;
+            }
+
+            .tsrCaptchaContainer img {
+                width: 200px !important;
+            }
+        }
+
+        @media screen and (min-width: 900px) {
+            .modal-content {
+                min-width: 650px !important;
+            }
+
+            .tsrCaptchaContainer img {
+                width: 250px !important;
+            }
+        }
+    </style>
+
+    <!-- Login Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tsrUserLoginModal">
+        Login
+    </button>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="tsrUserLoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="nav-logo" id="navLogoDiv">
+                        <div class="logo logo-dark"
+                            style="background-image: url('https://www.topstockresearch.com/static/v21/img/tsr/TsrLogo.png')">
+                        </div>
+                    </div>
+                    <h1 class="modal-title fs-5 ms-3">
+                        Welcome back to TSR
+
+                        <!-- <span style="color: #0d6efd;">Top Stock Research</span> -->
+                    </h1>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center">
+                        <span style="font-weight: 500; font-size: 18px;">Login</span>
+                    </div>
+                    <br>
+
+                    <!-- TODO -->
+                    <div id="tsrUserLoginGoogleSignIn" align="center" style="scale: 115%;">
+
+                    </div>
+                    <br>
+                    <div class="line-container d-flex w-100">
+                        <div class="line"></div>
+                        <div class="fw-300 fs-16 mx-3">or</div>
+                        <div class="line"></div>
+                    </div>
+
+
+                    <!-- Login with Broker -->
+
+
+                    <style>
+                        .tsrBrokerBtn {
+                            transition: box-shadow 0.2s;
+                            padding: 10px;
+                            cursor: pointer;
+                            border: 1px solid white;
+                            border-radius: 5px;
+                        }
+
+                        .tsrBrokerBtn:hover {
+                            border-color: #dadce0;
+                            box-shadow: 3px 3px 10px 0px lightgray;
+                        }
+                    </style>
+
+                    <div id="tsrUserLoginWithBroker" align="center">
+                        <br>
+                        <div class="d-flex" style="text-align: center;">
+                            <hr>
+                            <span class="w-100" style="font-size: 14px;">Login with your
+                                Broker</span>
+                            <hr>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6 tsrBrokerBtn">
+                                    <svg width="78" height="24" viewBox="0 0 78 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M51.4971 5.18364V7.35984H47.8143V13.577C47.8143 14.8976 48.5815 15.558 49.8548 15.558C50.5432 15.5455 51.2234 15.4458 51.8828 15.259L52.2187 17.4601C51.5925 17.7051 50.4893 17.8754 49.4856 17.8754C46.8728 17.8754 45.2305 16.4135 45.2305 13.8884V7.35984H43.0075V5.18364H45.272V1.1967H47.7811V5.18364H51.4971ZM37.3543 10.1175C35.7783 9.79353 35.1936 9.40314 35.1936 8.62652C35.1936 7.7087 36.1309 7.17711 38.0179 7.17711C39.316 7.17711 40.8049 7.46367 41.8168 7.90389L42.0906 5.67785C41.0496 5.22517 39.4238 4.92615 37.8893 4.92615C34.7664 4.92615 32.6844 6.47939 32.6844 8.58915C32.6844 10.5079 33.854 11.7579 36.0521 12.2023L37.8976 12.5761C39.5109 12.9 40.1869 13.3527 40.1869 14.1958C40.1869 15.1551 39.3118 15.6203 37.4414 15.6203C35.9733 15.6037 34.5217 15.2963 33.1697 14.7232L32.8586 16.9409C33.9369 17.5224 35.7078 17.8712 37.6073 17.8712C40.639 17.8712 42.6919 16.6668 42.6919 14.1542C42.6919 11.9905 41.3399 10.9315 38.8017 10.4123L37.3543 10.1175ZM51.846 11.4008C51.846 7.76269 54.6828 4.92615 58.4817 4.92615C62.2807 4.92615 65.1174 7.76269 65.1174 11.4008C65.1174 15.0388 62.2848 17.8754 58.4859 17.8754C54.6869 17.8754 51.8502 15.0388 51.8502 11.4008H51.846ZM54.4215 11.4008C54.4215 13.6933 56.1302 15.4666 58.4859 15.4666C60.8415 15.4666 62.5461 13.6891 62.5461 11.4008C62.5461 9.10828 60.8415 7.33492 58.4859 7.33492C56.1302 7.33492 54.4256 9.10828 54.4256 11.4008H54.4215ZM67.2572 5.18362L70.4921 9.56094L73.7311 5.18362H76.6965L72.0929 11.2678L76.8001 17.6137H73.839L70.4921 12.9664L67.1493 17.6137H64.184L68.8912 11.2678L64.2877 5.18362H67.2572ZM21.4452 6.88224C22.37 5.70277 23.776 4.92615 25.8952 4.92615C29.4454 4.92615 32.166 7.6464 32.166 11.4672C32.166 15.288 29.4454 17.8754 25.8952 17.8754C23.776 17.8754 22.37 17.0988 21.4452 15.9193V22.7968H18.8697V5.18779H21.4452V6.88224ZM21.4618 11.4672C21.4618 13.7597 23.1912 15.5704 25.5842 15.5704C27.9896 15.5704 29.5905 13.7555 29.5947 11.4672C29.5947 9.17473 27.9938 7.2311 25.5883 7.2311H25.5842C23.1788 7.23525 21.4618 9.17473 21.4618 11.4672ZM5.62792 11.8451C6.00532 11.5793 6.36199 11.2803 6.68963 10.9522C7.30343 10.3417 7.81356 9.63985 8.2034 8.87153V12.1857C8.2034 14.2456 9.33562 15.4334 11.2475 15.4334C13.2134 15.4334 14.7603 14.2456 14.7603 12.1857V5.18362H17.3317V17.6137H14.7437V16.048C14.329 16.6834 13.1429 17.8712 10.8411 17.8712C7.432 17.8712 5.62377 15.749 5.62377 12.7297L5.62792 11.8451ZM0 13.2696V10.7778C1.50133 10.7736 2.94045 10.1839 4.01046 9.14146C4.53302 8.62233 4.9519 8.00767 5.23806 7.33073C5.52423 6.64962 5.67353 5.92284 5.67353 5.18775H8.19925C8.19925 6.25093 7.98774 7.30165 7.57301 8.28178C7.16242 9.2619 6.55691 10.1507 5.79795 10.8982C4.251 12.4182 2.16905 13.2696 0 13.2696Z"
+                                            fill="#542087" />
+                                    </svg>
+
+                                </div>
+                                <div class="col-6 tsrBrokerBtn">
+                                    <svg width="195" height="30" viewBox="0 0 195 55" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_20_1053)">
+                                            <path
+                                                d="M32.2272 0.939453V54.9394L25.0841 43.1955V25.8501H15.0754L10.3767 18.2072L10.2995 17.9088H24.9595C24.9687 17.9088 25.0841 17.7926 25.0841 17.7834V11.2213H5.93887C4.07916 8.16102 2.37146 5.00958 0.564912 1.91749C0.438661 1.70098 0.247624 1.23203 0.000106812 1.19023V0.939453H32.2272Z"
+                                                fill="#182BFF" />
+                                            <path
+                                                d="M67.1953 0.939453L61.2566 11.2213H42.1113V18.0759H56.7298C56.7381 18.2423 56.6202 18.3777 56.5463 18.5181C55.1907 21.0736 53.5179 23.4827 52.12 26.0172H42.1113V43.3627L34.9691 54.9394V0.939453H67.1953Z"
+                                                fill="#182BFF" />
+                                            <path
+                                                d="M194.999 35.9718C194.689 35.9126 194.838 36.1278 194.793 36.3026C193.363 41.8503 186.781 44.1364 181.654 42.8358C177.617 41.8118 173.585 38.8079 173.805 34.1943H180.183C180.01 39.7568 189.795 39.5199 188.988 33.8744C188.933 33.4902 188.694 32.9451 188.416 32.6726C186.531 30.8309 181.193 29.9116 178.579 28.7483C175.755 27.4912 173.802 25.4234 173.605 22.2003C173.252 16.4363 177.046 13.3711 182.393 12.7658C187.919 12.1397 194.32 15.2888 194.607 21.4547H188.033C187.853 18.6206 185.074 17.6529 182.6 17.9116C179.889 18.196 178.795 21.5999 180.922 23.4267C182.578 24.8497 186.563 25.5953 188.745 26.4159C191.531 27.4636 193.976 28.9043 194.794 31.9853C194.84 32.1591 194.689 32.3754 195 32.3161V35.9698L194.999 35.9718Z"
+                                                fill="#979798" />
+                                            <path
+                                                d="M147.215 12.9629L159.533 12.959C163.763 13.3797 167.494 15.2934 168.653 19.6788C170.035 24.9116 167.328 29.0343 162.369 30.5393C162.262 30.5718 162.192 30.4711 162.231 30.6834L169.095 42.7851H162.472C160.167 38.9991 158.007 35.1084 155.849 31.2315H153.102V42.7851H147.215V12.9629ZM153.102 26.7878H158.744C159.668 26.7878 161.263 25.8951 161.888 25.2118C163.31 23.6555 163.066 20.2862 161.376 19.0034C160.091 18.0278 158.045 18.0426 156.491 17.9952C155.364 17.9606 154.228 18.0288 153.102 17.9991V26.7878Z"
+                                                fill="#979798" />
+                                            <path
+                                                d="M141.622 13.1611V17.8023H130.584C130.573 17.8023 130.436 17.9396 130.436 17.9505V25.1591C130.436 25.17 130.573 25.3073 130.584 25.3073H140.445V29.9485H130.436V37.8484H141.622V42.9833H124.549V13.1611H141.622Z"
+                                                fill="#979798" />
+                                            <path
+                                                d="M101.982 13.1611L108.164 26.6897L114.59 13.1611H121.115L111.205 32.4665V42.9833H105.024V32.4665L95.1136 13.1611H101.982Z"
+                                                fill="#979798" />
+                                            <path
+                                                d="M93.4456 13.1611V17.753C93.4456 17.7638 93.3092 17.9011 93.2984 17.9011H81.1807V25.5047H90.6982V30.0966C90.6982 30.1074 90.5619 30.2447 90.5511 30.2447H81.1807V42.9833H75.1954V13.1611H93.4456Z"
+                                                fill="#979798" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_20_1053">
+                                                <rect width="195" height="54" fill="white"
+                                                    transform="translate(0.000106812 0.939453)" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <!-- <div class="col-4 tsrBrokerBtn">
+                                        Coming soon...
+                                    </div> -->
+                            </div>
+                        </div>
+
+                        <br>
+
+                    </div>
+
+
+                    <div class="line-container d-flex w-100">
+                        <div class="line"></div>
+                        <div class="fw-300 fs-16 mx-3">or</div>
+                        <div class="line"></div>
+                    </div>
+
+                    <!-- Login with broker ends here -->
+
+
+                    <form class="mt-3" id="tsrUserLoginForm">
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="far fa-envelope"></i>
+                            </span>
+
+                            <input type="email" class="form-control" id="tsrUserLoginEmail" placeholder="Email Address"
+                                required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock fa-sm"></i>
+                            </span>
+                            <input type="password" class="form-control" id="tsrUserLoginPassword" placeholder="Password"
+                                required>
+                            <span class="input-group-text" id="tsrUserLoginShowPasswordBtn"
+                                onclick="showUserAccPassword(event, 'tsrUserLoginPassword')">
+                                <i class="far fa-eye"></i>
+                            </span>
+                        </div>
+
+                        <div class="form-text mb-3 text-end">
+                            <button class="btn" type="button" data-bs-toggle="modal"
+                                data-bs-target="#tsrUserForgotPasswordModal">
+                                <span style="text-decoration: underline; color: #0a58ca;">
+                                    Forgot Password ?
+                                </span>
+                            </button>
+                        </div>
+
+
+                        <span style="text-decoration: underline; color: #0a58ca;">
+
+                        </span>
+
+                        <div class="row d-flex align-items-center mb-3 tsrCaptchaContainer">
+                            <div class="col-6">
+                                <div style="display:inline;"><img class="img-responsive img-fluid"
+                                        src="https://www.stockaio.com/static/img/pramanik/UKHMRrItUuBo/OQbtlyLmuUmB.jpg">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <a class="btn mt-2 mb-2 btn-lg" onclick="migu.changeImage()">
+                                    <i class="fas fa-sync-alt"></i>
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <input class="form-control" id="captchaLogin" placeholder="Image Value" type="text">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn" style="font-weight: 300;" data-bs-target="#tsrUserRegModal"
+                        data-bs-toggle="modal">
+                        <span style='text-decoration: underline; color: #0a58ca; font-weight: 500;'>
+                            Register</span>
+                        a new account
+                    </button>
+                    <img class="img-responsive img-fluid"
+                        src="//www.topstockresearch.com/static/img/caution/HindiEngPrecaution.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- -------------------------------------------------------------------- -->
+
+
+
+
+
+
+    <!-- Reg Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tsrUserRegModal">
+        Register
+    </button>
+
+    <!-- Reg Modal -->
+    <div class="modal fade" id="tsrUserRegModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="nav-logo" id="navLogoDiv">
+                        <div class="logo logo-dark"
+                            style="background-image: url('https://www.topstockresearch.com/static/v21/img/tsr/TsrLogo.png')">
+                        </div>
+                    </div>
+                    <h1 class="modal-title fs-5 ms-3">
+                        Welcome to TSR
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center">
+                        <span style="font-weight: 500; font-size: 18px;">Register</span>
+                    </div>
+                    <br>
+
+                    <!-- TODO -->
+                    <div id="tsrUserRegGoogleSignIn" align="center" style="scale: 115%;">
+
+                    </div>
+                    <br>
+                    <div class="line-container d-flex w-100">
+                        <div class="line"></div>
+                        <div class="fw-300 fs-16 mx-3">or</div>
+                        <div class="line"></div>
+                    </div>
+
+
+
+
+                    <!-- Register with Broker -->
+
+                    <style>
+                        .tsrBrokerBtn {
+                            transition: box-shadow 0.2s;
+                            padding: 10px;
+                            cursor: pointer;
+                            border: 1px solid white;
+                            border-radius: 5px;
+                        }
+
+                        .tsrBrokerBtn:hover {
+                            border-color: #dadce0;
+                            box-shadow: 3px 3px 10px 0px lightgray;
+                        }
+                    </style>
+
+                    <div id="tsrUserRegWithBroker" align="center">
+                        <br>
+                        <div class="d-flex" style="text-align: center;">
+                            <hr>
+                            <span class="w-100" style="font-size: 14px;">Login with your
+                                Broker</span>
+                            <hr>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6 tsrBrokerBtn">
+                                    <svg width="78" height="24" viewBox="0 0 78 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M51.4971 5.18364V7.35984H47.8143V13.577C47.8143 14.8976 48.5815 15.558 49.8548 15.558C50.5432 15.5455 51.2234 15.4458 51.8828 15.259L52.2187 17.4601C51.5925 17.7051 50.4893 17.8754 49.4856 17.8754C46.8728 17.8754 45.2305 16.4135 45.2305 13.8884V7.35984H43.0075V5.18364H45.272V1.1967H47.7811V5.18364H51.4971ZM37.3543 10.1175C35.7783 9.79353 35.1936 9.40314 35.1936 8.62652C35.1936 7.7087 36.1309 7.17711 38.0179 7.17711C39.316 7.17711 40.8049 7.46367 41.8168 7.90389L42.0906 5.67785C41.0496 5.22517 39.4238 4.92615 37.8893 4.92615C34.7664 4.92615 32.6844 6.47939 32.6844 8.58915C32.6844 10.5079 33.854 11.7579 36.0521 12.2023L37.8976 12.5761C39.5109 12.9 40.1869 13.3527 40.1869 14.1958C40.1869 15.1551 39.3118 15.6203 37.4414 15.6203C35.9733 15.6037 34.5217 15.2963 33.1697 14.7232L32.8586 16.9409C33.9369 17.5224 35.7078 17.8712 37.6073 17.8712C40.639 17.8712 42.6919 16.6668 42.6919 14.1542C42.6919 11.9905 41.3399 10.9315 38.8017 10.4123L37.3543 10.1175ZM51.846 11.4008C51.846 7.76269 54.6828 4.92615 58.4817 4.92615C62.2807 4.92615 65.1174 7.76269 65.1174 11.4008C65.1174 15.0388 62.2848 17.8754 58.4859 17.8754C54.6869 17.8754 51.8502 15.0388 51.8502 11.4008H51.846ZM54.4215 11.4008C54.4215 13.6933 56.1302 15.4666 58.4859 15.4666C60.8415 15.4666 62.5461 13.6891 62.5461 11.4008C62.5461 9.10828 60.8415 7.33492 58.4859 7.33492C56.1302 7.33492 54.4256 9.10828 54.4256 11.4008H54.4215ZM67.2572 5.18362L70.4921 9.56094L73.7311 5.18362H76.6965L72.0929 11.2678L76.8001 17.6137H73.839L70.4921 12.9664L67.1493 17.6137H64.184L68.8912 11.2678L64.2877 5.18362H67.2572ZM21.4452 6.88224C22.37 5.70277 23.776 4.92615 25.8952 4.92615C29.4454 4.92615 32.166 7.6464 32.166 11.4672C32.166 15.288 29.4454 17.8754 25.8952 17.8754C23.776 17.8754 22.37 17.0988 21.4452 15.9193V22.7968H18.8697V5.18779H21.4452V6.88224ZM21.4618 11.4672C21.4618 13.7597 23.1912 15.5704 25.5842 15.5704C27.9896 15.5704 29.5905 13.7555 29.5947 11.4672C29.5947 9.17473 27.9938 7.2311 25.5883 7.2311H25.5842C23.1788 7.23525 21.4618 9.17473 21.4618 11.4672ZM5.62792 11.8451C6.00532 11.5793 6.36199 11.2803 6.68963 10.9522C7.30343 10.3417 7.81356 9.63985 8.2034 8.87153V12.1857C8.2034 14.2456 9.33562 15.4334 11.2475 15.4334C13.2134 15.4334 14.7603 14.2456 14.7603 12.1857V5.18362H17.3317V17.6137H14.7437V16.048C14.329 16.6834 13.1429 17.8712 10.8411 17.8712C7.432 17.8712 5.62377 15.749 5.62377 12.7297L5.62792 11.8451ZM0 13.2696V10.7778C1.50133 10.7736 2.94045 10.1839 4.01046 9.14146C4.53302 8.62233 4.9519 8.00767 5.23806 7.33073C5.52423 6.64962 5.67353 5.92284 5.67353 5.18775H8.19925C8.19925 6.25093 7.98774 7.30165 7.57301 8.28178C7.16242 9.2619 6.55691 10.1507 5.79795 10.8982C4.251 12.4182 2.16905 13.2696 0 13.2696Z"
+                                            fill="#542087" />
+                                    </svg>
+
+                                </div>
+                                <div class="col-6 tsrBrokerBtn">
+                                    <svg width="195" height="30" viewBox="0 0 195 55" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_20_1053)">
+                                            <path
+                                                d="M32.2272 0.939453V54.9394L25.0841 43.1955V25.8501H15.0754L10.3767 18.2072L10.2995 17.9088H24.9595C24.9687 17.9088 25.0841 17.7926 25.0841 17.7834V11.2213H5.93887C4.07916 8.16102 2.37146 5.00958 0.564912 1.91749C0.438661 1.70098 0.247624 1.23203 0.000106812 1.19023V0.939453H32.2272Z"
+                                                fill="#182BFF" />
+                                            <path
+                                                d="M67.1953 0.939453L61.2566 11.2213H42.1113V18.0759H56.7298C56.7381 18.2423 56.6202 18.3777 56.5463 18.5181C55.1907 21.0736 53.5179 23.4827 52.12 26.0172H42.1113V43.3627L34.9691 54.9394V0.939453H67.1953Z"
+                                                fill="#182BFF" />
+                                            <path
+                                                d="M194.999 35.9718C194.689 35.9126 194.838 36.1278 194.793 36.3026C193.363 41.8503 186.781 44.1364 181.654 42.8358C177.617 41.8118 173.585 38.8079 173.805 34.1943H180.183C180.01 39.7568 189.795 39.5199 188.988 33.8744C188.933 33.4902 188.694 32.9451 188.416 32.6726C186.531 30.8309 181.193 29.9116 178.579 28.7483C175.755 27.4912 173.802 25.4234 173.605 22.2003C173.252 16.4363 177.046 13.3711 182.393 12.7658C187.919 12.1397 194.32 15.2888 194.607 21.4547H188.033C187.853 18.6206 185.074 17.6529 182.6 17.9116C179.889 18.196 178.795 21.5999 180.922 23.4267C182.578 24.8497 186.563 25.5953 188.745 26.4159C191.531 27.4636 193.976 28.9043 194.794 31.9853C194.84 32.1591 194.689 32.3754 195 32.3161V35.9698L194.999 35.9718Z"
+                                                fill="#979798" />
+                                            <path
+                                                d="M147.215 12.9629L159.533 12.959C163.763 13.3797 167.494 15.2934 168.653 19.6788C170.035 24.9116 167.328 29.0343 162.369 30.5393C162.262 30.5718 162.192 30.4711 162.231 30.6834L169.095 42.7851H162.472C160.167 38.9991 158.007 35.1084 155.849 31.2315H153.102V42.7851H147.215V12.9629ZM153.102 26.7878H158.744C159.668 26.7878 161.263 25.8951 161.888 25.2118C163.31 23.6555 163.066 20.2862 161.376 19.0034C160.091 18.0278 158.045 18.0426 156.491 17.9952C155.364 17.9606 154.228 18.0288 153.102 17.9991V26.7878Z"
+                                                fill="#979798" />
+                                            <path
+                                                d="M141.622 13.1611V17.8023H130.584C130.573 17.8023 130.436 17.9396 130.436 17.9505V25.1591C130.436 25.17 130.573 25.3073 130.584 25.3073H140.445V29.9485H130.436V37.8484H141.622V42.9833H124.549V13.1611H141.622Z"
+                                                fill="#979798" />
+                                            <path
+                                                d="M101.982 13.1611L108.164 26.6897L114.59 13.1611H121.115L111.205 32.4665V42.9833H105.024V32.4665L95.1136 13.1611H101.982Z"
+                                                fill="#979798" />
+                                            <path
+                                                d="M93.4456 13.1611V17.753C93.4456 17.7638 93.3092 17.9011 93.2984 17.9011H81.1807V25.5047H90.6982V30.0966C90.6982 30.1074 90.5619 30.2447 90.5511 30.2447H81.1807V42.9833H75.1954V13.1611H93.4456Z"
+                                                fill="#979798" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_20_1053">
+                                                <rect width="195" height="54" fill="white"
+                                                    transform="translate(0.000106812 0.939453)" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <!-- <div class="col-4 tsrBrokerBtn">
+                                        Coming soon...
+                                    </div> -->
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div class="line-container d-flex w-100">
+                        <div class="line"></div>
+                        <div class="fw-300 fs-16 mx-3">or</div>
+                        <div class="line"></div>
+                    </div>
+
+
+                    <!-- Register with Broker ends here -->
+
+                    <form class="mt-3" id="tsrUserRegForm">
+                        <div class="mb-3 d-flex">
+                            <input type="text" class="form-control w-100 me-1" placeholder="First Name"
+                                aria-label="First name" required>
+                            <input type="text" class="form-control w-100 ms-1" placeholder="Last Name"
+                                aria-label="Last name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <!-- <label for="tsrUserRegEmail" class="form-label" style="font-size: 14px;">Email address</label> -->
+                            <span class="input-group-text">
+                                <i class="far fa-envelope"></i>
+                            </span>
+
+                            <input type="email" class="form-control" id="tsrUserRegEmail" placeholder="Email Address"
+                                required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <!-- <label for="tsrUserRegPassword" class="form-label" style="font-size: 14px;">Password</label> -->
+                            <span class="input-group-text">
+                                <i class="fas fa-lock fa-sm"></i>
+                            </span>
+                            <input type="password" class="form-control" id="tsrUserRegPassword" placeholder="Password"
+                                required>
+                            <span class="input-group-text" id="userRegShowPasswordBtn"
+                                onclick="showUserAccPassword(event, 'tsrUserRegPassword')">
+                                <i class="far fa-eye"></i>
+                            </span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <!-- <label for="tsrUserRegPhnNumber" class="form-label" style="font-size: 14px;">Phone number</label> -->
+                            <span class="input-group-text">
+                                <i class="fas fa-phone fa-sm" style="rotate: 90deg;"></i>
+                            </span>
+
+                            <select class="form-select" name="countryCode" id="countryCode" style="max-width: 120px">
+                                <option value="IND">+91 India</option>
+                                <option value="AFG">+93 Afghanistan</option>
+                                <option value="ALA">+358 Åland Islands</option>
+                                <option value="ALB">+355 Albania</option>
+                                <option value="DZA">+213 Algeria</option>
+                                <option value="ASM">+1684 American Samoa</option>
+                                <option value="AND">+376 Andorra</option>
+                                <option value="AGO">+244 Angola</option>
+                                <option value="AIA">+1264 Anguilla</option>
+                                <option value="ATA">+672 Antarctica</option>
+                                <option value="ATG">+1268 Antigua and Barbuda</option>
+                                <option value="ARG">+54 Argentina</option>
+                                <option value="ARM">+374 Armenia</option>
+                                <option value="ABW">+297 Aruba</option>
+                                <option value="AUS">+61 Australia</option>
+                                <option value="AUT">+43 Austria</option>
+                                <option value="AZE">+994 Azerbaijan</option>
+                                <option value="BHS">+1242 Bahamas</option>
+                                <option value="BHR">+973 Bahrain</option>
+                                <option value="BGD">+880 Bangladesh</option>
+                                <option value="BRB">+1246 Barbados</option>
+                                <option value="BLR">+375 Belarus</option>
+                                <option value="BEL">+32 Belgium</option>
+                                <option value="BLZ">+501 Belize</option>
+                                <option value="BEN">+229 Benin</option>
+                                <option value="BMU">+1441 Bermuda</option>
+                                <option value="BTN">+975 Bhutan</option>
+                                <option value="BOL">+591 Bolivia</option>
+                                <option value="BES">+599 Bonaire, Sint Eustatius and Saba</option>
+                                <option value="BIH">+387 Bosnia and Herzegovina</option>
+                                <option value="BWA">+267 Botswana</option>
+                                <option value="BVT">+47 Bouvet Island</option>
+                                <option value="BRA">+55 Brazil</option>
+                                <option value="IOT">+246 British Indian Ocean Territory</option>
+                                <option value="BRN">+673 Brunei Darussalam</option>
+                                <option value="BGR">+359 Bulgaria</option>
+                                <option value="BFA">+226 Burkina Faso</option>
+                                <option value="BDI">+257 Burundi</option>
+                                <option value="KHM">+855 Cambodia</option>
+                                <option value="CMR">+237 Cameroon</option>
+                                <option value="CAN">+1 Canada</option>
+                                <option value="CPV">+238 Cabo Verde</option>
+                                <option value="CYM">+1345 Cayman Islands</option>
+                                <option value="CAF">+236 Central African Republic</option>
+                                <option value="TCD">+235 Chad</option>
+                                <option value="CHL">+56 Chile</option>
+                                <option value="CHN">+86 China</option>
+                                <option value="CXR">+61 Christmas Island</option>
+                                <option value="CCK">+61 Cocos (Keeling) Islands</option>
+                                <option value="COL">+57 Colombia</option>
+                                <option value="COM">+269 Comoros</option>
+                                <option value="COG">+242 Congo</option>
+                                <option value="COD">+243 Congo, Democratic Republic of the</option>
+                                <option value="COK">+682 Cook Islands</option>
+                                <option value="CRI">+506 Costa Rica</option>
+                                <option value="CIV">+225 Côte d'Ivoire</option>
+                                <option value="HRV">+385 Croatia</option>
+                                <option value="CUB">+53 Cuba</option>
+                                <option value="CUW">+599 Curaçao</option>
+                                <option value="CYP">+357 Cyprus</option>
+                                <option value="CZE">+420 Czechia</option>
+                                <option value="DNK">+45 Denmark</option>
+                                <option value="DJI">+253 Djibouti</option>
+                                <option value="DMA">+1767 Dominica</option>
+                                <option value="DOM">+1809 Dominican Republic</option>
+                                <option value="ECU">+593 Ecuador</option>
+                                <option value="EGY">+20 Egypt</option>
+                                <option value="SLV">+503 El Salvador</option>
+                                <option value="GNQ">+240 Equatorial Guinea</option>
+                                <option value="ERI">+291 Eritrea</option>
+                                <option value="EST">+372 Estonia</option>
+                                <option value="ETH">+251 Ethiopia</option>
+                                <option value="FJI">+679 Fiji</option>
+                                <option value="FIN">+358 Finland</option>
+                                <option value="FRA">+33 France</option>
+                                <option value="DEU">+49 Germany</option>
+                                <option value="GRC">+30 Greece</option>
+                                <option value="HKG">+852 Hong Kong</option>
+                                <option value="ISL">+354 Iceland</option>
+                                <option value="IDN">+62 Indonesia</option>
+                                <option value="IRN">+98 Iran</option>
+                                <option value="IRQ">+964 Iraq</option>
+                                <option value="IRL">+353 Ireland</option>
+                                <option value="ISR">+972 Israel</option>
+                                <option value="ITA">+39 Italy</option>
+                                <option value="JPN">+81 Japan</option>
+                                <option value="JOR">+962 Jordan</option>
+                                <option value="KEN">+254 Kenya</option>
+                                <option value="KOR">+82 Korea, Republic of</option>
+                                <option value="LBN">+961 Lebanon</option>
+                                <option value="LKA">+94 Sri Lanka</option>
+                                <option value="MEX">+52 Mexico</option>
+                                <option value="NPL">+977 Nepal</option>
+                                <option value="NLD">+31 Netherlands</option>
+                                <option value="NZL">+64 New Zealand</option>
+                                <option value="NGA">+234 Nigeria</option>
+                                <option value="NOR">+47 Norway</option>
+                                <option value="PAK">+92 Pakistan</option>
+                                <option value="PHL">+63 Philippines</option>
+                                <option value="POL">+48 Poland</option>
+                                <option value="PRT">+351 Portugal</option>
+                                <option value="QAT">+974 Qatar</option>
+                                <option value="ROU">+40 Romania</option>
+                                <option value="RUS">+7 Russian Federation</option>
+                                <option value="SAU">+966 Saudi Arabia</option>
+                                <option value="SGP">+65 Singapore</option>
+                                <option value="ZAF">+27 South Africa</option>
+                                <option value="ESP">+34 Spain</option>
+                                <option value="SWE">+46 Sweden</option>
+                                <option value="CHE">+41 Switzerland</option>
+                                <option value="TWN">+886 Taiwan</option>
+                                <option value="THA">+66 Thailand</option>
+                                <option value="TUR">+90 Türkiye</option>
+                                <option value="UKR">+380 Ukraine</option>
+                                <option value="ARE">+971 United Arab Emirates</option>
+                                <option value="GBR">+44 United Kingdom</option>
+                                <option value="USA">+1 United States of America</option>
+                                <option value="URY">+598 Uruguay</option>
+                                <option value="UZB">+998 Uzbekistan</option>
+                                <option value="VEN">+58 Venezuela</option>
+                                <option value="VNM">+84 Viet Nam</option>
+                                <option value="YEM">+967 Yemen</option>
+                                <option value="ZMB">+260 Zambia</option>
+                                <option value="ZWE">+263 Zimbabwe</option>
+                                <option value="OTH"> Other</option>
+                            </select>
+
+                            <input type="text" class="form-control" id="tsrUserRegPhnNumber" placeholder="Phone Number"
+                                required>
+                        </div>
+
+                        <div class="row d-flex align-items-center mb-3 tsrCaptchaContainer">
+                            <div class="col-6">
+                                <div id="captchaImg" style="display:inline;"><img class="img-responsive img-fluid"
+                                        src="https://www.stockaio.com/static/img/pramanik/UKHMRrItUuBo/OQbtlyLmuUmB.jpg">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <!-- <a class="btn btn-primary mt-2 mb-2 btn-sm" onclick="migu.changeImage()">Change
+                                    Image</a> -->
+                                <a class="btn mt-2 mb-2 btn-lg" onclick="migu.changeImage()">
+                                    <i class="fas fa-sync-alt"></i>
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <input class="form-control" id="captchaReg" placeholder="Image Value" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-text mb-3 text-center">
+                            By proceeding, I agree to have read and accepted the
+                            <a href="https://www.topstockresearch.com/Disclaimer.html" target="_blank"
+                                style="font-size: 12px;">T&amp;C</a>
+                            and
+                            <a>Key notes provided below</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn" style="font-weight: 300;" data-bs-target="#tsrUserLoginModal"
+                        data-bs-toggle="modal">
+                        Already have an account?
+                        <span style="text-decoration: underline; color: #0a58ca; font-weight: 500;">
+                            Login
+                        </span>
+                    </button>
+                    <img class="img-responsive img-fluid"
+                        src="//www.topstockresearch.com/static/img/caution/HindiEngPrecaution.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- -------------------------------------------------------------------------- -->
+
+
+
+
+    <!-- Forgot Password Modal trigger -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tsrUserForgotPasswordModal">
+        Forgot Password
+    </button>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="tsrUserForgotPasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">
+                        Reset Password
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="mt-3" id="tsrUserResetPswdForm">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="far fa-envelope"></i>
+                            </span>
+
+                            <input type="email" class="form-control" id="tsrUserResetPswdEmail"
+                                placeholder="Email Address" required>
+                        </div>
+
+                        <div class="row d-flex align-items-center mb-3 tsrCaptchaContainer">
+                            <div class="col-6">
+                                <div style="display:inline;"><img class="img-responsive img-fluid"
+                                        src="https://www.stockaio.com/static/img/pramanik/UKHMRrItUuBo/OQbtlyLmuUmB.jpg">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <!-- <a class="btn btn-primary mt-2 mb-2 btn-sm" onclick="migu.changeImage()">Change
+                                    Image</a> -->
+                                <a class="btn mt-2 mb-2 btn-lg" onclick="migu.changeImage()">
+                                    <i class="fas fa-sync-alt"></i>
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <input class="form-control" id="captchaPswdReset" placeholder="Image Value" type="text">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <div style="font-weight: 300; text-align: center">
+                        On submit, you will receive a Password reset link on your email, if it exists in our records
+                    </div>
+                    <button type="button" class="btn" style="font-weight: 300;" data-bs-target="#tsrUserLoginModal"
+                        data-bs-toggle="modal">
+                        Back to
+                        <span style="text-decoration: underline; color: #0a58ca;">
+                            Login
+                        </span>
+                    </button>
+                    <img class="img-responsive img-fluid"
+                        src="//www.topstockresearch.com/static/img/caution/HindiEngPrecaution.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- ---------------------------------------------------------------------------- -->
+
+
+
+
+    <!-- Connect with broker trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tsrUserRegWithBrokerModal">
+        Broker
+    </button>
+
+    <!-- Connect with broker modal  -->
+    <div class="modal fade" id="tsrUserRegWithBrokerModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">
+                        Connect with your Broker
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Register with Broker -->
+
+                    <style>
+                        .tsrBrokerBtn {
+                            transition: box-shadow 0.2s;
+                            padding: 10px;
+                            cursor: pointer;
+                            border: 1px solid white;
+                            border-radius: 5px;
+                        }
+
+                        .tsrBrokerBtn:hover {
+                            border-color: #dadce0;
+                            box-shadow: 3px 3px 10px 0px lightgray;
+                        }
+                    </style>
+
+                    <div id="tsrUserRegWithBroker" align="center">
+                        <br>
+                        <div class="d-flex" style="text-align: center;">
+                            <hr>
+                            <span class="w-100" style="font-size: 14px;">Select your
+                                Broker</span>
+                            <hr>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6 tsrBrokerBtn">
+                                    <svg width="78" height="24" viewBox="0 0 78 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M51.4971 5.18364V7.35984H47.8143V13.577C47.8143 14.8976 48.5815 15.558 49.8548 15.558C50.5432 15.5455 51.2234 15.4458 51.8828 15.259L52.2187 17.4601C51.5925 17.7051 50.4893 17.8754 49.4856 17.8754C46.8728 17.8754 45.2305 16.4135 45.2305 13.8884V7.35984H43.0075V5.18364H45.272V1.1967H47.7811V5.18364H51.4971ZM37.3543 10.1175C35.7783 9.79353 35.1936 9.40314 35.1936 8.62652C35.1936 7.7087 36.1309 7.17711 38.0179 7.17711C39.316 7.17711 40.8049 7.46367 41.8168 7.90389L42.0906 5.67785C41.0496 5.22517 39.4238 4.92615 37.8893 4.92615C34.7664 4.92615 32.6844 6.47939 32.6844 8.58915C32.6844 10.5079 33.854 11.7579 36.0521 12.2023L37.8976 12.5761C39.5109 12.9 40.1869 13.3527 40.1869 14.1958C40.1869 15.1551 39.3118 15.6203 37.4414 15.6203C35.9733 15.6037 34.5217 15.2963 33.1697 14.7232L32.8586 16.9409C33.9369 17.5224 35.7078 17.8712 37.6073 17.8712C40.639 17.8712 42.6919 16.6668 42.6919 14.1542C42.6919 11.9905 41.3399 10.9315 38.8017 10.4123L37.3543 10.1175ZM51.846 11.4008C51.846 7.76269 54.6828 4.92615 58.4817 4.92615C62.2807 4.92615 65.1174 7.76269 65.1174 11.4008C65.1174 15.0388 62.2848 17.8754 58.4859 17.8754C54.6869 17.8754 51.8502 15.0388 51.8502 11.4008H51.846ZM54.4215 11.4008C54.4215 13.6933 56.1302 15.4666 58.4859 15.4666C60.8415 15.4666 62.5461 13.6891 62.5461 11.4008C62.5461 9.10828 60.8415 7.33492 58.4859 7.33492C56.1302 7.33492 54.4256 9.10828 54.4256 11.4008H54.4215ZM67.2572 5.18362L70.4921 9.56094L73.7311 5.18362H76.6965L72.0929 11.2678L76.8001 17.6137H73.839L70.4921 12.9664L67.1493 17.6137H64.184L68.8912 11.2678L64.2877 5.18362H67.2572ZM21.4452 6.88224C22.37 5.70277 23.776 4.92615 25.8952 4.92615C29.4454 4.92615 32.166 7.6464 32.166 11.4672C32.166 15.288 29.4454 17.8754 25.8952 17.8754C23.776 17.8754 22.37 17.0988 21.4452 15.9193V22.7968H18.8697V5.18779H21.4452V6.88224ZM21.4618 11.4672C21.4618 13.7597 23.1912 15.5704 25.5842 15.5704C27.9896 15.5704 29.5905 13.7555 29.5947 11.4672C29.5947 9.17473 27.9938 7.2311 25.5883 7.2311H25.5842C23.1788 7.23525 21.4618 9.17473 21.4618 11.4672ZM5.62792 11.8451C6.00532 11.5793 6.36199 11.2803 6.68963 10.9522C7.30343 10.3417 7.81356 9.63985 8.2034 8.87153V12.1857C8.2034 14.2456 9.33562 15.4334 11.2475 15.4334C13.2134 15.4334 14.7603 14.2456 14.7603 12.1857V5.18362H17.3317V17.6137H14.7437V16.048C14.329 16.6834 13.1429 17.8712 10.8411 17.8712C7.432 17.8712 5.62377 15.749 5.62377 12.7297L5.62792 11.8451ZM0 13.2696V10.7778C1.50133 10.7736 2.94045 10.1839 4.01046 9.14146C4.53302 8.62233 4.9519 8.00767 5.23806 7.33073C5.52423 6.64962 5.67353 5.92284 5.67353 5.18775H8.19925C8.19925 6.25093 7.98774 7.30165 7.57301 8.28178C7.16242 9.2619 6.55691 10.1507 5.79795 10.8982C4.251 12.4182 2.16905 13.2696 0 13.2696Z"
+                                            fill="#542087" />
+                                    </svg>
+
+                                </div>
+                                <div class="col-6 tsrBrokerBtn">
+                                    <svg width="195" height="30" viewBox="0 0 195 55" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_20_1053)">
+                                            <path
+                                                d="M32.2272 0.939453V54.9394L25.0841 43.1955V25.8501H15.0754L10.3767 18.2072L10.2995 17.9088H24.9595C24.9687 17.9088 25.0841 17.7926 25.0841 17.7834V11.2213H5.93887C4.07916 8.16102 2.37146 5.00958 0.564912 1.91749C0.438661 1.70098 0.247624 1.23203 0.000106812 1.19023V0.939453H32.2272Z"
+                                                fill="#182BFF" />
+                                            <path
+                                                d="M67.1953 0.939453L61.2566 11.2213H42.1113V18.0759H56.7298C56.7381 18.2423 56.6202 18.3777 56.5463 18.5181C55.1907 21.0736 53.5179 23.4827 52.12 26.0172H42.1113V43.3627L34.9691 54.9394V0.939453H67.1953Z"
+                                                fill="#182BFF" />
+                                            <path
+                                                d="M194.999 35.9718C194.689 35.9126 194.838 36.1278 194.793 36.3026C193.363 41.8503 186.781 44.1364 181.654 42.8358C177.617 41.8118 173.585 38.8079 173.805 34.1943H180.183C180.01 39.7568 189.795 39.5199 188.988 33.8744C188.933 33.4902 188.694 32.9451 188.416 32.6726C186.531 30.8309 181.193 29.9116 178.579 28.7483C175.755 27.4912 173.802 25.4234 173.605 22.2003C173.252 16.4363 177.046 13.3711 182.393 12.7658C187.919 12.1397 194.32 15.2888 194.607 21.4547H188.033C187.853 18.6206 185.074 17.6529 182.6 17.9116C179.889 18.196 178.795 21.5999 180.922 23.4267C182.578 24.8497 186.563 25.5953 188.745 26.4159C191.531 27.4636 193.976 28.9043 194.794 31.9853C194.84 32.1591 194.689 32.3754 195 32.3161V35.9698L194.999 35.9718Z"
+                                                fill="#979798" />
+                                            <path
+                                                d="M147.215 12.9629L159.533 12.959C163.763 13.3797 167.494 15.2934 168.653 19.6788C170.035 24.9116 167.328 29.0343 162.369 30.5393C162.262 30.5718 162.192 30.4711 162.231 30.6834L169.095 42.7851H162.472C160.167 38.9991 158.007 35.1084 155.849 31.2315H153.102V42.7851H147.215V12.9629ZM153.102 26.7878H158.744C159.668 26.7878 161.263 25.8951 161.888 25.2118C163.31 23.6555 163.066 20.2862 161.376 19.0034C160.091 18.0278 158.045 18.0426 156.491 17.9952C155.364 17.9606 154.228 18.0288 153.102 17.9991V26.7878Z"
+                                                fill="#979798" />
+                                            <path
+                                                d="M141.622 13.1611V17.8023H130.584C130.573 17.8023 130.436 17.9396 130.436 17.9505V25.1591C130.436 25.17 130.573 25.3073 130.584 25.3073H140.445V29.9485H130.436V37.8484H141.622V42.9833H124.549V13.1611H141.622Z"
+                                                fill="#979798" />
+                                            <path
+                                                d="M101.982 13.1611L108.164 26.6897L114.59 13.1611H121.115L111.205 32.4665V42.9833H105.024V32.4665L95.1136 13.1611H101.982Z"
+                                                fill="#979798" />
+                                            <path
+                                                d="M93.4456 13.1611V17.753C93.4456 17.7638 93.3092 17.9011 93.2984 17.9011H81.1807V25.5047H90.6982V30.0966C90.6982 30.1074 90.5619 30.2447 90.5511 30.2447H81.1807V42.9833H75.1954V13.1611H93.4456Z"
+                                                fill="#979798" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_20_1053">
+                                                <rect width="195" height="54" fill="white"
+                                                    transform="translate(0.000106812 0.939453)" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <!-- <div class="col-4 tsrBrokerBtn">
+                                        Coming soon...
+                                    </div> -->
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <div style="font-weight: 300; text-align: center">
+                        On selecting your Broker, you will be redirected to their website
+                    </div>
+                   
+                    <img class="img-responsive img-fluid"
+                        src="//www.topstockresearch.com/static/img/caution/HindiEngPrecaution.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ------------------------------------------------------------------ -->
+
+    <!-- User Details trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tsrUserDetailsModal">
+        User Details
+    </button>
+
+    <!--  User Details Modal -->
+    <div class="modal fade" id="tsrUserDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">
+                        Please update your details
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="mt-3" id="tsrUserRegForm">
+
+                        <fieldset disabled>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">
+                                    <i class="far fa-envelope"></i>
+                                </span>
+
+                                <input type="email" class="form-control" id="tsrUserLoginEmail"
+                                    placeholder="example@example.com" required>
+
+                            </div>
+
+                            <div class="mb-3 d-flex">
+                                <input type="text" class="form-control w-100 me-1" placeholder="User"
+                                    aria-label="First name" required>
+                                <input type="text" class="form-control w-100 ms-1" placeholder="Last Name"
+                                    aria-label="Last name">
+                            </div>
+
+
+                        </fieldset>
+
+
+                        <div class="input-group mb-3">
+                            <!-- <label for="tsrUserRegPhnNumber" class="form-label" style="font-size: 14px;">Phone number</label> -->
+                            <span class="input-group-text">
+                                <i class="fas fa-phone fa-sm" style="rotate: 90deg;"></i>
+                            </span>
+
+
+                            <select class="form-select" name="countryCode" id="countryCode" style="max-width: 120px">
+                                <option value="IND">+91 India</option>
+                                <option value="AFG">+93 Afghanistan</option>
+                                <option value="ALA">+358 Åland Islands</option>
+                                <option value="ALB">+355 Albania</option>
+                                <option value="DZA">+213 Algeria</option>
+                                <option value="ASM">+1684 American Samoa</option>
+                                <option value="AND">+376 Andorra</option>
+                                <option value="AGO">+244 Angola</option>
+                                <option value="AIA">+1264 Anguilla</option>
+                                <option value="ATA">+672 Antarctica</option>
+                                <option value="ATG">+1268 Antigua and Barbuda</option>
+                                <option value="ARG">+54 Argentina</option>
+                                <option value="ARM">+374 Armenia</option>
+                                <option value="ABW">+297 Aruba</option>
+                                <option value="AUS">+61 Australia</option>
+                                <option value="AUT">+43 Austria</option>
+                                <option value="AZE">+994 Azerbaijan</option>
+                                <option value="BHS">+1242 Bahamas</option>
+                                <option value="BHR">+973 Bahrain</option>
+                                <option value="BGD">+880 Bangladesh</option>
+                                <option value="BRB">+1246 Barbados</option>
+                                <option value="BLR">+375 Belarus</option>
+                                <option value="BEL">+32 Belgium</option>
+                                <option value="BLZ">+501 Belize</option>
+                                <option value="BEN">+229 Benin</option>
+                                <option value="BMU">+1441 Bermuda</option>
+                                <option value="BTN">+975 Bhutan</option>
+                                <option value="BOL">+591 Bolivia</option>
+                                <option value="BES">+599 Bonaire, Sint Eustatius and Saba</option>
+                                <option value="BIH">+387 Bosnia and Herzegovina</option>
+                                <option value="BWA">+267 Botswana</option>
+                                <option value="BVT">+47 Bouvet Island</option>
+                                <option value="BRA">+55 Brazil</option>
+                                <option value="IOT">+246 British Indian Ocean Territory</option>
+                                <option value="BRN">+673 Brunei Darussalam</option>
+                                <option value="BGR">+359 Bulgaria</option>
+                                <option value="BFA">+226 Burkina Faso</option>
+                                <option value="BDI">+257 Burundi</option>
+                                <option value="KHM">+855 Cambodia</option>
+                                <option value="CMR">+237 Cameroon</option>
+                                <option value="CAN">+1 Canada</option>
+                                <option value="CPV">+238 Cabo Verde</option>
+                                <option value="CYM">+1345 Cayman Islands</option>
+                                <option value="CAF">+236 Central African Republic</option>
+                                <option value="TCD">+235 Chad</option>
+                                <option value="CHL">+56 Chile</option>
+                                <option value="CHN">+86 China</option>
+                                <option value="CXR">+61 Christmas Island</option>
+                                <option value="CCK">+61 Cocos (Keeling) Islands</option>
+                                <option value="COL">+57 Colombia</option>
+                                <option value="COM">+269 Comoros</option>
+                                <option value="COG">+242 Congo</option>
+                                <option value="COD">+243 Congo, Democratic Republic of the</option>
+                                <option value="COK">+682 Cook Islands</option>
+                                <option value="CRI">+506 Costa Rica</option>
+                                <option value="CIV">+225 Côte d'Ivoire</option>
+                                <option value="HRV">+385 Croatia</option>
+                                <option value="CUB">+53 Cuba</option>
+                                <option value="CUW">+599 Curaçao</option>
+                                <option value="CYP">+357 Cyprus</option>
+                                <option value="CZE">+420 Czechia</option>
+                                <option value="DNK">+45 Denmark</option>
+                                <option value="DJI">+253 Djibouti</option>
+                                <option value="DMA">+1767 Dominica</option>
+                                <option value="DOM">+1809 Dominican Republic</option>
+                                <option value="ECU">+593 Ecuador</option>
+                                <option value="EGY">+20 Egypt</option>
+                                <option value="SLV">+503 El Salvador</option>
+                                <option value="GNQ">+240 Equatorial Guinea</option>
+                                <option value="ERI">+291 Eritrea</option>
+                                <option value="EST">+372 Estonia</option>
+                                <option value="ETH">+251 Ethiopia</option>
+                                <option value="FJI">+679 Fiji</option>
+                                <option value="FIN">+358 Finland</option>
+                                <option value="FRA">+33 France</option>
+                                <option value="DEU">+49 Germany</option>
+                                <option value="GRC">+30 Greece</option>
+                                <option value="HKG">+852 Hong Kong</option>
+                                <option value="ISL">+354 Iceland</option>
+                                <option value="IDN">+62 Indonesia</option>
+                                <option value="IRN">+98 Iran</option>
+                                <option value="IRQ">+964 Iraq</option>
+                                <option value="IRL">+353 Ireland</option>
+                                <option value="ISR">+972 Israel</option>
+                                <option value="ITA">+39 Italy</option>
+                                <option value="JPN">+81 Japan</option>
+                                <option value="JOR">+962 Jordan</option>
+                                <option value="KEN">+254 Kenya</option>
+                                <option value="KOR">+82 Korea, Republic of</option>
+                                <option value="LBN">+961 Lebanon</option>
+                                <option value="LKA">+94 Sri Lanka</option>
+                                <option value="MEX">+52 Mexico</option>
+                                <option value="NPL">+977 Nepal</option>
+                                <option value="NLD">+31 Netherlands</option>
+                                <option value="NZL">+64 New Zealand</option>
+                                <option value="NGA">+234 Nigeria</option>
+                                <option value="NOR">+47 Norway</option>
+                                <option value="PAK">+92 Pakistan</option>
+                                <option value="PHL">+63 Philippines</option>
+                                <option value="POL">+48 Poland</option>
+                                <option value="PRT">+351 Portugal</option>
+                                <option value="QAT">+974 Qatar</option>
+                                <option value="ROU">+40 Romania</option>
+                                <option value="RUS">+7 Russian Federation</option>
+                                <option value="SAU">+966 Saudi Arabia</option>
+                                <option value="SGP">+65 Singapore</option>
+                                <option value="ZAF">+27 South Africa</option>
+                                <option value="ESP">+34 Spain</option>
+                                <option value="SWE">+46 Sweden</option>
+                                <option value="CHE">+41 Switzerland</option>
+                                <option value="TWN">+886 Taiwan</option>
+                                <option value="THA">+66 Thailand</option>
+                                <option value="TUR">+90 Türkiye</option>
+                                <option value="UKR">+380 Ukraine</option>
+                                <option value="ARE">+971 United Arab Emirates</option>
+                                <option value="GBR">+44 United Kingdom</option>
+                                <option value="USA">+1 United States of America</option>
+                                <option value="URY">+598 Uruguay</option>
+                                <option value="UZB">+998 Uzbekistan</option>
+                                <option value="VEN">+58 Venezuela</option>
+                                <option value="VNM">+84 Viet Nam</option>
+                                <option value="YEM">+967 Yemen</option>
+                                <option value="ZMB">+260 Zambia</option>
+                                <option value="ZWE">+263 Zimbabwe</option>
+                                <option value="OTH"> Other</option>
+                            </select>
+
+                            <input type="text" class="form-control" id="tsrUserRegPhnNumber" placeholder="Phone Number"
+                                required>
+                        </div>
+
+                        <!-- <label for="tsrUserRegEmail" class="form-label" style="font-size: 14px;">Email address</label> -->
+
+                        <!-- <div class="form-floating mb-3">
+                            <select class="form-select" name="country" id="country">
+                                <option value="IND">India</option>
+                                <option value="AFG">Afghanistan</option>
+                                <option value="ALA">Åland Islands</option>
+                                <option value="ALB">Albania</option>
+                                <option value="DZA">Algeria</option>
+                                <option value="ASM">American Samoa</option>
+                                <option value="AND">Andorra</option>
+                                <option value="AGO">Angola</option>
+                                <option value="AIA">Anguilla</option>
+                                <option value="ATA">Antarctica</option>
+                                <option value="ATG">Antigua and Barbuda</option>
+                                <option value="ARG">Argentina</option>
+                                <option value="ARM">Armenia</option>
+                                <option value="ABW">Aruba</option>
+                                <option value="AUS">Australia</option>
+                                <option value="AUT">Austria</option>
+                                <option value="AZE">Azerbaijan</option>
+                                <option value="BHS">Bahamas</option>
+                                <option value="BHR">Bahrain</option>
+                                <option value="BGD">Bangladesh</option>
+                                <option value="BRB">Barbados</option>
+                                <option value="BLR">Belarus</option>
+                                <option value="BEL">Belgium</option>
+                                <option value="BLZ">Belize</option>
+                                <option value="BEN">Benin</option>
+                                <option value="BMU">Bermuda</option>
+                                <option value="BTN">Bhutan</option>
+                                <option value="BOL">Bolivia</option>
+                                <option value="BES">Bonaire, Sint Eustatius and Saba</option>
+                                <option value="BIH">Bosnia and Herzegovina</option>
+                                <option value="BWA">Botswana</option>
+                                <option value="BVT">Bouvet Island</option>
+                                <option value="BRA">Brazil</option>
+                                <option value="IOT">British Indian Ocean Territory</option>
+                                <option value="BRN">Brunei Darussalam</option>
+                                <option value="BGR">Bulgaria</option>
+                                <option value="BFA">Burkina Faso</option>
+                                <option value="BDI">Burundi</option>
+                                <option value="KHM">Cambodia</option>
+                                <option value="CMR">Cameroon</option>
+                                <option value="CAN">Canada</option>
+                                <option value="CPV">Cabo Verde</option>
+                                <option value="CYM">Cayman Islands</option>
+                                <option value="CAF">Central African Republic</option>
+                                <option value="TCD">Chad</option>
+                                <option value="CHL">Chile</option>
+                                <option value="CHN">China</option>
+                                <option value="CXR">Christmas Island</option>
+                                <option value="CCK">Cocos (Keeling) Islands</option>
+                                <option value="COL">Colombia</option>
+                                <option value="COM">Comoros</option>
+                                <option value="COG">Congo</option>
+                                <option value="COD">Congo, Democratic Republic of the</option>
+                                <option value="COK">Cook Islands</option>
+                                <option value="CRI">Costa Rica</option>
+                                <option value="CIV">Côte d'Ivoire</option>
+                                <option value="HRV">Croatia</option>
+                                <option value="CUB">Cuba</option>
+                                <option value="CUW">Curaçao</option>
+                                <option value="CYP">Cyprus</option>
+                                <option value="CZE">Czechia</option>
+                                <option value="DNK">Denmark</option>
+                                <option value="DJI">Djibouti</option>
+                                <option value="DMA">Dominica</option>
+                                <option value="DOM">Dominican Republic</option>
+                                <option value="ECU">Ecuador</option>
+                                <option value="EGY">Egypt</option>
+                                <option value="SLV">El Salvador</option>
+                                <option value="GNQ">Equatorial Guinea</option>
+                                <option value="ERI">Eritrea</option>
+                                <option value="EST">Estonia</option>
+                                <option value="ETH">Ethiopia</option>
+                                <option value="FJI">Fiji</option>
+                                <option value="FIN">Finland</option>
+                                <option value="FRA">France</option>
+                                <option value="DEU">Germany</option>
+                                <option value="GRC">Greece</option>
+                                <option value="HKG">Hong Kong</option>
+                                <option value="ISL">Iceland</option>
+                                <option value="IDN">Indonesia</option>
+                                <option value="IRN">Iran</option>
+                                <option value="IRQ">Iraq</option>
+                                <option value="IRL">Ireland</option>
+                                <option value="ISR">Israel</option>
+                                <option value="ITA">Italy</option>
+                                <option value="JPN">Japan</option>
+                                <option value="JOR">Jordan</option>
+                                <option value="KEN">Kenya</option>
+                                <option value="KOR">Korea, Republic of</option>
+                                <option value="LBN">Lebanon</option>
+                                <option value="LKA">Sri Lanka</option>
+                                <option value="MEX">Mexico</option>
+                                <option value="NPL">Nepal</option>
+                                <option value="NLD">Netherlands</option>
+                                <option value="NZL">New Zealand</option>
+                                <option value="NGA">Nigeria</option>
+                                <option value="NOR">Norway</option>
+                                <option value="PAK">Pakistan</option>
+                                <option value="PHL">Philippines</option>
+                                <option value="POL">Poland</option>
+                                <option value="PRT">Portugal</option>
+                                <option value="QAT">Qatar</option>
+                                <option value="ROU">Romania</option>
+                                <option value="RUS">Russian Federation</option>
+                                <option value="SAU">Saudi Arabia</option>
+                                <option value="SGP">Singapore</option>
+                                <option value="ZAF">South Africa</option>
+                                <option value="ESP">Spain</option>
+                                <option value="SWE">Sweden</option>
+                                <option value="CHE">Switzerland</option>
+                                <option value="TWN">Taiwan</option>
+                                <option value="THA">Thailand</option>
+                                <option value="TUR">Türkiye</option>
+                                <option value="UKR">Ukraine</option>
+                                <option value="ARE">United Arab Emirates</option>
+                                <option value="GBR">United Kingdom</option>
+                                <option value="USA">United States of America</option>
+                                <option value="URY">Uruguay</option>
+                                <option value="UZB">Uzbekistan</option>
+                                <option value="VEN">Venezuela</option>
+                                <option value="VNM">Viet Nam</option>
+                                <option value="YEM">Yemen</option>
+                                <option value="ZMB">Zambia</option>
+                                <option value="ZWE">Zimbabwe</option>
+                                <option value="OTH">Other</option>
+                            </select>
+                            <label for="country">Country</label>
+                        </div> -->
+
+                        <div class="form-floating mb-3"><select class="form-select" name="state" id="state">
+                                <option value="AD">Andhra Pradesh</option>
+                                <option value="AN">Andaman and Nicobar Islands</option>
+                                <option value="AR">Arunachal Pradesh</option>
+                                <option value="AS">Assam</option>
+                                <option value="BR">Bihar</option>
+                                <option value="CG">Chattisgarh</option>
+                                <option value="CH">Chandigarh</option>
+                                <option value="DL">Delhi</option>
+                                <option value="DNHDD">Dadra &amp; Nagar Haveli and Daman &amp; Diu</option>
+                                <option value="GA">Goa</option>
+                                <option value="GJ">Gujarat</option>
+                                <option value="HR">Haryana</option>
+                                <option value="HP">Himachal Pradesh</option>
+                                <option value="JK">Jammu and Kashmir</option>
+                                <option value="JH">Jharkhand</option>
+                                <option value="KA">Karnataka</option>
+                                <option value="KL">Kerala</option>
+                                <option value="LA">Ladakh</option>
+                                <option value="LD">Lakshadweep Islands</option>
+                                <option value="MP">Madhya Pradesh</option>
+                                <option value="MH" selected="">Maharashtra</option>
+                                <option value="MN">Manipur</option>
+                                <option value="ML">Meghalaya</option>
+                                <option value="MZ">Mizoram</option>
+                                <option value="NL">Nagaland</option>
+                                <option value="OD">Odisha</option>
+                                <option value="PY">Pondicherry</option>
+                                <option value="PB">Punjab</option>
+                                <option value="RJ">Rajasthan</option>
+                                <option value="SK">Sikkim</option>
+                                <option value="TN">Tamil Nadu</option>
+                                <option value="TS">Telangana</option>
+                                <option value="TR">Tripura</option>
+                                <option value="UP">Uttar Pradesh</option>
+                                <option value="UK">Uttarakhand</option>
+                                <option value="WB">West Bengal</option>
+                                <option value="OTHERS">Others</option>
+                            </select> <label for="state">State</label></div>
+
+                        <div class="mb-3 d-flex">
+                            <input type="text" class="form-control w-100 me-1" placeholder="Postal Code"
+                                aria-label="Postal Code" required>
+                        </div>
+
+
+                        <!-- <div class="form-floating mb-3"> <input class="form-control" id="dob"
+                                placeholder="DOB(dd/MM/yyyy)" type="text"> <label for="dob">DOB (dd/MM/yyyy)</label>
+                            <div id="dobFbDiv"></div>
+                        </div> -->
+
+                        <!-- <div class="row d-flex align-items-center mb,-3">
+                            <div class="col-md-4">
+                                <div id="captchaImg" style="display:inline;"><img class="img-responsive img-fluid"
+                                        src="https://www.stockaio.com/static/img/pramanik/UKHMRrItUuBo/OQbtlyLmuUmB.jpg">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="btn btn-primary mt-2 mb-2 btn-sm" onclick="migu.changeImage()">Change
+                                    Image</a>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-control" id="captchaReg" placeholder="Image Value" type="text">
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="form-text mb-3 text-center">
+                            By proceeding, I agree to
+                            <a href="https://www.topstockresearch.com/Disclaimer.html" target="_blank"
+                                style="font-size: 12px;">T&amp;C</a>
+                            and
+                            <a href="">Key notes</a>
+                        </div> -->
+
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary w-100" style="font-weight: 300;">
+                        Submit
+                    </button>
+                    <!-- <img class="img-responsive img-fluid" src="//www.topstockresearch.com/static/img/caution/HindiEngPrecaution.png"> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/js/all.min.js"></script>
+
+</body>
+
+</html>
