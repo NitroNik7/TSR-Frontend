@@ -69,12 +69,12 @@
 
 
     <!-- * local -->
-    <!-- <script src="http://127.0.0.1:5500/tsrBroker/userAccDropdown/poc3/migUi.js"></script>
-    <script src="http://127.0.0.1:5500/tsrBroker/userAccDropdown/poc3/aioIcons.js"></script> -->
+    <script src="http://127.0.0.1:5500/tsrBroker/userAccDropdown/poc3/migUi.js"></script>
+    <script src="http://127.0.0.1:5500/tsrBroker/userAccDropdown/poc3/aioIcons.js"></script>
     
     <!-- * github -->
-    <script src="https://nitronik7.github.io/TSR-Frontend/tsrBroker/userAccDropdown/poc3/migUi.js"></script>
-    <script src="https://nitronik7.github.io/TSR-Frontend/tsrBroker/userAccDropdown/poc3/aioIcons.js"></script>
+    <!-- <script src="https://nitronik7.github.io/TSR-Frontend/tsrBroker/userAccDropdown/poc3/migUi.js"></script>
+    <script src="https://nitronik7.github.io/TSR-Frontend/tsrBroker/userAccDropdown/poc3/aioIcons.js"></script> -->
 
     <!-- * tsrbt1 -->
     <!-- <script src="https://www.tsrbt1.com/test/Nikhil/tsrBroker/userAccDropdown/poc3/migUi.js"></script> -->
@@ -115,9 +115,9 @@
         } else if (selectScenario.value == "1") {
             userProf = { status: 'signedIn', sal: 'Dear', fName: 'TSR Demo1', refCode: 'ROH_PUN', expDt: '05_Mar_2026', sub: 'TRADER_PRO' };
         } else if (selectScenario.value == "2") {
-            userProf = { status: 'signedIn', fName: 'upstoxUserName', sub: 'null', brokerLogin: true, brokerList: [{ "id": "UpStox" }] };
+            userProf = { status: 'signedIn', fName: 'upstoxUserName', sub: 'null', brokerLogin: false, brokerList: [{ "id": "UpStox" }] };
         } else if (selectScenario.value == "3") {
-            userProf = { status: 'signedIn', fName: 'upstoxUserName', sub: 'null', brokerLogin: true, brokerList: [{ "id": "UpStox" }, { "id": "Dhan" }] };
+            userProf = { status: 'signedIn', fName: 'upstoxUserName', sub: 'null', brokerLogin: false, brokerList: [{ "id": "UpStox" }, { "id": "Dhan" }] };
         } else if (selectScenario.value == "4") {
             userProf = { status: 'signedIn', sal: 'Dear', fName: 'upstoxUserName', refCode: null, expDt: null, sub: null, brokerLogin: true, brokerList: [{ "id": "UpStox" }] };
             userProf.demo = true;

@@ -400,6 +400,8 @@ var migUi = (function () {  // my Ui Head
         // To change width set syle in ul 
         html += '						   <ul id="upsul" class="dropdown-menu dropdown-md p-v-0">'
 
+
+
         // ----------
         //     When Logged in With TSR
         // -----------
@@ -409,107 +411,52 @@ var migUi = (function () {  // my Ui Head
         // When Logged in With Broker Only
         // -----------
         // var userProf={status : 'signedIn', fName : 'upstoxUserName', sub : 'null', brokerLogin : true , brokerList : [ {"id":"UpStox"} ] };
+
+
         let tsrLogin, brokerLogin;
-        if (userProf.status === 'signedIn' && (jsu.isNotNull(userProf.brokerLogin) && userProf.brokerLogin == true) && !jsu.isNotNull(userProf.demo)) {
-            tsrLogin = false;
-            brokerLogin = true;
-            // * only with broker
 
-            // * view profile - clicking it opens modal
-            html += getSignedIn(tsrLogin);
-
-            // * Manage brokers
-            html += getBrokers(brokerLogin);
-
-            // * you are yet to subscribe msg
-            html += getPlan();
-
-            // * logout - modal
-            html += getLogOff(tsrLogin, brokerLogin);
-
-            console.log("only broker", userProf);
-        } else if (userProf.status === 'signedIn' && !(jsu.isNotNull(userProf.brokerLogin) && userProf.brokerLogin == false) && !jsu.isNotNull(userProf.demo)) {
-            // * only with TSR
-
-            tsrLogin = true;
-            brokerLogin = false;
-            // * view profile - clicking it loads new page
-            html += getSignedIn(tsrLogin);
-
-            // * Connect with broker
-            html += getBrokers(brokerLogin);
-
-            // * get ref code
-            html += getRefCode();
-
-            // * you are yet to subscribe msg / plan
-            html += getPlan();
-
-            // * logout - no modal
-            html += getLogOff(tsrLogin, brokerLogin);
-
-            console.log("only TSR", userProf);
-
-        } else if (userProf.status === 'notSignedIn') {
-            // * with neither
-
-            // * sign in with tsr
-            // * sign in with broker
+        if (userProf.status == 'notSignedIn') {
             html += getLoginIn();
+        } else { // * i.e. userProf.status == 'signedIn'
+            if (jsu.isNotNull(userProf.brokerLogin) && userProf.brokerLogin) {
+                console.log("with both");
+                // * signed in with tsr and broker both
+                tsrLogin = true;
+                brokerLogin = true;
 
-            console.log("neither", userProf);
-        } else if (userProf.demo) {
-            // * signed in with TSR and broker both
-            tsrLogin = true;
-            brokerLogin = true;
+                html += getSignedIn(tsrLogin); // * view profile - clicking it loads new page
+                // html += getRefCode(); // * get ref code
+                html += getBrokers(brokerLogin); // * Connect with broker
+                html += getPlan(); // * you are yet to subscribe msg / plan
+                html += getLogOff(tsrLogin, brokerLogin); // * logout - show modal
 
-            // * view profile - clicking it loads new page
-            html += getSignedIn(tsrLogin);
+            } else if (jsu.isNotNull(userProf.brokerList) && userProf.brokerList.length > 0) {
+                console.log("with broker");
+                // * signed in with broker only
+                tsrLogin = false;
+                brokerLogin = true;
 
-            // * get ref code
-            html += getRefCode();
+                html += getSignedIn(tsrLogin); // * view profile - clicking it opens modal
+                html += getBrokers(brokerLogin); // * Manage brokers
+                html += getSignInWithTsrMsg(); // * you are yet to subscribe msg
+                html += getLogOff(tsrLogin, brokerLogin); // * logout - modal
 
-            // * Connect with broker
-            html += getBrokers(brokerLogin);
+            } else {
+                console.log("with TSR");
+                // signed in with TSR
+                tsrLogin = true;
+                brokerLogin = false;
 
-            // * you are yet to subscribe msg / plan
-            html += getPlan();
-
-            // * logout - no modal
-            html += getLogOff(tsrLogin, brokerLogin);
-
-            console.log("both", userProf);
+                html += getSignedIn(tsrLogin); // * view profile - clicking it loads new page
+                html += getBrokers(brokerLogin); // * Connect with broker
+                // html += getRefCode(); // * get ref code
+                html += getPlan(); // * you are yet to subscribe msg / plan
+                html += getLogOff(tsrLogin, brokerLogin); // * logout - no modal
+            }
         }
-
-        // if (userProf.status === 'signedIn') {
-        //     html += getSignedIn();
-        //     html += getRefCode();
-        // } else {
-        //     html += getLoginIn();
-        // }
-
-        // if (!jsu.isMigContext()) {
-        //     if (jsu.isNotNull(userProf.brokerLogin)) {
-        //         html += getBrokers();
-        //     } else {
-
-        //     }
-        // }
-
-
-        // html += getPlan();
-
-
-        // if (userProf.status === 'signedIn' || userProf.brokerLogin) {
-        //     html += getLogOff();
-        // }
 
         html += '						   </ul>'
         html += '						</li> '
-
-
-
-
 
         return html;
 
@@ -527,7 +474,9 @@ var migUi = (function () {  // my Ui Head
 
         html += '						      <li>'
 
-        html += '						         <div style="margin: 20px"> <b>' + heelo + ',<br> ' + (userProf.sal == "undefined" ? "" : userProf.sal) + ' ' + userProf.fName + '</b><br>                                    </div>'
+        let sal = typeof userProf.sal == "undefined" ? "" : userProf.sal;
+
+        html += '						         <div style="margin: 20px"> <b>' + heelo + ',<br> ' + sal + ' ' + userProf.fName + '</b><br>                                    </div>'
         html += '						      </li>'
         html += '						      <li role="separator" class="divider"></li>'
 
@@ -596,7 +545,7 @@ var migUi = (function () {  // my Ui Head
             `;
 
             viewProfileModalFooter.innerHTML = `
-                <button type="button" class="btn btn-primary">Login / Register</button>
+                <a href="" class="btn btn-primary">Login / Register</button>
             `;
             // <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
@@ -641,6 +590,18 @@ var migUi = (function () {  // my Ui Head
         return html;
     }
 
+    function getSignInWithTsrMsg() {
+        let html = "";
+
+        html += `<li>`
+        html += `   <a style="color: #8a8a8a;" href="">`
+        html += `      <span style="color: #04a1f4;">Sign in</span> to TSR to avail all platform features`;
+        html += `   </a>`
+        html += `</li>`;
+
+        return html;
+    }
+
     function getLogOff(tsrLogin, brokerLogin) {
         var html = ''
 
@@ -658,10 +619,10 @@ var migUi = (function () {  // my Ui Head
             html += '						      </li>'
 
             logoutModalFooter.innerHTML = `
-            <div class="d-flex justify-content-around w-100">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Logout from All</button>
-                <button type="button" class="btn btn-outline-primary">Logout from Brokers</button>
-                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Logout from TSR</button>
+            <div class="d-flex flex-column flex-lg-row  justify-content-around w-100">
+                <button type="button" class="my-3 my-lg-0 btn btn-outline-primary">Logout from Brokers</button>
+                <button type="button" class="my-3 my-lg-0 btn btn-outline-primary">Logout from TSR</button>
+                <button type="button" class="my-3 my-lg-0 btn btn-primary">Logout from All</button>
             </div>
         `;
 
@@ -682,13 +643,16 @@ var migUi = (function () {  // my Ui Head
                 html += '						         </a>'
                 html += '						      </li>'
 
-                logoutModalFooter.innerHTML = `
-                    <div class="d-flex justify-content-around w-100">
-                        <button type="button" class="btn btn-outline-primary">Logout from Upstox</button>
-                        <button type="button" class="btn btn-outline-primary">Logout from Dhan</button>
-                        <button type="button" class="btn btn-primary">Logout from All Brokers</button>
-                    </div>
-                `;
+                let modalFooterHtml = "";
+                modalFooterHtml += `<div class="d-flex flex-column flex-lg-row justify-content-around w-100">`
+                for (let i = 0; i < userProf.brokerList.length; i++) {
+                    modalFooterHtml += `<button type="button" class="my-3 my-lg-0 btn btn-outline-primary">Logout from ${userProf.brokerList[i]["id"]}</button>`;
+                }
+                modalFooterHtml += `    <button type="button" class="my-3 my-lg-0 btn btn-primary">Logout from All</button>`;
+                modalFooterHtml += `</div>`;
+
+                logoutModalFooter.innerHTML = modalFooterHtml;
+
 
             }
         } else if (tsrLogin && !brokerLogin) {
