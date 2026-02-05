@@ -528,7 +528,7 @@ function paintCsSelFilters() {
         { text: "Invalid value for MA", color: "green" },
     ];
     bodyHtml += `
-        <div id="csSelFieldsDiv pe-3" style="overflow-y: auto; height: 100%;">`
+        <div id="csSelFieldsDiv" class="pe-3" style="overflow-y: auto; height: 100%;">`
 
     for(let i=0; i<selFilters.length; i++){
         bodyHtml+=`
