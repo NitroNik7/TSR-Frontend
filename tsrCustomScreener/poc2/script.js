@@ -528,13 +528,13 @@ function paintCsSelFilters() {
         { text: "Invalid value for MA", color: "green" },
     ];
     bodyHtml += `
-        <div id="csSelFieldsDiv">`
+        <div id="csSelFieldsDiv pe-3" style="overflow-y: auto; height: 100%;">`
 
     for(let i=0; i<selFilters.length; i++){
         bodyHtml+=`
-            <div class="d-flex align-items-center my-2 ">
+            <div class="d-flex align-items-center my-2  justify-content-between">
                 <span style="color: ${selFilters[i]["color"]}; width: 60%; ">${selFilters[i]["text"]}</span>
-                <div style="position: relative; right: 0; font-size: 24px; " class="mx-2 d-flex align-items-center">
+                <div style="font-size: 24px; " class="mx-2 d-flex">
                     <a class="ms-3" onclick="javascript:csu.pc('aebb:csPrice');"
                         title="Disable i.e. this filter will not be selected for Run" style="color: grey;">
                         <span class="fa fa-pause"></span>
