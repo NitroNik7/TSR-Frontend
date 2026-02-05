@@ -479,7 +479,7 @@ function showFilterBox(filterLabel) {
             <div style="height: 100%; max-height: fit-content; overflow-y: auto;">
 
                 <div>
-                    <button class="btn btn-primary" style="position: fixed; bottom: 80px; right: 20px;">
+                    <button class="btn btn-lg btn-primary" style="position: fixed; bottom: 80px; right: 20px;">
                         Add filter
                     </button>
                 </div>
