@@ -342,14 +342,14 @@ filterArr = allFilters;
 
         for (let i = 0; i < allFilters.length; i++) {
         let filterCat = allFilters[i];
-        if (filterCat["id"] != "allFilters" && filterCat["id"] != "favourites") {
+        // if (filterCat["id"] != "allFilters" && filterCat["id"] != "favourites") {
 
             bodyHtml += `
                 <button type="button" class="btn btn-outline-secondary rounded-pill mb-2" style="height: 40px; font-size: 14px; text-wrap: nowrap;" onclick="updateFilterMenu('${filterCat["id"]}'); ">
                     ${filterCat["label"]}
                 </button>
             `
-        }
+        // }
     }
     bodyHtml += `            </div>`
 
