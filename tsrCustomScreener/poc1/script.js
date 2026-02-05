@@ -16,15 +16,32 @@ let modalHeaderId = "tsrCsModalHeader";
 let modalBodyId = "tsrCsModalBody";
 let modalFooterId = "tsrCsModalFooter";
 
-let filterCatId = "tsrCsFilterMenu";
-let filterListId = "tsrCsSearchFiltersList"; // also used in HTML
-let filterMenuId = "tsrCsFilterMenuList";
+let filterSearchId = "tsrCsFilterSearch";
+
+let filterCatId = "tsrCsFilterCatMenu";
+let filterListId = "tsrCsSearchFiltersList";
+let filterMenuId = "tsrCsFilterList";
 
 
-let allCatRowId = "tsrCsFilterMenu-accordion-button";
-let accordionBodyId = "tsrCsFilterMenu-accordion-body";
+let allCatRowId = "tsrCsFilterCatMenu-accordion-button";
+let accordionBodyId = "tsrCsFilterCatMenu-accordion-body";
 
 let allFilters = [
+    {
+        id: "favourites",
+        label: "Favourites",
+        subFilters: [
+            { id: "price", label: "Price" },
+            { id: "gainPc", label: "Gain %" },
+            { id: "ohlcCompare", label: "OHLC Compare" },
+            { id: "gain %", label: "Gain %" },
+            { id: "volumeTrending", label: "Volume Trending" },
+            { id: "pricePivotLevelsPc", label: "Price / Pivot levels %" },
+            { id: "newHighLows", label: "New High Lows" },
+            { id: "bullishCandles", label: "Bullish Candles" },
+            { id: "comparePriceAndMa", label: "Compare Price & MA" },
+        ]
+    },
     {
         id: "priceAction",
         label: "Price Action",
@@ -160,7 +177,7 @@ let allFilters = [
     },
 ];
 
-function showCsFiltersList() {
+function showCsSearchList() {
 
     let ul = document.getElementById(filterListId);
     mintHtmlUtil.emptyDiv(filterListId);
@@ -313,12 +330,12 @@ function paintCs() {
     let bodyHtml = "";
     bodyHtml += `
         <div>
-            <input id="tsrCsFilterSearch" type="text"
+            <input id="${filterSearchId}" type="text"
                 class="form-control ui-autocomplete-input"
                 placeholder="Search a Filter" autocomplete="off"
-                autofocus="" tabindex="0" onclick="showCsFiltersList();"
-                onblur="mintHtmlUtil.emptyDiv('tsrCsSearchFiltersList');">
-                <ul id="tsrCsSearchFiltersList" style="position: fixed; z-index: 1000;"
+                autofocus="" tabindex="0" onclick="showCsSearchList();"
+                onblur="mintHtmlUtil.emptyDiv(${filterListId});">
+                <ul id="${filterListId}" style="position: fixed; z-index: 1000;"
                     class="ui-menu ui-widget ui-widget-content">
 
                 </ul>
@@ -327,7 +344,11 @@ function paintCs() {
         <div id="${allCatRowId}" class="d-flex justify-content-start my-2">
             <button type="button" class="btn btn-secondary rounded-pill"
                 style="height: 40px; font-size: 14px;"
-                onclick="updateFilterMenu('priceAction'); updateAccordionBody('priceAction');">Price Action</button>
+                onclick="updateFilterMenu('priceAction'); updateAccordionBody('priceAction');">All filters</button>
+
+            <button type="button" class="btn btn-secondary rounded-pill"
+                style="height: 40px; font-size: 14px;"
+                onclick="updateFilterMenu('favourites'); updateAccordionBody('priceAction');">Favourites</button>
             
             <button
                 class="btn btn-outline-secondary rounded-pill accordion-button w-auto border border-secondary"
@@ -353,7 +374,9 @@ function paintCs() {
     }
 
 
-    bodyHtml += `</div>
+    bodyHtml += `
+        </div>
+        
         </div>
 
         <div id="${filterMenuId}">
