@@ -528,14 +528,12 @@ function addBtnToCol(btns, boxEleIdPrefix) {
             let rowId = boxEleIdPrefix + openBoxCount;
             openBoxes.push({ "rowId": rowId, "btnId": btn.id });
         }
-        html += `<button class="btn" id="${btn.id}" title="${btn.title}" onclick="toggleBtn('${btn.id}'); chooseLayout('9');">`
+        html += `<button class="btn" id="${btn.id}" title="${btn.title}"  onclick="toggleBtn('${btn.id}'); chooseLayout('9');">`
         html += btn.html;
         html += `</button>`
     }
 
     rightColDiv.innerHTML = html;
-
-
 
     return openBoxes;
 }
