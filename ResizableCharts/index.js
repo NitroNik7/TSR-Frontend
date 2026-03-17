@@ -528,17 +528,14 @@ function addBtnToCol(btns, boxEleIdPrefix) {
             let rowId = boxEleIdPrefix + openBoxCount;
             openBoxes.push({ "rowId": rowId, "btnId": btn.id });
         }
-        html += `<button class="btn" id="${btn.id}" data-bs-toggle="tooltip" title="${btn.title}" data-bs-placement="left" onclick="toggleBtn('${btn.id}'); chooseLayout('9');">`
+        html += `<button class="btn" id="${btn.id}" title="${btn.title}" onclick="toggleBtn('${btn.id}'); chooseLayout('9');">`
         html += btn.html;
         html += `</button>`
     }
 
     rightColDiv.innerHTML = html;
 
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-    })
+
 
     return openBoxes;
 }
@@ -547,9 +544,6 @@ function toggleBtn(btnId) {
     let currBtn = jsu.getObjFrmArr(boxBtns, btnId);
 
     currBtn.open = !currBtn.open;
-
-    console.log(boxBtns);
-
 }
 
 function getInfoBoxHtml(infoBox) {
