@@ -1,18 +1,1245 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
 
-    
+    <div class="d-flex" style="height: 500px; border: 1px solid lightgray;">
+        <div class="d-flex flex-column">
+            <div class="btn-group dropend"> <button type="button"
+                    class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                    onclick="csh.smh(this); myTsrScreener.showControl('priceCs'); csh.cd('tsrCsFilterInfoBox')">PriceAction
+                </button>
+                <ul id="priceCsDropdownMenu" class="dropdown-menu" style="overflow-y: auto;">
+                    <li> <a id="price" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('priceCtrlTab'); csh.uht('priceCs_price'); csh.aebbStrut('csPrice','220'); csh.df(this, 'priceCs_price'); "
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Price </a></li>
+                    <li> <a id="gainLoss" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('priceCtrlTab'); csh.uht('priceCs_gainLoss'); csp.ctd('priceGainLoss'); csh.df(this, 'priceCs_gainLoss'); "
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Gain Loss in % </a></li>
+                    <li> <a id="ohlcCompare" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('priceCtrlTab'); csh.uht('priceCs_ohlcCompare'); cscmn.ac('price','priceCs')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">OHLC Compare </a></li>
+                    <li> <a id="ohlcTrending" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('priceCtrlTab'); csh.uht('priceCs_ohlcTrending'); cscmn.atn('price','priceCs')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">OHLC Trending </a></li>
+                    <li> <a id="turnover" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('priceCtrlTab'); csh.uht('priceCs_turnover'); csfdc.an('turnOver')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Turnover </a></li><a id="vwap"
+                        class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">A / MA / PP - VWAP
+                        <span class="badge bg-warning ms-2">PRO</span></a><a id="breakOutBreakDown"
+                        class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Break Out / Down
+                        <span class="badge bg-warning ms-2">PRO</span></a><a id="ohlcTimeCompare"
+                        class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">OHLC Specific Time
+                        Compare <span class="badge bg-warning ms-2">PRO</span></a><a id="ohlcvAdvanced"
+                        class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">OHLCV Advanced <span
+                            class="badge bg-warning ms-2">PRO</span></a><a id="demandSupplyZones"
+                        class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Demand &amp; Supply
+                        Zones <span class="badge bg-warning ms-2">PRO</span></a><a id="trendingCandleBoDwn"
+                        class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Trending Candles
+                        <span class="badge bg-warning ms-2">PRO</span></a><a id="orNg"
+                        class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Open Range
+                        Strategies <span class="badge bg-warning ms-2">PRO</span></a><a id="gapRunAway"
+                        class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Previous Range
+                        Strategies <span class="badge bg-warning ms-2">PRO</span></a><a id="gapFill"
+                        class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Gap Strategies <span
+                            class="badge bg-warning ms-2">PRO</span></a>
+                </ul>
+            </div>
+            <div class="btn-group dropend"> <button type="button"
+                    class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                    onclick="csh.smh(this); myTsrScreener.showControl('volCs'); csh.cd('tsrCsFilterInfoBox')">Volume
+                </button>
+                <ul id="volCsDropdownMenu" class="dropdown-menu" style="overflow-y: auto;">
+                    <li> <a id="tickVol" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('volCtrlTab'); csh.uht('volCs_tickVol'); csh.aebbStrut('csVol','220'); csh.df(this, 'volCs_tickVol'); "
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Tick Volume </a></li>
+                    <li> <a id="dayVol" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('volCtrlTab'); csh.uht('volCs_dayVol'); csh.aebbStrut('csDayVol','220'); csh.df(this, 'volCs_dayVol'); "
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Days Volume </a></li>
+                    <li> <a id="compPrevTick" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('volCtrlTab'); csh.uht('volCs_compPrevTick'); cscmn.ac('vol','volCs')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Compare With Prev Ticks </a></li>
+                    <li> <a id="volTrend" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('volCtrlTab'); csh.uht('volCs_volTrend'); cscmn.atn('vol','volCs')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Volume Trending </a></li>
+                    <li> <a id="tickVolVsHistAvg" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('volCtrlTab'); csh.uht('volCs_tickVolVsHistAvg'); csv.athv('vol','volCs')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Tick Vol Vs. Hist Avg </a></li>
+                </ul>
+            </div>
+            <div class="btn-group dropend"> <button type="button"
+                    class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                    onclick="csh.smh(this); myTsrScreener.showControl('hlCs'); csh.cd('tsrCsFilterInfoBox')">High/Low
+                </button>
+                <ul id="hlCsDropdownMenu" class="dropdown-menu" style="overflow-y: auto;">
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('hlCtrlTab'); csh.uht('hlCs_'); cshl.hls(); csh.df(this, 'hlCs_'); "
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">New Intraday </a></li>
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('hlCtrlTab'); csh.uht('hlCs_'); cshl.anhl('hl')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">New High Lows </a></li>
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('hlCtrlTab'); csh.uht('hlCs_'); cshl.anhlr('hl')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">New High Low Range </a></li>
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('hlCtrlTab'); csh.uht('hlCs_'); cshl.hlc('hl')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Compare With Historical High Lows
+                        </a></li>
+                </ul>
+            </div>
+            <div class="btn-group dropend"> <button type="button"
+                    class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                    onclick="csh.smh(this); myTsrScreener.showControl('betaCs'); csh.cd('tsrCsFilterInfoBox')">Beta/Vols
+                </button>
+                <ul id="betaCsDropdownMenu" class="dropdown-menu" style="overflow-y: auto;">
+                    <li> <a id="priceRange" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('bvCtrlTab'); csh.uht('betaCs_priceRange'); csu.opsCompare('prc')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Price Range </a></li>
+                    <li> <a id="Beta" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('bvCtrlTab'); csh.uht('betaCs_Beta'); csu.opsCompare('beta')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Beta </a></li>
+                </ul>
+            </div>
+            <div class="btn-group dropend"> <button type="button"
+                    class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                    onclick="csh.smh(this); myTsrScreener.showControl('pivotCs'); csh.cd('tsrCsFilterInfoBox')">Pivot/Fib
+                </button>
+                <ul id="pivotCsDropdownMenu" class="dropdown-menu" style="overflow-y: auto;">
+                    <li> <a id="pricePivotLevel" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('ppCtrlTab'); csh.uht('pivotCs_pricePivotLevel'); cspp.addPP('pp')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Price / Pivot Levels </a></li>
+                    <li> <a id="centralPivotLevel" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('ppCtrlTab'); csh.uht('pivotCs_centralPivotLevel'); cspp.addCpr('cpr')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Central Pivot Levels </a></li><a
+                        id="FibRetracement" class="dropdown-item d-flex justify-content-between align-items-baseline"
+                        href="" style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Fibonacci
+                        Retracement <span class="badge bg-warning ms-2">PRO</span></a>
+                </ul>
+            </div>
+            <div class="btn-group dropend"> <button type="button"
+                    class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                    onclick="csh.smh(this); myTsrScreener.showControl('strCs'); csh.cd('tsrCsFilterInfoBox')">Strength
+                </button>
+                <ul id="strCsDropdownMenu" class="dropdown-menu" style="overflow-y: auto;">
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('strCtrlTab'); csh.uht('strCs_'); csstr.addStr('techStrComp')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Tech Strength </a></li>
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('strCtrlTab'); csh.uht('strCs_'); csstr.addStr('techRankComp')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Tech Rank </a></li>
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('strCtrlTab'); csh.uht('strCs_'); csstr.addStr('returnsComp')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Returns </a></li>
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('strCtrlTab'); csh.uht('strCs_'); csstr.addStr('relPriceStrComp')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Relative Price Strength </a></li>
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('strCtrlTab'); csh.uht('strCs_'); csstr.addStr('gwthStrComp')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">TSR Growth Index </a></li>
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('strCtrlTab'); csh.uht('strCs_'); csstr.addStr('gwthRankComp')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">TSR Growth Rank </a></li>
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('strCtrlTab'); csh.uht('strCs_'); csstr.addStr('valStrComp')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">TSR Value Index </a></li>
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('strCtrlTab'); csh.uht('strCs_'); csstr.addStr('valRankComp')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">TSR Value Rank </a></li>
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('strCtrlTab'); csh.uht('strCs_'); csstr.addStr('pftStrComp')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">TSR Profit Index </a></li>
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('strCtrlTab'); csh.uht('strCs_'); csstr.addStr('pftRankComp')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">TSR Profit Rank </a></li>
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('strCtrlTab'); csh.uht('strCs_'); csstr.addStr('stabStrComp')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">TSR Stablity Index </a></li>
+                    <li> <a id="" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('strCtrlTab'); csh.uht('strCs_'); csstr.addStr('stabRankComp')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">TSR Stablity Rank </a></li>
+                </ul>
+            </div>
+            <div class="btn-group dropend"> <button type="button"
+                    class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                    onclick="csh.smh(this); myTsrScreener.showControl('maCs'); csh.cd('tsrCsFilterInfoBox')">Mov Avg
+                </button>
+                <ul id="maCsDropdownMenu" class="dropdown-menu" style="overflow-y: auto;">
+                    <li> <a id="pma" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('maCs_pma'); csma.pfr('pma')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Compare Price &amp; MA </a></li>
+                    <li> <a id="maco" class="dropdown-item"
+                            onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('maCs_maco'); csma.pfr('maco')"
+                            style="text-wrap: nowrap; font-size: 16px; color: black;">Compare Two MA's </a></li><a
+                        id="maTrend" class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Trending MA <span
+                            class="badge bg-warning ms-2">PRO</span></a><a id="maHist"
+                        class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">DIY Hist Compare
+                        <span class="badge bg-warning ms-2">PRO</span></a><a id="maFakeBreak"
+                        class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">MA Fake Break <span
+                            class="badge bg-warning ms-2">PRO</span></a><a id="maSupResBounce"
+                        class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Bounced From MA
+                        <span class="badge bg-warning ms-2">PRO</span></a><a id="maCon"
+                        class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">MA Convergence <span
+                            class="badge bg-warning ms-2">PRO</span></a><a id="maDiv"
+                        class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                        style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">MA Divergence <span
+                            class="badge bg-warning ms-2">PRO</span></a>
+                </ul>
+            </div>
+            <div class="btn-group dropend"> <button type="button"
+                    class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                    onclick="csh.smh(this); myTsrScreener.showControl('tiCs'); csh.cd('tsrCsFilterInfoBox')">TechIndi
+                </button>
+                <ul id="tiCsDropdownMenu" class="dropdown-menu" style="">
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Over Bot/Sold </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="aroon" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_obos_aroon'); cst.atn('aroon','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Aroon Osc </a></li>
+                                <li> <a id="cci" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_obos_cci'); cst.atn('cci','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">CCI </a></li>
+                                <li> <a id="mfi" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_obos_mfi'); cst.atn('mfi','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">MFI </a></li>
+                                <li> <a id="rsi" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_obos_rsi'); cst.atn('rsi','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">RSI (Fast) </a></li>
+                                <li> <a id="rsis" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_obos_rsis'); cst.atn('rsis','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">RSI </a></li>
+                                <li> <a id="stof" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_obos_stof'); cst.atn('stof','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Sto Fast </a></li>
+                                <li> <a id="stos" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_obos_stos'); cst.atn('stos','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Sto Slow </a></li>
+                                <li> <a id="stoRsi" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_obos_stoRsi'); cst.atn('stoRsi','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Sto RSI (FAST) </a>
+                                </li>
+                                <li> <a id="stoRsiSlow" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_obos_stoRsiSlow'); cst.atn('stoRsiSlow','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Sto RSI </a></li>
+                                <li> <a id="uo" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_obos_uo'); cst.atn('uo','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">UO </a></li>
+                                <li> <a id="wr" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_obos_wr'); cst.atn('wr','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">W%R </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Overlays </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_overlays_'); cst.atn('bb','price')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Price &amp; Bollinger
+                                    </a></li>
+                                <li> <a id="" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_overlays_'); cst.atn('bb','squeeze')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Bollinger Squeeze </a>
+                                </li>
+                                <li> <a id="" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_overlays_'); ichiOld.aim('techIchiComp')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Ichimoku (old) </a>
+                                </li>
+                                <li> <a id="" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_overlays_'); cst.atn('ichimoku','ichimoku')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Ichimoku </a></li>
+                                <li> <a id="" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_overlays_'); cst.atn('keltner','price')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Price &amp; Keltner
+                                    </a></li>
+                                <li> <a id="" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_overlays_'); cst.atn('psar','psar')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">PSAR </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Trend/Momentum </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="adx" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_trendMom_adx'); cst.atn('adx','adx')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">ADX </a></li>
+                                <li> <a id="aroon" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_trendMom_aroon'); cst.atn('aroon','AroonIndi')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Aroon </a></li>
+                                <li> <a id="aweOsc" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_trendMom_aweOsc'); cst.atn('aweOsc','aweOsc')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">AweOsc </a></li>
+                                <li> <a id="mac" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_trendMom_mac'); cst.atn('mac','macd')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">MACD </a></li>
+                                <li> <a id="roc" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_trendMom_roc'); cst.atn('roc','roc')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">ROC </a></li>
+                                <li> <a id="rvi" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_trendMom_rvi'); cst.atn('rvi','rvi')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">RVI </a></li>
+                                <li> <a id="st" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_trendMom_st'); cst.atn('st','st')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Supertrend </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Accumulation / Distribution </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="cmf" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_accDist_cmf'); cst.atn('cmf','cmf')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">CMF </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Volatility </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="atr" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_vol_atr'); cst.atn('atr','atr')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">ATR </a></li>
+                                <li> <a id="stdDev" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('tiCs_vol_stdDev'); cst.atn('stdDev','stdDev')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Std Dev </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">DIY - Advance Comparision </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; "><a id=""
+                                    class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                                    style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Over
+                                    Bot/Sold <span class="badge bg-warning ms-2">PRO</span></a><a id=""
+                                    class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                                    style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Trend
+                                    Indi <span class="badge bg-warning ms-2">PRO</span></a><a id=""
+                                    class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                                    style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Momentum
+                                    Indi <span class="badge bg-warning ms-2">PRO</span></a><a id=""
+                                    class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                                    style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Accumulation
+                                    Dist <span class="badge bg-warning ms-2">PRO</span></a><a id=""
+                                    class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                                    style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Volatility
+                                    <span class="badge bg-warning ms-2">PRO</span></a><a id=""
+                                    class="dropdown-item d-flex justify-content-between align-items-baseline" href=""
+                                    style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">Overlays
+                                    <span class="badge bg-warning ms-2">PRO</span></a></ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn-group dropend"> <button type="button"
+                    class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                    onclick="csh.smh(this); myTsrScreener.showControl('divCs'); csh.cd('tsrCsFilterInfoBox')">Divergence
+                </button>
+                <ul id="divCsDropdownMenu" class="dropdown-menu" style="">
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Over Bot/Sold </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="aroonOsc" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs_obos_aroonOsc'); csd.adv('aroonOsc','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Aroon Osc </a></li>
+                                <li> <a id="cci" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs_obos_cci'); csd.adv('cci','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">CCI </a></li>
+                                <li> <a id="mfi" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs_obos_mfi'); csd.adv('mfi','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">MFI </a></li>
+                                <li> <a id="rsi" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs_obos_rsi'); csd.adv('rsi','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">RSI (Fast) </a></li>
+                                <li> <a id="rsis" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs_obos_rsis'); csd.adv('rsis','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">RSI </a></li>
+                                <li> <a id="stof" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs_obos_stof'); csd.adv('stof','sto')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Sto Fast </a></li>
+                                <li> <a id="stos" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs_obos_stos'); csd.adv('stos','sto')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Sto Slow </a></li>
+                                <li> <a id="stoRsi" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs_obos_stoRsi'); csd.adv('stoRsi','stoRsi')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Sto RSI (FAST) </a>
+                                </li>
+                                <li> <a id="stoRsiSlow" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs_obos_stoRsiSlow'); csd.adv('stoRsiSlow','stoRsi')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Sto RSI </a></li>
+                                <li> <a id="uo" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs_obos_uo'); csd.adv('uo','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">UO </a></li>
+                                <li> <a id="wr" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs_obos_wr'); csd.adv('wr','obos')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">W%R </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Trend </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="adx" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs__adx'); csd.adv('adx','adx')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">ADX </a></li>
+                                <li> <a id="atr" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs__atr'); csd.adv('atr','atr')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">ATR </a></li>
+                                <li> <a id="aweOsc" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs__aweOsc'); csd.adv('aweOsc','aweOsc')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">AweOsc </a></li>
+                                <li> <a id="mac" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs__mac'); csd.adv('mac','macd')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">MACD </a></li>
+                                <li> <a id="macdHist" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs__macdHist'); csd.adv('macdHist','macdHist')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">MACD Hist </a></li>
+                                <li> <a id="roc" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs__roc'); csd.adv('roc','roc')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">ROC </a></li>
+                                <li> <a id="rvi" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs__rvi'); csd.adv('rvi','rvi')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">RVI </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Volume Based </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="cmf" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs__cmf'); csd.adv('cmf','cmf')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">CMF </a></li>
+                                <li> <a id="adi" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('divCs__adi'); csd.adv('adi','adi')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">ADI </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn-group dropend"> <button type="button"
+                    class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                    onclick="csh.smh(this); myTsrScreener.showControl('cpCs'); csh.cd('tsrCsFilterInfoBox')">Chart
+                    Patterns </button>
+                <ul id="cpCsDropdownMenu" class="dropdown-menu" style="">
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Candle / HA </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="bullCs" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('cpCs_candle_bullCs'); cscp.acp('bullCs','candle')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Bullish Candlestick
+                                        Pattern </a></li>
+                                <li> <a id="bearCs" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('cpCs_candle_bearCs'); cscp.acp('bearCs','candle')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Bearish Candlestick
+                                        Pattern </a></li>
+                                <li> <a id="odCs" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('cpCs_candle_odCs'); cscp.acp('odCs','candle')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">One Period Candlestick
+                                        Pattern </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Candle Range Based </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="narRng" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('cpCs_range_narRng'); cscp.acp('narRng','range')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">NtsrArrowEle Range </a></li>
+                                <li> <a id="wideRng" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('cpCs_range_wideRng'); cscp.acp('wideRng','range')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Wide Range </a></li>
+                                <li> <a id="masCan" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('cpCs_range_masCan'); cscp.acp('masCan','range')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Master Candle </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Chart Patterns </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="popBul" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('cpCs_pat_popBul'); cscp.acp('popBul','pat')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Popular (Bullish) </a>
+                                </li>
+                                <li> <a id="popBear" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('cpCs_pat_popBear'); cscp.acp('popBear','pat')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Popular (Bearish) </a>
+                                </li>
+                                <li> <a id="tri" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('cpCs_pat_tri'); cscp.acp('tri','pat')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Triangle </a></li>
+                                <li> <a id="chn" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('cpCs_pat_chn'); cscp.acp('chn','pat')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Channel </a></li>
+                                <li> <a id="tl" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('cpCs_pat_tl'); cscp.acp('tl','pat')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Trendline </a></li>
+                                <li> <a id="hhll" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('undefined'); csh.uht('cpCs_pat_hhll'); cscp.acp('hhll','pat')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Higher Highs/Lows </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn-group dropend"> <button type="button"
+                    class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                    onclick="csh.smh(this); myTsrScreener.showControl('finRatNg'); csh.cd('tsrCsFilterInfoBox')">Fin
+                    Ratio </button>
+                <ul id="finRatNgDropdownMenu" class="dropdown-menu" style="">
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Highlights </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="marCap" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_finHl_marCap'); csFrNg.pfr('finHl','marCap')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Market Capitalization
+                                    </a></li>
+                                <li> <a id="divYield" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_finHl_divYield'); csFrNg.pfr('finHl','divYield')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Dividend Yield % </a>
+                                </li>
+                                <li> <a id="shInst" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_finHl_shInst'); csFrNg.pfr('finHl','shInst')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Institution Share (%)
+                                    </a></li>
+                                <li> <a id="shInsider" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_finHl_shInsider'); csFrNg.pfr('finHl','shInsider')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Insider Share (%) </a>
+                                </li>
+                                <li> <a id="fwdPe" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_finHl_fwdPe'); csFrNg.pfr('finHl','fwdPe')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Forward PE </a></li>
+                                <li> <a id="entVal" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_finHl_entVal'); csFrNg.pfr('finHl','entVal')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Enterprise Value </a>
+                                </li>
+                                <li> <a id="outShare" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_finHl_outShare'); csFrNg.pfr('finHl','outShare')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Outstanding Shares
+                                    </a></li>
+                                <li> <a id="floatShare" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_finHl_floatShare'); csFrNg.pfr('finHl','floatShare')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Floating Shares </a>
+                                </li>
+                                <li> <a id="floatToOsShare" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_finHl_floatToOsShare'); csFrNg.pfr('finHl','floatToOsShare')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Floating / Outstanding
+                                    </a></li>
+                                <li> <a id="faceVal" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_finHl_faceVal'); csFrNg.pfr('finHl','faceVal')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Face Value </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Guru Numbers </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="piotroskiF" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_guruNo_piotroskiF'); csFrNg.pfr('guruNo','piotroskiF')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Piotroski F-Score </a>
+                                </li>
+                                <li> <a id="altmanZ" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_guruNo_altmanZ'); csFrNg.pfr('guruNo','altmanZ')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Altman Z Score </a>
+                                </li>
+                                <li> <a id="priceGrahamNo" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_guruNo_priceGrahamNo'); csFrNg.pfr('guruNo','priceGrahamNo')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Price / Graham No </a>
+                                </li>
+                                <li> <a id="pricePeterLynchFv" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_guruNo_pricePeterLynchFv'); csFrNg.pfr('guruNo','pricePeterLynchFv')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Price / Peter Lynch
+                                        Value </a></li>
+                                <li> <a id="peterLynchRatio" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_guruNo_peterLynchRatio'); csFrNg.pfr('guruNo','peterLynchRatio')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Peter Lynch Ratio </a>
+                                </li>
+                                <li> <a id="sloanRatio" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_guruNo_sloanRatio'); csFrNg.pfr('guruNo','sloanRatio')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Sloan Ratio </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Valuation Ratios </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="pe" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_pe'); csFrNg.pfr('valRat','pe')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Price / EPS (PE) </a>
+                                </li>
+                                <li> <a id="priceToBook" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_priceToBook'); csFrNg.pfr('valRat','priceToBook')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Price To Book Ratio
+                                    </a></li>
+                                <li> <a id="priceToSales" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_priceToSales'); csFrNg.pfr('valRat','priceToSales')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Price to Sale Ratio
+                                    </a></li>
+                                <li> <a id="peg" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_peg'); csFrNg.pfr('valRat','peg')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Price / Earning Growth
+                                    </a></li>
+                                <li> <a id="eps" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_eps'); csFrNg.pfr('valRat','eps')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">EPS </a></li>
+                                <li> <a id="epsCash" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_epsCash'); csFrNg.pfr('valRat','epsCash')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Cash EPS </a></li>
+                                <li> <a id="earningYield" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_earningYield'); csFrNg.pfr('valRat','earningYield')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Earnings Yield </a>
+                                </li>
+                                <li> <a id="evToRev" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_evToRev'); csFrNg.pfr('valRat','evToRev')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Enterprise Value to
+                                        Revenue Ratio </a></li>
+                                <li> <a id="evToEbitda" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_evToEbitda'); csFrNg.pfr('valRat','evToEbitda')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Enterprise Value to
+                                        EBITDA Ratio </a></li>
+                                <li> <a id="priceToCashFlow" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_priceToCashFlow'); csFrNg.pfr('valRat','priceToCashFlow')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Price to Cash Flow
+                                    </a></li>
+                                <li> <a id="retRatio" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_retRatio'); csFrNg.pfr('valRat','retRatio')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Retention Ratio </a>
+                                </li>
+                                <li> <a id="marCapToSales" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_marCapToSales'); csFrNg.pfr('valRat','marCapToSales')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Market Capitalization
+                                        To Sales Ratio </a></li>
+                                <li> <a id="leveredBeta" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_leveredBeta'); csFrNg.pfr('valRat','leveredBeta')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Levered Beta </a></li>
+                                <li> <a id="unleveredBeta" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_unleveredBeta'); csFrNg.pfr('valRat','unleveredBeta')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Unlevered Beta </a>
+                                </li>
+                                <li> <a id="wacc" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_wacc'); csFrNg.pfr('valRat','wacc')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">WACC (Wt Avg cost of
+                                        capital) </a></li>
+                                <li> <a id="costOfEqCapm" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_costOfEqCapm'); csFrNg.pfr('valRat','costOfEqCapm')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Cost Of Equity (CAPM)
+                                    </a></li>
+                                <li> <a id="costOfDtCapm" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_costOfDtCapm'); csFrNg.pfr('valRat','costOfDtCapm')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Cost of Debt </a></li>
+                                <li> <a id="wtOfDebt" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_wtOfDebt'); csFrNg.pfr('valRat','wtOfDebt')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Weight of Debt </a>
+                                </li>
+                                <li> <a id="wtOfEq" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_valRat_wtOfEq'); csFrNg.pfr('valRat','wtOfEq')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Weight of Equity </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Profitability Ratios </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="roce" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_pftRat_roce'); csFrNg.pfr('pftRat','roce')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Return On Capital
+                                        Employed </a></li>
+                                <li> <a id="roe" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_pftRat_roe'); csFrNg.pfr('pftRat','roe')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Return On Equity </a>
+                                </li>
+                                <li> <a id="roa" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_pftRat_roa'); csFrNg.pfr('pftRat','roa')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Return On Assets </a>
+                                </li>
+                                <li> <a id="roic" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_pftRat_roic'); csFrNg.pfr('pftRat','roic')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Return On Invested
+                                        Capital </a></li>
+                                <li> <a id="opMgn" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_pftRat_opMgn'); csFrNg.pfr('pftRat','opMgn')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Operating Margin </a>
+                                </li>
+                                <li> <a id="netMgn" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_pftRat_netMgn'); csFrNg.pfr('pftRat','netMgn')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Net Margin </a></li>
+                                <li> <a id="ebitdaMgn" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_pftRat_ebitdaMgn'); csFrNg.pfr('pftRat','ebitdaMgn')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">EBITDA Margin </a>
+                                </li>
+                                <li> <a id="grsPftMgn" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_pftRat_grsPftMgn'); csFrNg.pfr('pftRat','grsPftMgn')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Gross Profit Margin
+                                    </a></li>
+                                <li> <a id="astTo" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_pftRat_astTo'); csFrNg.pfr('pftRat','astTo')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Asset Turnover Ratio
+                                    </a></li>
+                                <li> <a id="fcfRev" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_pftRat_fcfRev'); csFrNg.pfr('pftRat','fcfRev')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Free Cash Flow to
+                                        Revenue </a></li>
+                                <li> <a id="divPayoutRatio" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_pftRat_divPayoutRatio'); csFrNg.pfr('pftRat','divPayoutRatio')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Dividend Payout Ratio
+                                    </a></li>
+                                <li> <a id="cfAst" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_pftRat_cfAst'); csFrNg.pfr('pftRat','cfAst')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Cashflow To Assets
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Solvency Ratios </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="debt2Eq" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_solRat_debt2Eq'); csFrNg.pfr('solRat','debt2Eq')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Debt to Equity Ratio
+                                    </a></li>
+                                <li> <a id="stDebt2Eq" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_solRat_stDebt2Eq'); csFrNg.pfr('solRat','stDebt2Eq')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Short Term Debt to
+                                        Equity Ratio </a></li>
+                                <li> <a id="intCov" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_solRat_intCov'); csFrNg.pfr('solRat','intCov')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Interest Coverage
+                                        Ratio </a></li>
+                                <li> <a id="shEqRatio" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_solRat_shEqRatio'); csFrNg.pfr('solRat','shEqRatio')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Shareholders Equity
+                                        Ratio </a></li>
+                                <li> <a id="divCov" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_solRat_divCov'); csFrNg.pfr('solRat','divCov')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Dividend Coverage
+                                        Ratio </a></li>
+                                <li> <a id="dtEbitda" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_solRat_dtEbitda'); csFrNg.pfr('solRat','dtEbitda')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Debt To EBITDA Ratio
+                                    </a></li>
+                                <li> <a id="astSh" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_solRat_astSh'); csFrNg.pfr('solRat','astSh')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Asset To Shareholders
+                                        Equity Ratio </a></li>
+                                <li> <a id="dtAst" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_solRat_dtAst'); csFrNg.pfr('solRat','dtAst')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Debt To Assets Ratio
+                                    </a></li>
+                                <li> <a id="cfDt" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_solRat_cfDt'); csFrNg.pfr('solRat','cfDt')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Cash Flow To Debt
+                                        Ratio </a></li>
+                                <li> <a id="dtCap" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_solRat_dtCap'); csFrNg.pfr('solRat','dtCap')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Debt To Capital Ratio
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Efficiency Ratios </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="cashRatio" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_effRat_cashRatio'); csFrNg.pfr('effRat','cashRatio')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Cash Ratio </a></li>
+                                <li> <a id="quickRatio" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_effRat_quickRatio'); csFrNg.pfr('effRat','quickRatio')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Quick Ratio </a></li>
+                                <li> <a id="curRatio" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_effRat_curRatio'); csFrNg.pfr('effRat','curRatio')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Current Ratio </a>
+                                </li>
+                                <li> <a id="invTORatio" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_effRat_invTORatio'); csFrNg.pfr('effRat','invTORatio')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Inventory Turnover
+                                        Ratio </a></li>
+                                <li> <a id="dayWc" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_effRat_dayWc'); csFrNg.pfr('effRat','dayWc')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Days In Working
+                                        Capital </a></li>
+                                <li> <a id="cashTORatio" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_effRat_cashTORatio'); csFrNg.pfr('effRat','cashTORatio')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Cash Turnover Ratio
+                                    </a></li>
+                                <li> <a id="accrualRatio" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_effRat_accrualRatio'); csFrNg.pfr('effRat','accrualRatio')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Accruals Ratio </a>
+                                </li>
+                                <li> <a id="accRecTORatio" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_effRat_accRecTORatio'); csFrNg.pfr('effRat','accRecTORatio')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Account Receivable
+                                        Turnover Ratio </a></li>
+                                <li> <a id="accRevDay" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_effRat_accRevDay'); csFrNg.pfr('effRat','accRevDay')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Account Receivable Day
+                                    </a></li>
+                                <li> <a id="inventoryDay" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_effRat_inventoryDay'); csFrNg.pfr('effRat','inventoryDay')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Inventory day </a>
+                                </li>
+                                <li> <a id="opsCycleRatio" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_effRat_opsCycleRatio'); csFrNg.pfr('effRat','opsCycleRatio')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Operating Cycle Ratio
+                                    </a></li>
+                                <li> <a id="opsRatio" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finRatNgTab'); csh.uht('finRatNg_effRat_opsRatio'); csFrNg.pfr('effRat','opsRatio')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Operating Ratio (opex)
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn-group dropend"> <button type="button"
+                    class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                    onclick="csh.smh(this); myTsrScreener.showControl('finStmtNg'); csh.cd('tsrCsFilterInfoBox')">Fin
+                    Stmt </button>
+                <ul id="finStmtNgDropdownMenu" class="dropdown-menu" style="">
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Balance Sheet </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="stkHlFund" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_stkHlFund'); csStmtNg.ae('balSheet','stkHlFund')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Total Stockholders
+                                        Fund </a></li>
+                                <li> <a id="minInt" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_minInt'); csStmtNg.ae('balSheet','minInt')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Minority Interest </a>
+                                </li>
+                                <li> <a id="nonCurLiab" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_nonCurLiab'); csStmtNg.ae('balSheet','nonCurLiab')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Total Non Current
+                                        Liabilities </a></li>
+                                <li> <a id="longTermDebt" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_longTermDebt'); csStmtNg.ae('balSheet','longTermDebt')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Long Term Debt </a>
+                                </li>
+                                <li> <a id="curLiab" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_curLiab'); csStmtNg.ae('balSheet','curLiab')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Total Current
+                                        Liabilities </a></li>
+                                <li> <a id="accPay" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_accPay'); csStmtNg.ae('balSheet','accPay')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Accounts Payable </a>
+                                </li>
+                                <li> <a id="totLiab" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_totLiab'); csStmtNg.ae('balSheet','totLiab')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Total Liabilities </a>
+                                </li>
+                                <li> <a id="nonCurAst" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_nonCurAst'); csStmtNg.ae('balSheet','nonCurAst')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;"> Total Non Current
+                                        Assets </a></li>
+                                <li> <a id="curAst" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_curAst'); csStmtNg.ae('balSheet','curAst')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Total Current Assets
+                                    </a></li>
+                                <li> <a id="netRec" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_netRec'); csStmtNg.ae('balSheet','netRec')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Net Receivable </a>
+                                </li>
+                                <li> <a id="cashSTInv" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_cashSTInv'); csStmtNg.ae('balSheet','cashSTInv')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Cash And Cash
+                                        Equivalents </a></li>
+                                <li> <a id="totAssets" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_totAssets'); csStmtNg.ae('balSheet','totAssets')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Total Assets </a></li>
+                                <li> <a id="netWorkCap" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_netWorkCap'); csStmtNg.ae('balSheet','netWorkCap')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Net Working Capital
+                                    </a></li>
+                                <li> <a id="netInvCap" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_netInvCap'); csStmtNg.ae('balSheet','netInvCap')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Net Invested Capital
+                                    </a></li>
+                                <li> <a id="outShare" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_balSheet_outShare'); csStmtNg.ae('balSheet','outShare')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Common Share
+                                        Oustanding </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Cash Flow </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="cashFrmOpAct" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_cashFlow_cashFrmOpAct'); csStmtNg.ae('cashFlow','cashFrmOpAct')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Cash From Operating
+                                        Activities </a></li>
+                                <li> <a id="cashFrmInvAct" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_cashFlow_cashFrmInvAct'); csStmtNg.ae('cashFlow','cashFrmInvAct')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Cash From Investing
+                                        Activities </a></li>
+                                <li> <a id="cashFrmFinAct" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_cashFlow_cashFrmFinAct'); csStmtNg.ae('cashFlow','cashFrmFinAct')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Cash from Financing
+                                        Activities </a></li>
+                                <li> <a id="chgInCash" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_cashFlow_chgInCash'); csStmtNg.ae('cashFlow','chgInCash')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Cash And Cash
+                                        Equivalent Change </a></li>
+                                <li> <a id="freeCF" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_cashFlow_freeCF'); csStmtNg.ae('cashFlow','freeCF')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Free Cash Flow </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Income Statement (FY) </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="revenue" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isYr_revenue'); csStmtNg.ae('isYr','revenue')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Total Revenue/Income
+                                    </a></li>
+                                <li> <a id="grossProfit" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isYr_grossProfit'); csStmtNg.ae('isYr','grossProfit')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Gross Profit </a></li>
+                                <li> <a id="opsExp" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isYr_opsExp'); csStmtNg.ae('isYr','opsExp')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Total Operating
+                                        Expense </a></li>
+                                <li> <a id="depNAmor" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isYr_depNAmor'); csStmtNg.ae('isYr','depNAmor')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Depreciation And
+                                        Amortization </a></li>
+                                <li> <a id="opsProfit" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isYr_opsProfit'); csStmtNg.ae('isYr','opsProfit')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Operating
+                                        Income/Profit </a></li>
+                                <li> <a id="ebitda" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isYr_ebitda'); csStmtNg.ae('isYr','ebitda')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">EBITDA </a></li>
+                                <li> <a id="ebit" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isYr_ebit'); csStmtNg.ae('isYr','ebit')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">EBIT </a></li>
+                                <li> <a id="pbt" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isYr_pbt'); csStmtNg.ae('isYr','pbt')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Income/Profit Before
+                                        Tax </a></li>
+                                <li> <a id="pat" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isYr_pat'); csStmtNg.ae('isYr','pat')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Net Income From
+                                        Continuing Operation </a></li>
+                                <li> <a id="netInc" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isYr_netInc'); csStmtNg.ae('isYr','netInc')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Net Income </a></li>
+                                <li> <a id="netIncAppToCmnSh" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isYr_netIncAppToCmnSh'); csStmtNg.ae('isYr','netIncAppToCmnSh')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Net Income Applicable
+                                        to Common Share </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group dropend w-100"> <button type="button"
+                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
+                                onclick="csh.smh(this)">Income Statement (Qtr) </button>
+                            <ul class="dropdown-menu"
+                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                <li> <a id="revenue" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isQtr_revenue'); csStmtNg.ae('isQtr','revenue')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Total Revenue/Income
+                                    </a></li>
+                                <li> <a id="grossProfit" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isQtr_grossProfit'); csStmtNg.ae('isQtr','grossProfit')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Gross Profit </a></li>
+                                <li> <a id="opsExp" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isQtr_opsExp'); csStmtNg.ae('isQtr','opsExp')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Total Operating
+                                        Expense </a></li>
+                                <li> <a id="depNAmor" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isQtr_depNAmor'); csStmtNg.ae('isQtr','depNAmor')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Depreciation And
+                                        Amortization </a></li>
+                                <li> <a id="opsProfit" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isQtr_opsProfit'); csStmtNg.ae('isQtr','opsProfit')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Operating
+                                        Income/Profit </a></li>
+                                <li> <a id="ebitda" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isQtr_ebitda'); csStmtNg.ae('isQtr','ebitda')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">EBITDA </a></li>
+                                <li> <a id="ebit" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isQtr_ebit'); csStmtNg.ae('isQtr','ebit')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">EBIT </a></li>
+                                <li> <a id="pbt" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isQtr_pbt'); csStmtNg.ae('isQtr','pbt')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Income/Profit Before
+                                        Tax </a></li>
+                                <li> <a id="pat" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isQtr_pat'); csStmtNg.ae('isQtr','pat')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Net Income From
+                                        Continuing Operation </a></li>
+                                <li> <a id="netInc" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isQtr_netInc'); csStmtNg.ae('isQtr','netInc')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Net Income </a></li>
+                                <li> <a id="netIncAppToCmnSh" class="dropdown-item"
+                                        onclick=" csh.ttcm(); csh.cd('finStmtNgTab'); csh.uht('finStmtNg_isQtr_netIncAppToCmnSh'); csStmtNg.ae('isQtr','netIncAppToCmnSh')"
+                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Net Income Applicable
+                                        to Common Share </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="d-flex flex-column justify-content-center">
+            <div class="d-flex justify-content-evenly">
+                <div class="tsrArrowEle">
+
+                </div>
+                <div class="ms-3">
+                    <span style="font-size: 20px;">
+                        Add a Filter
+                    </span>
+                </div>
+            </div>
+
+            <p class="ms-5 my-3 text-center">OR</p>
+
+            <div class="align-items-center d-flex flex-column ms-5">
+                <span>Run Pre-created Screener</span>
+                <div class="d-flex flex-column w-75">
+                    <button class="btn btn-sm btn-outline-secondary d-flex justify-content-evenly align-items-center my-2">
+                        <i class="fas fa-play"></i>
+                        <span>Supertrend Crossover</span>
+                    </button>
+                    <button class="btn btn-sm btn-outline-secondary d-flex justify-content-evenly align-items-center my-2">
+                        <i class="fas fa-play"></i>
+                        <span>RSI Above 20</span>
+                    </button>
+                    <button class="btn btn-sm btn-outline-secondary d-flex justify-content-evenly align-items-center my-2">
+                        <i class="fas fa-play"></i>
+                        <span>Screener 3</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <style>
-        @media only screen and (min-width > 576) {
-            
+        .tsrArrowEle {
+            position: relative;
+            top: 14px;
+            height: 3px;
+            width: 50px;
+            /* background-color: rgb(13 110 253); */
+            background-color: rgb(108 117 125);
+        }
+
+        .tsrArrowEle::after,
+        .tsrArrowEle::before {
+            content: "";
+            position: absolute;
+            height: 3px;
+            width: 15px;
+            /* background-color: rgb(13 110 253); */
+            background-color: rgb(108 117 125);
+
+        }
+
+        .tsrArrowEle::after {
+            transform: rotate(45deg);
+            top: 4px;
+
+        }
+
+        .tsrArrowEle::before {
+            transform: rotate(-45deg);
+            top: -4px;
+
         }
     </style>
 
+    <!-- <style>
+        .icon {
+            /* position: absolute; */
+            /* top: 50%;
+            left: 50%; */
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 60px;
+            cursor: pointer;
+        }
+
+        .tsrArrowEle {
+            position: absolute;
+            top: 25px;
+            width: 90%;
+            height: 5px;
+            background-color: rgb(13 110 253);
+            box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+            animation-name: tsrArrowEle;
+            animation-duration: 2000ms;
+            animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes tsrArrowEle {
+            from {
+                left: 0px
+            }
+
+            to {
+                left: -50px
+            }
+        }
+
+        .tsrArrowEle::after,
+        .tsrArrowEle::before {
+            content: '';
+            position: absolute;
+            width: 40%;
+            height: 5px;
+            right: 45px;
+            background-color: rgb(13 110 253);
+        }
+
+        .tsrArrowEle::after {
+            top: 7px;
+            transform: rotate(45deg);
+        }
+
+        .tsrArrowEle::before {
+            top: -7px;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+            transform: rotate(-45deg);
+        }
+    </style> -->
+
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

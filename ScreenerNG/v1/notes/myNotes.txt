@@ -1,0 +1,164 @@
+Painting the CS
+
+
+Parts of the CS:
+
+I. Desktop View
+    1. First Row - 
+        a. Left Column - for search and menu
+        b. Right column - for broaderFilters and box for filterSettings and selected Fields
+
+    2. Second Row - 
+        a. Filter control buttons
+
+II. Mobile View
+    
+
+
+
+TODO:
+
+CS - bottom row
+
+CS - selected Fields
+    - Clicking edit/pause/delete on a selected field should work
+    - resizer should work
+    - show selected fields in csControlsDiv on screens with width <> 768px and 1200px
+
+
+Modify CustomScreener.js
+MyTsrScreener.init() - to display appropriate CS for mobile screen
+
+Show changes to Rohit Sir
+    - in tabs.js
+    - in other places - CustomScreener.js, csHtmlHelper.js etc...
+
+
+Check all TODOs
+
+
+use utility variables or functions wherever possible
+
+
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+16/02/2026 - Monday
+
+
+
+Put if else cond. in 
+    ma.js and tech.js getHtml()
+    csHtmlHelper.js initNg()
+    csStructure.js init()
+
+
+
+----------------------------------------------------------------------------------
+
+17/02/2026 - Tuesday
+
+dataDef.js - i haven't put object with { id: "period"} in any FIN_RATIO_DEF category - 
+    - It's not required for showing filter button or it's HTML, so don't know how and where it is used
+
+
+----------------------------------------------------------------------------------
+
+
+18/02/2026 - Wednesday
+
+Q. Some DATA is duplicated now - e.g. FIN_RATIO_DEF, FIN_STMT_DEF. Is this acceptable ? 
+A. If No:
+    Options:
+        1. Should i modify existing data objects in mint_cn_minV0.js ?
+        A. Yes. Make new list of filters from existing data - append fields where required in dataDef.js 
+
+        LIST of existing data:
+        
+        1. FIN_RATIO
+            a. RATIO_VAL_DEF -- mint_cn_minV0
+            b. RATIO_PRICE -- mint_cn_minV0
+            c. GURU_NUMBERS -- mint_cn_minV0
+            d. SHARE_FIELD -- mint_cn_minV0
+            e. RATIO_PFT_DEF - mint_cn_minV0
+            f. RATIO_SOL_DEF - mint_cn_minV0
+            g. RATIO_EFF_DEF - mint_cn_minV0
+            h. TTM_RATIO_FIELD - not required
+            i. MRQ_RATIO_FIELD - not required
+
+        2. FIN_STMT_DEF
+            a. INC_STMT_ALL -- mint_cn_minV0
+            b. BAL_SHEET_ALL  -- mint_cn_minV0
+            c. CASH_FLOW_ALL  -- mint_cn_minV0
+
+        3. CHART_PATTERNS
+            CP_FIELDS -- chartPatterns.js
+
+        4. TECH_INDI_DEF
+            NA
+        
+        5. MA_DEF
+            NA
+
+        6. DIVERGENCE_DEF
+            NA
+
+        7. STRENGTH_DEF
+            NA
+
+        8. HIGH_LOWS_DEF
+            NA
+
+        9. BETA_VOLS_DEF
+            NA
+
+        10. PIVOT_DEF
+            NA
+
+        11. PRICE_ACTION_DEF
+
+        12. VOL_DEF 
+
+
+
+Q. Do i need to show/hide/disable filters based upon:
+        mtgv.mtpp.crossFreq,
+        mtgv.mtpp.pr,
+        isMigContext ?
+
+A. 
+	In pivot.js: Check condition
+        ----------
+        if(mtgv.mtpp.crossFreq  && mtgv.mtpp.pr   ){
+			html+= SP_3 + getButtonP('Fibonacci Retracement' , 'cspp.addFibr', 'fibr');
+		}else{
+			html+= SP_3 + htmlU.gdb('Fibonacci Retracement', AVAIL_HIGH_PLAN);
+		}
+        ---------
+
+    Make an access json which contains mtgv.mtpp.crossFreq  && mtgv.mtpp.pr, live. Append it to dataDef objects
+
+Q. How to close all dropdowns if filter is selected ?
+
+
+TODO: Remove OLD filters from CS after discussing with team
+
+--------------------------------------------------------------------------------------
+
+19/02/2026 - Thursday
+
+#Issue
+
+Chart patterns & Fin Stmt filters throw error when trying to repaint...
+
+
+
+

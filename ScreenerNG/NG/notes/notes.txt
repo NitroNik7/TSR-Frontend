@@ -1,0 +1,40 @@
+Painting the CS
+
+
+Parts of the CS:
+
+I. Desktop View
+    1. First Row - 
+        a. Left Column - for search and menu
+        b. Right column - for broaderFilters and box for filterSettings and selected Fields
+
+    2. Second Row - 
+        a. Filter control buttons
+
+II. Mobile View
+    
+
+
+
+TODO:
+
+CS - bottom row
+
+CS - selected Fields
+    - Clicking edit/pause/delete on a selected field should work
+    - resizer should work
+    - show selected fields in csControlsDiv on screens with width <> 768px and 1200px
+
+
+Modify CustomScreener.js
+MyTsrScreener.init() - to display appropriate CS for mobile screen
+
+Show changes to Rohit Sir
+    - in tabs.js
+    - in other places - CustomScreener.js, csHtmlHelper.js etc...
+
+
+Check all TODOs
+
+
+use utility variables or functions wherever possible

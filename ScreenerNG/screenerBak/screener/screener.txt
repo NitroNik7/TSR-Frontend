@@ -1,0 +1,46 @@
+
+
+
+New Tab 
+-------------
+
+
+Commonops.js -- Declare Tab Name
+
+	var DIV_CS 			= 	'divCs';
+
+tab.js -- Declare Tab Name
+
+	{id: DIV_CS, label:'Divergence', map:null} ,
+
+
+customScreener -- showControl
+		}else if(id==DIV_CS){
+		// html = getTiHtml(id);
+		html+=  csd.thd(id);
+
+
+
+Create new file divergence.js
+
+
+
+	getDivHtml()  -- 
+	
+	Control Table - 	<table id="divCtrlTab" class="table table-bordered   "  >
+
+	return {
+
+		thd : getDivHtml,
+
+
+
+csObject
+	{ id : 'techDivComp' , type : 'arr' , numId : 'techDivCompId' }, // Divergence
+
+
+custScrUtil
+
+	getSelectedField
+	csd.vd(validResults);
+

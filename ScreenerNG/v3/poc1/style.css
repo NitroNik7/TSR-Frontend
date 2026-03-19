@@ -1,0 +1,55 @@
+
+/* .tsrCsNGMenu::after {
+
+    right: 12px;
+    position: absolute;
+    top: 18px;
+
+} */
+
+
+.tsrCsNgFilter {
+    text-wrap: nowrap;
+    font-size: 16px;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    cursor: pointer;
+}
+
+.tsrCsNgFilter:hover {
+    background: none !important;
+    cursor: default;
+}
+
+.tsrCsNgArrowEle {
+    position: relative;
+    top: 14px;
+    height: 3px;
+    width: 50px;
+    /* background-color: rgb(13 110 253); */
+    background-color: rgb(108 117 125);
+}
+
+.tsrCsNgArrowEle::after,
+.tsrCsNgArrowEle::before {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 15px;
+    /* background-color: rgb(13 110 253); */
+    background-color: rgb(108 117 125);
+
+}
+
+.tsrCsNgArrowEle::after {
+    transform: rotate(45deg);
+    top: 4px;
+
+}
+
+.tsrCsNgArrowEle::before {
+    transform: rotate(-45deg);
+    top: -4px;
+
+}

@@ -1,0 +1,8 @@
+myTsrScreener ---> CustomScreener.js ----> init() ----> Entry point
+
+csfstr ---> csStructure.js ----> for resizing cs and sel. fields
+
+csh ---> csHtmlHelper.js ----> for painting CS form (tick, search & mySettings), cs box and controls (run, reset, alert, autoRefresh etc.)
+
+csu ---> CustScrUtil.js ----> for showing sel. tab and setting tab count
+

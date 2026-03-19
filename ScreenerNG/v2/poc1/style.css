@@ -1,0 +1,31 @@
+/* @media screen and (max-width: 1200px) {
+
+    #tsrCsDivSeperator,
+    #csSelFieldsDivWrap {
+        display: none !important;
+    }
+
+} */
+
+.tsrCsNGMenu::after {
+
+    right: 12px;
+    position: absolute;
+    top: 18px;
+
+}
+
+
+.tsrCsFilter {
+    text-wrap: nowrap;
+    font-size: 16px;
+    color: grey;
+    display: flex !important; 
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.tsrCsFilter:hover {
+    background: none !important;
+
+}

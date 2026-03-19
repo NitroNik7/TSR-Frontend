@@ -1,0 +1,16 @@
+/* @media screen and (max-width: 1200px) {
+
+    #tsrCsDivSeperator,
+    #csSelFieldsDivWrap {
+        display: none !important;
+    }
+
+} */
+
+.tsrCsNGMenu::after{
+
+    right: 12px;
+    position: absolute;
+    top: 18px;
+
+}
