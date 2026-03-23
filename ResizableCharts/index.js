@@ -3,6 +3,12 @@
 var jsu = mintJsUtil;
 var htmlU = mintHtmlUtil;
 
+let rightBarId = "tsrRcLayoutBar";
+let bottomBarId = "tsrRcBottomBar";
+let leftBarId = "tsrRcLeftBar";
+
+let chContainerId = "chPanelContainer";
+
 var splitLayout = (function () {
 
     let minRowHeight = 40;
@@ -424,15 +430,13 @@ var splitLayout = (function () {
 })();
 
 
-const container = $(".chPanelContainer");
+const container = $("#" + chContainerId);
 container.height("100%");
 
 let boxBtns = [
     {
-        id: "mySettings", label: "My Settings", title: "My settings", open: true, html: `<svg height="32" viewBox="0 0 288 288" fill="#2a2c2d" xmlns="http://www.w3.org/2000/svg">
-			<path d="M252.612 98H251.46C249.771 97.9851 248.127 97.4619 246.74 96.4988C245.353 95.5356 244.288 94.177 243.684 92.6C243.048 91.0772 242.88 89.3997 243.201 87.7811C243.521 86.1623 244.316 84.6756 245.484 83.51L246.303 82.691C251.24 77.7351 254.012 71.0248 254.012 64.0295C254.012 57.0342 251.24 50.3239 246.303 45.368L232.704 31.778C227.752 26.8372 221.042 24.0624 214.047 24.0624C207.052 24.0624 200.342 26.8372 195.39 31.778L194.571 32.597C193.364 33.759 191.845 34.5435 190.199 34.8543C188.553 35.165 186.851 34.9884 185.304 34.3462C183.757 33.704 182.431 32.6241 181.489 31.239C180.547 29.854 180.029 28.2239 180 26.549V25.388C179.993 18.3917 177.21 11.6839 172.263 6.73676C167.316 1.7896 160.608 -0.992852 153.612 -1H134.388C127.392 -0.992852 120.684 1.7896 115.737 6.73676C110.79 11.6839 108.007 18.3917 108 25.388V26.549C107.956 28.2119 107.431 29.8265 106.489 31.1972C105.546 32.5679 104.226 33.636 102.689 34.2721C101.152 34.9083 99.4638 35.0852 97.8282 34.7815C96.1927 34.4779 94.6802 33.7065 93.474 32.561L92.7 31.742C87.748 26.8012 81.0383 24.0264 74.043 24.0264C67.0477 24.0264 60.338 26.8012 55.386 31.742L41.742 45.332C36.805 50.2879 34.0331 56.9982 34.0331 63.9935C34.0331 70.9888 36.805 77.6991 41.742 82.655L42.561 83.474C43.7405 84.6807 44.5299 86.2142 44.8268 87.8753C45.1238 89.5364 44.9144 91.2484 44.226 92.789C43.6084 94.3235 42.5472 95.639 41.1781 96.5672C39.809 97.4955 38.1941 97.9943 36.54 98H35.388C28.3917 98.0071 21.6839 100.79 16.7368 105.737C11.7896 110.684 9.00715 117.392 9 124.388V143.612C9.00715 150.608 11.7896 157.316 16.7368 162.263C21.6839 167.21 28.3917 169.993 35.388 170H36.54C38.2286 170.015 39.8735 170.538 41.2605 171.501C42.6475 172.464 43.7122 173.823 44.316 175.4C44.9517 176.923 45.12 178.6 44.7994 180.219C44.4789 181.838 43.684 183.324 42.516 184.49L41.697 185.309C36.76 190.265 33.9881 196.975 33.9881 203.971C33.9881 210.966 36.76 217.676 41.697 222.632L55.287 236.213C60.2382 241.159 66.9503 243.937 73.9485 243.937C80.9467 243.937 87.6588 241.159 92.61 236.213L93.429 235.394C94.6364 234.216 96.1698 233.427 97.8306 233.13C99.4914 232.833 101.203 233.042 102.744 233.729C104.278 234.344 105.594 235.403 106.523 236.771C107.451 238.139 107.95 239.753 107.955 241.406V242.567C107.953 246.039 108.635 249.477 109.962 252.685C111.29 255.893 113.237 258.808 115.692 261.263C118.147 263.718 121.062 265.665 124.27 266.993C127.478 268.32 130.916 269.002 134.388 269H153.612C160.608 268.993 167.316 266.21 172.263 261.263C177.21 256.316 179.993 249.608 180 242.612V241.451C180.044 239.788 180.569 238.174 181.511 236.803C182.454 235.432 183.774 234.364 185.311 233.728C186.848 233.092 188.536 232.915 190.172 233.218C191.807 233.522 193.32 234.293 194.526 235.439L195.345 236.258C200.297 241.199 207.007 243.974 214.002 243.974C220.997 243.974 227.707 241.199 232.659 236.258L246.258 222.677C251.195 217.721 253.967 211.011 253.967 204.015C253.967 197.02 251.195 190.31 246.258 185.354L245.439 184.535C244.26 183.328 243.47 181.795 243.173 180.134C242.876 178.473 243.086 176.761 243.774 175.22C244.39 173.684 245.451 172.366 246.82 171.437C248.189 170.507 249.805 170.006 251.46 170H252.612C259.608 169.993 266.316 167.21 271.263 162.263C276.21 157.316 278.993 150.608 279 143.612V124.388C278.993 117.392 276.21 110.684 271.263 105.737C266.316 100.79 259.608 98.0071 252.612 98ZM261 143.612C260.998 145.836 260.113 147.968 258.541 149.541C256.968 151.113 254.836 151.998 252.612 152H251.46C246.237 152.044 241.143 153.625 236.813 156.545C232.482 159.465 229.107 163.595 227.108 168.421C225.109 173.246 224.575 178.553 225.571 183.68C226.568 188.807 229.052 193.527 232.713 197.252L233.523 198.071C235.094 199.647 235.977 201.781 235.977 204.007C235.977 206.232 235.094 208.366 233.523 209.942L219.924 223.523C218.351 225.096 216.218 225.98 213.993 225.98C211.768 225.98 209.635 225.096 208.062 223.523L207.252 222.704C203.525 219.047 198.806 216.567 193.68 215.573C188.554 214.578 183.25 215.114 178.426 217.112C173.603 219.11 169.473 222.483 166.553 226.811C163.632 231.139 162.049 236.23 162 241.451V242.612C161.998 244.836 161.113 246.968 159.541 248.541C157.968 250.113 155.836 250.998 153.612 251H134.388C132.164 250.998 130.032 250.113 128.459 248.541C126.887 246.968 126.002 244.836 126 242.612V241.451C125.975 236.22 124.405 231.112 121.488 226.769C118.571 222.427 114.436 219.042 109.602 217.041C104.769 215.039 99.4517 214.51 94.3185 215.519C89.1852 216.528 84.4642 219.031 80.748 222.713L79.929 223.532C78.3536 225.101 76.2211 225.981 73.998 225.981C71.7749 225.981 69.6424 225.101 68.067 223.532L54.477 209.951C52.9057 208.375 52.0234 206.241 52.0234 204.015C52.0234 201.79 52.9057 199.656 54.477 198.08L55.296 197.261C58.9607 193.536 61.4473 188.814 62.4455 183.685C63.4436 178.556 62.9091 173.246 60.9086 168.418C58.9082 163.591 55.5303 159.46 51.1966 156.54C46.863 153.62 41.7654 152.041 36.54 152H35.388C33.1641 151.998 31.032 151.113 29.4594 149.541C27.8869 147.968 27.0024 145.836 27 143.612V124.388C27.0024 122.164 27.8869 120.032 29.4594 118.459C31.032 116.887 33.1641 116.002 35.388 116H36.54C41.7628 115.956 46.8569 114.375 51.1874 111.455C55.5178 108.535 58.8929 104.405 60.8919 99.5793C62.891 94.754 63.4254 89.447 62.4287 84.3201C61.432 79.1931 58.9482 74.4729 55.287 70.748L54.477 69.929C52.9063 68.3548 52.0241 66.2218 52.0241 63.998C52.0241 61.7742 52.9063 59.6412 54.477 58.067L68.067 44.468C69.64 42.8951 71.7735 42.0114 73.998 42.0114C76.2225 42.0114 78.356 42.8951 79.929 44.468L80.739 45.287C84.4645 48.9465 89.1844 51.429 94.3106 52.4253C99.4369 53.4217 104.743 52.8878 109.568 50.8903C114.393 48.8927 118.524 45.5197 121.446 41.1915C124.367 36.8632 125.951 31.771 126 26.549V25.388C126.002 23.1641 126.887 21.032 128.459 19.4594C130.032 17.8869 132.164 17.0024 134.388 17H153.612C155.836 17.0024 157.968 17.8869 159.541 19.4594C161.113 21.032 161.998 23.1641 162 25.388V26.549C162.046 31.771 163.628 36.8639 166.549 41.193C169.47 45.5221 173.6 48.8958 178.425 50.8937C183.25 52.8917 188.556 53.4254 193.682 52.4284C198.808 51.4313 203.528 48.9477 207.252 45.287L208.071 44.468C209.644 42.8951 211.777 42.0114 214.002 42.0114C216.227 42.0114 218.36 42.8951 219.933 44.468L233.523 58.067C235.094 59.6412 235.976 61.7742 235.976 63.998C235.976 66.2218 235.094 68.3548 233.523 69.929L232.704 70.748C229.042 74.4734 226.558 79.1945 225.562 84.3223C224.566 89.4501 225.101 94.7577 227.101 99.5834C229.101 104.409 232.477 108.539 236.809 111.458C241.141 114.378 246.236 115.957 251.46 116H252.612C254.836 116.002 256.968 116.887 258.541 118.459C260.113 120.032 260.998 122.164 261 124.388V143.612Z"></path>
-			<path d="M144 71C131.54 71 119.359 74.6949 108.999 81.6174C98.6388 88.5399 90.5639 98.3792 85.7956 109.891C81.0273 121.403 79.7797 134.07 82.2105 146.291C84.6414 158.511 90.6416 169.737 99.4523 178.548C108.263 187.358 119.489 193.359 131.709 195.789C143.93 198.22 156.597 196.973 168.109 192.204C179.621 187.436 189.46 179.361 196.383 169.001C203.305 158.641 207 146.46 207 134C206.981 117.297 200.337 101.284 188.527 89.4733C176.716 77.6627 160.703 71.0191 144 71ZM144 179C135.1 179 126.4 176.361 118.999 171.416C111.599 166.471 105.831 159.443 102.425 151.221C99.0195 142.998 98.1283 133.95 99.8647 125.221C101.601 116.492 105.887 108.474 112.18 102.18C118.474 95.8868 126.492 91.601 135.221 89.8647C143.95 88.1283 152.998 89.0195 161.221 92.4254C169.443 95.8314 176.471 101.599 181.416 108.999C186.361 116.4 189 125.1 189 134C188.986 145.93 184.24 157.368 175.804 165.804C167.368 174.24 155.93 178.986 144 179Z"></path>
-			</svg>` },
+        id: "mySettings", label: "My Settings", title: "My settings", open: true, html: `<i class="fas fa-cogs"></i>`
+    },
     { id: "watchlist", label: "Watchlist", title: "Watchlist", open: true, html: `<svg height="32" viewBox="0 0 288 288" fill="#2a2c2d" xmlns="http://www.w3.org/2000/svg"><g><path d="M118.688 68.0625V33.75H127.125C131.788 33.75 135.562 29.9756 135.562 25.3125V8.4375C135.562 3.77438 131.788 0 127.125 0H42.75C38.0869 0 34.3125 3.77438 34.3125 8.4375V25.3125C34.3125 29.9756 38.0869 33.75 42.75 33.75H51.1875V68.0625H118.688ZM152.438 76.5C152.438 71.7739 148.726 68.0625 144 68.0625C139.274 68.0625 135.562 71.7739 135.562 76.5V84.9375H152.438V76.5ZM135.562 177.75C135.562 182.474 139.274 186.188 144 186.188C148.726 186.188 152.438 182.474 152.438 177.75V169.312H135.562V177.75ZM237.375 68.0625V33.75H245.812C250.476 33.75 254.25 29.9756 254.25 25.3125V8.4375C254.25 3.77438 250.476 0 245.812 0H160.875C156.212 0 152.438 3.77438 152.438 8.4375V25.3125C152.438 29.9756 156.212 33.75 160.875 33.75H169.312V68.0625H237.375ZM118.688 220.5V169.312H135.562V84.9375H42.75C38.8699 84.9375 35.4949 87.6375 34.6511 91.3489L1.85625 220.5H118.688ZM169.312 169.312V220.5H286.144L253.911 91.3489C253.068 87.6381 249.693 84.9375 245.812 84.9375H152.438V169.312H169.312ZM0 279.562C0 284.226 3.77438 288 8.4375 288H110.25C114.913 288 118.688 284.226 118.688 279.562V237.375H0V279.562ZM288 279.562V237.375H169.312V279.562C169.312 284.226 173.087 288 177.75 288H279.562C284.226 288 288 284.226 288 279.562Z"></path></g></svg>` },
     { id: "screeners", label: "Screeners", title: "Screeners", open: true, html: `<svg height="32" viewBox="0 0 288 288" fill="black" xmlns="http://www.w3.org/2000/svg"><g><path d="M91.8845 190.936C85.1558 190.936 79.6949 195.094 79.6949 200.224C79.6949 205.359 85.1558 209.517 91.8845 209.517C98.6177 209.517 104.074 205.359 104.074 200.224C104.074 195.094 98.6177 190.936 91.8845 190.936ZM79.6949 163.059C72.9662 163.059 67.5048 167.222 67.5048 172.352C67.5048 177.486 72.9662 181.644 79.6949 181.644C86.4281 181.644 91.8845 177.486 91.8845 172.352C91.8845 167.222 86.4281 163.059 79.6949 163.059ZM113.217 13.9367V84.0969L81.1615 126.361H181.845L149.786 84.0969V13.9367H113.217ZM76.6472 0H186.355V13.9367H168.071V80.356L223.655 153.638H134.057C123.975 153.647 115.808 160.712 115.816 169.423C115.819 173.337 117.508 177.113 120.552 180.011L180.884 237.336V237.855H33.5736C21.4546 237.855 10.5975 233.076 4.54111 225.07C-1.51932 217.069 -1.51195 207.515 4.55442 199.514L94.9318 80.356V13.9367H76.6472V0Z"></path><path d="M272.566 164.635H154.775C146.244 164.639 139.334 170.723 139.341 178.214C139.344 181.582 140.772 184.83 143.348 187.324L194.396 236.648V283.163C194.397 285.018 195.606 286.709 197.508 287.516C198.253 287.84 199.073 288.004 199.903 288C201.155 288 202.369 287.623 203.345 286.935L213.67 279.68L230.879 267.583C232.183 266.668 232.943 265.28 232.944 263.811V236.648L283.992 187.324C289.725 181.773 289.251 173.191 282.934 168.154C280.095 165.891 276.399 164.639 272.566 164.635Z"></path></g></svg>` },
 ]
@@ -442,7 +446,7 @@ let boxBtns = [
 let backgroundColors = ["cornflowerblue", "aquamarine", "hotpink", "burlywood", "darkgrey"];
 
 function chooseLayout(id) {
-    const container = $(".chPanelContainer");
+    const container = $("#" + chContainerId);
     container.html("");
     // container.height("80vh");
     if (id === 1) {
@@ -512,15 +516,37 @@ function chooseLayout(id) {
             }
         }
 
+
+
+        createScrollDiv(true, "x", bottomBarId, "tsrRcBottomMenu", 50);
+        createScrollDiv(true, "y", leftBarId, "tsrRcLeftBarMenu", 100);
+
+        $('#' + rightBarId).append(`
+            <div class="dropstart">
+                <button class="btn" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-cog"></i>
+                </button>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" onclick="showBar(this, '${leftBarId}')">Left Bar</a></li>
+                    <li><a class="dropdown-item" onclick="showBar(this, '${bottomBarId}')">Bottom Bar</a></li>
+                    <li><a class="dropdown-item" >More Settings</a></li>
+                </ul>
+            </div>
+        `);
+
+        addBtnToBottomBar();
+        addBtnToLeftBar();
+
     }
 }
 
 function addBtnToCol(btns, boxEleIdPrefix) {
-    let rightColDiv = document.getElementById("rightColWrapper");
 
     var html = "";
     let openBoxCount = 0;
     let openBoxes = [];
+    html += `<div class="d-flex flex-column">`
     for (let i = 0; i < btns.length; i++) {
         let btn = btns[i];
         if (btn.open) {
@@ -528,12 +554,13 @@ function addBtnToCol(btns, boxEleIdPrefix) {
             let rowId = boxEleIdPrefix + openBoxCount;
             openBoxes.push({ "rowId": rowId, "btnId": btn.id });
         }
-        html += `<button class="btn" id="${btn.id}" title="${btn.title}"  onclick="toggleBtn('${btn.id}'); chooseLayout('9');">`
+        html += `<button class="btn" id="${btn.id}" title="${btn.title}"  onclick="toggleBtn('${btn.id}'); splitLayout.cl('9');">`
         html += btn.html;
         html += `</button>`
     }
+    html += `</div>`
 
-    rightColDiv.innerHTML = html;
+    htmlU.addMsgToDiv(rightBarId, true, html);
 
     return openBoxes;
 }
@@ -726,3 +753,166 @@ function getPreCreatedScreenersHtml(infoBox) {
 
     return html;
 }
+
+function createScrollDiv(hasBtns, scrollDir, containerId, divId, scrollBy) {
+
+    let html = "";
+
+    let container = document.getElementById(containerId);
+    container.classList.add("tsrRcScrollDivContainer");
+
+    if (scrollDir == "horizontal" || scrollDir == "x") {
+        container.classList.add("justify-content-between");
+    } else if (scrollDir == "vertical" || scrollDir == "y") {
+        container.classList.add("flex-column", "justify-content-between");
+    }
+
+    scrollDir.toLowerCase();
+    if (scrollDir == "horizontal" || scrollDir == "x") {
+        if (hasBtns) {
+            html += `<button class="scrollBtn" onclick="scrollDiv('${scrollDir}', ${scrollBy * -1}, '${divId}')">`
+            html += `   <`
+            html += `</button>`
+        }
+    } else if (scrollDir == "vertical" || scrollDir == "y") {
+        html += `<button class="scrollBtn" onclick="scrollDiv('${scrollDir}', ${scrollBy * -1}, '${divId}')">`
+        html += `   <p style="transform: rotate(270deg);margin: 0;">></p>`
+        html += `</button>`
+    }
+
+    if (scrollDir == "horizontal" || scrollDir == "x") {
+        html += `<div id="${divId}" class="d-flex" style="width: calc(100% - 40px); overflow-y: hidden; overflow-x: auto;" class="tsrRcScrollDiv">`;
+
+        html += `</div>`;
+    }
+    else if (scrollDir == "vertical" || scrollDir == "y") {
+        html += `<div id="${divId}" class="d-flex flex-column" style="height: calc(100% - 60px); overflow-y: auto; overflow-x: hidden;" class="tsrRcScrollDiv">`;
+
+        html += `</div>`;
+    }
+
+
+    if (scrollDir == "horizontal" || scrollDir == "x") {
+        if (hasBtns) {
+            html += `<button class="scrollBtn" onclick="scrollDiv('${scrollDir}', ${scrollBy}, '${divId}')">`
+            html += `   >`
+            html += `</button>`
+        }
+    } else if (scrollDir == "vertical" || scrollDir == "y") {
+        html += `<button class="scrollBtn" onclick="scrollDiv('${scrollDir}', ${scrollBy * 1}, '${divId}')">`
+        html += `   <p style="transform: rotate(90deg);margin: 0;">></p>`
+        html += `</button>`
+    }
+
+    htmlU.addMsgToDiv(containerId, true, html);
+    container.style.display = "none";
+
+
+}
+
+function scrollDiv(scrollDir, scrollBy, divId) {
+    let div = document.getElementById(divId);
+    scrollDir.toLowerCase();
+
+    if (scrollDir == "horizontal" || scrollDir == "x") {
+        div.scrollBy({
+            "left": scrollBy,
+        })
+    } else if (scrollDir == "vertical" || scrollDir == "y") {
+        div.scrollBy({
+            "top": scrollBy,
+        })
+    }
+
+}
+
+function showBar(btn, barId) {
+    btn.classList.toggle("tsrRcActive");
+
+    let bar = document.getElementById(barId);
+    if (bar.style.display == "flex") {
+        bar.style.display = "none";
+    } else {
+        bar.style.display = "flex";
+        // let chContainer = document.getElementById(chContainerId);
+        // chContainer.style.width = (chContainer.getBoundingClientRect().width - 50) + "px";
+    }
+
+    // htmlU.showDiv(barId);
+}
+
+let leftBarBtns = [
+    { id: "", label: '<i class="fas fa-pencil-alt"></i>', icon: "", func: "" },
+    { id: "", label: '<i class="far fa-square"></i>', icon: "", func: "" },
+    { id: "", label: '<i class="fas fa-pencil-alt"></i>', icon: "", func: "" },
+    { id: "", label: '<i class="far fa-square"></i>', icon: "", func: "" },
+    { id: "", label: '<i class="fas fa-pencil-alt"></i>', icon: "", func: "" },
+    { id: "", label: '<i class="far fa-square"></i>', icon: "", func: "" },
+];
+
+function addBtnToLeftBar() {
+    var html = "";
+
+    for (let i = 0; i < leftBarBtns.length; i++) {
+        let btn = leftBarBtns[i];
+
+        html += `<button class="btn">`
+        html += btn.label;
+        html += `</button>`
+    }
+    html += `</div>`;
+
+
+
+    htmlU.addMsgToDiv("tsrRcLeftBarMenu", true, html);
+}
+
+let bottomBarBtns = [
+    { id: "", label: "RSI", icon: "", func: "" },
+    { id: "", label: "EMA", icon: "", func: "" },
+    { id: "", label: "MACD", icon: "", func: "" },
+    { id: "", label: "Overbrought", icon: "", func: "" },
+    { id: "", label: "Bollinger Bands", icon: "", func: "" },
+    { id: "", label: "ADR", icon: "", func: "" },
+     { id: "", label: "RSI", icon: "", func: "" },
+    { id: "", label: "EMA", icon: "", func: "" },
+    { id: "", label: "MACD", icon: "", func: "" },
+    { id: "", label: "Overbrought", icon: "", func: "" },
+    { id: "", label: "Bollinger Bands", icon: "", func: "" },
+    { id: "", label: "ADR", icon: "", func: "" },
+     { id: "", label: "RSI", icon: "", func: "" },
+    { id: "", label: "EMA", icon: "", func: "" },
+    { id: "", label: "MACD", icon: "", func: "" },
+    { id: "", label: "Overbrought", icon: "", func: "" },
+    { id: "", label: "Bollinger Bands", icon: "", func: "" },
+    { id: "", label: "ADR", icon: "", func: "" },
+     { id: "", label: "RSI", icon: "", func: "" },
+    { id: "", label: "EMA", icon: "", func: "" },
+    { id: "", label: "MACD", icon: "", func: "" },
+    { id: "", label: "Overbrought", icon: "", func: "" },
+    { id: "", label: "Bollinger Bands", icon: "", func: "" },
+    { id: "", label: "ADR", icon: "", func: "" },
+     { id: "", label: "RSI", icon: "", func: "" },
+    { id: "", label: "EMA", icon: "", func: "" },
+    { id: "", label: "MACD", icon: "", func: "" },
+    { id: "", label: "Overbrought", icon: "", func: "" },
+    { id: "", label: "Bollinger Bands", icon: "", func: "" },
+    { id: "", label: "ADR", icon: "", func: "" },
+];
+
+function addBtnToBottomBar() {
+
+    var html = "";
+
+    for (let i = 0; i < bottomBarBtns.length; i++) {
+        let btn = bottomBarBtns[i];
+
+        html += `<button class="btn" style="min-width: 100px;">`
+        html += btn.label;
+        html += `</button>`
+    }
+    html += `</div>`
+
+    htmlU.addMsgToDiv("tsrRcBottomMenu", true, html);
+}
+

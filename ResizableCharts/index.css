@@ -53,7 +53,22 @@
 #rightColWrapper button:hover {
     transform: scale(1.15);
     transition: scale 1s ease-out;
-    tra
+}
+
+.tsrRcScrollDivContainer:hover .scrollBtn {
+    opacity: 1;
+}
+
+.tsrRcScrollDivContainer .scrollBtn {
+    opacity: 0;
+}
+
+.tsrRcScrollDiv {
+    scroll-behavior: smooth;
+}
+
+.tsrRcActive::before {
+    content: "✅";
 }
 
 /* table td:nth-child(1){
