@@ -781,12 +781,12 @@ function createScrollDiv(hasBtns, scrollDir, containerId, divId, scrollBy) {
     }
 
     if (scrollDir == "horizontal" || scrollDir == "x") {
-        html += `<div id="${divId}" class="d-flex" style="width: calc(100% - 40px); overflow-y: hidden; overflow-x: auto;" class="tsrRcScrollDiv">`;
+        html += `<div id="${divId}" class="d-flex tsrRcScrollDiv" style="width: calc(100% - 40px); overflow-y: hidden; overflow-x: auto;" >`;
 
         html += `</div>`;
     }
     else if (scrollDir == "vertical" || scrollDir == "y") {
-        html += `<div id="${divId}" class="d-flex flex-column" style="height: calc(100% - 60px); overflow-y: auto; overflow-x: hidden;" class="tsrRcScrollDiv">`;
+        html += `<div id="${divId}" class="d-flex flex-column tsrRcScrollDiv" style="height: calc(100% - 60px); overflow-y: auto; overflow-x: hidden;" >`;
 
         html += `</div>`;
     }
