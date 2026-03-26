@@ -30,6 +30,18 @@ Removed(as unnecessary):
 
 TODO:
 
+---------------------------------------------------
+
+NewLayoutHtmlHelper.js
+
+Updated:
+    
+
+Added:
+
+Removed(as unnecessary):
+
+TODO:
 
 -------
 Other Files

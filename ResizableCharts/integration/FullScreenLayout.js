@@ -154,7 +154,7 @@ var michnglo = (function () { // mint  chart ng layout  ....
         // Painting PANEL content
         for (let i = 0; i < panelVertDivs.length; i++) {
             let panel = panelVertDivs[i];
-            chngh.gsph(panel);
+            chngh.gsph(panel); // modified
         }
 
 
@@ -195,7 +195,7 @@ var michnglo = (function () { // mint  chart ng layout  ....
             htmlU.addMsgToDiv('tsrChNgBottomBar', true, 'Bottom');
             // htmlU.addMsgToDiv('tsrChNgPanelBar' ,true, 'pannel');
 
-            chngh.abtpb(panelVertDivs);
+            chngh.abtpb(panelVertDivs); // modified
 
 
         }
