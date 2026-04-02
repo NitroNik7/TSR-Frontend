@@ -10,6 +10,7 @@ Updated:
     CHARTS_DIV
     addBtnsToPanelBar()
     showBar()
+    handleNewLayout()
 
 Added:
 
@@ -47,7 +48,6 @@ TODO:
 Other Files
 -------
 
-style.css
 
 
 

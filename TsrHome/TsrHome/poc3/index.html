@@ -1,0 +1,874 @@
+<html>
+
+<head>
+    <title>TSR - Technical Stock Screener, Charts, Fundamental, Live Alerts</title>
+    <meta name="description"
+        content="TSR - TopStockResearch is Indias leading Technical Stock Screener along with Fundamentals, Charts, Stock Strength Analyser, Pattern screener & live Alerts.">
+    <meta name="keywords"
+        content="TSR , TopStockResearch, Stock Screener, Technical Stock Screener, Fundamentals, Technical Analysis,  Nifty 50, Stock Screener India, Custom Screener, ChartPatterns, CandleStick ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href='https://www.topstockresearch.com/static/icon/TopStockResearch.ico' type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/aioCmnV0.0.0.10.css' />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='//code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/mint_cn_minV0.7.5.194.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/aio_cmnV0.0.0.53.js"></script>
+</head>
+<!-- <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-20026022-1']);
+    _gaq.push(['_setDomainName', 'topstockresearch.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script> -->
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10KWGPV9XG"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-10KWGPV9XG');
+</script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10926652708"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-10926652708');
+</script>
+<style>
+    .dummyCss {
+        position: relative;
+        display: inline-block;
+    }
+</style>
+<script>   var userProf = { status: 'signedIn', sal: 'Dear', fName: 'Nitro', refCode: 'null', expDt: '17_Sep_2026', sub: 'TRADER_PRO', tsrLogin: true };  </script>
+
+<body class="scrollable">
+    <div id="mainController">
+
+        <div style="display: none;">
+            <select class='selectpicker' id='userMkt' onchange="javascript:marketOnChange();">
+                <option value="IN" selected="selected" label="India">India</option>
+            </select>
+        </div>
+
+
+        <div class="app tsrsn-folded">
+            <div class="layout"><!--                <div id='dynHead'></div>-->
+                <div class="tsrhdr navbar">
+                    <div class="tsrhdr-container">
+                        <div class="nav-logo" id='navLogoDiv'>
+                            <a href="javascript:void(0);" class="tsrsn-fold-toggler" title='TSR (TopStockResearch.com)'>
+                                <div class="logo logo-dark"
+                                    style="background-image: url('https://www.topstockresearch.com/static/v21/img/tsr/TsrLogo.png')">
+                                </div>
+                            </a>
+                        </div>
+                        <div id='dynHead'></div>
+                    </div>
+                </div>
+                <!-- Header End-->
+                <div class="tsrNavMenuCntr">
+                    <nav class="tsrNavMenuSideBar">
+                        <ul class="tsrNavMenuList nav justify-content-center">
+                            <li class="tsrNavMenuItem">
+                                <a class="nav-item" href='https://www.TopStockResearch.com/rt/Home'>
+                                    <span class='icon-holder' id='homeSbDiv' aria-hidden='true'> </span> <span
+                                        class='title'>Home</span></a>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='msSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Markets</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener'>Market
+                                            Overview</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/PriceVolume'>Price
+                                            / Volume</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/HighsLows'>Highs
+                                            / Lows</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/RelativeStrength'>Relative
+                                            Price Strength</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/Returns'>Returns</a>
+                                    </li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/IndexAnalysis'>Index
+                                            Analysis</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/SectorRotation'>Sector
+                                            Rotation</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/SectorAnalysis'>Sector
+                                            Analysis</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/HeatMap'>Heat
+                                            Map</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/AdvanceDecline'>Advance
+                                            /Decline</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener'>Intraday
+                                            Strategies</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='expsSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Expert Screeners</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/PriceActionBased'>Price
+                                            Action Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/TechIndiBased'>Technical
+                                            Indicator Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/MovingAverageStrategies'>Moving
+                                            Average Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/ScalpingTradingStrategies'>Scalping
+                                            Trading Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/IntradayTradingStrategies'>Intraday
+                                            Trading Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/BTSTStrategies'>BTST
+                                            Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/STBTStrategies'>STBT
+                                            Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/BreakoutStrategies'>Breakout
+                                            & Breakdown Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/SwingTradingStrategies'>Swing
+                                            Trading Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/PositionalTradingStrategies'>Positional
+                                            Trading Strategies</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <a class="nav-item" href='https://www.TopStockResearch.com/rt/CustomStockScreener.tsr'>
+                                    <span class='icon-holder' id='diysSbDiv' aria-hidden='true'> </span> <span
+                                        class='title'>Custom Screener</span></a>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='strSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>TSR Strength</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/TechnicalStrength'>Technical
+                                            Strength</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/FinancialStrength'>Financial
+                                            Strength</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/EODBetaVolatile'>EOD
+                                            Beta Volatile</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='csSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Candlestick</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
+                                            Screener</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
+                                            Screener</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='techSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Technicals</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/OHLCScreeners'>OHLC
+                                            Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/OverboughtSold'>Overbought/Sold</a>
+                                    </li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/Overlays'>Overlays</a>
+                                    </li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/TrendIndicator'>Trend
+                                            Indicator</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/VolumeBasedIndicator'>Volume
+                                            Based Indicator</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/SMAScreener'>SMA
+                                            Screener</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/EMAScreener'>EMA
+                                            Screener</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/WMAScreener'>WMA
+                                            Screener</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/VwapScreener'>VWAP
+                                            Screener</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/PivotPoint'>Pivot
+                                            Point</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/FibonacciScreener'>Fibonacci
+                                            Screener</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='cpSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Patterns</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/PopularChartPatterns'>Popular
+                                            Chart Patterns</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Triangle'>Triangle</a>
+                                    </li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Channel'>Channel</a>
+                                    </li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Trendlines'>Trendlines</a>
+                                    </li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/NRWR'>NR /
+                                            WR</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='fundaSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Financials</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/FinHighlight'>Financial
+                                            Highlight</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/GuruRatios'>Guru
+                                            Ratios</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/ValuationRatios'>Valuation
+                                            Ratios</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/ProfitabilityRatios'>Profitability
+                                            Ratios</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/SolvencyRatios'>Solvency
+                                            Ratios</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/EfficiencyRatios'>Efficiency
+                                            Ratios</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/IncStatGrowthYr'>Income
+                                            Statment Growth (Yr)</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/BalSheetGrowthYr'>Balance
+                                            Sheet Growth (Yr)</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/CashFlowStatGrowthYr'>Cash
+                                            Flow Stat Growth (Yr)</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='comboSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Combo</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/PriceActionScreeners'>Price
+                                            Action Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish
+                                            Technical Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish
+                                            Technical Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/FundamentalScreener'>Fundamental
+                                            Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/MovingAverageScreeners'>Moving
+                                            Average Screeners</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <a class="nav-item" href='https://www.TopStockResearch.com/rt/InteractiveCharts.tsr'>
+                                    <span class='icon-holder' id='tcSbDiv' aria-hidden='true'> </span> <span
+                                        class='title'>Tech Chart</span></a>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <a class="nav-item" href='https://www.TopStockResearch.com/my/TsrPlans/'>
+                                    <span class='icon-holder' id='subsSbDiv' aria-hidden='true'> </span> <span
+                                        class='title'>Premium</span></a>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='fnoSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>F&O</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures'>Futures
+                                            Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/CallOptions'>Call
+                                            Option Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutOptions'>Put
+                                            Option Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutCallRatio'>PCR
+                                            Screeners</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='tutSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Learn </span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://tutorials.TopStockResearch.com'>Tutorials</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.TopStockResearch.com/rt/Ebooks'>E-Books</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <button id="tsrNavMenuScrollBtn" class="d-none d-sm-block btn mx-auto"
+                            style="font-size: 24px; color: white;">
+                            <i class="fas fa-caret-down"></i>
+                        </button>
+                    </nav>
+                </div>
+                <script>var mcat = 'homeSb';</script> <!-- Page Container Start -->
+                <div class="page-container"> <!-- Quick View Start -->
+
+
+                    <div class="tsrqv1" id='helpNav'>
+                        <ul class="tsrqv-tabs nav nav-tabs nav-justified" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" data-bs-target="#myTsrLinkstab" role="tab"
+                                    data-bs-toggle="tab">
+                                    MyTSR Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myLinksTab" role="tab" data-bs-toggle="tab"
+                                    onClick='migUi.myLinks()'>
+                                    My Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myRecentActTab" role="tab"
+                                    data-bs-toggle="tab" onClick='migUi.myRecAct()'>
+                                    My Recent Activities
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content scrollable">
+                            <div id="myTsrLinksTab" role="tabpanel" class="tab-pane fade show active">
+                                <div id='myTsrLinks'> Loading</div>
+                            </div>
+                            <div id="myLinksTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myLinksDiv'> Loading ...</div>
+                            </div>
+                            <div id="myRecentActTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myRecentActivityDiv'> Loading ...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick View End --> <!-- Content Wrapper Start -->
+                    <div class="main-content">
+                        <!-- code starts here -->
+                        <div class="d-flex flex-column align-items-center justify-content-around" style="
+                            width: 100%; 
+                            height: 60%; 
+                           /* The gradient is added as the last background layer */
+                            background: 
+                                /* Subtle Grid Lines */
+                                /* linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), */
+                                /* linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px), */
+                                /* White Subtle Candlesticks (using white for contrast against the gradient) */
+                                linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)),
+                                linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)),
+                                linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)),
+                                /* Your Purple-to-Teal Gradient as the Base */
+                                /* linear-gradient(45deg, #7f30cb, #01dcba); */
+                                linear-gradient(0deg,#09124f 0,#5c5cbd 30%,#006fbf 100%);
+                            background-size: 
+                                /* 50px 50px, 50px 50px,  */
+                                10px 40px, 1px 70px,  
+                                10px 50px, 1px 85px,  
+                                10px 60px, 1px 100px,
+                                100% 100%; /* Base gradient size */
+                            background-position: 
+                                /* 0 0, 0 0,  */
+                                10% 80%, 10% 80%, 
+                                50% 50%, 51% 45%, 
+                                90% 20%, 91% 15%,
+                                0 0;
+                            background-repeat:  no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+                            border-radius: 12px;
+                            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                        ">
+                            <div style="color: white; text-align: center; position: relative; top: -50px; "
+                                class="w-100 p-2 border-0 rounded d-flex flex-column flex-md-row justify-content-between">
+                                <h6>Mintnovate - Minting Innovation</h6>
+                                <h6>Made in India for the World</h6>
+                            </div>
+
+                            <style>
+                                @keyframes textSpinner {
+                                    0% {
+                                        transform: translateY(0);
+                                    }
+
+                                    33% {
+                                        transform: translateY(-150%);
+                                    }
+
+                                    66% {
+                                        transform: translateY(-300%);
+                                    }
+
+                                    100% {
+                                        transform: translateY(-450%);
+                                    }
+                                }
+                            </style>
+
+                            <h4 class="d-flex" style="color: white;">
+                                One Stop Shop for&nbsp;
+                                <div class="d-flex flex-column" style="height: 30px; overflow: hidden;">
+                                    <p style=" animation: textSpinner 10s ease-in-out 0s infinite normal none;">Screeners</p>
+                                    <p style=" animation: textSpinner 10s ease-in-out 0s infinite normal none;">Charts</p>
+                                    <p style=" animation: textSpinner 10s ease-in-out 0s infinite normal none;">Research</p>
+                                    <p style=" animation: textSpinner 10s ease-in-out 0s infinite normal none;">Alerts</p>
+                                </div>
+                            </h4>
+                            <!-- 
+                            <div class="d-flex justify-content-between w-75 align-items-center bg-white rounded-pill p-3">
+                                <h5 style="margin: 0;">Exciting Offers This FY END! Grab Now</h5>
+                                <button class="btn btn-primary">Plans</button>
+                            </div> -->
+
+                            <div style="text-align: center; color: white;" class="p-2">
+
+                                <h1
+                                    style="font-size: 50px;text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);font-weight: bold;">
+                                    Top Stock Research
+                                </h1>
+                                <h5>Learn, Screen, Analyse, Test Before Trade</h5>
+
+                            </div>
+
+                            <div style="width: auto; text-align: center; width: 50%;"> <input id="user_input"
+                                    type="text" class="form-control ui-autocomplete-input"
+                                    placeholder="Search Screeners, Research, Charts (Ctrl + K)"
+                                    onclick="miIs.ssb('equity')" autocomplete="off"
+                                    style="margin:10px; margin-bottom: 5px; margin-top: 0px;">
+                                <!-- <a href="https://127.0.0/rt/TsrHighlights/TsrTechnicalTool"
+                                    style="margin-left: 10px; font-weight: 500;">India's Best Technical Tool</a> -->
+                                <!-- <p
+                                        style="color: white; font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500;">
+                                        Your One Stop Shop for Screeners, Research, Charts & Alerts</p> -->
+                            </div>
+
+                            <!-- <h5 style="color: white;">A Tool for Everyone!</h5> -->
+                        </div>
+
+                        <br>
+
+                        <div class="d-flex flex-column align-items-center justify-content-around p-3"
+                            style="box-shadow: 0 10px 30px rgba(0,0,0,0.4); border-radius: 12px;">
+
+                            <h2 style="text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);font-weight: bold;">A Platform
+                                for All</h2>
+
+                            <div class="btn-group w-75" role="group" aria-label="Basic example">
+                                <button type="button" id="tsrHomeBeginnerFeatures"
+                                    class="tsrHomeFeatureBtn active btn w-50"
+                                    onclick="showFeatures(this)">Beginner</button>
+                                <button type="button" id="tsrHomeProFeatures" class="tsrHomeFeatureBtn btn w-50"
+                                    onclick="showFeatures(this)">Pro</button>
+                            </div>
+
+                            <script>
+                                function showFeatures(button) {
+                                    let buttons = document.getElementsByClassName("tsrHomeFeatureBtn");
+                                    for (let i = 0; i < buttons.length; i++) {
+                                        buttons[i].classList.remove("active");
+                                    }
+                                    button.classList.add("active");
+
+                                    let featuresSection = document.getElementById("tsrHomePlatformFeatures")
+                                    let html = "";
+                                    if (button.id == "tsrHomeBeginnerFeatures") {
+                                        html += ` <h3>Get Started With.</h3>
+                                <br>
+                                <table style="width: 100%; table-layout: fixed; text-align: center; color:black; ">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <h5>
+                                                    Screeners
+                                                </h5>
+                                            </th>
+                                            <th>
+                                                <h5>
+                                                    Tools
+                                                </h5>
+                                            </th>
+                                            <th>
+                                                <h5>
+                                                    Market Research
+                                                </h5>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Screener 1</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Tool 1</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Market 1</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Screener 2</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Tool 2</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Market 2</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Screener 3</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Tool 3</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Market 3</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>`
+                                    }
+                                    else {
+                                        html += ` <h3>Excel With.</h3>
+                                <br>
+                                <table style="width: 100%; table-layout: fixed; text-align: center; color:black; ">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <h5>
+                                                    Screeners
+                                                </h5>
+                                            </th>
+                                            <th>
+                                                <h5>
+                                                    Tools
+                                                </h5>
+                                            </th>
+                                            <th>
+                                                <h5>
+                                                    Market Research
+                                                </h5>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Screener 1</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Tool 1</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Market 1</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Screener 2</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Tool 2</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Market 2</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Screener 3</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Tool 3</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Market 3</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>`
+                                    }
+                                    featuresSection.innerHTML = html;
+
+                                }
+                            </script>
+
+                            <style>
+                                .tsrHomeFeatureBtn.active {
+                                    /* border-bottom: 1px solid green; */
+                                    box-shadow: 0px -5px inset rgba(4, 65, 231, 0.4);
+                                }
+
+                                table th {
+                                    padding: 10px;
+                                }
+
+                                table th,
+                                td {
+                                    border-right: 1px solid white;
+                                }
+
+                                table a:hover :nth-child(n-1) {
+                                    scale: 1.3;
+                                    transition: all 0.2s;
+                                }
+
+                                table td a {
+                                    color: black !important;
+                                }
+                            </style>
+                            <div id="tsrHomePlatformFeatures" class="container p-3" style="text-align: center;">
+                                <h3>Get Started With.</h3>
+                                <br>
+                                <table style="width: 100%; table-layout: fixed; text-align: center; color:black; ">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <h5>
+                                                    Screeners
+                                                </h5>
+                                            </th>
+                                            <th>
+                                                <h5>
+                                                    Tools
+                                                </h5>
+                                            </th>
+                                            <th>
+                                                <h5>
+                                                    Market Research
+                                                </h5>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Screener 1</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Tool 1</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Market 1</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Screener 2</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Tool 2</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Market 2</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Screener 3</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Tool 3</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="d-flex justify-content-around" href="">
+                                                    <p>Market 3</p>
+                                                    <p><i class="fas fa-location-arrow"></i></p>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- code ends here -->
+                    </div>
+                    <!-- Content Wrapper End -->
+
+
+
+
+                </div>
+            </div> <!-- NG APP  align='center'-->
+
+
+
+
+
+</body>
+<script>   migUi.init(); </script>
+<div id='alertDialog' class='web_dialog'></div>
+<div id='artnuDiv'></div>
+<div id='tradeOrderDiv' class='web_dialog'></div>
+<div id='cs_help_dialog' class='web_dialog'> </div>
+<script src='https://www.topstockresearch.com/static/js/tsr/my/fav_minV0.0.1.1.js'></script>
+<script
+    src='https://www.topstockresearch.com/static/js/tsr/mipu/mipu_minV0.0.0.81.js'"></script><script> misu.iar();   </script><div class="
+    modal fade" id="tsrUserRegModal" tabindex="-1">
+			        <div class="modal-dialog modal-dialog-centered">
+			            <div class="modal-content"  id='tsrUserRegModalContent'>
+			            </div>
+			        </div>
+			    </div><div id='usrRegDiv'></div>

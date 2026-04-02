@@ -594,10 +594,21 @@ var aioIcons = (function () {
 
 	}
 
+	function getSvg(icon, color, size) {
+		let svg = ``
+		svg = json[icon]["svg"]
+		svg = jsu.replaceAll(svg, 'SVG_STROKE', color);
+		svg = jsu.replaceAll(svg, 'SVG_FILL', color);
+		svg = jsu.replaceAll(svg, 'SVG_HEIGHT', size);
+
+		return svg;
+	}
+
 	return {
 		init: init,
 		iti: initTopIcons,
-		si: setIcon
+		si: setIcon,
+		gs: getSvg,
 
 	}
 
