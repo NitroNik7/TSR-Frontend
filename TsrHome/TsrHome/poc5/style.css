@@ -80,3 +80,12 @@
          display: none !important;
      }
  }
+
+ /* #tsrHeroSectionCandlestickSvg rect {
+    filter: drop-shadow(1px 1px 5px lightblue);
+    border: 1px solid white;
+    stroke: white;
+    stroke-width: 0.2px;
+    opacity: 0.4;
+    
+ } */
