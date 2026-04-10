@@ -698,7 +698,7 @@ flex-direction: column;
 
 /* Light Theme - Clean & Professional */
 .crown-jewels-light {
-    padding: 40px 0 80px 0;
+    padding: 40px 0 40px 0;
     background-color: #f8f9fa; /* Light grey background */
     border-top: 1px solid #e9ecef;
     border-bottom: 1px solid #e9ecef;
@@ -973,7 +973,7 @@ flex-direction: column;
 .crown-jewels-light .container {
     background: #fff;
     border-radius: 20px;
-    /* padding: 40px; */
+    padding: 40px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.04);
 }
 
