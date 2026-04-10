@@ -874,3 +874,219 @@ flex-direction: column;
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
+
+/* SECTION 4B STARTS */
+/* Consistent Section Spacing */
+.tsr-section-padding {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2.25rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+}
+
+/* Feature Card - Matches POC "Everyday Tools" Style */
+.feature-card-simple {
+    background: #ffffff;
+    border: 1px solid #edf2f7;
+    border-radius: 12px;
+    padding: 32px;
+    height: 100%;
+    transition: all 0.25s ease-in-out;
+}
+
+.feature-card-simple:hover {
+    border-color: #3182ce;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    transform: translateY(-4px);
+}
+
+/* Icon Wrappers - Using Site-Consistent Tints */
+.feature-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 24px;
+}
+
+.icon-blue { background-color: #ebf8ff; color: #3182ce; }
+.icon-green { background-color: #f0fff4; color: #38a169; }
+.icon-orange { background-color: #fffaf0; color: #dd6b20; }
+.icon-pink { background-color: #fff5f7; color: #d53f8c; }
+
+/* Consistent Link Style - Matches "Start Now →" */
+.feature-link {
+    color: #3182ce;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.feature-link:hover {
+    color: #2b6cb0;
+    text-decoration: none;
+}
+
+.feature-link i {
+    transition: transform 0.2s;
+}
+
+.feature-link:hover i {
+    transform: translateX(4px);
+}
+
+/* SECTION 4 B ENDS */
+
+/* SECTION 4 C STARTS */
+
+/* Section Background (distinct but consistent) */
+.crown-jewels-light {
+    background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
+}
+
+/* Inner container for subtle elevation */
+.crown-jewels-light .container {
+    background: #fff;
+    border-radius: 20px;
+    /* padding: 40px; */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+/* Card */
+.crown-card {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 18px;
+    padding: 26px;
+    height: 240px;
+    overflow: hidden;
+
+    border: 1px solid #eef2f7;
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+.crown-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(4,65,231,0.2);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+}
+
+/* Icon */
+.crown-icon {
+    font-size: 34px;
+    color: #0441e7;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+/* Icon animation */
+.crown-card:hover .crown-icon {
+    transform: scale(1.02) rotate(3deg);
+    text-shadow: 0 0 12px rgba(4, 65, 231, 0.25);
+}
+
+/* Title */
+.crown-card h5 {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #1a1a1a;
+}
+
+/* One-liner */
+.crown-line {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Extra content (overlay reveal) */
+.crown-extra {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 26px;
+
+    background: linear-gradient(
+        to top,
+        rgba(255,255,255,1) 70%,
+        rgba(255,255,255,0)
+    );
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+/* Reveal */
+
+.crown-card:hover .crown-line {
+    opacity: 0;
+    transform: translateY(0);
+}
+ 
+.crown-card:hover .crown-extra {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Extra text */
+.crown-extra p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+/* Subtle badge */
+.crown-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(4, 65, 231, 0.08);
+    color: #0441e7;
+    font-weight: 500;
+}
+
+/* CTA (reuse existing system if available) */
+.tsr-cta {
+    color: #0441e7;
+    font-weight: 500;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .crown-card {
+        height: auto;
+    }
+
+    .crown-extra {
+        position: relative;
+        opacity: 1;
+        transform: none;
+        background: none;
+        padding: 10px 0 0 0;
+    }
+}
+
+/* SECTION 4 C ENDS */
+
+ 
