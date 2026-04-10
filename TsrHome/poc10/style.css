@@ -743,6 +743,8 @@ flex-direction: column;
     border-radius: 8px;
     padding: 30px;
     transition: all 0.2s ease-in-out;
+        cursor: pointer;
+
 }
 
 .jewel-item:hover {
@@ -752,7 +754,7 @@ flex-direction: column;
 }
 
 .jewel-item:hover .jewel-icon-simple {
-    transform: scale(1.06) rotate(3deg);
+    transform: scale(1.12) rotate(3deg);
 }
 
 .jewel-icon-simple {
@@ -764,6 +766,7 @@ flex-direction: column;
     justify-content: center;
     font-size: 24px;
     margin-bottom: 20px;
+    transition: all 0.3s;
 }
 
 /* Icon Colors - Clean Pallette */
