@@ -648,16 +648,29 @@
                                     <button class="btn btn-primary">Plans</button>
                                 </div> -->
 
-                                <div style="text-align: center; color: white;font-family: Inter, 'Inter Fallback';"
-                                    class="p-2">
+                                <div style="text-align: center; color: white;" class="p-2">
 
                                     <h1
                                         style="font-size: 50px;text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);font-weight: bold;">
-                                        All-in-one Stock Analysis
+                                        Top Stock Research (TSR)
                                     </h1>
 
-                                    <h3>
-                                        Learn • Screen • Analyse • Test </h3>
+                                    <h3 class="d-flex align-items-center justify-content-center">
+                                        Learn
+                                        <div
+                                            style="display: inline-block; background-color: white; height: 5px; width: 5px; border-radius: 20px; margin: 0px 10px 0px 10px;">
+                                        </div>
+                                        Screen
+                                        <div
+                                            style="display: inline-block; background-color: white; height: 5px; width: 5px; border-radius: 20px; margin: 0px 10px 0px 10px;">
+                                        </div>
+                                        Analyse
+                                        <div
+                                            style="display: inline-block; background-color: white; height: 5px; width: 5px; border-radius: 20px; margin: 0px 10px 0px 10px;">
+                                        </div>
+
+                                        Test
+                                    </h3>
                                     <!-- <h6>Before Trade</h6> -->
                                     <!-- <marquee style="word-spacing: 100px;">
                                                 Chart-Replay               Alerts                  Backtest-Strategies                     More</marquee> -->
@@ -670,11 +683,11 @@
                                     <br>
                                     <div class="d-flex justify-content-evenly align-items-center">
                                         <p style="margin: 0; color: white;">Tools: </p>
-                                        <button class="btn btn-sm btn-light">
+                                        <button class="btn btn-sm" style="color: white;">
                                             DIY Screener
                                         </button>
 
-                                        <button class="btn  btn-sm  btn-light">
+                                        <button class="btn  btn-sm" style="color: white;">
                                             Technical Charts
                                         </button>
                                     </div>
@@ -688,10 +701,8 @@
                                 <!-- <h5 style="color: white;">A Tool for Everyone!</h5> -->
                             </div>
 
-
-
                             <!-- SECTION 2 BEGINS HERE -->
-                            <section class="tsr-section2 container py-5 ">
+                            <section class="tsr-section2 py-5 d-flex flex-column align-items-center">
 
                                 <!-- Header -->
                                 <div class="text-center mb-4">
@@ -702,7 +713,7 @@
                                 </div>
 
                                 <!-- Experience Selector -->
-                                <div class="tsr-selector d-flex justify-content-center mb-5">
+                                <div class="tsr-selector d-none  d-md-flex justify-content-center mb-5">
                                     <button class="tsr-pill active"
                                         onclick="showUseCasesByCat(event, 'marketOverview')">Market Overview</button>
                                     <button class="tsr-pill"
@@ -714,12 +725,49 @@
                                     <button class="tsr-pill" onclick="showUseCasesByCat(event,'pro')">Investor</button>
                                 </div>
 
-                                <!-- Cards Container -->
-                                <div id="tsrMktOvrvwUcContainer" class="tsrUseCaseContainer mx-5"
+                                <div id="tsrUcCatSelector" class="tsr-selector mb-5 d-flex d-md-none"
+                                    style="width: 100%;">
+
+                                    <button type="button" role="presentation" class="owl-prev btn"
+                                        style="box-shadow: none;">
+                                        <span aria-label="Previous">
+                                            <i class="fas fa-angle-left"></i>
+                                        </span>
+                                    </button>
+
+                                    <div class="owl-carousel owl-theme" style="min-width: 70%;">
+                                        <button class="tsr-pill active item"
+                                            onclick="showUseCasesByCat(event, 'marketOverview')">Market
+                                            Overview</button>
+                                        <button class="tsr-pill item"
+                                            onclick="showUseCasesByCat(event, 'beginner')">Beginner</button>
+                                        <button class="tsr-pill item" onclick="showUseCasesByCat(event, 'pro')">Intraday
+                                            /
+                                            Scalping</button>
+                                        <button class="tsr-pill item"
+                                            onclick="showUseCasesByCat(event,'intermediate')">Swing /
+                                            Positional</button>
+                                        <button class="tsr-pill item"
+                                            onclick="showUseCasesByCat(event,'pro')">Investor</button>
+                                    </div>
+
+
+                                    <button type="button" role="presentation" class="owl-next btn"
+                                        style="box-shadow: none;">
+                                        <span aria-label="Next">
+                                            <i class="fas fa-angle-right"></i>
+                                        </span>
+                                    </button>
+
+                                </div>
+
+
+                                <!-- Cards Container 1 -->
+                                <div id="tsrMktOvrvwUcContainer" class="tsrUseCaseContainer mx-5 container"
                                     style="display: flex; justify-content: center;">
 
 
-                                    <button type="button" role="presentation" class="owl-prev btn"
+                                    <button type="button" role="presentation" class="d-block d-md-none owl-prev btn"
                                         style="box-shadow: none;">
                                         <span aria-label="Previous">
                                             <i class="fas fa-angle-left"></i>
@@ -895,7 +943,7 @@
                                     </div>
 
 
-                                    <button type="button" role="presentation" class="owl-next btn"
+                                    <button type="button" role="presentation" class="d-block d-md-none  owl-next btn"
                                         style="box-shadow: none;">
                                         <span aria-label="Next">
                                             <i class="fas fa-angle-right"></i>
@@ -904,11 +952,12 @@
 
                                 </div>
 
+                                <!-- Cards Container 2 -->
                                 <div id="tsrBegUcContainer" class="tsrUseCaseContainer mx-5"
                                     style="display: none;justify-content: center;">
 
-                                    <button type="button" role="presentation" class="owl-prev btn"
-                                        style="box-shadow: none;">
+                                    <button type="button" role="presentation" class="owl-prev btn d-none d-sm-block"
+                                        style="box-shadow: none; font-size: x-large;">
                                         <span aria-label="Previous">
                                             <i class="fas fa-angle-left"></i>
                                         </span>
@@ -1018,8 +1067,8 @@
                                     </div>
 
 
-                                    <button type="button" role="presentation" class="owl-next btn"
-                                        style="box-shadow: none;">
+                                    <button type="button" role="presentation" class="owl-next btn d-none d-sm-block"
+                                        style="box-shadow: none; font-size: x-large;">
                                         <span aria-label="Next">
                                             <i class="fas fa-angle-right"></i>
                                         </span>
@@ -1027,6 +1076,7 @@
 
                                 </div>
 
+                                <!-- Cards Container 3 -->
                                 <div id="tsrIntradayUcContainer" class="tsrUseCaseContainer"
                                     style="display: none;justify-content: center;">
                                     <div class="row g-4">
@@ -1083,7 +1133,121 @@
                                     </div>
                                 </div>
 
-                                <!-- Explore More -->
+                                <!-- Cards Container 4 -->
+                                <div id="tsrSwingUcContainer" class="tsrUseCaseContainer"
+                                    style="display: none;justify-content: center;">
+                                    <div class="row g-4">
+
+                                        <!-- Card 1 -->
+                                        <div class="col-md-4">
+                                            <div class="tsr-card">
+                                                <div class="tsr-icon"><i class="fas fa-chart-line"></i></div>
+                                                <h5>Buzzing Stocks</h5>
+                                                <p>Discover stocks breaking key levels with strong momentum</p>
+
+                                                <a href="#" class="tsr-cta">Start Now <i
+                                                        class="fas fa-arrow-right"></i></a>
+
+                                                <div class="tsr-variations">
+                                                    <a href="#">High volume breakouts</a>
+                                                    <a href="#">Intraday breakouts</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Card 2 -->
+                                        <div class="col-md-4">
+                                            <div class="tsr-card">
+                                                <div class="tsr-icon"><i class="fas fa-rocket"></i></div>
+                                                <h5>Movers and shakers</h5>
+                                                <p>Identify stocks gaining strength and trending upward</p>
+
+                                                <a href="#" class="tsr-cta">Start Now →</a>
+
+                                                <div class="tsr-variations">
+                                                    <a href="#">RSI momentum</a>
+                                                    <a href="#">Moving average trends</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Card 3 -->
+                                        <div class="col-md-4">
+                                            <div class="tsr-card">
+                                                <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div>
+                                                <h5>Popular Chart Patterns</h5>
+                                                <p>Understand which sectors are leading the market</p>
+
+                                                <a href="#" class="tsr-cta">Start Now →</a>
+
+                                                <div class="tsr-variations">
+                                                    <a href="#">Sector rotation</a>
+                                                    <a href="#">Top performing sectors</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- Cards Container 5 -->
+                                <div id="tsrInvestorUcContainer" class="tsrUseCaseContainer"
+                                    style="display: none;justify-content: center;">
+                                    <div class="row g-4">
+
+                                        <!-- Card 1 -->
+                                        <div class="col-md-4">
+                                            <div class="tsr-card">
+                                                <div class="tsr-icon"><i class="fas fa-chart-line"></i></div>
+                                                <h5>Buzzing Stocks</h5>
+                                                <p>Discover stocks breaking key levels with strong momentum</p>
+
+                                                <a href="#" class="tsr-cta">Start Now <i
+                                                        class="fas fa-arrow-right"></i></a>
+
+                                                <div class="tsr-variations">
+                                                    <a href="#">High volume breakouts</a>
+                                                    <a href="#">Intraday breakouts</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Card 2 -->
+                                        <div class="col-md-4">
+                                            <div class="tsr-card">
+                                                <div class="tsr-icon"><i class="fas fa-rocket"></i></div>
+                                                <h5>Movers and shakers</h5>
+                                                <p>Identify stocks gaining strength and trending upward</p>
+
+                                                <a href="#" class="tsr-cta">Start Now →</a>
+
+                                                <div class="tsr-variations">
+                                                    <a href="#">RSI momentum</a>
+                                                    <a href="#">Moving average trends</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Card 3 -->
+                                        <div class="col-md-4">
+                                            <div class="tsr-card">
+                                                <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div>
+                                                <h5>Popular Chart Patterns</h5>
+                                                <p>Understand which sectors are leading the market</p>
+
+                                                <a href="#" class="tsr-cta">Start Now →</a>
+
+                                                <div class="tsr-variations">
+                                                    <a href="#">Sector rotation</a>
+                                                    <a href="#">Top performing sectors</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- Explore More
                                 <div class="tsr-more text-center mt-5">
                                     <p>Explore More Tools:</p>
                                     <div>
@@ -1092,23 +1256,159 @@
                                         <a href="#">Sector Rotation</a>
                                         <a href="#">Candlestick</a>
                                     </div>
-                                </div>
+                                </div> -->
 
                             </section>
 
 
+                            <!-- SECTION 3 STARTS HERE -->
+                            <section class="tsr-section3a py-5 d-flex flex-column align-items-center">
 
+                                <!-- Header -->
+                                <div class="text-center mb-5">
+                                    <h2 class="tsr-title">Your Everyday Trading Tools</h2>
+                                    <p class="tsr-subtitle">
+                                        Powerful tools designed for serious traders — fast, flexible, and reliable
+                                    </p>
+                                </div>
 
-                            <!-- SECTION 3 BEGINS HERE -->
-                            <div class="d-flex flex-column align-items-center justify-content-evenly"
-                                style="height: 50%; background-color: cornflowerblue;">
+                                <div class="row g-4 container">
 
+                                    <!-- Card 1 -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <a href="#" class="tsr-tool-card">
+                                            <div class="tsr-tool-inner">
 
-                            </div>
+                                                <!-- Default -->
+                                                <div class="tsr-tool-front">
+                                                    <div class="tsr-icon"><i class="fas fa-filter"></i></div>
+                                                    <h5>Custom Screener</h5>
+                                                    <p>Find stocks your way</p>
+                                                </div>
+
+                                                <!-- Hover -->
+                                                <div class="tsr-tool-back">
+                                                    <h5>Custom Screener</h5>
+                                                    <p>
+                                                        Build powerful queries with technical & fundamental filters to
+                                                        discover high-potential stocks instantly.
+                                                    </p>
+                                                    <span class="tsr-cta">Open Screener →</span>
+                                                </div>
+
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <!-- Card 2 -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <a href="#" class="tsr-tool-card">
+                                            <div class="tsr-tool-inner">
+
+                                                <div class="tsr-tool-front">
+                                                    <div class="tsr-icon"><i class="fas fa-bell"></i></div>
+                                                    <h5>Alerts</h5>
+                                                    <p>Never miss opportunities</p>
+                                                </div>
+
+                                                <div class="tsr-tool-back">
+                                                    <h5>Alerts</h5>
+                                                    <p>
+                                                        Set real-time alerts on price, indicators, or strategies and
+                                                        stay ahead without constantly watching charts.
+                                                    </p>
+                                                    <span class="tsr-cta">Create Alert →</span>
+                                                </div>
+
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <!-- Card 3 -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <a href="#" class="tsr-tool-card">
+                                            <div class="tsr-tool-inner">
+
+                                                <div class="tsr-tool-front">
+                                                    <div class="tsr-icon"><i class="fas fa-eye"></i></div>
+                                                    <h5>Watchlist</h5>
+                                                    <p>Track what matters</p>
+                                                </div>
+
+                                                <div class="tsr-tool-back">
+                                                    <h5>Watchlist</h5>
+                                                    <p>
+                                                        Organize and monitor your favorite stocks with real-time updates
+                                                        and quick insights.
+                                                    </p>
+                                                    <span class="tsr-cta">View Watchlist →</span>
+                                                </div>
+
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <!-- Card 4 -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <a href="#" class="tsr-tool-card">
+                                            <div class="tsr-tool-inner">
+
+                                                <div class="tsr-tool-front">
+                                                    <div class="tsr-icon"><i class="fas fa-chart-line"></i></div>
+                                                    <h5>Charts</h5>
+                                                    <p>Analyze with precision</p>
+                                                </div>
+
+                                                <div class="tsr-tool-back">
+                                                    <h5>Charts</h5>
+                                                    <p>
+                                                        Advanced charting tools with indicators, drawing tools, and
+                                                        multi-timeframe analysis.
+                                                    </p>
+                                                    <span class="tsr-cta">Open Charts →</span>
+                                                </div>
+
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </section>
+                            <!-- SECTION 3 B ENDS HERE -->
+
+                            <!-- <div class="card"
+                                        style="width: 18rem; box-shadow: 0 0px 10px rgba(255, 0, 0, 0.3);">
+                                        <div class="card-body p-0">
+                                            <div class="p-3" style="background-color: rgba(246, 227, 254, 0.6);">
+
+                                                <h5 class="card-title">
+                                                    <svg height="32" viewBox="0 0 288 288" fill="black"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <g>
+                                                            <path
+                                                                d="M221.676 38.5455C206.437 38.5455 194.038 50.8967 194.038 66.0783C194.038 81.2594 206.437 93.6106 221.676 93.6106C236.914 93.6106 249.313 81.2594 249.313 66.0783C249.313 50.8967 236.914 38.5455 221.676 38.5455ZM11.9016 37.1267H148.482L147.594 39.9642C146.445 45.5443 145.842 51.322 145.842 57.2398C145.842 92.7462 167.555 123.21 198.503 136.223L206.14 138.58L181.484 169.351C181.453 169.391 181.422 169.428 181.391 169.468C178.032 173.489 176.217 178.357 176.208 183.359V259.777C176.208 264.463 173.115 268.356 168.46 269.617L116.491 287.172C115.018 287.716 113.434 287.997 111.836 288C108.69 287.998 105.677 286.887 103.458 284.91C101.244 282.933 100.01 280.255 100.028 277.469V183.359C100.019 178.357 98.1995 173.488 94.8403 169.468C94.8092 169.428 94.7782 169.391 94.7471 169.351L2.26314 53.9207C-0.372792 50.6729 -0.736668 46.3902 1.32681 42.8318C3.36367 39.3222 7.44624 37.1183 11.9016 37.1267ZM215.485 0H227.866C232.055 0.00354462 235.583 3.12458 236.08 7.26868L237.402 17.6043C240.012 18.4475 242.555 19.4949 245 20.7373L253.254 14.3446C256.555 11.7553 261.281 12.057 264.228 15.0438L272.93 23.7166C275.912 26.6466 276.205 31.341 273.604 34.6141L267.188 42.846C268.435 45.282 269.486 47.8115 270.334 50.412L280.727 51.7279C284.88 52.2295 288 55.7431 288 59.9106V72.2455C287.996 76.4188 284.863 79.932 280.705 80.4282L270.334 81.7441C269.482 84.3707 268.426 86.9038 267.188 89.3101L273.604 97.5367C276.205 100.825 275.903 105.536 272.903 108.467L264.197 117.14C261.326 120.097 256.604 120.4 253.258 117.812L244.995 111.419C242.55 112.66 240.012 113.708 237.402 114.552L236.08 124.904C235.583 129.034 232.051 132.156 227.866 132.156H215.485C211.301 132.156 207.768 129.034 207.271 124.877L205.949 114.546C203.313 113.698 200.77 112.647 198.356 111.413L190.098 117.806C186.796 120.392 182.07 120.092 179.124 117.112L170.417 108.44C167.439 105.51 167.146 100.815 169.742 97.5425L176.164 89.3101C174.93 86.9038 173.874 84.3707 173.017 81.7441L162.625 80.4282C158.48 79.9324 155.347 76.4139 155.347 72.2455V59.9106C155.347 55.7422 158.48 52.2237 162.642 51.7279L173.017 50.412C173.861 47.8107 174.912 45.2807 176.164 42.846L169.742 34.6194C167.142 31.33 167.444 26.6161 170.448 23.6833L179.155 15.0163C182.097 12.0521 186.805 11.7632 190.093 14.3446L198.347 20.7373C200.797 19.4927 203.335 18.4448 205.949 17.6043L207.271 7.25184C207.768 3.12237 211.301 0 215.485 0Z">
+                                                            </path>
+                                                        </g>
+                                                    </svg>
+                                                    Custom Screener
+                                                </h5>
+                                                <p class="tsr-subtitle">Some quick example text to build on the card
+                                                    title
+                                                    and
+                                                    make
+                                                    up the bulk of the card's content.</p>
+                                            </div>
+                                            <div class="p-3">
+
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
+                                        </div>
+                                    </div> -->
 
                             <!-- SECTION 4 BEGINS HERE -->
                             <div class="d-flex flex-column align-items-center justify-content-evenly"
-                                style="height: 50%; background-color: slategrey;">
+                                style="height: 400px; background-color: slategrey;">
                             </div>
                         </div>
                         <!-- <script src="script.js"></script> -->
@@ -1127,7 +1427,6 @@
                                     </div>
                                 </div>
 
-                                <!-- code starts here -->
 
                                 <style>
                                     .animate-charcter {
@@ -4710,7 +5009,6 @@
                         </div>
 
                         <!-- <script src="../../../InteractiveCharts/js/aioIcons.js"></script> -->
-                        <!-- code ends here -->
                     </div>
                     <!-- Content Wrapper End -->
 

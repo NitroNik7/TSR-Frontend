@@ -1,108 +1,4 @@
-// function showFeatures(button) {
-//     let buttons = document.getElementsByClassName("tsrHomeFeatureBtn");
-//     for (let i = 0; i < buttons.length; i++) {
-//         buttons[i].classList.remove("active");
-//     }
-//     button.classList.add("active");
 
-//     let featuresSection = document.getElementById("tsrHomePlatformFeatures")
-//     let html = "";
-//     let id = button.id;
-//     if (id == "tsrHomeBeginnerFeatures") {
-//         html += ` <h3>Get Started With.</h3>
-//                                 <br>
-//                                 <table style="width: 100%; table-layout: fixed; text-align: center; color:black; ">
-//                                     <thead>
-//                                         <tr>
-//                                             <th>
-//                                                 <h5>
-//                                                     Screeners
-//                                                 </h5>
-//                                             </th>
-//                                             <th>
-//                                                 <h5>
-//                                                     Tools
-//                                                 </h5>
-//                                             </th>
-//                                             <th>
-//                                                 <h5>
-//                                                     Market Research
-//                                                 </h5>
-//                                             </th>
-//                                         </tr>
-//                                     </thead>
-//                                     <tbody>
-//                                         <tr>
-//                                             <td>
-//                                                 <a class="d-flex justify-content-around" href="">
-//                                                     <p>Screener 1</p>
-//                                                     <p><i class="fas fa-location-arrow"></i></p>
-//                                                 </a>
-//                                             </td>
-//                                             <td>
-//                                                 <a class="d-flex justify-content-around" href="">
-//                                                     <p>Tool 1</p>
-//                                                     <p><i class="fas fa-location-arrow"></i></p>
-//                                                 </a>
-//                                             </td>
-//                                             <td>
-//                                                 <a class="d-flex justify-content-around" href="">
-//                                                     <p>Market 1</p>
-//                                                     <p><i class="fas fa-location-arrow"></i></p>
-//                                                 </a>
-//                                             </td>
-//                                         </tr>
-//                                         <tr>
-//                                             <td>
-//                                                 <a class="d-flex justify-content-around" href="">
-//                                                     <p>Screener 2</p>
-//                                                     <p><i class="fas fa-location-arrow"></i></p>
-//                                                 </a>
-//                                             </td>
-//                                             <td>
-//                                                 <a class="d-flex justify-content-around" href="">
-//                                                     <p>Tool 2</p>
-//                                                     <p><i class="fas fa-location-arrow"></i></p>
-//                                                 </a>
-//                                             </td>
-//                                             <td>
-//                                                 <a class="d-flex justify-content-around" href="">
-//                                                     <p>Market 2</p>
-//                                                     <p><i class="fas fa-location-arrow"></i></p>
-//                                                 </a>
-//                                             </td>
-//                                         </tr>
-//                                         <tr>
-//                                             <td>
-//                                                 <a class="d-flex justify-content-around" href="">
-//                                                     <p>Screener 3</p>
-//                                                     <p><i class="fas fa-location-arrow"></i></p>
-//                                                 </a>
-//                                             </td>
-//                                             <td>
-//                                                 <a class="d-flex justify-content-around" href="">
-//                                                     <p>Tool 3</p>
-//                                                     <p><i class="fas fa-location-arrow"></i></p>
-//                                                 </a>
-//                                             </td>
-//                                             <td>
-//                                                 <a class="d-flex justify-content-around" href="">
-//                                                     <p>Market 3</p>
-//                                                     <p><i class="fas fa-location-arrow"></i></p>
-//                                                 </a>
-//                                             </td>
-//                                         </tr>
-//                                     </tbody>
-//                                 </table>`
-//     } else if(id == "tsrHomeIntermediateFeatures") {
-
-//     }
-//     else {
-
-//     }
-//     featuresSection.innerHTML = html;
-
-// }
 
 let jsu = mintJsUtil;
 
@@ -202,17 +98,8 @@ function chooseHomeView() {
 }
 
 function init() {
-    initUseCaseCarousal("tsrMktOvrvwUcContainer");
-    initUseCaseCarousal("tsrBegUcContainer");
-}
 
-init();
-
-function initUseCaseCarousal(containerId) {
-
-    let container = $("#" + containerId);
-
-    let carousalDef = {
+    let carousalDef1 = {
         loop: false,
         dots: false,
         margin: 20,
@@ -228,6 +115,67 @@ function initUseCaseCarousal(containerId) {
             }
         },
     };
+
+    initCarousal(true, carousalDef1, "tsrMktOvrvwUcContainer");
+
+    let carousalDef2 = {
+        loop: false,
+        dots: false,
+        margin: 10,
+        stagePadding: 20,
+        responsive: {
+            0: {
+                items: 1
+            },
+            576: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        },
+    };
+
+    initCarousal(false, carousalDef2, "tsrBegUcContainer");
+
+    let carousalDef3 = {
+        loop: false,
+        dots: false,
+        margin: 5,
+        stagePadding: 50,
+        autoWidth: true
+    };
+
+    initCarousal(false, carousalDef3, "tsrUcCatSelector");
+    initCarousal(true, carousalDef3, "tsrUcCatSelector2");
+
+}
+
+function initCarousal(nav, def, containerId) {
+    let container = $("#" + containerId);
+    let carousal = container.children(".owl-carousel");
+    carousal.owlCarousel(def);
+    if (nav) {
+        let prevBtn = container.children(".owl-prev");
+        let nextBtn = container.children(".owl-next");
+
+        prevBtn.click(function () {
+            carousal.trigger('prev.owl.carousel', [300]);
+        });
+        nextBtn.click(function () {
+            carousal.trigger('next.owl.carousel', [300]); // [300] - optional speed parameter
+        });
+
+    }
+}
+
+init();
+
+function initUseCaseCarousal(containerId) {
+
+    let container = $("#" + containerId);
+
+
 
     let carousal = container.children(".owl-carousel");
 
