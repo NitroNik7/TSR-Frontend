@@ -748,6 +748,11 @@ flex-direction: column;
 .jewel-item:hover {
     border-color: #0d6efd;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transform: translateY(-5px);
+}
+
+.jewel-item:hover .jewel-icon-simple {
+    transform: scale(1.06) rotate(3deg);
 }
 
 .jewel-icon-simple {
@@ -762,11 +767,15 @@ flex-direction: column;
 }
 
 /* Icon Colors - Clean Pallette */
-.color-1 { background: #eef2ff; color: #4338ca; }
+/* .color-1 { background: #eef2ff; color: #4338ca; }
 .color-2 { background: #ecfdf5; color: #059669; }
 .color-3 { background: #fff7ed; color: #d97706; }
-.color-4 { background: #fdf2f8; color: #db2777; }
+.color-4 { background: #fdf2f8; color: #db2777; } */
 
+.color-1 {background: white; color: #0441e7;}
+.color-2 {background: white; color: #0441e7;}
+.color-3 {background: white; color: #0441e7;}
+.color-4 {background: white; color: #0441e7;}
 .jewel-item h5 {
     font-weight: 700;
     color: #212529;
