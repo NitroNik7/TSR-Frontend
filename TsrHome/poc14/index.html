@@ -667,6 +667,332 @@
 
                         </script> -->
 
+
+                        <!-- BANNER 1 -->
+                            <div id="tsr-promo-global-wrapper" style="display: none; position: relative; width: 100%; background: white;">
+    <style>
+        /* Animation for the shimmering green text */
+        .animate-charcter {
+            background-image: linear-gradient(-225deg, #1F912A 0%, #00B050 29%, #5dba73 67%, #0a8d00 100%);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textclip 2s linear infinite;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        @keyframes textclip {
+            to { background-position: 200% center; }
+        }
+
+        /* Typography consistency */
+        .big-heading h1, .big-heading h5, .big-heading h6 {
+            font-family: "Arial Rounded MT Bold", "Varela Round", sans-serif;
+            margin: 0;
+        }
+
+        .big-heading h1 {
+            font-weight: 800;
+            font-size: 29px;
+            color: #ffffff;
+            letter-spacing: -2px;
+            text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.3);
+        }
+
+        /* Banner styling */
+        .tsr-banner-outer {
+            border: 1.5px solid #dee2e6;
+            border-radius: 5px;
+            margin: 4px;
+            padding: 4px;
+            box-shadow: 3px 3px #adb5bd;
+        }
+
+        .tsr-banner-inner {
+            background-image: linear-gradient(-225deg, #0d6efd 0%, #af487c 29%, #537ab4 67%, #0d6efd 100%);
+        }
+
+        .banner-center {
+            background-color: white;
+            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+            text-align: center;
+        }
+
+        @media only screen and (max-width: 1400px) {
+            .animate-charcter { font-size: 20px !important; }
+            .big-heading h1 { font-size: 26px !important; }
+        }
+    </style>
+
+    <div class="d-none d-xxl-block">
+        <div class="tsr-banner-outer">
+            <div class="row mx-1 rounded-3 tsr-banner-inner align-items-center">
+                <div class="col-lg-2 text-center" style="line-height: 50px;">
+                    <a class="big-heading" href="https://www.topstockresearch.com/my/TsrPlans/" style="color: white; text-decoration: none;">
+                        <h5 style="font-weight: 800; font-style: italic;">FY 25-26 End Offer</h5>
+                        <h1>Save Upto 55%</h1>
+                    </a>
+                </div>
+                <div class="col-lg-8 d-flex flex-column banner-center py-2">
+                    <p style="color:#45464c; font-size: 16px; margin: 0;">
+                        <span style="color: #0061ff; font-weight: 600;">FY 25-26</span> was Year of 
+                        <span style="font-weight: 600;">Consolidaton</span> for Both 
+                        <span style="color: #0061ff; font-weight: 600;">Market & TSR.</span>
+                    </p>
+                    <span class="animate-charcter" style="font-size: 24px;">Screener UI, Charts, Dashboard, Expert Screener, F&O ... </span>
+                    <p style="color:#45464c; font-size: 16px; margin: 0;">Making <span style="font-weight: 600;">TSR</span> & our <span style="font-weight: 600;">Valuable Client</span> Ready for Challenges ahead</p>
+                </div>
+                <div class="col-lg-2 text-center">
+                    <a class="btn btn-light" style="border-radius: 999px; font-weight: bold;" href="https://www.topstockresearch.com/my/TsrPlans">
+                        <i class="fa fa-sign-in-alt"></i> View Plan
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-none d-md-block d-xxl-none">
+        <div class="tsr-banner-outer">
+            <div class="row mx-1 rounded-3 justify-content-evenly tsr-banner-inner align-items-center py-1">
+                <div class="col-8 d-flex flex-column banner-center py-2">
+                    <p style="color:#45464c; font-size: 16px; margin: 0;">
+                        <span style="color: #0061ff; font-weight: 600;">This Financial Year - </span> <span style="font-weight: 600;">We Upgraded</span>
+                    </p>
+                    <span class="animate-charcter" style="font-size: 18px;">Screener UI, Charts and much more ... </span>
+                </div>
+                <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    <h5 style="font-weight: 800; color: white; font-style: italic; font-size: 14px; margin: 0;">FY 25-26 End Offer</h5>
+                    <h1 style="color: white; font-size: 22px; margin: 0;">Save Upto 55%</h1>
+                    <a class="btn btn-light btn-sm mt-1" style="border-radius: 999px; font-weight: bold;" href="https://www.topstockresearch.com/my/TsrPlans">View Plan</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-block d-md-none">
+        <div class="tsr-banner-outer">
+            <div class="row mx-1 rounded-3 tsr-banner-inner align-items-center py-2">
+                <div class="col-12 text-center">
+                    <h1 style="font-size: 24px; color: white; margin: 0;">Save Upto 55%</h1>
+                </div>
+                <div class="col-12 banner-center my-1 py-1">
+                    <span class="animate-charcter" style="font-size: 18px;">FY 2025-26 End Offer</span>
+                </div>
+                <div class="col-12 text-center">
+                    <a class="btn btn-light btn-sm" style="border-radius: 999px; font-weight: bold;" href="https://www.topstockresearch.com/my/TsrPlans">View Plan</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="document.getElementById('tsr-promo-global-wrapper').style.display='none'" 
+            style="position: absolute; top: 12px; right: 15px; background: rgba(0,0,0,0.4); color: white; border: none; border-radius: 50%; width: 26px; height: 26px; cursor: pointer; font-size: 18px; line-height: 1; z-index: 10;">
+        &times;
+    </button>
+</div>
+
+<!-- BANNER 2 -->
+
+                        <div class="tsr-top-offer-bar">
+    <div class="container-fluid d-flex justify-content-center align-items-center">
+        <span class="festive-icon">🪔</span>
+        <p class="mb-0 mx-3">
+            <strong>Diwali Special:</strong> Get <span class="highlight-text">50% OFF</span> on all Premium Plans!
+        </p>
+        <a href="/plans" class="btn btn-light btn-sm fw-bold">Claim Offer</a>
+        <button type="button" class="close-bar" onclick="this.parentElement.parentElement.remove()">
+            &times;
+        </button>
+    </div>
+</div>
+
+<style>
+.tsr-top-offer-bar {
+    background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
+    color: white;
+    padding: 8px 0;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #fbbf24; /* Gold accent for Diwali */
+    position: relative;
+    z-index: 1050;
+    text-align: center;
+}
+
+.tsr-top-offer-bar .highlight-text {
+    color: #fbbf24; /* Gold color for the percentage */
+    font-weight: 800;
+}
+
+.tsr-top-offer-bar .btn-light {
+    color: #1e3a8a;
+    border-radius: 20px;
+    padding: 2px 15px;
+    font-size: 0.85rem;
+    transition: transform 0.2s;
+}
+
+.tsr-top-offer-bar .btn-light:hover {
+    transform: scale(1.05);
+    background-color: #ffffff;
+}
+
+.tsr-top-offer-bar .close-bar {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.tsr-top-offer-bar .close-bar:hover {
+    color: white;
+}
+
+/* Ensure your navbar doesn't overlap */
+body {
+    padding-top: 0 !important; /* Adjust if your navbar is fixed */
+}
+
+</style>
+
+
+<!-- BANNER 3 -->
+                        <div id="tsr-promo-banner" class="tsr-promo-container">
+    <div class="tsr-promo-content">
+        <div class="tsr-promo-icon">
+            <i class="fas fa-bullhorn"></i>
+        </div>
+        <div class="tsr-promo-text">
+            <strong>Special Offer:</strong> Get 20% off on TSR Pro Annual Plans! 
+            <span class="d-none d-lg-inline">Enhance your technical analysis today.</span>
+        </div>
+        <div class="tsr-promo-actions">
+            <a href="/premium" class="btn btn-primary btn-sm tsr-promo-btn">View Plans</a>
+            <button type="button" class="tsr-promo-close" onclick="dismissBanner()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* --- Floating Promo Banner --- */
+.tsr-promo-container {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px); /* Glass effect */
+    border: 1px solid #bfdbfe; /* Matching your Hero blue border */
+    border-radius: 16px;
+    padding: 12px 20px;
+    box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15);
+    display: block; /* Hidden via JS if dismissed */
+    animation: slideUp 0.5s ease-out;
+}
+
+.tsr-promo-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.tsr-promo-icon {
+    color: #2563eb;
+    font-size: 1.2rem;
+    background: rgba(37, 99, 235, 0.1);
+    padding: 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.tsr-promo-text {
+    flex-grow: 1;
+    color: #1e293b;
+    font-size: 0.95rem;
+}
+
+.tsr-promo-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tsr-promo-btn {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 6px 16px;
+    white-space: nowrap;
+}
+
+.tsr-promo-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+    padding: 4px;
+}
+
+.tsr-promo-close:hover {
+    color: #ef4444;
+}
+
+/* Entrance Animation */
+@keyframes slideUp {
+    from { bottom: -100px; opacity: 0; }
+    to { bottom: 25px; opacity: 1; }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 576px) {
+    .tsr-promo-text { font-size: 0.85rem; }
+    .tsr-promo-container { width: 95%; bottom: 15px; }
+}
+</style>
+
+<script>
+    function dismissBanner() {
+    const banner = document.getElementById('tsr-promo-banner');
+    banner.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    banner.style.opacity = '0';
+    banner.style.transform = 'translateX(-50%) translateY(20px)';
+    
+    // Optional: Save preference in localStorage so it stays hidden for 24 hours
+    // localStorage.setItem('tsrPromoDismissed', new Date().getTime());
+    
+    setTimeout(() => {
+        banner.remove();
+    }, 300);
+}
+
+// Optional: Check on page load if it should be shown
+window.onload = function() {
+    // const lastDismissed = localStorage.getItem('tsrPromoDismissed');
+    // const now = new Date().getTime();
+    
+    // // Hide if dismissed in the last 24 hours (86400000 ms)
+    // if (lastDismissed && (now - lastDismissed < 86400000)) {
+    //     const banner = document.getElementById('tsr-promo-banner');
+    //     if(banner) banner.remove();
+    // }
+};
+</script>
+
                         <!-- ----------------------NIFTY, BANK NIFTY SECTION BEGINS HERE -->
 
                         <div class="tsrHomeSection d-flex flex-column flex-md-row justify-content-between p-3"
@@ -699,21 +1025,108 @@
                         <!-- ----------------------HERO SECTION BEGINS HERE-------------------------------- -->
 
                         <style>
-                            .tsrHeroSection {
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-  border-radius: 24px; /* Soften the corners slightly more */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+/* --- Hero Section Container --- */
+.tsrHeroSection {
+    /* Match the white cards used in the "Everyday Trading Tools" section */
+    background-color: #ffffff;
+
+    /* Consistency: Use the same border color as your tool cards */
+    border: 1px solid #e2e8f0; 
+    
+    /* Consistency: Use a soft shadow to match the hover effect of your cards */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+    
+    border-radius: 16px; /* Matches the rounding on your tool icons */
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
 }
 
-#user_input {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
+/* --- Realistic Candlestick SVG --- */
+.tsrHeroSection svg {
+    opacity: 0.4; /* Increased visibility as requested */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+    z-index: 0;
 }
 
-#user_input:focus-within {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+/* Redefining the SVG elements for a realistic 'Live Chart' look */
+.tsrHeroSection svg g {
+    stroke-width: 1.5;
 }
+
+/* Left side (Initial Falling Phase) */
+.tsrHeroSection svg g line:nth-child(-n+30), 
+.tsrHeroSection svg g rect:nth-child(-n+30) {
+    stroke: #f87171 !important; /* Soft Red */
+    fill: rgba(248, 113, 113, 0.1) !important;
+}
+
+/* Right side (Upward Rally Phase) */
+.tsrHeroSection svg g line:nth-child(n+31), 
+.tsrHeroSection svg g rect:nth-child(n+31) {
+    stroke: #4ade80 !important; /* Soft Green */
+    fill: rgba(74, 222, 128, 0.1) !important;
+}
+
+/* --- Typography --- */
+/* Use the same Slate/Navy colors found in your section headers */
+.tsrHeroSection h1, 
+.tsrHeroSection h2 {
+    color: #1e293b !important; /* Matches your "Your Everyday Trading Tools" title */
+    font-weight: 700;
+}
+
+/* Learn • Screen • Analyse • Test • Trade */
+.tsrHeroSection h3, 
+.tsrHeroSection h6 {
+    color: #64748b !important; /* Muted Slate */
+    font-weight: 500;
+}
+
+/* The separator dots */
+.tsrHeroSection h3 div, 
+.tsrHeroSection h6 div {
+    background-color: #3b82f6 !important; /* Consistent blue accent */
+}
+
+/* --- Search Bar Modernization --- */
+/* This now looks like a native dashboard search component */
+.tsrHeroSection input#user_input {
+    background-color: #f8fafc; /* Slightly off-white to contrast against the white section */
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 15px 20px;
+    color: #1e293b;
+    transition: all 0.2s ease-in-out;
+}
+
+.tsrHeroSection input#user_input:focus {
+    background-color: #ffffff;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+}
+
+/* --- One Stop Shop For... --- */
+.tsrTextSpinnerContainer p {
+    color: #3b82f6 !important; /* Consistent with your "Open Screener ->" links */
+    font-weight: 600;
+}
+
+/* --- Visit Classic Home --- */
+.tsrHeroSection .bg-secondary {
+    background: #f1f5f9 !important; /* Light gray to match page secondary elements */
+    color: #475569 !important;
+    border: 1px solid #e2e8f0;
+    border-right: none; /* Clean fit against the edge */
+}
+
+.tsrHeroSection .tsrLinkWithHover {
+    color: #475569 !important;
+    font-weight: 600;
+}
+
                         </style>
 
                         <section class="tsrHomeSection tsrHeroSection">
