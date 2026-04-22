@@ -514,18 +514,20 @@
 
 /* ---------------------------------ABOUT US SECTION--------------------------------- */
 
-.tsrAboutUsSection {
+.tsrHomeAboutUsSection {
     background: radial-gradient(circle at 70%, #09124f 0, #090979 30%, #006fbf 100%);
     padding: 50px 0;
 }
 
-.tsrAboutUsSection .card{
+.tsrHomeAboutUsSection .card {
     transition: transform 0.2s ease-in-out;
-
 }
 
-.tsrAboutUsSection .card:hover {
-
+.tsrHomeAboutUsSection .card:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     transform: translateY(-5px);
+}
+
+.tsrHomeAboutUsSection .card h4 {
+    font-weight: 600;
 }
