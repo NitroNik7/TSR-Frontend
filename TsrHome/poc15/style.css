@@ -212,21 +212,28 @@
 
 .tsrHeroSection .tsrTextSpinnerContainer p {
     animation: textSpinner 10s ease-in-out 0s infinite normal none;
+                                    color: #2563eb !important;
+
 }
+
+
+                            
+
 
 .tsrHeroSection {
     /* background: radial-gradient(circle at 70%, #1a1f2b 0%, #0b0e14 100%); */
     /* background: radial-gradient(circle at 70%, #09124f 0, #090979 30%, #006fbf 100%); */
             /* background: linear-gradient(160deg, #ffffff 0%, #f4f4f5 100%); */
             /* background: linear-gradient(160deg, lavender 0%, #f4f4f5 100%); */
-            background: linear-gradient(160deg, lightblue 0%, #f4f4f5 100%);
+            /* background: linear-gradient(160deg, lightblue 0%, #f4f4f5 100%); */
+            background: #e2f2ff !important;
 
     height: 60vh;
     min-height: 500px;
     /* display: flex; */
     /* align-items: center; */
     text-align: center;
-    color: white;
+    color: black;
     padding: 0 5%;
 }
 
