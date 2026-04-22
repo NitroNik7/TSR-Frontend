@@ -307,7 +307,7 @@ var aioIcons=function(){var _=mintHtmlUtil,e=mintJsUtil;mintStkCommon;var t,i,a=
                                         <a href="${e.getBaseUrl()}/rt/TsrHighlights/TsrTechnicalTool" style="margin-left: 10px; font-weight: 500;">India's Best Technical Tool</a>`,r+="     </div>",r+='     <div class="d-flex flex-column justify-content-evenly text-center w-100 mx-3">',r+=`
                 
 <div class="tsrFotdContainer" title="Click to know more">
-        <div class="tsrFotdBadge">FEATURE OF THE DAY</div>
+        {/* <div class="tsrFotdBadge">FEATURE OF THE DAY</div> */}
         <div class="tsrFotdContent">
                 <span class="tsrFotdText">Overbought / Sold Oscillator</span>
                 <i class="fas fa-arrow-right"></i>
