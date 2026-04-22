@@ -325,7 +325,7 @@
 /* Section */
 .tsrHomeEverydayToolsSection {
     /* background: #f7f9fc; */
-    border-radius: 16px;
+    /* border-radius: 16px; */
     /* background: #f8f9fa; */
     background: aliceblue;
 }
@@ -522,9 +522,9 @@
     background: aliceblue;
 
     /* background: #fff; */
-    border-radius: 20px;
+    /* border-radius: 20px; */
     padding: 40px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2); */
 }
 
 .tsrHomeCrownJewelsHeader {
