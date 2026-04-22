@@ -26,19 +26,19 @@
     <script src="https://www.topstockresearch.com/static/js/tsr/common/mint_cn_minV0.7.5.194.js"></script>
     <!-- <script src="https://www.topstockresearch.com/static/mig/js/aio_cmnV0.0.0.53.js"></script> -->
 
-    <!-- <script src="/TsrHome/MigUIApr16/migUi.js"></script>
+    <script src="/TsrHome/MigUIApr16/migUi.js"></script>
     <script src="/TsrHome/MigUIApr16/aioIcons.js"></script>
     <script src="/TsrHome/MigUIApr16/search.js"></script>
     <script src="/TsrHome/MigUIApr16/IntelliSearch.js"></script>
     <script src="/TsrHome/MigUIApr16/IntelliSearchHelper.js"></script>
-    <script src="/TsrHome/MigUIApr16/MiSearchCss.js"></script> -->
+    <script src="/TsrHome/MigUIApr16/MiSearchCss.js"></script>
 
-    <script src="https://nitronik7.github.io/TSR-Frontend/TsrHome/MigUIApr16/migUi.js"></script>
+    <!-- <script src="https://nitronik7.github.io/TSR-Frontend/TsrHome/MigUIApr16/migUi.js"></script>
     <script src="https://nitronik7.github.io/TSR-Frontend/TsrHome/MigUIApr16/aioIcons.js"></script>
     <script src="https://nitronik7.github.io/TSR-Frontend/TsrHome/MigUIApr16/search.js"></script>
     <script src="https://nitronik7.github.io/TSR-Frontend/TsrHome/MigUIApr16/IntelliSearch.js"></script>
     <script src="https://nitronik7.github.io/TSR-Frontend/TsrHome/MigUIApr16/IntelliSearchHelper.js"></script>
-    <script src="https://nitronik7.github.io/TSR-Frontend/TsrHome/MigUIApr16/MiSearchCss.js"></script>
+    <script src="https://nitronik7.github.io/TSR-Frontend/TsrHome/MigUIApr16/MiSearchCss.js"></script> -->
 
     <!-- <script src="https://nitronik7.github.io/TSR-Frontend/TsrHome/common/topbar.js"></script> -->
 </head>
@@ -917,8 +917,8 @@
 
                         <!-- ----------------------NIFTY, BANK NIFTY SECTION BEGINS HERE -->
 
-                        <div class="tsrHomeSection d-flex flex-column flex-md-row justify-content-between p-3"
-                            style="margin-top: 10px; margin-bottom: 10px; background-color: #e2f2ff;">
+                        <div class="tsrHomeSection d-flex flex-column flex-md-row justify-content-between p-1 shadow-sm"
+                            style="border-radius: 20px; margin: 10px 20px;">
                             <div class="d-flex flex-column align-items-center w-100 mb-2">
 
                                 <p style="margin-bottom: 0;" class="d-flex justify-content-evenly w-100">
@@ -1002,7 +1002,9 @@
 
                             /* Learn • Screen • Analyse • Test • Trade */
                             .tsrHeroSection h3,
-                            .tsrHeroSection h6 {
+                            .tsrHeroSection h4,
+                            .tsrHeroSection h6,
+                            .tsrHeroSectionPunchline {
                                 color: #64748b !important;
                                 /* Muted Slate */
                                 font-weight: 500;
@@ -1010,7 +1012,9 @@
 
                             /* The separator dots */
                             .tsrHeroSection h3 div,
-                            .tsrHeroSection h6 div {
+                            .tsrHeroSection h4 div,
+                            .tsrHeroSection h6 div,
+                            .tsrHeroSectionPunchline div {
                                 background-color: #3b82f6 !important;
                                 /* Consistent blue accent */
                             }
@@ -1054,7 +1058,11 @@
                             <svg style="position: absolute; left: 0; pointer-events: none;" width="100%" height="100%"
                                 viewBox="0 0 1640 450" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-                                <g stroke-width="1.5">
+
+
+                                <g transform="translate(0,70)" stroke-width="1.5">
+
+                                    <!-- ALL YOUR EXISTING CANDLES EXCEPT LAST 7 GO HERE -->
 
                                     <!-- Uptrend -->
                                     <line class="bear" x1="40" y1="300" x2="40" y2="250" />
@@ -1128,23 +1136,38 @@
                                     <line class="bull" x1="1250" y1="30" x2="1250" y2="100" />
                                     <rect class="bull" x="1241" y="50" width="18" height="35" />
 
-                                    <!-- Top Right -->
-                                    <line class="bull" x1="1300" y1="40" x2="1300" y2="110" />
-                                    <rect class="bull" x="1291" y="60" width="18" height="35" />
-                                    <line class="bull" x1="1350" y1="20" x2="1350" y2="90" />
-                                    <rect class="bull" x="1341" y="40" width="18" height="35" />
-                                    <line class="bull" x1="1400" y1="10" x2="1400" y2="80" />
-                                    <rect class="bull" x="1391" y="30" width="18" height="35" />
-                                    <line class="bull" x1="1450" y1="20" x2="1450" y2="90" />
-                                    <rect class="bull" x="1441" y="40" width="18" height="35" />
-                                    <line class="bull" x1="1500" y1="10" x2="1500" y2="70" />
-                                    <rect class="bull" x="1491" y="25" width="18" height="30" />
-                                    <line class="bull" x1="1550" y1="20" x2="1550" y2="80" />
-                                    <rect class="bull" x="1541" y="40" width="18" height="30" />
-                                    <line class="bull" x1="1600" y1="10" x2="1600" y2="60" />
-                                    <rect class="bull" x="1591" y="20" width="18" height="25" />
-
                                 </g>
+
+                                <g transform="translate(0,-20)" stroke-width="1.5">
+                                    <!-- Top Right -->
+                                    <!-- Bottom formation (7th last) -->
+                                    <line class="bear" x1="1300" y1="120" x2="1300" y2="200" />
+                                    <rect class="bear" x="1291" y="150" width="18" height="30" />
+
+                                    <!-- Breakout candle (6th last) -->
+                                    <line class="bull" x1="1350" y1="80" x2="1350" y2="180" />
+                                    <rect class="bull" x="1341" y="110" width="18" height="60" />
+
+                                    <!-- Follow-through -->
+                                    <line class="bull" x1="1400" y1="60" x2="1400" y2="150" />
+                                    <rect class="bull" x="1391" y="90" width="18" height="50" />
+
+                                    <line class="bull" x1="1450" y1="40" x2="1450" y2="130" />
+                                    <rect class="bull" x="1441" y="70" width="18" height="50" />
+
+                                    <line class="bull" x1="1500" y1="25" x2="1500" y2="110" />
+                                    <rect class="bull" x="1491" y="50" width="18" height="45" />
+
+                                    <line class="bull" x1="1550" y1="15" x2="1550" y2="90" />
+                                    <rect class="bull" x="1541" y="35" width="18" height="40" />
+
+                                    <!-- FINAL candle → exact top touch -->
+                                    <line class="bull" x1="1600" y1="0" x2="1600" y2="70" />
+                                    <rect class="bull" x="1591" y="20" width="18" height="40" />
+                                </g>
+
+
+
                             </svg>
                             <p class="d-none d-md-block"
                                 style="position: absolute; top: 320px; background-color: white; margin-bottom: 0; right: 0px; padding: 10px; font-weight: bold; border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
@@ -1161,19 +1184,24 @@
                                 <div style="text-align: center;" class="p-2">
 
 
-                                    <p class="d-flex d-sm-none"
-                                        style="font-size: 25px; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);font-weight: bold; text-wrap: nowrap;">
+                                    <p class="d-flex d-sm-none justify-content-center"
+                                        style="font-size: 22px; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);font-weight: bold; text-wrap: nowrap;">
                                         Top Stock Research
                                         <span style="color: #2563eb;" class="ms-2">(TSR)</span>
                                     </p>
 
-                                    <h1 class=" d-none d-sm-flex"
+                                    <p class="d-none d-sm-flex d-md-none justify-content-center"
+                                        style="font-size: 30px; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);font-weight: bold; text-wrap: nowrap;">
+                                        Top Stock Research <span style="color: #2563eb;" class="ms-2">(TSR)</span>
+                                </p>
+
+                                    <h1 class=" d-none d-md-flex"
                                         style="font-size: 50px; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);font-weight: bold; text-wrap: nowrap;">
                                         Top Stock Research <span style="color: #2563eb;" class="ms-2">(TSR)</span>
                                     </h1>
 
 
-                                    <h6 class="d-flex d-sm-none align-items-center justify-content-center">
+                                    <div class="tsrHeroSectionPunchline d-flex d-sm-none align-items-center justify-content-center" style="font-size: 13px;">
                                         Learn
                                         <div
                                             style="display: inline-block; background-color: white; height: 5px; width: 5px; border-radius: 20px; margin: 0px 10px 0px 10px;">
@@ -1191,9 +1219,29 @@
                                             style="display: inline-block; background-color: white; height: 5px; width: 5px; border-radius: 20px; margin: 0px 10px 0px 10px;">
                                         </div>
                                         Trade
-                                    </h6>
+                                    </div>
 
-                                    <h3 class="d-none d-sm-flex align-items-center justify-content-center">
+                                    <h4 class="d-none d-sm-flex d-md-none align-items-center justify-content-center">
+                                        Learn
+                                        <div
+                                            style="display: inline-block; background-color: white; height: 5px; width: 5px; border-radius: 20px; margin: 0px 10px 0px 10px;">
+                                        </div>
+                                        Screen
+                                        <div
+                                            style="display: inline-block; background-color: white; height: 5px; width: 5px; border-radius: 20px; margin: 0px 10px 0px 10px;">
+                                        </div>
+                                        Analyse
+                                        <div
+                                            style="display: inline-block; background-color: white; height: 5px; width: 5px; border-radius: 20px; margin: 0px 10px 0px 10px;">
+                                        </div>
+                                        Test
+                                        <div
+                                            style="display: inline-block; background-color: white; height: 5px; width: 5px; border-radius: 20px; margin: 0px 10px 0px 10px;">
+                                        </div>
+                                        Trade
+                                    </h4>
+
+                                    <h3 class="d-none d-md-flex align-items-center justify-content-center">
                                         Learn
                                         <div
                                             style="display: inline-block; background-color: white; height: 5px; width: 5px; border-radius: 20px; margin: 0px 10px 0px 10px;">
@@ -1217,22 +1265,22 @@
 
                                 <div class="d-block d-sm-none " style="text-align: center; min-width: 300px;">
                                     <input id="user_input" type="text" class="form-control ui-autocomplete-input"
-                                        placeholder="Search Screeners, Research, Charts" onclick="miIs.ssb('equity')"
+                                        placeholder="Search Stocks, Screeners, Charts" onclick="miIs.ssb('equity')"
                                         autocomplete="off"
-                                        style="margin:10px; margin-bottom: 5px; margin-top: 0px; z-index: 1;">
+                                        style="margin:10px; margin-bottom: 5px; margin-top: 0px; z-index: 1; position: relative;">
 
                                 </div>
 
                                 <div class="d-none d-sm-block "
                                     style="text-align: center; width: 50%; min-width: 350px;">
                                     <input id="user_input" type="text" class="form-control ui-autocomplete-input"
-                                        placeholder="Search Screeners, Research, Charts (Ctrl + K)"
+                                        placeholder="Search Stocks, Screeners, Charts (Ctrl + K)"
                                         onclick="miIs.ssb('equity')" autocomplete="off"
                                         style="margin:10px; margin-bottom: 5px; margin-top: 0px; z-index: 1; position: relative;">
 
                                 </div>
 
-                                <h2 class="d-flex justify-content-center" style="color: white; text-wrap: nowrap;">
+                                <h2 class="d-none d-sm-flex justify-content-center" style="color: white; text-wrap: nowrap;">
                                     One Stop Shop for&nbsp;
                                     <div class="d-flex flex-column tsrTextSpinnerContainer"
                                         style="height: 30px; overflow: hidden; text-shadow: 1px 1px 3px white; text-align: start;">
@@ -1243,6 +1291,17 @@
                                     </div>
                                 </h2>
 
+                                <div class="d-flex d-sm-none justify-content-center" style="color: black; text-wrap: nowrap; font-size: 20px; font-weight: 700;">
+                                    One Stop Shop for&nbsp;
+                                    <div class="d-flex flex-column tsrTextSpinnerContainer"
+                                        style="height: 30px; overflow: hidden; text-shadow: 1px 1px 3px white; text-align: start;">
+                                        <p>Screeners</p>
+                                        <p>Charts</p>
+                                        <p>Research</p>
+                                        <p>Alerts</p>
+                                    </div>
+                                </div>
+
                             </div>
 
                         </section>
@@ -1251,7 +1310,7 @@
                             <p style="background-color: white; margin-bottom: 0; color: black; width: max-content; padding: 5px 10px; font-weight: bold; background: rgba(0, 0, 0, 0.5); color: white; border-top-left-radius: 20px; position: absolute; right: 0; top: 330px; border-bottom-left-radius: 20px;"
                                 class="bg-secondary mx-auto">
                                 <a class="link-light" href="">
-                                    <i class="fas fa-hand-point-right"></i>
+                                    <i class="fas fa-home"></i>
                                     Visit Classic Home
                                 </a>
                             </p>
