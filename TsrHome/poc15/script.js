@@ -87,7 +87,7 @@ var tsrHome = (function () {  // my Ui Head
                                 <p style="margin: 0;">Suitable for <b>Intraday to Positional</b> Traders
                                 </p>
 
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/MarketScreener" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/MarketScreener" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -108,7 +108,7 @@ var tsrHome = (function () {  // my Ui Head
                                 <p style="margin: 0;">Suitable for <b>Intraday to Swing</b> Traders
                                 </p>
 
-                                <a href="https://www.tsrbt1.com/rt/BuzzingStocks" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/BuzzingStocks" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -129,7 +129,7 @@ var tsrHome = (function () {  // my Ui Head
                                 <p style="margin: 0;">Suitable for <b>Swing & Positional</b> Traders
                                 </p>
 
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/HighsLows" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/HighsLows" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -152,7 +152,7 @@ var tsrHome = (function () {  // my Ui Head
                                 <p style="margin: 0;">Suitable for <b>Intraday to Positional</b> Traders
                                 </p>
 
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/HeatMap" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/HeatMap" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
 
                             </div>
@@ -175,7 +175,7 @@ var tsrHome = (function () {  // my Ui Head
 
                                 <p style="margin: 0;">Suitable for <b>Swing to Long Term Invester</b></p>
 
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/RelativeStrength" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/RelativeStrength" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -198,7 +198,7 @@ var tsrHome = (function () {  // my Ui Head
 
                                 <p style="margin: 0;">Suitable for <b>Swing & Positional</b> Traders</p>
 
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/SectorRotation" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/SectorRotation" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -221,7 +221,7 @@ var tsrHome = (function () {  // my Ui Head
                                 <p style="margin: 0;">Suitable for <b>Intraday to Positional</b> Traders
                                 </p>
 
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/AdvanceDecline" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/AdvanceDecline" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -243,7 +243,7 @@ var tsrHome = (function () {  // my Ui Head
 
                                 <p style="margin: 0;">Suitable for <b>Intraday to Swing</b> Traders</p>
 
-                                <a href="https://www.tsrbt1.com/rt/Screener/TSRStrengthIndex/TechnicalStrength" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/TSRStrengthIndex/TechnicalStrength" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -265,7 +265,7 @@ var tsrHome = (function () {  // my Ui Head
 
                                 <p style="margin: 0;">Suitable for <b>Positional & Long Term Investor</b></p>
 
-                                <a href="https://www.tsrbt1.com/rt/Screener/Financial/GuruRatios" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Financial/GuruRatios" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -294,7 +294,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Strong Bullish Stocks</li>
                                     <li>Highest Turnover Stocks</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/MarketScreener" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/MarketScreener" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -313,7 +313,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Get High Returns Stocks</li>
                                     <li>Rank Stock as Per Performance</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/RelativeStrength" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/RelativeStrength" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -332,7 +332,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>High Growth Stocks</li>
                                     <li>Large Cap / Blue Chip Stocks</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Financial/ValuationRatios" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Financial/ValuationRatios" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -350,7 +350,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Rank Company Performance</li>
                                     <li>Compare Strength with Peers</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/TSRStrengthIndex/TechnicalStrength" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/TSRStrengthIndex/TechnicalStrength" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -368,7 +368,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Custom Heatmap on Watchlist</li>
                                     <li>Charts on Move</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/HeatMap" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/HeatMap" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -386,7 +386,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Plotted across various stock baskets.</li>
                                     <li>Combined view for broad & sector indices.</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/AdvanceDecline" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/AdvanceDecline" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -405,7 +405,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Banking & Financials</li>
                                     <li>Pharmaceuticals / Healthcare</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/SectorAnalysis" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/SectorAnalysis" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -423,7 +423,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Three Months High or Low</li>
                                     <li>Near Five Year High or Low</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/HighsLows" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/HighsLows" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -441,7 +441,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Golden Cross - Where Big Investors Buy</li>
                                     <li>Death Cross - Where Big Investors Sell</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Technical/EMAScreener" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Technical/EMAScreener" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -459,7 +459,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Gap Up</li>
                                     <li>Bullish Engulfing</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Candlestick/BullishScreener" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -471,22 +471,17 @@ var tsrHome = (function () {  // my Ui Head
                                 <h5>Learn</h5>
                                 <p>Learn Before You Earn.</p>                
                                 <ul
-                                    style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
-                                    <!-- <li>Tutorials</li>
-                                    <li>TSR Videos</li>
-                                    <li>eBooks</li> -->
-                                    <li><a href="https://tutorials.tsrbt1.com">Tutorials</a></li>                                                   
-                                    <li><a href="https://www.youtube.com/watch?v=v4Hp02h_XXQ">TSR Videos</a></li>
-                                    <li><a href="https://www.tsrbt1.com/rt/Ebooks">eBooks</a></li>
-                                </ul>
-                                <a href="https://tutorials.tsrbt1.com" class="tsrToolCta">Start Now <i
-                                    class="fas fa-arrow-right"></i></a>                                                
+                                    style="list-style: circle; color: #6c757d; padding-left: 20px;">
+                                    <li><a class="tsrHomeToolCta" href="https://tutorials.topstockresearch.com">Tutorials <i class="fas fa-arrow-right"></i></a></li>                                                   
+                                    <li><a class="tsrHomeToolCta" href="https://www.youtube.com/watch?v=v4Hp02h_XXQ">TSR Videos <i class="fas fa-arrow-right"></i></a></li>
+                                    <li><a class="tsrHomeToolCta" href="BASE_WWW_URL/rt/Ebooks">eBooks <i class="fas fa-arrow-right"></i></a></li>
+                                </ul>                                              
                             </div>
                         </div>
 
                     </div>
         `
-        } else if (cat == "scalpingIntraday") {
+        } else if (cat == "intraday") {
             containerId = "tsrIntradayUcContainer";
             html += `                    
                 <div class="owl-carousel owl-theme">
@@ -505,7 +500,7 @@ var tsrHome = (function () {  // my Ui Head
                                 <li>Highest Turnover Stocks</li>
                                 <li>High Average Volume Stocks</li>                                                    
                             </ul>
-                            <a href="https://www.tsrbt1.com/rt/Screener/Markets/MarketScreener" class="tsrToolCta">Start Now <i
+                            <a href="BASE_WWW_URL/rt/Screener/Markets/MarketScreener" class="tsrHomeToolCta">Start Now <i
                                     class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -525,7 +520,7 @@ var tsrHome = (function () {  // my Ui Head
                                 <li>VWAP Screeners</li>
                                 <li>Open Range Strategies</li>
                             </ul>
-                            <a href="https://www.tsrbt1.com/rt/Screener/Markets/PriceVolume" class="tsrToolCta">Start Now <i
+                            <a href="BASE_WWW_URL/rt/Screener/Markets/PriceVolume" class="tsrHomeToolCta">Start Now <i
                                     class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -544,7 +539,7 @@ var tsrHome = (function () {  // my Ui Head
                                 <li>Volume Jump</li>
                                 <li>Gap Up</li>
                             </ul>
-                            <a href="https://www.tsrbt1.com/rt/BuzzingStocks" class="tsrToolCta">Start Now <i
+                            <a href="BASE_WWW_URL/rt/BuzzingStocks" class="tsrHomeToolCta">Start Now <i
                                     class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -563,7 +558,7 @@ var tsrHome = (function () {  // my Ui Head
                                 <li>Charts on Move</li>
                                 <li>Eye-Soothing Colors</li>
                             </ul>
-                            <a href="https://www.tsrbt1.com/rt/Screener/Markets/HeatMap" class="tsrToolCta">Start Now <i
+                            <a href="BASE_WWW_URL/rt/Screener/Markets/HeatMap" class="tsrHomeToolCta">Start Now <i
                                     class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -582,7 +577,7 @@ var tsrHome = (function () {  // my Ui Head
                                 <li>MACD Bullish Crossover</li>
                                 <li>Supertrend Crossover</li>
                             </ul>
-                            <a href="https://www.tsrbt1.com/rt/Screener/Technical/OverboughtSold" class="tsrToolCta">Start Now <i
+                            <a href="BASE_WWW_URL/rt/Screener/Technical/OverboughtSold" class="tsrHomeToolCta">Start Now <i
                                     class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>                  
@@ -601,7 +596,7 @@ var tsrHome = (function () {  // my Ui Head
                                 <li>Price Action Strategies</li>
                                 <li>Breakout Strategies</li>
                             </ul>
-                            <a href="https://www.tsrbt1.com/rt/Screener/ExpertScreener/IntradayTradingStrategies" class="tsrToolCta">Start Now <i
+                            <a href="BASE_WWW_URL/rt/Screener/ExpertScreener/IntradayTradingStrategies" class="tsrHomeToolCta">Start Now <i
                                     class="fas fa-arrow-right"></i></a>
                         </div>
                     </div> 
@@ -620,7 +615,7 @@ var tsrHome = (function () {  // my Ui Head
                                 <li>Combined view for broad & sector indices</li>
                                 <li>Filter Rising vs Falling Stocks</li>
                             </ul>
-                            <a href="https://www.tsrbt1.com/rt/Screener/Markets/AdvanceDecline" class="tsrToolCta">Start Now <i
+                            <a href="BASE_WWW_URL/rt/Screener/Markets/AdvanceDecline" class="tsrHomeToolCta">Start Now <i
                                     class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>                                                                                 
@@ -639,7 +634,7 @@ var tsrHome = (function () {  // my Ui Head
                                 <li>Compare Strength with Peers</li>
                                 <li>Filters Strong vs Weak</li>
                             </ul>
-                            <a href="https://www.tsrbt1.com/rt/Screener/TSRStrengthIndex/TechnicalStrength" class="tsrToolCta">Start Now <i
+                            <a href="BASE_WWW_URL/rt/Screener/TSRStrengthIndex/TechnicalStrength" class="tsrHomeToolCta">Start Now <i
                                     class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -648,7 +643,7 @@ var tsrHome = (function () {  // my Ui Head
                 </div>
 
         `
-        } else if (cat == "swingPositional") {
+        } else if (cat == "swing") {
             containerId = "tsrSwingUcContainer";
             html += `
                     <div class="owl-carousel owl-theme">
@@ -668,7 +663,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>High Average Volume Stocks</li>
                                     <li>Recovery From Low Stocks</li>                                              
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/MarketScreener" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/MarketScreener" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -689,7 +684,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Breakout and Breakdown</li>
                                     <li>High / Low Beta Stocks</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/ExpertScreener/SwingTradingStrategies" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/ExpertScreener/SwingTradingStrategies" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -709,7 +704,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Rank Stock as Per Performance</li>
                                     <li>1 Week to 10 Year Relative Strength</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/RelativeStrength" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/RelativeStrength" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -728,7 +723,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Compare Strength with Peers</li>
                                     <li>Filters Strong vs Weak</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/TSRStrengthIndex/TechnicalStrength" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/TSRStrengthIndex/TechnicalStrength" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -747,7 +742,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>AI-powered insights</li>
                                     <li>Visualize sector strength in charts</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/SectorRotation" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/SectorRotation" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -765,7 +760,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Supertrend Crossover</li>
                                     <li>Bollinger Band Crossover</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Technical/OverboughtSold" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Technical/OverboughtSold" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -783,7 +778,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Death Cross - 50 CB 200 MA</li>
                                     <li>Trending Moving Average</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Technical/EMAScreener" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Technical/EMAScreener" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -803,7 +798,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Hammer</li>
                                 </ul>
 
-                                <a href="https://www.tsrbt1.com/rt/Screener/Candlestick/BullishScreener" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Candlestick/BullishScreener" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -822,13 +817,13 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Channel</li>
                                 </ul>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/ChartPatterns/PopularChartPatterns" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/ChartPatterns/PopularChartPatterns" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
             `
-        } else if (cat == "investor") {
+        } else if (cat == "positional") {
             containerId = "tsrInvestorUcContainer";
             html += `
                     <div class="owl-carousel owl-theme">
@@ -848,7 +843,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Recovery From Low Stocks</li>
                                     <li>High Beta Stocks</li>                                                    
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/MarketScreener" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/MarketScreener" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -867,7 +862,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Fibonacci Screeners</li>
                                     <li>Demand & Supply Zones</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/ExpertScreener/PositionalTradingStrategies" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/ExpertScreener/PositionalTradingStrategies" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -887,7 +882,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Low Debt Stocks</li>
                                     <li>Stable Stocks</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Financial/ValuationRatios" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Financial/ValuationRatios" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -908,7 +903,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Graham Number</li>
                                     <li>Peter Lynch Fair Value</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Financial/GuruRatios" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Financial/GuruRatios" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -928,7 +923,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Triangle</li>
                                     <li>Channel</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/ChartPatterns/PopularChartPatterns" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/ChartPatterns/PopularChartPatterns" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -947,7 +942,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Nifty 50 stocks ranked by beta</li>
                                     <li>Technical analysis of indices</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/IndexAnalysis" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/IndexAnalysis" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>                            
@@ -965,7 +960,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>AI-powered insights</li>
                                     <li>Visualize sector strength in charts</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/SectorRotation" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/SectorRotation" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -983,7 +978,7 @@ var tsrHome = (function () {  // my Ui Head
                                     <li>Rank Stock as Per Performance</li>
                                     <li>1 Week to 10 Year Relative Strength</li>
                                 </ul>
-                                <a href="https://www.tsrbt1.com/rt/Screener/Markets/RelativeStrength" class="tsrToolCta">Start Now <i
+                                <a href="BASE_WWW_URL/rt/Screener/Markets/RelativeStrength" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>

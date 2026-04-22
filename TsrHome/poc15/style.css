@@ -21,14 +21,14 @@
     font-size: 15px;
 }
 
-.tsrToolCta {
+.tsrHomeToolCta {
     color: #0d6efd !important;
     text-decoration: none !important;
     font-size: 0.9rem !important;
     font-weight: 600 !important;
 }
 
-.tsrToolCta:hover {
+.tsrHomeToolCta:hover {
     text-decoration: underline !important;
 }
 
@@ -191,59 +191,145 @@
 
 /* ---------------------------------HERO SECTION------------------------- */
 
+        /* --- Hero Section Container --- */
+        .tsrHomeHeroSection {
+                /* Match the white cards used in the "Everyday Trading Tools" section */
+                background-color: #ffffff;
+                /* Consistency: Use the same border color as your tool cards */
+                border: 1px solid #e2e8f0;
+                /* Consistency: Use a soft shadow to match the hover effect of your cards */
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+                border-radius: 16px;
+                /* Matches the rounding on your tool icons */
+                height: 450px;
+                position: relative;
+                overflow: hidden;
+                margin: 20px;
+        }
 
-@keyframes textSpinner {
-    0% {
-        transform: translateY(0);
-    }
+        /* --- Realistic Candlestick SVG --- */
+        .tsrHomeHeroSection svg {
+                opacity: 0.4;
+                /* Increased visibility as requested */
+                filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+                z-index: 0;
+        }
 
-    33% {
-        transform: translateY(-145%);
-    }
+        /* Redefining the SVG elements for a realistic 'Live Chart' look */
+        .tsrHomeHeroSection svg g {
+                stroke-width: 1.5;
+        }
 
-    66% {
-        transform: translateY(-290%);
-    }
+        /* Bearish candles */
+        .tsrHomeHeroSection svg .tsrHomeBearishCandle {
+                stroke: #f87171;
+                fill: rgba(248, 113, 113, 0.15);
+        }
 
-    100% {
-        transform: translateY(-435%);
-    }
-}
+        /* Bullish candles */
+        .tsrHomeHeroSection svg .tsrHomeBullishCandle {
+                stroke: #4ade80;
+                fill: rgba(74, 222, 128, 0.15);
+        }
 
-.tsrHeroSection .tsrTextSpinnerContainer p {
-    animation: textSpinner 10s ease-in-out 0s infinite normal none;
-    color: #2563eb !important;
-}
+        /* --- Typography --- */
+        /* Use the same Slate/Navy colors found in your section headers */
+        .tsrHomeHeroSection h1,
+        .tsrHomeHeroSection h2 {
+                color: #1e293b !important;
+                /* Matches your "Your Everyday Trading Tools" title */
+                font-weight: 700;
+        }
 
-.tsrHeroSection {
-    /* background: radial-gradient(circle at 70%, #1a1f2b 0%, #0b0e14 100%); */
-    /* background: radial-gradient(circle at 70%, #09124f 0, #090979 30%, #006fbf 100%); */
-    /* background: linear-gradient(160deg, #ffffff 0%, #f4f4f5 100%); */
-    /* background: linear-gradient(160deg, lavender 0%, #f4f4f5 100%); */
-    /* background: linear-gradient(160deg, lightblue 0%, #f4f4f5 100%); */
-    background: #e2f2ff !important;
+        /* Learn • Screen • Analyse • Test • Trade */
+        .tsrHomeHeroSection h3,
+        .tsrHomeHeroSection h4,
+        .tsrHomeHeroSection h6,
+        .tsrHomeHeroSectionPunchline {
+                color: #64748b !important;
+                /* Muted Slate */
+                font-weight: 500;
+        }
 
-    height: 60vh;
-    min-height: 500px;
-    /* display: flex; */
-    /* align-items: center; */
-    text-align: center;
-    color: black;
-    padding: 0 5%;
-}
+        /* The separator dots */
+        .tsrHomeHeroSection h3 div,
+        .tsrHomeHeroSection h4 div,
+        .tsrHomeHeroSection h6 div,
+        .tsrHomeHeroSectionPunchline div {
+                background-color: #3b82f6 !important;
+                /* Consistent blue accent */
+        }
 
+        /* --- Search Bar Modernization --- */
+        /* This now looks like a native dashboard search component */
+        .tsrHomeHeroSection input#user_input {
+                background-color: #f8fafc;
+                /* Slightly off-white to contrast against the white section */
+                border: 1px solid #e2e8f0;
+                border-radius: 10px;
+                padding: 5px 10px;
+                color: #1e293b;
+                transition: all 0.2s ease-in-out;
+                cursor: pointer;
+        }
+
+        .tsrHomeHeroSection input#user_input:focus {
+                background-color: #ffffff;
+                border-color: #3b82f6;
+                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+                outline: none;
+        }
+
+        .tsrHomeHeroSection .tsrLinkWithHover {
+                color: #475569 !important;
+                font-weight: 600;
+        }
+
+        @keyframes tsrHomeTextSpinner {
+                0% {
+                        transform: translateY(0);
+                }
+
+                33% {
+                        transform: translateY(-145%);
+                }
+
+                66% {
+                        transform: translateY(-290%);
+                }
+
+                100% {
+                        transform: translateY(-435%);
+                }
+        }
+
+        .tsrHomeHeroSection .tsrHomeTextSpinnerContainer p {
+                animation: tsrHomeTextSpinner 10s ease-in-out 0s infinite normal none;
+                color: #2563eb !important;
+        }
+
+        .tsrHomeHeroSection {
+                background: #e2f2ff !important;
+                height: 60vh;
+                min-height: 500px;
+                /* display: flex; */
+                /* align-items: center; */
+                text-align: center;
+                color: black;
+                padding: 0 5%;
+        }
 /* ---------------------------------EVERYDAY TOOLS SECTION--------------- */
 
 
 /* Section */
-.tsrEverydayToolsSection {
+.tsrHomeEverydayToolsSection {
     /* background: #f7f9fc; */
     border-radius: 16px;
     background: #f8f9fa;
 }
 
 /* Card Wrapper */
-.tsrEverydayToolsSection .tsrToolCard {
+.tsrHomeEverydayToolsSection .tsrHomeToolCard {
     text-decoration: none;
     display: block;
     height: 100%;
@@ -251,7 +337,7 @@
 }
 
 /* Inner flip container */
-.tsrToolInner {
+.tsrHomeToolInner {
     position: relative;
     width: 100%;
     height: 260px;
@@ -260,13 +346,13 @@
 }
 
 /* Flip on hover */
-.tsrEverydayToolsSection .tsrToolCard:hover .tsrToolInner {
+.tsrHomeEverydayToolsSection .tsrHomeToolCard:hover .tsrHomeToolInner {
     transform: rotateY(180deg);
 }
 
 /* Front & Back */
-.tsrToolFront,
-.tsrToolBack {
+.tsrHomeToolFront,
+.tsrHomeToolBack {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -278,7 +364,7 @@
 }
 
 /* Front */
-.tsrToolFront {
+.tsrHomeToolFront {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -286,7 +372,7 @@
 }
 
 /* Back */
-.tsrToolBack {
+.tsrHomeToolBack {
     transform: rotateY(180deg);
     display: flex;
     flex-direction: column;
@@ -294,52 +380,54 @@
 }
 
 /* Icon */
-.tsrToolIcon {
+.tsrHomeToolIcon {
     font-size: 34px;
     color: #0441e7;
     margin-bottom: 12px;
 }
 
 /* Title */
-.tsrToolFront h5,
-.tsrToolBack h5 {
+.tsrHomeToolFront h5,
+.tsrHomeToolBack h5 {
     font-weight: 600;
     margin-bottom: 8px;
     color: #1a1a1a;
+    text-align: center;
 }
 
 /* Subtitle */
-.tsrToolFront p {
+.tsrHomeToolFront p {
     color: #6c757d;
     font-size: 14px;
+    text-align: center;
 }
 
 /* Back description */
-.tsrToolBack p {
+.tsrHomeToolBack p {
     font-size: 14px;
     color: #555;
 }
 
 /* Hover polish */
-.tsrEverydayToolsSection .tsrToolCard:hover .tsrToolFront {
+.tsrHomeEverydayToolsSection .tsrHomeToolCard:hover .tsrHomeToolFront {
     box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
 }
 
 /* Mobile fallback (no flip) */
 @media (max-width: 768px) {
-    .tsrToolInner {
+    .tsrHomeToolInner {
         height: auto;
         transform: none !important;
     }
 
-    .tsrToolFront,
-    .tsrToolBack {
+    .tsrHomeToolFront,
+    .tsrHomeToolBack {
         position: relative;
         transform: none;
         margin-bottom: 10px;
     }
 
-    .tsrToolBack {
+    .tsrHomeToolBack {
         display: none;
     }
 }

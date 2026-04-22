@@ -928,7 +928,10 @@
 
                                 <p style="margin-bottom: 0;" class="d-flex justify-content-around">
                                     <span class="tsrTickerPrice mx-3">52,580.20</span>
-                                    <span class="tsrTickerPriceChgPos">+0.55%</span>
+                                    <span class="tsrTickerPriceChgNeg">
+                                        <i class="fas fa-caret-down mx-2"></i>
+                                        0.55%
+                                    </span>
                                 </p>
 
                             </div>
@@ -938,7 +941,10 @@
                                 </p>
                                 <p style="margin-bottom: 0;" class="d-flex justify-content-around">
                                     <span class="tsrTickerPrice mx-3">52,580.20</span>
-                                    <span class="tsrTickerPriceChgPos">+0.55%</span>
+                                    <span class="tsrTickerPriceChgPos">
+                                        <i class="fas fa-caret-up mx-2"></i>
+                                        0.55%
+                                    </span>
                                 </p>
                             </div>
                         </div>
@@ -946,232 +952,175 @@
 
                         <!-- ----------------------HERO SECTION BEGINS HERE-------------------------------- -->
 
-                        <style>
-                            /* --- Hero Section Container --- */
-                            .tsrHeroSection {
-                                /* Match the white cards used in the "Everyday Trading Tools" section */
-                                background-color: #ffffff;
-
-                                /* Consistency: Use the same border color as your tool cards */
-                                border: 1px solid #e2e8f0;
-
-                                /* Consistency: Use a soft shadow to match the hover effect of your cards */
-                                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
-
-                                border-radius: 16px;
-                                /* Matches the rounding on your tool icons */
-                                height: 450px;
-                                position: relative;
-                                overflow: hidden;
-                                margin: 20px;
-                            }
-
-                            /* --- Realistic Candlestick SVG --- */
-                            .tsrHeroSection svg {
-                                opacity: 0.4;
-                                /* Increased visibility as requested */
-                                filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
-                                z-index: 0;
-                            }
-
-                            /* Redefining the SVG elements for a realistic 'Live Chart' look */
-                            .tsrHeroSection svg g {
-                                stroke-width: 1.5;
-                            }
-
-                            /* Bearish candles */
-                            .tsrHeroSection svg .bear {
-                                stroke: #f87171;
-                                fill: rgba(248, 113, 113, 0.15);
-                            }
-
-                            /* Bullish candles */
-                            .tsrHeroSection svg .bull {
-                                stroke: #4ade80;
-                                fill: rgba(74, 222, 128, 0.15);
-                            }
-
-                            /* --- Typography --- */
-                            /* Use the same Slate/Navy colors found in your section headers */
-                            .tsrHeroSection h1,
-                            .tsrHeroSection h2 {
-                                color: #1e293b !important;
-                                /* Matches your "Your Everyday Trading Tools" title */
-                                font-weight: 700;
-                            }
-
-                            /* Learn • Screen • Analyse • Test • Trade */
-                            .tsrHeroSection h3,
-                            .tsrHeroSection h4,
-                            .tsrHeroSection h6,
-                            .tsrHeroSectionPunchline {
-                                color: #64748b !important;
-                                /* Muted Slate */
-                                font-weight: 500;
-                            }
-
-                            /* The separator dots */
-                            .tsrHeroSection h3 div,
-                            .tsrHeroSection h4 div,
-                            .tsrHeroSection h6 div,
-                            .tsrHeroSectionPunchline div {
-                                background-color: #3b82f6 !important;
-                                /* Consistent blue accent */
-                            }
-
-                            /* --- Search Bar Modernization --- */
-                            /* This now looks like a native dashboard search component */
-                            .tsrHeroSection input#user_input {
-                                background-color: #f8fafc;
-                                /* Slightly off-white to contrast against the white section */
-                                border: 1px solid #e2e8f0;
-                                border-radius: 10px;
-                                padding: 5px 10px;
-                                color: #1e293b;
-                                transition: all 0.2s ease-in-out;
-                            }
-
-                            .tsrHeroSection input#user_input:focus {
-                                background-color: #ffffff;
-                                border-color: #3b82f6;
-                                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-                                outline: none;
-                            }
-
-                            /* --- Visit Classic Home --- */
-                            .tsrHeroSection .bg-secondary {
-                                background: #f1f5f9 !important;
-                                /* Light gray to match page secondary elements */
-                                color: #475569 !important;
-                                border: 1px solid #e2e8f0;
-                                border-right: none;
-                                /* Clean fit against the edge */
-                            }
-
-                            .tsrHeroSection .tsrLinkWithHover {
-                                color: #475569 !important;
-                                font-weight: 600;
-                            }
-                        </style>
-
-                        <section class="tsrHomeSection tsrHeroSection">
+                        <section class="tsrHomeSection tsrHomeHeroSection">
                             <svg style="position: absolute; left: 0; pointer-events: none;" width="100%" height="100%"
                                 viewBox="0 0 1640 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-
-
-
+                                <!-- SHIFTED MAIN -->
                                 <g transform="translate(0,70)" stroke-width="1.5">
-
-                                    <!-- ALL YOUR EXISTING CANDLES EXCEPT LAST 7 GO HERE -->
-
                                     <!-- Uptrend -->
-                                    <line class="bear" x1="40" y1="300" x2="40" y2="250" />
-                                    <rect class="bear" x="31" y="270" width="18" height="25" />
-                                    <line class="bull" x1="80" y1="290" x2="80" y2="230" />
-                                    <rect class="bull" x="71" y="250" width="18" height="30" />
-                                    <line class="bull" x1="120" y1="270" x2="120" y2="210" />
-                                    <rect class="bull" x="111" y="230" width="18" height="30" />
-                                    <line class="bull" x1="160" y1="250" x2="160" y2="190" />
-                                    <rect class="bull" x="151" y="210" width="18" height="30" />
-                                    <line class="bull" x1="200" y1="230" x2="200" y2="170" />
-                                    <rect class="bull" x="191" y="190" width="18" height="30" />
-                                    <line class="bull" x1="240" y1="210" x2="240" y2="150" />
-                                    <rect class="bull" x="231" y="170" width="18" height="30" />
-                                    <line class="bull" x1="280" y1="190" x2="280" y2="140" />
-                                    <rect class="bull" x="271" y="160" width="18" height="25" />
+                                    <line class="tsrHomeBearishCandle" x1="40" y1="250" x2="40" y2="270" />
+                                    <line class="tsrHomeBearishCandle" x1="40" y1="295" x2="40" y2="300" />
+                                    <rect class="tsrHomeBearishCandle" x="31" y="270" width="18" height="25" />
+
+                                    <line class="tsrHomeBullishCandle" x1="80" y1="230" x2="80" y2="250" />
+                                    <line class="tsrHomeBullishCandle" x1="80" y1="280" x2="80" y2="290" />
+                                    <rect class="tsrHomeBullishCandle" x="71" y="250" width="18" height="30" />
+
+                                    <line class="tsrHomeBullishCandle" x1="120" y1="210" x2="120" y2="230" />
+                                    <line class="tsrHomeBullishCandle" x1="120" y1="260" x2="120" y2="270" />
+                                    <rect class="tsrHomeBullishCandle" x="111" y="230" width="18" height="30" />
+
+                                    <line class="tsrHomeBullishCandle" x1="160" y1="190" x2="160" y2="210" />
+                                    <line class="tsrHomeBullishCandle" x1="160" y1="240" x2="160" y2="250" />
+                                    <rect class="tsrHomeBullishCandle" x="151" y="210" width="18" height="30" />
+
+                                    <line class="tsrHomeBullishCandle" x1="200" y1="170" x2="200" y2="190" />
+                                    <line class="tsrHomeBullishCandle" x1="200" y1="220" x2="200" y2="230" />
+                                    <rect class="tsrHomeBullishCandle" x="191" y="190" width="18" height="30" />
+
+                                    <line class="tsrHomeBullishCandle" x1="240" y1="150" x2="240" y2="170" />
+                                    <line class="tsrHomeBullishCandle" x1="240" y1="200" x2="240" y2="210" />
+                                    <rect class="tsrHomeBullishCandle" x="231" y="170" width="18" height="30" />
+
+                                    <line class="tsrHomeBullishCandle" x1="280" y1="140" x2="280" y2="160" />
+                                    <line class="tsrHomeBullishCandle" x1="280" y1="185" x2="280" y2="190" />
+                                    <rect class="tsrHomeBullishCandle" x="271" y="160" width="18" height="25" />
 
                                     <!-- Peak -->
-                                    <line class="bear" x1="320" y1="170" x2="320" y2="130" />
-                                    <rect class="bear" x="311" y="145" width="18" height="20" />
+                                    <line class="tsrHomeBearishCandle" x1="320" y1="130" x2="320" y2="145" />
+                                    <line class="tsrHomeBearishCandle" x1="320" y1="165" x2="320" y2="170" />
+                                    <rect class="tsrHomeBearishCandle" x="311" y="145" width="18" height="20" />
 
                                     <!-- Downtrend -->
-                                    <line class="bear" x1="360" y1="180" x2="360" y2="240" />
-                                    <rect class="bear" x="351" y="200" width="18" height="30" />
-                                    <line class="bear" x1="400" y1="200" x2="400" y2="270" />
-                                    <rect class="bear" x="391" y="220" width="18" height="35" />
-                                    <line class="bear" x1="440" y1="220" x2="440" y2="300" />
-                                    <rect class="bear" x="431" y="250" width="18" height="40" />
-                                    <line class="bear" x1="480" y1="240" x2="480" y2="320" />
-                                    <rect class="bear" x="471" y="270" width="18" height="40" />
-                                    <line class="bear" x1="520" y1="260" x2="520" y2="340" />
-                                    <rect class="bear" x="511" y="290" width="18" height="40" />
-                                    <line class="bear" x1="560" y1="280" x2="560" y2="360" />
-                                    <rect class="bear" x="551" y="310" width="18" height="40" />
+                                    <line class="tsrHomeBearishCandle" x1="360" y1="180" x2="360" y2="200" />
+                                    <line class="tsrHomeBearishCandle" x1="360" y1="230" x2="360" y2="240" />
+                                    <rect class="tsrHomeBearishCandle" x="351" y="200" width="18" height="30" />
+
+                                    <line class="tsrHomeBearishCandle" x1="400" y1="200" x2="400" y2="220" />
+                                    <line class="tsrHomeBearishCandle" x1="400" y1="255" x2="400" y2="270" />
+                                    <rect class="tsrHomeBearishCandle" x="391" y="220" width="18" height="35" />
+
+                                    <line class="tsrHomeBearishCandle" x1="440" y1="220" x2="440" y2="250" />
+                                    <line class="tsrHomeBearishCandle" x1="440" y1="290" x2="440" y2="300" />
+                                    <rect class="tsrHomeBearishCandle" x="431" y="250" width="18" height="40" />
+
+                                    <line class="tsrHomeBearishCandle" x1="480" y1="240" x2="480" y2="270" />
+                                    <line class="tsrHomeBearishCandle" x1="480" y1="310" x2="480" y2="320" />
+                                    <rect class="tsrHomeBearishCandle" x="471" y="270" width="18" height="40" />
+
+                                    <line class="tsrHomeBearishCandle" x1="520" y1="260" x2="520" y2="290" />
+                                    <line class="tsrHomeBearishCandle" x1="520" y1="330" x2="520" y2="340" />
+                                    <rect class="tsrHomeBearishCandle" x="511" y="290" width="18" height="40" />
+
+                                    <line class="tsrHomeBearishCandle" x1="560" y1="280" x2="560" y2="310" />
+                                    <line class="tsrHomeBearishCandle" x1="560" y1="350" x2="560" y2="360" />
+                                    <rect class="tsrHomeBearishCandle" x="551" y="310" width="18" height="40" />
 
                                     <!-- Bottom -->
-                                    <line class="bull" x1="600" y1="300" x2="600" y2="380" />
-                                    <rect class="bull" x="591" y="330" width="18" height="40" />
+                                    <line class="tsrHomeBullishCandle" x1="600" y1="300" x2="600" y2="330" />
+                                    <line class="tsrHomeBullishCandle" x1="600" y1="370" x2="600" y2="380" />
+                                    <rect class="tsrHomeBullishCandle" x="591" y="330" width="18" height="40" />
 
                                     <!-- Strong Uptrend -->
-                                    <line class="bull" x1="650" y1="280" x2="650" y2="340" />
-                                    <rect class="bull" x="641" y="300" width="18" height="30" />
-                                    <line class="bull" x1="700" y1="250" x2="700" y2="320" />
-                                    <rect class="bull" x="691" y="270" width="18" height="35" />
-                                    <line class="bull" x1="750" y1="220" x2="750" y2="300" />
-                                    <rect class="bull" x="741" y="240" width="18" height="40" />
-                                    <line class="bull" x1="800" y1="190" x2="800" y2="270" />
-                                    <rect class="bull" x="791" y="210" width="18" height="40" />
-                                    <line class="bull" x1="850" y1="160" x2="850" y2="240" />
-                                    <rect class="bull" x="841" y="180" width="18" height="40" />
+                                    <line class="tsrHomeBullishCandle" x1="650" y1="280" x2="650" y2="300" />
+                                    <line class="tsrHomeBullishCandle" x1="650" y1="330" x2="650" y2="340" />
+                                    <rect class="tsrHomeBullishCandle" x="641" y="300" width="18" height="30" />
+
+                                    <line class="tsrHomeBullishCandle" x1="700" y1="250" x2="700" y2="270" />
+                                    <line class="tsrHomeBullishCandle" x1="700" y1="305" x2="700" y2="320" />
+                                    <rect class="tsrHomeBullishCandle" x="691" y="270" width="18" height="35" />
+
+                                    <line class="tsrHomeBullishCandle" x1="750" y1="220" x2="750" y2="240" />
+                                    <line class="tsrHomeBullishCandle" x1="750" y1="280" x2="750" y2="300" />
+                                    <rect class="tsrHomeBullishCandle" x="741" y="240" width="18" height="40" />
+
+                                    <line class="tsrHomeBullishCandle" x1="800" y1="190" x2="800" y2="210" />
+                                    <line class="tsrHomeBullishCandle" x1="800" y1="250" x2="800" y2="270" />
+                                    <rect class="tsrHomeBullishCandle" x="791" y="210" width="18" height="40" />
+
+                                    <line class="tsrHomeBullishCandle" x1="850" y1="160" x2="850" y2="180" />
+                                    <line class="tsrHomeBullishCandle" x1="850" y1="220" x2="850" y2="240" />
+                                    <rect class="tsrHomeBullishCandle" x="841" y="180" width="18" height="40" />
 
                                     <!-- Pullback -->
-                                    <line class="bear" x1="900" y1="180" x2="900" y2="260" />
-                                    <rect class="bear" x="891" y="210" width="18" height="40" />
+                                    <line class="tsrHomeBearishCandle" x1="900" y1="180" x2="900" y2="210" />
+                                    <line class="tsrHomeBearishCandle" x1="900" y1="250" x2="900" y2="260" />
+                                    <rect class="tsrHomeBearishCandle" x="891" y="210" width="18" height="40" />
 
                                     <!-- Continuation -->
-                                    <line class="bull" x1="950" y1="140" x2="950" y2="220" />
-                                    <rect class="bull" x="941" y="160" width="18" height="40" />
-                                    <line class="bull" x1="1000" y1="110" x2="1000" y2="200" />
-                                    <rect class="bull" x="991" y="130" width="18" height="45" />
-                                    <line class="bull" x1="1050" y1="90" x2="1050" y2="170" />
-                                    <rect class="bull" x="1041" y="110" width="18" height="40" />
-                                    <line class="bull" x1="1100" y1="70" x2="1100" y2="150" />
-                                    <rect class="bull" x="1091" y="90" width="18" height="40" />
+                                    <line class="tsrHomeBullishCandle" x1="950" y1="140" x2="950" y2="160" />
+                                    <line class="tsrHomeBullishCandle" x1="950" y1="200" x2="950" y2="220" />
+                                    <rect class="tsrHomeBullishCandle" x="941" y="160" width="18" height="40" />
+
+                                    <line class="tsrHomeBullishCandle" x1="1000" y1="110" x2="1000" y2="130" />
+                                    <line class="tsrHomeBullishCandle" x1="1000" y1="175" x2="1000" y2="200" />
+                                    <rect class="tsrHomeBullishCandle" x="991" y="130" width="18" height="45" />
+
+                                    <line class="tsrHomeBullishCandle" x1="1050" y1="90" x2="1050" y2="110" />
+                                    <line class="tsrHomeBullishCandle" x1="1050" y1="150" x2="1050" y2="170" />
+                                    <rect class="tsrHomeBullishCandle" x="1041" y="110" width="18" height="40" />
+
+                                    <line class="tsrHomeBullishCandle" x1="1100" y1="70" x2="1100" y2="90" />
+                                    <line class="tsrHomeBullishCandle" x1="1100" y1="130" x2="1100" y2="150" />
+                                    <rect class="tsrHomeBullishCandle" x="1091" y="90" width="18" height="40" />
 
                                     <!-- Acceleration -->
-                                    <line class="bull" x1="1150" y1="50" x2="1150" y2="130" />
-                                    <rect class="bull" x="1141" y="70" width="18" height="40" />
-                                    <line class="bull" x1="1200" y1="40" x2="1200" y2="110" />
-                                    <rect class="bull" x="1191" y="60" width="18" height="35" />
-                                    <line class="bull" x1="1250" y1="30" x2="1250" y2="100" />
-                                    <rect class="bull" x="1241" y="50" width="18" height="35" />
+                                    <line class="tsrHomeBullishCandle" x1="1150" y1="50" x2="1150" y2="70" />
+                                    <line class="tsrHomeBullishCandle" x1="1150" y1="110" x2="1150" y2="130" />
+                                    <rect class="tsrHomeBullishCandle" x="1141" y="70" width="18" height="40" />
+
+                                    <line class="tsrHomeBullishCandle" x1="1200" y1="40" x2="1200" y2="60" />
+                                    <line class="tsrHomeBullishCandle" x1="1200" y1="95" x2="1200" y2="110" />
+                                    <rect class="tsrHomeBullishCandle" x="1191" y="60" width="18" height="35" />
+
+                                    <line class="tsrHomeBullishCandle" x1="1250" y1="30" x2="1250" y2="50" />
+                                    <line class="tsrHomeBullishCandle" x1="1250" y1="85" x2="1250" y2="100" />
+                                    <rect class="tsrHomeBullishCandle" x="1241" y="50" width="18" height="35" />
 
                                 </g>
 
                                 <g transform="translate(0,-20)" stroke-width="1.5">
-                                    <!-- Top Right -->
-                                    <!-- Bottom formation (7th last) -->
-                                    <line class="bear" x1="1300" y1="120" x2="1300" y2="200" />
-                                    <rect class="bear" x="1291" y="150" width="18" height="30" />
+                                    <!-- 7th last → Bottom formation -->
+                                    <line class="tsrHomeBearishCandle" x1="1300" y1="120" x2="1300" y2="150" />
+                                    <line class="tsrHomeBearishCandle" x1="1300" y1="180" x2="1300" y2="200" />
+                                    <rect class="tsrHomeBearishCandle" x="1291" y="150" width="18" height="30" />
 
-                                    <!-- Breakout candle (6th last) -->
-                                    <line class="bull" x1="1350" y1="80" x2="1350" y2="180" />
-                                    <rect class="bull" x="1341" y="110" width="18" height="60" />
+                                    <!-- 6th last → Breakout -->
+                                    <line class="tsrHomeBullishCandle" x1="1350" y1="80" x2="1350" y2="110" />
+                                    <line class="tsrHomeBullishCandle" x1="1350" y1="170" x2="1350" y2="180" />
+                                    <rect class="tsrHomeBullishCandle" x="1341" y="110" width="18" height="60" />
 
-                                    <!-- Follow-through -->
-                                    <line class="bull" x1="1400" y1="60" x2="1400" y2="150" />
-                                    <rect class="bull" x="1391" y="90" width="18" height="50" />
+                                    <!-- 5th -->
+                                    <line class="tsrHomeBullishCandle" x1="1400" y1="60" x2="1400" y2="90" />
+                                    <line class="tsrHomeBullishCandle" x1="1400" y1="140" x2="1400" y2="150" />
+                                    <rect class="tsrHomeBullishCandle" x="1391" y="90" width="18" height="50" />
 
-                                    <line class="bull" x1="1450" y1="40" x2="1450" y2="130" />
-                                    <rect class="bull" x="1441" y="70" width="18" height="50" />
+                                    <!-- 4th -->
+                                    <line class="tsrHomeBullishCandle" x1="1450" y1="40" x2="1450" y2="70" />
+                                    <line class="tsrHomeBullishCandle" x1="1450" y1="120" x2="1450" y2="130" />
+                                    <rect class="tsrHomeBullishCandle" x="1441" y="70" width="18" height="50" />
 
-                                    <line class="bull" x1="1500" y1="25" x2="1500" y2="110" />
-                                    <rect class="bull" x="1491" y="50" width="18" height="45" />
+                                    <!-- 3rd -->
+                                    <line class="tsrHomeBullishCandle" x1="1500" y1="25" x2="1500" y2="50" />
+                                    <line class="tsrHomeBullishCandle" x1="1500" y1="95" x2="1500" y2="110" />
+                                    <rect class="tsrHomeBullishCandle" x="1491" y="50" width="18" height="45" />
 
-                                    <line class="bull" x1="1550" y1="15" x2="1550" y2="90" />
-                                    <rect class="bull" x="1541" y="35" width="18" height="40" />
+                                    <!-- 2nd -->
+                                    <line class="tsrHomeBullishCandle" x1="1550" y1="15" x2="1550" y2="35" />
+                                    <line class="tsrHomeBullishCandle" x1="1550" y1="75" x2="1550" y2="90" />
+                                    <rect class="tsrHomeBullishCandle" x="1541" y="35" width="18" height="40" />
 
-                                    <!-- FINAL candle → exact top touch -->
-                                    <line class="bull" x1="1600" y1="0" x2="1600" y2="70" />
-                                    <rect class="bull" x="1591" y="20" width="18" height="40" />
+                                    <!-- FINAL → exact top touch -->
+                                    <line class="tsrHomeBullishCandle" x1="1600" y1="0" x2="1600" y2="20" />
+                                    <line class="tsrHomeBullishCandle" x1="1600" y1="60" x2="1600" y2="70" />
+                                    <rect class="tsrHomeBullishCandle" x="1591" y="20" width="18" height="40" />
                                 </g>
-
-
 
                             </svg>
                             <p class="d-none d-md-block"
                                 style="position: absolute; top: 320px; background-color: white; margin-bottom: 0; right: 0px; padding: 10px; font-weight: bold; border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
-                                <a class="tsrLinkWithHover" style="color: black !important;" href="">
+                                <a class="tsrLinkWithHover" style="color: black !important;"
+                                    href="BASE_WWW_URL/rt/Home/Classic">
                                     <i class="fas fa-home"></i>
                                     Visit Classic Home
                                 </a>
@@ -1180,28 +1129,25 @@
                             <div class="d-flex flex-column align-items-center justify-content-evenly"
                                 style="height: 100%;">
 
-
                                 <div style="text-align: center;" class="p-2">
-
-
                                     <p class="d-flex d-sm-none justify-content-center"
-                                        style="font-size: 22px; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);font-weight: bold; text-wrap: nowrap;">
+                                        style="font-size: 22px; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);font-weight: bold; text-wrap: nowrap; z-index: 1;">
                                         Top Stock Research
                                         <span style="color: #2563eb;" class="ms-2">(TSR)</span>
                                     </p>
 
                                     <p class="d-none d-sm-flex d-md-none justify-content-center"
-                                        style="font-size: 30px; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);font-weight: bold; text-wrap: nowrap;">
+                                        style="font-size: 30px; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);font-weight: bold; text-wrap: nowrap; z-index: 1;">
                                         Top Stock Research <span style="color: #2563eb;" class="ms-2">(TSR)</span>
-                                </p>
+                                    </p>
 
                                     <h1 class=" d-none d-md-flex"
                                         style="font-size: 50px; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);font-weight: bold; text-wrap: nowrap;">
                                         Top Stock Research <span style="color: #2563eb;" class="ms-2">(TSR)</span>
                                     </h1>
 
-
-                                    <div class="tsrHeroSectionPunchline d-flex d-sm-none align-items-center justify-content-center" style="font-size: 13px;">
+                                    <div class="tsrHomeHeroSectionPunchline d-flex d-sm-none align-items-center justify-content-center"
+                                        style="font-size: 13px;">
                                         Learn
                                         <div
                                             style="display: inline-block; background-color: white; height: 5px; width: 5px; border-radius: 20px; margin: 0px 10px 0px 10px;">
@@ -1260,29 +1206,27 @@
                                         </div>
                                         Trade
                                     </h3>
-
                                 </div>
 
                                 <div class="d-block d-sm-none " style="text-align: center; min-width: 300px;">
                                     <input id="user_input" type="text" class="form-control ui-autocomplete-input"
                                         placeholder="Search Stocks, Screeners, Charts" onclick="miIs.ssb('equity')"
-                                        autocomplete="off"
-                                        style="z-index: 1; position: relative;">
-
+                                        autocomplete="off" style="z-index: 1; position: relative;">
                                 </div>
 
                                 <div class="d-none d-sm-block "
                                     style="text-align: center; width: 50%; min-width: 350px;">
                                     <input id="user_input" type="text" class="form-control ui-autocomplete-input"
                                         placeholder="Search Stocks, Screeners, Charts (Ctrl + K)"
-                                        onclick="miIs.ssb('equity')" autocomplete="off"
-                                        style="z-index: 1; position: relative;">
-
+                                        onclick="miIs.ssb('equity')"
+                                        onkeypress="setTimeout(() => {this.value='';}, 100);  miIs.ssb('equity'); "
+                                        autocomplete="off" style="z-index: 1; position: relative;">
                                 </div>
 
-                                <h2 class="d-none d-sm-flex justify-content-center" style="color: white; text-wrap: nowrap;">
+                                <h2 class="d-none d-sm-flex justify-content-center"
+                                    style="color: white; text-wrap: nowrap; z-index: 1;">
                                     One Stop Shop for&nbsp;
-                                    <div class="d-flex flex-column tsrTextSpinnerContainer"
+                                    <div class="d-flex flex-column tsrHomeTextSpinnerContainer"
                                         style="height: 30px; overflow: hidden; text-shadow: 1px 1px 3px white; text-align: start;">
                                         <p>Screeners</p>
                                         <p>Charts</p>
@@ -1291,9 +1235,10 @@
                                     </div>
                                 </h2>
 
-                                <div class="d-flex d-sm-none justify-content-center" style="color: black; text-wrap: nowrap; font-size: 20px; font-weight: 700;">
+                                <div class="d-flex d-sm-none justify-content-center"
+                                    style="color: black; text-wrap: nowrap; font-size: 20px; font-weight: 700; z-index: 1;">
                                     One Stop Shop for&nbsp;
-                                    <div class="d-flex flex-column tsrTextSpinnerContainer"
+                                    <div class="d-flex flex-column tsrHomeTextSpinnerContainer"
                                         style="height: 30px; overflow: hidden; text-shadow: 1px 1px 3px white; text-align: start;">
                                         <p>Screeners</p>
                                         <p>Charts</p>
@@ -1301,15 +1246,13 @@
                                         <p>Alerts</p>
                                     </div>
                                 </div>
-
                             </div>
-
                         </section>
 
                         <div class="d-block d-md-none" style="text-align: center;">
-                            <p style="background-color: white; margin-bottom: 0; color: black; width: max-content; padding: 5px 10px; font-weight: bold; background: rgba(0, 0, 0, 0.5); color: white; border-top-left-radius: 20px; position: absolute; right: 0; top: 330px; border-bottom-left-radius: 20px;"
+                            <p style="padding: 5px 10px; font-weight: bold; border-top-left-radius: 20px; position: absolute; right: 0; top: 330px; border-bottom-left-radius: 20px;"
                                 class="bg-secondary mx-auto">
-                                <a class="link-light" href="">
+                                <a class="link-light" href="BASE_WWW_URL/rt/Home/Classic">
                                     <i class="fas fa-home"></i>
                                     Visit Classic Home
                                 </a>
@@ -1319,7 +1262,7 @@
                         <!-- ----------------------EVERYDAY TOOLS SECTION -------------------------------- -->
 
                         <section
-                            class="tsrHomeSection tsrEverydayToolsSection py-5 d-flex flex-column align-items-center">
+                            class="tsrHomeSection tsrHomeEverydayToolsSection py-5 d-flex flex-column align-items-center">
 
                             <!-- Header -->
                             <div class="text-center mb-4">
@@ -1333,24 +1276,25 @@
 
                                 <!-- Card 1 -->
                                 <div class="col-md-6 col-lg-3">
-                                    <a href="#" class="tsrToolCard">
-                                        <div class="tsrToolInner">
+                                    <a href="BASE_WWW_URL/rt/CustomStockScreener.tsr" class="tsrHomeToolCard">
+                                        <div class="tsrHomeToolInner">
 
                                             <!-- Default -->
-                                            <div class="tsrToolFront">
-                                                <div class="tsrToolIcon"><i class="fas fa-filter"></i></div>
+                                            <div class="tsrHomeToolFront">
+                                                <div class="tsrHomeToolIcon"><i class="fas fa-filter"></i></div>
                                                 <h5>Custom Screener</h5>
                                                 <p>Find stocks your way</p>
+                                                <span class="tsrHomeToolCta d-block d-md-none">Open Screener →</span>
                                             </div>
 
                                             <!-- Hover -->
-                                            <div class="tsrToolBack">
+                                            <div class="tsrHomeToolBack">
                                                 <h5>Custom Screener</h5>
                                                 <p>
                                                     Build powerful queries with technical & fundamental filters to
                                                     discover high-potential stocks instantly.
                                                 </p>
-                                                <span class="tsrToolCta">Open Screener →</span>
+                                                <span class="tsrHomeToolCta">Open Screener →</span>
                                             </div>
 
                                         </div>
@@ -1359,22 +1303,23 @@
 
                                 <!-- Card 2 -->
                                 <div class="col-md-6 col-lg-3">
-                                    <a href="#" class="tsrToolCard">
-                                        <div class="tsrToolInner">
+                                    <a href="BASE_WWW_URL/rt/TsrAlerts" class="tsrHomeToolCard">
+                                        <div class="tsrHomeToolInner">
 
-                                            <div class="tsrToolFront">
-                                                <div class="tsrToolIcon"><i class="fas fa-bell"></i></div>
+                                            <div class="tsrHomeToolFront">
+                                                <div class="tsrHomeToolIcon"><i class="fas fa-bell"></i></div>
                                                 <h5>Alerts</h5>
                                                 <p>Never miss opportunities</p>
+                                                <span class="tsrHomeToolCta d-block d-md-none">Create Alert →</span>
                                             </div>
 
-                                            <div class="tsrToolBack">
+                                            <div class="tsrHomeToolBack">
                                                 <h5>Alerts</h5>
                                                 <p>
                                                     Set real-time alerts on price, indicators, or strategies and
                                                     stay ahead without constantly watching charts.
                                                 </p>
-                                                <span class="tsrToolCta">Create Alert →</span>
+                                                <span class="tsrHomeToolCta">Create Alert →</span>
                                             </div>
 
                                         </div>
@@ -1383,22 +1328,23 @@
 
                                 <!-- Card 3 -->
                                 <div class="col-md-6 col-lg-3">
-                                    <a href="#" class="tsrToolCard">
-                                        <div class="tsrToolInner">
+                                    <a href="BASE_WWW_URL/rt/TsrWatchlist" class="tsrHomeToolCard">
+                                        <div class="tsrHomeToolInner">
 
-                                            <div class="tsrToolFront">
-                                                <div class="tsrToolIcon"><i class="fas fa-eye"></i></div>
+                                            <div class="tsrHomeToolFront">
+                                                <div class="tsrHomeToolIcon"><i class="fas fa-eye"></i></div>
                                                 <h5>Watchlist</h5>
                                                 <p>Track what matters</p>
+                                                <span class="tsrHomeToolCta d-block d-md-none">View Watchlist →</span>
                                             </div>
 
-                                            <div class="tsrToolBack">
+                                            <div class="tsrHomeToolBack">
                                                 <h5>Watchlist</h5>
                                                 <p>
                                                     Organize and monitor your favorite stocks with real-time updates
                                                     and quick insights.
                                                 </p>
-                                                <span class="tsrToolCta">View Watchlist →</span>
+                                                <span class="tsrHomeToolCta">View Watchlist →</span>
                                             </div>
 
                                         </div>
@@ -1407,22 +1353,23 @@
 
                                 <!-- Card 4 -->
                                 <div class="col-md-6 col-lg-3">
-                                    <a href="#" class="tsrToolCard">
-                                        <div class="tsrToolInner">
+                                    <a href="BASE_WWW_URL/rt/InteractiveCharts.tsr" class="tsrHomeToolCard">
+                                        <div class="tsrHomeToolInner">
 
-                                            <div class="tsrToolFront">
-                                                <div class="tsrToolIcon"><i class="fas fa-chart-line"></i></div>
+                                            <div class="tsrHomeToolFront">
+                                                <div class="tsrHomeToolIcon"><i class="fas fa-chart-line"></i></div>
                                                 <h5>Charts</h5>
                                                 <p>Analyze with precision</p>
+                                                <span class="tsrHomeToolCta d-block d-md-none">Open Charts →</span>
                                             </div>
 
-                                            <div class="tsrToolBack">
+                                            <div class="tsrHomeToolBack">
                                                 <h5>Charts</h5>
                                                 <p>
                                                     Advanced charting tools with indicators, drawing tools, and
                                                     multi-timeframe analysis.
                                                 </p>
-                                                <span class="tsrToolCta">Open Charts →</span>
+                                                <span class="tsrHomeToolCta">Open Charts →</span>
                                             </div>
 
                                         </div>
@@ -1456,11 +1403,11 @@
                                 <button class="tsrToolCatSelectorPill"
                                     onclick="tsrHome.sucbc(event, 'beginner')">Beginner</button>
                                 <button class="tsrToolCatSelectorPill"
-                                    onclick="tsrHome.sucbc(event, 'scalpingIntraday')">Intraday / Scalping</button>
+                                    onclick="tsrHome.sucbc(event, 'intraday')">Intraday</button>
                                 <button class="tsrToolCatSelectorPill"
-                                    onclick="tsrHome.sucbc(event,'swingPositional')">Swing / Positional</button>
+                                    onclick="tsrHome.sucbc(event,'swing')">Swing</button>
                                 <button class="tsrToolCatSelectorPill"
-                                    onclick="tsrHome.sucbc(event,'investor')">Investor</button>
+                                    onclick="tsrHome.sucbc(event,'positional')">Positional</button>
                             </div>
 
                             <!-- CATEGORY SELECTOR MOBILE-->
@@ -1480,12 +1427,11 @@
                                     <button class="tsrToolCatSelectorPill"
                                         onclick="tsrHome.sucbc(event, 'beginner')">Beginner</button>
                                     <button class="tsrToolCatSelectorPill"
-                                        onclick="tsrHome.sucbc(event, 'scalpingIntraday')">Intraday /
-                                        Scalping</button>
+                                        onclick="tsrHome.sucbc(event, 'intraday')">Intraday</button>
                                     <button class="tsrToolCatSelectorPill"
-                                        onclick="tsrHome.sucbc(event,'swingPositional')">Swing / Positional</button>
+                                        onclick="tsrHome.sucbc(event,'swing')">Swing</button>
                                     <button class="tsrToolCatSelectorPill"
-                                        onclick="tsrHome.sucbc(event,'investor')">Investor</button>
+                                        onclick="tsrHome.sucbc(event,'positional')">Positional</button>
                                 </div>
 
 
@@ -1546,7 +1492,7 @@
                                             <h5>Sector Rotation</h5>
                                             <p>Analyze how capital moves between sectors over time to find the next
                                                 lead industry.</p>
-                                            <a href="#" class="tsrToolCta">View Analysis &rarr;</a>
+                                            <a href="#" class="tsrHomeToolCta">View Analysis &rarr;</a>
                                         </div>
                                     </div>
 
@@ -1581,7 +1527,7 @@
                                             <h5>Candlestick Screeners</h5>
                                             <p>Automated scanning for 70+ bullish and bearish candle formations
                                                 across all stocks.</p>
-                                            <a href="#" class="tsrToolCta">Open Scanner &rarr;</a>
+                                            <a href="#" class="tsrHomeToolCta">Open Scanner &rarr;</a>
                                         </div>
                                     </div>
 
@@ -1605,7 +1551,7 @@
                                             <h5>Chart Pattern Screeners</h5>
                                             <p>Identify classic patterns like Head & Shoulders, Triangles, and
                                                 Double Bottoms.</p>
-                                            <a href="#" class="tsrToolCta">Explore Patterns &rarr;</a>
+                                            <a href="#" class="tsrHomeToolCta">Explore Patterns &rarr;</a>
                                         </div>
                                     </div>
 
@@ -1619,7 +1565,7 @@
                                             <h5>Intraday Strategies</h5>
                                             <p>High-probability day trading setups including Gap-ups, ORB, and
                                                 Volume spikes.</p>
-                                            <a href="#" class="tsrToolCta">View Strategies &rarr;</a>
+                                            <a href="#" class="tsrHomeToolCta">View Strategies &rarr;</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1674,7 +1620,7 @@
                                                 <p style="margin: 0; color: #495057;">
                                                     True One Stop Shop for Premium Analytics
                                                 </p>
-                                                <a class="link-primary tsrToolCta"
+                                                <a class="link-primary tsrHomeToolCta"
                                                     href="https://127.0.0/rt/TsrHighlights/TsrTechnicalTool"
                                                     style="margin-left: 10px; font-weight: 500; font-size: 14px;">India's
                                                     Best Technical Tool &rarr;</a>
@@ -1704,7 +1650,7 @@
                                                             <img src="https://www.stockaio.com/static/img/StockAioLogo.png"
                                                                 alt="" class="img-fluid" style="max-width: 150px;">
                                                         </a>
-                                                        <a href="#" class="tsrToolCta">Visit &rarr;</a>
+                                                        <a href="#" class="tsrHomeToolCta">Visit &rarr;</a>
                                                     </div>
                                                 </div>
 
