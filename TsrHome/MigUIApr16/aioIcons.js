@@ -616,15 +616,8 @@ var aioIcons = (function () {
 		var svg = '';
 
 		if (icon == MY_TSR_SB_TOP) {
-
-			// OLD
 			color = 'goldenrod';
-			// color = "orange"
-			// color="#0044aa"
-
-			// NEW
-			// color = "#2EC4B6";
-			// color = "#c3a874";
+			
 			svg = `<span id="${MY_TSR_SB_TOP + ALERT_SB}"  title='Alerts'>${ALERT_SB_SVG}</span>`;
 			svg += `<span id="${MY_TSR_SB_TOP + WL_SB}" title='Watchlist'>${WL_SB_SVG} </span>`;
 			svg += `<span id="${MY_TSR_SB_TOP + FAV_SB}" title='Favourites'>${FAV_SB_SVG}</span>`;
@@ -639,13 +632,8 @@ var aioIcons = (function () {
 
 		}
 		else if (icon == SUBS_SB_TOP) {
-			// color = 'goldenrod';
-			// color = "#0044aa";
-			// color = "#ffd381"
 			color="orange"
-			// svg = `<span id="${MY_AIO_SB_TOP + FAV_SB}"  title='Favourites'>${FAV_SB_SVG}</span>`;
-			// svg += `<span id="${MY_AIO_SB_TOP + WL_SB}" title='Watchlist'>${WL_SB_SVG} </span>`;
-			// svg += `<span id="${MY_AIO_SB_TOP + PF_SB}" title='Portfolio'>${PF_SB_SVG}</span>`;
+			
 			svg = json[icon]["svg"];
 			size = '28';
 

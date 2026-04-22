@@ -36,7 +36,7 @@ var tsrHome = (function () {  // my Ui Head
     }
 
     function showUseCasesByCat(e, cat) {
-        let buttons = document.querySelectorAll(".tsrToolCatSelectorPill");
+        let buttons = document.querySelectorAll(".tsrHomeToolCatSelectorPill");
         buttons.forEach(btn => btn.classList.remove("active"));
 
         if (jsu.isNotNull(e)) {
@@ -48,7 +48,7 @@ var tsrHome = (function () {  // my Ui Head
             currButtonMobile.classList.add("active");
         }
 
-        let useCaseContainers = document.getElementsByClassName("tsrToolCatContainer");
+        let useCaseContainers = document.getElementsByClassName("tsrHomeToolCatContainer");
 
         for (let i = 0; i < useCaseContainers.length; i++) {
             let container = useCaseContainers[i];
@@ -73,7 +73,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 1 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Market Insights</h5>
                                 <p>360 Market Research</p>
@@ -94,7 +94,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 2 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Buzzing Stocks</h5>
                                 <p>Where activity spikes, opportunity strikes.</p>
@@ -115,7 +115,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 3 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                                 <h5>High / Low Stocks</h5>
                                 <p>Buy Low, Sell High</p>
@@ -137,7 +137,7 @@ var tsrHome = (function () {  // my Ui Head
                         <!-- Card 4 -->
 
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-line"></i></div> -->
                                 <h5>Heatmap</h5>
                                 <p>Markets painted in real-time emotion.</p>
@@ -161,7 +161,7 @@ var tsrHome = (function () {  // my Ui Head
                         <!-- Card 5 -->
 
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                                 <h5>Relative Price Strength</h5>
                                 <p>Stocks Beating Market.</p>
@@ -184,7 +184,7 @@ var tsrHome = (function () {  // my Ui Head
                         <!-- Card 6 -->
 
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                                 <h5>Sector Rotation</h5>
                                 <p>Track where money moves.</p>
@@ -207,7 +207,7 @@ var tsrHome = (function () {  // my Ui Head
                         <!-- Card 7 -->
 
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Advance and Decline</h5>
                                 <p>Reveals the market's true breadth.</p>
@@ -229,7 +229,7 @@ var tsrHome = (function () {  // my Ui Head
                         <!-- Card 8 -->
 
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                                 <h5>TSR Strength Index</h5>
                                 <p>Trend is my friend.</p>
@@ -251,7 +251,7 @@ var tsrHome = (function () {  // my Ui Head
                         <!-- Card 9 -->
                             
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                                 <h5>Guru Numbers</h5>
                                 <p>Learn from Market Gurus.</p>
@@ -283,7 +283,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 1 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Market Insights</h5>
                                 <p>360 Market Research</p>
@@ -302,7 +302,7 @@ var tsrHome = (function () {  // my Ui Head
                         <!-- Card 2 -->
 
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                                 <h5>Relative Price Strength</h5>
                                 <p>Stocks Beating Market.</p>
@@ -321,7 +321,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 3 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                                 <h5>Fundamental</h5>
                                 <p>Reality behind the chart.
@@ -339,7 +339,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 4 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                                 <h5>TSR Strength Index</h5>
                                 <p>Trend is my friend.
@@ -357,7 +357,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 5 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                                 <h5>Heatmap</h5>
                                 <p>Markets painted in real-time emotion.
@@ -375,7 +375,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 6 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Advance and Decline</h5>
                                 <p>Reveals the market's true breadth.</p>
@@ -394,7 +394,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 7 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Stocks by Sector</h5>
                                 <p>Discover Stocks That Lead</p>
@@ -412,7 +412,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 8-->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>High / Low Stocks</h5>
                                 <p>Buy Low, Sell High.</p>
@@ -430,7 +430,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 9 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Moving Average</h5>
                                 <p>Guiding through noise.</p>
@@ -448,7 +448,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 10 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Candlestick Patterns</h5>
                                 <p>Each candle tells a story.</p>
@@ -466,7 +466,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 11 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Learn</h5>
                                 <p>Learn Before You Earn.</p>                
@@ -488,7 +488,7 @@ var tsrHome = (function () {  // my Ui Head
 
                     <!-- Card 1 -->
                     <div class="item">
-                        <div class="tsrToolCard">
+                        <div class="tsrHomeToolCard">
                             <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                             <h5>Market Insights</h5>
                             <p>360 Market Research</p>
@@ -507,7 +507,7 @@ var tsrHome = (function () {  // my Ui Head
 
                     <!-- Card 2 -->
                     <div class="item">
-                        <div class="tsrToolCard">
+                        <div class="tsrHomeToolCard">
                             <!-- <div class="tsr-icon"><i class="fas fa-chart-line"></i></div> -->
                             <h5>Intraday Screeners</h5>
                             <p>Real Time. Real Opportunities.
@@ -527,7 +527,7 @@ var tsrHome = (function () {  // my Ui Head
 
                     <!-- Card 3 -->
                     <div class="item">
-                        <div class="tsrToolCard">
+                        <div class="tsrHomeToolCard">
                             <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                             <h5>Buzzing Stocks</h5>
                             <p>Where activity spikes, opportunity strikes.</p>
@@ -546,7 +546,7 @@ var tsrHome = (function () {  // my Ui Head
 
                     <!-- Card 4 -->
                     <div class="item">
-                        <div class="tsrToolCard">
+                        <div class="tsrHomeToolCard">
                             <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                             <h5>Heatmap</h5>
                             <p>Markets painted in real-time emotion.</p>
@@ -565,7 +565,7 @@ var tsrHome = (function () {  // my Ui Head
 
                     <!-- Card 5 -->
                     <div class="item">
-                        <div class="tsrToolCard">
+                        <div class="tsrHomeToolCard">
                             <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                             <h5>Popular Screeners</h5>
                             <p>Trade with proven scans.</p>
@@ -584,7 +584,7 @@ var tsrHome = (function () {  // my Ui Head
 
                     <!-- Card 6 -->
                     <div class="item">
-                        <div class="tsrToolCard">
+                        <div class="tsrHomeToolCard">
                             <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                             <h5>Expert Strategies</h5>
                             <p>Built for Smart Decisions.</p>
@@ -603,7 +603,7 @@ var tsrHome = (function () {  // my Ui Head
 
                     <!-- Card 7 -->
                     <div class="item">
-                        <div class="tsrToolCard">
+                        <div class="tsrHomeToolCard">
                             <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                             <h5>Advance and Decline</h5>
                             <p>Reveals the market's true breadth.</p>
@@ -622,7 +622,7 @@ var tsrHome = (function () {  // my Ui Head
 
                     <!-- Card 8 -->
                     <div class="item">
-                        <div class="tsrToolCard">
+                        <div class="tsrHomeToolCard">
                             <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                             <h5>TSR Strength Index</h5>
                             <p>Trend is my friend.</p>
@@ -651,7 +651,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 1 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Market Insights</h5>
                                 <p>360 Market Research</p>
@@ -671,7 +671,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 2 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-line"></i></div> -->
                                 <h5>Swing Trading Screeners</h5>
                                 <p>Find the next swing opportunity.
@@ -691,7 +691,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 3 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-line"></i></div> -->
                                 <h5>Relative Price Strength</h5>
                                 <p>Stocks Beating Market.
@@ -711,7 +711,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 4 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                                 <h5>TSR Strength Index</h5>
                                 <p>Trend is my friend.</p>
@@ -731,7 +731,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 5 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Sector Rotation</h5>
                                 <p>Track where money moves.</p>
@@ -749,7 +749,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 6 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <h5>Technical Indicators</h5>
                                 <p>Signals built on price.
                                 </p>
@@ -767,7 +767,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 7 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <h5>Moving Average</h5>
                                 <p>Guiding through noise.
                                 </p>
@@ -785,7 +785,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 8 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
 
                                 <h5>Candlestick Patterns</h5>
                                 <p>Each candle tells a story.
@@ -805,7 +805,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 9 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <h5>Patterns</h5>
                                 <p>Price forms, patterns inform.
                                 </p>
@@ -831,7 +831,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 1 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Market Insights</h5>
                                 <p>360 Market Research</p>
@@ -850,7 +850,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 2 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-line"></i></div> -->
                                 <h5>Positional Screeners</h5>
                                 <p>Where patience meets opportunity.
@@ -870,7 +870,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 3 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-line"></i></div> -->
                                 <h5>Fundamental</h5>
                                 <p>Reality behind the chart. 
@@ -891,7 +891,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 4 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-line"></i></div> -->
                                 <h5>Guru Ratios</h5>
                                 <p>Learn from Market Gurus.
@@ -911,7 +911,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 5 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-line"></i></div> -->
                                 <h5>Chart Patterns</h5>
                                 <p>Price forms, patterns inform.
@@ -930,7 +930,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 6 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                                 <h5>Index Analysis</h5>
                                 <p>Track the market's pulse.</p>
@@ -949,7 +949,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 7 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                                 <h5>Sector Rotation</h5>
                                 <p>Track where money moves.</p>
@@ -967,7 +967,7 @@ var tsrHome = (function () {  // my Ui Head
 
                         <!-- Card 8 -->
                         <div class="item">
-                            <div class="tsrToolCard">
+                            <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-bar"></i></div> -->
                                 <h5>Relative Price Strength</h5>
                                 <p>Stocks Beating Market.</p>
