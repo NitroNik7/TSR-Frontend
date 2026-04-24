@@ -916,116 +916,6 @@
                             };
                         </script>
 
-                        <!-- ----------------------NIFTY, BANK NIFTY SECTION BEGINS HERE -->
-
-                        <style>
-                            /* CARD */
-                            .tsrHomeIndexCard {
-                                /* background: #f8fafc; */
-                                background: mintcream;
-                                border: 1px solid rgba(0, 0, 0, 0.05);
-                                border-radius: 10px;
-                                padding: 1rem;
-                                transition: none;
-                                min-width: 300px;
-                            }
-
-                            /* HEADER */
-                            .tsrHomeIndexCardHeader {
-                                display: flex;
-                                justify-content: space-between;
-                                align-items: center;
-                                margin-bottom: 6px;
-                            }
-
-
-                            /* TITLE */
-                            .tsrHomeIndexCardTitle {
-                                /* display: flex;
-                                justify-content: start; */
-                                font-size: 20px;
-                                color: #64748b;
-                                font-weight: 600;
-                                letter-spacing: 0.3px;
-                                transition: all 0.3s;
-                                text-wrap: nowrap;
-                            }
-
-                            /* CHANGE */
-                            .tsrHomeIndexCardChange {
-                                font-size: 16px;
-                                font-weight: 500;
-                                padding: 2px 6px;
-                                text-wrap: nowrap;
-                            }
-
-                            /* SUBTLE COLORS */
-                            .tsrHomeIndexCardChange.positive {
-                                color: #16a34a;
-                                /* background: rgba(22, 163, 74, 0.08); */
-                            }
-
-                            .tsrHomeIndexCardChange.negative {
-                                color: #dc2626;
-                                /* background: rgba(220, 38, 38, 0.08); */
-                            }
-
-                            .tsrHomeIndexCardBody {
-                                display: flex;
-                                justify-content: space-between;
-                                align-items: center;
-                            }
-
-                            .tsrHomeIndexCardBodyAdvCont,
-                            .tsrHomeIndexCardBodyDecCont {
-                                display: flex;
-                                flex-direction: column;
-                            }
-
-                            .tsrHomeIndexCardBodyAdvCont b,
-                            .tsrHomeIndexCardBodyDecCont b {
-                                color: slategray;
-                                font-weight: 600;
-                            }
-
-                            .tsrHomeIndexCardBody p {
-                                font-weight: 600;
-                                margin-bottom: 0;
-                            }
-
-                            .tsrHomeIndexCardBodyAdvCont p {
-                                color: green;
-                            }
-
-                            .tsrHomeIndexCardBodyDecCont p {
-                                color: red;
-                            }
-
-                            @media only screen and (min-width: 992px) {
-                                .tsrHomeIndexCard {
-                                    width: 50%;
-                                    min-width: 600px;
-                                    margin: 0 auto;
-                                }
-
-                            }
-
-                            @media (max-width: 768px) {
-                                .tsrHomeIndexCardHeader {
-                                    flex-direction: column;
-                                    align-items: start;
-                                }
-
-                                .tsrHomeIndexCardHeader div {
-                                    margin: 5px 0;
-                                }
-
-                                .tsrHomeIndexCardBody {
-                                    margin: 10px 0;
-                                }
-                            }
-                        </style>
-
                         <!-- -------------------------- INDICES SECTION ---------------------------------  -->
 
                         <section class="tsrHomeIndicesSection py-4 mx-md-3">
@@ -1038,14 +928,24 @@
                                                 <div class="tsrHomeIndexCardTitle">
                                                     <p style="margin-bottom: 0;">NIFTY</p>
                                                 </div>
-                                                <div class="d-flex justify-content-between" style="scale: 0.9; text-wrap: nowrap;">
-                                                    <a href="BASE_WWW_URL/rt/Stock/NIFTY/InteractiveCharts" class="btn btn-sm btn-outline-secondary rounded-pill mx-2" title="View Chart" > Chart <i class="fas fa-external-link-alt"></i> </a>
-                                                    <a href="BASE_WWW_URL/rt/Stock/NIFTY/TechnicalAnalysis" class="btn btn-sm btn-outline-secondary rounded-pill mx-2" title="View Technicals"> Tech <i class="fas fa-external-link-alt"></i></a>
-                                                    <a href="" class="btn btn-sm btn-outline-secondary rounded-pill mx-2" title="View Nifty Stocks"> NIFTY STOCKS <i class="fas fa-external-link-alt"></i> </a>
+                                                <div class="d-flex justify-content-between"
+                                                    style="scale: 0.9; text-wrap: nowrap;">
+                                                    <a href="BASE_WWW_URL/rt/Stock/NIFTY/InteractiveCharts"
+                                                        class="btn btn-sm btn-outline-secondary rounded-pill mx-2"
+                                                        title="View Chart"> Chart <i
+                                                            class="fas fa-external-link-alt"></i> </a>
+                                                    <a href="BASE_WWW_URL/rt/Stock/NIFTY/TechnicalAnalysis"
+                                                        class="btn btn-sm btn-outline-secondary rounded-pill mx-2"
+                                                        title="View Technicals"> Tech <i
+                                                            class="fas fa-external-link-alt"></i></a>
+                                                    <a href=""
+                                                        class="btn btn-sm btn-outline-secondary rounded-pill mx-2"
+                                                        title="View Nifty Stocks"> NIFTY STOCKS <i
+                                                            class="fas fa-external-link-alt"></i> </a>
                                                 </div>
                                             </div>
 
-                                            <div class="d-flex align-items-center">
+                                            <div id="tsrHomeIndexCardValue" class="d-flex align-items-center">
                                                 <b>22,450.35</b>
                                                 <div class="tsrHomeIndexCardChange positive">
                                                     <span>|</span>
@@ -1061,19 +961,26 @@
                                             <div class="price_bar_container d-flex flex-column mt-1">
                                                 <div class="text-start" style="font-size: 12px;"
                                                     id="highLowPriceBarRange">
-                                                    <span style="font-size: 12px; color: slategray;"> Intraday's Range </span>
+                                                    <span style="font-size: 12px; color: slategray;"> Intraday's Range
+                                                    </span>
                                                 </div>
                                                 <div class="d-flex flex-column">
-                                                    <div class="" id="highLowPriceBar" style="position: relative;/* width: 80%; */ min-width: 240px; height: 7px; background-color: #c3bfbf; /* border-radius: 25px; */ margin: 10px 0;">
-                                                        <div class="" id="highLowRangeBar" style="position: absolute; top: 0px; height: 7px; background-color: rgb(255, 76, 76); width: 87.6651px; left: 28.7367px;">
+                                                    <div class="" id="highLowPriceBar"
+                                                        style="position: relative;/* width: 80%; */ min-width: 240px; height: 7px; background-color: #c3bfbf; /* border-radius: 25px; */ margin: 10px 0;">
+                                                        <div class="" id="highLowRangeBar"
+                                                            style="position: absolute; top: 0px; height: 7px; background-color: rgb(255, 76, 76); width: 87.6651px; left: 28.7367px;">
                                                         </div>
-                                                        <div class="" style="position: absolute; top: 7px; width: 0px; height: 0px; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid black; transform: translateX(-50%); left: 28.7367px;" id="highLowPriceBarCurrentPrice">
+                                                        <div class=""
+                                                            style="position: absolute; top: 7px; width: 0px; height: 0px; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid black; transform: translateX(-50%); left: 28.7367px;"
+                                                            id="highLowPriceBarCurrentPrice">
                                                         </div>
                                                     </div>
-                                                    <div class="d-flex justify-content-between" style="min-width: 240px; /* width: 80%; */">
+                                                    <div class="d-flex justify-content-between"
+                                                        style="min-width: 240px; /* width: 80%; */">
                                                         <div id="highLowPriceBarLowPrice">
                                                             55850.2
-                                                            <span style="font-size: 12px; color: slategray;">| Low </span>
+                                                            <span style="font-size: 12px; color: slategray;">| Low
+                                                            </span>
                                                         </div>
                                                         <div id="highLowPriceBarHighPrice">
                                                             56460.5
@@ -1133,7 +1040,7 @@
                                                 <p>27</p>
                                             </div>
                                         </div>
-                                      
+
                                     </div>
                                 </div>
 
