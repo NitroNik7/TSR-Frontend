@@ -77,7 +77,8 @@
 .tsrTickerMarquee {
     width: 100%;
     overflow: hidden;
-    background: lightyellow;
+    /* background: lightyellow; */
+    background-color: antiquewhite;
     /* Clean white */
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
