@@ -81,7 +81,7 @@
                     <div class="tsrhdr-container">
                         <!-- modified -->
                         <div class="nav-logo" id="navLogoDiv" style="width: max-content;">
-                            <!-- TODO UPDATE ON SERVER -->
+                            <!-- modified -->
                             <a href="BASE_WWW_URL/rt/" class="tsrsn-fold-toggler" title="TSR (TopStockResearch.com)"
                                 style="max-width: unset;">
 
@@ -918,40 +918,416 @@
 
                         <!-- ----------------------NIFTY, BANK NIFTY SECTION BEGINS HERE -->
 
-                        <div class="tsrHomeSection d-flex flex-column flex-md-row justify-content-between p-1 shadow-sm"
-                            style="border-radius: 20px; margin: 10px 20px;">
-                            <div class="d-flex flex-column align-items-center w-100 mb-2">
+                        <style>
+                            /* SECTION BASE */
+                            .tsrHomeIndicesSection {
+                                font-family: system-ui, -apple-system, sans-serif;
+                            }
 
-                                <p style="margin-bottom: 0;" class="d-flex justify-content-evenly w-100">
-                                    <b class="">NIFTY </b>
+                            .tsrHomeIndicesSection a:hover .tsrHomeIndexCardTitle {
+                                font-size: 16px;
+                            }
 
-                                </p>
+                            /* CARD */
+                            .tsrHomeIndexCard {
+                                background: #f8fafc;
+                                border: 1px solid rgba(0, 0, 0, 0.05);
+                                border-radius: 10px;
+                                padding: .5rem;
+                                transition: none;
+                                width: 50%;
+                                margin: 0 auto;
+                            }
 
-                                <p style="margin-bottom: 0;" class="d-flex justify-content-around">
-                                    <span class="tsrTickerPrice mx-3">52,580.20</span>
-                                    <span class="tsrTickerPriceChgNeg">
-                                        <i class="fas fa-caret-down mx-2"></i>
-                                        0.55%
-                                    </span>
-                                </p>
+                            /* REMOVE HOVER DRAMA */
+                            .tsrHomeIndexCard:hover {
+                                transform: none;
+                                box-shadow: none;
+                            }
+
+                            /* HEADER */
+                            .tsrHomeIndexCardHeader {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                margin-bottom: 6px;
+                            }
+
+                            /* TITLE */
+                            .tsrHomeIndexCardTitle {
+                                font-size: 16px;
+                                color: #64748b;
+                                font-weight: 500;
+                                letter-spacing: 0.3px;
+                                transition: all 0.3s;
+                            }
+
+                            /* MAIN VALUE */
+                            .tsrHomeIndexCardValue {
+                                font-size: 22px;
+                                font-weight: 600;
+                                color: #0f172a;
+                                margin-bottom: 8px;
+                                font-variant-numeric: tabular-nums;
+                            }
+
+                            /* CHANGE */
+                            .tsrHomeIndexCardChange {
+                                font-size: 12px;
+                                font-weight: 500;
+                                padding: 2px 6px;
+                                border-radius: 6px;
+                            }
+
+                            /* SUBTLE COLORS */
+                            .tsrHomeIndexCardChange.positive {
+                                color: #16a34a;
+                                background: rgba(22, 163, 74, 0.08);
+                            }
+
+                            .tsrHomeIndexCardChange.negative {
+                                color: #dc2626;
+                                background: rgba(220, 38, 38, 0.08);
+                            }
+
+
+                            /* COMPACT MODE */
+                            @media (max-width: 768px) {
+                                .tsrHomeIndexCardValue {
+                                    font-size: 20px;
+                                }
+
+                                .tsrHomeIndexCard {
+                                    padding: 14px;
+                                }
+                            }
+                        </style>
+
+                        <!-- -------------------------- INDICES SECTION ---------------------------------  -->
+
+                        <!-- <div class=" stock_values_container ">
+                            <div class="d-flex flex-column align-items-center">
+                                <h2 style="color:#ff4c4c;">23896.80 | <span style="color:#ff4c4c;">-1.14 %</span></h2>
+                                <span style="font-size: 12px; color: slategray;">(Current Price) | Change %</span>
+                            </div>
+
+                            <div class="price_bar_container d-flex flex-column mt-1" style="width:275px;">
+                                <div class="text-start" style="font-size: 12px;" id="highLowPriceBarRange">
+                                    <span style="font-size: 12px; color: slategray;"> Intraday's Range </span>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <div class="" id="highLowPriceBar" style="position: relative; /* width: 80%; */ min-width: 240px; height: 7px; background-color: #c3bfbf; /* border-radius: 25px; */ margin: 10px 0;">
+                                        <div class="" id="highLowRangeBar" style="position: absolute; top: 0px; height: 7px; background-color: rgb(255, 76, 76); width: 128.465px; left: 11.3463px;">
+                                        </div>
+                                        <div class="" style="position: absolute; top: 7px; width: 0px; height: 0px; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid black; transform: translateX(-50%); left: 11.3463px;" id="highLowPriceBarCurrentPrice">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between" style="min-width: 240px; /* width: 80%; */ ">
+                                        <div id="highLowPriceBarLowPrice">
+                                            23878.8 
+                                            <span style="font-size: 12px; color: slategray;">| Low</span>
+                                        </div>
+                                        <div id="highLowPriceBarHighPrice">
+                                            24206 
+                                            <span style="font-size: 12px; color: slategray;">| High</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+
+
+                            <div class="d-flex justify-content-around mt-3">
+                                <div>
+                                    <span>0</span>
+                                    <span style="font-size: 12px; color: slategray;">Volume</span>
+                                </div>
+                                <div>
+                                    <span><span style="color:#ff4c4c;">0 %</span></span>
+                                    <span style="font-size: 12px; color: slategray;"> Vol Change</span>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <section class="tsrHomeIndicesSection container py-4">
+
+                            <div class="row g-3">
+
+                                <!-- NIFTY -->
+
+                                <div class="col-md-6">
+                                    <a href="BASE_WWW_URL/rt/Stock/NIFTY/TechnicalAnalysis">
+                                        <div class="tsrHomeIndexCard">
+
+                                            <div class="tsrHomeIndexCardHeader">
+                                                <div class="tsrHomeIndexCardTitle">NIFTY</div>
+                                                <div>
+                                                    <h6 style="color:#ff4c4c;">
+                                                        23896.80 | <span style="color:#ff4c4c;">-1.14 %</span>
+                                                    </h6>
+
+                                                </div>
+                                                <!-- <div class="tsrHomeIndexCardChange positive">+0.45%</div> -->
+                                            </div>
+
+                                            <!-- <div class="tsrHomeIndexCardValue">22,450.35</div> -->
+                                            <div class="d-flex flex-column">
+                                                <div class="mx-auto" id="highLowPriceBar"
+                                                    style="position: relative; width: 80%; height: 7px; background-color: #c3bfbf; /* border-radius: 25px; */ margin: 10px 0;">
+                                                    <div class="auto" id="highLowRangeBar"
+                                                        style="position: absolute; top: 0px; height: 7px; background-color: rgb(255, 76, 76); width: 128.465px; left: 11.3463px;">
+                                                    </div>
+                                                    <div class=""
+                                                        style="position: absolute; top: 7px; width: 0px; height: 0px; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid black; transform: translateX(-50%); left: 11.3463px;"
+                                                        id="highLowPriceBarCurrentPrice">
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-between"
+                                                    style="min-width: 240px; /* width: 80%; */ ">
+                                                    <div id="highLowPriceBarLowPrice" style="color: grey;">
+                                                        23878.8
+                                                        <span style="font-size: 12px; color: slategray;">| Low</span>
+                                                    </div>
+                                                    <div id="highLowPriceBarHighPrice" style="color: grey;">
+                                                        24206
+                                                        <span style="font-size: 12px; color: slategray;">| High</span>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-between mt-3">
+                                                    <div>
+                                                        <span style="font-size: 12px; color: slategray;">Advanced</span>
+                                                        <span>25</span>
+                                                    </div>
+                                                    <div>
+                                                        <span style="font-size: 12px; color: slategray;">
+                                                            Declines</span>
+                                                        <span>25</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <!-- BANK NIFTY -->
+                                <div class="col-md-6">
+                                    <a href="BASE_WWW_URL/rt/Stock/BANKNIFTY/TechnicalAnalysis">
+                                        <div class="tsrHomeIndexCard">
+
+                                            <div class="tsrHomeIndexCardHeader">
+                                                <div class="tsrHomeIndexCardTitle">BANK NIFTY</div>
+                                                <h6 style="color: red">55929.2 | <span style="color:red;">0.67 %</span>
+                                                </h6>
+
+                                            </div>
+
+                                            <!-- <div class="tsrHomeIndexCardValue">48,210.10</div> -->
+                                            <div class="d-flex flex-column">
+                                                <div class="mx-auto" id="highLowPriceBar"
+                                                    style="position: relative; width: 80%; height: 7px; background-color: #c3bfbf; /* border-radius: 25px; */ margin: 10px 0;">
+                                                    <div class="" id="highLowRangeBar"
+                                                        style="position: absolute; top: 0px; height: 7px; background-color: rgb(255, 76, 76); width: 87.6651px; left: 28.7367px;">
+                                                    </div>
+                                                    <div class=""
+                                                        style="position: absolute; top: 7px; width: 0px; height: 0px; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid black; transform: translateX(-50%); left: 28.7367px;"
+                                                        id="highLowPriceBarCurrentPrice">
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-between"
+                                                    style="min-width: 240px; /* width: 80%; */">
+                                                    <div id="highLowPriceBarLowPrice"  style="color: grey;">55850.2
+                                                        <span style="font-size: 12px; color: slategray;">| Low</span>
+                                                    </div>
+                                                    <div id="highLowPriceBarHighPrice" style="color: grey;">56460.5
+                                                        <span style="font-size: 12px; color: slategray;">| High</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex justify-content-between mt-3">
+                                                    <div>
+                                                        <span style="font-size: 12px; color: slategray;">Advanced</span>
+                                                        <span>25</span>
+                                                    </div>
+                                                    <div>
+                                                        <span style="font-size: 12px; color: slategray;"> 
+                                                            Declines</span>
+                                                        <span>35</span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
 
                             </div>
-                            <div class="d-flex flex-column align-items-center w-100">
-                                <p style="margin-bottom: 0;">
-                                    <b class="">BANKNIFTY </b>
-                                </p>
-                                <p style="margin-bottom: 0;" class="d-flex justify-content-around">
-                                    <span class="tsrTickerPrice mx-3">52,580.20</span>
-                                    <span class="tsrTickerPriceChgPos">
-                                        <i class="fas fa-caret-up mx-2"></i>
-                                        0.55%
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
 
+                        </section>
 
+                        <!-- modified -->
                         <!-- ----------------------HERO SECTION BEGINS HERE-------------------------------- -->
+
+                        <style>
+                            /* --- Hero Section Container --- */
+                            .tsrHomeHeroSection {
+                                /* Match the white cards used in the "Everyday Trading Tools" section */
+                                background-color: #ffffff;
+                                background: radial-gradient(circle at 70%, #09124f 0, #090979 30%, #006fbf 100%);
+                                /* Consistency: Use the same border color as your tool cards */
+                                /* border: 1px solid #e2e8f0; */
+                                /* Consistency: Use a soft shadow to match the hover effect of your cards */
+                                /* box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2); */
+                                /* border-radius: 16px; */
+                                /* Matches the rounding on your tool icons */
+                                height: 450px;
+                                position: relative;
+                                overflow: hidden;
+                                margin-top: 0px;
+                                height: 60vh;
+                                min-height: 500px;
+                                /* align-items: center; */
+                                text-align: center;
+                                color: floralwhite;
+                            }
+
+
+
+                            /* --- Realistic Candlestick SVG --- */
+                            .tsrHomeHeroSection svg {
+                                opacity: 0.4;
+                                /* Increased visibility as requested */
+                                filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+                                z-index: 0;
+                            }
+
+                            /* Redefining the SVG elements for a realistic 'Live Chart' look */
+                            .tsrHomeHeroSection svg g {
+                                stroke-width: 1.5;
+                            }
+
+                            /* Bearish candles */
+                            .tsrHomeHeroSection svg .tsrHomeBearishCandle {
+                                stroke: #f87171;
+                                fill: rgba(248, 113, 113, 0.15);
+                            }
+
+                            /* Bullish candles */
+                            .tsrHomeHeroSection svg .tsrHomeBullishCandle {
+                                stroke: #4ade80;
+                                fill: rgba(74, 222, 128, 0.15);
+                            }
+
+                            /* --- Typography --- */
+                            /* Use the same Slate/Navy colors found in your section headers */
+                            .tsrHomeHeroSection h1,
+                            .tsrHomeHeroSection h2 {
+                                /* color: #1e293b !important; */
+                                /* Matches your "Your Everyday Trading Tools" title */
+                                font-weight: 700;
+                            }
+
+                            /* modified */
+                            /* Learn • Screen • Analyse • Test • Trade */
+                            .tsrHomeHeroSectionPunchline {
+                                /* color: #64748b !important; */
+                                color: cornflowerblue;
+                                /* Muted Slate */
+                                font-weight: 500;
+                            }
+
+                            /* The separator dots */
+                            .tsrHomeHeroSectionPunchline div {
+                                /* background-color: #3b82f6 !important; */
+                                background-color: lightsteelblue !important;
+                                /* Consistent blue accent */
+                            }
+
+                            /* --- Search Bar Modernization --- */
+                            /* This now looks like a native dashboard search component */
+                            /* modified */
+                            .tsrHomeHeroSection input#user_input {
+                                /* background-color: #f8fafc; */
+                                /* Slightly off-white to contrast against the white section */
+                                border: 1px solid #e2e8f0;
+                                border-radius: 10px;
+                                padding: 5px 10px;
+                                color: #1e293b;
+                                transition: all 0.2s ease-in-out;
+                                cursor: pointer;
+                            }
+
+                            .tsrHomeHeroSection input#user_input:focus {
+                                background-color: #ffffff;
+                                border-color: #3b82f6;
+                                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+                                outline: none;
+                            }
+
+                            .tsrHomeHeroSection .tsrLinkWithHover {
+                                color: #475569 !important;
+                                font-weight: 600;
+                            }
+
+                            /* modified */
+                            @keyframes tsrHomeTextSpinner {
+                                0% {
+                                    transform: translateY(0);
+                                }
+
+                                16% {
+                                    transform: translateY(-100%);
+                                }
+
+                                32% {
+                                    transform: translateY(-200%);
+                                }
+
+                                48% {
+                                    transform: translateY(-300%);
+                                }
+
+                                60% {
+                                    transform: translateY(-400%);
+                                }
+
+                                72% {
+                                    transform: translateY(-500%);
+                                }
+
+                                84% {
+                                    transform: translateY(-600%);
+                                }
+
+                                100% {
+                                    transform: translateY(-700%);
+                                }
+                            }
+
+                            /* modified */
+                            .tsrHomeHeroSection .tsrHomeTextSpinnerContainer p {
+                                animation: tsrHomeTextSpinner 15s ease-in-out 0s infinite normal none;
+                                /* color: #2563eb !important; */
+                                /* text-shadow: 1px 1px 3px white; */
+                                color: goldenrod;
+                                margin-bottom: 0;
+
+                            }
+
+                            @media only screen and (max-width: 992px) {
+                                .tsrHomeHeroSection {
+                                    height: 50vh !important;
+                                    min-height: unset;
+                                }
+                            }
+
+                            @media only screen and (max-width: 576px) {
+                                .tsrHomeHeroSection {
+                                    height: 30vh !important;
+                                    min-height: unset;
+                                }
+                            }
+                        </style>
 
                         <section class="tsrHomeSection tsrHomeHeroSection">
                             <svg style="position: absolute; left: 0; pointer-events: none;" width="100%" height="100%"
@@ -1081,12 +1457,12 @@
                                 </g>
 
                                 <g transform="translate(0,-20)" stroke-width="1.5">
-                                    <!-- 7th last → Bottom formation -->
+                                    <!-- 7th last  &rarr; Bottom formation -->
                                     <line class="tsrHomeBearishCandle" x1="1300" y1="120" x2="1300" y2="150" />
                                     <line class="tsrHomeBearishCandle" x1="1300" y1="180" x2="1300" y2="200" />
                                     <rect class="tsrHomeBearishCandle" x="1291" y="150" width="18" height="30" />
 
-                                    <!-- 6th last → Breakout -->
+                                    <!-- 6th last  &rarr; Breakout -->
                                     <line class="tsrHomeBullishCandle" x1="1350" y1="80" x2="1350" y2="110" />
                                     <line class="tsrHomeBullishCandle" x1="1350" y1="170" x2="1350" y2="180" />
                                     <rect class="tsrHomeBullishCandle" x="1341" y="110" width="18" height="60" />
@@ -1111,15 +1487,16 @@
                                     <line class="tsrHomeBullishCandle" x1="1550" y1="75" x2="1550" y2="90" />
                                     <rect class="tsrHomeBullishCandle" x="1541" y="35" width="18" height="40" />
 
-                                    <!-- FINAL → exact top touch -->
+                                    <!-- FINAL  &rarr; exact top touch -->
                                     <line class="tsrHomeBullishCandle" x1="1600" y1="0" x2="1600" y2="20" />
                                     <line class="tsrHomeBullishCandle" x1="1600" y1="60" x2="1600" y2="70" />
                                     <rect class="tsrHomeBullishCandle" x="1591" y="20" width="18" height="40" />
                                 </g>
 
                             </svg>
+                            <!-- modified -->
                             <p class="d-none d-md-block"
-                                style="position: absolute; top: 320px; background-color: white; margin-bottom: 0; right: 0px; padding: 10px; font-weight: bold; border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
+                                style="position: absolute; top: 330px; background-color: white; margin-bottom: 0; right: 0px; padding: 10px; font-weight: bold; border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
                                 <a class="tsrLinkWithHover" style="color: black !important;"
                                     href="BASE_WWW_URL/rt/Home/Classic">
                                     <i class="fas fa-home"></i>
@@ -1137,14 +1514,14 @@
                                         <span style="color: #2563eb;" class="ms-2">(TSR)</span>
                                     </p>
 
-                                    <p class="d-none d-sm-flex d-md-none justify-content-center"
+                                    <p class="d-none d-sm-flex d-lg-none justify-content-center"
                                         style="font-size: 30px; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);font-weight: bold; text-wrap: nowrap; z-index: 1;">
-                                        Top Stock Research <span style="color: #2563eb;" class="ms-2">(TSR)</span>
+                                        Top Stock Research (TSR)
                                     </p>
 
-                                    <h1 class=" d-none d-md-flex"
+                                    <h1 class=" d-none d-lg-flex"
                                         style="font-size: 50px; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);font-weight: bold; text-wrap: nowrap;">
-                                        Top Stock Research <span style="color: #2563eb;" class="ms-2">(TSR)</span>
+                                        Top Stock Research (TSR)
                                     </h1>
 
                                     <div class="tsrHomeHeroSectionPunchline d-flex d-sm-none align-items-center justify-content-center"
@@ -1168,7 +1545,8 @@
                                         Trade
                                     </div>
 
-                                    <h4 class="d-none d-sm-flex d-md-none align-items-center justify-content-center">
+                                    <h4
+                                        class="tsrHomeHeroSectionPunchline d-none d-sm-flex d-md-none align-items-center justify-content-center">
                                         Learn
                                         <div
                                             style="display: inline-block; background-color: white; height: 5px; width: 5px; border-radius: 20px; margin: 0px 10px 0px 10px;">
@@ -1188,7 +1566,8 @@
                                         Trade
                                     </h4>
 
-                                    <h3 class="d-none d-md-flex align-items-center justify-content-center">
+                                    <h3
+                                        class="tsrHomeHeroSectionPunchline d-none d-md-flex align-items-center justify-content-center">
                                         Learn
                                         <div
                                             style="display: inline-block; background-color: white; height: 5px; width: 5px; border-radius: 20px; margin: 0px 10px 0px 10px;">
@@ -1224,27 +1603,35 @@
                                         autocomplete="off" style="z-index: 1; position: relative;">
                                 </div>
 
-                                <h2 class="d-none d-sm-flex justify-content-center"
-                                    style="color: white; text-wrap: nowrap; z-index: 1;">
+                                <h2 class="d-none d-lg-flex justify-content-center"
+                                    style="text-wrap: nowrap; z-index: 1;">
                                     One Stop Shop for&nbsp;
                                     <div class="d-flex flex-column tsrHomeTextSpinnerContainer"
-                                        style="height: 30px; overflow: hidden; text-shadow: 1px 1px 3px white; text-align: start;">
+                                        style="height: 30px; overflow: hidden;  text-align: start;">
                                         <p>Screeners</p>
                                         <p>Charts</p>
-                                        <p>Research</p>
                                         <p>Alerts</p>
+                                        <p>Watchlist</p>
+                                        <p>Mock test</p>
+                                        <p>Trade</p>
+                                        <p>Research</p>
+                                        <p>Learn</p>
                                     </div>
                                 </h2>
 
-                                <div class="d-flex d-sm-none justify-content-center"
-                                    style="color: black; text-wrap: nowrap; font-size: 20px; font-weight: 700; z-index: 1;">
+                                <div class="d-flex d-lg-none justify-content-center"
+                                    style="text-wrap: nowrap; font-size: 20px; font-weight: 700; z-index: 1;">
                                     One Stop Shop for&nbsp;
                                     <div class="d-flex flex-column tsrHomeTextSpinnerContainer"
-                                        style="height: 30px; overflow: hidden; text-shadow: 1px 1px 3px white; text-align: start;">
+                                        style="height: 30px; overflow: hidden; text-align: start;">
                                         <p>Screeners</p>
                                         <p>Charts</p>
-                                        <p>Research</p>
                                         <p>Alerts</p>
+                                        <p>Watchlist</p>
+                                        <p>Mock test</p>
+                                        <p>Trade</p>
+                                        <p>Research</p>
+                                        <p>Learn</p>
                                     </div>
                                 </div>
                             </div>
@@ -1262,6 +1649,7 @@
 
                         <!-- ----------------------EVERYDAY TOOLS SECTION -------------------------------- -->
 
+
                         <section
                             class="tsrHomeSection tsrHomeEverydayToolsSection py-5 d-flex flex-column align-items-center">
 
@@ -1269,7 +1657,7 @@
                             <div class="text-center mb-4">
                                 <h2 class="tsrHomeSectionTitle">Your Everyday Trading Tools</h2>
                                 <p class="tsrHomeSectionSubtitle">
-                                    Powerful tools designed for serious traders — fast, flexible, and reliable
+                                    Powerful tools designed for serious traders - fast, flexible, and reliable
                                 </p>
                             </div>
 
@@ -1285,7 +1673,9 @@
                                                 <div class="tsrHomeToolIcon"><i class="fas fa-filter"></i></div>
                                                 <h5>Custom Screener</h5>
                                                 <p>Find stocks your way</p>
-                                                <span class="tsrHomeToolCta d-block d-md-none">Open Screener →</span>
+                                                <!-- <span class="tsrHomeToolCta d-block d-md-none">Open Screener  &rarr;</span> -->
+                                                <span class="tsrHomeToolCta d-block d-md-none">Build Strategies
+                                                    &rarr;</span>
                                             </div>
 
                                             <!-- Hover -->
@@ -1295,7 +1685,7 @@
                                                     Build powerful queries with technical & fundamental filters to
                                                     discover high-potential stocks instantly.
                                                 </p>
-                                                <span class="tsrHomeToolCta">Open Screener →</span>
+                                                <span class="tsrHomeToolCta">Build Strategies &rarr;</span>
                                             </div>
 
                                         </div>
@@ -1304,29 +1694,65 @@
 
                                 <!-- Card 2 -->
                                 <div class="col-md-6 col-lg-3">
-                                    <a href="BASE_WWW_URL/rt/TsrAlerts" class="tsrHomeToolCard">
+                                    <a href="BASE_WWW_URL/rt/InteractiveCharts.tsr" class="tsrHomeToolCard">
                                         <div class="tsrHomeToolInner">
-
                                             <div class="tsrHomeToolFront">
-                                                <div class="tsrHomeToolIcon"><i class="fas fa-bell"></i></div>
-                                                <h5>Alerts</h5>
-                                                <p>Never miss opportunities</p>
-                                                <span class="tsrHomeToolCta d-block d-md-none">Create Alert →</span>
+                                                <div class="tsrHomeToolIcon"><i class="fas fa-chart-line"></i></div>
+                                                <h5>Technical Charts</h5>
+                                                <p>Analyze with precision</p>
+                                                <span class="tsrHomeToolCta d-block d-md-none">Open Charts &rarr;</span>
                                             </div>
 
                                             <div class="tsrHomeToolBack">
-                                                <h5>Alerts</h5>
+                                                <h5>Technical Charts</h5>
                                                 <p>
-                                                    Set real-time alerts on price, indicators, or strategies and
-                                                    stay ahead without constantly watching charts.
+                                                    Advanced charting tools with indicators, drawing tools, and
+                                                    multi-timeframe analysis.
                                                 </p>
-                                                <span class="tsrHomeToolCta">Create Alert →</span>
+                                                <span class="tsrHomeToolCta">Open Charts &rarr;</span>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
 
                                 <!-- Card 3 -->
+
+                                <div class="col-md-6 col-lg-3">
+                                    <a href="BASE_WWW_URL/rt/Screener/Markets/MarketScreener" class="tsrHomeToolCard">
+                                        <div class="tsrHomeToolInner">
+
+                                            <div class="tsrHomeToolFront">
+                                                <div class="tsrHomeToolIcon">
+                                                    <svg height="32" viewBox="0 0 288 288" fill="#0441e7"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <g>
+                                                            <path
+                                                                d="M16.1679 220.117H27.5594C36.4918 220.117 43.7272 227.085 43.7272 235.681V272.436C43.7272 281.03 36.4918 288 27.5594 288H16.1679C7.23987 288 0 281.03 0 272.436V235.681C0 227.085 7.23987 220.117 16.1679 220.117ZM138.333 191.835H149.725C158.657 191.835 165.892 198.804 165.892 207.4V272.436C165.892 281.03 158.657 288 149.725 288H138.333C129.405 288 122.165 281.03 122.165 272.436V207.4C122.165 198.804 129.405 191.835 138.333 191.835ZM77.2195 174.764H88.6109C97.5434 174.764 104.779 181.732 104.779 190.328V272.435C104.779 281.03 97.5434 288 88.6109 288H77.2195C68.2915 288 61.0516 281.03 61.0516 272.435V190.328C61.0516 181.732 68.2915 174.764 77.2195 174.764ZM199.447 145.215H210.838C219.771 145.215 227.006 152.184 227.006 160.78V272.435C227.006 281.03 219.771 288 210.838 288H199.447C190.519 288 183.279 281.03 183.279 272.435V160.78C183.279 152.184 190.519 145.215 199.447 145.215ZM260.441 95.8464H271.832C280.76 95.8464 288 102.815 288 111.411V272.435C288 281.03 280.76 288 271.832 288H260.441C251.508 288 244.273 281.03 244.273 272.435V111.411C244.273 102.815 251.508 95.8464 260.441 95.8464ZM263.972 22.1796L264.313 22.5429V22.1796H263.972ZM232.363 0H272.683L275.377 0.52372L275.833 0.435099C282.196 0.435099 287.353 5.40022 287.353 11.5253V50.3384C287.353 54.9322 284.451 58.8734 280.317 60.5571L275.833 61.4286L271.349 60.5571C267.215 58.8734 264.313 54.9322 264.313 50.3384V33.221L224.144 68.3827L225.482 74.7568C225.482 85.4748 216.452 94.1636 205.322 94.1636L198.153 92.7706L162.911 124.035L164.191 130.142C164.191 140.86 155.166 149.549 144.031 149.549C135.679 149.549 128.514 144.661 125.453 137.696L124.217 131.79L98.7574 125.19L97.1712 127.454C93.5247 130.966 88.4825 133.138 82.9174 133.138C80.1305 133.138 77.4809 132.595 75.0705 131.613L73.8432 130.817L41.153 159.24L41.9638 163.102C41.9638 173.82 32.9339 182.509 21.8038 182.509C10.6693 182.509 1.6438 173.82 1.6438 163.102C1.6438 152.384 10.6693 143.695 21.8038 143.695C24.5863 143.695 27.236 144.238 29.6507 145.22L30.7053 145.907L63.5195 117.375L62.7574 113.732C62.7574 103.013 71.7829 94.3244 82.9174 94.3244C91.265 94.3244 98.4296 99.212 101.491 106.177L102.045 108.816L130.229 116.122L136.184 112.26C138.594 111.278 141.244 110.735 144.031 110.735L150.899 112.07L186.385 80.5899L185.162 74.7568C185.162 64.0383 194.187 55.3496 205.322 55.3496L211.888 56.6261L251.242 22.1796H232.363C227.591 22.1796 223.497 19.3864 221.747 15.4062L220.843 11.0898L221.747 6.77288C223.497 2.79272 227.591 0 232.363 0Z">
+                                                            </path>
+                                                        </g>
+                                                    </svg>
+
+                                                </div>
+                                                <h5>Market Overview</h5>
+                                                <p>360&deg; Market Research</p>
+                                                <span class="tsrHomeToolCta d-block d-md-none">Market Overview
+                                                    &rarr;</span>
+                                            </div>
+
+                                            <div class="tsrHomeToolBack">
+                                                <h5>Market Overview</h5>
+                                                <p>
+                                                    Get a complete view of market direction, top gainers, losers, and
+                                                    strength - all in one place.
+                                                </p>
+                                                <span class="tsrHomeToolCta">Market Overview &rarr;</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+
+                                <!-- Card 4 -->
                                 <div class="col-md-6 col-lg-3">
                                     <a href="BASE_WWW_URL/rt/TsrWatchlist" class="tsrHomeToolCard">
                                         <div class="tsrHomeToolInner">
@@ -1334,7 +1760,8 @@
                                                 <div class="tsrHomeToolIcon"><i class="fas fa-eye"></i></div>
                                                 <h5>Watchlist</h5>
                                                 <p>Track what matters</p>
-                                                <span class="tsrHomeToolCta d-block d-md-none">View Watchlist →</span>
+                                                <span class="tsrHomeToolCta d-block d-md-none">View Watchlist
+                                                    &rarr;</span>
                                             </div>
 
                                             <div class="tsrHomeToolBack">
@@ -1343,30 +1770,7 @@
                                                     Organize and monitor your favorite stocks with real-time updates
                                                     and quick insights.
                                                 </p>
-                                                <span class="tsrHomeToolCta">View Watchlist →</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <!-- Card 4 -->
-                                <div class="col-md-6 col-lg-3">
-                                    <a href="BASE_WWW_URL/rt/InteractiveCharts.tsr" class="tsrHomeToolCard">
-                                        <div class="tsrHomeToolInner">
-                                            <div class="tsrHomeToolFront">
-                                                <div class="tsrHomeToolIcon"><i class="fas fa-chart-line"></i></div>
-                                                <h5>Charts</h5>
-                                                <p>Analyze with precision</p>
-                                                <span class="tsrHomeToolCta d-block d-md-none">Open Charts →</span>
-                                            </div>
-
-                                            <div class="tsrHomeToolBack">
-                                                <h5>Charts</h5>
-                                                <p>
-                                                    Advanced charting tools with indicators, drawing tools, and
-                                                    multi-timeframe analysis.
-                                                </p>
-                                                <span class="tsrHomeToolCta">Open Charts →</span>
+                                                <span class="tsrHomeToolCta">View Watchlist &rarr;</span>
                                             </div>
                                         </div>
                                     </a>
@@ -1487,7 +1891,8 @@
                                             <h5>Sector Rotation</h5>
                                             <p>Analyze how capital moves between sectors over time to find the next
                                                 lead industry.</p>
-                                            <a href="BASE_WWW_URL/rt/Screener/Markets/SectorRotation" class="tsrHomeToolCta">View Analysis &rarr;</a>
+                                            <a href="BASE_WWW_URL/rt/Screener/Markets/SectorRotation"
+                                                class="tsrHomeToolCta">View Analysis &rarr;</a>
                                         </div>
                                     </div>
 
@@ -1521,7 +1926,8 @@
                                             <h5>Candlestick Screeners</h5>
                                             <p>Automated scanning for 70+ bullish and bearish candle formations
                                                 across all stocks.</p>
-                                            <a href="BASE_WWW_URL/rt/Screener/Candlestick/BullishScreener" class="tsrHomeToolCta">Open Scanner &rarr;</a>
+                                            <a href="BASE_WWW_URL/rt/Screener/Candlestick/BullishScreener"
+                                                class="tsrHomeToolCta">Open Scanner &rarr;</a>
                                         </div>
                                     </div>
 
@@ -1544,7 +1950,8 @@
                                             <h5>Chart Pattern Screeners</h5>
                                             <p>Identify classic patterns like Head & Shoulders, Triangles, and
                                                 Double Bottoms.</p>
-                                            <a href="BASE_WWW_URL/rt/Screener/ChartPatterns/PopularChartPatterns" class="tsrHomeToolCta">Explore Patterns &rarr;</a>
+                                            <a href="BASE_WWW_URL/rt/Screener/ChartPatterns/PopularChartPatterns"
+                                                class="tsrHomeToolCta">Explore Patterns &rarr;</a>
                                         </div>
                                     </div>
 
@@ -1558,7 +1965,8 @@
                                             <h5>Intraday Strategies</h5>
                                             <p>High-probability day trading setups including Gap-ups, ORB, and
                                                 Volume spikes.</p>
-                                            <a href="BASE_WWW_URL/rt/Screener/Markets/IntradayScreener" class="tsrHomeToolCta">View Strategies &rarr;</a>
+                                            <a href="BASE_WWW_URL/rt/Screener/Markets/IntradayScreener"
+                                                class="tsrHomeToolCta">View Strategies &rarr;</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1616,9 +2024,7 @@
                                                 style="text-align: center;">
                                                 <h2>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px"
-                                                        viewBox="0 0 512 512" style="
-    fill: navy;
-">
+                                                        viewBox="0 0 512 512" style="fill: navy;">
                                                         <path fill="navy"
                                                             d="M311.133 257.95a15.074 15.074 0 0 1-12.845 17.026l-147.248 20.61-21.33 32.522-82.637 11.57 21.33-32.568-24.547 3.44c-.278 0-.555.12-.843.165a15.218 15.218 0 0 1-2.108.144 15.074 15.074 0 0 1-2.074-30.016c.29 0 .567 0 .855-.078l24.547-3.438-29.45-25.512 82.582-11.547 29.45 25.51 147.26-20.608a15.196 15.196 0 0 1 2.107-.145 15.085 15.085 0 0 1 14.953 12.923zm-36.704-38.546a32.4 32.4 0 0 1 10.847-10.326 23.427 23.427 0 0 1 13.422-3.04 27.875 27.875 0 0 1 13.542 5.047 44.557 44.557 0 0 1 11.924 12.59 66.342 66.342 0 0 1 8.386 19.134 77.48 77.48 0 0 1 2.562 21.995 67.895 67.895 0 0 1-3.494 19.966 46.132 46.132 0 0 1-8.54 15.352 28.163 28.163 0 0 1-12.402 8.552 23.382 23.382 0 0 1-13.765.255 32.012 32.012 0 0 1-12.512-7.122 45.478 45.478 0 0 1-5.734-6.2l-32.278 4.514a131.154 131.154 0 0 0 7.1 15.973 104.566 104.566 0 0 0 18.656 25.512 69.016 69.016 0 0 0 23.893 15.806 48.373 48.373 0 0 0 27.597 2.22 53.43 53.43 0 0 0 26.31-14.876c7.898-7.853 14.42-18.258 19.112-30.514a131.997 131.997 0 0 0 8.32-41.995 153.26 153.26 0 0 0-5.48-46.92 128.758 128.758 0 0 0-18.49-39.932c-7.6-10.726-16.417-18.946-25.78-24.403a52.998 52.998 0 0 0-27.962-7.62 48.573 48.573 0 0 0-26.278 8.718 69.88 69.88 0 0 0-20.165 21.897 107.505 107.505 0 0 0-11.99 29.516A137.144 137.144 0 0 0 237.68 235l31.192-4.37a49.172 49.172 0 0 1 5.557-11.226zm198.305-34.984c-10.926-35.274-27.287-64.757-46.842-87.374-18.557-21.518-39.544-36.26-61.118-44.213-20.155-7.41-40.564-8.74-59.953-4.248-18.058 4.204-35.196 13.466-50.603 27.62-14.42 13.21-26.09 29.626-35.185 47.807a233.224 233.224 0 0 0-19.29 56.57 286.023 286.023 0 0 0-5.856 60.674l22.582-3.16a209.143 209.143 0 0 1 5.047-40.344 166.26 166.26 0 0 1 15.972-42.926c7.365-13.4 16.716-25.124 27.997-34.087 11.89-9.44 24.88-14.986 38.3-16.64 14.165-1.774 28.773.744 42.938 7.51 14.863 7.1 29.084 18.78 41.485 34.774 12.856 16.572 23.515 37.46 30.66 61.917a225.515 225.515 0 0 1 8.74 74.65c-1.254 24.05-6.4 46.422-14.72 65.656-8.042 18.58-18.857 33.887-31.824 44.88-12.313 10.47-26.345 16.915-41.463 18.656a76.226 76.226 0 0 1-41.163-7.1c-12.313-5.722-23.826-14.485-34.03-25.51a162.212 162.212 0 0 1-25.724-37.637 204.584 204.584 0 0 1-14.542-38.578l-22.484 3.106a280.965 280.965 0 0 0 19.966 57.823 228.2 228.2 0 0 0 32.168 50.092c12.99 15.186 27.82 27.83 43.914 36.793 17.18 9.574 36.027 15.064 55.705 14.865 21.263-.21 41.44-7.022 59.52-19.778 19.356-13.654 36.005-33.897 48.617-59.432 13.244-26.82 21.697-58.788 24.048-93.64a300.742 300.742 0 0 0-12.856-108.76z">
                                                         </path>
@@ -1631,10 +2037,10 @@
                                                 <p style="color: #495057;">
                                                     True One Stop Shop for Premium Analytics
                                                 </p>
-                                                <a class="link-primary tsrHomeToolCta"  target="_blank"
+                                                <a class="link-primary tsrHomeToolCta"
                                                     href="BASE_WWW_URL/rt/TsrHighlights/TsrTechnicalTool"
                                                     style="margin-left: 10px; font-weight: 500; font-size: 14px;">India's
-                                                    Best Technical Tool →</a>
+                                                    Best Technical Tool &rarr;</a>
                                             </div>
                                         </div>
                                     </div>
@@ -1665,7 +2071,8 @@
                                                             <img src="https://www.stockaio.com/static/img/StockAioLogo.png"
                                                                 alt="" class="img-fluid" style="max-width: 150px;">
                                                         </a>
-                                                        <a href="https://www.stockaio.com/US/ai/Home" target="_blank" class="tsrHomeToolCta">Visit →</a>
+                                                        <a href="https://www.stockaio.com/US/ai/Home" target="_blank"
+                                                            class="tsrHomeToolCta">Visit &rarr;</a>
                                                     </div>
                                                 </div>
 

@@ -176,7 +176,7 @@ var aioIcons = (function () {
 
 	var SUBS_SB = 'subsSb';
 
-	var SUBS_SB_TOP = 'subsSbTop' // modified
+	var SUBS_SB_TOP = 'subsSbTop'
 
 	var SUBS_SB_SVG = ''
 		+ '<svg height="SVG_HEIGHT" viewBox="0 0 288 288" fill="SVG_FILL" xmlns="http://www.w3.org/2000/svg">'
@@ -327,7 +327,6 @@ var aioIcons = (function () {
 
 
 
-	// modified
 	var json = {
 		[HOME_SB]:
 		{
@@ -632,7 +631,7 @@ var aioIcons = (function () {
 
 		}
 		else if (icon == SUBS_SB_TOP) {
-			color="orange"
+			color="orange";  // modified
 			
 			svg = json[icon]["svg"];
 			size = '28';

@@ -1,30 +1,21 @@
 HTML:
 
-<div class="nav-logo" id="navLogoDiv" style="width: max-content;"></div>
-
+    - #navLogoDiv - TSR logo with link
+    - .tsrHomeHeroSection - Visit classic home moved down
+    - .tsrHomeAboutUsSection remove target
 ---------------------
 
-migUi.js - 
+CSS:
 
-printHeader()
-getAioText()
-
-
+    - HOME COMMON SECTION TO BE ADDED
+    - .tsrHomeHeroSectionPunchline - separator dots colors
+    - .tsrHomeSection - for section radius and space in between each section (via margin)
+    - .tsrTickerMarquee - removed fade effect
 ---------------------
-
 
 aioIcons.js -
-
-var SUBS_SB_TOP
-var json
-var TOP_ICONS_TSR
-setTopIcon() 
+    
+    - setTopIcon() - plans & mySettings btn links
+    
 
 
---------------------
-
-
-IntelliSearch.js -
-
-init() - fotd added
-paintFotdCanvas() - added

@@ -76,7 +76,7 @@ var tsrHome = (function () {  // my Ui Head
                             <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Market Insights</h5>
-                                <p>360 Market Research</p>
+                                <p>360&deg; Market Research</p>
 
                                 <ul
                                     style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
@@ -120,11 +120,10 @@ var tsrHome = (function () {  // my Ui Head
                                 <h5>High / Low Stocks</h5>
                                 <p>Buy Low, Sell High</p>
 
-                                <ul
-                                    style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
-                                    <li>52 Weeks High or Low</li>
-                                    <li>Three Months High or Low</li>
-                                    <li>Near Five Year High or Low</li>
+                                <ul style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
+                                    <li>52-week highs and lows</li>
+                                    <li>3-month highs and lows</li>
+                                    <li>Near 5-year highs and lows</li>
                                 </ul>
                                 <p style="margin: 0;">Suitable for <b>Swing & Positional</b> Traders
                                 </p>
@@ -140,13 +139,13 @@ var tsrHome = (function () {  // my Ui Head
                             <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-chart-line"></i></div> -->
                                 <h5>Heatmap</h5>
-                                <p>Markets painted in real-time emotion.</p>
+                                <p>Markets painted in real-time.</p>
 
                                 <ul
                                     style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
                                     <li>From 1 Min to Qtr Tick</li>
-                                    <li>Custom Heatmap on Watchlist</li>
-                                    <li>Charts on Move</li>
+                                    <li>Build custom heatmaps for your watchlist</li>
+                                    <li>Access charts directly within the heatmap</li>
                                 </ul>
 
                                 <p style="margin: 0;">Suitable for <b>Intraday to Positional</b> Traders
@@ -170,7 +169,7 @@ var tsrHome = (function () {  // my Ui Head
                                     style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
                                     <li>Out Performing Stocks vs Nifty</li>
                                     <li>Get High Returns Stocks</li>
-                                    <li>Rank Stock as Per Performance</li>
+                                    <li>Rank Stocks as Per Performance</li>
                                 </ul>
 
                                 <p style="margin: 0;">Suitable for <b>Swing to Long Term Invester</b></p>
@@ -214,7 +213,7 @@ var tsrHome = (function () {  // my Ui Head
 
                                 <ul
                                     style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
-                                    <li>Granularity @ Time Frame</li>
+                                    <li>Granularity across timeframes</li>
                                     <li>Plotted across various stock baskets.</li>
                                     <li>Combined view for broad & sector indices.</li>
                                 </ul>
@@ -286,7 +285,7 @@ var tsrHome = (function () {  // my Ui Head
                             <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Market Insights</h5>
-                                <p>360 Market Research</p>
+                                <p>360&deg; Market Research</p>
 
                                 <ul
                                     style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
@@ -311,7 +310,7 @@ var tsrHome = (function () {  // my Ui Head
                                     style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
                                     <li>Out Performing Stocks vs Nifty</li>
                                     <li>Get High Returns Stocks</li>
-                                    <li>Rank Stock as Per Performance</li>
+                                    <li>Rank Stocks as Per Performance</li>
                                 </ul>
                                 <a href="BASE_WWW_URL/rt/Screener/Markets/RelativeStrength" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
@@ -365,8 +364,8 @@ var tsrHome = (function () {  // my Ui Head
                                 <ul
                                     style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
                                     <li>From 1 Min to Qtr Tick</li>
-                                    <li>Custom Heatmap on Watchlist</li>
-                                    <li>Charts on Move</li>
+                                    <li>Build custom heatmaps for your watchlist</li>
+                                    <li>Access charts directly within the heatmap</li>
                                 </ul>
                                 <a href="BASE_WWW_URL/rt/Screener/Markets/HeatMap" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
@@ -382,7 +381,7 @@ var tsrHome = (function () {  // my Ui Head
 
                                 <ul
                                     style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
-                                    <li>Granularity @ Time Frame</li>
+                                    <li>Granularity across timeframes</li>
                                     <li>Plotted across various stock baskets.</li>
                                     <li>Combined view for broad & sector indices.</li>
                                 </ul>
@@ -417,12 +416,12 @@ var tsrHome = (function () {  // my Ui Head
                                 <h5>High / Low Stocks</h5>
                                 <p>Buy Low, Sell High.</p>
 
-                                <ul
-                                    style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
-                                    <li>52 Weeks High or Low</li>
-                                    <li>Three Months High or Low</li>
-                                    <li>Near Five Year High or Low</li>
+                                 <ul style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
+                                    <li>52-week highs and lows</li>
+                                    <li>3-month highs and lows</li>
+                                    <li>Near 5-year highs and lows</li>
                                 </ul>
+
                                 <a href="BASE_WWW_URL/rt/Screener/Markets/HighsLows" class="tsrHomeToolCta">Start Now <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
@@ -491,7 +490,7 @@ var tsrHome = (function () {  // my Ui Head
                         <div class="tsrHomeToolCard">
                             <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                             <h5>Market Insights</h5>
-                            <p>360 Market Research</p>
+                            <p>360&deg; Market Research</p>
 
                             <ul
                                 style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
@@ -551,13 +550,14 @@ var tsrHome = (function () {  // my Ui Head
                             <h5>Heatmap</h5>
                             <p>Markets painted in real-time emotion.</p>
 
-                            <ul
-                                style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
-                                <li>From 1 Min to Qtr Tick</li>
-                                <li>Custom Heatmap on Watchlist</li>
-                                <li>Charts on Move</li>
-                                <li>Eye-Soothing Colors</li>
-                            </ul>
+                                <ul style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
+                                    <li>From 1 Min to Qtr Tick</li>
+                                    <li>Build custom heatmaps for your watchlist</li>
+                                    <li>Access charts directly within the heatmap</li>
+                                    <li>Eye-Soothing Colors</li>
+                                </ul>
+
+                            
                             <a href="BASE_WWW_URL/rt/Screener/Markets/HeatMap" class="tsrHomeToolCta">Start Now <i
                                     class="fas fa-arrow-right"></i></a>
                         </div>
@@ -609,12 +609,12 @@ var tsrHome = (function () {  // my Ui Head
                             <p>Reveals the market's true breadth.</p>
 
                             <ul
-                                style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
-                                <li>Granularity @ Time Frame</li>
-                                <li>Plotted across various stock baskets</li>
-                                <li>Combined view for broad & sector indices</li>
-                                <li>Filter Rising vs Falling Stocks</li>
-                            </ul>
+                                    style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
+                                    <li>Granularity across timeframes</li>
+                                    <li>Plotted across various stock baskets.</li>
+                                    <li>Combined view for broad & sector indices.</li>
+                                    <li>Filter Rising vs Falling Stocks</li>
+                                </ul>
                             <a href="BASE_WWW_URL/rt/Screener/Markets/AdvanceDecline" class="tsrHomeToolCta">Start Now <i
                                     class="fas fa-arrow-right"></i></a>
                         </div>
@@ -654,7 +654,7 @@ var tsrHome = (function () {  // my Ui Head
                             <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Market Insights</h5>
-                                <p>360 Market Research</p>
+                                <p>360&deg; Market Research</p>
 
                                 <ul
                                     style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
@@ -701,7 +701,7 @@ var tsrHome = (function () {  // my Ui Head
                                     style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
                                     <li>Out Performing Stocks vs Nifty</li>
                                     <li>Get High Returns Stocks</li>
-                                    <li>Rank Stock as Per Performance</li>
+                                    <li>Rank Stocks as Per Performance</li>
                                     <li>1 Week to 10 Year Relative Strength</li>
                                 </ul>
                                 <a href="BASE_WWW_URL/rt/Screener/Markets/RelativeStrength" class="tsrHomeToolCta">Start Now <i
@@ -787,7 +787,7 @@ var tsrHome = (function () {  // my Ui Head
                         <div class="item">
                             <div class="tsrHomeToolCard">
 
-                                <h5>Candlestick Patterns</h5>
+                                <h5>Candlesticks</h5>
                                 <p>Each candle tells a story.
                                 </p>
                                 <ul
@@ -806,7 +806,7 @@ var tsrHome = (function () {  // my Ui Head
                         <!-- Card 9 -->
                         <div class="item">
                             <div class="tsrHomeToolCard">
-                                <h5>Patterns</h5>
+                                <h5>Chart Patterns</h5>
                                 <p>Price forms, patterns inform.
                                 </p>
                                 <ul
@@ -834,7 +834,7 @@ var tsrHome = (function () {  // my Ui Head
                             <div class="tsrHomeToolCard">
                                 <!-- <div class="tsr-icon"><i class="fas fa-rocket"></i></div> -->
                                 <h5>Market Insights</h5>
-                                <p>360 Market Research</p>
+                                <p>360&deg; Market Research</p>
 
                                 <ul
                                     style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
@@ -975,7 +975,7 @@ var tsrHome = (function () {  // my Ui Head
                                     style="list-style: circle; font-size: 14px; color: #6c757d; padding-left: 20px;">
                                     <li>Out Performing Stocks vs Nifty</li>
                                     <li>Get High Returns Stocks</li>
-                                    <li>Rank Stock as Per Performance</li>
+                                    <li>Rank Stocks as Per Performance</li>
                                     <li>1 Week to 10 Year Relative Strength</li>
                                 </ul>
                                 <a href="BASE_WWW_URL/rt/Screener/Markets/RelativeStrength" class="tsrHomeToolCta">Start Now <i
@@ -985,6 +985,7 @@ var tsrHome = (function () {  // my Ui Head
 
                     </div>
         `
+
         }
 
         html += `
