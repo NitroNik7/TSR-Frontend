@@ -673,89 +673,213 @@
                                             </div>
                                         </div>
 
-                                        <style>
-                                            .tsrPlanCompTable {
-                                                display: flex;
-                                                /* width: auto; */
-                                            }
+                                     <style>
+    .tsrPlanWrapper {
+        border: 1px solid #e9edf5;
+        border-radius: 24px;
+        overflow: hidden;
+        background: #ffffff;
+        box-shadow:
+            0 10px 30px rgba(15, 23, 42, 0.05),
+            0 2px 8px rgba(15, 23, 42, 0.04);
+    }
 
-                                            .tsrPlanCompTable div {
-                                                width: 25%;
-                                            }
+    .tsrPlanCompTable {
+        display: flex;
+        align-items: stretch;
+        border-bottom: 1px solid #eef2f7;
+        transition: background-color 0.2s ease;
+    }
 
+    .tsrPlanCompTable:last-child {
+        border-bottom: none;
+    }
 
-                                            .tsrPlanCompTable .cellBottom {
-                                                display: flex;
-                                                width: 75% !important;
-                                            }
+    .tsrPlanCompTable:hover {
+        background: #fafcff;
+    }
 
-                                            .tsrPlanCompTable .cellBottom div {
-                                                width: 100%;
-                                            }
+    .tsrPlanCompTable>div {
+        width: 25%;
+        padding: 18px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        color: #475569;
+        position: relative;
+    }
 
+    /* Header Row */
+    .tsrPlanCompTable:first-child {
+        background:
+            linear-gradient(135deg,
+                #f8fbff 0%,
+                #eef5ff 100%);
+    }
 
+    .tsrPlanCompTable:first-child>div {
+        font-size: 15px;
+        font-weight: 700;
+        color: #0f172a;
+        padding-top: 22px;
+        padding-bottom: 22px;
+    }
 
-                                            @media only screen and (max-width: 768px) {
+    /* Price Row */
+    .tsrPlanCompTable:nth-child(2) {
+        background: #fcfdff;
+    }
 
-                                                .tsrPlanCompTable {
-                                                    display: block;
-                                                }
+    .tsrPlanCompTable:nth-child(2)>div {
+        font-size: 24px;
+        font-weight: 800;
+        color: #111827;
+        padding-top: 22px;
+        padding-bottom: 22px;
+    }
 
-                                                .tsrPlanCompTable div {
-                                                    width: 100%;
-                                                }
+    .tsrPlanCompTable:nth-child(2) i {
+        font-size: 16px;
+        margin-right: 2px;
+        opacity: 0.7;
+    }
 
-                                                .tsrPlanCompTable .cellBottom {
-                                                    display: flex;
-                                                    width: 100% !important;
-                                                }
+    /* Feature Name Column */
+    .tsrPlanCompTable>div:first-child {
+        background: #fafbfc;
+        font-weight: 600;
+        color: #334155;
+        border-right: 1px solid #eef2f7;
+    }
 
-                                                /* .tsrPlanCompTable div:nth-child(1) {
-                                                    width: 100%;
-                                                    text-align: center;
-                                                } */
-                                            }
-                                        </style>
-                                        <div>
-                                            <div class="tsrPlanCompTable d-flex">
-                                                <div></div>
-                                                <div>Free</div>
-                                                <div>Trader</div>
-                                                <div>Trader Pro</div>
-                                            </div>
-                                            <div class="tsrPlanCompTable d-flex">
-                                                <div></div>
-                                                <div><i class="fas fa-rupee-sign"></i>0</div>
-                                                <div><i class="fas fa-rupee-sign"></i>196.0</div>
-                                                <div><i class="fas fa-rupee-sign"></i>590.0</div>
-                                            </div>
-                                            <div class="tsrPlanCompTable">
-                                                <div style="text-align: center;">Supported ticks</div>
-                                                <div class="cellBottom">
-                                                    <div>Daily to Qtrly</div>
-                                                    <div>5 mins to Qtrly</div>
-                                                    <div>1 min to Qtrly</div>
-                                                </div>
-                                            </div>
-                                            <div class="tsrPlanCompTable">
-                                                <div style="text-align: center;">Auto Refresh</div>
-                                                <div class="cellBottom">
-                                                    <div><i class="fas fa-times-circle"></i></div>
-                                                    <div><i class="fas fa-check-circle"></i></div>
-                                                    <div><i class="fas fa-check-circle"></i></div>
-                                                </div>
-                                            </div>
+    .tsrPlanCompTable .cellBottom {
+        display: flex;
+        width: 75% !important;
+    }
 
-                                            <div class="tsrPlanCompTable">
-                                                <div style="text-align: center;">Backtest</div>
-                                                <div class="cellBottom">
+    .tsrPlanCompTable .cellBottom div {
+        width: 100%;
+        padding: 18px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-right: 1px solid #f1f5f9;
+        font-weight: 500;
+        color: #475569;
+    }
 
-                                                    <div><i class="fas fa-times-circle"></i></div>
-                                                    <div><i class="fas fa-check-circle"></i></div>
-                                                    <div><i class="fas fa-check-circle"></i></div>
-                                                </div>
-                                            </div>
-                                        </div>
+    .tsrPlanCompTable .cellBottom div:last-child {
+        border-right: none;
+    }
+
+    /* Check / Cross Icons */
+    .fa-check-circle {
+        color: #10b981;
+        font-size: 18px;
+    }
+
+    .fa-times-circle {
+        color: #ef4444;
+        font-size: 18px;
+    }
+
+    /* Highlight Recommended Plan */
+    .tsrPlanCompTable:first-child div:nth-child(3),
+    .tsrPlanCompTable:nth-child(2) div:nth-child(3) {
+        background:
+            linear-gradient(180deg,
+                rgba(59, 130, 246, 0.08) 0%,
+                rgba(59, 130, 246, 0.02) 100%);
+    }
+
+    /* Mobile */
+    @media only screen and (max-width: 768px) {
+
+        .tsrPlanWrapper {
+            border-radius: 18px;
+        }
+
+        .tsrPlanCompTable {
+            display: block;
+        }
+
+        .tsrPlanCompTable>div {
+            width: 100%;
+            padding: 14px;
+        }
+
+        .tsrPlanCompTable>div:first-child {
+            justify-content: center;
+            border-right: none;
+            border-bottom: 1px solid #eef2f7;
+            background: #f8fafc;
+        }
+
+        .tsrPlanCompTable .cellBottom {
+            display: flex;
+            width: 100% !important;
+        }
+
+        .tsrPlanCompTable .cellBottom div {
+            padding: 16px 10px;
+            font-size: 13px;
+        }
+
+        .tsrPlanCompTable:nth-child(2)>div {
+            font-size: 20px;
+        }
+    }
+</style>
+
+<div class="tsrPlanWrapper">
+
+    <div class="tsrPlanCompTable d-flex">
+        <div></div>
+        <div>Free</div>
+        <div>Trader</div>
+        <div>Trader Pro</div>
+    </div>
+
+    <div class="tsrPlanCompTable d-flex">
+        <div></div>
+        <div><i class="fas fa-rupee-sign"></i>0</div>
+        <div><i class="fas fa-rupee-sign"></i>196.0</div>
+        <div><i class="fas fa-rupee-sign"></i>590.0</div>
+    </div>
+
+    <div class="tsrPlanCompTable">
+        <div style="text-align: center;">Supported ticks</div>
+
+        <div class="cellBottom">
+            <div>Daily to Qtrly</div>
+            <div>5 mins to Qtrly</div>
+            <div>1 min to Qtrly</div>
+        </div>
+    </div>
+
+    <div class="tsrPlanCompTable">
+        <div style="text-align: center;">Auto Refresh</div>
+
+        <div class="cellBottom">
+            <div><i class="fas fa-times-circle"></i></div>
+            <div><i class="fas fa-check-circle"></i></div>
+            <div><i class="fas fa-check-circle"></i></div>
+        </div>
+    </div>
+
+    <div class="tsrPlanCompTable">
+        <div style="text-align: center;">Backtest</div>
+
+        <div class="cellBottom">
+            <div><i class="fas fa-times-circle"></i></div>
+            <div><i class="fas fa-check-circle"></i></div>
+            <div><i class="fas fa-check-circle"></i></div>
+        </div>
+    </div>
+
+</div>
 
                                     </div>
                                 </div>
