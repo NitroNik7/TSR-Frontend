@@ -1,0 +1,790 @@
+<html>
+
+<head>
+    <title>TSR - Technical Stock Screener, Charts, Fundamental, Live Alerts</title>
+    <meta name="description"
+        content="TSR - TopStockResearch is Indias leading Technical Stock Screener along with Fundamentals, Charts, Stock Strength Analyser, Pattern screener & live Alerts.">
+    <meta name="keywords"
+        content="TSR , TopStockResearch, Stock Screener, Technical Stock Screener, Fundamentals, Technical Analysis,  Nifty 50, Stock Screener India, Custom Screener, ChartPatterns, CandleStick ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href='https://www.topstockresearch.com/static/icon/TopStockResearch.ico' type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/aioCmnV0.0.0.12.css' />
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/responsive.css'>
+
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/mytsr_struct.css'>
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/css/v3/MintCommon.css'>
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/my.css'>
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/css/v3/MintControls.css'>
+    <link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/mig/css/NewHome.css'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='//code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/mint_cn_minV0.7.5.195.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/mintHtmlUtil.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintJsUtils.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintStkCommon.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintCommonValidator.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/mintCommonCss.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/utils.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintConstants.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/IndiField.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintTechIndiConstants.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintFundaIndiConstants.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintScrUtils.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/mintCore.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/miScreenerUtils.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/ActivityTracker.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/alertutils.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/DataInitializer.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/mintJsAds.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/AlertNgDialog.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/AlertNgUtils.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/AlertCss.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/AlertSimpleStock.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipu/BrokerBuySell.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/mipl   /mintJsAds.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/MintDataTable.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/utils.js"></script>
+    <script src="https://www.topstockresearch.com/static/js/tsr/common/StockBasketUtils.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/migUi.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/intChUi.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/aioIcons.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/search.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/IntelliSearch.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/IntelliSearchHelper.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/MiSearchCss.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/Marquee.js"></script>
+    <script src="https://www.topstockresearch.com/static/mig/js/aio_cmnV0.0.0.55.js"></script>
+</head><!-- Space for GA Tag --><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10926652708"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-10926652708');
+</script>
+<style>
+    .dummyCss {
+        position: relative;
+        display: inline-block;
+    }
+</style>
+<script>   var userProf = { status: 'signedIn', sal: 'Mr.', fName: 'email7', refCode: 'EM8_INT', expDt: '31_Dec_2025', sub: 'TRADER', tsrLogin: true };  </script>
+
+<body class="scrollable">
+    <div id="mainController">
+
+        <div style="display: none;">
+            <select class='selectpicker' id='userMkt' onchange="javascript:marketOnChange();">
+                <option value="IN" selected="selected" label="India">India</option>
+            </select>
+        </div>
+
+
+        <div class="app tsrsn-folded">
+            <div class="layout"><!--                <div id='dynHead'></div>-->
+                <div class="tsrhdr navbar">
+                    <div class="tsrhdr-container">
+                        <div class='nav-logo' id='navLogoDiv' style='width: max-content;'> <a
+                                href='https://www.topstockresearch.com/rt/Home' class='tsrsn-fold-toggler'
+                                title='TSR (TopStockResearch.com)' style='max-width: unset;'>
+                                <style>
+                                    @media only screen and (max-width: 768px) {
+                                        .logo svg {
+                                            width: 175px;
+                                        }
+                                    }
+                                </style>
+                                <div class='logo' style='width: auto;'>
+                                    <svg width='250' viewBox='0 0 250 50' xmlns='http://www.w3.org/2000/svg'
+                                        height='60'>
+                                        <g transform='translate(15, 12)'>
+                                            <rect x='0' y='18' width='6' height='12' rx='1.5' fill='#3b82f6'></rect>
+                                            <rect x='9' y='10' width='6' height='20' rx='1.5' fill='#2563eb'></rect>
+                                            <rect x='18' y='2' width='6' height='28' rx='1.5' fill='#1d4ed8'></rect>
+                                        </g>
+                                        <text x='50' y='32' font-family='Segoe UI, Tahoma, sans-serif' font-size='22'
+                                            font-weight='700' letter-spacing='-0.5' fill='#0f172a'>
+                                            TopStock<tspan fill='#2563eb' font-weight='600'>Research</tspan>
+                                        </text>
+                                        <text x='50' y='44' font-family='Segoe UI, Tahoma, sans-serif' font-size='9'
+                                            font-weight='600' letter-spacing='0.8' fill='#64748b'>
+                                            SMART TECHNICAL ANALYSIS
+                                        </text>
+                                    </svg>
+                                </div>
+                            </a> </div>
+                        <div id='dynHead'></div>
+                    </div>
+                </div>
+                <!-- Header End-->
+                <div class="tsrNavMenuCntr">
+                    <nav class="tsrNavMenuSideBar">
+                        <ul class="tsrNavMenuList nav justify-content-center">
+                            <li class="tsrNavMenuItem">
+                                <a class="nav-item" href='https://www.topstockresearch.com/rt/Home'>
+                                    <span class='icon-holder' id='homeSbDiv' aria-hidden='true'> </span> <span
+                                        class='title'>Home</span></a>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='msSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Markets</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/MarketScreener'>Market
+                                            Overview</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/PriceVolume'>Price
+                                            /
+                                            Volume</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/HighsLows'>Highs
+                                            / Lows</a>
+                                    </li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/RelativeStrength'>Relative
+                                            Price Strength</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/Returns'>Returns</a>
+                                    </li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/IndexAnalysis'>Index
+                                            Analysis</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/SectorRotation'>Sector
+                                            Rotation</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/SectorAnalysis'>Sector
+                                            Analysis</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/HeatMap'>Heat
+                                            Map</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/AdvanceDecline'>Advance
+                                            /Decline</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Markets/IntradayScreener'>Intraday
+                                            Strategies</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='expsSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Expert Screeners</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/PriceActionBased'>Price
+                                            Action Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/TechIndiBased'>Technical
+                                            Indicator Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/MovingAverageStrategies'>Moving
+                                            Average Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/ScalpingTradingStrategies'>Scalping
+                                            Trading Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/IntradayTradingStrategies'>Intraday
+                                            Trading Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/BTSTStrategies'>BTST
+                                            Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/STBTStrategies'>STBT
+                                            Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/BreakoutStrategies'>Breakout
+                                            & Breakdown Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/SwingTradingStrategies'>Swing
+                                            Trading Strategies</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ExpertScreener/PositionalTradingStrategies'>Positional
+                                            Trading Strategies</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <a class="nav-item" href='https://www.topstockresearch.com/rt/CustomStockScreener.tsr'>
+                                    <span class='icon-holder' id='diysSbDiv' aria-hidden='true'> </span> <span
+                                        class='title'>Custom Screener</span></a>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='strSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>TSR Strength</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/TechnicalStrength'>Technical
+                                            Strength</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/FinancialStrength'>Financial
+                                            Strength</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/TSRStrengthIndex/EODBetaVolatile'>EOD
+                                            Beta Volatile</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='csSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Candlestick</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Candlestick/BullishScreener'>Bullish
+                                            Screener</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Candlestick/BearishScreener'>Bearish
+                                            Screener</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Candlestick/Consolidation'>Consolidation</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='techSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Technicals</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/OHLCScreeners'>OHLC
+                                            Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/OverboughtSold'>Overbought/Sold</a>
+                                    </li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/Overlays'>Overlays</a>
+                                    </li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/TrendIndicator'>Trend
+                                            Indicator</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/VolumeBasedIndicator'>Volume
+                                            Based Indicator</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/SMAScreener'>SMA
+                                            Screener</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/EMAScreener'>EMA
+                                            Screener</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/WMAScreener'>WMA
+                                            Screener</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/VwapScreener'>VWAP
+                                            Screener</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/PivotPoint'>Pivot
+                                            Point</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Technical/FibonacciScreener'>Fibonacci
+                                            Screener</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='cpSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Patterns</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/PopularChartPatterns'>Popular
+                                            Chart Patterns</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Triangle'>Triangle</a>
+                                    </li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Channel'>Channel</a>
+                                    </li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/Trendlines'>Trendlines</a>
+                                    </li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ChartPatterns/NRWR'>NR /
+                                            WR</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='fundaSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Financials</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/FinHighlight'>Financial
+                                            Highlight</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/GuruRatios'>Guru
+                                            Ratios</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/ValuationRatios'>Valuation
+                                            Ratios</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/ProfitabilityRatios'>Profitability
+                                            Ratios</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/SolvencyRatios'>Solvency
+                                            Ratios</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/EfficiencyRatios'>Efficiency
+                                            Ratios</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/IncStatGrowthYr'>Income
+                                            Statment Growth (Yr)</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/BalSheetGrowthYr'>Balance
+                                            Sheet Growth (Yr)</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/Financial/CashFlowStatGrowthYr'>Cash
+                                            Flow Stat Growth (Yr)</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='comboSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Combo</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/PriceActionScreeners'>Price
+                                            Action Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BullishTechnicalsScreener'>Bullish
+                                            Technical Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/BearishTechnicalsScreener'>Bearish
+                                            Technical Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/FundamentalScreener'>Fundamental
+                                            Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/ComboScreener/MovingAverageScreeners'>Moving
+                                            Average Screeners</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <a class="nav-item" href='https://www.topstockresearch.com/rt/InteractiveCharts.tsr'>
+                                    <span class='icon-holder' id='tcSbDiv' aria-hidden='true'> </span> <span
+                                        class='title'>Tech Chart</span></a>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <a class="nav-item" href='https://www.topstockresearch.com/my/TsrPlans/'>
+                                    <span class='icon-holder' id='subsSbDiv' aria-hidden='true'> </span> <span
+                                        class='title'>Premium</span></a>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='fnoSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>F&O</span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/Futures'>Futures
+                                            Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/CallOptions'>Call
+                                            Option Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutOptions'>Put
+                                            Option Screeners</a></li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Screener/FuturesAndOptions/PutCallRatio'>PCR
+                                            Screeners</a></li>
+                                </ul>
+                            </li>
+                            <li class="tsrNavMenuItem">
+                                <button class="nav-item"><span class='icon-holder' id='tutSbDiv' aria-hidden='true'>
+                                    </span> <span class='title'>Learn </span><span class="arrow"><i
+                                            class="fa fa-solid fa-chevron-right"></i> </span>
+                                </button>
+                                <ul class="tsrNavSubMenuList">
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://tutorials.topstockresearch.com'>Tutorials</a>
+                                    </li>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Ebooks'>E-Books</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <button id="tsrNavMenuScrollBtn" class="d-none d-sm-block btn mx-auto"
+                            style="font-size: 24px; color: white;">
+                            <i class="fas fa-caret-down"></i>
+                        </button>
+                    </nav>
+                </div>
+                <script>var mcat = 'homeSb';</script> <!-- Page Container Start -->
+                <div class="page-container"> <!-- Quick View Start -->
+
+
+                    <div class="tsrqv1" id='helpNav'>
+                        <ul class="tsrqv-tabs nav nav-tabs nav-justified" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" data-bs-target="#myTsrLinkstab" role="tab"
+                                    data-bs-toggle="tab">
+                                    MyTSR Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myLinksTab" role="tab" data-bs-toggle="tab"
+                                    onClick='migUi.myLinks()'>
+                                    My Links
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link " data-bs-target="#myRecentActTab" role="tab"
+                                    data-bs-toggle="tab" onClick='migUi.myRecAct()'>
+                                    My Recent Activities
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content scrollable">
+                            <div id="myTsrLinksTab" role="tabpanel" class="tab-pane fade show active">
+                                <div id='myTsrLinks'> Loading</div>
+                            </div>
+                            <div id="myLinksTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myLinksDiv'> Loading ...</div>
+                            </div>
+                            <div id="myRecentActTab" role="tabpanel" class="tab-pane fade">
+                                <div id='myRecentActivityDiv'> Loading ...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick View End --> <!-- Content Wrapper Start -->
+                    <div class="main-content">
+
+                        <!-- code starts here -->
+                        <style>
+                            .tsrPlansLabelText {
+                                font-size: 14px;
+                                color: grey;
+                                margin-bottom: 0;
+                                font-weight: 600;
+                            }
+                        </style>
+                        <div class="container p-3">
+                            <h4>Subscription</h4>
+                            <div class="row p-3 " style="border: 1px solid rgba(0,0,0,.125); border-radius: 10px;">
+                                <div class="col-md-9">
+                                    <div class="row mt-3">
+                                        <div
+                                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                                            <div>
+                                                <p class="tsrPlansLabelText">Plan</p>
+                                                <p>TRADER PRO</p>
+                                            </div>
+                                            <div>
+                                                <p class="tsrPlansLabelText">
+                                                    Status
+                                                </p>
+                                                <p>ACTIVE</p>
+                                            </div>
+                                            <div>
+                                                <p class="tsrPlansLabelText">
+                                                    Valid till
+                                                </p>
+                                                <p>31st May, 2026</p>
+                                            </div>
+    
+                                        </div>
+                                        <!-- <div style="display: grid; grid-template-columns: 1fr 1fr; ">
+                                            <div class="d-flex align-items-center">
+                                                <p class="text-warning" style="margin-bottom: 0; font-weight: 600;">
+                                                    To enjoy more benefits
+                                                </p>
+        
+                                                <button class="btn btn-sm btn-outline-warning">
+                                                    Upgrade
+                                                </button>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <p class="text-warning" style="margin-bottom: 0; font-weight: 600;">
+                                                    Plan will end in 27 days. To avoid disruption of service
+                                                </p>
+                                                <button class="btn btn-sm btn-outline-warning">
+                                                    Renew
+                                                </button>
+                                            </div>
+    
+                                        </div> -->
+                                    </div>
+    
+                                    <div class="row mt-3">
+                                        <!-- <div style="display: grid; grid-template-columns: 1fr 1fr;"> -->
+                                        <div>
+    
+                                            <table class="table table-sm table-bordered" style="font-size: 14px;">
+                                                <thead>
+                                                    <th>Alerts</th>
+                                                    <th>Triggered</th>
+                                                    <th>Balance</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Email</td>
+                                                        <td>124</td>
+                                                        <td>76</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Whatsapp</td>
+                                                        <td>84</td>
+                                                        <td>116</td>
+                                                    </tr>
+    
+                                                    <tr>
+                                                        <td>SMS</td>
+                                                        <td>78</td>
+                                                        <td>122</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- <div class="d-flex align-items-center">
+                                            <p class="tsrPlansLabelText">
+                                                Get More Alerts
+                                            </p>
+                                            <button class="btn btn-sm btn-outline-primary">
+                                                Buy Now
+                                            </button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3 d-flex flex-column justify-content-around border-start">
+                                        <div style="display: grid; grid-template-rows: 2; text-align: center;">
+                                            <button class="btn btn-outline-primary" style="font-weight: 700;">
+                                                UPGRADE PLAN
+                                            </button>
+                                            <!-- <p class="tsrPlansLabelText">Avail more Benefits from TSR</p> -->
+                                        </div>
+                                        <div style="display: grid; grid-template-rows: 2; text-align: center;">
+                                            <button class="btn btn-outline-primary" style="font-weight: 700;">
+                                                RENEW PLAN
+                                            </button>
+                                            <!-- <p class="tsrPlansLabelText">Plan ends soon</p> -->
+                                        </div>
+                                        <div style="display: grid; grid-template-rows: 2; text-align: center;">
+                                            <button class="btn btn-outline-primary" style="font-weight: 700;">
+                                                BUY ALERTS
+                                            </button>
+                                            <!-- <p class="tsrPlansLabelText">Get more Alerts</p> -->
+                                        </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- code ends here -->
+                        <!-- Footer starts -->
+                        <footer class="pt-5 pb-4 border-top"
+                            style="background-color: #f9fafb; font-family: 'Segoe UI', Tahoma, sans-serif;">
+                            <div class="container">
+                                <div class="row gy-4">
+                                    <div class="col-12 col-lg-3 text-center text-lg-start">
+                                        <a href="https://www.topstockresearch.com/">
+                                            <svg width="250" viewBox="0 0 250 50" xmlns="http://www.w3.org/2000/svg"
+                                                height="60">
+                                                <g transform="translate(15, 12)">
+                                                    <rect x="0" y="18" width="6" height="12" rx="1.5" fill="#3b82f6">
+                                                    </rect>
+                                                    <rect x="9" y="10" width="6" height="20" rx="1.5" fill="#2563eb">
+                                                    </rect>
+                                                    <rect x="18" y="2" width="6" height="28" rx="1.5" fill="#1d4ed8">
+                                                    </rect>
+
+                                                </g>
+
+                                                <text x="50" y="32" font-family="Segoe UI, Tahoma, sans-serif"
+                                                    font-size="22" font-weight="700" letter-spacing="-0.5"
+                                                    fill="#0f172a">
+                                                    TopStock<tspan fill="#2563eb" font-weight="600">Research</tspan>
+                                                </text>
+
+                                                <text x="50" y="44" font-family="Segoe UI, Tahoma, sans-serif"
+                                                    font-size="9" font-weight="600" letter-spacing="0.8" fill="#64748b">
+                                                    SMART TECHNICAL ANALYSIS
+                                                </text>
+                                            </svg>
+                                        </a>
+                                        <p>
+                                            <a class='text-muted small text-decoration-none tsrFooterLink'
+                                                href='https://www.topstockresearch.com/rt/TsrHighlights/TsrTechnicalTool'>
+                                                India's Best Technical Tool
+                                            </a>
+                                        </p>
+                                        <p class="text-muted small mb-4">
+                                            Professional-grade stock analytics and technical screeners.
+                                        </p>
+                                        <div class="d-flex justify-content-center justify-content-lg-start gap-3"
+                                            style="font-size: 32px;">
+                                            <a href="https://www.linkedin.com/in/topstockresearch/"
+                                                class="text-secondary tsrFooterLinkHoverPrimary"><i
+                                                    class="fab fa-linkedin"></i></a>
+                                            <a href="https://www.youtube.com/@topstockresearch7379"
+                                                class="text-secondary tsrFooterLinkHoverPrimary"><i
+                                                    class="fab fa-youtube"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-3">
+                                        <h6 class="fw-bold text-dark small text-uppercase mb-3"
+                                            style="letter-spacing: 0.5px;">TSR Support</h6>
+                                        <div class="d-grid gap-2 mb-3">
+                                            <a href="https://www.topstockresearch.com/my/UserManagement?act=rfd"
+                                                class="btn btn-sm btn-outline-primary text-start d-flex justify-content-between align-items-center py-2 px-3 tsrFooterActionBtn">
+                                                <span><i class="fas fa-desktop me-2"></i> Request For Demo</span>
+                                                <i class="fas fa-chevron-right small opacity-50"></i>
+                                            </a>
+                                            <a href="https://www.topstockresearch.com/my/UserManagement?act=contactUs"
+                                                class="btn btn-sm btn-outline-secondary text-start d-flex justify-content-between align-items-center py-2 px-3 tsrFooterActionBtn">
+                                                <span><i class="fas fa-envelope me-2"></i> Contact Us</span>
+                                                <i class="fas fa-chevron-right small opacity-50"></i>
+                                            </a>
+                                        </div>
+                                        <div class="ps-1">
+                                            <p class="mb-1 small text-dark fw-bold">Call Support:</p>
+                                            <a href="tel:+919226557603"
+                                                class="text-decoration-none text-primary fw-bold"
+                                                style="font-size: 0.95rem;">
+                                                <i class="fas fa-phone-alt me-1"></i> +91 922 655 760 3/4/5
+                                            </a>
+                                            <p class="text-muted x-small mt-1 mb-0" style="font-size: 0.75rem;">Mon -
+                                                Sat | 10 AM to 6 PM</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-md-4 col-lg-2">
+                                        <h6 class="fw-bold text-dark small text-uppercase mb-3"
+                                            style="letter-spacing: 0.5px;">Resources</h6>
+                                        <div class="mb-3">
+                                            <span class="d-block small fw-bold text-dark mb-1">New Videos <i
+                                                    class="fab fa-youtube text-danger ms-1"></i></span>
+                                            <a onclick="mintHtmlUtil.sytv('ytVideoDiv',  'v4Hp02h_XXQ')"
+                                                class="text-muted small text-decoration-none tsrFooterLink"
+                                                style="cursor:pointer;">English</a> |
+                                            <a onclick="mintHtmlUtil.sytv('ytVideoDiv',  'U4Epx5HvIfU')"
+                                                class="text-muted small text-decoration-none tsrFooterLink"
+                                                style="cursor:pointer;">हिंदी</a>
+                                        </div>
+                                        <div>
+                                            <span class="d-block small fw-bold text-dark mb-1">Classic MyTSR</span>
+                                            <a onclick="mintHtmlUtil.sytv('ytVideoDiv',  'Z8RFbA3w0yo')"
+                                                class="text-muted small text-decoration-none tsrFooterLink"
+                                                style="cursor:pointer;">English</a> |
+                                            <a onclick="mintHtmlUtil.sytv('ytVideoDiv',  'Uc-gJ__FM64')"
+                                                class="text-muted small text-decoration-none tsrFooterLink"
+                                                style="cursor:pointer;">हिंदी</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-md-4 col-lg-4">
+                                        <h6 class="fw-bold text-dark small text-uppercase mb-3"
+                                            style="letter-spacing: 0.5px;">Global Markets</h6>
+                                        <div class="row g-2">
+                                            <div class="col-12 col-sm-6">
+                                                <a href="https://www.StockAio.com/US/ai/Home"
+                                                    class="d-flex align-items-center gap-2 p-2 border rounded text-dark text-decoration-none bg-white small mb-2 tsrFooterLinkHoverShadow">
+                                                    <img src="http://www.StockAIo.com/static/img/flags/USFlag.png"
+                                                        height="12"> US
+                                                </a>
+                                                <a href="https://www.StockAio.com/UK/ai/Home"
+                                                    class="d-flex align-items-center gap-2 p-2 border rounded text-dark text-decoration-none bg-white small tsrFooterLinkHoverShadow">
+                                                    <img src="https://www.StockAIo.com/static/img/flags/UKFlag.png"
+                                                        height="12"> UK
+                                                </a>
+                                            </div>
+                                            <div class="col-12 col-sm-6">
+                                                <a href="https://www.StockAio.com/AU/ai/Home"
+                                                    class="d-flex align-items-center gap-2 p-2 border rounded text-dark text-decoration-none bg-white small mb-2 tsrFooterLinkHoverShadow">
+                                                    <img src="https://www.stockaio.com/static/img/flags/AUFlag.png"
+                                                        height="12"> AU
+                                                </a>
+                                                <a href="https://www.StockAio.com/CA/ai/Home"
+                                                    class="d-flex align-items-center gap-2 p-2 border rounded text-dark text-decoration-none bg-white small tsrFooterLinkHoverShadow">
+                                                    <img src="https://www.stockaio.com/static/img/flags/CAFlag.png"
+                                                        height="12"> CA
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-5 pt-4 border-top">
+                                    <div class="row align-items-center gy-3">
+                                        <div class="col-md-8">
+                                            <div
+                                                class="d-flex flex-wrap gap-3 justify-content-center justify-content-md-start small">
+                                                <a href="https://www.topstockresearch.com/rt/Home"
+                                                    class="text-muted text-decoration-none tsrFooterLink">Home</a>
+                                                <a href="https://www.topstockresearch.com/Disclaimer.html"
+                                                    class="text-muted text-decoration-none tsrFooterLink">Disclaimer</a>
+                                                <a href="https://www.topstockresearch.com/TermsAndConditions.html"
+                                                    class="text-muted text-decoration-none tsrFooterLink">Terms</a>
+                                                <a href="https://www.topstockresearch.com/PrivacyPolicy.html"
+                                                    class="text-muted text-decoration-none tsrFooterLink">Privacy</a>
+                                                <div class=" d-none d-md-block vr"></div>
+                                                <a href="https://www.topstockresearch.com/my/TsrPlans"
+                                                    class="text-primary fw-bold text-decoration-none tsrFooterLinkps-3">
+                                                    Premium Plans</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-center text-md-end">
+                                            <p class="small text-muted mb-0">© Mintnovate Market Research Pvt. Ltd. |
+                                                Since 2010
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
+                        <!-- Footer ends -->
+                    </div>
+                    <!-- Content Wrapper End -->
+
+
+
+
+                </div>
+            </div> <!-- NG APP  align='center'-->
+
+
+
+
+
+</body>
+<script>   migUi.init(); </script>
+<div id='alertDialog' class='web_dialog'></div>
+<div id='artnuDiv'></div>
+<div id='tradeOrderDiv' class='web_dialog'></div>
+<div id='cs_help_dialog' class='web_dialog'> </div>
+<script src='https://www.topstockresearch.com/static/js/tsr/my/fav/mifav.js'></script>
+<script src='https://www.topstockresearch.com/static/js/tsr/my/fav_minV0.0.1.1.js'></script>
+<script
+    src='https://www.topstockresearch.com/static/js/tsr/mipu/mipu_minV0.0.0.83.js'"></script><script> misu.iar();   </script><div class="
+    modal fade" id="tsrUserRegModal" tabindex="-1">
+			        <div class="modal-dialog modal-dialog-centered">
+			            <div class="modal-content"  id='tsrUserRegModalContent'>
+			            </div>
+			        </div>
+			    </div><div id='usrRegDiv'></div><script>  mimarq.init();</script>
+<link rel='stylesheet' type='text/css'
+    href='https://www.topstockresearch.com/static/v21/css/owlcarousel/owl.carousel.all.css'>
+<script src='https://www.topstockresearch.com/static/v21/js/owl/owl.carousel.min.js'></script>

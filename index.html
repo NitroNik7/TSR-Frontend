@@ -1,120 +1,16 @@
-<style>
-        /* Ticker Container */
-        .tsrTickerMarquee {
-                width: 100%;
-                overflow: hidden;
-                /* background: lightyellow; */
-                background-color: antiquewhite;
-                /* Clean white */
-                border-top: 1px solid #eee;
-                border-bottom: 1px solid #eee;
-                padding: 10px 0;
-                white-space: nowrap;
-                position: relative;
-                z-index: 2;
-        }
+<!-- Desktop -->
+ <h1 style="text-align: center;" class="d-md-block d-none">
+        Custom Stock Screener
+        <span style="color: grey;">
+                - Start Simple. Scale Like a Pro.
+        </span>
+</h1>
 
-        /* Gradient fade on edges to look more professional */
-        .tsrTickerMarquee::before,
-        .tsrTickerMarquee::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                width: 100px;
-                height: 100%;
-                z-index: 2;
-                pointer-events: none;
-        }
-
-        .tsrTickerMarquee::before {
-                left: 0;
-                /* background: linear-gradient(to right, #fdfdfd, transparent); */
-        }
-
-        .tsrTickerMarquee::after {
-                right: 0;
-                /* background: linear-gradient(to left, #fdfdfd, transparent); */
-        }
-
-        .tsrTickerWrapper {
-                /* background-color: lightblue; */
-                display: flex;
-                width: fit-content;
-                animation: marquee 30s linear infinite;
-                /* animation: name duration timing-function delay iteration-count direction fill-mode; */
-        }
-
-        .tsrTickerWrapper2 {
-                /* background-color: lightcoral; */
-                display: flex;
-                width: fit-content;
-                animation: marquee 35s linear infinite;
-        }
-
-        .tsrTickerWrapper:hover,
-        .tsrTickerWrapper2:hover {
-                animation-play-state: paused;
-                /* User can pause on hover to read */
-        }
-
-        .tsrTickerContainer {
-                display: flex;
-                align-items: center;
-        }
-
-        .tsrTickerItem {
-                padding: 0 40px;
-                font-family: sans-serif;
-                font-size: 0.85rem;
-                font-weight: 600;
-                color: #333;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-        }
-
-        .tsrTickerItem a {
-                color: #333;
-                font-size: 0.85rem;
-                font-weight: 600;
-        }
-
-        .tsrTickerItem a:hover {
-                text-decoration: underline;
-        }
-
-        .tsrTickerItem p {
-                margin-bottom: 0px;
-        }
-
-        .tsrTickerItem .tsrTickerPrice {
-                color: #000;
-                font-weight: 700;
-                margin-right: 5px;
-        }
-
-        .tsrTickerPriceNoChg {
-                color: grey;
-        }
-
-        .tsrTickerPriceChgPos {
-                color: #00a65a;
-                /* Classic Finance Green */
-        }
-
-        .tsrTickerPriceChgNeg {
-                color: #dd4b39;
-                /* Classic Finance Red */
-        }
-
-        /* Infinite Scroll Animation */
-        @keyframes marquee {
-                0% {
-                        transform: translateX(0);
-                }
-
-                100% {
-                        transform: translateX(-50%);
-                }
-        }
-</style>
+<!-- ----------------------------------------------------- -->
+<!-- Mobile -->
+<h3 style="text-align: center;" class="d-block d-md-none">
+        Custom Stock Screener
+</h3>
+<p style="text-align: center; color: grey;" class="d-block d-md-none">
+       Start Simple. Scale Like a Pro.
+</p>
