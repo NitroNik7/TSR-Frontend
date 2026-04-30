@@ -515,6 +515,7 @@
                                 .tsrPlansBtn {
                                     padding: 10px 5px;
                                 }
+
                                 .tsrPlansBtn p {
                                     font-size: 15px;
                                 }
@@ -523,14 +524,15 @@
                         <div class="container p-3">
                             <section id="tsrPlansActiveSubsSection">
                                 <h4>Subscription</h4>
-                                <div class="row my-3 p-3" style="border: 1px solid rgba(0,0,0,.125); border-radius: 10px;">
+                                <div class="row my-3 p-3"
+                                    style="border: 1px solid rgba(0,0,0,.125); border-radius: 10px;">
                                     <div class="col-md-9">
                                         <div class="row mt-3">
                                             <div
                                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
                                                 <div>
                                                     <p class="tsrPlansLabelText">Plan</p>
-                                                    <p>TRADER PRO</p>
+                                                    <p>TRADER VALUE</p>
                                                 </div>
                                                 <div>
                                                     <p class="tsrPlansLabelText">
@@ -542,9 +544,9 @@
                                                     <p class="tsrPlansLabelText">
                                                         Valid till
                                                     </p>
-                                                    <p>31st May, 2026</p>
+                                                    <p>31 May 2026</p>
                                                 </div>
-    
+
                                             </div>
                                             <!-- <div style="display: grid; grid-template-columns: 1fr 1fr; ">
                                                 <div class="d-flex align-items-center">
@@ -567,11 +569,11 @@
         
                                             </div> -->
                                         </div>
-    
+
                                         <div class="row mt-3">
                                             <!-- <div style="display: grid; grid-template-columns: 1fr 1fr;"> -->
                                             <div>
-    
+
                                                 <table class="table table-sm table-bordered" style="font-size: 14px;">
                                                     <thead>
                                                         <th>Alerts</th>
@@ -589,7 +591,7 @@
                                                             <td>84</td>
                                                             <td>116</td>
                                                         </tr>
-    
+
                                                         <tr>
                                                             <td>SMS</td>
                                                             <td>78</td>
@@ -608,7 +610,7 @@
                                             </div> -->
                                         </div>
                                     </div>
-    
+
                                     <div class="col-md-3 d-flex flex-column justify-content-around border-start">
                                         <div style="display: grid; grid-template-rows: 2; text-align: center;">
                                             <button class="btn btn-outline-primary" style="font-weight: 700;">
@@ -657,12 +659,12 @@
                                                 <div class="tsrPlansBtn">
                                                     1 Year
                                                     <p>20% Off</p>
-    
+
                                                 </div>
                                                 <div class="tsrPlansBtn">
                                                     2 Year
                                                     <p>30% Off</p>
-    
+
                                                 </div>
                                                 <div class="tsrPlansBtn">
                                                     5 Year
@@ -670,7 +672,91 @@
                                                 </div>
                                             </div>
                                         </div>
-    
+
+                                        <style>
+                                            .tsrPlanCompTable {
+                                                display: flex;
+                                                /* width: auto; */
+                                            }
+
+                                            .tsrPlanCompTable div {
+                                                width: 25%;
+                                            }
+
+
+                                            .tsrPlanCompTable .cellBottom {
+                                                display: flex;
+                                                width: 75% !important;
+                                            }
+
+                                            .tsrPlanCompTable .cellBottom div {
+                                                width: 100%;
+                                            }
+
+
+
+                                            @media only screen and (max-width: 768px) {
+
+                                                .tsrPlanCompTable {
+                                                    display: block;
+                                                }
+
+                                                .tsrPlanCompTable div {
+                                                    width: 100%;
+                                                }
+
+                                                .tsrPlanCompTable .cellBottom {
+                                                    display: flex;
+                                                    width: 100% !important;
+                                                }
+
+                                                /* .tsrPlanCompTable div:nth-child(1) {
+                                                    width: 100%;
+                                                    text-align: center;
+                                                } */
+                                            }
+                                        </style>
+                                        <div>
+                                            <div class="tsrPlanCompTable d-flex">
+                                                <div></div>
+                                                <div>Free</div>
+                                                <div>Trader</div>
+                                                <div>Trader Pro</div>
+                                            </div>
+                                            <div class="tsrPlanCompTable d-flex">
+                                                <div></div>
+                                                <div><i class="fas fa-rupee-sign"></i>0</div>
+                                                <div><i class="fas fa-rupee-sign"></i>196.0</div>
+                                                <div><i class="fas fa-rupee-sign"></i>590.0</div>
+                                            </div>
+                                            <div class="tsrPlanCompTable">
+                                                <div style="text-align: center;">Supported ticks</div>
+                                                <div class="cellBottom">
+                                                    <div>Daily to Qtrly</div>
+                                                    <div>5 mins to Qtrly</div>
+                                                    <div>1 min to Qtrly</div>
+                                                </div>
+                                            </div>
+                                            <div class="tsrPlanCompTable">
+                                                <div style="text-align: center;">Auto Refresh</div>
+                                                <div class="cellBottom">
+                                                    <div><i class="fas fa-times-circle"></i></div>
+                                                    <div><i class="fas fa-check-circle"></i></div>
+                                                    <div><i class="fas fa-check-circle"></i></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tsrPlanCompTable">
+                                                <div style="text-align: center;">Backtest</div>
+                                                <div class="cellBottom">
+
+                                                    <div><i class="fas fa-times-circle"></i></div>
+                                                    <div><i class="fas fa-check-circle"></i></div>
+                                                    <div><i class="fas fa-check-circle"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </section>
