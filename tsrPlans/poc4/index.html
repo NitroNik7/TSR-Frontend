@@ -416,9 +416,11 @@
                                             class="fa fa-solid fa-chevron-right"></i> </span>
                                 </button>
                                 <ul class="tsrNavSubMenuList">
-                                    <li class="tsrNavSubMenuItem"><a href='https://tutorials.topstockresearch.com'>Tutorials</a>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://tutorials.topstockresearch.com'>Tutorials</a>
                                     </li>
-                                    <li class="tsrNavSubMenuItem"><a href='https://www.topstockresearch.com/rt/Ebooks'>E-Books</a>
+                                    <li class="tsrNavSubMenuItem"><a
+                                            href='https://www.topstockresearch.com/rt/Ebooks'>E-Books</a>
                                     </li>
                                 </ul>
                             </li>
@@ -635,259 +637,375 @@
 
                             <!-- ----------------------------------PLAN COMPARISON SECTION------------------------------------- -->
                             <section>
-                                <h4 class="">Plans</h4>
-                                <div class="row my-3">
-                                    <div class="container p-3">
-                                        <div class="d-flex flex-column align-items-center">
-                                            <div class="d-flex align-items-center justify-content-center p-1 mb-3"
-                                                style="border: 1px solid rgb(202, 202, 202); border-radius: 20px; width: max-content;">
-                                                <div class="tsrPlansBtn active">
-                                                    India
-                                                </div>
-                                                <div class="tsrPlansBtn">
-                                                    Global
-                                                </div>
+                                <h4 style="text-align: center;">Plans</h4>
+                                <div>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <div class="d-flex align-items-center justify-content-center p-1 mb-3"
+                                            style="border: 1px solid rgb(202, 202, 202); border-radius: 20px; width: max-content;">
+                                            <div class="tsrPlansBtn active">
+                                                India
                                             </div>
-                                            <div class="d-flex align-items-center justify-content-center p-1 mb-3"
-                                                style="border: 1px solid rgb(202, 202, 202); border-radius: 20px; width: max-content;">
-                                                <div class="tsrPlansBtn active">
-                                                    <h6>
-                                                        1 Month
-                                                    </h6>
-                                                    <p>10% Off</p>
-                                                </div>
-                                                <div class="tsrPlansBtn">
-                                                    1 Year
-                                                    <p>20% Off</p>
-
-                                                </div>
-                                                <div class="tsrPlansBtn">
-                                                    2 Year
-                                                    <p>30% Off</p>
-
-                                                </div>
-                                                <div class="tsrPlansBtn">
-                                                    5 Year
-                                                    <p>50% Off</p>
-                                                </div>
+                                            <div class="tsrPlansBtn">
+                                                Global
                                             </div>
                                         </div>
+                                        <div class="d-flex align-items-center justify-content-center p-1 mb-3"
+                                            style="border: 1px solid rgb(202, 202, 202); border-radius: 20px; width: max-content;">
+                                            <div class="tsrPlansBtn active">
+                                                <h6>
+                                                    1 Month
+                                                </h6>
+                                            </div>
+                                            <div class="tsrPlansBtn">
+                                                1 Year
+                                            </div>
+                                            <div class="tsrPlansBtn">
+                                                2 Year
+                                            </div>
+                                            <div class="tsrPlansBtn">
+                                                5 Year
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                        <style>
+                                    <style>
+                                        .tsrPlanWrapper {
+                                            border: 1px solid #e9edf5;
+                                            border-radius: 24px;
+                                            overflow: hidden;
+                                            background: #ffffff;
+                                            box-shadow:
+                                                0 10px 30px rgba(15, 23, 42, 0.05),
+                                                0 2px 8px rgba(15, 23, 42, 0.04);
+                                        }
+
+                                        .tsrPlanCompTable {
+                                            display: flex;
+                                            align-items: stretch;
+                                            border-bottom: 1px solid #eef2f7;
+                                            transition: background-color 0.2s ease;
+                                        }
+
+                                        .tsrPlanCompTable:last-child {
+                                            border-bottom: none;
+                                        }
+
+                                        .tsrPlanCompTable:hover {
+                                            background: #fafcff;
+                                        }
+
+                                        .tsrPlanCompTable>div {
+                                            width: 25%;
+                                            padding: 18px 14px;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            font-size: 14px;
+                                            color: #475569;
+                                            position: relative;
+                                        }
+
+                                        /* Header Row */
+                                        .tsrPlanCompTable:first-child {
+                                            background:
+                                                linear-gradient(135deg,
+                                                    #f8fbff 0%,
+                                                    #eef5ff 100%);
+                                        }
+
+                                        .tsrPlanCompTable:first-child>div {
+                                            font-size: 15px;
+                                            font-weight: 700;
+                                            color: #0f172a;
+                                            padding-top: 22px;
+                                            padding-bottom: 22px;
+                                        }
+
+                                        /* Price Row */
+                                        .tsrPlanCompTable:nth-child(2) {
+                                            background: #fcfdff;
+                                        }
+
+                                        .tsrPlanCompTable:nth-child(2)>div {
+                                            font-size: 24px;
+                                            font-weight: 800;
+                                            color: #111827;
+                                            padding-top: 22px;
+                                            padding-bottom: 22px;
+                                        }
+
+                                        .tsrPlanCompTable:nth-child(2) i {
+                                            font-size: 16px;
+                                            margin-right: 2px;
+                                            opacity: 0.7;
+                                        }
+
+                                        /* Feature Name Column */
+                                        .tsrPlanCompTable>div:first-child {
+                                            background: #fafbfc;
+                                            font-weight: 600;
+                                            color: #334155;
+                                            border-right: 1px solid #eef2f7;
+                                        }
+
+                                        .tsrPlanCompTable .cellBottom {
+                                            display: flex;
+                                            width: 101% !important;
+                                        }
+
+                                        .tsrPlanCompTable .cellBottom div {
+                                            width: 100%;
+                                            padding: 18px 14px;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            text-align: center;
+                                            border-right: 1px solid #f1f5f9;
+                                            font-weight: 500;
+                                            color: #475569;
+                                        }
+
+                                        .tsrPlanCompTable .cellBottom div:last-child {
+                                            border-right: none;
+                                        }
+
+                                        /* Check / Cross Icons */
+                                        .fa-check-circle {
+                                            color: #10b981;
+                                            font-size: 18px;
+                                        }
+
+                                        .fa-times-circle {
+                                            color: #ef4444;
+                                            font-size: 18px;
+                                        }
+
+                                        /* Highlight Recommended Plan */
+                                        .tsrPlanCompTable:first-child div:nth-child(3),
+                                        .tsrPlanCompTable:nth-child(2) div:nth-child(3) {
+                                            background:
+                                                linear-gradient(180deg,
+                                                    rgba(59, 130, 246, 0.08) 0%,
+                                                    rgba(59, 130, 246, 0.02) 100%);
+                                        }
+
+                                        /* Mobile */
+                                        @media only screen and (max-width: 768px) {
+
                                             .tsrPlanWrapper {
-                                                border: 1px solid #e9edf5;
-                                                border-radius: 24px;
-                                                overflow: hidden;
-                                                background: #ffffff;
-                                                box-shadow:
-                                                    0 10px 30px rgba(15, 23, 42, 0.05),
-                                                    0 2px 8px rgba(15, 23, 42, 0.04);
+                                                border-radius: 18px;
                                             }
 
                                             .tsrPlanCompTable {
-                                                display: flex;
-                                                align-items: stretch;
-                                                border-bottom: 1px solid #eef2f7;
-                                                transition: background-color 0.2s ease;
-                                            }
-
-                                            .tsrPlanCompTable:last-child {
-                                                border-bottom: none;
-                                            }
-
-                                            .tsrPlanCompTable:hover {
-                                                background: #fafcff;
+                                                display: block;
                                             }
 
                                             .tsrPlanCompTable>div {
-                                                width: 25%;
-                                                padding: 18px 14px;
-                                                display: flex;
-                                                align-items: center;
-                                                justify-content: center;
-                                                font-size: 14px;
-                                                color: #475569;
-                                                position: relative;
+                                                width: 100%;
+                                                padding: 14px;
                                             }
 
-                                            /* Header Row */
-                                            .tsrPlanCompTable:first-child {
-                                                background:
-                                                    linear-gradient(135deg,
-                                                        #f8fbff 0%,
-                                                        #eef5ff 100%);
-                                            }
-
-                                            .tsrPlanCompTable:first-child>div {
-                                                font-size: 15px;
-                                                font-weight: 700;
-                                                color: #0f172a;
-                                                padding-top: 22px;
-                                                padding-bottom: 22px;
-                                            }
-
-                                            /* Price Row */
-                                            .tsrPlanCompTable:nth-child(2) {
-                                                background: #fcfdff;
-                                            }
-
-                                            .tsrPlanCompTable:nth-child(2)>div {
-                                                font-size: 24px;
-                                                font-weight: 800;
-                                                color: #111827;
-                                                padding-top: 22px;
-                                                padding-bottom: 22px;
-                                            }
-
-                                            .tsrPlanCompTable:nth-child(2) i {
-                                                font-size: 16px;
-                                                margin-right: 2px;
-                                                opacity: 0.7;
-                                            }
-
-                                            /* Feature Name Column */
                                             .tsrPlanCompTable>div:first-child {
-                                                background: #fafbfc;
-                                                font-weight: 600;
-                                                color: #334155;
-                                                border-right: 1px solid #eef2f7;
+                                                justify-content: center;
+                                                border-right: none;
+                                                border-bottom: 1px solid #eef2f7;
+                                                background: #f8fafc;
                                             }
 
                                             .tsrPlanCompTable .cellBottom {
                                                 display: flex;
-                                                width: 101% !important;
+                                                width: 100% !important;
                                             }
 
                                             .tsrPlanCompTable .cellBottom div {
-                                                width: 100%;
-                                                padding: 18px 14px;
-                                                display: flex;
-                                                align-items: center;
-                                                justify-content: center;
-                                                text-align: center;
-                                                border-right: 1px solid #f1f5f9;
-                                                font-weight: 500;
-                                                color: #475569;
+                                                padding: 16px 10px;
+                                                font-size: 13px;
                                             }
 
-                                            .tsrPlanCompTable .cellBottom div:last-child {
-                                                border-right: none;
+                                            .tsrPlanCompTable:nth-child(2)>div {
+                                                font-size: 20px;
                                             }
+                                        }
+                                    </style>
+                                    <style>
+                                        .tsrPlanCompWrapper .tableRow {
+                                            display: flex;
+                                            border-bottom: 1px solid #eef2f7;
+                                        }
 
-                                            /* Check / Cross Icons */
-                                            .fa-check-circle {
-                                                color: #10b981;
-                                                font-size: 18px;
-                                            }
+                                        .tsrPlanCompWrapper .tableRow>div {
+                                            width: 25%;
+                                        }
 
-                                            .fa-times-circle {
-                                                color: #ef4444;
-                                                font-size: 18px;
-                                            }
+                                        .tsrPlanCompWrapper .tableRow>div:first-child {
+                                            background: #fafbfc;
+                                            font-weight: 600;
+                                            color: #334155;
+                                            border: 1px solid #eef2f7;
+                                        }
 
-                                            /* Highlight Recommended Plan */
-                                            .tsrPlanCompTable:first-child div:nth-child(3),
-                                            .tsrPlanCompTable:nth-child(2) div:nth-child(3) {
-                                                background:
-                                                    linear-gradient(180deg,
-                                                        rgba(59, 130, 246, 0.08) 0%,
-                                                        rgba(59, 130, 246, 0.02) 100%);
-                                            }
+                                        .tsrPlanCompWrapper .tableRow:first-child>div {
+                                            padding: 22px 0 18px 0;
+                                            font-size: 15px;
+                                            font-weight: 700;
+                                            color: #0f172a;
+                                                                                        background: linear-gradient(180deg, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.02) 100%);
 
-                                            /* Mobile */
-                                            @media only screen and (max-width: 768px) {
+                                        }
 
-                                                .tsrPlanWrapper {
-                                                    border-radius: 18px;
-                                                }
+                                        .tsrPlanCompWrapper .tableRow:nth-child(2)>div {
+                                            font-size: 24px;
+                                            font-weight: 800;
+                                            color: #111827;
+                                            padding-top: 22px;
+                                            padding-bottom: 22px;
+                                        }
 
-                                                .tsrPlanCompTable {
-                                                    display: block;
-                                                }
+                                        .tsrPlanCompWrapper .tableRow>div:only-child{
+                                            font-size: 18px !important;
+                                        }
+                                        
 
-                                                .tsrPlanCompTable>div {
-                                                    width: 100%;
-                                                    padding: 14px;
-                                                }
-
-                                                .tsrPlanCompTable>div:first-child {
-                                                    justify-content: center;
-                                                    border-right: none;
-                                                    border-bottom: 1px solid #eef2f7;
-                                                    background: #f8fafc;
-                                                }
-
-                                                .tsrPlanCompTable .cellBottom {
-                                                    display: flex;
-                                                    width: 100% !important;
-                                                }
-
-                                                .tsrPlanCompTable .cellBottom div {
-                                                    padding: 16px 10px;
-                                                    font-size: 13px;
-                                                }
-
-                                                .tsrPlanCompTable:nth-child(2)>div {
-                                                    font-size: 20px;
-                                                }
-                                            }
-                                        </style>
-
-                                        <div class="tsrPlanWrapper">
-
-                                            <div class="tsrPlanCompTable d-flex">
-                                                <div></div>
-                                                <div>Free</div>
-                                                <div>EOD Combo</div>
-                                                <div>Trader Value</div>
-                                                <div>Trader Pro</div>
-                                            </div>
-
-                                            <div class="tsrPlanCompTable d-flex">
-                                                <div></div>
-                                                <div><i class="fas fa-rupee-sign"></i>0</div>
-                                                <div><i class="fas fa-rupee-sign"></i>192.0</div>
-                                                <div><i class="fas fa-rupee-sign"></i>196.0</div>
-                                                <div><i class="fas fa-rupee-sign"></i>590.0</div>
-                                            </div>
-
-                                            <div class="tsrPlanCompTable">
-                                                <div style="text-align: center;">Supported ticks</div>
-
-                                                <div class="cellBottom">
-                                                    <div>Daily to Qtrly</div>
-                                                    <div>Daily to Qtrly</div>
-                                                    <div>5 mins to Qtrly</div>
-                                                    <div>1 min to Qtrly</div>
-                                                </div>
-                                            </div>
-
-                                            <div class="tsrPlanCompTable">
-                                                <div style="text-align: center;">Auto Refresh</div>
-
-                                                <div class="cellBottom">
-                                                    <div><i class="fas fa-times-circle"></i></div>
-                                                    <div><i class="fas fa-times-circle"></i></div>
-                                                    <div><i class="fas fa-check-circle"></i></div>
-                                                    <div><i class="fas fa-check-circle"></i></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="tsrPlanCompTable">
-                                                <div style="text-align: center;">Backtest</div>
-
-                                                <div class="cellBottom">
-                                                    <div><i class="fas fa-times-circle"></i></div>
-                                                    <div><i class="fas fa-check-circle"></i></div>
-                                                    <div><i class="fas fa-check-circle"></i></div>
-                                                    <div><i class="fas fa-check-circle"></i></div>
-                                                </div>
-                                            </div>
-
-
+                                        .tsrPlanCompWrapper .tableRow>div {
+                                            width: 25%;
+                                            padding: 18px 14px;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            font-size: 14px;
+                                            color: #475569;
+                                            position: relative;
+                                            border-right: 1px solid #f1f5f9;
+                                        }
+                                    </style>
+                                    <div class="tsrPlanCompWrapper">
+                                        <!-- row 1 -->
+                                        <div class="tableRow">
+                                            <div></div>
+                                            <div>EOD Combo</div>
+                                            <div>Trader Value</div>
+                                            <div>Trader Pro</div>
                                         </div>
 
+                                        <div class="tableRow">
+                                            <div></div>
+                                            <div><i class="fas fa-rupee-sign"></i>192.0</div>
+                                            <div><i class="fas fa-rupee-sign"></i>196.0</div>
+                                            <div><i class="fas fa-rupee-sign"></i>590.0</div>
+                                        </div>
+
+                                        <div class="tableRow">
+                                            <div style="width: 100%;">
+                                                <div class="accordion accordion-flush" id="accordionFlushExample" >
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="flush-headingOne">
+                                                            <button class="accordion-button collapsed" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#flush-collapseOne"
+                                                                aria-expanded="false" aria-controls="flush-collapseOne" style="color: #0069ff; font-size: 16px; font-weight: 600;">
+                                                                Common Features across Plans
+                                                            </button>
+                                                        </h2>
+                                                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                                            aria-labelledby="flush-headingOne"
+                                                            data-bs-parent="#accordionFlushExample">
+                                                            <div class="accordion-body">
+
+                                                                <style>
+
+                                                                    .accordion {
+                                                                        width: 100%;
+                                                                    }
+                                                                    .accordion-button:focus{
+                                                                        border: unset !important;
+                                                                        box-shadow: unset !important;
+                                                                    }
+                                                                    .accordion-button:not(.collapsed) {
+                                                                        background-color: white !important;
+                                                                    }
+                                                                    .accordion-body a {
+                                                                        color: black;
+                                                                        text-decoration: dotted;
+                                                                        text-decoration-line: underline;
+                                                                        margin: 0 5px;
+                                                                    }
+
+                                                                    .accordion-body a:hover {
+                                                                        color: #3c73ec;
+                                                                    }
+
+                                                                    
+                                                                </style>
+                                                                <a href=""> Fin Ratio Filters <i class="fas fa-info-circle"></i> </a>
+                                                                <a href=""> Balance Sheet Filters <i class="fas fa-info-circle"></i> </a>
+                                                                <a href=""> CandleStick Patterns <i class="fas fa-info-circle"></i> </a>
+                                                                <a href=""> Fin Ratio Filters <i class="fas fa-info-circle"></i> </a>
+                                                                <a href=""> CandleStick Patterns <i class="fas fa-info-circle"></i> </a>
+                                                                <a href=""> Balance Sheet Filters <i class="fas fa-info-circle"></i> </a>
+                                                                <a href=""> Balance Sheet Filters <i class="fas fa-info-circle"></i> </a>
+                                                                <a href=""> CandleStick Patterns <i class="fas fa-info-circle"></i> </a>
+                                                                <a href=""> Fin Ratio Filters <i class="fas fa-info-circle"></i> </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tableRow">
+                                            <div style="text-align: center; width: 100%;" class="p-2">DIY Custom
+                                                Screener</div>
+                                        </div>
+
+                                        <div class="tableRow">
+                                            <div>Maximum Saved Screeners</div>
+                                            <div>5</div>
+                                            <div>10</div>
+                                            <div>20</div>
+                                        </div>
+
+                                        <div class="tableRow">
+                                            <div>Maximum Filters</div>
+                                            <div>20</div>
+                                            <div>50</div>
+                                            <div>100</div>
+                                        </div>
+
+                                        <div class="tableRow">
+                                            <div>Maximum Screening/Day</div>
+                                            <div>20</div>
+                                            <div>50</div>
+                                            <div>100</div>
+                                        </div>
+
+                                        <div class="tableRow">
+                                            <div style="text-align: center; width: 100%;" class="p-2">Pre-Created
+                                                Screener</div>
+                                        </div>
+
+                                        <div class="tableRow">
+                                            <div>Max Screen Per Day</div>
+                                            <div>20</div>
+                                            <div>50</div>
+                                            <div>100</div>
+                                        </div>
+
+                                        <div class="tableRow">
+                                            <div>Combo Screener</div>
+                                            <div>20</div>
+                                            <div>50</div>
+                                            <div>100</div>
+                                        </div>
+
+                                        <div class="tableRow">
+                                            <div>Expert Screener</div>
+                                            <div>20</div>
+                                            <div>50</div>
+                                            <div>100</div>
+                                        </div>
                                     </div>
+
+                                    
                                 </div>
                             </section>
 
@@ -1087,5 +1205,6 @@
 			            </div>
 			        </div>
 			    </div><div id='usrRegDiv'></div><script>  mimarq.init();</script>
-<link rel='stylesheet' type='text/css' href='https://www.topstockresearch.com/static/v21/css/owlcarousel/owl.carousel.all.css'>
+<link rel='stylesheet' type='text/css'
+    href='https://www.topstockresearch.com/static/v21/css/owlcarousel/owl.carousel.all.css'>
 <script src='https://www.topstockresearch.com/static/v21/js/owl/owl.carousel.min.js'></script>
