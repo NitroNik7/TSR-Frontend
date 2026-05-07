@@ -25,7 +25,7 @@ var plans = (function () {
 
                 let alertArr = plan.alert;
 
-                html += `<div class="container">`
+                html += `<div class="container my-3">`
                 html += `   <div class="accordion tsrAccordion" id="subscriptionAccordion">`
 
                 html += `       <div class="accordion-item tsrAccordionItem">`
@@ -113,7 +113,7 @@ var plans = (function () {
         } else {
             let html = "";
 
-            html += `<div class="container card" style="max-width: 400px;">`
+            html += `<div class="container card my-3" style="max-width: 400px;">`
             html += `   <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between p-3">`
             html += `       <p style="margin-bottom: 0;">To Buy / Manage Plan</p>`
             html += `       <a href="" class="btn btn-primary my-2 my-sm-0">Login / Register</a>`
@@ -161,11 +161,11 @@ let period = "monthly";
 //         let planTypes = plan.planTypes;
 
 
-        
+
 //     }
 
 //     planCardsDiv.innerHTML = `
-    
+
 //                     <!-- EOD -->
 //                     <div class="tsrPlanCard featured" data-monthly="100"
 //                         data-1_year="1888" data-2_year="3068" data-5_year="6490"
@@ -248,3 +248,44 @@ toggleBtns.forEach((btn, index) => {
 });
 
 updatePlans();
+
+
+// ------------------------------- PLAN COMPARISON SECTION -----------------------------------------
+
+/** 
+                                     * Dynamically adjusts the section header 'top' position 
+                                     * based on the actual height of the primary header row.
+                                     */
+function adjustStickyHeaders() {
+    const headerRow = document.getElementById('tsrHeaderRow');
+    const sectionHeaders = document.querySelectorAll('.tsrPlanSectionHeader');
+    const navHeight = 70; // Change this to your navbar's actual pixel height
+
+    if (headerRow) {
+        const headerHeight = headerRow.offsetHeight;
+        sectionHeaders.forEach(sh => {
+            sh.style.top = (navHeight + headerHeight - 1) + 'px';
+        });
+    }
+}
+
+window.addEventListener('load', adjustStickyHeaders);
+window.addEventListener('resize', adjustStickyHeaders);
+
+// Logic to ensure sticky headers stack perfectly even if font sizes or padding changes
+window.addEventListener('load', function () {
+    const mainHeader = document.getElementById('mainHeader');
+    const sectionHeaders = document.querySelectorAll('.tsrPlanCompTableSectionHeader');
+
+    const updateHeaderPos = () => {
+        const headerHeight = mainHeader.offsetHeight;
+        const navbarHeight = 70; // Change this to your actual navbar height
+
+        sectionHeaders.forEach(sh => {
+            sh.style.top = (navbarHeight + headerHeight - 1) + 'px';
+        });
+    };
+
+    updateHeaderPos();
+    window.addEventListener('resize', updateHeaderPos);
+});

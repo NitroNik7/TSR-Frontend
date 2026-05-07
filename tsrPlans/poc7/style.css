@@ -331,9 +331,219 @@
     }
 }
 
+
+
+/* ---------------------- PLAN COMPARISON SECTION ---------------------------- */
+
 .tsrCompareTitle {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 600;
     color: #0f172a;
-    margin-bottom: 16px;
+    margin: 24px 0;
+    padding: 0 30px;
+    font-family: Roboto,-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+}
+
+:root {
+    /* Set this to the height of your actual navbar */
+    --tsrPlan-nav-height: 70px;
+    /* [cite: 4] */
+}
+
+.tsrPlanTableContainer {
+    max-width: 1100px;
+    /* [cite: 5] */
+    margin: 20px auto;
+    border: 1px solid #f1f5f9;
+
+    border-radius: 20px;
+    /* Changed from 'clip' to 'visible' to ensure 'sticky' works */
+    overflow: visible;
+    /* [cite: 5] */
+    font-family: 'Inter', sans-serif;
+    /* [cite: 6] */
+}
+
+/* Base Row Structure */
+.tsrPlanRow {
+    display: flex;
+    /* [cite: 15] */
+    background: #fff;
+    /* [cite: 16] */
+    border-bottom: 1px solid #f1f5f9;
+    /* [cite: 16] */
+}
+
+/* Header Row Styling - Stays visible on scroll */
+.tsrPlanRow--header {
+    display: flex;
+    /* [cite: 8] */
+    background: #f8fafc;
+    /* [cite: 9] */
+    position: sticky;
+    /* [cite: 9] */
+    top: var(--tsrPlan-nav-height);
+    /* [cite: 9] */
+    z-index: 100;
+    /* [cite: 9] */
+    border-bottom: 1px solid #f1f5f9;
+    /* [cite: 9] */
+
+}
+
+/* Section Headers (e.g., Utilities) */
+.tsrPlanSectionHeader {
+    position: sticky;
+    /* [cite: 11] */
+    /* Sticks exactly below the main header row */
+    top: calc(var(--tsrPlan-nav-height) + 51px);
+    /* [cite: 12] */
+    z-index: 90;
+    /* [cite: 13] */
+    background: #f1f5f9;
+    /* [cite: 13] */
+    padding: 12px 16px;
+    /* [cite: 13] */
+    font-weight: 700;
+    font-size: 14px;
+    /* text-transform: uppercase; */
+    color: #6a7687;
+    /* color: #64748b; */
+    letter-spacing: 0.05em;
+    /* border-bottom: 1px solid #e2e8f0; */
+    /* [cite: 14] */
+
+    text-align: center;
+}
+
+/* The "Feature" column (First column in every row) */
+.tsrPlanFeature {
+    flex: 1;
+    /* [cite: 17] */
+    padding: 16px;
+    /* [cite: 18] */
+    font-size: 12px;
+    /* display: flex;
+    align-items: center;
+    justify-content: flex-start; */
+    font-weight: 600;
+    /* color: #1e293b; */
+    color: #64748b;
+    background: #f8fafc;
+    /* [cite: 18] */
+    border-right: 1px solid #f1f5f9;
+    /* [cite: 18] */
+}
+
+/* Transparent background override for the header row's first cell */
+.tsrPlanRow--header .tsrPlanFeature {
+    background: transparent;
+    /* [cite: 20] */
+}
+
+/* Standard Data Cells */
+.tsrPlanCell {
+    flex: 1;
+    /* [cite: 22] */
+    padding: 16px;
+    /* [cite: 23] */
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* Header-specific cell styling */
+.tsrPlanRow--header .tsrPlanCell {
+    font-weight: 700;
+    /* [cite: 33] */
+    border-right: 1px solid #f1f5f9;
+    /* [cite: 34] */
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    letter-spacing: 0.2px;
+}
+
+/* Container for the 4 plan data cells */
+.tsrPlanCellBottom {
+    display: flex;
+    /* [cite: 25] */
+    flex: 4 !important;
+    /* Spans the remaining width [cite: 26] */
+    padding: 0 !important;
+    /* [cite: 26] */
+}
+
+.tsrPlanCellBottom .tsrPlanCell {
+    border-right: 1px solid #f1f5f9;
+    /* [cite: 27] */
+}
+
+.tsrPlanCellBottom .tsrPlanCell:last-child {
+    border-right: none;
+    /* [cite: 29] */
+}
+
+/* Icon Colors */
+.fa-times-circle {
+    color: #dc2626;
+}
+
+/* [cite: 30] */
+.fa-check-circle {
+    color: #16a34a;
+}
+
+/* [cite: 32] */
+
+/* --- MOBILE RESPONSIVE LAYOUT (< 768px) --- */
+
+@media (max-width: 768px) {
+
+    /* Stack feature label on top of data cells */
+    .tsrPlanRow {
+        flex-direction: column;
+    }
+
+    /* Force the top header to stay as a horizontal row and stay sticky */
+    .tsrPlanRow--header {
+        flex-direction: row !important;
+        position: sticky;
+        top: var(--tsrPlan-nav-height);
+        z-index: 101;
+    }
+
+    /* Hide the corner 'Plan' cell in the sticky header to save horizontal space */
+    .tsrPlanRow--header .tsrPlanFeature {
+        display: none;
+    }
+
+    /* Feature cell becomes a full-width 'ribbon' header for the row */
+    .tsrPlanRow:not(.tsrPlanRow--header) .tsrPlanFeature {
+        width: 100%;
+        flex: none;
+        border-right: none;
+        border-bottom: 1px solid #f1f5f9;
+        background: #f1f5f9;
+        padding: 10px 16px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+
+
+    /* Data wrapper takes up the full width below the feature label */
+    .tsrPlanCellBottom {
+        flex: none !important;
+        width: 100%;
+    }
+
+    /* Make cells more compact for mobile screens */
+    .tsrPlanCell {
+        padding: 12px 4px;
+        font-size: 11px;
+    }
 }
