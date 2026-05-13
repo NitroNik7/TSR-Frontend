@@ -196,6 +196,9 @@ var miSupc = (function () { // Mi Subscription plan cards ...
             } else if (action == "renew") {
                 titleHtml = "Renew Plan"
                 html = renewPlanModalHtml(detailsId, period);
+            } else if (action == "buyAio") {
+                titleHtml = "Buy Plan - Stock AIO"
+                html = buyStockAioPlanModal();
             }
 
             if (jsu.isNotNull(titleHtml) && jsu.isNotNull(html)) {
@@ -218,6 +221,12 @@ var miSupc = (function () { // Mi Subscription plan cards ...
                 }
             }
         }
+    }
+
+    function buyStockAioPlanModal() {
+        let html = "";
+        html += ``;
+        return html;
     }
 
 
