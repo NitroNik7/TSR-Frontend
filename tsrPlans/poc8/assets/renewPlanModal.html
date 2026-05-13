@@ -1,0 +1,304 @@
+<style>
+    .tsrPlansRenewOptionsWrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .tsrPlansRenewOption {
+        padding: 10px;
+        transition: border 0.1s;
+    }
+
+    /* .tsrPlansRenewOption.active {
+        border: 1px solid #2563eb;
+    } */
+
+    /* .tsrPlansRenewOption:hover {
+        border: 1px solid #2563eb;
+        cursor: pointer;
+    } */
+
+    .tsrPlansRenewOption h6 {
+        margin: 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid black;
+    }
+
+    .tsrPlansRenewOption p {
+        margin-bottom: 5px;
+    }
+</style>
+
+
+<form action="">
+
+
+    <!-- 5: Payment Gateway -->
+    <div class="text-center d-flex">
+        <p class="fw-bold mb-2">Payment Gateway</p>
+        <div class="d-flex justify-content-center ms-3 gap-4">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="payGate" id="payU" value="payU">
+                <label class="form-check-label" for="payU">PayU</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="payGate" id="ccAvenue" value="ccAvenue" checked>
+                <label class="form-check-label" for="ccAvenue">CC Avenue</label>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Choose Renew duration  -->
+    <div>
+        <p class="fw-bold">Select Renew Duration :</p>
+        <!-- RENEW discount text -->
+        <p style="text-align: center; font-weight: 500;" class="text-success">Additional 5% Renew Discount Applied</p>
+        <div class="tsrPlansRenewOptionsWrapper">
+            <div class="card tsrPlansRenewOption">
+                <h6>One Year</h6>
+
+                <div class="d-flex justify-content-between">
+                    <p>Basic Price</p>
+                    <p><i class="fas fa-rupee-sign"></i> 2360</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p>Discount</p>
+                    <p>25%</p>
+                </div>
+                <div class="d-flex justify-content-between fw-bold">
+                    <p>Total Price</p>
+                    <p><i class="fas fa-rupee-sign"></i> 1788</p>
+                </div>
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary">Renew</button>
+                </div>
+            </div>
+            <div class="card tsrPlansRenewOption">
+                <h6>Two Year</h6>
+                <div class="d-flex justify-content-between">
+                    <p>Basic Price</p>
+                    <p><i class="fas fa-rupee-sign"></i> 2360</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p>Discount</p>
+                    <p>25%</p>
+                </div>
+                <div class="d-flex justify-content-between fw-bold">
+                    <p>Total Price</p>
+                    <p><i class="fas fa-rupee-sign"></i> 1788</p>
+                </div>
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary">Renew</button>
+                </div>
+            </div>
+            <div class="card tsrPlansRenewOption">
+                <h6>5 Year</h6>
+                <div class="d-flex justify-content-between">
+                    <p>Basic Price</p>
+                    <p><i class="fas fa-rupee-sign"></i> 2360</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p>Discount</p>
+                    <p>25%</p>
+                </div>
+                <div class="d-flex justify-content-between fw-bold">
+                    <p>Total Price</p>
+                    <p><i class="fas fa-rupee-sign"></i> 1788</p>
+                </div>
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary">Renew</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Personal Details -->
+    <div>
+        <p class="fw-bold">Personal Details</p>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text ">Email ID</span>
+            <input type="email" class="form-control" aria-label="Username" value="nikhilharpale@gmail.com" disabled>
+        </div>
+        <div class="input-group mb-3">
+            <!-- <label for="tsrUserRegPhnNumber" class="form-label" style="font-size: 14px;">Phone number</label> -->
+            <span class="input-group-text">
+                <!-- <i class="fas fa-phone fa-sm" style="rotate: 90deg;"></i> -->
+                Mobile No.
+            </span>
+
+            <select class="form-select" name="countryCode" id="countryCode" style="max-width: 120px">
+                <option value="IND">+91 India</option>
+                <option value="AFG">+93 Afghanistan</option>
+                <option value="ALA">+358 Åland Islands</option>
+                <option value="ALB">+355 Albania</option>
+                <option value="DZA">+213 Algeria</option>
+                <option value="ASM">+1684 American Samoa</option>
+                <option value="AND">+376 Andorra</option>
+                <option value="AGO">+244 Angola</option>
+                <option value="AIA">+1264 Anguilla</option>
+                <option value="ATA">+672 Antarctica</option>
+                <option value="ATG">+1268 Antigua and Barbuda</option>
+                <option value="ARG">+54 Argentina</option>
+                <option value="ARM">+374 Armenia</option>
+                <option value="ABW">+297 Aruba</option>
+                <option value="AUS">+61 Australia</option>
+                <option value="AUT">+43 Austria</option>
+                <option value="AZE">+994 Azerbaijan</option>
+                <option value="BHS">+1242 Bahamas</option>
+                <option value="BHR">+973 Bahrain</option>
+                <option value="BGD">+880 Bangladesh</option>
+                <option value="BRB">+1246 Barbados</option>
+                <option value="BLR">+375 Belarus</option>
+                <option value="BEL">+32 Belgium</option>
+                <option value="BLZ">+501 Belize</option>
+                <option value="BEN">+229 Benin</option>
+                <option value="BMU">+1441 Bermuda</option>
+                <option value="BTN">+975 Bhutan</option>
+                <option value="BOL">+591 Bolivia</option>
+                <option value="BES">+599 Bonaire, Sint Eustatius and Saba</option>
+                <option value="BIH">+387 Bosnia and Herzegovina</option>
+                <option value="BWA">+267 Botswana</option>
+                <option value="BVT">+47 Bouvet Island</option>
+                <option value="BRA">+55 Brazil</option>
+                <option value="IOT">+246 British Indian Ocean Territory</option>
+                <option value="BRN">+673 Brunei Darussalam</option>
+                <option value="BGR">+359 Bulgaria</option>
+                <option value="BFA">+226 Burkina Faso</option>
+                <option value="BDI">+257 Burundi</option>
+                <option value="KHM">+855 Cambodia</option>
+                <option value="CMR">+237 Cameroon</option>
+                <option value="CAN">+1 Canada</option>
+                <option value="CPV">+238 Cabo Verde</option>
+                <option value="CYM">+1345 Cayman Islands</option>
+                <option value="CAF">+236 Central African Republic</option>
+                <option value="TCD">+235 Chad</option>
+                <option value="CHL">+56 Chile</option>
+                <option value="CHN">+86 China</option>
+                <option value="CXR">+61 Christmas Island</option>
+                <option value="CCK">+61 Cocos (Keeling) Islands</option>
+                <option value="COL">+57 Colombia</option>
+                <option value="COM">+269 Comoros</option>
+                <option value="COG">+242 Congo</option>
+                <option value="COD">+243 Congo, Democratic Republic of the</option>
+                <option value="COK">+682 Cook Islands</option>
+                <option value="CRI">+506 Costa Rica</option>
+                <option value="CIV">+225 Côte d'Ivoire</option>
+                <option value="HRV">+385 Croatia</option>
+                <option value="CUB">+53 Cuba</option>
+                <option value="CUW">+599 Curaçao</option>
+                <option value="CYP">+357 Cyprus</option>
+                <option value="CZE">+420 Czechia</option>
+                <option value="DNK">+45 Denmark</option>
+                <option value="DJI">+253 Djibouti</option>
+                <option value="DMA">+1767 Dominica</option>
+                <option value="DOM">+1809 Dominican Republic</option>
+                <option value="ECU">+593 Ecuador</option>
+                <option value="EGY">+20 Egypt</option>
+                <option value="SLV">+503 El Salvador</option>
+                <option value="GNQ">+240 Equatorial Guinea</option>
+                <option value="ERI">+291 Eritrea</option>
+                <option value="EST">+372 Estonia</option>
+                <option value="ETH">+251 Ethiopia</option>
+                <option value="FJI">+679 Fiji</option>
+                <option value="FIN">+358 Finland</option>
+                <option value="FRA">+33 France</option>
+                <option value="DEU">+49 Germany</option>
+                <option value="GRC">+30 Greece</option>
+                <option value="HKG">+852 Hong Kong</option>
+                <option value="ISL">+354 Iceland</option>
+                <option value="IDN">+62 Indonesia</option>
+                <option value="IRN">+98 Iran</option>
+                <option value="IRQ">+964 Iraq</option>
+                <option value="IRL">+353 Ireland</option>
+                <option value="ISR">+972 Israel</option>
+                <option value="ITA">+39 Italy</option>
+                <option value="JPN">+81 Japan</option>
+                <option value="JOR">+962 Jordan</option>
+                <option value="KEN">+254 Kenya</option>
+                <option value="KOR">+82 Korea, Republic of</option>
+                <option value="LBN">+961 Lebanon</option>
+                <option value="LKA">+94 Sri Lanka</option>
+                <option value="MEX">+52 Mexico</option>
+                <option value="NPL">+977 Nepal</option>
+                <option value="NLD">+31 Netherlands</option>
+                <option value="NZL">+64 New Zealand</option>
+                <option value="NGA">+234 Nigeria</option>
+                <option value="NOR">+47 Norway</option>
+                <option value="PAK">+92 Pakistan</option>
+                <option value="PHL">+63 Philippines</option>
+                <option value="POL">+48 Poland</option>
+                <option value="PRT">+351 Portugal</option>
+                <option value="QAT">+974 Qatar</option>
+                <option value="ROU">+40 Romania</option>
+                <option value="RUS">+7 Russian Federation</option>
+                <option value="SAU">+966 Saudi Arabia</option>
+                <option value="SGP">+65 Singapore</option>
+                <option value="ZAF">+27 South Africa</option>
+                <option value="ESP">+34 Spain</option>
+                <option value="SWE">+46 Sweden</option>
+                <option value="CHE">+41 Switzerland</option>
+                <option value="TWN">+886 Taiwan</option>
+                <option value="THA">+66 Thailand</option>
+                <option value="TUR">+90 Türkiye</option>
+                <option value="UKR">+380 Ukraine</option>
+                <option value="ARE">+971 United Arab Emirates</option>
+                <option value="GBR">+44 United Kingdom</option>
+                <option value="USA">+1 United States of America</option>
+                <option value="URY">+598 Uruguay</option>
+                <option value="UZB">+998 Uzbekistan</option>
+                <option value="VEN">+58 Venezuela</option>
+                <option value="VNM">+84 Viet Nam</option>
+                <option value="YEM">+967 Yemen</option>
+                <option value="ZMB">+260 Zambia</option>
+                <option value="ZWE">+263 Zimbabwe</option>
+                <option value="OTH"> Other</option>
+            </select>
+
+            <input type="text" class="form-control" id="tsrUserRegPhnNumber" placeholder="Phone Number" required>
+        </div>
+    </div>
+
+    <!-- 4: Referral Section (Styled per your requirement) -->
+    <div class="border rounded p-3 mb-4">
+        <div class="row gy-3 align-items-center">
+            <div class="col-lg-3 col-md-4 text-center">
+                <img src="https://www.topstockresearch.com/static/my/static/image/ReferralAFriend.jpg" alt="Referral"
+                    class="img-fluid rounded shadow-sm" style="max-height: 70px;">
+            </div>
+
+            <div class="col-lg-5 col-md-8 px-lg-3">
+                <label class="form-label fw-bold mb-1" style="color:orange; font-size: 1.2rem;">Referral Code</label>
+                <div class="input-group input-group-sm">
+                    <input type="text" id="referral" class="form-control" placeholder="Code">
+                    <button class="btn btn-warning px-3" type="button">Apply</button>
+                </div>
+                <div id="referralFbDiv"></div>
+                <small class="text-muted" style="font-size: 0.75rem;">Enter your
+                    friend's registered email to unlock bonus months.</small>
+            </div>
+
+            <div class="col-lg-4 col-md-12 border-start-lg mt-3 mt-lg-0 ps-lg-4">
+                <h6 class="fw-bold text-dark mb-2">Additional Benefits*</h6>
+                <ul class="list-unstyled mb-0" style="font-size: 0.85rem;">
+                    <li class="mb-1"><i class="fas fa-gift text-warning me-2"></i><strong>+1
+                            Month</strong> on 1Y Plan</li>
+                    <li><i class="fas fa-gift text-warning me-2"></i><strong>+2
+                            Months</strong> on 2Y Plan</li>
+                </ul>
+            </div>
+
+            <div class="col-12 mt-2 pt-2 border-top">
+                <span class="text-muted" style="font-size: 0.7rem;">*Applicable when
+                    your friend is an existing subscriber and you purchase a new
+                    plan.</span>
+            </div>
+        </div>
+    </div>
+
+</form>

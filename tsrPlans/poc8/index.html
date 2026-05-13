@@ -479,6 +479,114 @@
 
                         </section>
 
+                        <!-- Button to trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#buyPlanModal" onclick="planAction('buy')">
+                            Buy
+                        </button>
+
+
+                        <script>
+                            let jsu = mintJsUtil;
+
+
+                        </script>
+
+
+                        <!-- Buy Plan Modal -->
+                        <div class="modal fade" id="buyPlanModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content border-0 shadow">
+                                    <div class="modal-header bg-light">
+                                        <h5 class="modal-title">Buy Plan</h5>
+                                        <button type="button" class="btn-close" data-bs-toggle="modal"
+                                            data-bs-target="#buyPlanModal" aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body p-4" id="buyPlanModalBody">
+                                        <div style="text-align: center;">
+                                            <img src="//www.topstockresearch.com/static/img/LoadingMedium.gif">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button to trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#upgradePlanModal" onclick="planAction('upgrade')">
+                            Upgrade
+                        </button>
+
+                        <!-- Upgrade Plan Modal -->
+                        <div class="modal fade" id="upgradePlanModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content border-0 shadow-lg">
+
+                                    <!-- Header -->
+                                    <div class="modal-header bg-light border-0">
+                                        <h5 class="modal-title">Upgrade Plan</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body p-4" id="upgradePlanModalBody">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button to trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#renewPlanModal" onclick="planAction('renew')">
+                            Renew 1
+                        </button>
+                        <!-- Plan Renewal Modal -->
+                        <div class="modal fade" id="renewPlanModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content border-0 shadow-lg">
+
+                                    <!-- Header -->
+                                    <div class="modal-header bg-light border-0">
+                                        <h5 class="modal-title fw-bold">Renew Plan</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body p-4" id="renewPlanModalBody">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button to trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#renewPlanModalTwo" onclick="planAction('renewTwo')">
+                            Renew 2
+                        </button>
+                        <!-- Plan Renewal Modal -->
+                        <div class="modal fade" id="renewPlanModalTwo" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content border-0 shadow-lg">
+
+                                    <!-- Header -->
+                                    <div class="modal-header bg-light border-0">
+                                        <h5 class="modal-title fw-bold">Renew Plan</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body p-4" id="renewPlanModalTwoBody">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <!-- ----------------------------------PLAN CARDS SECTION------------------------------------- -->
                         <section>
 
@@ -585,8 +693,8 @@
                                                 <h2 class="tsrPrice"></h2>
                                                 <div class="tsrEffectivePrice"></div>
 
-                                                <p style="font-size: 14px; color: grey;">
-                                                    Suitable for Professional Investor and Trader</p>
+                                                <p style="font-size: 14px; color: grey;">Suitable for Professional
+                                                    Investor and Trader </p>
                                                 <button>Buy</button>
                                             </div>
 
@@ -619,202 +727,219 @@
                         </section>
 
 
-                      <div class="modal fade" id="bulkDiscountModal" tabindex="-1"
-    aria-labelledby="bulkDiscountModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-scrollable">
-        <div class="modal-content border-0 shadow-lg">
+                        <div class="modal fade" id="bulkDiscountModal" tabindex="-1"
+                            aria-labelledby="bulkDiscountModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                                <div class="modal-content border-0 shadow-lg">
 
-            <div class="modal-header bg-light border-bottom-0">
-                <h5 class="modal-title fw-bold text-dark" id="bulkDiscountModalLabel">
-                    <i class="fas fa-handshake me-2 text-primary"></i>Bulk Plans for Training Institutes & Corporates
-                </h5>
+                                    <div class="modal-header bg-light border-bottom-0">
+                                        <h5 class="modal-title fw-bold text-dark" id="bulkDiscountModalLabel">
+                                            <i class="fas fa-handshake me-2 text-primary"></i>Bulk Plans for Training
+                                            Institutes & Corporates
+                                        </h5>
 
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
-            </div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
 
-            <div class="modal-body p-0">
-                <div class="container-fluid">
-                    <div class="row g-0">
+                                    <div class="modal-body p-0">
+                                        <div class="container-fluid">
+                                            <div class="row g-0">
 
 
-                        <!-- ================= RIGHT COLUMN ================= -->
+                                                <!-- ================= RIGHT COLUMN ================= -->
 
-                        <div class="p-4"
-                            style="background: linear-gradient(180deg, #f0f7ff 0%, #eef4ff 100%);">
+                                                <div class="p-4"
+                                                    style="background: linear-gradient(180deg, #f0f7ff 0%, #eef4ff 100%);">
 
-                            <div class="text-center mb-4">
+                                                    <div class="text-center mb-4">
 
-                                <h3 class="fw-bold mb-2"
-                                    style="color: #1e3a8a;">
+                                                        <h3 class="fw-bold mb-2" style="color: #1e3a8a;">
 
-                                    Integrated MyTSR & Win For All
+                                                            Integrated MyTSR & Win For All
 
-                                </h3>
+                                                        </h3>
 
-                                <p class="text-secondary mb-0 small"
-                                    style="max-width: 650px; margin: auto; line-height: 1.7;">
+                                                        <p class="text-secondary mb-0 small"
+                                                            style="max-width: 650px; margin: auto; line-height: 1.7;">
 
-                                    One platform for learning, stock analysis, screening,
-                                    mock trading, and post-training practice.
+                                                            One platform for learning, stock analysis, screening,
+                                                            mock trading, and post-training practice.
 
-                                </p>
+                                                        </p>
 
-                            </div>
+                                                    </div>
 
-                            <div class="row g-3">
+                                                    <div class="row g-3">
 
-                                <!-- Institute / Trainer -->
+                                                        <!-- Institute / Trainer -->
 
-                                <div class="col-md-6">
+                                                        <div class="col-md-6">
 
-                                    <div class="h-100 p-3 bg-white rounded-3 border-start border-4 border-primary shadow-sm">
+                                                            <div
+                                                                class="h-100 p-3 bg-white rounded-3 border-start border-4 border-primary shadow-sm">
 
-                                        <h6 class="fw-bold text-primary mb-3">
-                                            For Institutes, Trainers & Corporates
-                                        </h6>
+                                                                <h6 class="fw-bold text-primary mb-3">
+                                                                    For Institutes, Trainers & Corporates
+                                                                </h6>
 
-                                        <ul class="list-unstyled small mb-0">
+                                                                <ul class="list-unstyled small mb-0">
 
-                                            <li class="mb-2">
-                                                <i class="fas fa-check-circle text-primary me-2"></i>
+                                                                    <li class="mb-2">
+                                                                        <i
+                                                                            class="fas fa-check-circle text-primary me-2"></i>
 
-                                                Integrated MyTSR package included with your training program.
-                                            </li>
+                                                                        Integrated MyTSR package included with your
+                                                                        training program.
+                                                                    </li>
 
-                                            <li class="mb-2">
-                                                <i class="fas fa-check-circle text-primary me-2"></i>
+                                                                    <li class="mb-2">
+                                                                        <i
+                                                                            class="fas fa-check-circle text-primary me-2"></i>
 
-                                                Complimentary <strong>One Year Pro Membership</strong>.
-                                            </li>
+                                                                        Complimentary <strong>One Year Pro
+                                                                            Membership</strong>.
+                                                                    </li>
 
-                                            <li class="mb-2">
-                                                <i class="fas fa-check-circle text-primary me-2"></i>
+                                                                    <li class="mb-2">
+                                                                        <i
+                                                                            class="fas fa-check-circle text-primary me-2"></i>
 
-                                                <strong>Exclusive Custom Reports</strong> for trainers.
-                                            </li>
+                                                                        <strong>Exclusive Custom Reports</strong> for
+                                                                        trainers.
+                                                                    </li>
 
-                                            <li>
-                                                <i class="fas fa-check-circle text-primary me-2"></i>
+                                                                    <li>
+                                                                        <i
+                                                                            class="fas fa-check-circle text-primary me-2"></i>
 
-                                                Additional commission benefits based on enrollments.
-                                            </li>
+                                                                        Additional commission benefits based on
+                                                                        enrollments.
+                                                                    </li>
 
-                                        </ul>
+                                                                </ul>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <!-- Students -->
+
+                                                        <div class="col-md-6">
+
+                                                            <div
+                                                                class="h-100 p-3 bg-white rounded-3 border-start border-4 border-info shadow-sm">
+
+                                                                <h6 class="fw-bold text-info mb-3">
+                                                                    For Students
+                                                                </h6>
+
+                                                                <ul class="list-unstyled small mb-0">
+
+                                                                    <li class="mb-2">
+                                                                        <i
+                                                                            class="fas fa-check-circle text-info me-2"></i>
+
+                                                                        One platform for stock analysis and
+                                                                        post-training practice.
+                                                                    </li>
+
+                                                                    <li class="mb-2">
+                                                                        <i
+                                                                            class="fas fa-check-circle text-info me-2"></i>
+
+                                                                        Stock screening, mock trading, and learning
+                                                                        tools included.
+                                                                    </li>
+
+                                                                    <li class="mb-2">
+                                                                        <i
+                                                                            class="fas fa-check-circle text-info me-2"></i>
+
+                                                                        No need for external stock market tools or data
+                                                                        sources.
+                                                                    </li>
+
+                                                                    <li>
+                                                                        <i
+                                                                            class="fas fa-check-circle text-info me-2"></i>
+
+                                                                        Additional validity benefits on eligible annual
+                                                                        plans.
+                                                                    </li>
+
+                                                                </ul>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <!-- TERMS -->
+
+                                                    <div class="mt-4 p-3 rounded-3"
+                                                        style="background-color: #e2e8f0; border: 1px dashed #94a3b8;">
+
+                                                        <h6 class="fw-bold text-dark small mb-3 text-uppercase">
+                                                            Requirements & Plan Eligibility
+                                                        </h6>
+
+                                                        <div class="row g-2 text-secondary" style="font-size: 0.85rem;">
+
+                                                            <div class="col-6">
+                                                                <i class="fas fa-users me-1"></i>
+                                                                Minimum 10 to 15 Students
+                                                            </div>
+
+                                                            <div class="col-6">
+                                                                <i class="fas fa-calendar-alt me-1"></i>
+                                                                Applicable on Annual Plans
+                                                            </div>
+
+                                                            <div class="col-6">
+                                                                <i class="fas fa-file-invoice me-1"></i>
+                                                                1 Custom Report per 10 Students
+                                                            </div>
+
+                                                            <div class="col-6">
+                                                                <i class="fas fa-chart-line me-1"></i>
+                                                                Scalable Commission Structure
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <p class="mt-4 text-center text-muted x-small"
+                                                        style="font-size: 0.75rem; font-style: italic;">
+
+                                                        Custom reports are exclusively coded for your training
+                                                        methodology
+                                                        and are not available in the default product.
+
+                                                    </p>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer border-0 bg-light py-2">
+
+                                        <button type="button" class="btn btn-link text-secondary text-decoration-none"
+                                            data-bs-dismiss="modal">
+
+                                            Close
+
+                                        </button>
 
                                     </div>
 
                                 </div>
-
-                                <!-- Students -->
-
-                                <div class="col-md-6">
-
-                                    <div class="h-100 p-3 bg-white rounded-3 border-start border-4 border-info shadow-sm">
-
-                                        <h6 class="fw-bold text-info mb-3">
-                                            For Students
-                                        </h6>
-
-                                        <ul class="list-unstyled small mb-0">
-
-                                            <li class="mb-2">
-                                                <i class="fas fa-check-circle text-info me-2"></i>
-
-                                                One platform for stock analysis and post-training practice.
-                                            </li>
-
-                                            <li class="mb-2">
-                                                <i class="fas fa-check-circle text-info me-2"></i>
-
-                                                Stock screening, mock trading, and learning tools included.
-                                            </li>
-
-                                            <li class="mb-2">
-                                                <i class="fas fa-check-circle text-info me-2"></i>
-
-                                                No need for external stock market tools or data sources.
-                                            </li>
-
-                                            <li>
-                                                <i class="fas fa-check-circle text-info me-2"></i>
-
-                                                Additional validity benefits on eligible annual plans.
-                                            </li>
-
-                                        </ul>
-
-                                    </div>
-
-                                </div>
-
                             </div>
-
-                            <!-- TERMS -->
-
-                            <div class="mt-4 p-3 rounded-3"
-                                style="background-color: #e2e8f0; border: 1px dashed #94a3b8;">
-
-                                <h6 class="fw-bold text-dark small mb-3 text-uppercase">
-                                    Requirements & Plan Eligibility
-                                </h6>
-
-                                <div class="row g-2 text-secondary"
-                                    style="font-size: 0.85rem;">
-
-                                    <div class="col-6">
-                                        <i class="fas fa-users me-1"></i>
-                                        Minimum 10 to 15 Students
-                                    </div>
-
-                                    <div class="col-6">
-                                        <i class="fas fa-calendar-alt me-1"></i>
-                                        Applicable on Annual Plans
-                                    </div>
-
-                                    <div class="col-6">
-                                        <i class="fas fa-file-invoice me-1"></i>
-                                        1 Custom Report per 10 Students
-                                    </div>
-
-                                    <div class="col-6">
-                                        <i class="fas fa-chart-line me-1"></i>
-                                        Scalable Commission Structure
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <p class="mt-4 text-center text-muted x-small"
-                                style="font-size: 0.75rem; font-style: italic;">
-
-                                Custom reports are exclusively coded for your training methodology
-                                and are not available in the default product.
-
-                            </p>
-
                         </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-footer border-0 bg-light py-2">
-
-                <button type="button"
-                    class="btn btn-link text-secondary text-decoration-none"
-                    data-bs-dismiss="modal">
-
-                    Close
-
-                </button>
-
-            </div>
-
-        </div>
-    </div>
-</div>
 
 
 

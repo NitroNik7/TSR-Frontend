@@ -9,7 +9,7 @@ var plans = (function () {
 
     let defSelPeriodBtnId = "tsrPlanDefSelPeriodBtn";
 
-        let period = "yearly";
+    let period = "yearly";
 
 
     const navHeight = 65; // navbar height
@@ -30,9 +30,9 @@ var plans = (function () {
 
     function setSubsDetails() {
 
-        let plan = userProf.plan;
         let html = "";
         if (jsu.isNotNull(planStatus.personal)) {
+            let plan = planStatus.plan;
             if (jsu.isNotNull(plan)) {
 
                 let planName = plan.name == null ? "" : plan.name.toUpperCase();
@@ -144,7 +144,6 @@ var plans = (function () {
 
     const toggleBtns = document.querySelectorAll(".tsrBillingToggle span");
     const slider = document.querySelector(".tsrToggleSlider");
-    
     const cards = document.querySelectorAll(".tsrPlanCard[data-monthly]");
 
 
@@ -295,48 +294,122 @@ var plans = (function () {
 
 plans.init();
 
-// ------------------PLANS SECTION----------------------
-console.log(planDetails);
+
+// ------------------------PLAN ACTION POPUP--------------------------
+
+
+async function getData(url) {
+    const res = await fetch(url)
+    const data = await res.text();
+
+    return data;
+}
+
+// ? How to stop modal from opening if trigger btn is clicked, but onclick is not specified 
+function planAction(action) {
+    let modalId = null;
+    let html = null;
+
+    var buyPlanModalBodyId = "buyPlanModalBody";
+    let upgradePlanModalBodyId = "upgradePlanModalBody";
+    let renewPlanModalBodyId = "renewPlanModalBody";
+    let renewPlanModalTwoBodyId = "renewPlanModalTwoBody";
+    let buyPlanEndpointUrl = "http://127.0.0.1:5500/tsrPlans/poc8/assets/buyPlanModal.html"
+    let upgradePlanEndpointUrl = "http://127.0.0.1:5500/tsrPlans/poc8/assets/upgradePlanModal.html"
+    let renewPlanEndpointUrl = "http://127.0.0.1:5500/tsrPlans/poc8/assets/renewPlanModal.html"
+    let renewPlanTwoEndpointUrl = "http://127.0.0.1:5500/tsrPlans/poc8/assets/renewPlanModalTwo.html"
+    // let buyPlanEndpointUrl = "https://www.tsrbt1.com/test/Nikhil/tsrPlans/poc8/assets/buyPlanModal.html"
+    // let upgradePlanEndpointUrl = "https://www.tsrbt1.com/test/Nikhil/tsrPlans/poc8/assets/upgradePlanModal.html"
+    // let renewPlanEndpointUrl = "https://www.tsrbt1.com/test/Nikhil/tsrPlans/poc8/assets/renewPlanModal.html"
+    // let renewPlanTwoEndpointUrl = "https://www.tsrbt1.com/test/Nikhil/tsrPlans/poc8/assets/renewPlanModalTwo.html"
+
+
+    if (jsu.isNotNull(action) && typeof action == "string") {
+        action = action.toLowerCase();
+
+        if (action == "buy") {
+            modalId = buyPlanModalBodyId;
+            html = buyPlanModalHtml("EOD_COMBO", "2Y");
+        } else if (action == "upgrade") {
+            modalId = upgradePlanModalBodyId;
+            url = upgradePlanEndpointUrl;
+        } else if (action == "renew") {
+            modalId = renewPlanModalBodyId;
+            url = renewPlanEndpointUrl;
+        } else if (action == "renewtwo") {
+            modalId = renewPlanModalTwoBodyId;
+            url = renewPlanTwoEndpointUrl;
+        }
+
+        if (jsu.isNotNull(modalId) && jsu.isNotNull(url)) {
+            getData(url).then(html => {
+                if (jsu.isNotNull(html)) {
+                    let modal = document.getElementById(modalId);
+                    modal.innerHTML = html;
+                }
+            });
+        } else {
+            if (jsu.isNotNull(html)) {
+                let modal = document.getElementById(modalId);
+                modal.innerHTML = html;
+            }
+        }
+    }
+}
+
+let renewDiscount = "5%";
+
+function renewPlanModalHtml(details) {
+    let html = "";
 
 
 
-// ------------------------------- PLAN COMPARISON SECTION -----------------------------------------
+    let periodArr = details.period;
+    html += `<form action="">`
 
-// /** 
-//     * Dynamically adjusts the section header 'top' position 
-//     * based on the actual height of the primary header row.
-// */
+    html += getPaymentGatewayHtml();
 
-// function adjustPlanTableStickyHeaders() {
-//     const headerRow = document.getElementById('tsrPlanTableHeaderRow');
-//     const sectionHeaders = document.querySelectorAll('.tsrPlanTableSectionHeader');
-//     const navHeight = 65; // navbar height
+    html += `    <!-- Choose Renew duration  -->`
+    html += `    <div>`
+    html += `        <p class="fw-bold">Select Renew Duration :</p>`
+    html += `        <!-- RENEW discount text -->`
+    html += `        <p style="text-align: center; font-weight: 500;" class="text-success">Additional ${renewDiscount} Renew Discount Applied</p>`
+    html += `        <div class="tsrPlansRenewOptionsWrapper">`
 
-//     if (headerRow) {
-//         const headerHeight = headerRow.offsetHeight;
-//         sectionHeaders.forEach(sh => {
-//             sh.style.top = (navHeight + headerHeight - 1) + 'px';
-//         });
-//     }
-// }
+    for (let i = 0; i < periodArr; i++) {
 
-// window.addEventListener('load', adjustPlanTableStickyHeaders);
-// window.addEventListener('resize', adjustPlanTableStickyHeaders);
+        let period = periodArr[i];
+        if (period.id != "1M") {
+            html += `            <div class="card tsrPlansRenewOption">`
+            html += `                <h6>${period.period}</h6>`
+            html += ``
+            html += `                <div class="d-flex justify-content-between">`
+            html += `                    <p>Basic Price</p>`
+            html += `                    <p><i class="fas fa-rupee-sign"></i> ${period.orig}</p>`
+            html += `                </div>`
+            html += `                <div class="d-flex justify-content-between">`
+            html += `                    <p>Discount</p>`
+            html += `                    <p>${period.off}%</p>`
+            html += `                </div>`
+            html += `                <div class="d-flex justify-content-between fw-bold">`
+            html += `                    <p>Total Price</p>`
+            html += `                    <p><i class="fas fa-rupee-sign"></i> ${period.buyPrice}</p>`
+            html += `                </div>`
+            html += `            </div>`
+        }
+    }
 
-// Logic to ensure sticky headers stack perfectly even if font sizes or padding changes
-// window.addEventListener('load', function () {
-//     const mainHeader = document.getElementById('mainHeader');
-//     const sectionHeaders = document.querySelectorAll('.tsrPlanCompTableSectionHeader');
+    html += ``
+    html += `        </div>`
+    html += `    </div>`
+    html += ``
 
-//     const updateHeaderPos = () => {
-//         const headerHeight = mainHeader.offsetHeight;
-//         const navbarHeight = 65; // Change this to your actual navbar height
+    html += getPersonalDetailsHtml();
+    html += ``
+    html += getReferralSectionHtml();
 
-//         sectionHeaders.forEach(sh => {
-//             sh.style.top = (navbarHeight + headerHeight) + 'px';
-//         });
-//     };
+    html += `    <button type="submit" class="btn btn-primary w-100">PROCEED TO PAYMENT</button>`
+    html += `</form>`
 
-//     updateHeaderPos();
-//     window.addEventListener('resize', updateHeaderPos);
-// });
+    return html;
+}

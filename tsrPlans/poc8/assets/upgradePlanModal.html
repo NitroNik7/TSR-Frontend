@@ -1,0 +1,105 @@
+<!-- 1 & 2: Dropdowns -->
+<div class="row g-3 mb-4">
+    <div class="col-md-6">
+        <label class="form-label fw-bold small text-uppercase">Select Upgrade
+            Plan</label>
+        <select class="form-select">
+            <!-- <option selected>EOD Combo</option> -->
+            <option>Trader Value</option>
+            <option selected>Trader</option>
+            <option>Trader Pro</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label fw-bold small text-uppercase">Duration</label>
+        <select class="form-select">
+            <option>1 Month</option>
+            <option selected>1 Year</option>
+            <option>2 Years</option>
+            <option>5 Years</option>
+        </select>
+    </div>
+</div>
+
+<!-- 3: Plan Details Table -->
+<div class="bg-light p-3 rounded mb-4">
+    <div class="d-flex justify-content-between mb-2">
+        <span>Plan Name</span>
+        <span class="fw-bold">Trader</span>
+    </div>
+    <div class="d-flex justify-content-between mb-2">
+        <span>Price</span>
+        <span><i class="fas fa-rupee-sign"></i> 2360</span>
+    </div>
+    <div class="d-flex justify-content-between mb-2 text-success">
+        <span>Discount</span>
+        <span>20%</span>
+    </div>
+    <div class="d-flex justify-content-between mb-2">
+        <span>Discounted Price</span>
+        <span><i class="fas fa-rupee-sign"></i> 1548.16</span>
+    </div>
+    <div class="d-flex justify-content-between mb-2">
+        <span>GST (18%)</span>
+        <span><i class="fas fa-rupee-sign"></i> 339.84</span>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between">
+        <span class="h5 mb-0">Total</span>
+        <span class="h5 mb-0"><i class="fas fa-rupee-sign"></i> 1888</span>
+    </div>
+</div>
+
+<!-- 4: Referral Section (Styled per your requirement) -->
+<div class="border rounded p-3 mb-4">
+    <div class="row gy-3 align-items-center">
+        <div class="col-lg-3 col-md-4 text-center">
+            <img src="https://www.topstockresearch.com/static/my/static/image/ReferralAFriend.jpg" alt="Referral"
+                class="img-fluid rounded shadow-sm" style="max-height: 70px;">
+        </div>
+
+        <div class="col-lg-5 col-md-8 px-lg-3">
+            <label class="form-label fw-bold mb-1" style="color:orange; font-size: 1.2rem;">Referral Code</label>
+            <div class="input-group input-group-sm">
+                <input type="text" id="referral" class="form-control" placeholder="Friend's Email ID">
+                <button class="btn btn-warning px-3" type="button">Apply</button>
+            </div>
+            <div id="referralFbDiv"></div>
+            <small class="text-muted" style="font-size: 0.75rem;">Enter your
+                friend's registered email to unlock bonus months.</small>
+        </div>
+
+        <div class="col-lg-4 col-md-12 border-start-lg mt-3 mt-lg-0 ps-lg-4">
+            <h6 class="fw-bold text-dark mb-2">Additional Benefits*</h6>
+            <ul class="list-unstyled mb-0" style="font-size: 0.85rem;">
+                <li class="mb-1"><i class="fas fa-gift text-warning me-2"></i><strong>+1
+                        Month</strong> on 1Y Plan</li>
+                <li><i class="fas fa-gift text-warning me-2"></i><strong>+2
+                        Months</strong> on 2Y Plan</li>
+            </ul>
+        </div>
+
+        <div class="col-12 mt-2 pt-2 border-top">
+            <span class="text-muted" style="font-size: 0.7rem;">*Applicable when
+                your friend is an existing subscriber and you purchase a new
+                plan.</span>
+        </div>
+    </div>
+</div>
+
+<!-- 5: Payment Gateway -->
+<div class="text-center py-3">
+    <p class="fw-bold mb-2">Payment Gateway</p>
+    <div class="d-flex justify-content-center gap-4">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="payGate" id="payU" value="payU">
+            <label class="form-check-label" for="payU">PayU</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="payGate" id="ccAvenue" value="ccAvenue" checked>
+            <label class="form-check-label" for="ccAvenue">CC Avenue</label>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-dark btn-lg w-100 py-3">PROCEED TO PAYMENT</button>

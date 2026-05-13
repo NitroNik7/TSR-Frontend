@@ -163,13 +163,18 @@
     background: unset;
 }
 
+.tsrBillingToggle .active {
+    color: white;
+}
+
 .tsrToggleSlider {
     position: absolute;
     top: 4px;
     left: 4px;
     width: 75px;
     height: calc(100% - 8px);
-    background: white;
+    /* background: white; */
+    background: #3c73ec;
     border-radius: 999px;
     transition: all 0.25s ease;
 }
@@ -400,6 +405,7 @@
     border-right: 1px solid #f1f5f9;
 }
 
+.tsrPlanTableSectionHeader a,
 .tsrPlanTableFeature a {
     color: #64748b;
     text-decoration: underline;
@@ -407,11 +413,13 @@
     text-underline-offset: 5px;
 }
 
+.tsrPlanTableSectionHeader a i,
 .tsrPlanTableFeature a i {
     font-size: 13px;
     transform: rotate(-35deg)
 }
 
+.tsrPlanTableSectionHeader a:hover,
 .tsrPlanTableFeature a:hover {
     color: #0f172a;
 }

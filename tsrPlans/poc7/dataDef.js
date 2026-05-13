@@ -120,7 +120,7 @@ var planDetails = [
         planTypes: [
             {
                 period: "monthly",
-                originalPrice: 100,
+                originalPrice: null,
                 discount: null,
                 price: 100,
                 effPricePerMonth: null,
@@ -155,7 +155,7 @@ var planDetails = [
         planTypes: [
             {
                 period: "monthly",
-                originalPrice: 100,
+                originalPrice: null,
                 discount: null,
                 price: 100,
                 effPricePerMonth: null,
@@ -190,7 +190,7 @@ var planDetails = [
         planTypes: [
             {
                 period: "monthly",
-                originalPrice: 100,
+                originalPrice: null,
                 discount: null,
                 price: 100,
                 effPricePerMonth: null,
@@ -225,7 +225,7 @@ var planDetails = [
         planTypes: [
             {
                 period: "monthly",
-                originalPrice: 590,
+                originalPrice: null,
                 discount: null,
                 price: 590,
                 effPricePerMonth: null,
