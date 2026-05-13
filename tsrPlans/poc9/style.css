@@ -40,6 +40,34 @@
     flex: 1;
 }
 
+
+                                                                                    .tsrPlansBuyAlertAccordionBtn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    /* background: linear-gradient(135deg, #2f9e44 0%, #2b8a3e 100%); */
+    /* color: white !important; */
+    background: #e7f1ff;
+    border: none;
+    border-radius: 12px !important; /* Matches card radius */
+    box-shadow: 0 4px 15px rgba(47, 158, 68, 0.2);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    outline: none;
+}
+.tsrPlansBuyAlertAccordionBtn .icon-badge {
+    background: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
 @media only screen and (max-width: 768px) {
     .tsrPlanAlertPackCount div {
         font-size: 16px !important;
