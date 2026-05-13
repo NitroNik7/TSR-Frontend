@@ -2656,23 +2656,35 @@
                 -->
 
                                             <!-- STOCK AIO -->
-                                            <div class="row" id="stockAioCard">
+                                            <style>
+                                                .stockAioCard {
+                                                    border-radius: 20px;
+                                                }
+
+                                                .stockAioCard .card {
+                                                    background: linear-gradient(90deg, #09124f 0, #090979 30%, #006fbf 100%) !important;
+                                                }
+                                            </style>
+
+                                            <div class="row" class="stockAioCard">
                                                 <div class="my-3">
                                                     <div class="card shadow-sm" style="height: 100%;">
                                                         <div class="card-body">
                                                             <div class="row">
                                                                 <div
                                                                     class="col-lg-2 d-flex align-items-center justify-content-center">
+                                                                    <div class="p-3">
+                                                                        <a href="https://www.stockaio.com/US/ai/Home">
+                                                                            <img src="https://www.stockaio.com/static/img/StockAioLogo.png"
+                                                                                alt="" class="img-fluid"
+                                                                                style="max-width: 150px;">
+                                                                        </a>
+                                                                    </div>
 
-                                                                    <a href="https://www.stockaio.com/US/ai/Home">
-                                                                        <img src="https://www.stockaio.com/static/img/StockAioLogo.png"
-                                                                            alt="" class="img-fluid"
-                                                                            style="max-width: 150px;">
-                                                                    </a>
                                                                 </div>
                                                                 <div class="col-lg-6 d-flex flex-column justify-content-around my-3"
                                                                     style="text-align: center;">
-
+                                                                <div>
                                                                     <h4 class="card-title">
                                                                         Access Global Markets
                                                                     </h4>
@@ -2681,9 +2693,11 @@
                                                                         UK &amp; US
                                                                     </p>
                                                                 </div>
+                                                                </div>
                                                                 <div
                                                                     class="col-lg-4 d-flex flex-column text-center align-items-center justify-content-center">
-                                                                    <h2
+                                                                    <div>
+<h2
                                                                         style="font-size: 34px;font-weight: 600;margin-bottom: 6px;;display: block;">
                                                                         <i class="fas fa-rupee-sign"></i>
                                                                         999
@@ -2695,6 +2709,8 @@
                                                                         data-bs-target="#exampleModal"
                                                                         class="btn btn-dark w-50"
                                                                         onclick="miSupc.pa('buyAio')">Buy</button>
+                                                                    </div>
+                                                                    
                                                                 </div>
                                                             </div>
                                                             <div>
