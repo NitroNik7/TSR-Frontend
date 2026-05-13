@@ -94,7 +94,7 @@ var miSuPl = (function () { // Mi Subscription plan cards ...
 
         let status = "";
         let showAlerts = null;
-        
+
         if (jsu.isNull(curPlan)) {
             return;
         } else if (curPlan == "EXPIRED") {
@@ -175,24 +175,297 @@ var miSuPl = (function () { // Mi Subscription plan cards ...
             html += `                           </thead>`
             html += `                           <tbody>`
             html += `                               <tr>`
-            html += `                                  <td>EMAIL</td>`;
+            html += `                                  <td><i class="fas fa-envelope me-2" style="color: #2563eb;"></i>EMAIL</td>`;
             html += `                                  <td>${emailTrig}</td>`;
             html += `                                  <td>${emailBal}</td>`;
             html += `                               </tr>`
             html += `                               <tr>`
-            html += `                                  <td>SMS</td>`;
+            html += `                                  <td><i class="fas fa-sms me-2" style="color: #001542;"></i>SMS</td>`;
             html += `                                  <td>${smsTrig}</td>`;
             html += `                                  <td>${smsBal}</td>`;
             html += `                               </tr>`
             html += `                               <tr>`
-            html += `                                  <td>Whatsapp</td>`;
+            html += `                                  <td><i class="fab fa-whatsapp me-2" style="color: #2f9e44;"></i> Whatsapp</td>`;
             html += `                                  <td>${waTrig}</td>`;
             html += `                                  <td>${waBal}</td>`;
             html += `                               </tr>`
             html += `                           </tbody>`
             html += `                       </table>`
-        }
 
+            html += `
+                                        <!-- Buy Alerts code -->
+
+                                        <div class="accordion tsrAccordion" id="buyAlertAccordion">
+                                            <div class="accordion-item tsrAccordionItem">
+                                                <h2 class="accordion-header"> <button
+                                                        class="accordion-button tsrPlansBuyAlertAccordionBtn  collapsed"
+                                                        type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#buyAlertDetails"
+                                                        aria-expanded="false">
+                                                            <span
+                                                                    class="d-flex align-items-center">
+                                                                    <span class="icon-badge me-3">
+                                                                        <i class="fas fa-bell"></i>
+                                                                    </span>
+                                                                    <span class="text-start" style="font-weight: 600; ">
+                                                                        Get More Alerts
+                                                                    </span>
+                                                                </span>
+
+                                                        </button>
+                                                </h2>
+                                            </div>
+                                            <div id="buyAlertDetails"
+                                                class="accordion-collapse collapse"
+                                                data-bs-parent="#buyAlertAccordion">
+                                                <div id="showAlertOptions"
+                                                    class="container-fluid py-4 px-0">
+                                                    <div class="row gy-4 justify-content-center">
+
+                                                        <!-- Small Pack -->
+                                                        <div
+                                                            class="col-6 col-md-4 d-flex justify-content-center">
+                                                            <div class="tsrPlanCard text-center p-3 p-md-4 h-100 shadow-sm"
+                                                                style="border: 1px solid #e0e0e0; border-radius: 12px; background: #fff; min-width: 125px; width: fit-content; ">
+                                                                <h3
+                                                                    style="font-size: 20px; font-weight: 600; margin-bottom: 15px;">
+                                                                    Small Pack</h3>
+                                                                <div
+                                                                    class="tsrPlanAlertPackCount mb-3">
+                                                                    <div
+                                                                        style="font-size: 24px; font-weight: 800; color: #2c3e50; line-height: 1.2">
+
+                                                                        <span
+                                                                            class="d-none d-md-block">
+                                                                            400 Emails
+                                                                        </span>
+                                                                        <span
+                                                                            class="d-block d-md-none">
+                                                                            400 <span
+                                                                                style="font-size: 12px;">Emails</span>
+                                                                        </span>
+
+                                                                    </div>
+                                                                    <div
+                                                                        style="font-size: 18px; font-weight: 500; color: #6c757d;">
+                                                                        <span
+                                                                            class="d-none d-md-block">
+                                                                            100 SMS
+                                                                        </span>
+                                                                        <span
+                                                                            class="d-block d-md-none">
+                                                                            100 <span
+                                                                                style="font-size: 12px;">SMS</span>
+                                                                        </span>
+
+                                                                    </div>
+                                                                    <div
+                                                                        style="font-size: 16px; color: #2f9e44; font-weight: 600; margin-top: 5px;">
+                                                                        <span
+                                                                            class="d-none d-md-block">
+                                                                            200 WhatsApp
+                                                                        </span>
+                                                                        <span
+                                                                            class="d-block d-md-none">
+                                                                            200
+                                                                            <span
+                                                                                style="font-size: 12px;">Whatsapp</span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <hr
+                                                                    style="border-top: 1px dashed #dee2e6; margin: 20px 0;">
+
+                                                                <div class="price-section mb-4">
+                                                                    <div
+                                                                        style="font-size: 24px; font-weight: 700; color: #2c3e50;">
+                                                                        <i class="fas fa-rupee-sign"
+                                                                            style="font-size: 18px;"></i>
+                                                                        236
+                                                                    </div>
+                                                                    <div
+                                                                        style="font-size: 11px; color: #adb5bd; text-transform: uppercase; font-weight: 600;">
+                                                                        Total Incl. GST
+                                                                    </div>
+                                                                </div>`
+            html += `
+                                                                <button class="btn  btn-dark py-2"
+                                                                    style="border-radius: 6px; font-weight: 600;"
+                                                                    onclick="miSuPgi.ua('ALERT_PACK', '', '1X')">
+                                                                    Buy
+                                                                </button>`
+            html += `
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Medium Pack -->
+                                                        <div
+                                                            class="col-6 col-md-4 d-flex justify-content-center">
+                                                            <div class="tsrPlanCard text-center p-3 p-md-4  h-100 shadow-sm"
+                                                                style="border: 1px solid #e0e0e0; border-radius: 12px; background: #fff;  min-width: 125px; width: fit-content;">
+                                                                <h3
+                                                                    style="font-size: 20px; font-weight: 600; margin-bottom: 15px;">
+                                                                    Medium Pack
+                                                                </h3>
+
+                                                                <div
+                                                                    class="tsrPlanAlertPackCount mb-3">
+                                                                    <div
+                                                                        style="font-size: 24px; font-weight: 800; color: #2c3e50; line-height: 1.2">
+                                                                        <span
+                                                                            class="d-none d-md-block">
+                                                                            1200 Emails
+                                                                        </span>
+                                                                        <span
+                                                                            class="d-block d-md-none">
+                                                                            1200
+                                                                            <span
+                                                                                style="font-size: 12px;">Emails</span>
+
+                                                                        </span>
+                                                                    </div>
+                                                                    <div
+                                                                        style="font-size: 18px; font-weight: 500; color: #6c757d;">
+                                                                        <span
+                                                                            class="d-none d-md-block">
+                                                                            200 SMS
+                                                                        </span>
+                                                                        <span
+                                                                            class="d-block d-md-none">
+                                                                            200
+                                                                            <span
+                                                                                style="font-size: 12px;">SMS</span>
+
+                                                                        </span>
+                                                                    </div>
+                                                                    <div
+                                                                        style="font-size: 16px; color: #2f9e44; font-weight: 600; margin-top: 5px;">
+                                                                        <span
+                                                                            class="d-none d-md-block">
+                                                                            400 WhatsApp
+                                                                        </span>
+                                                                        <span
+                                                                            class="d-block d-md-none">
+                                                                            400 <span
+                                                                                style="font-size: 12px;">Whatsapp</span>
+
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <hr
+                                                                    style="border-top: 1px dashed #dee2e6; margin: 20px 0;">
+
+                                                                <div class="price-section mb-4">
+                                                                    <div
+                                                                        style="font-size: 24px; font-weight: 700; color: #2c3e50;">
+                                                                        <i class="fas fa-rupee-sign"
+                                                                            style="font-size: 18px;"></i>
+                                                                        590
+                                                                    </div>
+                                                                    <div
+                                                                        style="font-size: 11px; color: #adb5bd; text-transform: uppercase; font-weight: 600;">
+                                                                        Total Incl. GST
+                                                                    </div>
+                                                                </div>`
+            html += `
+                                                                <button class="btn  btn-dark py-2"
+                                                                    style="border-radius: 6px; font-weight: 600;"
+                                                                    onclick="miSuPgi.ua('ALERT_PACK', '', '2X')">
+                                                                    Buy
+                                                                </button>`
+
+            html += `
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Large Pack -->
+                                                        <div
+                                                            class="col-6 col-md-4 d-flex justify-content-center">
+                                                            <div class="tsrPlanCard text-center p-3 p-md-4  h-100 shadow-sm"
+                                                                style="border: 1px solid #e0e0e0; border-radius: 12px; background: #fff;  min-width: 125px; width: fit-content;">
+                                                                <h3
+                                                                    style="font-size: 20px; font-weight: 600; margin-bottom: 15px;">
+                                                                    Large Pack</h3>
+
+                                                                <div
+                                                                    class="tsrPlanAlertPackCount mb-3">
+                                                                    <div
+                                                                        style="font-size: 24px; font-weight: 800; color: #2c3e50; line-height: 1.2">
+                                                                        <span
+                                                                            class="d-none d-md-block">
+                                                                            3000 Emails
+                                                                        </span>
+                                                                        <span
+                                                                            class="d-block d-md-none">
+                                                                            3000
+                                                                            <span
+                                                                                style="font-size: 12px;">Emails</span>
+
+                                                                        </span>
+                                                                    </div>
+                                                                    <div
+                                                                        style="font-size: 18px; font-weight: 500; color: #6c757d;">
+                                                                        <span
+                                                                            class="d-none d-md-block">
+                                                                            500 SMS
+                                                                        </span>
+                                                                        <span
+                                                                            class="d-block d-md-none">
+                                                                            500
+                                                                            <span
+                                                                                style="font-size: 12px;">SMS</span>
+
+                                                                        </span>
+                                                                    </div>
+                                                                    <div
+                                                                        style="font-size: 16px; color: #2f9e44; font-weight: 600; margin-top: 5px;">
+                                                                        <span
+                                                                            class="d-none d-md-block">
+                                                                            1000 WhatsApp
+                                                                        </span>
+                                                                        <span
+                                                                            class="d-block d-md-none">
+                                                                            1000
+                                                                            <span
+                                                                                style="font-size: 12px;">Whatsapp</span>
+
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <hr
+                                                                    style="border-top: 1px dashed #dee2e6; margin: 20px 0;">
+
+                                                                <div class="price-section mb-4">
+                                                                    <div
+                                                                        style="font-size: 24px; font-weight: 700; color: #2c3e50;">
+                                                                        <i class="fas fa-rupee-sign"
+                                                                            style="font-size: 18px;"></i>
+                                                                        1180
+                                                                    </div>
+                                                                    <div
+                                                                        style="font-size: 11px; color: #adb5bd; text-transform: uppercase; font-weight: 600;">
+                                                                        Total Incl. GST
+                                                                    </div>
+                                                                </div>`
+
+            html += `                                           <button class="btn btn-dark py-2"
+                                                                    style="border-radius: 6px; font-weight: 600;"
+                                                                    onclick="miSuPgi.ua('ALERT_PACK', '', '3X')">
+                                                                    Buy
+                                                                </button>`
+            html += `
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+        `
+
+        }
         html += `            </div>`
 
         html += `       </div>`
