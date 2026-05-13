@@ -2674,237 +2674,212 @@
                 -->
 
                                            <!-- STOCK AIO Teaser -->
-                                <!-- BAr 1 -->
-<div class="row stockAioTeaser my-4">
-    <div class="col-12">
-        <div class="aio-teaser-bar d-flex align-items-center justify-content-between p-2 px-4">
-            
-            <!-- Left Side: Message -->
-            <div class="d-flex align-items-center">
-                <div class="aio-icon-mini me-3">
-                    <i class="fas fa-globe-americas"></i>
-                </div>
-                <div class="teaser-text">
-                    <span class="main-msg" style="color: #212529; font-weight: 500;">Unlock <strong>Global Markets</strong> (US, UK, CA, AU)</span>
-                    <span class="sub-msg d-none d-md-inline ms-2" style="color: #818181; font-size: 13px;">| Exclusive TSR Premium Benefit</span>
-                </div>
-            </div>
+                               
 
-            <!-- Right Side: Price & CTA -->
-            <div class="d-flex align-items-center">
-                <div class="teaser-price me-4">
-                    <span class="currency" style="color: #212529;">₹</span><span class="amount" style="color: #212529;">999</span><span class="period" style="color: #818181;">/Year</span>
-                </div>
-                <button class="btn-teaser-buy" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Claim Offer <i class="fas fa-arrow-right ms-2"></i>
-                </button>
+
+<!-- bar 5 -->
+ <!-- ================= GLOBAL MARKETS OFFER RIBBON ================= -->
+
+<div class="aioGlobalRibbon">
+
+    <div class="aioRibbonContent">
+
+        <div class="aioTextSection">
+
+            <span class="aioExclusiveTag">
+                Exclusive Offer for TSR Premium Subscribers
+            </span>
+
+            <div class="aioMainText">
+                <strong>Global Markets @ ₹999/year</strong>
+
+                <span>
+                    Access US, UK, Canada & Australia markets on StockAio.com
+                </span>
             </div>
 
         </div>
+
+        <!-- Button trigger modal -->
+<button type="button" class="aioBuyBtn" data-bs-toggle="modal" data-bs-target="#tsrPlansStockAioModal">
+  Buy Now
+</button>
     </div>
+
 </div>
 
 <style>
-.aio-teaser-bar {
-    /* Theme: Light Professional (Matches POC9 Cards) */
-    background: #ffffff;
-    border: 1px solid #aeddea; /* Subtle blue border from your palette */
-    border-radius: 50px; 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
+    /* ================= MAIN RIBBON ================= */
 
-.aio-teaser-bar:hover {
-    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.1);
-    border-color: #2563eb;
-}
+    .aioGlobalRibbon {
+        position: relative;
+        z-index: 5;
 
-/* Updated Icon Badge to match POC9 Blue */
-.aio-icon-mini {
-    background: #aeddea;
-    color: #2563eb;
-    width: 36px; height: 36px;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 50%;
-    font-size: 16px;
-}
+        width: 100%;
 
-.teaser-text strong {
-    color: #2563eb; /* Blue accent for key terms */
-    font-weight: 700;
-}
+        margin: 22px 0;
 
-.teaser-price {
-    font-weight: 700;
-}
+        background: linear-gradient(90deg, #eff6ff 0%, #f8fbff 100%);
+        border: 1px solid #bfdbfe;
 
-.teaser-price .amount {
-    font-size: 22px;
-}
-
-.teaser-price .currency, .teaser-price .period {
-    font-size: 13px;
-    font-weight: 400;
-}
-
-/* Button: Success Green to match "Buy Now" on POC9 */
-.btn-teaser-buy {
-    background: #2f9e44; /* Signature TSR Green */
-    color: white !important;
-    border: none;
-    padding: 8px 24px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 700;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.btn-teaser-buy:hover {
-    background: #2563eb; /* Switches to palette blue on hover */
-    transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
-}
-
-@media (max-width: 768px) {
-    .aio-teaser-bar {
         border-radius: 16px;
+
+        padding: 14px 18px;
+
+        box-shadow:
+            0 8px 24px rgba(37, 99, 235, 0.08),
+            0 2px 6px rgba(15, 23, 42, 0.05);
+
+        overflow: hidden;
+    }
+
+    /* Left Accent */
+    .aioGlobalRibbon::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 12%;
+        height: 76%;
+        width: 4px;
+        border-radius: 10px;
+        background: #2563eb;
+    }
+
+    /* ================= CONTENT ================= */
+
+    .aioRibbonContent {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+    }
+
+    .aioTextSection {
+        display: flex;
         flex-direction: column;
-        padding: 20px !important;
+        gap: 6px;
+        min-width: 0;
     }
-    .teaser-text { margin-bottom: 15px; }
-    .teaser-price { margin-bottom: 15px; margin-right: 0 !important; }
-    .btn-teaser-buy { width: 100%; }
-}
-</style>
 
-
-<!-- bar 3 -->
-
-<!-- bar 3 -->
-<div class="aio-premium-ribbon d-flex align-items-center justify-content-center py-2 px-3">
-    <!-- Pulse Indicator -->
-    <div class="status-indicator me-3 d-none d-sm-block">
-        <span class="status-dot"></span>
-        <span class="status-pulse"></span>
-    </div>
-
-    <!-- Main Message -->
-    <p class="m-0 ribbon-text">
-        <!-- <span class="badge-new">NEW</span> -->
-        Go Global with <strong>StockAio</strong>: US, UK, CA & AU markets now live for 
-        <span class="price-highlight">₹999/Year</span>
-    </p>
-
-    <!-- Action Link -->
-    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="ribbon-link ms-3">
-        Claim Offer <i class="fas fa-chevron-right ms-1"></i>
-    </a>
-</div>
-
-<style>
-.aio-premium-ribbon {
-    background-color: #f0f7ff; /* Extremely light version of #aeddea */
-    background-image: radial-gradient(#2563eb11 1px, transparent 1px);
-    background-size: 20px 20px; /* Subtle dot pattern for texture */
-    border-bottom: 1px solid #aeddea;
-    width: 100%;
-    position: relative;
-    z-index: 1000;
-}
-
-.ribbon-text {
-    font-size: 14px;
-    color: #212529;
-    font-weight: 500;
-}
-
-.ribbon-text strong {
-    color: #2563eb;
-}
-
-.badge-new {
-    background: #2563eb;
-    color: white;
-    font-size: 10px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-right: 10px;
-    vertical-align: middle;
-}
-
-.price-highlight {
-    color: #2563eb;
-    font-weight: 700;
-    background: #aeddea66;
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-
-.ribbon-link {
-    color: #2563eb;
-    font-weight: 700;
-    font-size: 13px;
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
-}
-
-.ribbon-link:hover {
-    color: #1d4ed8;
-    border-bottom-color: #2563eb;
-}
-
-/* Status Pulse Animation */
-.status-indicator {
-    position: relative;
-    width: 10px;
-    height: 10px;
-}
-
-.status-dot {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #2563eb;
-    border-radius: 50%;
-    z-index: 2;
-}
-
-.status-pulse {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #2563eb;
-    border-radius: 50%;
-    animation: ribbon-ripple 2s infinite;
-    z-index: 1;
-}
-
-@keyframes ribbon-ripple {
-    0% { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(3); opacity: 0; }
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .aio-premium-ribbon {
-        flex-direction: column;
-        text-align: center;
-        padding: 12px !important;
+    .aioExclusiveTag {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: #2563eb;
     }
-    .ribbon-link {
-        margin-left: 0 !important;
-        margin-top: 8px;
+
+    .aioMainText {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        color: #475569;
+        line-height: 1.4;
     }
-    .badge-new {
-        display: none; /* Keep it clean on small screens */
+
+    .aioMainText strong {
+        font-size: 16px;
+        font-weight: 700;
+        color: #0f172a;
+        white-space: nowrap;
     }
-}
+
+    .aioMainText span {
+        font-size: 13px;
+    }
+
+    /* ================= BUTTON ================= */
+
+    .aioBuyBtn {
+        flex-shrink: 0;
+
+        background: #2563eb;
+        color: #ffffff;
+
+        text-decoration: none;
+
+        padding: 10px 18px;
+        border: none;
+        border-radius: 10px;
+
+        font-size: 13px;
+        font-weight: 600;
+
+        transition: all 0.2s ease;
+
+        white-space: nowrap;
+    }
+
+    .aioBuyBtn:hover {
+        background: #1d4ed8;
+        color: #ffffff;
+
+        transform: translateY(-1px);
+    }
+
+    /* ================= TABLET ================= */
+
+    @media (max-width: 768px) {
+
+        .aioGlobalRibbon {
+            padding: 14px 16px;
+        }
+
+        .aioRibbonContent {
+            gap: 14px;
+        }
+
+        .aioMainText strong {
+            font-size: 15px;
+        }
+
+        .aioMainText span {
+            font-size: 12.5px;
+        }
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 576px) {
+
+        .aioGlobalRibbon {
+            padding: 14px;
+
+            border-radius: 14px;
+
+            margin: 18px 0;
+
+            /* Keeps ribbon visible on mobile */
+            /* position: sticky; */
+            bottom: 10px;
+            z-index: 30;
+        }
+
+        .aioRibbonContent {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .aioMainText {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .aioMainText strong {
+            font-size: 15px;
+        }
+
+        .aioBuyBtn {
+            width: 100%;
+            text-align: center;
+
+            padding: 11px 16px;
+        }
+    }
 </style>
 
 
