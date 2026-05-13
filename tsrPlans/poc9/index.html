@@ -2673,24 +2673,258 @@
                                 </div>
                 -->
 
-                                           
+                                           <!-- STOCK AIO Teaser -->
+                                <!-- BAr 1 -->
+<div class="row stockAioTeaser my-4">
+    <div class="col-12">
+        <div class="aio-teaser-bar d-flex align-items-center justify-content-between p-2 px-4">
+            
+            <!-- Left Side: Message -->
+            <div class="d-flex align-items-center">
+                <div class="aio-icon-mini me-3">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <div class="teaser-text">
+                    <span class="main-msg" style="color: #212529; font-weight: 500;">Unlock <strong>Global Markets</strong> (US, UK, CA, AU)</span>
+                    <span class="sub-msg d-none d-md-inline ms-2" style="color: #818181; font-size: 13px;">| Exclusive TSR Premium Benefit</span>
+                </div>
+            </div>
+
+            <!-- Right Side: Price & CTA -->
+            <div class="d-flex align-items-center">
+                <div class="teaser-price me-4">
+                    <span class="currency" style="color: #212529;">₹</span><span class="amount" style="color: #212529;">999</span><span class="period" style="color: #818181;">/Year</span>
+                </div>
+                <button class="btn-teaser-buy" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Claim Offer <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+.aio-teaser-bar {
+    /* Theme: Light Professional (Matches POC9 Cards) */
+    background: #ffffff;
+    border: 1px solid #aeddea; /* Subtle blue border from your palette */
+    border-radius: 50px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.aio-teaser-bar:hover {
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.1);
+    border-color: #2563eb;
+}
+
+/* Updated Icon Badge to match POC9 Blue */
+.aio-icon-mini {
+    background: #aeddea;
+    color: #2563eb;
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    font-size: 16px;
+}
+
+.teaser-text strong {
+    color: #2563eb; /* Blue accent for key terms */
+    font-weight: 700;
+}
+
+.teaser-price {
+    font-weight: 700;
+}
+
+.teaser-price .amount {
+    font-size: 22px;
+}
+
+.teaser-price .currency, .teaser-price .period {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+/* Button: Success Green to match "Buy Now" on POC9 */
+.btn-teaser-buy {
+    background: #2f9e44; /* Signature TSR Green */
+    color: white !important;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-teaser-buy:hover {
+    background: #2563eb; /* Switches to palette blue on hover */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+}
+
+@media (max-width: 768px) {
+    .aio-teaser-bar {
+        border-radius: 16px;
+        flex-direction: column;
+        padding: 20px !important;
+    }
+    .teaser-text { margin-bottom: 15px; }
+    .teaser-price { margin-bottom: 15px; margin-right: 0 !important; }
+    .btn-teaser-buy { width: 100%; }
+}
+</style>
+
+
+<!-- bar 3 -->
+
+<!-- bar 3 -->
+<div class="aio-premium-ribbon d-flex align-items-center justify-content-center py-2 px-3">
+    <!-- Pulse Indicator -->
+    <div class="status-indicator me-3 d-none d-sm-block">
+        <span class="status-dot"></span>
+        <span class="status-pulse"></span>
+    </div>
+
+    <!-- Main Message -->
+    <p class="m-0 ribbon-text">
+        <!-- <span class="badge-new">NEW</span> -->
+        Go Global with <strong>StockAio</strong>: US, UK, CA & AU markets now live for 
+        <span class="price-highlight">₹999/Year</span>
+    </p>
+
+    <!-- Action Link -->
+    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="ribbon-link ms-3">
+        Claim Offer <i class="fas fa-chevron-right ms-1"></i>
+    </a>
+</div>
+
+<style>
+.aio-premium-ribbon {
+    background-color: #f0f7ff; /* Extremely light version of #aeddea */
+    background-image: radial-gradient(#2563eb11 1px, transparent 1px);
+    background-size: 20px 20px; /* Subtle dot pattern for texture */
+    border-bottom: 1px solid #aeddea;
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+}
+
+.ribbon-text {
+    font-size: 14px;
+    color: #212529;
+    font-weight: 500;
+}
+
+.ribbon-text strong {
+    color: #2563eb;
+}
+
+.badge-new {
+    background: #2563eb;
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.price-highlight {
+    color: #2563eb;
+    font-weight: 700;
+    background: #aeddea66;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.ribbon-link {
+    color: #2563eb;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.ribbon-link:hover {
+    color: #1d4ed8;
+    border-bottom-color: #2563eb;
+}
+
+/* Status Pulse Animation */
+.status-indicator {
+    position: relative;
+    width: 10px;
+    height: 10px;
+}
+
+.status-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #2563eb;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.status-pulse {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #2563eb;
+    border-radius: 50%;
+    animation: ribbon-ripple 2s infinite;
+    z-index: 1;
+}
+
+@keyframes ribbon-ripple {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(3); opacity: 0; }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .aio-premium-ribbon {
+        flex-direction: column;
+        text-align: center;
+        padding: 12px !important;
+    }
+    .ribbon-link {
+        margin-left: 0 !important;
+        margin-top: 8px;
+    }
+    .badge-new {
+        display: none; /* Keep it clean on small screens */
+    }
+}
+</style>
+
+
 
                                         </div>
                                     </div>
                                 </section>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+                                <div class="modal fade" id="tsrPlansStockAioModal" tabindex="-1" aria-hidden="true">
                                     <div class="modal-dialog modal-lg modal-dialog-centered">
                                         <div class="modal-content"
                                             style="border-radius: 12px; border: none; background-color: white;">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" style="font-weight: 700; color: #212529;">
+                                                <h5 id="tsrPlansStockAioModalTitle" class="modal-title" style="font-weight: 700; color: #212529;">
                                                     Buy Plan - StockAio</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">
+                                            <div class="modal-body" id="tsrPlansStockAioModalBody">
                                                 <div id="showPriceDiv">
                                                     <div class="text-center mb-4">
                                                         <h2 class="mb-2"
@@ -2706,34 +2940,14 @@
                                                             <span
                                                                 style="width: 20px; height: 1px; background: #aeddea; margin-left: 10px;"></span>
                                                         </div>
-                                                        <!-- <div class="" style="color: #818181; font-size: 15px;">
-                                                            
-                                                            <span style="color:#45464c;font-size: 16px; background-image: linear-gradient(
-   -225deg,
-   #1F912A 0%,
-   #00B050 29%,
-   #88c943 67%,
-   #0a8d00 100%
-   );
-   background-size: auto auto;
-   background-clip: border-box;
-   background-size: 200% auto;
-   background-clip: text;
-   text-fill-color: transparent;
-   -webkit-background-clip: text;
-   -webkit-text-fill-color: transparent;
-   animation: textclip 2s linear infinite;
-   display: inline-block;
-   font-weight: bold;"> Offer - Exclusively for TSR Premium Users</span>
-                                                            <span></span>
-                                                        </div> -->
+                                                        
                                                     </div>
                                                 </div>
 
                                                 <div class="row g-3">
                                                     <!-- Plan Details Card -->
                                                     <div class="col-md-6">
-                                                        <div class="modal-plan-box text-center">
+                                                        <div class="tsrPlanStockAioModalPlanBox text-center">
                                                             <h3
                                                                 style="font-size: 18px; font-weight: 700; color: #2563eb; /*! margin-bottom: 15px; */">
                                                                 AIO Pro</h3>
@@ -2767,7 +2981,7 @@
             </h2>
         </div> -->
 
-                                                            <button class="btn-aio-buy w-100"
+                                                            <button class="tsrPlanStockAioModalBuyBtn w-100"
                                                                 onclick="mysp.ua('buyAio', 'AIO_PRO' , 'AIO Pro' )">
                                                                 Buy AIO Pro
                                                             </button>
@@ -3938,41 +4152,41 @@
 
                                             <style>
                                                 /* --- StockAio Base Card Styling --- */
-                                                .stockAioCard .tsrPlanCard {
+                                                .tsrPlansStockAioCard .tsrPlanCard {
                                                     border: 1px solid #aeddea;
                                                     border-radius: 12px;
                                                     background: white;
                                                     transition: transform 0.2s ease, box-shadow 0.2s ease;
                                                 }
 
-                                                .stockAioCard .tsrPlanCard:hover {
+                                                .tsrPlansStockAioCard .tsrPlanCard:hover {
                                                     transform: translateY(-3px);
                                                     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
                                                 }
 
                                                 /* --- Modal Specific Styling --- */
-                                                #exampleModal .modal-content {
+                                                #tsrPlansStockAioModal .modal-content {
                                                     border-radius: 12px;
                                                     border: none;
                                                 }
 
                                                 /* Internal Cards inside Modal to mimic TSR Plan Cards */
-                                                .modal-plan-box {
+                                                .tsrPlanStockAioModalPlanBox {
                                                     border: 2px solid #aeddea;
                                                     border-radius: 12px;
                                                     padding: 1.5rem;
                                                     height: 100%;
                                                 }
 
-                                                .modal-info-box {
+                                                /* .tsrPlanStockAioModalInfoBox {
                                                     border: 1px solid #aeddea;
                                                     border-radius: 12px;
                                                     padding: 1.5rem;
                                                     height: 100%;
-                                                }
+                                                } */
 
                                                 /* --- Typography & Elements --- */
-                                                .text-primary-blue {
+                                                /* .text-primary-blue {
                                                     color: #2563eb !important;
                                                 }
 
@@ -3982,10 +4196,10 @@
 
                                                 .text-dark-main {
                                                     color: #212529 !important;
-                                                }
+                                                } */
 
                                                 /* Custom Badge Styling */
-                                                .offer-badge {
+                                                /* .offer-badge {
                                                     background: #aeddea;
                                                     color: #2563eb;
                                                     padding: 4px 16px;
@@ -3993,10 +4207,10 @@
                                                     font-size: 12px;
                                                     font-weight: 700;
                                                     display: inline-block;
-                                                }
+                                                } */
 
                                                 /* --- Button Styling --- */
-                                                .btn-aio-buy {
+                                                .tsrPlanStockAioModalBuyBtn {
                                                     background-color: #2563eb;
                                                     color: white !important;
                                                     font-weight: 700;
@@ -4006,28 +4220,28 @@
                                                     transition: opacity 0.2s ease;
                                                 }
 
-                                                .btn-aio-buy:hover {
+                                                .tsrPlanStockAioModalBuyBtn:hover {
                                                     opacity: 0.9;
                                                 }
 
                                                 /* --- Note/Footer Section --- */
-                                                .modal-note-section {
+                                                /* .modal-note-section {
                                                     border: 1px solid #aeddea;
                                                     background: white;
                                                     border-radius: 8px;
                                                     padding: 1rem;
                                                     font-size: 12px;
                                                     color: #818181;
-                                                }
+                                                } */
 
                                                 /* --- Responsive Adjustments --- */
                                                 @media (max-width: 991px) {
-                                                    .stockAioCard .text-lg-start {
+                                                    .tsrPlansStockAioCard .text-lg-start {
                                                         text-align: center !important;
                                                     }
                                                 }
 
-                                                .modal-plan-box {
+                                                .tsrPlanStockAioModalPlanBox {
                                                     border: 2px solid #aeddea;
                                                     border-radius: 12px;
                                                     padding: 1.5rem;
@@ -4039,7 +4253,7 @@
                                                 }
 
                                                 /* Optional: Add a subtle badge effect for the discount amount */
-                                                .discount-tag {
+                                                /* .discount-tag {
                                                     font-size: 11px;
                                                     background-color: #2563eb;
                                                     color: white;
@@ -4047,11 +4261,11 @@
                                                     border-radius: 4px;
                                                     vertical-align: middle;
                                                     margin-left: 5px;
-                                                }
+                                                } */
                                             </style>
 
                                             <!-- StockAio Card -->
-                                            <div class="row stockAioCard">
+                                            <div class="row tsrPlansStockAioCard">
                                                 <div class="my-3">
                                                     <div class="text-center h-100"
                                                         style="border: 1px solid #aeddea; border-radius: 12px; background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
@@ -4087,7 +4301,7 @@
                                                                         year</span>
                                                                 </h2>
                                                                 <button data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModal" class="btn"
+                                                                    data-bs-target="#tsrPlansStockAioModal" class="btn"
                                                                     style="background-color: #2563eb; color: white; border-radius: 6px; font-weight: 600; padding: 8px 30px;"
                                                                     onclick="miSupc.pa('buyAio')">
                                                                     Buy Now
