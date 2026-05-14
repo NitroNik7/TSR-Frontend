@@ -2598,170 +2598,205 @@
                                                 </div>
                                             </div>
 
-
-                                            <!-- Referral Code box HTML -->
-                                            <div class="border mt-5 p-3" style="border-radius: 20px;">
-                                                <div class="row gy-3 align-items-center">
-                                                    <div class="d-none d-md-block col-lg-3 col-md-4 text-center"> <img
-                                                            src="https://www.topstockresearch.com/static/my/static/image/ReferralAFriend.jpg"
-                                                            alt="Referral" class="img-fluid rounded shadow-sm"
-                                                            style="max-height: 100px;"> </div>
-                                                    <div class="col-lg-5 col-md-8 px-lg-3"> <label
-                                                            class="form-label fw-bold mb-1"
-                                                            style="color:orange; font-size: 1.2rem;">Referral
-                                                            Code</label>
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="text" id="referral" class="form-control"
-                                                                placeholder="Code">
-                                                            <button class="btn btn-warning px-3"
-                                                                type="button">Apply</button>
-                                                        </div>
-                                                        <div id="referralFbDiv"></div>
-                                                        <small class="text-muted" style="font-size: 0.75rem;">Enter your
-                                                            friend's
-                                                            registered email to unlock bonus months.</small>
-                                                        <br>
-                                                        <span class="text-muted" style="font-size: 0.7rem;">
-                                                            *Applicable when your friend is an existing subscriber and
-                                                            you purchase a new annual plan.
-                                                        </span>
-                                                    </div>
-                                                    <div
-                                                        class="col-lg-4 col-md-12 mt-3 mt-lg-0 border-start-lg mt-3 mt-lg-0 ps-lg-4 text-center">
-                                                        <h6 class="fw-bold text-dark mb-2">Additional Benefits*</h6>
-                                                        <ul class="list-unstyled mb-0" style="font-size: 0.85rem;">
-                                                            <li class="mb-1"><i
-                                                                    class="fas fa-gift text-warning me-2"></i><strong>+1
-                                                                    Month</strong> on 1Y Plan</li>
-                                                            <li><i class="fas fa-gift text-warning me-2"></i><strong>+2
-                                                                    Months</strong> on 2Y Plan</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <!-- Easy to Use Platform / System Requirements -->
-
-                                            <style>
-                                                 .tsr-feature-card {
-        border: 1px solid rgba(0,0,0,0.08);
-        border-radius: 12px;
-        background: #ffffff;
-    }
-    
-    .tsr-feature-title {
-        color: #1e40af; /* Matches your professional brand blue */
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 1.25rem;
-        display: flex;
-        align-items: center;
-    }
-
-    .tsr-feature-list {
-        list-style: none;
-        padding-left: 0;
-        margin-bottom: 0;
-    }
-
-    .tsr-feature-list li {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 0.75rem;
-        font-size: 0.95rem;
-        color: #4b5563; /* Soft dark grey for better readability */
-        line-height: 1.4;
-    }
-
-    .tsr-feature-list i {
-        color: #2563eb;
-        background-color: #eff6ff; /* Soft blue circular background */
-        padding: 6px;
-        border-radius: 50%;
-        font-size: 0.75rem;
-        margin-right: 12px;
-        flex-shrink: 0;
-        margin-top: 2px;
-    }
-
-    /* Remove margin on the last item of each column for mobile */
-    @media (max-width: 767px) {
-        .tsr-feature-list li:last-child {
-            margin-bottom: 1.25rem;
-        }
-    }
-                                            </style>
-
-                                            <div class="card tsr-feature-card shadow-sm mt-4">
-    <div class="card-body p-4">
-        <h6 class="tsr-feature-title fw-bold">
-            <i class="fas fa-rocket me-2" style="background: none; padding: 0; color: inherit; font-size: 1rem;"></i>
-            Easy to Use Platform
-        </h6>
-        
-        <div class="row g-3">
-            <!-- Column 1 -->
-            <div class="col-12 col-md-4">
-                <ul class="tsr-feature-list">
-                    <li><i class="fas fa-check"></i> 100% Browser based</li>
-                    <li><i class="fas fa-check"></i> No Coding required</li>
-                </ul>
+<!-- 1. REFERRAL SECTION (Neutral/Standard) -->
+<div class="tsr-referral-box mt-5 p-3">
+    <div class="row gy-3 align-items-center">
+        <div class="d-none d-md-block col-lg-3 col-md-4 text-center"> 
+            <img src="https://www.topstockresearch.com/static/my/static/image/ReferralAFriend.jpg"
+                 alt="Referral" class="img-fluid rounded shadow-sm" style="max-height: 100px;"> 
+        </div>
+        <div class="col-lg-5 col-md-8 px-lg-3"> 
+            <label class="form-label fw-bold mb-1 referral-label">Referral Code</label>
+            <div class="input-group input-group-sm">
+                <input type="text" id="referral" class="form-control" placeholder="Code">
+                <button class="btn btn-apply px-3" type="button">Apply</button>
             </div>
-            
-            <!-- Column 2 -->
-            <div class="col-12 col-md-4">
-                <ul class="tsr-feature-list">
-                    <li><i class="fas fa-check"></i> Works on Laptop &amp; Mobile</li>
-                    <li><i class="fas fa-check"></i> No Plug-in required</li>
-                </ul>
+            <div id="referralFbDiv"></div>
+            <small class="text-muted d-block mt-1" style="font-size: 0.75rem;">Enter your friend's registered email to unlock bonus months.</small>
+            <span class="text-muted" style="font-size: 0.7rem;">
+                *Applicable when your friend is an existing subscriber and you purchase a new annual plan.
+            </span>
+        </div>
+        <div class="col-lg-4 col-md-12 mt-3 mt-lg-0 border-start-lg ps-lg-4 text-center">
+            <h6 class="fw-bold text-dark mb-2">Additional Benefits*</h6>
+            <ul class="list-unstyled mb-0" style="font-size: 0.85rem;">
+                <li class="mb-1"><i class="fas fa-gift text-warning me-2"></i><strong>+1 Month</strong> on 1Y Plan</li>
+                <li><i class="fas fa-gift text-warning me-2"></i><strong>+2 Months</strong> on 2Y Plan</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 2. STOCK AIO TEASER (High Contrast/Action) -->
+<!-- 2. PROMO RIBBON (High Contrast / Gradient) -->
+<div class="tsr-promo-ribbon">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <div>
+            <span class="promo-badge">EXCLUSIVE</span>
+            <span class="promo-title">Global Markets @ ₹999/year</span>
+            <p class="promo-subtitle mb-0">US, UK, Canada & Australia markets on StockAio.com</p>
+        </div>
+        <button class="promo-btn" onclick="miSupc.pa('buyAio')">Claim Offer</button>
+    </div>
+</div>
+
+
+<!-- 3. EASY TO USE / SYSTEM REQUIREMENTS (Muted/Informational) -->
+<div class="tinted-card">
+    <div class="row align-items-center">
+        <!-- Left Side: Label -->
+        <div class="col-md-3 border-end-md">
+            <div class="tint-label">
+                <i class="fas fa-layer-group"></i>
+                <span>Easy to Use<br>Platform</span>
             </div>
-            
-            <!-- Column 3 -->
-            <div class="col-12 col-md-4">
-                <ul class="tsr-feature-list">
-                    <li><i class="fas fa-check"></i> No software installation</li>
-                    <li><i class="fas fa-check"></i> No configuration required</li>
-                </ul>
+        </div>
+        <!-- Center: Features -->
+        <div class="col-md-6">
+            <div class="row px-3">
+                <div class="col-6 feature-pill">100% Browser Based</div>
+                <div class="col-6 feature-pill">No Coding Required</div>
+                <div class="col-6 feature-pill">Mobile & Laptop Ready</div>
+                <div class="col-6 feature-pill">Zero Installation</div>
+            </div>
+        </div>
+        <!-- Right Side: Links -->
+        <div class="col-md-3">
+            <div class="tint-links">
+                <a href="#">FAQs <i class="fas fa-chevron-right"></i></a>
+                <a href="#">Terms <i class="fas fa-chevron-right"></i></a>
             </div>
         </div>
     </div>
 </div>
 
+<style>
+    /* --- 1. Referral Box Styling --- */
+.tsr-referral-box {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 12px;
+    background-color: #ffffff;
+}
+.referral-label {
+    color: #d97706; /* Subdued Gold */
+    font-size: 1.1rem;
+}
+.btn-apply {
+    background: #334155;
+    color: white;
+    border: none;
+}
+.btn-apply:hover {
+    background: #1e293b;
+    color: white;
+}
+ 
+/* 2. Promo Ribbon Styling */
+    .tsr-promo-ribbon {
+        background: linear-gradient(90deg, #2c3e50 0%, #000000 100%);
+        margin: 20px 0;
+        padding: 15px 25px;
+        border-radius: 12px;
+        color: white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .promo-badge {
+        background: #f1c40f;
+        color: #000;
+        font-size: 0.65rem;
+        font-weight: 800;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+    .promo-title {
+        font-weight: 700;
+        font-size: 1.1rem;
+        vertical-align: middle;
+    }
+    .promo-subtitle {
+        font-size: 0.85rem;
+        color: #bdc3c7;
+        margin-top: 4px;
+    }
+    .promo-btn {
+        background: white;
+        border: none;
+        color: black;
+        font-weight: 700;
+        padding: 8px 20px;
+        border-radius: 6px;
+        transition: 0.3s;
+    }
+    .promo-btn:hover { background: #f1c40f; }
 
 
+/* --- 3. Tinted Card (The Muted Information) --- */
+.tinted-card {
+    background-color: #f1f5f9; /* Soft Slate */
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+.tint-label {
+    display: flex;
+    flex-direction: column;
+    color: #475569;
+}
+.tint-label i {
+    font-size: 1.2rem;
+    color: #64748b;
+    margin-bottom: 5px;
+}
+.tint-label span {
+    font-weight: 700;
+    font-size: 0.85rem;
+    line-height: 1.2;
+}
+.feature-pill {
+    font-size: 0.8rem;
+    color: #475569;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+.feature-pill::before {
+    content: "✓";
+    margin-right: 8px;
+    color: #10b981;
+    font-weight: bold;
+}
+.tint-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.tint-links a {
+    font-size: 0.75rem;
+    text-decoration: none;
+    color: #475569;
+    font-weight: 600;
+    background: transparent;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    text-align: center;
+    transition: all 0.2s;
+}
+.tint-links a:hover {
+    background: white;
+    border-color: #2563eb;
+    color: #2563eb;
+}
 
-
-                                            <!-- STOCK AIO Teaser -->
-                                            <div class="tsrPlansStockAioRibbon shadow">
-                                                <div class="tsrPlansStockAioRibbonContent">
-
-                                                    <div class="tsrPlansStockAioTextSection">
-                                                        <span class="tsrPlansStockAioExclusiveTag">
-                                                            Exclusive Offer for TSR Premium Subscribers
-                                                        </span>
-
-                                                        <div class="tsrPlansStockAioMainText">
-                                                            <strong>
-                                                                Global Markets @ ₹999/year
-                                                            </strong>
-
-                                                            <span>
-                                                                Access US, UK, Canada & Australia markets on
-                                                                StockAio.com
-                                                            </span>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Button trigger modal -->
-                                                    <button type="button" class="tsrPlansStockAioBuyBtn"
-                                                        onclick="miSupc.pa('buyAio')">
-                                                        Buy Now
-                                                    </button>
-
-                                                </div>
-                                            </div>
+/* Responsive Border Helper */
+@media (min-width: 768px) {
+    .border-end-md { border-right: 1px solid #cbd5e1; }
+}
+</style>
                                             <!-- <div class="card shadow-sm mt-3">
                                         <div class="card-body">
 
