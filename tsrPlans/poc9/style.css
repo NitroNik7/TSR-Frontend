@@ -72,9 +72,9 @@
 }
 
 .tsrPlanAlertPackCount div {
-        font-size: 16px !important;
-        text-wrap: nowrap;
-    }
+    font-size: 16px !important;
+    text-wrap: nowrap;
+}
 
 @media only screen and (max-width: 768px) {
     .tsrPlanAlertPackCount div {
@@ -381,6 +381,152 @@
     }
 }
 
+
+/* ================= MAIN RIBBON ================= */
+.tsrPlansStockAioRibbon {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    margin: 22px 0;
+    background: linear-gradient(90deg, #eff6ff 0%, #f8fbff 100%);
+    border: 1px solid #bfdbfe;
+    border-radius: 16px;
+    padding: 14px 18px;
+    box-shadow:
+        0 8px 24px rgba(37, 99, 235, 0.08),
+        0 2px 6px rgba(15, 23, 42, 0.05);
+    overflow: hidden;
+}
+
+/* Left Accent */
+.tsrPlansStockAioRibbon::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12%;
+    width: 4px;
+    height: 76%;
+    border-radius: 10px;
+    background: #2563eb;
+}
+
+/* ================= CONTENT ================= */
+.tsrPlansStockAioRibbonContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.tsrPlansStockAioTextSection {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.tsrPlansStockAioExclusiveTag {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #2563eb;
+}
+
+.tsrPlansStockAioMainText {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: #475569;
+    line-height: 1.4;
+}
+
+.tsrPlansStockAioMainText strong {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    white-space: nowrap;
+}
+
+.tsrPlansStockAioMainText span {
+    font-size: 13px;
+}
+
+/* ================= BUTTON ================= */
+.tsrPlansStockAioBuyBtn {
+    flex-shrink: 0;
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.tsrPlansStockAioBuyBtn:hover {
+    background: #1d4ed8;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+/* ================= TABLET ================= */
+@media (max-width: 768px) {
+
+    .tsrPlansStockAioRibbon {
+        padding: 14px 16px;
+    }
+
+    .tsrPlansStockAioRibbonContent {
+        gap: 14px;
+    }
+
+    .tsrPlansStockAioMainText strong {
+        font-size: 15px;
+    }
+
+    .tsrPlansStockAioMainText span {
+        font-size: 12.5px;
+    }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 576px) {
+
+    .tsrPlansStockAioRibbon {
+        margin: 40px 0 0 0;
+        padding: 14px;
+        border-radius: 14px;
+        bottom: 10px;
+        z-index: 30;
+    }
+
+    .tsrPlansStockAioRibbonContent {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .tsrPlansStockAioMainText {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .tsrPlansStockAioMainText strong {
+        font-size: 15px;
+    }
+
+    .tsrPlansStockAioBuyBtn {
+        width: 100%;
+        text-align: center;
+        padding: 11px 16px;
+    }
+}
 
 
 /* ---------------------- PLAN COMPARISON SECTION ---------------------------- */

@@ -2474,7 +2474,8 @@
                                                     </div>
                                                 </div>
 
-                                                <p style="font-size: 14px; color: grey;text-align: center; ">Prices are Incl. of all taxes</p>
+                                                <p style="font-size: 14px; color: grey;text-align: center; ">Prices are
+                                                    Incl. of all taxes</p>
 
                                                 <div class="tsrPlanCards" id="tsrPlanCards">
                                                     <div class="tsrPlanCard  " data-plan-id="EOD_COMBO">
@@ -2673,345 +2674,42 @@
                                 </div>
                 -->
 
-                                           <!-- STOCK AIO Teaser -->
-                               
+                                            <!-- STOCK AIO Teaser -->
+                                            <div class="tsrPlansStockAioRibbon">
+                                                <div class="tsrPlansStockAioRibbonContent">
 
+                                                    <div class="tsrPlansStockAioTextSection">
+                                                        <span class="tsrPlansStockAioExclusiveTag">
+                                                            Exclusive Offer for TSR Premium Subscribers
+                                                        </span>
 
-<!-- bar 5 -->
- <!-- ================= GLOBAL MARKETS OFFER RIBBON ================= -->
+                                                        <div class="tsrPlansStockAioMainText">
+                                                            <strong>
+                                                                Global Markets @ ₹999/year
+                                                            </strong>
 
-<div class="aioGlobalRibbon">
+                                                            <span>
+                                                                Access US, UK, Canada & Australia markets on
+                                                                StockAio.com
+                                                            </span>
+                                                        </div>
+                                                    </div>
 
-    <div class="aioRibbonContent">
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="tsrPlansStockAioBuyBtn"
+                                                        onclick="miSupc.pa('buyAio')">
+                                                        Buy Now
+                                                    </button>
 
-        <div class="aioTextSection">
-
-            <span class="aioExclusiveTag">
-                Exclusive Offer for TSR Premium Subscribers
-            </span>
-
-            <div class="aioMainText">
-                <strong>Global Markets @ ₹999/year</strong>
-
-                <span>
-                    Access US, UK, Canada & Australia markets on StockAio.com
-                </span>
-            </div>
-
-        </div>
-
-        <!-- Button trigger modal -->
-<button type="button" class="aioBuyBtn" data-bs-toggle="modal" data-bs-target="#tsrPlansStockAioModal">
-  Buy Now
-</button>
-    </div>
-
-</div>
-
-<style>
-    /* ================= MAIN RIBBON ================= */
-
-    .aioGlobalRibbon {
-        position: relative;
-        z-index: 5;
-
-        width: 100%;
-
-        margin: 22px 0;
-
-        background: linear-gradient(90deg, #eff6ff 0%, #f8fbff 100%);
-        border: 1px solid #bfdbfe;
-
-        border-radius: 16px;
-
-        padding: 14px 18px;
-
-        box-shadow:
-            0 8px 24px rgba(37, 99, 235, 0.08),
-            0 2px 6px rgba(15, 23, 42, 0.05);
-
-        overflow: hidden;
-    }
-
-    /* Left Accent */
-    .aioGlobalRibbon::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 12%;
-        height: 76%;
-        width: 4px;
-        border-radius: 10px;
-        background: #2563eb;
-    }
-
-    /* ================= CONTENT ================= */
-
-    .aioRibbonContent {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 18px;
-    }
-
-    .aioTextSection {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        min-width: 0;
-    }
-
-    .aioExclusiveTag {
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.6px;
-        color: #2563eb;
-    }
-
-    .aioMainText {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 10px;
-
-        color: #475569;
-        line-height: 1.4;
-    }
-
-    .aioMainText strong {
-        font-size: 16px;
-        font-weight: 700;
-        color: #0f172a;
-        white-space: nowrap;
-    }
-
-    .aioMainText span {
-        font-size: 13px;
-    }
-
-    /* ================= BUTTON ================= */
-
-    .aioBuyBtn {
-        flex-shrink: 0;
-
-        background: #2563eb;
-        color: #ffffff;
-
-        text-decoration: none;
-
-        padding: 10px 18px;
-        border: none;
-        border-radius: 10px;
-
-        font-size: 13px;
-        font-weight: 600;
-
-        transition: all 0.2s ease;
-
-        white-space: nowrap;
-    }
-
-    .aioBuyBtn:hover {
-        background: #1d4ed8;
-        color: #ffffff;
-
-        transform: translateY(-1px);
-    }
-
-    /* ================= TABLET ================= */
-
-    @media (max-width: 768px) {
-
-        .aioGlobalRibbon {
-            padding: 14px 16px;
-        }
-
-        .aioRibbonContent {
-            gap: 14px;
-        }
-
-        .aioMainText strong {
-            font-size: 15px;
-        }
-
-        .aioMainText span {
-            font-size: 12.5px;
-        }
-    }
-
-    /* ================= MOBILE ================= */
-
-    @media (max-width: 576px) {
-
-        .aioGlobalRibbon {
-            padding: 14px;
-
-            border-radius: 14px;
-
-            margin: 18px 0;
-
-            /* Keeps ribbon visible on mobile */
-            /* position: sticky; */
-            bottom: 10px;
-            z-index: 30;
-        }
-
-        .aioRibbonContent {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .aioMainText {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 4px;
-        }
-
-        .aioMainText strong {
-            font-size: 15px;
-        }
-
-        .aioBuyBtn {
-            width: 100%;
-            text-align: center;
-
-            padding: 11px 16px;
-        }
-    }
-</style>
-
+                                                </div>
+                                            </div>
 
 
                                         </div>
                                     </div>
                                 </section>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="tsrPlansStockAioModal" tabindex="-1" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg modal-dialog-centered">
-                                        <div class="modal-content"
-                                            style="border-radius: 12px; border: none; background-color: white;">
-                                            <div class="modal-header">
-                                                <h5 id="tsrPlansStockAioModalTitle" class="modal-title" style="font-weight: 700; color: #212529;">
-                                                    Buy Plan - StockAio</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body" id="tsrPlansStockAioModalBody">
-                                                <div id="showPriceDiv">
-                                                    <div class="text-center mb-4">
-                                                        <h2 class="mb-2"
-                                                            style="font-weight: 700; color: black; margin-bottom: 2px;">
-                                                            Go Local to Global</h2>
-                                                        <div class="d-flex align-items-center justify-content-center"
-                                                            style="color: #818181; font-size: 15px;">
-                                                            <span
-                                                                style="width: 20px; height: 1px; background: #aeddea; margin-right: 10px;"></span>
-                                                            <span style="font-weight: 500;">An exclusive offer for <span
-                                                                    style="color: #2563eb; font-weight: 600;">TSR
-                                                                    Premium</span> users</span>
-                                                            <span
-                                                                style="width: 20px; height: 1px; background: #aeddea; margin-left: 10px;"></span>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
 
-                                                <div class="row g-3">
-                                                    <!-- Plan Details Card -->
-                                                    <div class="col-md-6">
-                                                        <div class="tsrPlanStockAioModalPlanBox text-center">
-                                                            <h3
-                                                                style="font-size: 18px; font-weight: 700; color: #2563eb; /*! margin-bottom: 15px; */">
-                                                                AIO Pro</h3>
-
-                                                            <div class="pricing-container" style="margin-bottom: 15px;">
-                                                                <!-- Strikethrough pricing (Smaller and Grey) -->
-                                                                <div
-                                                                    style="color: #818181; font-size: 15px; margin-bottom: 5px;">
-                                                                    <span
-                                                                        style="text-decoration: line-through;">$25</span>
-                                                                    <span style="margin: 0 5px; opacity: 0.5;">|</span>
-                                                                    <span
-                                                                        style="text-decoration: line-through;">₹2,500</span>
-                                                                </div>
-
-                                                                <!-- Main Offer Price (Large and Bold Black) -->
-                                                                <h2
-                                                                    style="font-size: 34px; font-weight: 700; color: black; margin: 0;">
-                                                                    <i class="fas fa-rupee-sign"></i> 999
-                                                                    <small
-                                                                        style="font-size: 14px; color: #818181; font-weight: 400;">/
-                                                                        year</small>
-                                                                </h2>
-                                                            </div>
-
-                                                            <!-- Actual Offer Price -->
-                                                            <!-- <div style="margin-bottom: 5px;">
-            <h2 style="font-size: 34px; font-weight: 700; color: black; margin: 0;">
-                <i class="fas fa-rupee-sign"></i> 999 
-                <small style="font-size: 14px; color: #818181; font-weight: 400;">/ year</small>
-            </h2>
-        </div> -->
-
-                                                            <button class="tsrPlanStockAioModalBuyBtn w-100"
-                                                                onclick="mysp.ua('buyAio', 'AIO_PRO' , 'AIO Pro' )">
-                                                                Buy AIO Pro
-                                                            </button>
-
-                                                            <p
-                                                                style="font-size: 11px; color: #818181; margin-top: 12px;margin: 10px 0 0 0;">
-                                                                <i class="fas fa-info-circle"></i> All taxes included
-                                                            </p>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- Markets Card -->
-                                                    <div class="col-md-6">
-                                                        <div class="p-4 h-100"
-                                                            style="border: 1px solid #aeddea; border-radius: 12px; background: white;">
-                                                            <h3 class="text-center"
-                                                                style="font-size: 18px; font-weight: 700; color: #212529; margin-bottom: 15px;">
-                                                                Markets Covered</h3>
-                                                            <ul class="list-unstyled mb-0"
-                                                                style="font-size: 14px; color: #212529;">
-                                                                <li class="mb-2"><i class="fas fa-check-circle me-2"
-                                                                        style="color: #2563eb;"></i> USA (NYSE &
-                                                                    NASDAQ)</li>
-                                                                <li class="mb-2"><i class="fas fa-check-circle me-2"
-                                                                        style="color: #2563eb;"></i> UK (LSE)</li>
-                                                                <li class="mb-2"><i class="fas fa-check-circle me-2"
-                                                                        style="color: #2563eb;"></i> Australia (ASX)
-                                                                </li>
-                                                                <li><i class="fas fa-check-circle me-2"
-                                                                        style="color: #2563eb;"></i> Canada (TSX)
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Footer Notes -->
-                                                <div class="mt-4 p-3"
-                                                    style="border: 1px solid #aeddea; background: white; border-radius: 8px; font-size: 14px; color: #818181;">
-                                                    <strong style="color: #212529;">Note:</strong>
-                                                    <ul class="mt-2 mb-0 ps-3">
-                                                        <li>New Stock AIO Account created automatically if not
-                                                            registered.</li>
-                                                        <li>StockAIO is managed separately from TSR
-                                                        </li>
-                                                        <li>
-                                                            Password of Stock AIO is maintained independently.
-                                                        </li>
-                                                        <li>Stock AIO currently serves EOD US/UK prices.</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 
 
@@ -4122,180 +3820,122 @@
                                 </div>
                             </section>
 
+                            <!-- link to Overview Page -->
+                            <style>
+                                .tsrPlanOverviewSection {
+                                    text-align: center;
+                                }
+
+                                .tsrPlanOverviewSection div {
+                                    padding: 10px 10px 10px 10px;
+                                }
+
+                                .tsrPlanOverviewSection a {
+                                    font-size: 18px;
+                                    text-wrap: nowrap;
+                                    text-decoration: none;
+                                    color: navy;
+                                }
+
+                                .tsrPlanOverviewSection a:hover {
+                                    text-decoration: underline;
+                                }
+
+                                /* @media only screen and (max-width: 576px)  {
+                                    .tsrPlanOverviewSection a {
+                                        font-size: 16px;
+                                    }
+                                } */
+                            </style>
+
+                            <div class="container tsrPlanOverviewSection card shadow p-3">
+                                <!-- <hr> -->
+                                <div class="tsrPlanTableFeature">
+                                    <a target="_blank" href="">
+                                        View Detailed Plan Comparison <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <hr style="margin: 5px;">
+                                <div class="d-flex flex-column flex-sm-row" style="padding: 0;">
+                                    <div class="tsrPlanTableFeature">
+                                        <a target="_blank" href="">
+                                            <i class="fas fa-question-circle" style="transform: rotate(0);"></i> FAQs <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="tsrPlanTableFeature">
+                                        <a target="_blank" href="">
+                                            <i class="fas fa-info-circle" style="transform: rotate(0);"></i> Imp. Terms Explained <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="tsrPlanTableFeature">
+                                        <a target="_blank" href="">
+                                            <i class="fas fa-laptop" style="transform: rotate(0);"></i> System Requirement <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
                             <div class="container">
-                                 <!-- STOCK AIO -->
 
-                                            <style>
-                                                /* --- StockAio Base Card Styling --- */
-                                                .tsrPlansStockAioCard .tsrPlanCard {
-                                                    border: 1px solid #aeddea;
-                                                    border-radius: 12px;
-                                                    background: white;
-                                                    transition: transform 0.2s ease, box-shadow 0.2s ease;
-                                                }
+                                <!-- StockAio Bottom Card -->
+                                <div class="row">
+                                    <div class="my-3">
+                                        <div class="text-center h-100"
+                                            style="border: 1px solid #aeddea; border-radius: 12px; background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                                            <div class="row align-items-center p-3">
+                                                <!-- Logo -->
+                                                <div class="col-lg-3">
+                                                    <a href="https://www.stockaio.com/US/ai/Home" target="_blank">
+                                                        <img src="https://www.stockaio.com/static/img/StockAioLogo.png"
+                                                            alt="StockAio" class="img-fluid" style="max-width: 130px;">
+                                                    </a>
+                                                </div>
 
-                                                .tsrPlansStockAioCard .tsrPlanCard:hover {
-                                                    transform: translateY(-3px);
-                                                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-                                                }
+                                                <!-- Description -->
+                                                <div class="col-lg-5 my-3 text-lg-start">
+                                                    <h3
+                                                        style="font-size: 20px; font-weight: 600; color: #212529; margin-bottom: 5px;">
+                                                        Access Global Markets</h3>
+                                                    <p style="font-size: 14px; color: #818181; margin: 0;">
+                                                        Analytics &amp; Screeners for AU, CA, UK &amp; US
+                                                    </p>
 
-                                                /* --- Modal Specific Styling --- */
-                                                #tsrPlansStockAioModal .modal-content {
-                                                    border-radius: 12px;
-                                                    border: none;
-                                                }
+                                                </div>
 
-                                                /* Internal Cards inside Modal to mimic TSR Plan Cards */
-                                                .tsrPlanStockAioModalPlanBox {
-                                                    border: 2px solid #aeddea;
-                                                    border-radius: 12px;
-                                                    padding: 1.5rem;
-                                                    height: 100%;
-                                                }
-
-                                                /* .tsrPlanStockAioModalInfoBox {
-                                                    border: 1px solid #aeddea;
-                                                    border-radius: 12px;
-                                                    padding: 1.5rem;
-                                                    height: 100%;
-                                                } */
-
-                                                /* --- Typography & Elements --- */
-                                                /* .text-primary-blue {
-                                                    color: #2563eb !important;
-                                                }
-
-                                                .text-secondary-gray {
-                                                    color: #818181 !important;
-                                                }
-
-                                                .text-dark-main {
-                                                    color: #212529 !important;
-                                                } */
-
-                                                /* Custom Badge Styling */
-                                                /* .offer-badge {
-                                                    background: #aeddea;
-                                                    color: #2563eb;
-                                                    padding: 4px 16px;
-                                                    border-radius: 999px;
-                                                    font-size: 12px;
-                                                    font-weight: 700;
-                                                    display: inline-block;
-                                                } */
-
-                                                /* --- Button Styling --- */
-                                                .tsrPlanStockAioModalBuyBtn {
-                                                    background-color: #2563eb;
-                                                    color: white !important;
-                                                    font-weight: 700;
-                                                    border: none;
-                                                    border-radius: 6px;
-                                                    padding: 10px 20px;
-                                                    transition: opacity 0.2s ease;
-                                                }
-
-                                                .tsrPlanStockAioModalBuyBtn:hover {
-                                                    opacity: 0.9;
-                                                }
-
-                                                /* --- Note/Footer Section --- */
-                                                /* .modal-note-section {
-                                                    border: 1px solid #aeddea;
-                                                    background: white;
-                                                    border-radius: 8px;
-                                                    padding: 1rem;
-                                                    font-size: 12px;
-                                                    color: #818181;
-                                                } */
-
-                                                /* --- Responsive Adjustments --- */
-                                                @media (max-width: 991px) {
-                                                    .tsrPlansStockAioCard .text-lg-start {
-                                                        text-align: center !important;
-                                                    }
-                                                }
-
-                                                .tsrPlanStockAioModalPlanBox {
-                                                    border: 2px solid #aeddea;
-                                                    border-radius: 12px;
-                                                    padding: 1.5rem;
-                                                    height: 100%;
-                                                    display: flex;
-                                                    flex-direction: column;
-                                                    justify-content: center;
-                                                    background-color: white;
-                                                }
-
-                                                /* Optional: Add a subtle badge effect for the discount amount */
-                                                /* .discount-tag {
-                                                    font-size: 11px;
-                                                    background-color: #2563eb;
-                                                    color: white;
-                                                    padding: 2px 8px;
-                                                    border-radius: 4px;
-                                                    vertical-align: middle;
-                                                    margin-left: 5px;
-                                                } */
-                                            </style>
-
-                                            <!-- StockAio Card -->
-                                            <div class="row tsrPlansStockAioCard">
-                                                <div class="my-3">
-                                                    <div class="text-center h-100"
-                                                        style="border: 1px solid #aeddea; border-radius: 12px; background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
-                                                        <div class="row align-items-center p-3">
-                                                            <!-- Logo -->
-                                                            <div class="col-lg-3">
-                                                                <a href="https://www.stockaio.com/US/ai/Home"
-                                                                    target="_blank">
-                                                                    <img src="https://www.stockaio.com/static/img/StockAioLogo.png"
-                                                                        alt="StockAio" class="img-fluid"
-                                                                        style="max-width: 130px;">
-                                                                </a>
-                                                            </div>
-
-                                                            <!-- Description -->
-                                                            <div class="col-lg-5 my-3 text-lg-start">
-                                                                <h3
-                                                                    style="font-size: 20px; font-weight: 600; color: #212529; margin-bottom: 5px;">
-                                                                    Access Global Markets</h3>
-                                                                <p style="font-size: 14px; color: #818181; margin: 0;">
-                                                                    Analytics &amp; Screeners for AU, CA, UK &amp; US
-                                                                </p>
-
-                                                            </div>
-
-                                                            <!-- Price & CTA -->
-                                                            <div class="col-lg-4">
-                                                                <h2
-                                                                    style="font-size: 32px; font-weight: 600; color: black; margin-bottom: 8px;">
-                                                                    <i class="fas fa-rupee-sign"></i> 999*
-                                                                    <span
-                                                                        style="font-size: 14px; color: #818181; font-weight: 400;">/
-                                                                        year</span>
-                                                                </h2>
-                                                                <button data-bs-toggle="modal"
-                                                                    data-bs-target="#tsrPlansStockAioModal" class="btn"
-                                                                    style="background-color: #2563eb; color: white; border-radius: 6px; font-weight: 600; padding: 8px 30px;"
-                                                                    onclick="miSupc.pa('buyAio')">
-                                                                    Buy Now
-                                                                </button>
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Subtle Disclaimer Footer -->
-                                                        <div class="border-top p-2"
-                                                            style="border-top: 1px solid #aeddea !important;">
-                                                            <p
-                                                                style="margin: 0; font-size: 12px; color: #818181; font-style: italic;">
-                                                                * Exclusive Offer for TSR Premium Users only
-                                                            </p>
-                                                        </div>
-                                                    </div>
+                                                <!-- Price & CTA -->
+                                                <div class="col-lg-4">
+                                                    <h2
+                                                        style="font-size: 32px; font-weight: 600; color: black; margin-bottom: 8px;">
+                                                        <i class="fas fa-rupee-sign"></i> 999*
+                                                        <span
+                                                            style="font-size: 14px; color: #818181; font-weight: 400;">/
+                                                            year</span>
+                                                    </h2>
+                                                    <button class="btn"
+                                                        style="background-color: #2563eb; color: white; border-radius: 6px; font-weight: 600; padding: 8px 30px;"
+                                                        onclick="miSupc.pa('buyAio')">
+                                                        Buy Now
+                                                    </button>
                                                 </div>
                                             </div>
+
+                                            <!-- Subtle Disclaimer Footer -->
+                                            <div class="border-top p-2"
+                                                style="border-top: 1px solid #aeddea !important;">
+                                                <p
+                                                    style="margin: 0; font-size: 12px; color: #818181; font-style: italic;">
+                                                    * Exclusive Offer for TSR Premium Users only
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
+                            <!-- STOCK AIO TEASER -->
+
+
 
                         </div>
 

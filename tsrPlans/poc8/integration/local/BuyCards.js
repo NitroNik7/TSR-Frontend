@@ -225,7 +225,113 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
     function buyStockAioPlanModal() {
         let html = "";
-        html += ``;
+        html += `
+            
+                                        <div>
+                                                <div class="text-center mb-4">
+                                                        <h2 class="mb-2"
+                                                                style="font-weight: 700; color: black; margin-bottom: 2px;">
+                                                                Go Local to Global</h2>
+                                                        <div class="d-flex align-items-center justify-content-center"
+                                                                style="color: #818181; font-size: 15px;">
+                                                                <span
+                                                                        style="width: 20px; height: 1px; background: #aeddea; margin-right: 10px;"></span>
+                                                                <span style="font-weight: 500;">An exclusive offer for <span
+                                                                                style="color: #2563eb; font-weight: 600;">TSR
+                                                                                Premium</span> users</span>
+                                                                <span
+                                                                        style="width: 20px; height: 1px; background: #aeddea; margin-left: 10px;"></span>
+                                                        </div>
+
+                                                </div>
+                                        </div>
+
+                                        <div class="row g-3">
+                                                <!-- Plan Details Card -->
+                                                <div class="col-md-6">
+                                                        <div class="tsrPlanStockAioModalPlanBox text-center">
+                                                                <h3
+                                                                        style="font-size: 18px; font-weight: 700; color: #2563eb; /*! margin-bottom: 15px; */">
+                                                                        AIO Pro</h3>
+
+                                                                <div class="pricing-container" style="margin-bottom: 15px;">
+                                                                        <!-- Strikethrough pricing (Smaller and Grey) -->
+                                                                        <div
+                                                                                style="color: #818181; font-size: 15px; margin-bottom: 5px;">
+                                                                                <span
+                                                                                        style="text-decoration: line-through;">$25</span>
+                                                                                <span
+                                                                                        style="margin: 0 5px; opacity: 0.5;">|</span>
+                                                                                <span
+                                                                                        style="text-decoration: line-through;">₹2,500</span>
+                                                                        </div>
+
+                                                                        <!-- Main Offer Price (Large and Bold Black) -->
+                                                                        <h2
+                                                                                style="font-size: 34px; font-weight: 700; color: black; margin: 0;">
+                                                                                <i class="fas fa-rupee-sign"></i> 999
+                                                                                <small
+                                                                                        style="font-size: 14px; color: #818181; font-weight: 400;">/
+                                                                                        year</small>
+                                                                        </h2>
+                                                                </div>`
+
+        html += `                                               <button class="tsrPlanStockAioModalBuyBtn w-100"
+                                                                        onclick="miSuPgi.ua('BUY_AIO', 'AIO_PRO' , 'AIO Pro' )">
+                                                                        Buy AIO Pro
+                                                                </button>`
+
+        html += `                                               <p
+                                                                        style="font-size: 11px; color: #818181; margin-top: 12px;margin: 10px 0 0 0;">
+                                                                        <i class="fas fa-info-circle"></i> All taxes included
+                                                                </p>
+                                                        </div>
+                                                </div>
+
+                                                <!-- Markets Card -->
+                                                <div class="col-md-6">
+                                                        <div class="p-4 h-100"
+                                                                style="border: 1px solid #aeddea; border-radius: 12px; background: white;">
+                                                                <h3 class="text-center"
+                                                                        style="font-size: 18px; font-weight: 700; color: #212529; margin-bottom: 15px;">
+                                                                        Markets Covered</h3>
+                                                                <ul class="list-unstyled mb-0"
+                                                                        style="font-size: 14px; color: #212529;">
+                                                                        <li class="mb-2"><i class="fas fa-check-circle me-2"
+                                                                                        style="color: #2563eb;"></i> USA (NYSE &
+                                                                                NASDAQ)</li>
+                                                                        <li class="mb-2"><i class="fas fa-check-circle me-2"
+                                                                                        style="color: #2563eb;"></i> UK (LSE)
+                                                                        </li>
+                                                                        <li class="mb-2"><i class="fas fa-check-circle me-2"
+                                                                                        style="color: #2563eb;"></i> Australia
+                                                                                (ASX)
+                                                                        </li>
+                                                                        <li><i class="fas fa-check-circle me-2"
+                                                                                        style="color: #2563eb;"></i> Canada
+                                                                                (TSX)
+                                                                        </li>
+                                                                </ul>
+                                                        </div>
+                                                </div>
+                                        </div>
+
+                                        <!-- Footer Notes -->
+                                        <div class="mt-4 p-3"
+                                                style="border: 1px solid #aeddea; background: white; border-radius: 8px; font-size: 14px; color: #818181;">
+                                                <strong style="color: #212529;">Note:</strong>
+                                                <ul class="mt-2 mb-0 ps-3">
+                                                        <li>New Stock AIO Account created automatically if not
+                                                                registered.</li>
+                                                        <li>StockAIO is managed separately from TSR
+                                                        </li>
+                                                        <li>
+                                                                Password of Stock AIO is maintained independently.
+                                                        </li>
+                                                        <li>Stock AIO currently serves EOD US/UK prices.</li>
+                                                </ul>
+                                        </div>
+        `;
         return html;
     }
 
