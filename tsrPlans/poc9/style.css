@@ -400,7 +400,7 @@
 }
 
 /* Left Accent */
-.tsrPlansStockAioRibbon::before {
+/* .tsrPlansStockAioRibbon::before {
     content: "";
     position: absolute;
     left: 0;
@@ -409,7 +409,7 @@
     height: 76%;
     border-radius: 10px;
     background: #2563eb;
-}
+} */
 
 /* ================= CONTENT ================= */
 .tsrPlansStockAioRibbonContent {
