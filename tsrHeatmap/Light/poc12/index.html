@@ -1598,6 +1598,106 @@
     </p>
 </div>
 
+
+<style>
+    /* ==========================================
+   PRODUCTION THEME STATE ENGINE OVERRIDES
+   ========================================== */
+
+/* --- DARK THEME OVERRIDE MATRIX --- */
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme {
+    background-color: #000a20 !important;
+    transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 20px;
+    border-radius: 16px;
+}
+
+/* 1. Base Container Adjustments inside Dark Theme Workspace */
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme #tsrHmCtrlMenu,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme #hmArDiv,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme #tsrHmStkBasket,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme #tsrHmCtrlDiv1 {
+    background-color: #031133 !important; /* Slightly lighter midnight blue for container contrast depth */
+    border-color: #0d2354 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 2. Text/Label Global Color Swaps */
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmControlLabel,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .theme-title,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .ctrl-label,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmDropbtnIdx span,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmTabBtnIdx span {
+    color: #94a3b8 !important; /* Muted silver-blue text for legibility */
+}
+
+/* 3. Form Input Elements & Select Dropdowns */
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmFormSelect,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmDropbtnIdx,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmTabBtnIdx {
+    background-color: #05163d !important;
+    border-color: #0d2354 !important;
+    color: #e2e8f0 !important;
+}
+
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmFormSelect:hover,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmDropbtnIdx:hover,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmTabBtnIdx:hover {
+    background-color: #0a225c !important;
+    border-color: #1a3a7a !important;
+    color: #ffffff !important;
+}
+
+/* 4. Segmented Control Toggle Buttons Backgrounds */
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmToggleGroup,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .theme-toggle-group {
+    background-color: #01081a !important;
+}
+
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmBtnLabel,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .theme-btn-label {
+    color: #64748b !important;
+}
+
+/* Selected active pills/segments inside dark mode */
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmToggleGroup input[type="radio"]:checked + .tsrHmBtnLabel,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .theme-toggle-group input[type="radio"]:checked + .theme-btn-label {
+    background-color: #0066cc !important;
+    color: #ffffff !important;
+    box-shadow: none;
+}
+
+/* 5. Custom Dividers and Scrollbar tracks */
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmControlDivider,
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .ctrl-divider {
+    background-color: #0d2354 !important;
+}
+
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmDdIdxContent {
+    background-color: #031133 !important;
+    border-color: #0d2354 !important;
+}
+
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmDdIdxContent a {
+    color: #94a3b8 !important;
+}
+
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmDdIdxContent a:hover {
+    background-color: #0a225c !important;
+    color: #ffffff !important;
+}
+
+/* 6. Active Custom Tab States */
+#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmTabBtnIdx.tsrHmActiveTab {
+    background-color: rgba(0, 102, 204, 0.15) !important;
+    color: #38bdf8 !important;
+    border-color: #0066cc !important;
+}
+</style>
+<!-- Main Parent Container Blueprint -->
+<div id="tsrHmWorkspaceWrapper">
+
+    
                             <style>
                                 #tsrHmCtrlsWrapper hr {
                                     margin: 3px 0;
@@ -1610,7 +1710,7 @@
                                     #hmArDiv1 {
                                         width: 100%;
                                         padding: 12px 20px;
-                                        background-color: #ffffff;
+                                        /* background-color: #ffffff; */
                                         /* border: 1px solid #e4e7ec;
                                     border-radius: 12px;
                                     box-sizing: border-box;
@@ -1768,7 +1868,7 @@
                                         display: flex;
                                         justify-content: flex-start;
                                         align-items: center;
-                                        background-color: #ffffff;
+                                        /* background-color: #ffffff; */
                                         /* border: 1px solid #e4e7ec;
                                     border-radius: 12px; */
                                         padding: 12px 16px;
@@ -2117,7 +2217,7 @@
                                     #tsrHmCtrlDiv1 {
                                         width: 100%;
                                         padding: 12px 20px;
-                                        background-color: #ffffff;
+                                        /* background-color: #ffffff; */
                                         /* border: 1px solid #e4e7ec;
                                     border-radius: 12px; 
                                         box-sizing: border-box;
@@ -2368,6 +2468,107 @@
                                     border-radius: 5px;
                                 }
 
+                                /* ==========================================
+   THEME STATE ENGINE: BACKGROUND OVERRIDES
+   ========================================== */
+
+/* Target the parent wrappers to clear out the legacy light backgrounds */
+.tsrHmDarkTheme.tsrHmDiv,
+.tsrHmDarkTheme .tsrHmDiv,
+.tsrHmDarkTheme.tsrHmColorSchemeWrapper,
+.tsrHmDarkTheme .tsrHmColorSchemeWrapper,
+.tsrHmDarkTheme#tsrHmCtrlsWrapper,
+.tsrHmDarkTheme #heatMapDivTemp {
+    background-color: #000a20 !important;
+    border-color: #0d2354 !important;
+    transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+/* --- INNER COMPONENT CONTRAST DEPTH ADJUSTMENTS --- */
+
+/* Give inner control panels a slightly raised midnight blue so they don't flatten into the page background */
+.tsrHmDarkTheme #tsrHmCtrlMenu,
+.tsrHmDarkTheme #hmArDiv,
+.tsrHmDarkTheme #tsrHmStkBasket,
+.tsrHmDarkTheme #tsrHmCtrlDiv1 {
+    background-color: #031133 !important; 
+    border-color: #0d2354 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Modern Segmented Control Toggle Groups Backgrounds */
+.tsrHmDarkTheme .tsrHmToggleGroup,
+.tsrHmDarkTheme .theme-toggle-group {
+    background-color: #01081a !important;
+}
+
+/* Form Input Elements, Select Dropdowns, and Action Buttons */
+.tsrHmDarkTheme .tsrHmFormSelect,
+.tsrHmDarkTheme .tsrHmDropbtnIdx,
+.tsrHmDarkTheme .tsrHmTabBtnIdx {
+    background-color: #05163d !important;
+    border-color: #0d2354 !important;
+    color: #e2e8f0 !important;
+}
+
+.tsrHmDarkTheme .tsrHmFormSelect:hover,
+.tsrHmDarkTheme .tsrHmDropbtnIdx:hover,
+.tsrHmDarkTheme .tsrHmTabBtnIdx:hover {
+    background-color: #0a225c !important;
+    border-color: #1a3a7a !important;
+    color: #ffffff !important;
+}
+
+/* Text & Global Label Readability Fixes inside Dark Viewports */
+.tsrHmDarkTheme .tsrHmControlLabel,
+.tsrHmDarkTheme .theme-title,
+.tsrHmDarkTheme .ctrl-label,
+.tsrHmDarkTheme .tsrHmDropbtnIdx span,
+.tsrHmDarkTheme .tsrHmTabBtnIdx span,
+.tsrHmDarkTheme .tsrHmMainTitle {
+    color: #94a3b8 !important;
+}
+
+.tsrHmDarkTheme .tsrHmBtnLabel,
+.tsrHmDarkTheme .theme-btn-label {
+    color: #64748b !important;
+}
+
+/* Active Highlight Segment Mapping Rule via Input Tracker */
+.tsrHmDarkTheme .tsrHmToggleGroup input[type="radio"]:checked + .tsrHmBtnLabel,
+.tsrHmDarkTheme .theme-toggle-group input[type="radio"]:checked + .theme-btn-label {
+    background-color: #0066cc !important;
+    color: #ffffff !important;
+    box-shadow: none;
+}
+
+/* Flyout Navigation Panels custom scrollbars and text alignment links */
+.tsrHmDarkTheme .tsrHmControlDivider,
+.tsrHmDarkTheme .ctrl-divider {
+    background-color: #0d2354 !important;
+}
+
+.tsrHmDarkTheme .tsrHmDdIdxContent {
+    background-color: #031133 !important;
+    border-color: #0d2354 !important;
+}
+
+.tsrHmDarkTheme .tsrHmDdIdxContent a {
+    color: #94a3b8 !important;
+}
+
+.tsrHmDarkTheme .tsrHmDdIdxContent a:hover {
+    background-color: #0a225c !important;
+    color: #ffffff !important;
+}
+
+/* Active Selection Custom Tabs */
+.tsrHmDarkTheme .tsrHmTabBtnIdx.tsrHmActiveTab {
+    background-color: rgba(0, 102, 204, 0.15) !important;
+    color: #38bdf8 !important;
+    border-color: #0066cc !important;
+}
+
                                 .tsrHmItem {
                                     /* display: block; */
 
@@ -2467,6 +2668,7 @@
                                     justify-content: center;
                                     border-radius: 4px;
                                 }
+                            
                             </style>
 
                             <div id="heatMapDivTemp">
@@ -2971,6 +3173,10 @@
                                     </div>
                                 </div>
                             </div>
+    </div>
+
+
+    <script src="script.js"></script>
 
                             <!-- <div id="heatMapDiv" class="container">
                                 <div class="table-responsive well well-sm"
