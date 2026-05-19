@@ -1,0 +1,238 @@
+/* =========================
+   TSR HEATMAP TOOLBAR
+========================= */
+
+.tsrHmToolbarWrap {
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* DARK THEME */
+
+.tsrHmThemeDark {
+    background: #000a20;
+    color: #ffffff;
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.45);
+}
+
+/* LIGHT THEME */
+
+.tsrHmThemeLight {
+    background: #ffffff;
+    color: #111827;
+    border: 1px solid #dbe4f0;
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* TITLE */
+
+.tsrHmTitleWrap {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.tsrHmTitle {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+
+/* TOOLBAR */
+
+.tsrHmToolbarTop {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 22px;
+}
+
+.tsrHmControlGroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+/* CHECKBOX / RADIO */
+
+.tsrHmCheckItem,
+.tsrHmRadioItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.tsrHmThemeSwitch,
+.tsrHmRadioGroup {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* LABEL */
+
+.tsrHmLabel {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    opacity: 0.75;
+    font-weight: 700;
+}
+
+/* BASKET */
+
+.tsrHmBasketWrap {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+/* DROPDOWN BUTTON */
+
+.dropbtnIdx {
+    background: rgba(255,255,255,0.08);
+    color: inherit;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(8px);
+}
+
+.dropbtnIdx:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.14);
+}
+
+/* ACTION BUTTON */
+
+.tsrHmActionBtn {
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tsrHmActionBtn:hover {
+    transform: translateY(-2px);
+    color: white;
+}
+
+/* BOTTOM TOOLBAR */
+
+.tsrHmToolbarBottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 22px;
+}
+
+.tsrHmControlRow {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+/* FIELD WRAP */
+
+.tsrHmFieldWrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* SELECT */
+
+.tsrHmFieldWrap select {
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.08);
+    color: inherit;
+    padding: 10px 14px;
+    min-width: 170px;
+    font-size: 14px;
+    font-weight: 600;
+    outline: none;
+}
+
+/* LIGHT MODE OVERRIDES */
+
+.tsrHmThemeLight .dropbtnIdx,
+.tsrHmThemeLight .tsrHmFieldWrap select {
+    background: #f8fafc;
+    border-color: #dbe4f0;
+}
+
+.tsrHmThemeLight .tsrHmToolbarBottom {
+    border-top: 1px solid #dbe4f0;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+
+    .tsrHmTitle {
+        font-size: 26px;
+    }
+
+    .tsrHmControlGroup {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tsrHmControlRow {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tsrHmFieldWrap {
+        width: 100%;
+    }
+
+    .tsrHmFieldWrap select {
+        width: 100%;
+    }
+
+    .tsrHmBasketWrap {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .tsrHmToolbarWrap {
+        padding: 18px;
+        border-radius: 18px;
+    }
+
+    .tsrHmTitle {
+        font-size: 22px;
+    }
+
+    .dropbtnIdx,
+    .tsrHmActionBtn {
+        width: 100%;
+        justify-content: center;
+    }
+}
