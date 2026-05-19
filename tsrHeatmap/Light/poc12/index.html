@@ -1505,7 +1505,98 @@
                             <script src="https://www.topstockresearch.com/static/tp/owl/owl.carousel.min.js"></script>
                             <script>var toolsCarousal = { loop: true, margin: 10, dots: false, autoplay: true, autoplayHoverPause: true, autoplayTimeout: 10000, autoplaySpeed: 3000, responsive: { 0: { items: 1 }, 576: { items: 2 }, 768: { items: 3 }, 1000: { items: 4 }, 1400: { items: 5 }, }, }; $('#hmHeadCarousal').owlCarousel(toolsCarousal); $('#hmHeadCarousalPrev').click(function () { $('#hmHeadCarousal').trigger('prev.owl.carousel', [300]); }); $('#hmHeadCarousalNext').click(function () { $('#hmHeadCarousal').trigger('next.owl.carousel', [300]); });</script>
 
-                            <h2 align="center">Live Heat Map of Nifty 50 By % Change, Value &amp; Points </h2>
+                            <style>
+/* ==========================================
+   PRODUCTION READY: MAIN PAGE TITLE OVERHAUL
+   ========================================== */
+
+.tsrHmHeaderContainer {
+    text-align: center;
+    padding: 14px 6px;
+    margin: 10px 0 8px 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Meta Data Tracker Zone Placement */
+.tsrHmHeaderContainer .tsrHmTitleBadgeZone {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+/* Modern Pill Badge Layout */
+.tsrHmHeaderContainer .tsrHmBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background-color: #f0fdf4; /* Ultra-subdued soft green */
+    color: #16a34a;            /* Clean tech green text */
+    border: 1px solid #bbf7d0;
+    user-select: none;
+}
+
+/* Micro Live Activity Light Indicator Animation */
+.tsrHmHeaderContainer .tsrHmPulseDot {
+    width: 6px;
+    height: 6px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+    animation: tsrHmPulse 2s infinite;
+}
+
+@keyframes tsrHmPulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* Main Focus Title Typography */
+.tsrHmHeaderContainer .tsrHmMainTitle {
+    font-size: 28px;
+    font-weight: 800;
+    color: #101828; /* Professional deep onyx slate */
+    letter-spacing: -0.02em;
+    margin: 0 0 8px 0;
+    padding: 0;
+}
+
+/* Explanatory Subtitle Layout Context */
+.tsrHmHeaderContainer .tsrHmSubTitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: #667085; /* Balanced slate for minor layout documentation */
+    margin: 0;
+    padding: 0;
+}
+
+/* Specific Highlight Marker Styling Rules */
+.tsrHmHeaderContainer .tsrHmHighlight {
+    color: #0066cc; /* Matches primary interactive system color scheme tokens */
+    font-weight: 600;
+}
+                            </style>
+
+                            <div class="tsrHmHeaderContainer">
+    <div class="tsrHmTitleBadgeZone">
+        <span class="tsrHmBadge live">
+            <span class="tsrHmPulseDot"></span> LIVE MARKET
+        </span>
+    </div>
+    <h2 id="tsrHmMainHeading" class="tsrHmMainTitle">
+        Market Heat Map Matrix
+    </h2>
+    <p class="tsrHmSubTitle">
+        Real-time tracking of <span class="tsrHmHighlight">Nifty 50</span> performance by Price Change %, Total Turnover Value, and Index Points.
+    </p>
+</div>
 
                             <style>
                                 #tsrHmCtrlsWrapper hr {
@@ -1658,11 +1749,11 @@
                                                 <!-- Hidden inputs paired with styled labels create a clean native toggle action -->
                                                 <input type="radio" name="hmbgc" value="light" id="themeLight"
                                                     onclick="JavaScript:dyhm.ua('hmbgc');">
-                                                <label for="themeLight" class="theme-btn-label">Light</label>
+                                                <label for="themeLight" class="theme-btn-label"><i class="far fa-sun"></i> Light</label>
 
                                                 <input type="radio" name="hmbgc" value="dark" id="themeDark" checked=""
                                                     onclick="JavaScript:dyhm.ua('hmbgc');">
-                                                <label for="themeDark" class="theme-btn-label">Dark</label>
+                                                <label for="themeDark" class="theme-btn-label"><i class="fas fa-moon"></i> Dark</label>
                                             </div>
                                         </div>
                                     </div>
@@ -2248,7 +2339,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
 
 
                             <!-- code starts here -->
