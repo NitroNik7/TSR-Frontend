@@ -2,7 +2,7 @@
 
 <head>
     <!-- <title>Live Heat Map of Nifty 50 By % Change, Value &amp; Points </title> -->
-    <title>POC 12</title>
+    <title>POC 14</title>
     <meta name="description"
         content=" Flexible Live Heat Map of  Nifty 50, view by  By % Change, Value &amp; Points on ticks starting from 1Min to 1 Year ">
     <meta name="keywords" content="Nifty 50, Heatmap, Index Contribution Points ">
@@ -1505,10 +1505,8 @@
                             <script src="https://www.topstockresearch.com/static/tp/owl/owl.carousel.min.js"></script>
                             <script>var toolsCarousal = { loop: true, margin: 10, dots: false, autoplay: true, autoplayHoverPause: true, autoplayTimeout: 10000, autoplaySpeed: 3000, responsive: { 0: { items: 1 }, 576: { items: 2 }, 768: { items: 3 }, 1000: { items: 4 }, 1400: { items: 5 }, }, }; $('#hmHeadCarousal').owlCarousel(toolsCarousal); $('#hmHeadCarousalPrev').click(function () { $('#hmHeadCarousal').trigger('prev.owl.carousel', [300]); }); $('#hmHeadCarousalNext').click(function () { $('#hmHeadCarousal').trigger('next.owl.carousel', [300]); });</script>
 
-
-
-
                             <!-- code starts here -->
+
                             <link rel="stylesheet" href="style.css">
 
                             <div class="tsrHmHeaderContainer">
@@ -1578,62 +1576,256 @@
                                         <!-- Category Group Dropdowns & Quick Action Active Tabs unified in a left-aligned grid wrapper -->
                                         <div class="tsrHmIndexDropdownGroup">
 
+                                            <style>
+                                                #tiCsDropdownMenuBtn {
+                                                    background-color: #ffffff;
+                                                    color: #344054;
+                                                    padding: 10px 16px;
+                                                    font-size: 14px;
+                                                    font-weight: 600;
+                                                    border: 1px solid #d0d5dd;
+                                                    border-radius: 8px;
+                                                    cursor: pointer;
+                                                    display: inline-flex;
+                                                    align-items: center;
+                                                    justify-content: center;
+                                                    gap: 8px;
+                                                    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+                                                    outline: none;
+                                                    box-sizing: border-box;
+                                                    height: 42px;
+                                                }
+
+
+                                                #tiCsDropdownMenu li div {
+                                                    color: #475467;
+                                                    padding: 8px 12px;
+                                                    text-decoration: none;
+                                                    display: block;
+                                                    font-size: 13px;
+                                                    font-weight: 500;
+                                                    border-radius: 6px;
+                                                    transition: all 0.15s ease;
+                                                    white-space: nowrap;
+                                                    text-align: left;
+                                                }
+                                            </style>
+
                                             <!-- Dropdown Item: Broad Idx -->
-                                            <div class="tsrHmDdIdx">
-                                                <button type="button" class="tsrHmDropbtnIdx">
-                                                    <span>Broad Idx</span>
-                                                    <i class="fas fa-chevron-down tsrHmMs1"></i>
+                                            <div class="btn-group dropdown"> <button id="tiCsDropdownMenuBtn"
+                                                    type="button"
+                                                    class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3 show"
+                                                    data-bs-toggle="dropdown" aria-expanded="true"
+                                                    data-bs-auto-close="outside"
+                                                    onclick="csh.smh(this); myTsrScreener.showControl('tiCs'); csh.cd('tsrCsFilterInfoBox')">Index
                                                 </button>
-                                                <div class="tsrHmDdIdxContent">
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYNEXT50">NIFTY
-                                                        Next 50</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY100">Nifty
-                                                        100</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY200">Nifty
-                                                        200</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY500">Nifty
-                                                        500</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMIDCAP50">Nifty
-                                                        Midcap 50</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMIDCAP100">Nifty
-                                                        Midcap 100</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMIDCAP150">Nifty
-                                                        Midcap 150</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYSMALLCAP50">Nifty
-                                                        Smallcap 50</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYSMALLCAP100">Nifty
-                                                        Smallcap 100</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYSMALLCAP250">Nifty
-                                                        Smallcap 250</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/LARGEMIDCAP250">NIFTY
-                                                        LargeMidcap 250</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/MIDSMALLCAP400">NIFTY
-                                                        MidSmallcap 400</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMIDCAPSELECT">NIFTY
-                                                        Midcap Select</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTTOTALMARKET">NIFTY
-                                                        Total Market</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTMICROCAP250">NIFTY
-                                                        Microcap 250</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTMULTICAP50_25_25">NIFTY
-                                                        500 Multicap</a>
-                                                </div>
+                                                <ul id="tiCsDropdownMenu" class="dropdown-menu show"
+                                                    style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(144px, -72px); max-height: 389.261px;"
+                                                    data-popper-placement="right-start">
+                                                    <li>
+                                                        <div class="btn-group dropend w-100"> <button type="button"
+                                                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"
+                                                                data-bs-auto-close="outside"
+                                                                onclick="csh.smh(this)">Over Bot/Sold </button>
+                                                            <ul class="dropdown-menu"
+                                                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                                                <li> <a id="tiCs_obos_aroon" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('aroon','obos');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Aroon
+                                                                        Osc </a></li>
+                                                                <li> <a id="tiCs_obos_cci" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('cci','obos');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">CCI
+                                                                    </a></li>
+                                                                <li> <a id="tiCs_obos_mfi" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('mfi','obos');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">MFI
+                                                                    </a></li>
+                                                                <li> <a id="tiCs_obos_rsi" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('rsi','obos');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">RSI
+                                                                        (Fast) </a></li>
+                                                                <li> <a id="tiCs_obos_rsis" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('rsis','obos');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">RSI
+                                                                    </a></li>
+                                                                <li> <a id="tiCs_obos_stof" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('stof','obos');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Sto
+                                                                        Fast </a></li>
+                                                                <li> <a id="tiCs_obos_stos" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('stos','obos');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Sto
+                                                                        Slow </a></li>
+                                                                <li> <a id="tiCs_obos_stoRsi" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('stoRsi','obos');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Sto
+                                                                        RSI (FAST) </a></li>
+                                                                <li> <a id="tiCs_obos_stoRsiSlow" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('stoRsiSlow','obos');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Sto
+                                                                        RSI </a></li>
+                                                                <li> <a id="tiCs_obos_uo" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('uo','obos');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">UO
+                                                                    </a></li>
+                                                                <li> <a id="tiCs_obos_wr" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('wr','obos');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">W%R
+                                                                    </a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="btn-group dropend w-100"> <button type="button"
+                                                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"
+                                                                data-bs-auto-close="outside"
+                                                                onclick="csh.smh(this)">Overlays </button>
+                                                            <ul class="dropdown-menu"
+                                                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                                                <li> <a id="tiCs_bands_pcAndBoll" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('bb','price');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Price
+                                                                        &amp; Bollinger </a></li>
+                                                                <li> <a id="tiCs_bands_bollSqueeze"
+                                                                        class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('bb','squeeze');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Bollinger
+                                                                        Squeeze </a></li>
+                                                                <li> <a id="tiCs_bands_IchimokuOld"
+                                                                        class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('techIchiComp','techIchiComp');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Ichimoku
+                                                                        (old) </a></li>
+                                                                <li> <a id="tiCs_bands_Ichimoku" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('ichimoku','ichimoku');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Ichimoku
+                                                                    </a></li>
+                                                                <li> <a id="tiCs_bands_pcAndKeltner"
+                                                                        class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('keltner','price');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Price
+                                                                        &amp; Keltner </a></li>
+                                                                <li> <a id="tiCs_bands_paraSar" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('psar','psar');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">PSAR
+                                                                    </a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="btn-group dropend w-100"> <button type="button"
+                                                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"
+                                                                data-bs-auto-close="outside"
+                                                                onclick="csh.smh(this)">Trend/Momentum </button>
+                                                            <ul class="dropdown-menu"
+                                                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                                                <li> <a id="tiCs_indi_adx" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('adx','adx');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">ADX
+                                                                    </a></li>
+                                                                <li> <a id="tiCs_indi_aroon" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('aroon','AroonIndi');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Aroon
+                                                                    </a></li>
+                                                                <li> <a id="tiCs_indi_aweOsc" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('aweOsc','aweOsc');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">AweOsc
+                                                                    </a></li>
+                                                                <li> <a id="tiCs_indi_mac" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('mac','macd');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">MACD
+                                                                    </a></li>
+                                                                <li> <a id="tiCs_indi_roc" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('roc','roc');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">ROC
+                                                                    </a></li>
+                                                                <li> <a id="tiCs_indi_rvi" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('rvi','rvi');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">RVI
+                                                                    </a></li>
+                                                                <li> <a id="tiCs_indi_st" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('st','st');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Supertrend
+                                                                    </a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="btn-group dropend w-100"> <button type="button"
+                                                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"
+                                                                data-bs-auto-close="outside"
+                                                                onclick="csh.smh(this)">Accumulation / Distribution
+                                                            </button>
+                                                            <ul class="dropdown-menu"
+                                                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                                                <li> <a id="tiCs_volindi_cmf" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('cmf','cmf');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">CMF
+                                                                    </a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="btn-group dropend w-100"> <button type="button"
+                                                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"
+                                                                data-bs-auto-close="outside"
+                                                                onclick="csh.smh(this)">Volatility </button>
+                                                            <ul class="dropdown-menu"
+                                                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                                                <li> <a id="tiCs_volatility_atr" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('atr','atr');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">ATR
+                                                                    </a></li>
+                                                                <li> <a id="tiCs_volatility_stdDev"
+                                                                        class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('stdDev','stdDev');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Std
+                                                                        Dev </a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="btn-group dropend w-100"> <button type="button"
+                                                                class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"
+                                                                data-bs-auto-close="outside" onclick="csh.smh(this)">DIY
+                                                                - Advance Comparision </button>
+                                                            <ul class="dropdown-menu"
+                                                                style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">
+                                                                <li> <a id="tiCs_diy_obos" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('Obos');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Over
+                                                                        Bot/Sold </a></li>
+                                                                <li> <a id="tiCs_diy_trendIndi" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('Trend');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Trend
+                                                                        Indi </a></li>
+                                                                <li> <a id="tiCs_diy_momIndi" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('Momentum');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Momentum
+                                                                        Indi </a></li>
+                                                                <li> <a id="tiCs_diy_accDist" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('AccDist');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Accumulation
+                                                                        Dist </a></li>
+                                                                <li> <a id="tiCs_diy_volatility" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('Volatility');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Volatility
+                                                                    </a></li>
+                                                                <li> <a id="tiCs_diy_overlays" class="dropdown-item"
+                                                                        onclick="csngutil.ttcm('#csDiv .dropdown-toggle'); cst.pfr('Overlays');"
+                                                                        style="text-wrap: nowrap; font-size: 16px; color: black;">Overlays
+                                                                    </a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
                                             </div>
 
                                             <!-- Dropdown Item: Sector Idx -->
@@ -2431,7 +2623,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">Nifty 50 MA </span> </div>
+    text-overflow: ellipsis;">Nifty 50 MA </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item cloned"
@@ -2443,7 +2636,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">1W to 5Y High Screener </span> </div>
+    text-overflow: ellipsis;">1W to 5Y High Screener </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item cloned"
@@ -2455,7 +2649,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">Pre Market </span> </div>
+    text-overflow: ellipsis;">Pre Market </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item cloned"
@@ -2467,7 +2662,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">Technical Strength </span> </div>
+    text-overflow: ellipsis;">Technical Strength </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item cloned"
@@ -2479,7 +2675,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">Outperforming Nifty </span> </div>
+    text-overflow: ellipsis;">Outperforming Nifty </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item active"
@@ -2491,7 +2688,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">Nifty 50 Technicals </span> </div>
+    text-overflow: ellipsis;">Nifty 50 Technicals </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item active"
@@ -2503,7 +2701,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">Nifty 50 MA </span> </div>
+    text-overflow: ellipsis;">Nifty 50 MA </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item active"
@@ -2515,7 +2714,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">1W to 5Y High Screener </span> </div>
+    text-overflow: ellipsis;">1W to 5Y High Screener </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item active"
@@ -2527,7 +2727,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">Pre Market </span> </div>
+    text-overflow: ellipsis;">Pre Market </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item active"
@@ -2539,7 +2740,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">Technical Strength </span> </div>
+    text-overflow: ellipsis;">Technical Strength </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item" style="width: 235.818px; margin-right: 10px;">
@@ -2550,7 +2752,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">Outperforming Nifty </span> </div>
+    text-overflow: ellipsis;">Outperforming Nifty </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item cloned"
@@ -2562,7 +2765,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">Nifty 50 Technicals </span> </div>
+    text-overflow: ellipsis;">Nifty 50 Technicals </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item cloned"
@@ -2574,7 +2778,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">Nifty 50 MA </span> </div>
+    text-overflow: ellipsis;">Nifty 50 MA </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item cloned"
@@ -2586,7 +2791,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">1W to 5Y High Screener </span> </div>
+    text-overflow: ellipsis;">1W to 5Y High Screener </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item cloned"
@@ -2598,7 +2804,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">Pre Market </span> </div>
+    text-overflow: ellipsis;">Pre Market </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                                 <div class="owl-item cloned"
@@ -2610,7 +2817,8 @@
                                                                 <span style="font-weight: 500; color: midnightblue; 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">Technical Strength </span> </div>
+    text-overflow: ellipsis;">Technical Strength </span>
+                                                            </div>
                                                         </a> </div>
                                                 </div>
                                             </div>
