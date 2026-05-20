@@ -1556,7 +1556,7 @@
                                             <div class="d-flex">
 
 
-    
+
                                                 <!-- Segmented Theme Selection Block -->
                                                 <div class="ctrl-item theme-segment-block">
                                                     <span class="theme-title">Theme</span>
@@ -1566,31 +1566,34 @@
                                                             onclick="JavaScript:dyhm.ua('hmbgc');">
                                                         <label for="themeLight" class="theme-btn-label"><i
                                                                 class="far fa-sun"></i> Light</label>
-    
+
                                                         <input type="radio" name="hmbgc" value="dark" id="themeDark"
                                                             checked="" onclick="JavaScript:dyhm.ua('hmbgc');">
                                                         <label for="themeDark" class="theme-btn-label"><i
                                                                 class="fas fa-moon"></i> Dark</label>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="mx-3"></div>
 
                                                 <!-- Segmented Control Block: View Layout Style -->
                                                 <div class="tsrHmControlItem">
                                                     <span class="tsrHmControlLabel">View</span>
                                                     <div class="tsrHmToggleGroup">
-                                                        <input type="radio" name="vtype" value="lean" id="tsrHmVtypeLean"
-                                                            checked="" onclick="JavaScript:dyhm.ua('vtype');">
+                                                        <input type="radio" name="vtype" value="lean"
+                                                            id="tsrHmVtypeLean" checked=""
+                                                            onclick="JavaScript:dyhm.ua('vtype');">
                                                         <label for="tsrHmVtypeLean" class="tsrHmBtnLabel">Lean</label>
-    
+
                                                         <input type="radio" name="vtype" value="standard"
-                                                            id="tsrHmVtypeStandard" onclick="JavaScript:dyhm.ua('vtype');">
+                                                            id="tsrHmVtypeStandard"
+                                                            onclick="JavaScript:dyhm.ua('vtype');">
                                                         <label for="tsrHmVtypeStandard"
                                                             class="tsrHmBtnLabel">Standard</label>
-    
+
                                                         <input type="radio" name="vtype" value="detailed"
-                                                            id="tsrHmVtypeDetailed" onclick="JavaScript:dyhm.ua('vtype');">
+                                                            id="tsrHmVtypeDetailed"
+                                                            onclick="JavaScript:dyhm.ua('vtype');">
                                                         <label for="tsrHmVtypeDetailed"
                                                             class="tsrHmBtnLabel">Detailed</label>
                                                     </div>
@@ -1598,7 +1601,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
 
                                     <div id="tsrHmStkBasket">
                                         <!-- Category Group Dropdowns & Quick Action Active Tabs unified in a left-aligned grid wrapper -->
@@ -1606,250 +1609,253 @@
 
                                             <div class="d-flex">
                                                 <!-- Field Control Block: Tick Frequency -->
-                                            <div class="tsrHmControlItem">
-                                                <label for="hmFreq" class="tsrHmControlLabel">Tick</label>
-                                                <div class="tsrHmSelectWrapper">
-                                                    <select id="hmFreq" onchange="JavaScript:dyhm.ua('hmFreq');"
-                                                        class="tsrHmFormSelect">
-                                                        <option value="I_D" selected="">Daily (Live)</option>
-                                                        <option value="D">Daily (EOD)</option>
-                                                        <option value="W">Weekly</option>
-                                                        <option value="mm1">1 Minutes</option>
-                                                        <option value="mm2">2 Minutes</option>
-                                                        <option value="mm3">3 Minutes</option>
-                                                        <option value="mm5">5 Minutes</option>
-                                                        <option value="mm10">10 Minutes</option>
-                                                        <option value="mm15">15 Minutes</option>
-                                                        <option value="mm30">30 Minutes</option>
-                                                        <option value="mm45">45 Minutes</option>
-                                                        <option value="hh1">1 Hour</option>
-                                                        <option value="mm75">75 Minutes</option>
-                                                        <option value="hh2">2 Hours</option>
-                                                        <option value="hh3">3 Hours</option>
-                                                        <option value="hh4">4 Hours</option>
-                                                        <option value="M">Monthly</option>
-                                                        <option value="Q">Quarterly</option>
-                                                    </select>
+                                                <div class="tsrHmControlItem">
+                                                    <label for="hmFreq" class="tsrHmControlLabel">Tick</label>
+                                                    <div class="tsrHmSelectWrapper">
+                                                        <select id="hmFreq" onchange="JavaScript:dyhm.ua('hmFreq');"
+                                                            class="tsrHmFormSelect">
+                                                            <option value="I_D" selected="">Daily (Live)</option>
+                                                            <option value="D">Daily (EOD)</option>
+                                                            <option value="W">Weekly</option>
+                                                            <option value="mm1">1 Minutes</option>
+                                                            <option value="mm2">2 Minutes</option>
+                                                            <option value="mm3">3 Minutes</option>
+                                                            <option value="mm5">5 Minutes</option>
+                                                            <option value="mm10">10 Minutes</option>
+                                                            <option value="mm15">15 Minutes</option>
+                                                            <option value="mm30">30 Minutes</option>
+                                                            <option value="mm45">45 Minutes</option>
+                                                            <option value="hh1">1 Hour</option>
+                                                            <option value="mm75">75 Minutes</option>
+                                                            <option value="hh2">2 Hours</option>
+                                                            <option value="hh3">3 Hours</option>
+                                                            <option value="hh4">4 Hours</option>
+                                                            <option value="M">Monthly</option>
+                                                            <option value="Q">Quarterly</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <!-- Field Control Block: Sorted Metric -->
-                                            <div class="tsrHmControlItem">
-                                                <label for="hmField" class="tsrHmControlLabel">By</label>
-                                                <div class="tsrHmSelectWrapper">
-                                                    <select id="hmField" onchange="JavaScript:dyhm.ua('hmField');"
-                                                        class="tsrHmFormSelect">
-                                                        <option value="priceChangePC" selected="">Change %</option>
-                                                        <option value="idxPts">Points</option>
-                                                        <option value="val">Turnover</option>
-                                                        <option value="vol">Volume</option>
-                                                        <option value="list">List</option>
-                                                    </select>
+                                                <!-- Field Control Block: Sorted Metric -->
+                                                <div class="tsrHmControlItem">
+                                                    <label for="hmField" class="tsrHmControlLabel">By</label>
+                                                    <div class="tsrHmSelectWrapper">
+                                                        <select id="hmField" onchange="JavaScript:dyhm.ua('hmField');"
+                                                            class="tsrHmFormSelect">
+                                                            <option value="priceChangePC" selected="">Change %</option>
+                                                            <option value="idxPts">Points</option>
+                                                            <option value="val">Turnover</option>
+                                                            <option value="vol">Volume</option>
+                                                            <option value="list">List</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <!-- Dropdown Item: Broad Idx -->
-                                            <div class="tsrHmDdIdx">
-                                                <button type="button" class="tsrHmDropbtnIdx">
-                                                    <span>Broad Idx</span>
-                                                    <i class="fas fa-chevron-down tsrHmMs1"></i>
+                                                <div id="tsrHmMarketSegmentWrapper">
+                                                    <div class="tsrHmDdIdx">
+                                                    <button type="button" class="tsrHmDropbtnIdx">
+                                                        <span>Broad Idx</span>
+                                                        <i class="fas fa-chevron-down tsrHmMs1"></i>
+                                                    </button>
+                                                    <div class="tsrHmDdIdxContent">
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYNEXT50">NIFTY
+                                                            Next 50</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY100">Nifty
+                                                            100</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY200">Nifty
+                                                            200</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY500">Nifty
+                                                            500</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMIDCAP50">Nifty
+                                                            Midcap 50</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMIDCAP100">Nifty
+                                                            Midcap 100</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMIDCAP150">Nifty
+                                                            Midcap 150</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYSMALLCAP50">Nifty
+                                                            Smallcap 50</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYSMALLCAP100">Nifty
+                                                            Smallcap 100</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYSMALLCAP250">Nifty
+                                                            Smallcap 250</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/LARGEMIDCAP250">NIFTY
+                                                            LargeMidcap 250</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/MIDSMALLCAP400">NIFTY
+                                                            MidSmallcap 400</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMIDCAPSELECT">NIFTY
+                                                            Midcap Select</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTTOTALMARKET">NIFTY
+                                                            Total Market</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTMICROCAP250">NIFTY
+                                                            Microcap 250</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTMULTICAP50_25_25">NIFTY
+                                                            500 Multicap</a>
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- Dropdown Item: Sector Idx -->
+                                                <div class="tsrHmDdIdx">
+                                                    <button type="button" class="tsrHmDropbtnIdx">
+                                                        <span>Sector Idx</span>
+                                                        <i class="fas fa-chevron-down tsrHmMs1"></i>
+                                                    </button>
+                                                    <div class="tsrHmDdIdxContent">
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYAUTOINDEX">Nifty
+                                                            Auto</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYBANKINDEX">Nifty
+                                                            Bank</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYCONSUMERDURABLESINDEX">Nifty
+                                                            Consumer Durables</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYFINANCIALSERVICEINDEX">Nifty
+                                                            Financial Services</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYFMCGINDEX">Nifty
+                                                            FMCG</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYITINDEX">Nifty
+                                                            IT</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMEDIAINDEX">Nifty
+                                                            Media</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMETALINDEX">Nifty
+                                                            Metal</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYOILANDGASINDEX">Nifty
+                                                            Oil &amp; Gas</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYPHARMAINDEX">Nifty
+                                                            Pharma</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYPRIVATEBANKINDEX">Nifty
+                                                            Private Bank</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYPSUBANKINDEX">Nifty
+                                                            PSU Bank</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYREALTYINDEX">Nifty
+                                                            Realty</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYFINANCIALSERVICEINDEX25_50">Nifty
+                                                            Financial Services (25:50)</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYHEALTHCAREINDEX">Nifty
+                                                            Health Care</a>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Dropdown Item: Thematic Idx -->
+                                                <div class="tsrHmDdIdx">
+                                                    <button type="button" class="tsrHmDropbtnIdx">
+                                                        <span>Thematic Idx</span>
+                                                        <i class="fas fa-chevron-down tsrHmMs1"></i>
+                                                    </button>
+                                                    <div class="tsrHmDdIdxContent">
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYCOREHOUSING">Nifty
+                                                            Core Housing</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYHOUSING">Nifty
+                                                            Housing</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYWAVES">Nifty
+                                                            Waves</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYRURAL">Nifty
+                                                            Rural</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYIPO">Nifty
+                                                            IPO</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYINDIATOURISM">Nifty
+                                                            India Tourism</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYINDIARAILWAYSPSU">Nifty
+                                                            India Railways PSU</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY500MULTICAPINDIAMANUFACTURING50_30_20">Nifty500
+                                                            Multicap India Manufacturing</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY500MULTICAPINFRASTRUCTURE50_30_20">Nifty500
+                                                            Multicap Infrastructure</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYCONGLOMERATE50">Nifty
+                                                            Conglomerate 50</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMIDSMALLINDIACONSUMPTION">Nifty
+                                                            MidSmall India Consumption</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY100LIQUID15">Nifty100
+                                                            Liquid 15</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMOBILITY">Nifty
+                                                            Mobility</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYNONCYCLICALCONSUMER">Nifty
+                                                            Non-Cyclical Consumer</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYINFRALOG">Nifty
+                                                            India Infra &amp; Logistics</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYCAPITALMARKETS">Nifty
+                                                            Capital Markets</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYINTERNET">Nifty
+                                                            India Internet</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYINDIANEWAGECONSUMPTION">Nifty
+                                                            India New Age Consumption</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYEVANDNEWAGEAUTOMOTIVE">Nifty
+                                                            EV &amp; New Age Automotive</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYINDIASELECT5CORPORATEGROUPS_MAATR">Nifty
+                                                            India Select 5 Corporate Groups</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYTRANSPORTATIONANDLOGISTICS">Nifty
+                                                            Transportation &amp; Logistics</a>
+                                                        <a
+                                                            href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYINDIADEFENCE">Nifty
+                                                            India Defence</a>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Semantic Selection Tab: Futures And Options (No link anchor, uses interactive target script button execution) -->
+                                                <button type="button" id="tsrHmTabFnO"
+                                                    class="tsrHmTabBtnIdx tsrHmActiveTab">
+                                                    <span>Futures &amp; Options</span>
                                                 </button>
-                                                <div class="tsrHmDdIdxContent">
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYNEXT50">NIFTY
-                                                        Next 50</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY100">Nifty
-                                                        100</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY200">Nifty
-                                                        200</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY500">Nifty
-                                                        500</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMIDCAP50">Nifty
-                                                        Midcap 50</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMIDCAP100">Nifty
-                                                        Midcap 100</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMIDCAP150">Nifty
-                                                        Midcap 150</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYSMALLCAP50">Nifty
-                                                        Smallcap 50</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYSMALLCAP100">Nifty
-                                                        Smallcap 100</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYSMALLCAP250">Nifty
-                                                        Smallcap 250</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/LARGEMIDCAP250">NIFTY
-                                                        LargeMidcap 250</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/MIDSMALLCAP400">NIFTY
-                                                        MidSmallcap 400</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMIDCAPSELECT">NIFTY
-                                                        Midcap Select</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTTOTALMARKET">NIFTY
-                                                        Total Market</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTMICROCAP250">NIFTY
-                                                        Microcap 250</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTMULTICAP50_25_25">NIFTY
-                                                        500 Multicap</a>
-                                                </div>
-                                            </div>
 
-
-                                            <!-- Dropdown Item: Sector Idx -->
-                                            <div class="tsrHmDdIdx">
-                                                <button type="button" class="tsrHmDropbtnIdx">
-                                                    <span>Sector Idx</span>
-                                                    <i class="fas fa-chevron-down tsrHmMs1"></i>
+                                                <!-- Semantic Selection Tab: Watchlist -->
+                                                <button type="button" id="tsrHmTabWatchlist" class="tsrHmTabBtnIdx">
+                                                    <span>Watchlist</span>
                                                 </button>
-                                                <div class="tsrHmDdIdxContent">
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYAUTOINDEX">Nifty
-                                                        Auto</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYBANKINDEX">Nifty
-                                                        Bank</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYCONSUMERDURABLESINDEX">Nifty
-                                                        Consumer Durables</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYFINANCIALSERVICEINDEX">Nifty
-                                                        Financial Services</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYFMCGINDEX">Nifty
-                                                        FMCG</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYITINDEX">Nifty
-                                                        IT</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMEDIAINDEX">Nifty
-                                                        Media</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMETALINDEX">Nifty
-                                                        Metal</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYOILANDGASINDEX">Nifty
-                                                        Oil &amp; Gas</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYPHARMAINDEX">Nifty
-                                                        Pharma</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYPRIVATEBANKINDEX">Nifty
-                                                        Private Bank</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYPSUBANKINDEX">Nifty
-                                                        PSU Bank</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYREALTYINDEX">Nifty
-                                                        Realty</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYFINANCIALSERVICEINDEX25_50">Nifty
-                                                        Financial Services (25:50)</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYHEALTHCAREINDEX">Nifty
-                                                        Health Care</a>
                                                 </div>
+                                                <!-- Dropdown Item: Broad Idx -->
+                                                
                                             </div>
 
-                                            <!-- Dropdown Item: Thematic Idx -->
-                                            <div class="tsrHmDdIdx">
-                                                <button type="button" class="tsrHmDropbtnIdx">
-                                                    <span>Thematic Idx</span>
-                                                    <i class="fas fa-chevron-down tsrHmMs1"></i>
-                                                </button>
-                                                <div class="tsrHmDdIdxContent">
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYCOREHOUSING">Nifty
-                                                        Core Housing</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYHOUSING">Nifty
-                                                        Housing</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYWAVES">Nifty
-                                                        Waves</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYRURAL">Nifty
-                                                        Rural</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYIPO">Nifty
-                                                        IPO</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYINDIATOURISM">Nifty
-                                                        India Tourism</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYINDIARAILWAYSPSU">Nifty
-                                                        India Railways PSU</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY500MULTICAPINDIAMANUFACTURING50_30_20">Nifty500
-                                                        Multicap India Manufacturing</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY500MULTICAPINFRASTRUCTURE50_30_20">Nifty500
-                                                        Multicap Infrastructure</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYCONGLOMERATE50">Nifty
-                                                        Conglomerate 50</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMIDSMALLINDIACONSUMPTION">Nifty
-                                                        MidSmall India Consumption</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTY100LIQUID15">Nifty100
-                                                        Liquid 15</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYMOBILITY">Nifty
-                                                        Mobility</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYNONCYCLICALCONSUMER">Nifty
-                                                        Non-Cyclical Consumer</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYINFRALOG">Nifty
-                                                        India Infra &amp; Logistics</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYCAPITALMARKETS">Nifty
-                                                        Capital Markets</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYINTERNET">Nifty
-                                                        India Internet</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYINDIANEWAGECONSUMPTION">Nifty
-                                                        India New Age Consumption</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYEVANDNEWAGEAUTOMOTIVE">Nifty
-                                                        EV &amp; New Age Automotive</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYINDIASELECT5CORPORATEGROUPS_MAATR">Nifty
-                                                        India Select 5 Corporate Groups</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYTRANSPORTATIONANDLOGISTICS">Nifty
-                                                        Transportation &amp; Logistics</a>
-                                                    <a
-                                                        href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/NIFTYINDIADEFENCE">Nifty
-                                                        India Defence</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- Semantic Selection Tab: Futures And Options (No link anchor, uses interactive target script button execution) -->
-                                            <button type="button" id="tsrHmTabFnO"
-                                                class="tsrHmTabBtnIdx tsrHmActiveTab">
-                                                <span>Futures &amp; Options</span>
-                                            </button>
-
-                                            <!-- Semantic Selection Tab: Watchlist -->
-                                            <button type="button" id="tsrHmTabWatchlist" class="tsrHmTabBtnIdx">
-                                                <span>Watchlist</span>
-                                            </button>
-                                            </div>
-                                            
 
                                             <!-- Segmented Control Block: Show Filter Type -->
                                             <div class="tsrHmControlItem">
