@@ -97,6 +97,16 @@
    PRODUCTION THEME STATE ENGINE OVERRIDES
    ========================================== */
 
+#tsrHmWorkspaceWrapper {
+    border: 1px solid lightgray;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#tsrHmCtrlsWrapper {
+    border-bottom: 1px solid lightgray;
+}
+
 /* --- DARK THEME OVERRIDE MATRIX --- */
 #tsrHmWorkspaceWrapper.tsrHmDarkTheme {
     background-color: #000a20 !important;
@@ -204,7 +214,8 @@ hmArDIV
 /* Container Wrapper */
 #hmArDiv1 {
     width: 100%;
-    padding: 12px 20px;
+    padding: 12px 20px 0 20px;
+    /* margin-bottom: ; */
     /* background-color: #ffffff; */
     /* border: 1px solid #e4e7ec;
                                     border-radius: 12px;
@@ -338,7 +349,7 @@ hmArDIV
 #tsrHmStkBasket .tsrHmIndexDropdownGroup {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 12px;
     flex-wrap: wrap;
     width: 100%;
@@ -483,14 +494,14 @@ hmArDIV
 }
 
 /* Individual Core Control Item Grouping */
-#tsrHmCtrlDiv1 .tsrHmControlItem {
+.tsrHmControlItem {
     display: inline-flex;
     align-items: center;
     gap: 10px;
 }
 
 /* Unified Label Formatting Styles */
-#tsrHmCtrlDiv1 .tsrHmControlLabel {
+.tsrHmControlLabel {
     font-size: 13px;
     font-weight: 600;
     color: #475467;
@@ -501,12 +512,12 @@ hmArDIV
 }
 
 /* Custom Dropdown Arrow Engine Wrappers */
-#tsrHmCtrlDiv1 .tsrHmSelectWrapper {
+.tsrHmSelectWrapper {
     position: relative;
     display: inline-block;
 }
 
-#tsrHmCtrlDiv1 .tsrHmFormSelect {
+.tsrHmFormSelect {
     appearance: none;
     /* Strip archaic system vendor select arrows */
     -webkit-appearance: none;
@@ -529,13 +540,13 @@ hmArDIV
     background-size: 14px;
 }
 
-#tsrHmCtrlDiv1 .tsrHmFormSelect:hover {
+.tsrHmFormSelect:hover {
     background-color: #f9fafb;
     border-color: #98a2b3;
     color: #101828;
 }
 
-#tsrHmCtrlDiv1 .tsrHmFormSelect:focus {
+.tsrHmFormSelect:focus {
     border-color: #0066cc;
     box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
 }
@@ -548,7 +559,7 @@ hmArDIV
 }
 
 /* --- SEGMENTED OPTION TOGGLE COMPONENT ENGINE --- */
-#tsrHmCtrlDiv1 .tsrHmToggleGroup {
+.tsrHmToggleGroup {
     display: inline-flex;
     background-color: #f2f4f7;
     padding: 4px;
@@ -560,7 +571,7 @@ hmArDIV
 }
 
 /* Completely clip off default rounded circular system browser buttons */
-#tsrHmCtrlDiv1 .tsrHmToggleGroup input[type="radio"] {
+.tsrHmToggleGroup input[type="radio"] {
     position: absolute;
     opacity: 0;
     width: 0;
@@ -568,7 +579,7 @@ hmArDIV
 }
 
 /* Styled Segment Pill Labels */
-#tsrHmCtrlDiv1 .tsrHmBtnLabel {
+.tsrHmBtnLabel {
     padding: 6px 14px;
     font-size: 13px;
     font-weight: 600;
@@ -583,12 +594,12 @@ hmArDIV
     white-space: nowrap;
 }
 
-#tsrHmCtrlDiv1 .tsrHmBtnLabel:hover {
+.tsrHmBtnLabel:hover {
     color: #101828;
 }
 
 /* Active Segment Visual Mapping Rule via Input Tracker */
-#tsrHmCtrlDiv1 .tsrHmToggleGroup input[type="radio"]:checked+.tsrHmBtnLabel {
+.tsrHmToggleGroup input[type="radio"]:checked+.tsrHmBtnLabel {
     background-color: #ffffff;
     color: #101828;
     box-shadow: 0 1px 3px rgba(16, 24, 40, 0.1);
@@ -600,7 +611,7 @@ hmArDIV
     flex-wrap: wrap;
     gap: 0.35rem;
     /* Light theme */
-    background-color: #e3e3e3;
+    /* background-color: #e3e3e3; */
     /* Dark theme */
     /* background-color: #000a20; */
     padding: 16px;
@@ -788,7 +799,7 @@ hmArDIV
 
 .tsrHmColorSchemeWrapper {
     /* Light theme */
-    background-color: #e3e3e3;
+    /* background-color: #e3e3e3; */
     /* Dark theme */
     /* background-color: #000a20; */
     padding: 16px;
@@ -801,7 +812,7 @@ hmArDIV
     /* light theme */
     /* color: #64748b;  */
     /* dark theme */
-    color: white;
+    /* color: white; */
 }
 
 .tsrHmColorScheme {
