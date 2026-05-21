@@ -1722,902 +1722,392 @@
                             <!-- code starts here -->
 
                             <link rel="stylesheet" href="http://127.0.0.1:5500/tsrHeatmap/Light/poc12/style.css">
-                            <link rel="stylesheet" href="http://127.0.0.1:5500/tsrPlans/poc12/style.css">
-
-                            <!-- ! Check comments -->
-
-                            <h2 class="tsrAdrHeader my-2">
-                                NSE Live Advance Decline Ratio
-                            </h2>
-                            <!-- Use later -->
-                            <!-- <div id="arFbDiv"></div>
-                            <div id="arLdgDiv" style="display: none;">
-                                <font color="#5BC0DE">Loading ...</font><img
-                                    src="https://www.topstockresearch.com/static/img/LoadingMedium.gif" title="loading">
-                                <br>
-                                Loading
-                            </div> -->
-                            <!-- <div class="my-2"></div> -->
-                            <style>
-                                .tsrAdrHeader {
-                                    /* border-bottom: 2px solid black; */
-                                    width: max-content;
-                                    font-weight: 700;
-                                    position: relative;
-                                    padding-bottom: 12px;
-                                    font-size: 24px;
-                                    margin: 0 auto;
-                                }
-                                .tsrAdrHeader::after {
-                                    content: '';
-                                    position: absolute;
-                                    left: 50%;
-                                    bottom: -5px;
-                                    margin: 10px auto;
-                                    height: 3px;
-                                    width: 60px;
-                                    background-color: green;
-                                    transform: translateX(-50%);
-                                }
-
-                                /* Same as .tsrHmDropbtnIdx form Heatmap */
-                                .tsrAdrDropbtnIdx {
-                                    background-color: #ffffff;
-                                    color: #344054;
-                                    padding: 10px 16px;
-                                    font-size: 14px;
-                                    font-weight: 600;
-                                    border: 1px solid #d0d5dd;
-                                    border-radius: 8px;
-                                    cursor: pointer;
-                                    display: inline-flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    gap: 8px;
-                                    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-                                    outline: none;
-                                    box-sizing: border-box;
-                                    height: 42px;
-                                }
-
-                                /* Same as .tsrHmControlLabel form Heatmap */
-                                .tsrAdrControlLabel {
-                                    font-size: 13px;
-                                    font-weight: 600;
-                                    color: #475467;
-                                    text-transform: uppercase;
-                                    letter-spacing: 0.02em;
-                                    user-select: none;
-                                    white-space: nowrap;
-                                }
-
-                                .tsrAdrSettingsWrapper {
-                                    display: flex;
-                                    flex-wrap: wrap;
-                                    gap: 30px;
-                                }
-
-                                .tsrAdrSettingsWrapper div {
-                                    display: flex;
-                                    flex-direction: column;
-                                    align-items: baseline;
-                                    gap: 5px;
-                                    margin: 5px 0;
-                                }
-
-
-                                .tsrAdrLink {
-                                    color: #64748b;
-                                    text-decoration: underline;
-                                    text-decoration-style: dotted;
-                                    text-underline-offset: 5px;
-                                    text-wrap: nowrap;
-
-                                }
-
-                                .tsrPlanTableSectionHeader .tsrAdrLink {
-                                    font-size: 16px;
-                                }
-
-                                .tsrPlanTableCell .tsrAdrLink {
-                                    font-size: 15px;
-                                }
-
-                                .tsrAdrLink i {
-                                    font-size: 13px;
-                                    transform: rotate(-35deg);
-                                }
-
-
-                                /* From tsrPlans */
-
-                                /* .tsrPlanTableRow{
-
-                                } */
-
-                                .tsrPlanTableSectionHeader {
-                                    padding: 8px 10px;
-                                    position: unset !important;
-                                    background-color: whitesmoke;
-                                }
-
-                                .tsrPlanTableFeature {
-                                    display: none !important;
-                                    background: none !important;
-                                }
-
-                                .tsrPlanTableCell {
-                                    display: flex;
-                                    flex-direction: column;
-                                }
-
-                                .tsrPlanTableCell p {
-                                    margin-bottom: 0;
-                                    font-size: 14px;
-                                    color: slategray;
-                                }
-
-                                .tsrPlanTableCell font {
-                                    font-size: 20px;
-                                    font-weight: 600;
-                                }
-
-
-
-                                @media only screen and (max-width: 768px) {
-
-
-                                    .tsrAdrHeader {
-                                        font-size: 20px;
-                                    }
-
-                                    .tsrAdrSettingsWrapper {
-                                        gap: 10px;
-                                    }
-
-                                    .tsrAdrLink {
-                                        font-size: 12px;
-                                    }
-
-                                    .tsrPlanTableContainer {
-                                        border-radius: unset;
-                                    }
-
-
-
-                                    .tsrPlanTableSectionHeader {
-                                        /* border-top-left-radius: 14px;
-                                        border-top-right-radius: 14px; */
-                                        padding: 12px 16px;
-                                    }
-
-                                    .tsrPlanTableSectionHeader .tsrAdrLink {
-                                        font-size: 14px;
-                                    }
-
-                                    .tsrPlanTableFeature {
-                                        display: block !important;
-                                    }
-
-                                    .tsrPlanTableCell p {
-                                        margin-bottom: 0;
-                                        font-size: 14px;
-                                    }
-
-                                    .tsrPlanTableCell font {
-                                        font-size: 14px;
-                                    }
-
-                                    .tsrAdrBarWrapper {
-                                        display: none;
-                                    }
-
-                                    .tsrPlanTableSectionHeader {
-                                        padding: 8px 10px;
-                                    }
-
-                                    .tsrPlanTableCell .tsrAdrLink {
-                                        font-size: 14px;
-                                    }
-                                }
-                            </style>
-
-                            <section class="container shadow-sm p-3">
-                                <div id="arCtrlDiv1" class="tsrAdrSettingsWrapper">
-                                    <!-- <div id="miCtrl"> -->
-
-                                    <div>
-                                        <label for="adrSb" class="tsrAdrControlLabel">Stock Basket</label>
-                                        <select id="adrSb" class="tsrAdrDropbtnIdx"
-                                            onchange="JavaScript:dyadr.ua('chart');">
-                                            <option value="FuturesAndOptions">F&amp;O Stocks</option>
-                                            <option value="Nifty50">Nifty 50 </option>
-                                            <option value="Nifty100">Nifty 100</option>
-                                            <option value="Nifty200">Nifty 200 </option>
-                                            <option value="Nifty500">Nifty 500 </option>
-                                            <option value="NiftyMidCap100">Nifty Midcap 100</option>
-                                            <option value="NiftySmallCap100">Nifty Smallcap 100</option>
-                                            <option value="NiftMicrocap250">Nifty Microcap 250</option>
-                                            <option value="NiftTotalMarket">Nifty Total Market</option>
-                                            <option value="NiftyAutoIndex">Nifty Auto</option>
-                                            <option value="NiftyBankIndex">Nifty Bank</option>
-                                            <option value="NiftyConsumerDurablesIndex">Nifty Consumer Durable</option>
-                                            <option value="NiftyFinancialServiceIndex">Nifty Fin Services</option>
-                                            <option value="NiftyHealthCareIndex">Nifty Healthcare</option>
-                                            <option value="NiftyFmcgIndex">Nifty FMCG</option>
-                                            <option value="NiftyITIndex">Nifty IT</option>
-                                            <option value="NiftyMediaIndex">Nifty Media</option>
-                                            <option value="NiftyMetalIndex">Nifty Metals</option>
-                                            <option value="NiftyOilAndGasIndex">Nifty Oil/ Gas</option>
-                                            <option value="NiftyPharmaIndex">Nifty Pharma</option>
-                                            <option value="NiftyPrivateBankIndex">Nifty Private Bank</option>
-                                            <option value="NiftyPSUBankIndex">Nifty PSU Bank</option>
-                                            <option value="NiftyRealtyIndex">Nifty Realty</option>
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <label for="adrFreq" class="tsrAdrControlLabel">Tick</label>
-                                        <select id="adrFreq" class="tsrAdrDropbtnIdx"
-                                            onchange="JavaScript:dyadr.ua('chart');">
-                                            <option value="I_D">Daily Live</option>
-                                            <option value="hh1">1 Hour</option>
-                                            <option value="mm30">30 Minutes</option>
-                                            <option value="mm15">15 Minutes</option>
-                                            <option value="mm5">5 Minutes</option>
-                                            <option value="mm2">2 Minutes</option>
-                                            <option value="D">Daily (EOD)</option>
-                                            <option value="W">Weekly</option>
-                                            <option value="M">Monthly</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-
-                                <hr>
-
-                                <div id="arContentDiv" style="height: 400px;">
-                                    <svg width="1250.02" height="400">
-                                        <g transform="translate(30, 380)" fill="none" font-size="10"
-                                            font-family="sans-serif" text-anchor="middle" style="stroke-width: 1.5; ">
-                                            <path class="domain" stroke="currentColor" d="M0,6V0H1516.02V6"></path>
-                                            <g class="tick" opacity="1" transform="translate(41.53479452054794,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">11:45</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(145.3717808219178,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">12 PM</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(249.20876712328766,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">12:15</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(353.0457534246575,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">12:30</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(456.88273972602735,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">12:45</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(560.7197260273972,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">01 PM</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(664.556712328767,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">01:15</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(768.393698630137,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">01:30</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(872.2306849315067,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">01:45</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(976.0676712328767,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">02 PM</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(1079.9046575342466,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">02:15</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(1183.7416438356165,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">02:30</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(1287.5786301369862,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">02:45</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(1391.4156164383562,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">03 PM</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(1495.252602739726,0)">
-                                                <line stroke="currentColor" y2="6"></line><text fill="currentColor"
-                                                    y="9" dy="0.71em">03:15</text>
-                                            </g>
-                                        </g>
-                                        <g transform="translate(30, 10)" fill="none" font-size="10"
-                                            font-family="sans-serif" text-anchor="end" style="stroke-width: 1.5; ">
-                                            <path class="domain" stroke="currentColor" d="M-6,370H0V0H-6"></path>
-                                            <g class="tick" opacity="1" transform="translate(0,370)">
-                                                <line stroke="currentColor" x2="-6"></line><text fill="currentColor"
-                                                    x="-9" dy="0.32em">60</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(0,331.45833333333337)">
-                                                <line stroke="currentColor" x2="-6"></line><text fill="currentColor"
-                                                    x="-9" dy="0.32em">70</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(0,292.91666666666663)">
-                                                <line stroke="currentColor" x2="-6"></line><text fill="currentColor"
-                                                    x="-9" dy="0.32em">80</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(0,254.375)">
-                                                <line stroke="currentColor" x2="-6"></line><text fill="currentColor"
-                                                    x="-9" dy="0.32em">90</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(0,215.83333333333331)">
-                                                <line stroke="currentColor" x2="-6"></line><text fill="currentColor"
-                                                    x="-9" dy="0.32em">100</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(0,177.29166666666666)">
-                                                <line stroke="currentColor" x2="-6"></line><text fill="currentColor"
-                                                    x="-9" dy="0.32em">110</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(0,138.75)">
-                                                <line stroke="currentColor" x2="-6"></line><text fill="currentColor"
-                                                    x="-9" dy="0.32em">120</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(0,100.20833333333334)">
-                                                <line stroke="currentColor" x2="-6"></line><text fill="currentColor"
-                                                    x="-9" dy="0.32em">130</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(0,61.66666666666665)">
-                                                <line stroke="currentColor" x2="-6"></line><text fill="currentColor"
-                                                    x="-9" dy="0.32em">140</text>
-                                            </g>
-                                            <g class="tick" opacity="1" transform="translate(0,23.125)">
-                                                <line stroke="currentColor" x2="-6"></line><text fill="currentColor"
-                                                    x="-9" dy="0.32em">150</text>
-                                            </g>
-                                        </g>
-                                        <path style="fill: none; stroke-width: 2; stroke: #0ca08a;"
-                                            d="M0,65.521L6.922,77.083L13.845,69.375L20.767,61.667L27.69,77.083L34.612,73.229L41.535,65.521L48.457,57.813L55.38,69.375L62.302,61.667L69.225,61.667L76.147,65.521L83.07,65.521L89.992,77.083L96.915,69.375L103.837,73.229L110.759,77.083L117.682,73.229L124.604,84.792L131.527,73.229L138.449,88.646L145.372,88.646L152.294,84.792L159.217,69.375L166.139,69.375L173.062,77.083L179.984,65.521L186.907,88.646L193.829,69.375L200.752,65.521L207.674,53.958L214.596,57.813L221.519,84.792L228.441,65.521L235.364,69.375L242.286,77.083L249.209,80.938L256.131,80.938L263.054,88.646L269.976,92.5L276.899,77.083L283.821,80.938L290.744,77.083L297.666,73.229L304.588,73.229L311.511,80.938L318.433,80.938L325.356,88.646L332.278,115.625L339.201,104.063L346.123,104.063L353.046,119.479L359.968,134.896L366.891,127.188L373.813,119.479L380.736,104.063L387.658,131.042L394.581,127.188L401.503,142.604L408.425,142.604L415.348,158.021L422.27,173.438L429.193,188.854L436.115,192.708L443.038,169.583L449.96,158.021L456.883,181.146L463.805,192.708L470.728,181.146L477.65,188.854L484.573,181.146L491.495,177.292L498.418,154.167L505.34,158.021L512.262,142.604L519.185,154.167L526.107,169.583L533.03,169.583L539.952,173.438L546.875,181.146L553.797,165.729L560.72,177.292L567.642,188.854L574.565,200.417L581.487,215.833L588.41,185L595.332,181.146L602.255,185L609.177,185L616.099,181.146L623.022,169.583L629.944,150.313L636.867,161.875L643.789,165.729L650.712,169.583L657.634,161.875L664.557,177.292L671.479,165.729L678.402,158.021L685.324,173.438L692.247,161.875L699.169,154.167L706.092,146.458L713.014,146.458L719.936,161.875L726.859,169.583L733.781,161.875L740.704,165.729L747.626,165.729L754.549,161.875L761.471,165.729L768.394,177.292L775.316,181.146L782.239,165.729L789.161,158.021L796.084,142.604L803.006,138.75L809.928,119.479L816.851,107.917L823.773,111.771L830.696,107.917L837.618,107.917L844.541,92.5L851.463,96.354L858.386,100.208L865.308,88.646L872.231,100.208L879.153,92.5L886.076,96.354L892.998,119.479L899.921,123.333L906.843,131.042L913.765,131.042L920.688,134.896L927.61,123.333L934.533,131.042L941.455,138.75L948.378,154.167L955.3,115.625L962.223,119.479L969.145,96.354L976.068,96.354L982.99,131.042L989.913,134.896L996.835,134.896L1003.758,138.75L1010.68,138.75L1017.602,154.167L1024.525,131.042L1031.447,134.896L1038.37,134.896L1045.292,134.896L1052.215,119.479L1059.137,123.333L1066.06,123.333L1072.982,142.604L1079.905,142.604L1086.827,142.604L1093.75,127.188L1100.672,119.479L1107.595,131.042L1114.517,119.479L1121.439,115.625L1128.362,131.042L1135.284,115.625L1142.207,123.333L1149.129,119.479L1156.052,111.771L1162.974,119.479L1169.897,138.75L1176.819,150.313L1183.742,146.458L1190.664,131.042L1197.587,123.333L1204.509,142.604L1211.432,146.458L1218.354,123.333L1225.276,138.75L1232.199,138.75L1239.121,142.604L1246.044,150.313L1252.966,146.458L1259.889,127.188L1266.811,115.625L1273.734,127.188L1280.656,154.167L1287.579,150.313L1294.501,127.188L1301.424,134.896L1308.346,142.604L1315.268,146.458L1322.191,131.042L1329.113,131.042L1336.036,131.042L1342.958,134.896L1349.881,134.896L1356.803,154.167L1363.726,138.75L1370.648,123.333L1377.571,127.188L1384.493,131.042L1391.416,123.333L1398.338,134.896L1405.261,146.458L1412.183,127.188L1419.105,134.896L1426.028,115.625L1432.95,119.479L1439.873,127.188L1446.795,138.75L1453.718,173.438L1460.64,134.896L1467.563,146.458L1474.485,150.313L1481.408,154.167L1488.33,165.729L1495.253,177.292L1502.175,177.292L1509.098,188.854L1516.02,181.146"
-                                            transform="translate(30, 10)"></path>
-                                        <path style="fill: none; stroke-width: 2; stroke: red;"
-                                            d="M0,335.313L6.922,323.75L13.845,331.458L20.767,335.313L27.69,319.896L34.612,327.604L41.535,343.021L48.457,339.167L55.38,335.313L62.302,335.313L69.225,335.313L76.147,335.313L83.07,339.167L89.992,327.604L96.915,331.458L103.837,331.458L110.759,323.75L117.682,327.604L124.604,312.188L131.527,331.458L138.449,308.333L145.372,312.188L152.294,319.896L159.217,331.458L166.139,339.167L173.062,327.604L179.984,331.458L186.907,319.896L193.829,331.458L200.752,339.167L207.674,343.021L214.596,343.021L221.519,331.458L228.441,335.313L235.364,331.458L242.286,319.896L249.209,316.042L256.131,323.75L263.054,316.042L269.976,308.333L276.899,319.896L283.821,316.042L290.744,327.604L297.666,323.75L304.588,327.604L311.511,319.896L318.433,323.75L325.356,312.188L332.278,285.208L339.201,296.771L346.123,296.771L353.046,289.063L359.968,265.938L366.891,273.646L373.813,277.5L380.736,292.917L387.658,269.792L394.581,269.792L401.503,262.083L408.425,254.375L415.348,242.813L422.27,223.542L429.193,208.125L436.115,211.979L443.038,227.396L449.96,238.958L456.883,219.688L463.805,215.833L470.728,219.688L477.65,211.979L484.573,219.688L491.495,223.542L498.418,246.667L505.34,242.813L512.262,254.375L519.185,246.667L526.107,235.104L533.03,227.396L539.952,227.396L546.875,219.688L553.797,231.25L560.72,219.688L567.642,211.979L574.565,200.417L581.487,185L588.41,211.979L595.332,215.833L602.255,215.833L609.177,211.979L616.099,223.542L623.022,231.25L629.944,250.521L636.867,235.104L643.789,235.104L650.712,231.25L657.634,242.813L664.557,231.25L671.479,235.104L678.402,242.813L685.324,227.396L692.247,238.958L699.169,254.375L706.092,250.521L713.014,254.375L719.936,238.958L726.859,238.958L733.781,238.958L740.704,231.25L747.626,235.104L754.549,235.104L761.471,231.25L768.394,219.688L775.316,215.833L782.239,231.25L789.161,246.667L796.084,258.229L803.006,269.792L809.928,277.5L816.851,292.917L823.773,285.208L830.696,289.063L837.618,296.771L844.541,308.333L851.463,308.333L858.386,300.625L865.308,319.896L872.231,312.188L879.153,304.479L886.076,304.479L892.998,277.5L899.921,277.5L906.843,269.792L913.765,265.938L920.688,269.792L927.61,273.646L934.533,269.792L941.455,258.229L948.378,254.375L955.3,285.208L962.223,277.5L969.145,308.333L976.068,300.625L982.99,281.354L989.913,262.083L996.835,265.938L1003.758,265.938L1010.68,265.938L1017.602,250.521L1024.525,269.792L1031.447,277.5L1038.37,265.938L1045.292,265.938L1052.215,281.354L1059.137,273.646L1066.06,285.208L1072.982,262.083L1079.905,254.375L1086.827,258.229L1093.75,277.5L1100.672,277.5L1107.595,273.646L1114.517,277.5L1121.439,281.354L1128.362,273.646L1135.284,281.354L1142.207,285.208L1149.129,281.354L1156.052,289.063L1162.974,281.354L1169.897,269.792L1176.819,246.667L1183.742,254.375L1190.664,273.646L1197.587,273.646L1204.509,258.229L1211.432,258.229L1218.354,273.646L1225.276,262.083L1232.199,262.083L1239.121,258.229L1246.044,250.521L1252.966,254.375L1259.889,269.792L1266.811,292.917L1273.734,277.5L1280.656,250.521L1287.579,258.229L1294.501,273.646L1301.424,265.938L1308.346,262.083L1315.268,250.521L1322.191,269.792L1329.113,265.938L1336.036,269.792L1342.958,262.083L1349.881,262.083L1356.803,250.521L1363.726,258.229L1370.648,273.646L1377.571,269.792L1384.493,273.646L1391.416,273.646L1398.338,269.792L1405.261,265.938L1412.183,269.792L1419.105,265.938L1426.028,285.208L1432.95,277.5L1439.873,269.792L1446.795,262.083L1453.718,231.25L1460.64,262.083L1467.563,262.083L1474.485,246.667L1481.408,242.813L1488.33,231.25L1495.253,219.688L1502.175,219.688L1509.098,208.125L1516.02,219.688"
-                                            transform="translate(30, 0)"></path>
-                                        <g>
-                                            <circle r="4"
-                                                style="fill-opacity: 0.2; stroke-width: 2; fill: #0ca08a; stroke: #0ca08a"
-                                                transform="translate(30,10)" opacity="0" cx="747.626301369863"
-                                                cy="165.72916666666666"></circle>
-                                        </g>
-                                        <g>
-                                            <circle r="4"
-                                                style="fill-opacity: 0.2; stroke-width: 2; fill: red; stroke: red"
-                                                transform="translate(30,0)" opacity="0" cx="747.626301369863"
-                                                cy="235.10416666666669"></circle>
-                                        </g>
-                                        <rect id="rectOverlay" width="1516.02" height="370" opacity="0"
-                                            transform="translate(30, 10)"></rect>
-                                        <line id="crosshair" x1="747.626301369863" y1="0" x2="747.626301369863" y2="370"
-                                            opacity="0" transform="translate(30, 10)"
-                                            style="stroke: gray; stroke-width: 1; stroke-dasharray: 3;"></line>
-                                    </svg>
-                                </div>
-                            </section>
-
-                            <br>
-                            <br>
-
-                            <section class="container ">
-                                <div id="arCountDiv1">
-                                    <h4 class="fw-bold">
-                                        INDEX ADR
-                                    </h4>
-                                    <div class="p-3 row mt-3  shadow-sm">
-
-                                        <div id="arCtrlDiv1" class="tsrAdrSettingsWrapper">
-                                            <!-- <div id="miCtrl"> -->
-
-                                            <div>
-                                                <label for="idxType" class="tsrAdrControlLabel">Index Type</label>
-                                                <select id="idxType" class="tsrAdrDropbtnIdx"
-                                                    onchange="JavaScript:dyadr.ua('adrSbTick');">
-                                                    <option value="BroadBased" selected="">Broad Based Index</option>
-                                                    <option value="SecIdx">Sectorial Index</option>
-                                                </select>
-                                            </div>
-
-                                            <div>
-                                                <label for="allAdrTick" class="tsrAdrControlLabel">Tick</label>
-                                                <select id="allAdrTick" class="tsrAdrDropbtnIdx"
-                                                    onchange="JavaScript:dyadr.ua('adrSbTick');">
-                                                    <option value="I_D" selected="">Daily Live</option>
-                                                    <option value="hh1">1 Hour</option>
-                                                    <option value="mm30">30 Minutes</option>
-                                                    <option value="mm15">15 Minutes</option>
-                                                    <option value="mm5">5 Minutes</option>
-                                                    <option value="mm2">2 Minutes</option>
-                                                    <option value="D">Daily (EOD)</option>
-                                                    <option value="W">Weekly</option>
-                                                    <option value="M">Monthly</option>
-                                                    <option value="Q">Quarterly</option>
-                                                    <option value="Y">Yearly</option>
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                        <!-- <hr style="margin: 15px 0; color: grey;"> -->
-                                        <div class="tsrPlanTableContainer p-0 mt-3">
-                                            <!-- F&O Stocks -->
-                                            <div class="my-3 border">
-                                                <div class="tsrPlanTableSectionHeader" style="top: 134px;">
-                                                    <a href="" class="tsrAdrLink">
-                                                        F&O Stocks <i class="fas fa-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="tsrPlanTableRow">
-                                                    <div class="tsrPlanTableFeature">
-                                                        <div class="d-flex flex-column h-100">
-                                                            <span style="font-size: 12px; font-weight: 500;">
-                                                                <b>
-                                                                    Advance Decline Ratio
-                                                                </b>
-                                                            </span>
-                                                            <div class="d-flex flex-column"
-                                                                style="justify-content: center; align-content: center; flex-wrap: wrap; height: 100%;">
-
-                                                                <div class="d-flex flex-row"
-                                                                    style="height: 20px; justify-content: start;">
-                                                                    <span
-                                                                        id="tsrAdrAdvancesPercentTextFuturesAndOptions"
-                                                                        style="white-space: nowrap; font-weight: bold;color: #008080;">55%</span>
-                                                                </div>
-                                                                <div class="d-flex" style="height: 10px;  width: 60%;">
-                                                                    <div id="tsrAdrBarAdvancesDivFuturesAndOptions"
-                                                                        style="background-color: #008080; height: 100%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; width: 55.072463768115945%;">
-
-                                                                    </div>
-                                                                    <div style="width: 2%;">
-
-                                                                    </div>
-                                                                    <div id="tsrAdrBarDeclinesDivFuturesAndOptions"
-                                                                        style="background-color: #fd4757; height: 100%; border-top-right-radius: 10px; border-bottom-right-radius: 10px; width: 44.927536231884055%;">
-
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="d-flex flex-row"
-                                                                    style="height: 20px; justify-content: end;">
-                                                                    <span
-                                                                        id="tsrAdrDeclinesPercentTextFuturesAndOptions"
-                                                                        style="white-space: nowrap; font-weight: bold; color: #fd4757;">45%</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tsrPlanTableCellBottom">
-                                                        <div class="tsrPlanTableCell">
-                                                            <p>Advances</p>
-                                                            <font color="green"
-                                                                id="tsrAdrAdvancesTextFuturesAndOptions"> 114</font>
-                                                        </div>
-                                                        <div class="tsrPlanTableCell">
-                                                            <p>Declines</p>
-                                                            <font color="red" id="tsrAdrDeclinesTextFuturesAndOptions">
-                                                                93</font>
-                                                        </div>
-                                                        <div class="tsrPlanTableCell tsrAdrBarWrapper">
-
-                                                            <div class="d-flex flex-column h-100 w-100">
-                                                                <p
-                                                                    style="font-size: 12px; font-weight: 500;text-align: center; margin-bottom: 0;">
-                                                                    <b>
-                                                                        Advance Decline Ratio
-                                                                    </b>
-                                                                </p>
-                                                                <div class="d-flex flex-column"
-                                                                    style="justify-content: center; align-content: center; flex-wrap: wrap; height: 100%;">
-
-                                                                    <div class="d-flex flex-row"
-                                                                        style="height: 20px; justify-content: start;">
-                                                                        <span
-                                                                            id="tsrAdrAdvancesPercentTextFuturesAndOptions"
-                                                                            style="white-space: nowrap; font-weight: bold;color: #008080;">55%</span>
-                                                                    </div>
-                                                                    <div class="d-flex"
-                                                                        style="height: 10px;  width: 60%;">
-                                                                        <div id="tsrAdrBarAdvancesDivFuturesAndOptions"
-                                                                            style="background-color: #008080; height: 100%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; width: 55.072463768115945%;">
-
-                                                                        </div>
-                                                                        <div style="width: 2%;">
-
-                                                                        </div>
-                                                                        <div id="tsrAdrBarDeclinesDivFuturesAndOptions"
-                                                                            style="background-color: #fd4757; height: 100%; border-top-right-radius: 10px; border-bottom-right-radius: 10px; width: 44.927536231884055%;">
-
-                                                                        </div>
-
-                                                                    </div>
-
-                                                                    <div class="d-flex flex-row"
-                                                                        style="height: 20px; justify-content: end;">
-                                                                        <span
-                                                                            id="tsrAdrDeclinesPercentTextFuturesAndOptions"
-                                                                            style="white-space: nowrap; font-weight: bold; color: #fd4757;">45%</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tsrPlanTableCell">
-                                                            <a class="tsrAdrLink"
-                                                                href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions">Heat
-                                                                Map
-                                                                <i class="fas fa-arrow-right"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- NIFTY 50 -->
-                                            <div class="my-3 border">
-                                                <div class="tsrPlanTableSectionHeader" style="top: 134px;">
-                                                    <a href="" class="tsrAdrLink">
-                                                        Nifty 50 <i class="fas fa-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="tsrPlanTableRow">
-                                                    <div class="tsrPlanTableFeature">
-                                                        <div class="d-flex flex-column h-100">
-                                                            <span style="font-size: 12px; font-weight: 500;">
-                                                                <b>
-                                                                    Advance Decline Ratio
-                                                                </b>
-                                                            </span>
-                                                            <div class="d-flex flex-column"
-                                                                style="justify-content: center; align-content: center; flex-wrap: wrap; height: 100%;">
-
-                                                                <div class="d-flex flex-row"
-                                                                    style="height: 20px; justify-content: start;">
-                                                                    <span
-                                                                        id="tsrAdrAdvancesPercentTextFuturesAndOptions"
-                                                                        style="white-space: nowrap; font-weight: bold;color: #008080;">55%</span>
-                                                                </div>
-                                                                <div class="d-flex" style="height: 10px;  width: 60%;">
-                                                                    <div id="tsrAdrBarAdvancesDivFuturesAndOptions"
-                                                                        style="background-color: #008080; height: 100%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; width: 55.072463768115945%;">
-
-                                                                    </div>
-                                                                    <div style="width: 2%;">
-
-                                                                    </div>
-                                                                    <div id="tsrAdrBarDeclinesDivFuturesAndOptions"
-                                                                        style="background-color: #fd4757; height: 100%; border-top-right-radius: 10px; border-bottom-right-radius: 10px; width: 44.927536231884055%;">
-
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="d-flex flex-row"
-                                                                    style="height: 20px; justify-content: end;">
-                                                                    <span
-                                                                        id="tsrAdrDeclinesPercentTextFuturesAndOptions"
-                                                                        style="white-space: nowrap; font-weight: bold; color: #fd4757;">45%</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tsrPlanTableCellBottom">
-                                                        <div class="tsrPlanTableCell">
-                                                            <p>Advances</p>
-                                                            <font color="green"
-                                                                id="tsrAdrAdvancesTextFuturesAndOptions"> 114</font>
-                                                        </div>
-                                                        <div class="tsrPlanTableCell">
-                                                            <p>Declines</p>
-                                                            <font color="red" id="tsrAdrDeclinesTextFuturesAndOptions">
-                                                                93</font>
-                                                        </div>
-
-                                                        <div class="tsrPlanTableCell tsrAdrBarWrapper">
-
-                                                            <div class="d-flex flex-column h-100 w-100">
-                                                                <p
-                                                                    style="font-size: 12px; font-weight: 500;text-align: center; margin-bottom: 0;">
-                                                                    <b>
-                                                                        Advance Decline Ratio
-                                                                    </b>
-                                                                </p>
-                                                                <div class="d-flex flex-column"
-                                                                    style="justify-content: center; align-content: center; flex-wrap: wrap; height: 100%;">
-
-                                                                    <div class="d-flex flex-row"
-                                                                        style="height: 20px; justify-content: start;">
-                                                                        <span
-                                                                            id="tsrAdrAdvancesPercentTextFuturesAndOptions"
-                                                                            style="white-space: nowrap; font-weight: bold;color: #008080;">55%</span>
-                                                                    </div>
-                                                                    <div class="d-flex"
-                                                                        style="height: 10px;  width: 60%;">
-                                                                        <div id="tsrAdrBarAdvancesDivFuturesAndOptions"
-                                                                            style="background-color: #008080; height: 100%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; width: 55.072463768115945%;">
-
-                                                                        </div>
-                                                                        <div style="width: 2%;">
-
-                                                                        </div>
-                                                                        <div id="tsrAdrBarDeclinesDivFuturesAndOptions"
-                                                                            style="background-color: #fd4757; height: 100%; border-top-right-radius: 10px; border-bottom-right-radius: 10px; width: 44.927536231884055%;">
-
-                                                                        </div>
-
-                                                                    </div>
-
-                                                                    <div class="d-flex flex-row"
-                                                                        style="height: 20px; justify-content: end;">
-                                                                        <span
-                                                                            id="tsrAdrDeclinesPercentTextFuturesAndOptions"
-                                                                            style="white-space: nowrap; font-weight: bold; color: #fd4757;">45%</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tsrPlanTableCell">
-                                                            <a class="tsrAdrLink"
-                                                                href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions">Heat
-                                                                Map
-                                                                <i class="fas fa-arrow-right"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- NIFTY 500 -->
-                                            <div class="my-3 border">
-                                                <div class="tsrPlanTableSectionHeader" style="top: 134px;">
-                                                    <a href="" class="tsrAdrLink">
-                                                        Nifty 500 <i class="fas fa-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="tsrPlanTableRow">
-                                                    <div class="tsrPlanTableFeature">
-                                                        <div class="d-flex flex-column h-100">
-                                                            <span style="font-size: 12px; font-weight: 500;">
-                                                                <b>
-                                                                    Advance Decline Ratio
-                                                                </b>
-                                                            </span>
-                                                            <div class="d-flex flex-column"
-                                                                style="justify-content: center; align-content: center; flex-wrap: wrap; height: 100%;">
-
-                                                                <div class="d-flex flex-row"
-                                                                    style="height: 20px; justify-content: start;">
-                                                                    <span
-                                                                        id="tsrAdrAdvancesPercentTextFuturesAndOptions"
-                                                                        style="white-space: nowrap; font-weight: bold;color: #008080;">55%</span>
-                                                                </div>
-                                                                <div class="d-flex" style="height: 10px;  width: 60%;">
-                                                                    <div id="tsrAdrBarAdvancesDivFuturesAndOptions"
-                                                                        style="background-color: #008080; height: 100%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; width: 55.072463768115945%;">
-
-                                                                    </div>
-                                                                    <div style="width: 2%;">
-
-                                                                    </div>
-                                                                    <div id="tsrAdrBarDeclinesDivFuturesAndOptions"
-                                                                        style="background-color: #fd4757; height: 100%; border-top-right-radius: 10px; border-bottom-right-radius: 10px; width: 44.927536231884055%;">
-
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="d-flex flex-row"
-                                                                    style="height: 20px; justify-content: end;">
-                                                                    <span
-                                                                        id="tsrAdrDeclinesPercentTextFuturesAndOptions"
-                                                                        style="white-space: nowrap; font-weight: bold; color: #fd4757;">45%</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tsrPlanTableCellBottom">
-                                                        <div class="tsrPlanTableCell">
-                                                            <p>Advances</p>
-                                                            <font color="green"
-                                                                id="tsrAdrAdvancesTextFuturesAndOptions"> 294</font>
-                                                        </div>
-                                                        <div class="tsrPlanTableCell">
-                                                            <p>Declines</p>
-                                                            <font color="red" id="tsrAdrDeclinesTextFuturesAndOptions">
-                                                                204</font>
-                                                        </div>
-
-                                                        <div class="tsrPlanTableCell tsrAdrBarWrapper">
-
-                                                            <div class="d-flex flex-column h-100 w-100">
-                                                                <p
-                                                                    style="font-size: 12px; font-weight: 500;text-align: center; margin-bottom: 0;">
-                                                                    <b>
-                                                                        Advance Decline Ratio
-                                                                    </b>
-                                                                </p>
-                                                                <div class="d-flex flex-column"
-                                                                    style="justify-content: center; align-content: center; flex-wrap: wrap; height: 100%;">
-
-                                                                    <div class="d-flex flex-row"
-                                                                        style="height: 20px; justify-content: start;">
-                                                                        <span
-                                                                            id="tsrAdrAdvancesPercentTextFuturesAndOptions"
-                                                                            style="white-space: nowrap; font-weight: bold;color: #008080;">55%</span>
-                                                                    </div>
-                                                                    <div class="d-flex"
-                                                                        style="height: 10px;  width: 60%;">
-                                                                        <div id="tsrAdrBarAdvancesDivFuturesAndOptions"
-                                                                            style="background-color: #008080; height: 100%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; width: 55.072463768115945%;">
-
-                                                                        </div>
-                                                                        <div style="width: 2%;">
-
-                                                                        </div>
-                                                                        <div id="tsrAdrBarDeclinesDivFuturesAndOptions"
-                                                                            style="background-color: #fd4757; height: 100%; border-top-right-radius: 10px; border-bottom-right-radius: 10px; width: 44.927536231884055%;">
-
-                                                                        </div>
-
-                                                                    </div>
-
-                                                                    <div class="d-flex flex-row"
-                                                                        style="height: 20px; justify-content: end;">
-                                                                        <span
-                                                                            id="tsrAdrDeclinesPercentTextFuturesAndOptions"
-                                                                            style="white-space: nowrap; font-weight: bold; color: #fd4757;">45%</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tsrPlanTableCell">
-                                                            <a class="tsrAdrLink"
-                                                                href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions">Heat
-                                                                Map
-                                                                <i class="fas fa-arrow-right"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <!-- NIFTY Total Market -->
-                                            <div class="my-3 border">
-                                                <div class="tsrPlanTableSectionHeader" style="top: 134px;">
-                                                    <a href="" class="tsrAdrLink">
-                                                        Nifty Total Market <i class="fas fa-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="tsrPlanTableRow">
-                                                    <div class="tsrPlanTableFeature">
-                                                        <div class="d-flex flex-column h-100">
-                                                            <span style="font-size: 12px; font-weight: 500;">
-                                                                <b>
-                                                                    Advance Decline Ratio
-                                                                </b>
-                                                            </span>
-                                                            <div class="d-flex flex-column"
-                                                                style="justify-content: center; align-content: center; flex-wrap: wrap; height: 100%;">
-
-                                                                <div class="d-flex flex-row"
-                                                                    style="height: 20px; justify-content: start;">
-                                                                    <span
-                                                                        id="tsrAdrAdvancesPercentTextFuturesAndOptions"
-                                                                        style="white-space: nowrap; font-weight: bold;color: #008080;">55%</span>
-                                                                </div>
-                                                                <div class="d-flex" style="height: 10px;  width: 60%;">
-                                                                    <div id="tsrAdrBarAdvancesDivFuturesAndOptions"
-                                                                        style="background-color: #008080; height: 100%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; width: 55.072463768115945%;">
-
-                                                                    </div>
-                                                                    <div style="width: 2%;">
-
-                                                                    </div>
-                                                                    <div id="tsrAdrBarDeclinesDivFuturesAndOptions"
-                                                                        style="background-color: #fd4757; height: 100%; border-top-right-radius: 10px; border-bottom-right-radius: 10px; width: 44.927536231884055%;">
-
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="d-flex flex-row"
-                                                                    style="height: 20px; justify-content: end;">
-                                                                    <span
-                                                                        id="tsrAdrDeclinesPercentTextFuturesAndOptions"
-                                                                        style="white-space: nowrap; font-weight: bold; color: #fd4757;">45%</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tsrPlanTableCellBottom">
-                                                        <div class="tsrPlanTableCell">
-                                                            <p>Advances</p>
-                                                            <font color="green"
-                                                                id="tsrAdrAdvancesTextFuturesAndOptions"> 294</font>
-                                                        </div>
-                                                        <div class="tsrPlanTableCell">
-                                                            <p>Declines</p>
-                                                            <font color="red" id="tsrAdrDeclinesTextFuturesAndOptions">
-                                                                204</font>
-                                                        </div>
-
-                                                        <div class="tsrPlanTableCell tsrAdrBarWrapper">
-
-                                                            <div class="d-flex flex-column h-100 w-100">
-                                                                <p
-                                                                    style="font-size: 12px; font-weight: 500;text-align: center; margin-bottom: 0;">
-                                                                    <b>
-                                                                        Advance Decline Ratio
-                                                                    </b>
-                                                                </p>
-                                                                <div class="d-flex flex-column"
-                                                                    style="justify-content: center; align-content: center; flex-wrap: wrap; height: 100%;">
-
-                                                                    <div class="d-flex flex-row"
-                                                                        style="height: 20px; justify-content: start;">
-                                                                        <span
-                                                                            id="tsrAdrAdvancesPercentTextFuturesAndOptions"
-                                                                            style="white-space: nowrap; font-weight: bold;color: #008080;">55%</span>
-                                                                    </div>
-                                                                    <div class="d-flex"
-                                                                        style="height: 10px;  width: 60%;">
-                                                                        <div id="tsrAdrBarAdvancesDivFuturesAndOptions"
-                                                                            style="background-color: #008080; height: 100%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; width: 55.072463768115945%;">
-
-                                                                        </div>
-                                                                        <div style="width: 2%;">
-
-                                                                        </div>
-                                                                        <div id="tsrAdrBarDeclinesDivFuturesAndOptions"
-                                                                            style="background-color: #fd4757; height: 100%; border-top-right-radius: 10px; border-bottom-right-radius: 10px; width: 44.927536231884055%;">
-
-                                                                        </div>
-
-                                                                    </div>
-
-                                                                    <div class="d-flex flex-row"
-                                                                        style="height: 20px; justify-content: end;">
-                                                                        <span
-                                                                            id="tsrAdrDeclinesPercentTextFuturesAndOptions"
-                                                                            style="white-space: nowrap; font-weight: bold; color: #fd4757;">45%</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tsrPlanTableCell">
-                                                            <a class="tsrAdrLink"
-                                                                href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions">Heat
-                                                                Map
-                                                                <i class="fas fa-arrow-right"></i>
-                                                            </a>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-
+<link rel="stylesheet" href="http://127.0.0.1:5500/tsrPlans/poc12/style.css">
+
+<style>
+    /* Professional Light Theme Foundations for TopStockResearch Component */
+    
+    .tsrAdrMainTitle {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #101828;
+        font-weight: 700;
+        font-size: 24px;
+        letter-spacing: -0.01em;
+        position: relative;
+        padding-bottom: 12px;
+        margin-bottom: 24px;
+    }
+    
+    .tsrAdrMainTitle::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: #008767;
+        border-radius: 2px;
+    }
+
+    .tsrAdrDropbtnIdx {
+        background-color: #ffffff;
+        color: #344054;
+        padding: 10px 16px;
+        font-size: 14px;
+        font-weight: 600;
+        border: 1px solid #d0d5dd;
+        border-radius: 8px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: all 0.2s ease-in-out;
+        outline: none;
+        box-sizing: border-box;
+        height: 42px;
+        box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    }
+    
+    .tsrAdrDropbtnIdx:hover {
+        background-color: #f9fafb;
+        border-color: #b2dd71;
+    }
+
+    .tsrAdrControlLabel {
+        font-size: 12px;
+        font-weight: 700;
+        color: #667085;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        user-select: none;
+        white-space: nowrap;
+    }
+
+    .tsrAdrSettingsWrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        align-items: center;
+    }
+
+    .tsrAdrSettingsWrapper > div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        margin: 5px 0;
+    }
+
+    .tsrAdrLink {
+        color: #1570ef;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.15s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+    
+    .tsrAdrLink:hover {
+        color: #175cd3;
+        text-decoration: underline;
+    }
+
+    .tsrPlanTableSectionHeader .tsrAdrLink {
+        font-size: 16px;
+        color: #101828;
+    }
+
+    .tsrPlanTableCell .tsrAdrLink {
+        font-size: 14px;
+    }
+
+    .tsrAdrLink i {
+        font-size: 12px;
+        transition: transform 0.15s ease;
+    }
+    
+    .tsrAdrLink:hover i {
+        transform: translateX(2px);
+    }
+
+    /* Table & Modular Layout Grid Elements */
+    .tsrPlanTableContainer {
+        background: #ffffff;
+        border: 1px solid #e4e7ec;
+        border-radius: 12px;
+        box-shadow: 0px 1px 3px rgba(16, 24, 40, 0.05);
+        overflow: hidden;
+    }
+
+    .tsrPlanTableSectionHeader {
+        padding: 14px 20px;
+        background-color: #f9fafb;
+        border-bottom: 1px solid #e4e7ec;
+    }
+
+    .tsrPlanTableRow {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        padding: 16px 20px;
+        border-bottom: 1px solid #f2f4f7;
+        align-items: center;
+    }
+    
+    .tsrPlanTableRow:last-child {
+        border-bottom: none;
+    }
+
+    .tsrPlanTableCellBottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    .tsrPlanTableCell {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .tsrPlanTableCell p {
+        margin: 0;
+        font-size: 13px;
+        color: #667085;
+        font-weight: 500;
+    }
+
+    .tsrPlanTableCell font, .tsrPlanTableCell .tsrMetricValue {
+        font-size: 18px;
+        font-weight: 700;
+    }
+    
+    .text-advance { color: #008767 !important; }
+    .text-decline { color: #df1c41 !important; }
+
+    /* Custom Responsive Polish */
+    @media only screen and (max-width: 768px) {
+        .tsrAdrMainTitle {
+            font-size: 20px;
+        }
+        .tsrPlanTableRow {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .tsrPlanTableCellBottom {
+            flex-wrap: wrap;
+        }
+        .tsrAdrBarWrapper {
+            width: 100%;
+            margin-top: 8px;
+        }
+    }
+</style>
+
+<h2 class="tsrAdrMainTitle text-center mx-auto mt-4">
+    NSE Live Advance Decline Ratio
+</h2>
+
+<section class="container card p-4 shadow-sm bg-white border-0 rounded-4">
+    <div id="arCtrlDiv1" class="tsrAdrSettingsWrapper mb-3">
+        <div>
+            <label for="adrSb" class="tsrAdrControlLabel">Stock Basket</label>
+            <select id="adrSb" class="tsrAdrDropbtnIdx" onchange="JavaScript:dyadr.ua('chart');">
+                <option value="FuturesAndOptions">F&amp;O Stocks</option>
+                <option value="Nifty50">Nifty 50 </option>
+                <option value="Nifty100">Nifty 100</option>
+                <option value="Nifty200">Nifty 200 </option>
+                <option value="Nifty500">Nifty 500 </option>
+                <option value="NiftyMidCap100">Nifty Midcap 100</option>
+                <option value="NiftySmallCap100">Nifty Smallcap 100</option>
+                <option value="NiftMicrocap250">Nifty Microcap 250</option>
+                <option value="NiftTotalMarket">Nifty Total Market</option>
+                <option value="NiftyAutoIndex">Nifty Auto</option>
+                <option value="NiftyBankIndex">Nifty Bank</option>
+                <option value="NiftyConsumerDurablesIndex">Nifty Consumer Durable</option>
+                <option value="NiftyFinancialServiceIndex">Nifty Fin Services</option>
+                <option value="NiftyHealthCareIndex">Nifty Healthcare</option>
+                <option value="NiftyFmcgIndex">Nifty FMCG</option>
+                <option value="NiftyITIndex">Nifty IT</option>
+                <option value="NiftyMediaIndex">Nifty Media</option>
+                <option value="NiftyMetalIndex">Nifty Metals</option>
+                <option value="NiftyOilAndGasIndex">Nifty Oil/ Gas</option>
+                <option value="NiftyPharmaIndex">Nifty Pharma</option>
+                <option value="NiftyPrivateBankIndex">Nifty Private Bank</option>
+                <option value="NiftyPSUBankIndex">Nifty PSU Bank</option>
+                <option value="NiftyRealtyIndex">Nifty Realty</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="adrFreq" class="tsrAdrControlLabel">Tick Frequency</label>
+            <select id="adrFreq" class="tsrAdrDropbtnIdx" onchange="JavaScript:dyadr.ua('chart');">
+                <option value="I_D">Daily Live</option>
+                <option value="hh1">1 Hour</option>
+                <option value="mm30">30 Minutes</option>
+                <option value="mm15">15 Minutes</option>
+                <option value="mm5">5 Minutes</option>
+                <option value="mm2">2 Minutes</option>
+                <option value="D">Daily (EOD)</option>
+                <option value="W">Weekly</option>
+                <option value="M">Monthly</option>
+            </select>
+        </div>
+    </div>
+
+    <hr class="border-secondary opacity-25 my-3">
+
+    <div id="arContentDiv" class="w-100 overflow-auto" style="height: 400px;">
+        <svg width="1250" height="400" class="mx-auto d-block">
+            <g transform="translate(30, 380)" fill="none" font-size="10" font-family="sans-serif" text-anchor="middle" style="stroke-width: 1.2;">
+                <path class="domain" stroke="#d0d5dd" d="M0,6V0H1516V6"></path>
+                <g class="tick" opacity="1" transform="translate(41.5,0)">
+                    <line stroke="#667085" y2="6"></line>
+                    <text fill="#667085" y="9" dy="0.71em">11:45</text>
+                </g>
+                <g class="tick" opacity="1" transform="translate(145.3,0)">
+                    <line stroke="#667085" y2="6"></line>
+                    <text fill="#667085" y="9" dy="0.71em">12 PM</text>
+                </g>
+                <g class="tick" opacity="1" transform="translate(249.2,0)">
+                    <line stroke="#667085" y2="6"></line>
+                    <text fill="#667085" y="9" dy="0.71em">12:15</text>
+                </g>
+                <g class="tick" opacity="1" transform="translate(353,0)">
+                    <line stroke="#667085" y2="6"></line>
+                    <text fill="#667085" y="9" dy="0.71em">12:30</text>
+                </g>
+                <g class="tick" opacity="1" transform="translate(456.8,0)">
+                    <line stroke="#667085" y2="6"></line>
+                    <text fill="#667085" y="9" dy="0.71em">12:45</text>
+                </g>
+                <g class="tick" opacity="1" transform="translate(560.7,0)">
+                    <line stroke="#667085" y2="6"></line>
+                    <text fill="#667085" y="9" dy="0.71em">01 PM</text>
+                </g>
+            </g>
+            
+            <g transform="translate(30, 10)" fill="none" font-size="10" font-family="sans-serif" text-anchor="end" style="stroke-width: 1.2;">
+                <path class="domain" stroke="#d0d5dd" d="M-6,370H0V0H-6"></path>
+                <g class="tick" transform="translate(0,370)"><line stroke="#e4e7ec" x2="-6"></line><text fill="#667085" x="-9" dy="0.32em">60</text></g>
+                <g class="tick" transform="translate(0,292)"><line stroke="#e4e7ec" x2="-6"></line><text fill="#667085" x="-9" dy="0.32em">80</text></g>
+                <g class="tick" transform="translate(0,215)"><line stroke="#e4e7ec" x2="-6"></line><text fill="#667085" x="-9" dy="0.32em">100</text></g>
+                <g class="tick" transform="translate(0,138)"><line stroke="#e4e7ec" x2="-6"></line><text fill="#667085" x="-9" dy="0.32em">120</text></g>
+                <g class="tick" transform="translate(0,61)"><line stroke="#e4e7ec" x2="-6"></line><text fill="#667085" x="-9" dy="0.32em">140</text></g>
+            </g>
+
+            <path style="fill: none; stroke-width: 2.5; stroke: #008767; stroke-linecap: round;" d="M0,65.521L6.922,77.083L13.845,69.375L20.767,61.667L27.69,77.083L34.612,73.229L41.535,65.521L48.457,57.813L55.38,69.375L62.302,61.667" transform="translate(30, 10)"></path>
+            <path style="fill: none; stroke-width: 2.5; stroke: #df1c41; stroke-linecap: round;" d="M0,335.313L6.922,323.75L13.845,331.458L20.767,335.313L27.69,319.896L34.612,327.604L41.535,343.021L48.457,339.167" transform="translate(30, 0)"></path>
+        </svg>
+    </div>
+</section>
+
+<br>
+
+<section class="container px-0 mt-2">
+    <div id="arCountDiv1">
+        <h4 class="mb-3" style="font-size: 18px; font-weight: 700; color: #101828;">INDEX ADR OVERVIEW</h4>
+        
+        <div class="card p-4 shadow-sm bg-white border-0 rounded-4">
+            <div class="tsrAdrSettingsWrapper mb-4">
+                <div>
+                    <label for="idxType" class="tsrAdrControlLabel">Index Type</label>
+                    <select id="idxType" class="tsrAdrDropbtnIdx" onchange="JavaScript:dyadr.ua('adrSbTick');">
+                        <option value="BroadBased" selected>Broad Based Index</option>
+                        <option value="SecIdx">Sectorial Index</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="allAdrTick" class="tsrAdrControlLabel">Tick Context</label>
+                    <select id="allAdrTick" class="tsrAdrDropbtnIdx" onchange="JavaScript:dyadr.ua('adrSbTick');">
+                        <option value="I_D" selected>Daily Live</option>
+                        <option value="hh1">1 Hour</option>
+                        <option value="mm30">30 Minutes</option>
+                        <option value="mm15">15 Minutes</option>
+                        <option value="D">Daily (EOD)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="tsrPlanTableContainer mt-2">
+                <div class="tsrPlanTableSectionHeader">
+                    <a href="" class="tsrAdrLink">
+                        F&amp;O Stocks <i class="fas fa-chevron-right ml-1"></i>
+                    </a>
+                </div>
+                <div class="tsrPlanTableRow">
+                    <div class="tsrPlanTableCell">
+                        <p class="font-weight-bold" style="color: #344054;">Distribution Ratio</p>
+                        <div class="d-flex align-items-center gap-2 mt-2" style="width: 85%;">
+                            <span style="font-weight: 700; color: #008767; font-size: 13px;">55%</span>
+                            <div class="progress flex-grow-1" style="height: 8px; background-color: #f2f4f7; border-radius: 4px; display: flex; overflow: hidden;">
+                                <div style="background-color: #008767; width: 55%;"></div>
+                                <div style="background-color: #df1c41; width: 45%;"></div>
+                            </div>
+                            <span style="font-weight: 700; color: #df1c41; font-size: 13px;">45%</span>
+                        </div>
+                    </div>
+                    <div class="tsrPlanTableCellBottom">
+                        <div class="tsrPlanTableCell">
+                            <p>Advances</p>
+                            <span class="tsrMetricValue text-advance">114</span>
+                        </div>
+                        <div class="tsrPlanTableCell">
+                            <p>Declines</p>
+                            <span class="tsrMetricValue text-decline">93</span>
+                        </div>
+                        <div class="tsrPlanTableCell">
+                            <a class="tsrAdrLink" href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions">
+                                Heat Map <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tsrPlanTableContainer mt-4">
+                <div class="tsrPlanTableSectionHeader">
+                    <a href="" class="tsrAdrLink">
+                        Nifty 50 <i class="fas fa-chevron-right ml-1"></i>
+                    </a>
+                </div>
+                <div class="tsrPlanTableRow">
+                    <div class="tsrPlanTableCell">
+                        <p class="font-weight-bold" style="color: #344054;">Distribution Ratio</p>
+                        <div class="d-flex align-items-center gap-2 mt-2" style="width: 85%;">
+                            <span style="font-weight: 700; color: #008767; font-size: 13px;">55%</span>
+                            <div class="progress flex-grow-1" style="height: 8px; background-color: #f2f4f7; border-radius: 4px; display: flex; overflow: hidden;">
+                                <div style="background-color: #008767; width: 55%;"></div>
+                                <div style="background-color: #df1c41; width: 45%;"></div>
+                            </div>
+                            <span style="font-weight: 700; color: #df1c41; font-size: 13px;">45%</span>
+                        </div>
+                    </div>
+                    <div class="tsrPlanTableCellBottom">
+                        <div class="tsrPlanTableCell">
+                            <p>Advances</p>
+                            <span class="tsrMetricValue text-advance">114</span>
+                        </div>
+                        <div class="tsrPlanTableCell">
+                            <p>Declines</p>
+                            <span class="tsrMetricValue text-decline">93</span>
+                        </div>
+                        <div class="tsrPlanTableCell">
+                            <a class="tsrAdrLink" href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions">
+                                Heat Map <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
                             <!-- code ends here -->
 
