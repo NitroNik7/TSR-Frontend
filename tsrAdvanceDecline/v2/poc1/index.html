@@ -1720,11 +1720,15 @@
                             <script>var toolsCarousal = { loop: true, margin: 10, dots: false, autoplay: true, autoplayHoverPause: true, autoplayTimeout: 10000, autoplaySpeed: 3000, responsive: { 0: { items: 1 }, 576: { items: 2 }, 768: { items: 3 }, 1000: { items: 4 }, 1400: { items: 5 }, }, }; $('#hmHeadCarousal').owlCarousel(toolsCarousal); $('#hmHeadCarousalPrev').click(function () { $('#hmHeadCarousal').trigger('prev.owl.carousel', [300]); }); $('#hmHeadCarousalNext').click(function () { $('#hmHeadCarousal').trigger('next.owl.carousel', [300]); });</script>
 
                             <!-- code starts here -->
-
-                            <link rel="stylesheet" href="http://127.0.0.1:5500/tsrHeatmap/Light/poc12/style.css">
-                            <link rel="stylesheet" href="http://127.0.0.1:5500/tsrPlans/poc12/style.css">
-
                             <!-- ! Check comments -->
+
+                            <!-- <link rel="stylesheet" href="http://127.0.0.1:5500/tsrHeatmap/Light/poc12/style.css">
+                            <link rel="stylesheet" href="http://127.0.0.1:5500/tsrPlans/poc12/style.css"> -->
+
+                            <link rel="stylesheet"
+                                href="https://nitronik7.github.io/TSR-Frontend/tsrHeatmap/Light/poc12/style.css">
+                            <link rel="stylesheet"
+                                href="https://nitronik7.github.io/TSR-Frontend/tsrPlans/poc12/style.css">
 
                             <h2 class="tsrAdrHeader my-2">
                                 NSE Live Advance Decline Ratio
@@ -1748,6 +1752,7 @@
                                     font-size: 24px;
                                     margin: 0 auto;
                                 }
+
                                 .tsrAdrHeader::after {
                                     content: '';
                                     position: absolute;
@@ -1821,6 +1826,13 @@
 
                                 .tsrPlanTableCell .tsrAdrLink {
                                     font-size: 15px;
+                                }
+
+                                .tsrPlanTableCell .tsrAdrLink:hover {
+                                    color: #0f172a;
+                                    text-decoration: underline;
+                                    text-decoration-style: dotted;
+                                    text-underline-offset: 5px;
                                 }
 
                                 .tsrAdrLink i {
