@@ -10,59 +10,6 @@
     box-sizing: border-box;
 }
 
-/* Meta Data Tracker Zone Placement */
-.tsrHmHeaderContainer .tsrHmTitleBadgeZone {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 12px;
-}
-
-/* Modern Pill Badge Layout */
-.tsrHmHeaderContainer .tsrHmBadge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 4px 10px;
-    border-radius: 20px;
-    background-color: #f0fdf4;
-    /* Ultra-subdued soft green */
-    color: #16a34a;
-    /* Clean tech green text */
-    border: 1px solid #bbf7d0;
-    user-select: none;
-}
-
-/* Micro Live Activity Light Indicator Animation */
-.tsrHmHeaderContainer .tsrHmPulseDot {
-    width: 6px;
-    height: 6px;
-    background-color: #22c55e;
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
-    animation: tsrHmPulse 2s infinite;
-}
-
-@keyframes tsrHmPulse {
-    0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
-    }
-
-    70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
-    }
-
-    100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
-    }
-}
-
 /* Main Focus Title Typography */
 .tsrHmHeaderContainer .tsrHmMainTitle {
     font-size: 28px;
@@ -74,128 +21,18 @@
     padding: 0;
 }
 
-/* Explanatory Subtitle Layout Context */
-.tsrHmHeaderContainer .tsrHmSubTitle {
-    font-size: 14px;
-    font-weight: 500;
-    color: #667085;
-    /* Balanced slate for minor layout documentation */
-    margin: 0;
-    padding: 0;
-}
-
-/* Specific Highlight Marker Styling Rules */
-.tsrHmHeaderContainer .tsrHmHighlight {
-    color: #0066cc;
-    /* Matches primary interactive system color scheme tokens */
-    font-weight: 600;
-}
-
 
 
 /* ==========================================
    PRODUCTION THEME STATE ENGINE OVERRIDES
    ========================================== */
 
-/* --- DARK THEME OVERRIDE MATRIX --- */
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme {
-    background-color: #000a20 !important;
-    transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    padding: 20px;
-    border-radius: 16px;
+#tsrHmWorkspaceWrapper {
+    border: 1px solid lightgray;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-/* 1. Base Container Adjustments inside Dark Theme Workspace */
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme #tsrHmCtrlMenu,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme #hmArDiv,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme #tsrHmStkBasket,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme #tsrHmCtrlDiv1 {
-    background-color: #031133 !important;
-    /* Slightly lighter midnight blue for container contrast depth */
-    border-color: #0d2354 !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* 2. Text/Label Global Color Swaps */
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmControlLabel,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .theme-title,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .ctrl-label,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmDropbtnIdx span,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmTabBtnIdx span {
-    color: #94a3b8 !important;
-    /* Muted silver-blue text for legibility */
-}
-
-/* 3. Form Input Elements & Select Dropdowns */
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmFormSelect,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmDropbtnIdx,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmTabBtnIdx {
-    background-color: #05163d !important;
-    border-color: #0d2354 !important;
-    color: #e2e8f0 !important;
-}
-
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmFormSelect:hover,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmDropbtnIdx:hover,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmTabBtnIdx:hover {
-    background-color: #0a225c !important;
-    border-color: #1a3a7a !important;
-    color: #ffffff !important;
-}
-
-/* 4. Segmented Control Toggle Buttons Backgrounds */
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmToggleGroup,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .theme-toggle-group {
-    background-color: #01081a !important;
-}
-
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmBtnLabel,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .theme-btn-label {
-    color: #64748b !important;
-}
-
-/* Selected active pills/segments inside dark mode */
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmToggleGroup input[type="radio"]:checked+.tsrHmBtnLabel,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .theme-toggle-group input[type="radio"]:checked+.theme-btn-label {
-    background-color: #0066cc !important;
-    color: #ffffff !important;
-    box-shadow: none;
-}
-
-/* 5. Custom Dividers and Scrollbar tracks */
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmControlDivider,
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .ctrl-divider {
-    background-color: #0d2354 !important;
-}
-
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmDdIdxContent {
-    background-color: #031133 !important;
-    border-color: #0d2354 !important;
-}
-
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmDdIdxContent a {
-    color: #94a3b8 !important;
-}
-
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmDdIdxContent a:hover {
-    background-color: #0a225c !important;
-    color: #ffffff !important;
-}
-
-/* 6. Active Custom Tab States */
-#tsrHmWorkspaceWrapper.tsrHmDarkTheme .tsrHmTabBtnIdx.tsrHmActiveTab {
-    background-color: rgba(0, 102, 204, 0.15) !important;
-    color: #38bdf8 !important;
-    border-color: #0066cc !important;
-}
-
-/* ====================================
-===================================== */
-
-
-#tsrHmCtrlsWrapper hr {
-    margin: 3px 0;
-}
 
 /* ======================================== 
 hmArDIV
@@ -204,26 +41,22 @@ hmArDIV
 /* Container Wrapper */
 #hmArDiv1 {
     width: 100%;
-    padding: 12px 20px;
-    /* background-color: #ffffff; */
-    /* border: 1px solid #e4e7ec;
-                                    border-radius: 12px;
-                                    box-sizing: border-box;
-                                    margin-bottom: 16px;
-                                    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif; */
+    padding: 12px 20px 0 20px;
 }
 
 /* Control Row Layout */
-#hmArDiv1 .miCtrl1 {
+#hmArDiv1 .tsrHmArRow {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 16px;
     flex-wrap: wrap;
+    align-content: center;
+
 }
 
 /* Base Utility Items */
-#hmArDiv1 .ctrl-item {
+#hmArDiv1 .tsrHmArRowItem {
     display: inline-flex;
     align-items: center;
     font-size: 14px;
@@ -232,13 +65,13 @@ hmArDIV
     user-select: none;
 }
 
-#hmArDiv1 .ctrl-checkbox {
+#hmArDiv1 .tsrHmArRowCheckbox {
     cursor: pointer;
     gap: 8px;
     transition: color 0.15s ease;
 }
 
-#hmArDiv1 .ctrl-checkbox:hover {
+#hmArDiv1 .tsrHmArRowCheckbox:hover {
     color: #101828;
 }
 
@@ -252,20 +85,20 @@ hmArDIV
 }
 
 /* Vertical Separator Divider */
-#hmArDiv1 .ctrl-divider {
+/* #hmArDiv1 .ctrl-divider {
     width: 1px;
     height: 20px;
     background-color: #f2f4f7;
-}
+} */
 
 /* --- THEME SEGMENTED SWITCHER ENGINE --- */
-#hmArDiv1 .theme-segment-block {
+#hmArDiv1 .tsrHmThemeWrapper {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-#hmArDiv1 .theme-title {
+#hmArDiv1 .tsrHmThemeTitle {
     font-size: 13px;
     font-weight: 600;
     color: #475467;
@@ -274,7 +107,7 @@ hmArDIV
 }
 
 /* The Segment Container Pill wrapper */
-#hmArDiv1 .theme-toggle-group {
+#hmArDiv1 .tsrHmThemeToggleGroup {
     display: inline-flex;
     background-color: #f2f4f7;
     padding: 4px;
@@ -283,7 +116,7 @@ hmArDIV
 }
 
 /* Completely hide standard radio circles without breaking form workflows */
-#hmArDiv1 .theme-toggle-group input[type="radio"] {
+#hmArDiv1 .tsrHmThemeToggleGroup input[type="radio"] {
     position: absolute;
     opacity: 0;
     width: 0;
@@ -291,7 +124,7 @@ hmArDIV
 }
 
 /* Modern Segment Selection Label Buttons */
-#hmArDiv1 .theme-btn-label {
+#hmArDiv1 .tsrHmThemeBtnLabel {
     padding: 6px 14px;
     font-size: 13px;
     font-weight: 600;
@@ -304,56 +137,310 @@ hmArDIV
     text-align: center;
 }
 
-#hmArDiv1 .theme-btn-label:hover {
+#hmArDiv1 .tsrHmThemeBtnLabel:hover {
     color: #101828;
 }
 
 /* Match layout toggle action states via CSS parent sibling tracking selectors */
-#hmArDiv1 .theme-toggle-group input[type="radio"]:checked+.theme-btn-label {
+#hmArDiv1 .tsrHmThemeToggleGroup input[type="radio"]:checked+.tsrHmThemeBtnLabel {
     background-color: #ffffff;
     color: #101828;
     box-shadow: 0 1px 3px rgba(16, 24, 40, 0.1);
 }
 
 /* ==========================================
-   PRODUCTION READY: #tsrHmStkBasket OVERHAUL
+   PRODUCTION READY: OVERHAUL
    ========================================== */
 
-#tsrHmStkBasket {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* background-color: #ffffff; */
-    /* border: 1px solid #e4e7ec;
-                                    border-radius: 12px; */
-    padding: 12px 16px;
-    /* margin-bottom: 20px;
-                                    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.05);
-                                    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
-                                    box-sizing: border-box;
-                                    width: 100%; */
+/* ==========================================================================
+   Tabbed Popover Segment Picker (Light Workspaces Layout)
+   ========================================================================== */
+#tsrHmMarketSegmentWrapper {
+    position: relative;
+    display: inline-block;
 }
 
-/* Base Unified Flow Controller Wrapper */
-#tsrHmStkBasket .tsrHmIndexDropdownGroup {
+/* Master Popover Frame Container */
+.tsrHmPopoverContainer {
+    display: none;
+    /* Controlled via state toggle */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1050;
+    /* width: 680px; */
+    width: max-content;
+    max-width: 600px;
+    /* Provides wide clearance for 3 tidy columns */
+    margin-top: 6px;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    /* Slate 300 */
+    border-radius: 6px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+/* Visible active state initialization hook */
+.tsrHmPopoverContainer.show-popover {
+    display: flex !important;
+}
+
+/* Left Channel Navigation Sidebar */
+.tsrHmPopoverTabs {
+    width: 160px;
+    background-color: #f8fafc;
+    /* Slate 50 baseline shading */
+    border-right: 1px solid #e2e8f0;
+    padding: 8px 0;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 12px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Tab Links Inside Channel Elements */
+.popTabBtn {
+    background: transparent;
+    border: none;
+    text-align: left;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #475569;
+    /* Slate 600 */
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.15s ease;
+}
+
+.popTabBtn:hover {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+.popTabBtn.active {
+    background-color: #ffffff;
+    color: #3b82f6;
+    /* Modern interactive brand color highlight */
+    font-weight: 600;
+    position: relative;
+}
+
+/* Right Highlight Edge Bar for Active Tab */
+.popTabBtn.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: #3b82f6;
+}
+
+/* Right Content Display Box */
+.tsrHmPopoverContent {
+    flex: 1;
+    padding: 16px;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+/* Data Content Display Panes Control Framework */
+.popDataPane {
+    display: none;
+}
+
+.popDataPane.active {
+    display: block !important;
+}
+
+/* 3-Column Low Density Matrix Engine Grid */
+.popGrid3Col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px 12px;
+}
+
+/* Grid Item Elements */
+.popGrid3Col a,
+.popGrid3Col button {
+    display: block;
+    background: transparent;
+    border: none;
+    text-align: left;
+    padding: 6px 8px;
+    font-size: 13px;
+    color: #334155;
+    /* Slate 700 */
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     width: 100%;
 }
 
+.popGrid3Col a:hover,
+.popGrid3Col button:hover {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+/* Active selection match styling */
+.popGrid3Col a.active,
+.popGrid3Col button.tsrHmActiveTab {
+    background-color: #e2e8f0;
+    color: #0f172a;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Responsive Adaptations (Tablet & Mobile UI Polish)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+    /* 1. Transform the absolute container into an ergonomic slide-up Bottom Sheet */
+    .tsrHmPopoverContainer {
+        display: flex !important;
+        /* Override desktop hidden layout states */
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100% !important;
+        max-width: unset;
+        max-height: 70vh;
+        /* Prevents overlaying your top header bars */
+        border-radius: 14px 14px 0 0;
+        /* Smooth rounded top corner aesthetic */
+        border: 1px solid #cbd5e1;
+        border-bottom: none;
+        flex-direction: column !important;
+        margin-top: 0;
+        z-index: 2000;
+
+        /* Smooth Hardware-Accelerated Sliding Animation mechanics */
+        transform: translateY(100%);
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* JavaScript toggle class triggers transition instead of instant display skip */
+    .tsrHmPopoverContainer.show-popover {
+        transform: translateY(0) !important;
+    }
+
+    /* 2. Convert Vertical Sidebar Tabs into a Horizontal Swipeable Carousel Toolbar */
+    .tsrHmPopoverTabs {
+        width: 100% !important;
+        flex-direction: row !important;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        /* Ensures fluid inertial swipe momentum on iOS */
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 6px 8px;
+        gap: 4px;
+    }
+
+    /* Hide desktop native scrollbars inside touch-carousel channel track */
+    .tsrHmPopoverTabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tsrHmPopoverTabs {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    /* 3. Re-orient active tab highlight lines from left-border to bottom-underline */
+    .popTabBtn {
+        display: inline-block;
+        width: auto !important;
+        padding: 8px 14px;
+        text-align: center;
+        flex-shrink: 0;
+        /* Prevents browser squeezing text down */
+    }
+
+    .popTabBtn.active::after {
+        left: 0;
+        right: 0;
+        top: auto;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+    }
+
+    /* 4. Optimize Scroll Behavior inside Content Panes */
+    .tsrHmPopoverContent {
+        max-height: calc(70vh - 50px);
+        padding: 12px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* 5. Fluid Grid Scaling: Step down to 2 columns on Tablet viewports */
+    .popGrid3Col {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 4px 8px;
+    }
+
+    .popGrid3Col a,
+    .popGrid3Col button {
+        padding: 8px 10px;
+        /* Marginally larger touch targets for mobile safety selection clicks */
+        background: #f8fafc;
+        /* Low-contrast background tile effect for easy scanning */
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* 6. Mobile Portrait Scale down: Step down to a clean, full-width 1-column list */
+    .popGrid3Col {
+        grid-template-columns: 1fr !important;
+        gap: 2px 0;
+    }
+
+    .popGrid3Col a,
+    .popGrid3Col button {
+        background: transparent;
+        /* Removes background tile processing on tight mobile widths */
+        border-bottom: 1px solid #f1f5f9;
+        /* Fallback baseline rows separation divider lines */
+        border-radius: 0;
+        padding: 10px 6px;
+    }
+}
+
+
+/* Base Unified Flow Controller Wrapper */
+.tsrHmSettingsRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 12px 16px;
+
+}
+
 /* Interactive Dropdown Core Layout Context */
-#tsrHmStkBasket .tsrHmDdIdx {
+.tsrHmDdIdx {
     position: relative;
     display: inline-block;
 }
 
 /* --- TRADITIONAL SELECT MENUS & INTERACTIVE GRID TABS --- 
    Unified properties applied across button types to maintain seamless sizing symmetry */
-#tsrHmStkBasket .tsrHmDropbtnIdx,
-#tsrHmStkBasket .tsrHmTabBtnIdx {
+.tsrHmDropbtnIdx,
+.tsrHmTabBtnIdx {
     background-color: #ffffff;
     color: #344054;
     padding: 10px 16px;
@@ -374,29 +461,29 @@ hmArDIV
 }
 
 /* Custom indicator icon scale adjustments */
-#tsrHmStkBasket .tsrHmMs1 {
+.tsrHmMs1 {
     font-size: 12px !important;
     color: #667085;
     transition: transform 0.2s ease;
 }
 
 /* Standard Hover States across Dropdowns & Stock Basket Tabs */
-#tsrHmStkBasket .tsrHmDdIdx:hover .tsrHmDropbtnIdx,
-#tsrHmStkBasket .tsrHmTabBtnIdx:hover {
+.tsrHmDdIdx:hover .tsrHmDropbtnIdx,
+.tsrHmTabBtnIdx:hover {
     background-color: #f9fafb;
     border-color: #98a2b3;
     color: #101828;
 }
 
 /* Rotates indicator arrow dynamically on drop menu open states */
-#tsrHmStkBasket .tsrHmDdIdx:hover .tsrHmDropbtnIdx .tsrHmMs1 {
+.tsrHmDdIdx:hover .tsrHmDropbtnIdx .tsrHmMs1 {
     transform: rotate(180deg);
     color: #101828;
 }
 
 /* --- NEW SELECTION STATE STYLE CONTROL RULES ---
    Use these styles when the tab is actively selected and displayed in your matrix view */
-#tsrHmStkBasket .tsrHmTabBtnIdx.tsrHmActiveTab {
+.tsrHmTabBtnIdx.tsrHmActiveTab {
     background-color: #eff6ff;
     color: #1d5bd8;
     border-color: #1d5bd8;
@@ -404,7 +491,7 @@ hmArDIV
 }
 
 /* --- THE DROPDOWN FLYOUT PANEL COMPONENT --- */
-#tsrHmStkBasket .tsrHmDdIdxContent {
+.tsrHmDdIdxContent {
     display: none;
     position: absolute;
     top: calc(100% + 6px);
@@ -420,12 +507,12 @@ hmArDIV
     padding: 6px;
 }
 
-#tsrHmStkBasket .tsrHmDdIdx:hover .tsrHmDdIdxContent {
+.tsrHmDdIdx:hover .tsrHmDdIdxContent {
     display: block;
 }
 
 /* Individual Content Items Inside Dropdown Matrices */
-#tsrHmStkBasket .tsrHmDdIdxContent a {
+.tsrHmDdIdxContent a {
     color: #475467;
     padding: 8px 12px;
     text-decoration: none;
@@ -438,21 +525,21 @@ hmArDIV
     text-align: left;
 }
 
-#tsrHmStkBasket .tsrHmDdIdxContent a:hover {
+.tsrHmDdIdxContent a:hover {
     background-color: #f2f4f7;
     color: #101828;
 }
 
 /* Custom Scrollbar Configuration */
-#tsrHmStkBasket .tsrHmDdIdxContent::-webkit-scrollbar {
+.tsrHmDdIdxContent::-webkit-scrollbar {
     width: 6px;
 }
 
-#tsrHmStkBasket .tsrHmDdIdxContent::-webkit-scrollbar-track {
+.tsrHmDdIdxContent::-webkit-scrollbar-track {
     background: transparent;
 }
 
-#tsrHmStkBasket .tsrHmDdIdxContent::-webkit-scrollbar-thumb {
+.tsrHmDdIdxContent::-webkit-scrollbar-thumb {
     background-color: #d0d5dd;
     border-radius: 10px;
 }
@@ -461,36 +548,19 @@ hmArDIV
    PRODUCTION READY: #tsrHmCtrlDiv1 OVERHAUL
    ========================================== */
 
-#tsrHmCtrlDiv1 {
-    width: 100%;
-    padding: 12px 20px;
-    /* background-color: #ffffff; */
-    /* border: 1px solid #e4e7ec;
-                                    border-radius: 12px; 
-                                        box-sizing: border-box;
-                                        margin-bottom: 16px;
-                                        font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif; */
-}
 
-/* Internal Layout Row Context */
-#tsrHmCtrlDiv1 .tsrHmMiCtrl {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 16px;
-    flex-wrap: wrap;
-    /* Wraps cleanly into a responsive grid system on tablets or mobile views */
-}
+
 
 /* Individual Core Control Item Grouping */
-#tsrHmCtrlDiv1 .tsrHmControlItem {
+.tsrHmSettingsRowItem {
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    margin: 0 10px;
 }
 
 /* Unified Label Formatting Styles */
-#tsrHmCtrlDiv1 .tsrHmControlLabel {
+.tsrHmSettingsRowLabel {
     font-size: 13px;
     font-weight: 600;
     color: #475467;
@@ -498,15 +568,20 @@ hmArDIV
     letter-spacing: 0.02em;
     user-select: none;
     white-space: nowrap;
+    /* position: absolute;
+    top: -11px;
+    left: 15px;
+    background-color: white;
+    padding: 3px; */
 }
 
 /* Custom Dropdown Arrow Engine Wrappers */
-#tsrHmCtrlDiv1 .tsrHmSelectWrapper {
+.tsrHmSettingsRowSelectWrapper {
     position: relative;
     display: inline-block;
 }
 
-#tsrHmCtrlDiv1 .tsrHmFormSelect {
+.tsrHmSettingsRowSelectOptions {
     appearance: none;
     /* Strip archaic system vendor select arrows */
     -webkit-appearance: none;
@@ -529,26 +604,26 @@ hmArDIV
     background-size: 14px;
 }
 
-#tsrHmCtrlDiv1 .tsrHmFormSelect:hover {
+.tsrHmSettingsRowSelectOptions:hover {
     background-color: #f9fafb;
     border-color: #98a2b3;
     color: #101828;
 }
 
-#tsrHmCtrlDiv1 .tsrHmFormSelect:focus {
+.tsrHmSettingsRowSelectOptions:focus {
     border-color: #0066cc;
     box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
 }
 
 /* Micro Separator Vertical Bars */
-#tsrHmCtrlDiv1 .tsrHmControlDivider {
+/* #tsrHmCtrlDiv1 .tsrHmControlDivider {
     width: 1px;
     height: 20px;
     background-color: #f2f4f7;
-}
+} */
 
 /* --- SEGMENTED OPTION TOGGLE COMPONENT ENGINE --- */
-#tsrHmCtrlDiv1 .tsrHmToggleGroup {
+.tsrHmToggleGroup {
     display: inline-flex;
     background-color: #f2f4f7;
     padding: 4px;
@@ -560,7 +635,7 @@ hmArDIV
 }
 
 /* Completely clip off default rounded circular system browser buttons */
-#tsrHmCtrlDiv1 .tsrHmToggleGroup input[type="radio"] {
+.tsrHmToggleGroup input[type="radio"] {
     position: absolute;
     opacity: 0;
     width: 0;
@@ -568,7 +643,7 @@ hmArDIV
 }
 
 /* Styled Segment Pill Labels */
-#tsrHmCtrlDiv1 .tsrHmBtnLabel {
+.tsrHmBtnLabel {
     padding: 6px 14px;
     font-size: 13px;
     font-weight: 600;
@@ -583,12 +658,12 @@ hmArDIV
     white-space: nowrap;
 }
 
-#tsrHmCtrlDiv1 .tsrHmBtnLabel:hover {
+.tsrHmBtnLabel:hover {
     color: #101828;
 }
 
 /* Active Segment Visual Mapping Rule via Input Tracker */
-#tsrHmCtrlDiv1 .tsrHmToggleGroup input[type="radio"]:checked+.tsrHmBtnLabel {
+.tsrHmToggleGroup input[type="radio"]:checked+.tsrHmBtnLabel {
     background-color: #ffffff;
     color: #101828;
     box-shadow: 0 1px 3px rgba(16, 24, 40, 0.1);
@@ -600,7 +675,7 @@ hmArDIV
     flex-wrap: wrap;
     gap: 0.35rem;
     /* Light theme */
-    background-color: #e3e3e3;
+    /* background-color: #e3e3e3; */
     /* Dark theme */
     /* background-color: #000a20; */
     padding: 16px;
@@ -619,106 +694,6 @@ hmArDIV
     border-radius: 5px;
 }
 
-/* ==========================================
-   THEME STATE ENGINE: BACKGROUND OVERRIDES
-   ========================================== */
-
-/* Target the parent wrappers to clear out the legacy light backgrounds */
-.tsrHmDarkTheme.tsrHmDiv,
-.tsrHmDarkTheme .tsrHmDiv,
-.tsrHmDarkTheme.tsrHmColorSchemeWrapper,
-.tsrHmDarkTheme .tsrHmColorSchemeWrapper,
-.tsrHmDarkTheme#tsrHmCtrlsWrapper,
-.tsrHmDarkTheme #heatMapDivTemp {
-    background-color: #000a20 !important;
-    border-color: #0d2354 !important;
-    transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
-}
-
-/* --- INNER COMPONENT CONTRAST DEPTH ADJUSTMENTS --- */
-
-/* Give inner control panels a slightly raised midnight blue so they don't flatten into the page background */
-.tsrHmDarkTheme #tsrHmCtrlMenu,
-.tsrHmDarkTheme #hmArDiv,
-.tsrHmDarkTheme #tsrHmStkBasket,
-.tsrHmDarkTheme #tsrHmCtrlDiv1 {
-    background-color: #031133 !important;
-    border-color: #0d2354 !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Modern Segmented Control Toggle Groups Backgrounds */
-.tsrHmDarkTheme .tsrHmToggleGroup,
-.tsrHmDarkTheme .theme-toggle-group {
-    background-color: #01081a !important;
-}
-
-/* Form Input Elements, Select Dropdowns, and Action Buttons */
-.tsrHmDarkTheme .tsrHmFormSelect,
-.tsrHmDarkTheme .tsrHmDropbtnIdx,
-.tsrHmDarkTheme .tsrHmTabBtnIdx {
-    background-color: #05163d !important;
-    border-color: #0d2354 !important;
-    color: #e2e8f0 !important;
-}
-
-.tsrHmDarkTheme .tsrHmFormSelect:hover,
-.tsrHmDarkTheme .tsrHmDropbtnIdx:hover,
-.tsrHmDarkTheme .tsrHmTabBtnIdx:hover {
-    background-color: #0a225c !important;
-    border-color: #1a3a7a !important;
-    color: #ffffff !important;
-}
-
-/* Text & Global Label Readability Fixes inside Dark Viewports */
-.tsrHmDarkTheme .tsrHmControlLabel,
-.tsrHmDarkTheme .theme-title,
-.tsrHmDarkTheme .ctrl-label,
-.tsrHmDarkTheme .tsrHmDropbtnIdx span,
-.tsrHmDarkTheme .tsrHmTabBtnIdx span,
-.tsrHmDarkTheme .tsrHmMainTitle {
-    color: #94a3b8 !important;
-}
-
-.tsrHmDarkTheme .tsrHmBtnLabel,
-.tsrHmDarkTheme .theme-btn-label {
-    color: #64748b !important;
-}
-
-/* Active Highlight Segment Mapping Rule via Input Tracker */
-.tsrHmDarkTheme .tsrHmToggleGroup input[type="radio"]:checked+.tsrHmBtnLabel,
-.tsrHmDarkTheme .theme-toggle-group input[type="radio"]:checked+.theme-btn-label {
-    background-color: #0066cc !important;
-    color: #ffffff !important;
-    box-shadow: none;
-}
-
-/* Flyout Navigation Panels custom scrollbars and text alignment links */
-.tsrHmDarkTheme .tsrHmControlDivider,
-.tsrHmDarkTheme .ctrl-divider {
-    background-color: #0d2354 !important;
-}
-
-.tsrHmDarkTheme .tsrHmDdIdxContent {
-    background-color: #031133 !important;
-    border-color: #0d2354 !important;
-}
-
-.tsrHmDarkTheme .tsrHmDdIdxContent a {
-    color: #94a3b8 !important;
-}
-
-.tsrHmDarkTheme .tsrHmDdIdxContent a:hover {
-    background-color: #0a225c !important;
-    color: #ffffff !important;
-}
-
-/* Active Selection Custom Tabs */
-.tsrHmDarkTheme .tsrHmTabBtnIdx.tsrHmActiveTab {
-    background-color: rgba(0, 102, 204, 0.15) !important;
-    color: #38bdf8 !important;
-    border-color: #0066cc !important;
-}
 
 .tsrHmItem {
     /* display: block; */
@@ -787,10 +762,6 @@ hmArDIV
 }
 
 .tsrHmColorSchemeWrapper {
-    /* Light theme */
-    background-color: #e3e3e3;
-    /* Dark theme */
-    /* background-color: #000a20; */
     padding: 16px;
 }
 
@@ -801,7 +772,7 @@ hmArDIV
     /* light theme */
     /* color: #64748b;  */
     /* dark theme */
-    color: white;
+    /* color: white; */
 }
 
 .tsrHmColorScheme {
