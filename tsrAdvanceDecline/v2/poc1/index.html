@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>NSE Live Advance Decline Ratio</title>
+    <title>POC1</title>
     <meta name="description" content="NSE Live Advance Decline Ratio">
     <meta name="keywords" content="NSE Live Advance Decline Ratio ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1730,8 +1730,9 @@
                             <link rel="stylesheet"
                                 href="https://nitronik7.github.io/TSR-Frontend/tsrPlans/poc12/style.css">
 
-                            <h2 class="tsrAdrHeader my-2">
-                                NSE Live Advance Decline Ratio
+                            <h2 class="tsrAdrHeader">
+                                <span>NIFTY 50 </span>
+                                Advance Decline Ratio
                             </h2>
                             <!-- Use later -->
                             <!-- <div id="arFbDiv"></div>
@@ -1743,14 +1744,45 @@
                             </div> -->
                             <!-- <div class="my-2"></div> -->
                             <style>
+                                .tsrPlanTableCellBottom .tsrPlanTableCell:nth-child(1) {
+    border-right: unset !important;
+    flex: 1.5; /* Allocates proportional horizontal space for index names */
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.tsrPlanTableCellBottom .tsrPlanTableCell:nth-child(1) .tsrAdrLink {
+    font-size: 16px; /* Optimized scale down from 18px to reduce visual crowding */
+    font-weight: 600;
+    color: #1e293b; /* Professional deep slate typography color */
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-align: left;
+    white-space: normal; /* Prevents overflow clipping on small multi-word titles */
+    word-break: break-word;
+}
+
+/* Ensure the elements toggle seamlessly on responsive mobile layouts */
+@media only screen and (max-width: 768px) {
+    .tsrPlanTableCellBottom .tsrPlanTableCell:nth-child(1) {
+        display: none !important;
+    }
+}
+
                                 .tsrAdrHeader {
                                     /* border-bottom: 2px solid black; */
                                     width: max-content;
                                     font-weight: 700;
                                     position: relative;
                                     padding-bottom: 12px;
-                                    font-size: 24px;
-                                    margin: 0 auto;
+                                    font-size: 28px;
+                                    margin: 30px auto 15px auto;
                                 }
 
                                 .tsrAdrHeader::after {
@@ -1761,8 +1793,12 @@
                                     margin: 10px auto;
                                     height: 3px;
                                     width: 60px;
-                                    background-color: green;
+                                    background-color: #2563eb;
                                     transform: translateX(-50%);
+                                }
+
+                                .tsrAdrHeader span {
+                                    color: #2563eb;
                                 }
 
                                 /* Same as .tsrHmDropbtnIdx form Heatmap */
@@ -1802,13 +1838,14 @@
                                     gap: 30px;
                                 }
 
+                                /* 
                                 .tsrAdrSettingsWrapper div {
                                     display: flex;
                                     flex-direction: column;
                                     align-items: baseline;
                                     gap: 5px;
                                     margin: 5px 0;
-                                }
+                                } */
 
 
                                 .tsrAdrLink {
@@ -1818,6 +1855,21 @@
                                     text-underline-offset: 5px;
                                     text-wrap: nowrap;
 
+                                }
+
+                                .tsrPlanTableContainer {
+                                    border: 1px solid #f1f5f9;
+                                    border: unset !important;
+
+                                    /* border-radius: 20px; */
+                                    /* Changed from 'clip' to 'visible' to ensure 'sticky' works */
+                                    overflow: unset !important;
+                                    /* font-family: 'Inter', sans-serif; */
+                                    /* font-family: unset; */
+                                }
+
+                                .tsrPlanTableContainer>div {
+                                    border: 1px solid #f4f4f4;
                                 }
 
                                 .tsrPlanTableSectionHeader .tsrAdrLink {
@@ -1849,14 +1901,35 @@
 
                                 .tsrPlanTableSectionHeader {
                                     padding: 8px 10px;
+                                    padding: 14px 20px;
                                     position: unset !important;
                                     background-color: whitesmoke;
+                                    display: none !important;
+
                                 }
 
                                 .tsrPlanTableFeature {
                                     display: none !important;
                                     background: none !important;
                                 }
+
+                                .tsrPlanTableCellBottom .tsrPlanTableCell {
+                                    border-right: unset !important;
+                                }
+
+
+                                .tsrPlanTableCellBottom .tsrPlanTableCell:nth-child(1) .tsrAdrLink{
+                                    font-size: 18px;
+                                }
+
+                                /* 
+                                .tsrPlanTableCellBottom:first-child {
+                                    display: flex;
+                                }
+
+                                .tsrPlanTableCellBottom:first-child {
+                                    display: flex;
+                                } */
 
                                 .tsrPlanTableCell {
                                     display: flex;
@@ -1906,7 +1979,7 @@
                                     content: '';
                                     position: relative;
                                     left: 0px;
-                                     height: 16px;
+                                    height: 16px;
                                     width: 16px;
                                     top: 3px;
                                 }
@@ -1954,6 +2027,11 @@
                                         display: block !important;
                                     }
 
+                                    .tsrPlanTableCellBottom .tsrPlanTableCell:nth-child(1) {
+                                        display: none !important;
+                                    }
+
+
                                     .tsrPlanTableCell p {
                                         margin-bottom: 0;
                                         font-size: 14px;
@@ -1969,6 +2047,8 @@
 
                                     .tsrPlanTableSectionHeader {
                                         padding: 8px 10px;
+                                        display: block !important;
+
                                     }
 
                                     .tsrPlanTableCell .tsrAdrLink {
@@ -1977,18 +2057,23 @@
                                 }
                             </style>
 
-                            <section class="container shadow-sm p-3">
-                                <div class="d-flex flex-column flex-md-row align-items-start align-items-md-end justify-content-center justify-content-md-between">
+                            <section class="container">
+                                <hr>
+                                <h4 class="fw-bold mt-5">
+                                    CHART
+                                </h4>
+                                <div
+                                    class="mb-3 d-flex flex-column flex-md-row align-items-start align-items-md-end justify-content-center justify-content-md-between">
 
                                     <div id="arCtrlDiv1" class="tsrAdrSettingsWrapper">
                                         <!-- <div id="miCtrl"> -->
-    
+
                                         <div>
                                             <label for="adrSb" class="tsrAdrControlLabel">Stock Basket</label>
                                             <select id="adrSb" class="tsrAdrDropbtnIdx"
                                                 onchange="JavaScript:dyadr.ua('chart');">
-                                                <option value="FuturesAndOptions">F&amp;O Stocks</option>
                                                 <option value="Nifty50">Nifty 50 </option>
+                                                <option value="FuturesAndOptions">F&amp;O Stocks</option>
                                                 <option value="Nifty100">Nifty 100</option>
                                                 <option value="Nifty200">Nifty 200 </option>
                                                 <option value="Nifty500">Nifty 500 </option>
@@ -1998,7 +2083,8 @@
                                                 <option value="NiftTotalMarket">Nifty Total Market</option>
                                                 <option value="NiftyAutoIndex">Nifty Auto</option>
                                                 <option value="NiftyBankIndex">Nifty Bank</option>
-                                                <option value="NiftyConsumerDurablesIndex">Nifty Consumer Durable</option>
+                                                <option value="NiftyConsumerDurablesIndex">Nifty Consumer Durable
+                                                </option>
                                                 <option value="NiftyFinancialServiceIndex">Nifty Fin Services</option>
                                                 <option value="NiftyHealthCareIndex">Nifty Healthcare</option>
                                                 <option value="NiftyFmcgIndex">Nifty FMCG</option>
@@ -2012,7 +2098,7 @@
                                                 <option value="NiftyRealtyIndex">Nifty Realty</option>
                                             </select>
                                         </div>
-    
+
                                         <div>
                                             <label for="adrFreq" class="tsrAdrControlLabel">Tick</label>
                                             <select id="adrFreq" class="tsrAdrDropbtnIdx"
@@ -2028,17 +2114,18 @@
                                                 <option value="M">Monthly</option>
                                             </select>
                                         </div>
-    
+
                                     </div>
-                                    
+
                                     <div class="tsrAdrSelColor">
                                         <p>Advances</p>
                                         <p>Declines</p>
                                     </div>
                                 </div>
-                                <hr>
+                                <!-- <hr> -->
 
-                                <div id="arContentDiv1" style="height: 450px;">
+                                <div id="arContentDiv1" style="height: 430px;" class="p-3 border"
+                                    style="border-radius: 15px;">
                                     <svg width="1250.02" height="400">
                                         <g transform="translate(30, 380)" fill="none" font-size="10"
                                             font-family="sans-serif" text-anchor="middle" style="stroke-width: 1.5; ">
@@ -2174,7 +2261,7 @@
                                     </svg>
 
                                     <br>
-                                     
+
                                     <!-- <div class="tsrAdrSelColor">
                                         <p>Advances</p>
                                         <p>Declines</p>
@@ -2183,28 +2270,30 @@
                             </section>
 
                             <br>
-                            <br>
-
+                            <!-- <br> -->
                             <section class="container ">
+                                <hr>
                                 <div id="arCountDiv1">
-                                    <h4 class="fw-bold">
+                                    <h4 class="fw-bold mt-5 p-0">
                                         INDEX ADR
                                     </h4>
-                                    <div class="p-3 row mt-3  shadow-sm">
-                                        <div class="d-flex flex-column flex-md-row align-items-start align-items-md-end justify-content-center justify-content-md-between">
+                                    <div class="row mb-3">
+                                        <div
+                                            class="p-3 pb-0 d-flex flex-column flex-md-row align-items-start align-items-md-end justify-content-center justify-content-md-between">
 
                                             <div id="arCtrlDiv1" class="tsrAdrSettingsWrapper">
                                                 <!-- <div id="miCtrl"> -->
-    
+
                                                 <div>
                                                     <label for="idxType" class="tsrAdrControlLabel">Index Type</label>
                                                     <select id="idxType" class="tsrAdrDropbtnIdx"
                                                         onchange="JavaScript:dyadr.ua('adrSbTick');">
-                                                        <option value="BroadBased" selected="">Broad Based Index</option>
+                                                        <option value="BroadBased" selected="">Broad Based Index
+                                                        </option>
                                                         <option value="SecIdx">Sectorial Index</option>
                                                     </select>
                                                 </div>
-    
+
                                                 <div>
                                                     <label for="allAdrTick" class="tsrAdrControlLabel">Tick</label>
                                                     <select id="allAdrTick" class="tsrAdrDropbtnIdx"
@@ -2222,18 +2311,18 @@
                                                         <option value="Y">Yearly</option>
                                                     </select>
                                                 </div>
-    
+
                                             </div>
-    
+
                                             <div class="tsrAdrSelColor">
-                                            <p>Advances</p>
-                                            <p>Declines</p>
-                                        </div>
+                                                <p>Advances</p>
+                                                <p>Declines</p>
+                                            </div>
                                         </div>
                                         <!-- <hr style="margin: 15px 0; color: grey;"> -->
-                                        <div class="tsrPlanTableContainer p-0 mt-3">
+                                        <div class="tsrPlanTableContainer p-3 mt-3">
                                             <!-- F&O Stocks -->
-                                            <div class="my-3 border">
+                                            <div class="my-3">
                                                 <div class="tsrPlanTableSectionHeader" style="top: 134px;">
                                                     <a href="" class="tsrAdrLink">
                                                         F&O Stocks <i class="fas fa-arrow-right"></i>
@@ -2281,6 +2370,14 @@
                                                         </div>
                                                     </div>
                                                     <div class="tsrPlanTableCellBottom">
+
+                                                        <div class="tsrPlanTableCell">
+                                                            <a class="tsrAdrLink"
+                                                                href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions">F&O
+                                                                Stocks
+                                                                <i class="fas fa-arrow-right"></i>
+                                                            </a>
+                                                        </div>
                                                         <div class="tsrPlanTableCell">
                                                             <p>Advances</p>
                                                             <font color="green"
@@ -2346,7 +2443,7 @@
 
                                             </div>
                                             <!-- NIFTY 50 -->
-                                            <div class="my-3 border">
+                                            <div class="my-3">
                                                 <div class="tsrPlanTableSectionHeader" style="top: 134px;">
                                                     <a href="" class="tsrAdrLink">
                                                         Nifty 50 <i class="fas fa-arrow-right"></i>
@@ -2394,6 +2491,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="tsrPlanTableCellBottom">
+                                                        <div class="tsrPlanTableCell">
+                                                            <a class="tsrAdrLink"
+                                                                href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions">NIFTY 50
+                                                                <i class="fas fa-arrow-right"></i>
+                                                            </a>
+                                                        </div>
                                                         <div class="tsrPlanTableCell">
                                                             <p>Advances</p>
                                                             <font color="green"
@@ -2460,7 +2563,7 @@
 
                                             </div>
                                             <!-- NIFTY 500 -->
-                                            <div class="my-3 border">
+                                            <div class="my-3">
                                                 <div class="tsrPlanTableSectionHeader" style="top: 134px;">
                                                     <a href="" class="tsrAdrLink">
                                                         Nifty 500 <i class="fas fa-arrow-right"></i>
@@ -2508,6 +2611,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="tsrPlanTableCellBottom">
+                                                        <div class="tsrPlanTableCell">
+                                                            <a class="tsrAdrLink"
+                                                                href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions">NIFTY 500
+                                                                <i class="fas fa-arrow-right"></i>
+                                                            </a>
+                                                        </div>
                                                         <div class="tsrPlanTableCell">
                                                             <p>Advances</p>
                                                             <font color="green"
@@ -2575,7 +2684,7 @@
                                             </div>
 
                                             <!-- NIFTY Total Market -->
-                                            <div class="my-3 border">
+                                            <div class="my-3">
                                                 <div class="tsrPlanTableSectionHeader" style="top: 134px;">
                                                     <a href="" class="tsrAdrLink">
                                                         Nifty Total Market <i class="fas fa-arrow-right"></i>
@@ -2623,6 +2732,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="tsrPlanTableCellBottom">
+                                                        <div class="tsrPlanTableCell">
+                                                            <a class="tsrAdrLink"
+                                                                href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions">NIFTY Total Market
+                                                                <i class="fas fa-arrow-right"></i>
+                                                            </a>
+                                                        </div>
                                                         <div class="tsrPlanTableCell">
                                                             <p>Advances</p>
                                                             <font color="green"
