@@ -3624,20 +3624,67 @@
                             <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
                             <script src="https://cdn.datatables.net/2.3.8/js/dataTables.js"></script> -->
 
-                            <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.dataTables.css">
+                            <link rel="stylesheet"
+                                href="https://cdn.datatables.net/2.3.8/css/dataTables.dataTables.css">
 
                             <!-- Material Design data tables CSS -->
-                             <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.css">
+                            <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.css">
                              <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.material.css"> -->
 
-                             <!-- Tailwind CSS -->
-                              <!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.tailwindcss.css"> -->
+                            <!-- Tailwind CSS -->
+                            <!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.tailwindcss.css"> -->
 
-                            <div id="results">
-                                <table id="results_table" class="table table-striped table-hover order-column" style="font-size: 14px;">
-                                    <!-- class="display"> TAILWIND  -->
-                                <!-- class="mdl-data-table"> Material Design -->
+                            <style>
+                                #results_table th {
+                                    border: none !important;
+                                    border-bottom: 1px solid black !important;
+                                    font-weight: 600 !important;
+                                    /* text-wrap: nowrap; */
+                                    /* display: flex; */
+
+                                }
+
+                                #results_table td a {
+                                    color: #404b5b;
+                                    text-decoration: underline;
+                                    text-decoration-style: dotted;
+                                    text-underline-offset: 5px;
+                                }
+
+                                /* #results_table a::after {
+                                    content: " >";
+                                    font-size: 13px;
+                                    transform: rotate(-35deg);
                                     
+                                } */
+
+                                #results_table td a:hover {
+                                    color: #0f172a;
+                                }
+
+                                #results_table td {
+                                    /* text-wrap: nowrap; */
+                                    letter-spacing: 0.7px;
+                                }
+
+                                #results_table td font {
+                                    font-weight: 500;
+                                    color: darkgreen;
+                                }
+                            </style>
+
+                            <div id="results" align="left" class=" border border-1 border-primary"
+                                style="border-radius:20px">
+                                <div class="card-header bg-primary text-center text-white" id="title"
+                                    style="border-top-left-radius:20px;  border-top-right-radius:20px;">
+                                    <h4>Screener Results</h4>
+                                </div><br>
+                                
+                            <div id="results" >
+                                <table id="results_table" class="table table-hover" style="font-size: 14px;">
+                                    <!-- class="display"> TAILWIND  -->
+                                    <!-- class="mdl-data-table"> Material Design -->
+
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -3652,7 +3699,7 @@
                                             <th>Reading</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody style="max-height: 500px; overflow: auto;">
                                         <tr>
                                             <td> <a href="https://www.topstockresearch.com/rt/Stock/TMPV/FuturesAndOptions"
                                                     title="Tata Motors Passenger Vehicles Limited">TMPV</a> </td>
@@ -8091,6 +8138,13 @@
                                     </tbody>
                                 </table>
                             </div>
+                                <div class="miCtrl" style="margin:10px;"><br> <input type="button"
+                                        value="Add All to Watchlist"
+                                        onclick="JavaScript:misu.ba('wl','cs');">&nbsp;&nbsp;&nbsp;<input type="button"
+                                        value="Add All to Portfolio" onclick="JavaScript:misu.ba('pf','cs');"></div>
+                                <div align="center"><br> Report Generated At : 26_05_2026_11_54_20 India Time</div>
+                            </div>
+
 
                             <!-- Material Design JS -->
                             <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
@@ -8106,6 +8160,8 @@
                             <script>
                                 new DataTable('#results_table', {
                                     responsive: true,
+                                    paging: false,
+                                     fixedHeader: true
                                 });
                             </script>
 
