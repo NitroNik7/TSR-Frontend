@@ -1,0 +1,593 @@
+/* =====================================================
+   TSR Sector Rotation
+===================================================== */
+
+.tsrSectorRotationPage {
+    background: #f7f9fc;
+}
+
+/* =====================================================
+   Controls
+===================================================== */
+
+#tsrSectorRotationContainer .tsrSectorRotationFilterCard {
+
+    border: 1px solid #e4eaf2;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 2px 6px rgba(15, 23, 42, 0.04);
+
+}
+
+#tsrSectorRotationContainer .card-body {
+
+    padding:
+        1rem 1.25rem;
+
+}
+
+.tsrSectorRotationLabel {
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #4b5563;
+
+    margin-bottom: 8px;
+
+}
+
+.tsrSectorRotationSelect {
+
+    min-height: 42px;
+
+    border-radius: 8px;
+
+    border: 1px solid #d8e0ea;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+}
+
+.tsrSectorRotationSelect:focus {
+
+    border-color: #0d6efd;
+
+    box-shadow:
+        0 0 0 0.15rem rgba(13, 110, 253, 0.12);
+
+}
+
+.tsrSectorRotationApplyBtn {
+
+    min-height: 42px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(135deg,
+            #0b5ed7,
+            #2563eb);
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition:
+        all 0.2s ease;
+
+}
+
+.tsrSectorRotationApplyBtn:hover {
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 14px rgba(37, 99, 235, 0.2);
+
+}
+
+/* =====================================================
+   TSR Base Sector Container
+===================================================== */
+
+#tsrBaseSectorContainer1 {
+    position: relative;
+}
+
+/* =====================================================
+   Card
+===================================================== */
+
+#tsrBaseSectorContainer1 .card {
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(180deg,
+            #ffffff 0%,
+            #fbfdff 100%);
+
+    box-shadow:
+        0 6px 20px rgba(15, 23, 42, 0.05);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+#tsrBaseSectorContainer1 .card:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 28px rgba(15, 23, 42, 0.08);
+
+}
+
+/* =====================================================
+   Header
+===================================================== */
+
+#tsrBaseSectorContainer1 .card-header,
+ #tsrSectorTableContainer1 .card-header {
+
+    background:
+        linear-gradient(135deg,
+            #f8fbff 0%,
+            #eef5ff 100%);
+
+    border-bottom:
+        1px solid #e5edf6;
+
+    padding:
+        16px 22px;
+
+    align-items: center;
+
+}
+
+#tsrBaseSectorContainer1 .card-title {
+
+    margin: 0;
+
+    font-size: 1.2rem;
+
+    font-weight: 700;
+
+    color: #12335b;
+
+    letter-spacing: 0.2px;
+
+}
+
+/* =====================================================
+   Header Links
+===================================================== */
+
+#tsrBaseSectorContainer1 .link-primary {
+
+    text-decoration: none;
+
+    color: #2563eb !important;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    padding:
+        8px 14px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.7);
+
+    border:
+        1px solid #dbe7f7;
+
+    transition:
+        all 0.2s ease;
+
+    display: inline-flex;
+
+    align-items: center;
+
+}
+
+#tsrBaseSectorContainer1 .link-primary:hover {
+
+    background: #2563eb;
+
+    color: #ffffff !important;
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 6px 16px rgba(37, 99, 235, 0.18);
+
+}
+
+#tsrBaseSectorContainer1 .link-primary i {
+
+    font-size: 12px;
+
+}
+
+/* =====================================================
+   Body
+===================================================== */
+
+#tsrBaseSectorContainer1 .card-body {
+
+    padding:
+        22px;
+
+}
+
+
+
+/* =====================================================
+   Metric Blocks
+===================================================== */
+
+#tsrBaseSectorContainer1 h6 {
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #64748b;
+
+    margin-bottom: 8px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+
+}
+
+#tsrBaseSectorContainer1 h5 {
+
+    margin-bottom: 0;
+
+    font-size: 1.15rem;
+
+    font-weight: 700;
+
+}
+
+/* =====================================================
+   Metric Cards Effect
+===================================================== */
+
+#tsrBaseSectorContainer1 .text-center.my-2 {
+
+    padding:
+        14px 16px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(180deg,
+            #ffffff,
+            #fbfdff);
+
+    border:
+        1px solid #edf2f7;
+
+    min-width: 150px;
+
+    transition:
+        all 0.2s ease;
+
+}
+
+#tsrBaseSectorContainer1 .text-center.my-2:hover {
+
+    border-color: #d8e6ff;
+
+    box-shadow:
+        0 8px 18px rgba(37, 99, 235, 0.08);
+
+    transform:
+        translateY(-2px);
+
+}
+
+/* =====================================================
+   Positive / Negative Values
+===================================================== */
+
+#tsrBaseSectorContainer1 [style*="#31a745"] {
+
+    color: #059669 !important;
+
+}
+
+#tsrBaseSectorContainer1 [style*="#ff5050"] {
+
+    color: #dc2626 !important;
+
+}
+
+/* =====================================================
+   Responsive
+===================================================== */
+
+@media (max-width: 576px) {
+
+    #tsrBaseSectorContainer1 .card-header {
+
+        flex-direction: column;
+
+        align-items: flex-start !important;
+
+        gap: 12px;
+
+    }
+}
+
+@media (max-width: 991px) {
+
+    /* #tsrBaseSectorContainer1 .card-header {
+
+        flex-direction: column;
+
+        align-items: flex-start !important;
+
+        gap: 12px;
+
+    } */
+
+    #tsrBaseSectorContainer1 .card-body .d-flex {
+
+        gap: 14px;
+
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    #tsrBaseSectorContainer1 .card-body {
+
+        padding: 18px;
+
+    }
+
+    #tsrBaseSectorContainer1 .text-center.my-2 {
+
+        width: 100%;
+
+        min-width: unset;
+
+    }
+
+    #tsrBaseSectorContainer1 .link-primary {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+}
+
+/* =====================================================
+   Table
+===================================================== */
+
+#tsrSectorTableContainer .tsrSectorRotationTableCard {
+
+    border: 1px solid #e5ebf2;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 14px rgba(15, 23, 42, 0.05);
+
+}
+
+.tsrSectorRotationTableHeader {
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #edf2f7;
+
+    padding:
+        18px 22px;
+
+}
+
+.tsrSectorRotationTableSubtitle {
+
+    font-size: 13px;
+
+    color: #64748b;
+
+}
+
+.tsrSectorRotationToggleWrap {
+
+    display: flex;
+
+    gap: 8px;
+
+    background: #f1f5f9;
+
+    padding: 4px;
+
+    border-radius: 12px;
+
+}
+
+.tsrSectorRotationToggleBtn {
+
+    border: none;
+
+    background: transparent;
+
+    color: #475569;
+
+    padding:
+        8px 16px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition:
+        all 0.2s ease;
+
+}
+
+.tsrSectorRotationToggleBtn.active {
+
+    background: #ffffff;
+
+    color: #0d6efd;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.08);
+
+}
+
+.tsrSectorRotationTable th {
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: #64748b;
+
+    border-bottom-width: 1px;
+
+}
+
+.tsrSectorRotationTable td {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    vertical-align: middle;
+
+    padding-top: 15px;
+
+    padding-bottom: 15px;
+
+}
+
+.tsrSectorRotationTable .positive {
+
+    color: #059669;
+
+}
+
+.tsrSectorRotationTable .negative {
+
+    color: #dc2626;
+
+}
+
+.tsrSectorRotationTrend {
+
+    padding:
+        5px 12px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+.tsrSectorRotationTrend.positive {
+
+    background: #dcfce7;
+
+    color: #15803d;
+
+}
+
+.tsrSectorRotationTrend.negative {
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+}
+
+/* =====================================================
+   Responsive
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .tsrSectorRotationBenchmarkName {
+
+        font-size: 1.4rem;
+
+    }
+
+    .tsrSectorRotationActionWrap {
+
+        justify-content: flex-start;
+
+        margin-top: 12px;
+
+    }
+
+    .tsrSectorRotationToggleWrap {
+
+        width: 100%;
+
+        margin-top: 16px;
+
+    }
+
+    .tsrSectorRotationToggleBtn {
+
+        flex: 1;
+
+    }
+
+}
+
+#tsrSectorTableDiv table {
+    font-size: 14px;
+}
+
+#tsrSectorTableDiv table td {
+    text-wrap: nowrap;
+}
+
+#tsrSectorTableDiv table th {
+    border: none !important;
+    border-bottom: 1px solid lightgray !important;
+}
