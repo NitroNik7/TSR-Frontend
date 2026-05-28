@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>POC6</title>
+    <title>POC7</title>
     <meta name="description"
         content="TSR AI Based Sector Rotation evaluates momentum, return, to rank outperforming sectors and stocks within them, with visualization in chart on Short to Long Terms.">
     <meta name="keywords" content="sector Rotation ">
@@ -2228,275 +2228,177 @@
 
                                 </div>
 
-                                <div id="tsrSecRotSectorDetailsCard" class="card p-3">
-                                    <h4>NIFTY METAL</h4>
-                                    <hr>
-                                    <div class="row tsrSecRotSectorHighlights">
-                                        <div class="col col-lg-6">
-                                            <div>
-                                                <p>
-                                                    <span class="tsrSecRotSectorDetailsSubText">Relative Returns vs
-                                                        NIFTY
-                                                        50</span>
-                                                    <span class="tsrSecRotSectorDetailsValue">2.35%</span>
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p>
-                                                    <span class="tsrSecRotSectorDetailsSubText">Price</span>
-                                                    <span class="tsrSecRotSectorDetailsValue">19,232</span>
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p>
-                                                    <span class="tsrSecRotSectorDetailsSubText">Price Chg %</span>
-                                                    <span class="tsrSecRotSectorDetailsValue">2.2 %</span>
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p>
-                                                    <span class="tsrSecRotSectorDetailsSubText">Market Cap Chg %</span>
-                                                    <span class="tsrSecRotSectorDetailsValue">2.35%</span>
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p>
-                                                    <span class="tsrSecRotSectorDetailsSubText">Market Cap Chg</span>
-                                                    <span class="tsrSecRotSectorDetailsValue">2325 Cr.</span>
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p>
-                                                    <span class="tsrSecRotSectorDetailsSubText">Outperforming
-                                                        Stocks</span>
-                                                    <span class="tsrSecRotSectorDetailsValue">10</span>
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p>
-                                                    <span class="tsrSecRotSectorDetailsSubText">Underperforming
-                                                        Stocks</span>
-                                                    <span class="tsrSecRotSectorDetailsValue">5</span>
-                                                </p>
-                                            </div>
+                                <!-- GEMINI -->
+
+                                <div id="tsrSecRotSectorDetailsCard"
+                                    class="card border-0 shadow-sm tsrSectorRotationDetailsWorkspaceCard">
+                                    <div
+                                        class="card-header bg-transparent p-4 border-bottom d-flex flex-wrap justify-content-between align-items-center gap-3">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <h4 class="h5 mb-0 fw-bold text-dark tsrSectorRotationCardHeaderTitle"
+                                                id="tsrSectorRotationSelectedSectorName">NIFTY METAL</h4>
+                                            <span class="text-muted small border-start ps-3 d-none d-sm-inline">Sector
+                                                Analytics Overview</span>
                                         </div>
-                                        <div class="col col-lg-6">
-                                            <div class="d-flex flex-column">
-                                                <div>
-                                                    <h6>Daily Returns</h6>
+                                    </div>
+
+                                    <div class="card-body p-4">
+                                        <div class="row gy-4 mb-4">
+                                            <div class="col-12 col-lg-6">
+                                                <div
+                                                    class="tsrSectorRotationUnifiedMetricsPanel border rounded-3 h-100">
+                                                    <div class="tsrSectorRotationMetricRow">
+                                                        <span class="tsrSecRotSectorDetailsSubText">Relative Returns vs
+                                                            NIFTY 50</span>
+                                                        <span
+                                                            class="tsrSecRotSectorDetailsValue text-success fw-bold">+2.35%</span>
+                                                    </div>
+                                                    <div class="tsrSectorRotationMetricRow">
+                                                        <span class="tsrSecRotSectorDetailsSubText">Price</span>
+                                                        <span
+                                                            class="tsrSecRotSectorDetailsValue text-dark fw-bold">19,232.00</span>
+                                                    </div>
+                                                    <div class="tsrSectorRotationMetricRow">
+                                                        <span class="tsrSecRotSectorDetailsSubText">Price Chg %</span>
+                                                        <span
+                                                            class="tsrSecRotSectorDetailsValue text-success fw-bold">+2.20%</span>
+                                                    </div>
+                                                    <div class="tsrSectorRotationMetricRow">
+                                                        <span class="tsrSecRotSectorDetailsSubText">Market Cap Chg
+                                                            %</span>
+                                                        <span
+                                                            class="tsrSecRotSectorDetailsValue text-success fw-bold">+2.35%</span>
+                                                    </div>
+                                                    <div class="tsrSectorRotationMetricRow">
+                                                        <span class="tsrSecRotSectorDetailsSubText">Market Cap
+                                                            Chg</span>
+                                                        <span
+                                                            class="tsrSecRotSectorDetailsValue text-success fw-bold">2,325
+                                                            Cr.</span>
+                                                    </div>
+                                                    <div class="tsrSectorRotationMetricRow">
+                                                        <span class="tsrSecRotSectorDetailsSubText">Outperforming
+                                                            Stocks</span>
+                                                        <span
+                                                            class="tsrSecRotSectorDetailsValue text-success fw-bold">10
+                                                            Stocks</span>
+                                                    </div>
+                                                    <div class="tsrSectorRotationMetricRow border-bottom-0">
+                                                        <span class="tsrSecRotSectorDetailsSubText">Underperforming
+                                                            Stocks</span>
+                                                        <span class="tsrSecRotSectorDetailsValue text-danger fw-bold">5
+                                                            Stocks</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-lg-6">
+                                                <div
+                                                    class="card p-3 border rounded-3 bg-white h-100 tsrSectorRotationUnifiedTechCard d-flex flex-column justify-content-between gap-3">
+                                                    <div class="d-flex flex-column gap-3">
+                                                        <h6 class="text-uppercase x-small fw-bold text-secondary mb-1">
+                                                            <i class="fas fa-bold text-primary me-1"></i> Momentum &
+                                                            Technical Matrix
+                                                        </h6>
+
+                                                        <div class="tsrSectorRotationRowCarouselBlock">
+                                                            <span
+                                                                class="d-block text-muted x-small fw-bold text-uppercase mb-2">Daily
+                                                                Returns History</span>
+                                                            <div
+                                                                class="owl-carousel owl-theme periodicReturns tsrSectorRotationOwlMetricsSlider">
+                                                                <div class="item">
+                                                                    <div
+                                                                        class="tsrSectorRotationSliderSingleLine text-success">
+                                                                        <span>Latest</span><strong>1.67%</strong></div>
+                                                                </div>
+                                                                <div class="item">
+                                                                    <div
+                                                                        class="tsrSectorRotationSliderSingleLine text-success">
+                                                                        <span>Latest-1</span><strong>1.10%</strong>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item">
+                                                                    <div
+                                                                        class="tsrSectorRotationSliderSingleLine text-success">
+                                                                        <span>Latest-2</span><strong>0.56%</strong>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item">
+                                                                    <div
+                                                                        class="tsrSectorRotationSliderSingleLine text-success">
+                                                                        <span>Latest-3</span><strong>0.44%</strong>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item">
+                                                                    <div
+                                                                        class="tsrSectorRotationSliderSingleLine text-success">
+                                                                        <span>Latest-4</span><strong>0.20%</strong>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item">
+                                                                    <div
+                                                                        class="tsrSectorRotationSliderSingleLine text-success">
+                                                                        <span>Latest-5</span><strong>0.17%</strong>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item">
+                                                                    <div
+                                                                        class="tsrSectorRotationSliderSingleLine text-danger">
+                                                                        <span>Latest-6</span><strong>-0.05%</strong>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item">
+                                                                    <div
+                                                                        class="tsrSectorRotationSliderSingleLine text-danger">
+                                                                        <span>Latest-7</span><strong>-0.98%</strong>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="tsrSectorRotationRowCarouselBlock">
+                                                            <span
+                                                                class="d-block text-muted x-small fw-bold text-uppercase mb-2">Indicator
+                                                                Overlays</span>
+                                                            <div
+                                                                class="owl-carousel owl-theme technicals tsrSectorRotationOwlMetricsSlider">
+                                                                <div class="item">
+                                                                    <div
+                                                                        class="tsrSectorRotationSliderSingleLine text-dark">
+                                                                        <span>EMA 13</span><strong>13294.97</strong>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item">
+                                                                    <div
+                                                                        class="tsrSectorRotationSliderSingleLine text-dark">
+                                                                        <span>EMA 34</span><strong>12927.42</strong>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item">
+                                                                    <div
+                                                                        class="tsrSectorRotationSliderSingleLine text-success">
+                                                                        <span>RSI (14)</span><strong>69.89</strong>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item">
+                                                                    <div
+                                                                        class="tsrSectorRotationSliderSingleLine text-success">
+                                                                        <span>MACD</span><strong>251.27</strong></div>
+                                                                </div>
+                                                                <div class="item">
+                                                                    <div
+                                                                        class="tsrSectorRotationSliderSingleLine text-success">
+                                                                        <span>Signal</span><strong>247.59</strong></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <div
-                                                        class="owl-carousel owl-theme periodicReturns owl-loaded owl-drag">
-                                                        <div class="owl-stage-outer">
-                                                            <div class="owl-stage"
-                                                                style="transform: translate3d(0px, 0px, 0px); transition: all; width: 1855px;">
-                                                                <div class="owl-item active"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6> Latest </h6>
-                                                                        <h5 style="color: black; white-space: nowrap;">
-                                                                            <div style="color: #31a745;">1.67</div>
-                                                                        </h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item active"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6> Latest - 1 </h6>
-                                                                        <h5 style="color: black; white-space: nowrap;">
-                                                                            <div style="color: #31a745;">1.1</div>
-                                                                        </h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6> Latest - 2 </h6>
-                                                                        <h5 style="color: black; white-space: nowrap;">
-                                                                            <div style="color: #31a745;">0.56</div>
-                                                                        </h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6> Latest - 3 </h6>
-                                                                        <h5 style="color: black; white-space: nowrap;">
-                                                                            <div style="color: #31a745;">0.44</div>
-                                                                        </h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6> Latest - 4 </h6>
-                                                                        <h5 style="color: black; white-space: nowrap;">
-                                                                            <div style="color: #31a745;">0.2</div>
-                                                                        </h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6> Latest - 5 </h6>
-                                                                        <h5 style="color: black; white-space: nowrap;">
-                                                                            <div style="color: #31a745;">0.17</div>
-                                                                        </h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6> Latest - 6 </h6>
-                                                                        <h5 style="color: black; white-space: nowrap;">
-                                                                            <div style="color: #ff5050;">-0.05</div>
-                                                                        </h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6> Latest - 7 </h6>
-                                                                        <h5 style="color: black; white-space: nowrap;">
-                                                                            <div style="color: #ff5050;">-0.98</div>
-                                                                        </h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6> Latest - 8 </h6>
-                                                                        <h5 style="color: black; white-space: nowrap;">
-                                                                            <div style="color: #ff5050;">-1.93</div>
-                                                                        </h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6> Latest - 9 </h6>
-                                                                        <h5 style="color: black; white-space: nowrap;">
-                                                                            <div style="color: #31a745;">2.04</div>
-                                                                        </h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6> Latest - 10 </h6>
-                                                                        <h5 style="color: black; white-space: nowrap;">
-                                                                            <div style="color: #31a745;">3.18</div>
-                                                                        </h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6> Latest - 11 </h6>
-                                                                        <h5 style="color: black; white-space: nowrap;">
-                                                                            <div style="color: #ff5050;">-0.35</div>
-                                                                        </h5>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="owl-nav disabled"><button type="button"
-                                                                role="presentation" class="owl-prev"><span
-                                                                    aria-label="Previous">‹</span></button><button
-                                                                type="button" role="presentation" class="owl-next"><span
-                                                                    aria-label="Next">›</span></button></div>
-                                                        <div class="owl-dots"><button role="button"
-                                                                class="owl-dot active"><span></span></button><button
-                                                                role="button"
-                                                                class="owl-dot"><span></span></button><button
-                                                                role="button"
-                                                                class="owl-dot"><span></span></button><button
-                                                                role="button"
-                                                                class="owl-dot"><span></span></button><button
-                                                                role="button"
-                                                                class="owl-dot"><span></span></button><button
-                                                                role="button" class="owl-dot"><span></span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <h6>Technicals</h6>
-                                                    <div class="owl-carousel owl-theme technicals owl-loaded owl-drag">
-                                                        <div class="owl-stage-outer">
-                                                            <div class="owl-stage"
-                                                                style="transform: translate3d(0px, 0px, 0px); transition: all; width: 928px;">
-                                                                <div class="owl-item active"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6>EMA 13</h6>
-                                                                        <h4 style="color: orange; white-space: nowrap;">
-                                                                            <div style="color: #31a745;">13294.97</div>
-                                                                        </h4>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item active"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6>EMA 34</h6>
-                                                                        <h4 style="color: orange; white-space: nowrap;">
-                                                                            <div style="color: #31a745;">12927.42</div>
-                                                                        </h4>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6>RSI</h6>
-                                                                        <h4 style="color: orange; white-space: nowrap;">
-                                                                            <div style="color: #31a745;">69.89</div>
-                                                                        </h4>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6>MACD</h6>
-                                                                        <h4 style="color: orange; white-space: nowrap;">
-                                                                            <div style="color: #31a745;">251.27</div>
-                                                                        </h4>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6>SIGNAL</h6>
-                                                                        <h4 style="color: orange; white-space: nowrap;">
-                                                                            <div style="color: #31a745;">247.59</div>
-                                                                        </h4>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="owl-item"
-                                                                    style="width: 144.56px; margin-right: 10px;">
-                                                                    <div class="card d-flex flex-column p-3">
-                                                                        <h6>ST</h6>
-                                                                        <h4 style="color: orange; white-space: nowrap;">
-                                                                            <div style="color: #31a745;">13038.12</div>
-                                                                        </h4>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="owl-nav disabled"><button type="button"
-                                                                role="presentation" class="owl-prev"><span
-                                                                    aria-label="Previous">‹</span></button><button
-                                                                type="button" role="presentation" class="owl-next"><span
-                                                                    aria-label="Next">›</span></button></div>
-                                                        <div class="owl-dots"><button role="button"
-                                                                class="owl-dot active"><span></span></button><button
-                                                                role="button"
-                                                                class="owl-dot"><span></span></button><button
-                                                                role="button" class="owl-dot"><span></span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="w-100">
+                                                        class="w-100 pt-3 border-top d-flex flex-column align-items-center justify-content-center">
                                                         <div id="trendStrengthDivNIFTY_METAL"
-                                                            class="d-flex justify-content-center">
+                                                            class="tsrSectorRotationGaugeContainer">
                                                             <svg width="240" height="43">
                                                                 <defs>
                                                                     <linearGradient id="gradient" x1="0%" y1="0%"
@@ -2536,432 +2438,314 @@
                                                                 </g>
                                                             </svg>
                                                         </div>
-                                                        <div class="tsr_strength_values_container">
-                                                            <div class="d-flex justify-content-center" id="strRank">
-                                                                <span style="font-size: 14px;"> NIFTY_METAL is more
-                                                                    bullish
-                                                                    than 35.00 % of stocks </span>
-                                                            </div>
+                                                        <div
+                                                            class="tsr_strength_values_container mt-1 text-center text-muted small fw-medium">
+                                                            <span id="strRank">NIFTY_METAL is more bullish than 35.00 %
+                                                                of stocks</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <div>
-                                        <div class="d-flex">
 
-                                            <div class="ctrl-item theme-segment-block">
-                                                <span class="theme-title">Stocks</span>
-                                                <div class="theme-toggle-group">
-                                                    <!-- Hidden inputs paired with styled labels create a clean native toggle action -->
-                                                    <input type="radio" name="hmbgc" value="light" id="themeLight"
-                                                        onclick="JavaScript:dyhm.ua('hmbgc');">
-                                                    <label for="themeLight"
-                                                        class="theme-btn-label">Outperforming</label>
+                                        <div class="border-top pt-4">
+                                            <div
+                                                class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-3">
+                                                <div class="tsrSectorRotationStockSegmentWrapper">
+                                                    <b class="me-3">STOCKS</b>
+                                                    <div class="btn-group p-1 bg-light border rounded-pill" role="group"
+                                                        aria-label="Stock Performance View Filter">
+                                                        <input type="radio" class="btn-check" name="tsrStocksViewRadio"
+                                                            id="tsrViewOutperforming" autocomplete="off" checked>
+                                                        <label
+                                                            class="btn btn-sm px-4 rounded-pill fw-bold text-uppercase tsrSectorRotationSegmentButton"
+                                                            for="tsrViewOutperforming">
+                                                            Outperforming
+                                                        </label>
 
-                                                    <input type="radio" name="hmbgc" value="dark" id="themeDark"
-                                                        checked="" onclick="JavaScript:dyhm.ua('hmbgc');">
-                                                    <label for="themeDark"
-                                                        class="theme-btn-label">Underperforming</label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div id="tsrStockComparisonTable0_wrapper"
-                                            class="dataTables_wrapper dt-bootstrap5 no-footer">
-                                            <div class="dt-buttons btn-group flex-wrap"> <button
-                                                    class="btn btn-secondary buttons-copy buttons-html5 ms-2 mt-1"
-                                                    tabindex="0" aria-controls="tsrStockComparisonTable0"
-                                                    type="button"><span> Copy</span></button> <button
-                                                    class="btn btn-secondary buttons-csv buttons-html5 ms-2 mt-1"
-                                                    tabindex="0" aria-controls="tsrStockComparisonTable0"
-                                                    type="button"><span> CSV</span></button> <button
-                                                    class="btn btn-secondary buttons-excel buttons-html5 ms-2 mt-1"
-                                                    tabindex="0" aria-controls="tsrStockComparisonTable0"
-                                                    type="button"><span> Excel</span></button> <button
-                                                    class="btn btn-secondary buttons-print ms-1 mt-1" tabindex="0"
-                                                    aria-controls="tsrStockComparisonTable0" type="button"><span>
-                                                        Print</span></button> </div>
-                                            <div id="tsrStockComparisonTable0_filter" class="dataTables_filter">
-                                                <label>Search:<input type="search" class="form-control form-control-sm"
-                                                        placeholder="" aria-controls="tsrStockComparisonTable0"></label>
-                                            </div>
-                                            <div class="dataTables_scroll dtfc-has-left dtfc-has-right"
-                                                style="position: relative;">
-                                                <div class="dataTables_scrollHead"
-                                                    style="overflow: hidden; position: relative; border: 0px; width: 100%;">
-                                                    <div class="dataTables_scrollHeadInner"
-                                                        style="box-sizing: content-box; width: 732.997px; padding-right: 6px;">
-                                                        <table class="table table-striped dataTable no-footer"
-                                                            style="margin-left: 0px; width: 732.997px;">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col" class="sorting dtfc-fixed-left"
-                                                                        tabindex="0"
-                                                                        aria-controls="tsrStockComparisonTable0"
-                                                                        rowspan="1" colspan="1"
-                                                                        style="width: 53.4659px; left: 0px; position: sticky;"
-                                                                        aria-label="Name: activate to sort column ascending">
-                                                                        Name</th>
-                                                                    <th scope="col" class="sorting" tabindex="0"
-                                                                        aria-controls="tsrStockComparisonTable0"
-                                                                        rowspan="1" colspan="1"
-                                                                        style="width: 37.1591px;"
-                                                                        aria-label="Price: activate to sort column ascending">
-                                                                        Price</th>
-                                                                    <th scope="col" class="sorting" tabindex="0"
-                                                                        aria-controls="tsrStockComparisonTable0"
-                                                                        rowspan="1" colspan="1"
-                                                                        style="width: 37.1591px;"
-                                                                        aria-label="Price Chg %: activate to sort column ascending">
-                                                                        Price Chg %</th>
-                                                                    <th scope="col" class="sorting" tabindex="0"
-                                                                        aria-controls="tsrStockComparisonTable0"
-                                                                        rowspan="1" colspan="1"
-                                                                        style="width: 39.1193px;"
-                                                                        aria-label="vs Nifty: activate to sort column ascending">
-                                                                        vs Nifty</th>
-                                                                    <th scope="col" class="sorting" tabindex="0"
-                                                                        aria-controls="tsrStockComparisonTable0"
-                                                                        rowspan="1" colspan="1"
-                                                                        style="width: 44.1193px;"
-                                                                        aria-label="vs Nifty Metal: activate to sort column ascending">
-                                                                        vs Nifty Metal</th>
-                                                                    <th scope="col" class="sorting" tabindex="0"
-                                                                        aria-controls="tsrStockComparisonTable0"
-                                                                        rowspan="1" colspan="1"
-                                                                        style="width: 51.1364px;"
-                                                                        aria-label="Period Return %: activate to sort column ascending">
-                                                                        Period Return %</th>
-                                                                    <th scope="col" class="sorting" tabindex="0"
-                                                                        aria-controls="tsrStockComparisonTable0"
-                                                                        rowspan="1" colspan="1"
-                                                                        style="width: 35.1562px;"
-                                                                        aria-label="EMA 13: activate to sort column ascending">
-                                                                        EMA 13</th>
-                                                                    <th scope="col" class="sorting" tabindex="0"
-                                                                        aria-controls="tsrStockComparisonTable0"
-                                                                        rowspan="1" colspan="1"
-                                                                        style="width: 35.1562px;"
-                                                                        aria-label="EMA 34: activate to sort column ascending">
-                                                                        EMA 34</th>
-                                                                    <th scope="col" class="sorting dtfc-fixed-right"
-                                                                        tabindex="0"
-                                                                        aria-controls="tsrStockComparisonTable0"
-                                                                        rowspan="1" colspan="1"
-                                                                        style="width: 42.1875px; position: sticky; right: 6px;"
-                                                                        aria-label="Chart: activate to sort column ascending">
-                                                                        Chart</th>
-                                                                </tr>
-                                                            </thead>
-                                                        </table>
+                                                        <input type="radio" class="btn-check" name="tsrStocksViewRadio"
+                                                            id="tsrViewUnderperforming" autocomplete="off">
+                                                        <label
+                                                            class="btn btn-sm px-4 rounded-pill fw-bold text-uppercase tsrSectorRotationSegmentButton"
+                                                            for="tsrViewUnderperforming">
+                                                            Underperforming
+                                                        </label>
                                                     </div>
                                                 </div>
-                                                <div class="dataTables_scrollBody"
-                                                    style="position: relative; overflow: auto; width: 100%; max-height: 500px;">
+                                                <span class="text-muted small italic opacity-75">* Technical markers
+                                                    evaluate on live dynamic ticking intervals</span>
+                                            </div>
+
+                                            <div id="tsrSecRotOutperformTable_wrapper"
+                                                class="dataTables_wrapper dt-bootstrap5 no-footer mt-2">
+                                                <div class="table-responsive">
                                                     <table id="tsrStockComparisonTable0"
-                                                        class="table table-striped dataTable no-footer dtfc-has-left dtfc-has-right"
-                                                        aria-describedby="tsrStockComparisonTable0_info"
-                                                        style="width: 733px;">
+                                                        class="table table-striped table-hover align-middle w-100 border rounded-3 overflow-hidden">
                                                         <thead>
-                                                            <tr style="height: 0px;">
-                                                                <th scope="col" class="sorting dtfc-fixed-left"
-                                                                    aria-controls="tsrStockComparisonTable0" rowspan="1"
-                                                                    colspan="1"
-                                                                    style="width: 53.4659px; left: 0px; position: sticky; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
-                                                                    aria-label="Name: activate to sort column ascending">
-                                                                    <div class="dataTables_sizing"
-                                                                        style="height: 0px; overflow: hidden;">Name
-                                                                    </div>
-                                                                </th>
-                                                                <th scope="col" class="sorting"
-                                                                    aria-controls="tsrStockComparisonTable0" rowspan="1"
-                                                                    colspan="1"
-                                                                    style="width: 37.1591px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
-                                                                    aria-label="Price: activate to sort column ascending">
-                                                                    <div class="dataTables_sizing"
-                                                                        style="height: 0px; overflow: hidden;">Price
-                                                                    </div>
-                                                                </th>
-                                                                <th scope="col" class="sorting"
-                                                                    aria-controls="tsrStockComparisonTable0" rowspan="1"
-                                                                    colspan="1"
-                                                                    style="width: 37.1591px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
-                                                                    aria-label="Price Chg %: activate to sort column ascending">
-                                                                    <div class="dataTables_sizing"
-                                                                        style="height: 0px; overflow: hidden;">Price Chg
-                                                                        %</div>
-                                                                </th>
-                                                                <th scope="col" class="sorting"
-                                                                    aria-controls="tsrStockComparisonTable0" rowspan="1"
-                                                                    colspan="1"
-                                                                    style="width: 39.1193px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
-                                                                    aria-label="vs Nifty: activate to sort column ascending">
-                                                                    <div class="dataTables_sizing"
-                                                                        style="height: 0px; overflow: hidden;">vs Nifty
-                                                                    </div>
-                                                                </th>
-                                                                <th scope="col" class="sorting"
-                                                                    aria-controls="tsrStockComparisonTable0" rowspan="1"
-                                                                    colspan="1"
-                                                                    style="width: 44.1193px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
-                                                                    aria-label="vs Nifty Metal: activate to sort column ascending">
-                                                                    <div class="dataTables_sizing"
-                                                                        style="height: 0px; overflow: hidden;">vs Nifty
-                                                                        Metal</div>
-                                                                </th>
-                                                                <th scope="col" class="sorting"
-                                                                    aria-controls="tsrStockComparisonTable0" rowspan="1"
-                                                                    colspan="1"
-                                                                    style="width: 51.1364px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
-                                                                    aria-label="Period Return %: activate to sort column ascending">
-                                                                    <div class="dataTables_sizing"
-                                                                        style="height: 0px; overflow: hidden;">Period
-                                                                        Return %</div>
-                                                                </th>
-                                                                <th scope="col" class="sorting"
-                                                                    aria-controls="tsrStockComparisonTable0" rowspan="1"
-                                                                    colspan="1"
-                                                                    style="width: 35.1562px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
-                                                                    aria-label="EMA 13: activate to sort column ascending">
-                                                                    <div class="dataTables_sizing"
-                                                                        style="height: 0px; overflow: hidden;">EMA 13
-                                                                    </div>
-                                                                </th>
-                                                                <th scope="col" class="sorting"
-                                                                    aria-controls="tsrStockComparisonTable0" rowspan="1"
-                                                                    colspan="1"
-                                                                    style="width: 35.1562px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
-                                                                    aria-label="EMA 34: activate to sort column ascending">
-                                                                    <div class="dataTables_sizing"
-                                                                        style="height: 0px; overflow: hidden;">EMA 34
-                                                                    </div>
-                                                                </th>
-                                                                <th scope="col" class="sorting dtfc-fixed-right"
-                                                                    aria-controls="tsrStockComparisonTable0" rowspan="1"
-                                                                    colspan="1"
-                                                                    style="width: 42.1875px; position: sticky; right: 6px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
-                                                                    aria-label="Chart: activate to sort column ascending">
-                                                                    <div class="dataTables_sizing"
-                                                                        style="height: 0px; overflow: hidden;">Chart
-                                                                    </div>
-                                                                </th>
+                                                            <tr>
+                                                                <th class="dtfc-fixed-left">Stock Name</th>
+                                                                <th>LTP (₹)</th>
+                                                                <th>Price Change %</th>
+                                                                <th>vs Nifty 50</th>
+                                                                <th>vs Sector Index</th>
+                                                                <th>Period Return %</th>
+                                                                <th>EMA 13</th>
+                                                                <th>EMA 34</th>
+                                                                <th class="dtfc-fixed-right">Analytics</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr class="odd">
-                                                                <td class="dtfc-fixed-left"
-                                                                    style="left: 0px; position: sticky;"> <a
-                                                                        class="link-primary" style="cursor: pointer;"
-                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'HINDALCO', true);  
-                                miSrn.pc('op', 0, 'opEqList', 'HINDALCO', false, 'inline', false);"> Hindalco
-                                                                        Industries Ltd. </a></td>
-                                                                <td>1149.7</td>
-                                                                <td>4.16</td>
-                                                                <td>29.38</td>
-                                                                <td>12.26</td>
-                                                                <td>24.33</td>
-                                                                <td>1088.81</td>
-                                                                <td>1047.84</td>
-                                                                <td class="dtfc-fixed-right"
-                                                                    style="position: sticky; right: 0px;"> <a
-                                                                        style="cursor: pointer;"
-                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'HINDALCO', false);  miSrn.pc('op', 0, 'opEqList', 'HINDALCO', false, 'inline', true); ">
-                                                                        <i style="color:grey; font-size:12pt;"
-                                                                            class="fa fa-chart-line"> </i> </a> </td>
+                                                            <tr>
+                                                                <td class="dtfc-fixed-left fw-bold"><a
+                                                                        class="text-primary text-decoration-none"
+                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'HINDALCO', true);">Hindalco
+                                                                        Industries Ltd.</a></td>
+                                                                <td class="fw-medium">1,149.70</td>
+                                                                <td class="text-success fw-bold">+4.16%</td>
+                                                                <td class="text-success fw-semibold">+29.38</td>
+                                                                <td class="text-success fw-semibold">+12.26</td>
+                                                                <td class="text-success fw-bold">+24.33%</td>
+                                                                <td>1,088.81</td>
+                                                                <td>1,047.84</td>
+                                                                <td class="dtfc-fixed-right"><button
+                                                                        class="btn btn-sm btn-light border py-1 px-2 text-secondary"
+                                                                        onclick="miSrn.pc('op', 0, 'opEqList', 'HINDALCO', false, 'inline', true);"><i
+                                                                            class="fa fa-chart-line"></i></button></td>
                                                             </tr>
-                                                            <tr class="even">
-                                                                <td class="dtfc-fixed-left"
-                                                                    style="left: 0px; position: sticky;"> <a
-                                                                        class="link-primary" style="cursor: pointer;"
-                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'WELCORP', true);  
-                                miSrn.pc('op', 0, 'opEqList', 'WELCORP', false, 'inline', false);"> Welspun Corp Ltd.
-                                                                    </a></td>
-                                                                <td>1372.9</td>
-                                                                <td>4.09</td>
-                                                                <td>71.41</td>
-                                                                <td>54.29</td>
-                                                                <td>66.36</td>
-                                                                <td>1307.27</td>
-                                                                <td>1208.36</td>
-                                                                <td class="dtfc-fixed-right"
-                                                                    style="position: sticky; right: 0px;"> <a
-                                                                        style="cursor: pointer;"
-                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'WELCORP', false);  miSrn.pc('op', 0, 'opEqList', 'WELCORP', false, 'inline', true); ">
-                                                                        <i style="color:grey; font-size:12pt;"
-                                                                            class="fa fa-chart-line"> </i> </a> </td>
-                                                            </tr>
-                                                            <tr class="odd">
-                                                                <td class="dtfc-fixed-left"
-                                                                    style="left: 0px; position: sticky;"> <a
-                                                                        class="link-primary" style="cursor: pointer;"
-                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'NATIONALUM', true);  
-                                miSrn.pc('op', 0, 'opEqList', 'NATIONALUM', false, 'inline', false);"> National
-                                                                        Aluminium Co. Ltd. </a></td>
-                                                                <td>433.05</td>
-                                                                <td>4.05</td>
-                                                                <td>27.17</td>
-                                                                <td>10.05</td>
-                                                                <td>22.12</td>
-                                                                <td>411.12</td>
-                                                                <td>407.72</td>
-                                                                <td class="dtfc-fixed-right"
-                                                                    style="position: sticky; right: 0px;"> <a
-                                                                        style="cursor: pointer;"
-                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'NATIONALUM', false);  miSrn.pc('op', 0, 'opEqList', 'NATIONALUM', false, 'inline', true); ">
-                                                                        <i style="color:grey; font-size:12pt;"
-                                                                            class="fa fa-chart-line"> </i> </a> </td>
-                                                            </tr>
-                                                            <tr class="even">
-                                                                <td class="dtfc-fixed-left"
-                                                                    style="left: 0px; position: sticky;"> <a
-                                                                        class="link-primary" style="cursor: pointer;"
-                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'LLOYDSME', true);  
-                                miSrn.pc('op', 0, 'opEqList', 'LLOYDSME', false, 'inline', false);"> Lloyds Metals And
-                                                                        Energy Ltd </a></td>
-                                                                <td>1858.8</td>
-                                                                <td>0.28</td>
-                                                                <td>55.8</td>
-                                                                <td>38.68</td>
-                                                                <td>50.75</td>
-                                                                <td>1759.16</td>
-                                                                <td>1665.18</td>
-                                                                <td class="dtfc-fixed-right"
-                                                                    style="position: sticky; right: 0px;"> <a
-                                                                        style="cursor: pointer;"
-                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'LLOYDSME', false);  miSrn.pc('op', 0, 'opEqList', 'LLOYDSME', false, 'inline', true); ">
-                                                                        <i style="color:grey; font-size:12pt;"
-                                                                            class="fa fa-chart-line"> </i> </a> </td>
-                                                            </tr>
-                                                            <tr class="odd">
-                                                                <td class="dtfc-fixed-left"
-                                                                    style="left: 0px; position: sticky;"> <a
-                                                                        class="link-primary" style="cursor: pointer;"
-                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'NMDC', true);  
-                                miSrn.pc('op', 0, 'opEqList', 'NMDC', false, 'inline', false);"> NMDC Ltd. </a></td>
-                                                                <td>92.28</td>
-                                                                <td>1.78</td>
-                                                                <td>17.94</td>
-                                                                <td>0.82</td>
-                                                                <td>12.89</td>
-                                                                <td>89.84</td>
-                                                                <td>88.06</td>
-                                                                <td class="dtfc-fixed-right"
-                                                                    style="position: sticky; right: 0px;"> <a
-                                                                        style="cursor: pointer;"
-                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'NMDC', false);  miSrn.pc('op', 0, 'opEqList', 'NMDC', false, 'inline', true); ">
-                                                                        <i style="color:grey; font-size:12pt;"
-                                                                            class="fa fa-chart-line"> </i> </a> </td>
-                                                            </tr>
-                                                            <tr class="even">
-                                                                <td class="dtfc-fixed-left"
-                                                                    style="left: 0px; position: sticky;"> <a
-                                                                        class="link-primary" style="cursor: pointer;"
-                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'SAIL', true);  
-                                miSrn.pc('op', 0, 'opEqList', 'SAIL', false, 'inline', false);"> Steel Authority of
-                                                                        India Ltd. </a></td>
-                                                                <td>206.06</td>
-                                                                <td>1.09</td>
-                                                                <td>29.4</td>
-                                                                <td>12.28</td>
-                                                                <td>24.35</td>
-                                                                <td>196.74</td>
-                                                                <td>185.65</td>
-                                                                <td class="dtfc-fixed-right"
-                                                                    style="position: sticky; right: 0px;"> <a
-                                                                        style="cursor: pointer;"
-                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'SAIL', false);  miSrn.pc('op', 0, 'opEqList', 'SAIL', false, 'inline', true); ">
-                                                                        <i style="color:grey; font-size:12pt;"
-                                                                            class="fa fa-chart-line"> </i> </a> </td>
-                                                            </tr>
-                                                            <tr class="odd">
-                                                                <td class="dtfc-fixed-left"
-                                                                    style="left: 0px; position: sticky;"> <a
-                                                                        class="link-primary" style="cursor: pointer;"
-                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'ADANIENT', true);  
-                                miSrn.pc('op', 0, 'opEqList', 'ADANIENT', false, 'inline', false);"> Adani Enterprises
-                                                                        Ltd. </a></td>
-                                                                <td>2973.1</td>
-                                                                <td>0.13</td>
-                                                                <td>42.58</td>
-                                                                <td>25.46</td>
-                                                                <td>37.53</td>
-                                                                <td>2732.3</td>
-                                                                <td>2506.74</td>
-                                                                <td class="dtfc-fixed-right"
-                                                                    style="position: sticky; right: 0px;"> <a
-                                                                        style="cursor: pointer;"
-                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'ADANIENT', false);  miSrn.pc('op', 0, 'opEqList', 'ADANIENT', false, 'inline', true); ">
-                                                                        <i style="color:grey; font-size:12pt;"
-                                                                            class="fa fa-chart-line"> </i> </a> </td>
+                                                            <tr>
+                                                                <td class="dtfc-fixed-left fw-bold"><a
+                                                                        class="text-primary text-decoration-none"
+                                                                        onclick="miSrn.pss('op', 'opEq', 0, 'WELCORP', true);">Welspun
+                                                                        Corp Ltd.</a></td>
+                                                                <td class="fw-medium">1,372.90</td>
+                                                                <td class="text-success fw-bold">+4.09%</td>
+                                                                <td class="text-success fw-semibold">+71.41</td>
+                                                                <td class="text-success fw-semibold">+54.29</td>
+                                                                <td class="text-success fw-bold">+66.36%</td>
+                                                                <td>1,307.27</td>
+                                                                <td>1,208.36</td>
+                                                                <td class="dtfc-fixed-right"><button
+                                                                        class="btn btn-sm btn-light border py-1 px-2 text-secondary"
+                                                                        onclick="miSrn.pc('op', 0, 'opEqList', 'WELCORP', false, 'inline', true);"><i
+                                                                            class="fa fa-chart-line"></i></button></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <div class="dtfc-right-top-blocker"
-                                                    style="background-color: rgb(255, 255, 255); bottom: 0px; display: block; position: absolute; width: 7px; right: 0px; top: 0px; height: 81.5455px;">
-                                                </div>
                                             </div>
-                                            <div class="dataTables_info" id="tsrStockComparisonTable0_info"
-                                                role="status" aria-live="polite">Showing 1 to 7 of 7 entries</div>
+
                                         </div>
                                     </div>
                                 </div>
 
+                                <style>
+                                    /* ==========================================================================
+   TSR UI DOCK MATRIX LAYOUT SPECIFICATIONS
+   ========================================================================== */
+
+                                    .tsrSectorRotationDetailsWorkspaceCard {
+                                        background-color: #ffffff !important;
+                                        border: 1px solid #e2e8f0 !important;
+                                        border-radius: 12px !important;
+                                    }
+
+                                    .tsrSectorRotationCardHeaderTitle {
+                                        color: #1e3a8a !important;
+                                        /* Midnight Branding Accent */
+                                        font-size: 1.35rem;
+                                        letter-spacing: -0.2px;
+                                    }
+
+                                    /* Left Grid Metrics Panel Layout Framework */
+                                    .tsrSectorRotationUnifiedMetricsPanel {
+                                        background-color: #ffffff;
+                                        border: 1px solid #e2e8f0;
+                                    }
+
+                                    .tsrSectorRotationMetricRow {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                        padding: 0.72rem 1rem;
+                                        border-bottom: 1px solid #f1f5f9;
+                                    }
+
+                                    .tsrSectorRotationMetricRow:hover {
+                                        background-color: #f8fafc;
+                                    }
+
+                                    .tsrSecRotSectorDetailsSubText {
+                                        font-size: 0.88rem;
+                                        color: #475569;
+                                        font-weight: 500;
+                                    }
+
+                                    .tsrSecRotSectorDetailsValue {
+                                        font-size: 0.95rem;
+                                        font-weight: 700;
+                                    }
+
+                                    /* Right Grid: Combined Card Modifications */
+                                    .tsrSectorRotationUnifiedTechCard {
+                                        border-color: #e2e8f0 !important;
+                                        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+                                    }
+
+                                    /* Vertical Stacking Blocks Layout Adjustments */
+                                    .tsrSectorRotationRowCarouselBlock {
+                                        background-color: #ffffff;
+                                        padding: 0.25rem 0;
+                                        width: 100%;
+                                    }
+
+                                    /* Single-Line Compact Slider Element Accents */
+                                    .tsrSectorRotationSliderSingleLine {
+                                        display: flex;
+                                        align-items: baseline;
+                                        justify-content: space-between;
+                                        background-color: #f8fafc;
+                                        border: 1px solid #e2e8f0;
+                                        padding: 0.45rem 0.65rem;
+                                        border-radius: 6px;
+                                        width: 100%;
+                                    }
+
+                                    .tsrSectorRotationSliderSingleLine span {
+                                        font-size: 0.72rem;
+                                        font-weight: 700;
+                                        color: #64748b;
+                                        text-transform: uppercase;
+                                        letter-spacing: 0.1px;
+                                    }
+
+                                    .tsrSectorRotationSliderSingleLine strong {
+                                        font-size: 0.92rem;
+                                        font-weight: 800;
+                                    }
+
+                                    /* Owl Slider Micro Control Navigation Points */
+                                    .tsrSectorRotationOwlMetricsSlider .owl-dots {
+                                        margin-top: 8px !important;
+                                    }
+
+                                    .tsrSectorRotationOwlMetricsSlider .owl-dot span {
+                                        background: #e2e8f0 !important;
+                                        width: 5px !important;
+                                        height: 5px !important;
+                                        margin: 3px !important;
+                                    }
+
+                                    .tsrSectorRotationOwlMetricsSlider .owl-dot.active span {
+                                        background: #2563eb !important;
+                                        width: 12px !important;
+                                    }
+
+                                    /* ==========================================================================
+   FIXED STOCKS SEGMENT CONTROLS PILL SPECIFICATION
+   ========================================================================== */
+
+                                    .tsrSectorRotationStockSegmentWrapper {
+                                        display: flex;
+                                        align-items: center;
+                                    }
+
+                                    .tsrSectorRotationStockSegmentWrapper .btn-group {
+                                        background-color: #f1f5f9 !important;
+                                        border: 1px solid #e2e8f0 !important;
+                                        border-radius: 50px !important;
+                                    }
+
+                                    .tsrSectorRotationSegmentButton {
+                                        border: 0 !important;
+                                        color: #475569 !important;
+                                        font-size: 0.78rem !important;
+                                        font-weight: 700 !important;
+                                        padding: 0.45rem 1.4rem !important;
+                                        background: transparent !important;
+                                        border-radius: 50px !important;
+                                        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                                    }
+
+                                    .tsrSectorRotationSegmentButton:hover {
+                                        color: #1e3a8a !important;
+                                    }
+
+                                    /* Dynamic slider background transition on active radio check overlay */
+                                    .btn-check:checked+.tsrSectorRotationSegmentButton {
+                                        background-color: #ffffff !important;
+                                        color: #2563eb !important;
+                                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08) !important;
+                                    }
+
+                                    /* System DataTables Workspace Alignment Sync */
+                                    #tsrSecRotOutperformTable_wrapper table.dataTable thead th {
+                                        background-color: #f8fafc !important;
+                                        color: #475569 !important;
+                                        font-weight: 700 !important;
+                                        text-transform: uppercase !important;
+                                        font-size: 0.75rem !important;
+                                        letter-spacing: 0.5px !important;
+                                        padding: 12px 10px !important;
+                                        border-bottom: 2px solid #cbd5e1 !important;
+                                    }
+
+                                    #tsrSecRotOutperformTable_wrapper table.dataTable tbody td {
+                                        padding: 12px 10px !important;
+                                        font-size: 0.9rem !important;
+                                        color: #334155 !important;
+                                        border-bottom: 1px solid #f1f5f9 !important;
+                                    }
+
+                                    .tsrSectorRotationGaugeContainer svg {
+                                        max-width: 100%;
+                                        height: auto;
+                                    }
+                                </style>
+
+                                <script>
+                                    /**
+                                 * TSR Sector Rotation Stacked Sliders Initializer Framework Hook
+                                 */
+                                    $(document).ready(function () {
+                                        // Stacking vertically allows increasing item count safely per viewport slice
+                                        if ($.fn.owlCarousel && $('.periodicReturns').length > 0) {
+                                            $('.periodicReturns').owlCarousel({
+                                                loop: false,
+                                                margin: 8,
+                                                nav: false,
+                                                dots: true,
+                                                responsive: {
+                                                    0: { items: 1 },
+                                                    400: { items: 2 },
+                                                    576: { items: 3 },
+                                                    992: { items: 2 },
+                                                    1400: { items: 3 }
+                                                }
+                                            });
+                                        }
+
+                                        if ($.fn.owlCarousel && $('.technicals').length > 0) {
+                                            $('.technicals').owlCarousel({
+                                                loop: false,
+                                                margin: 8,
+                                                nav: false,
+                                                dots: true,
+                                                responsive: {
+                                                    0: { items: 1 },
+                                                    400: { items: 2 },
+                                                    576: { items: 3 },
+                                                    992: { items: 2 },
+                                                    1400: { items: 3 }
+                                                }
+                                            });
+                                        }
+                                    });
+                                </script>
+
                             </div>
 
 
-                            <style>
-                                .tsrSecRotSectorHighlights p {
-                                    margin-bottom: 0;
-                                    display: flex;
-                                    justify-content: space-between;
-                                }
 
-                                .theme-title {
-                                    font-size: 13px;
-                                    font-weight: 600;
-                                    color: #475467;
-                                    text-transform: uppercase;
-                                    letter-spacing: 0.02em;
-                                }
-
-                                .theme-toggle-group {
-                                    display: inline-flex;
-                                    background-color: #f2f4f7;
-                                    padding: 4px;
-                                    border-radius: 8px;
-                                    position: relative;
-                                }
-
-                                .theme-toggle-group input[type="radio"] {
-                                    position: absolute;
-                                    opacity: 0;
-                                    width: 0;
-                                    height: 0;
-                                }
-
-                                .theme-btn-label {
-                                    padding: 6px 14px;
-                                    font-size: 13px;
-                                    font-weight: 600;
-                                    border-radius: 6px;
-                                    cursor: pointer;
-                                    background: transparent;
-                                    color: #667085;
-                                    transition: all 0.2s ease;
-                                    display: inline-block;
-                                    text-align: center;
-                                }
-
-                                .theme-toggle-group input[type="radio"]:checked+.theme-btn-label {
-                                    background-color: #ffffff;
-                                    color: #101828;
-                                    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.1);
-                                }
-                            </style>
 
 
                             <style>
