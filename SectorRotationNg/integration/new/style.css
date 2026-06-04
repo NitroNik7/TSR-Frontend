@@ -1,0 +1,443 @@
+/* ======================================================
+                                    TSR Sector Rotation
+                                ====================================================== */
+
+/* .tsrSecRotPage {
+    background: #f5f8fc;
+    min-height: 100vh;
+} */
+
+.tsrSectRotBaseIndexSection,
+.tsrSectRotSectCompareSection,
+.tsrSecRotSectOvrvwSection {
+    background: #f5f8fc;
+}
+
+.tsrSecRotTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #12335b;
+    margin-bottom: 6px;
+}
+
+.tsrSecRotSubtitle {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.tsrSecRotControlCard,
+.tsrSecRotTableCard {
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+}
+
+.tsrSecRotControlCard .card-body,
+.tsrSecRotTableCard .card-body {
+    padding: 1.5rem;
+}
+
+.tsrSecRotLabel {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #334155;
+    display: block;
+}
+
+.tsrSecRotSelect {
+    border-radius: 12px;
+    border: 1px solid #dbe4f0;
+    min-height: 48px;
+    font-weight: 500;
+}
+
+.tsrSecRotApplyBtn,
+.tsrSecRotRefreshBtn {
+    background: linear-gradient(135deg, #0b5ed7, #2563eb);
+    color: white;
+    border: none;
+    min-height: 48px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.tsrSecRotApplyBtn:hover,
+.tsrSecRotRefreshBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+    color: white;
+}
+
+.tsrSecRotMetricCard {
+    background: white;
+    border-radius: 18px;
+    padding: 22px;
+    height: 100%;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+    transition: 0.25s ease;
+}
+
+.tsrSecRotMetricCard:hover {
+    transform: translateY(-4px);
+}
+
+.tsrSecRotMetricTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.tsrSecRotMetricIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: #e8f1ff;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.tsrSecRotMetricIcon.negative {
+    background: #ffe8e8;
+    color: #dc2626;
+}
+
+.tsrSecRotMetricBadge {
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 5px 10px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.tsrSecRotMetricTitle {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.tsrSecRotMetricValue {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.tsrSecRotMetricHighlight {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.tsrSecRotMetricHighlight.positive {
+    color: #059669;
+}
+
+.tsrSecRotMetricHighlight.negative {
+    color: #dc2626;
+}
+
+.tsrSecRotMetricSubtext {
+    margin-top: 8px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.tsrSecRotMetricChange {
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+.tsrSecRotMetricChange.positive {
+    color: #059669;
+}
+
+.tsrSecRotTableHeader {
+    border: none;
+    padding: 20px 24px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tsrSecRotTableExpandCollapseBadge {
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 5px 10px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.tsrSecRotTableExpandCollapseBadge:hover {
+    transform: scale(1.2);
+}
+
+.tsrSecRotTableHeader.outperform {
+    border-bottom: 3px solid #10b981;
+
+}
+
+.tsrSecRotTableHeader.underperform {
+    border-bottom: 3px solid #ef4444;
+}
+
+.tsrSecRotTableSubheader {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.tsrSecRotTable th {
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 700;
+    border-bottom-width: 1px;
+    text-wrap: nowrap;
+}
+
+.tsrSecRotTable td {
+    /* font-weight: 600; */
+    vertical-align: middle;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-wrap: nowrap;
+}
+
+.tsrSecRotTable .positive {
+    color: #059669;
+}
+
+.tsrSecRotTable .negative {
+    color: #dc2626;
+}
+
+.tsrSecRotTrendBadge {
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.tsrSecRotTrendBadge.positive {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.tsrSecRotTrendBadge.negative {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+@media (max-width: 768px) {
+
+    .tsrSecRotTitle {
+        font-size: 1.6rem;
+    }
+
+    .tsrSecRotMetricValue {
+        font-size: 1.5rem;
+    }
+
+}
+
+.tsrPlanTableFeature {
+    /* display: flex;
+    justify-content: space-between; */
+    padding: 0;
+    /* background-color: unset;
+    align-items: center;
+    min-width: 150px; */
+}
+
+/* Overriding PLANS link css */
+.tsrPlanTableFeature a {
+    font-size: 16px;
+    /* color: green; */
+}
+
+.tsrPlanTableFeature a i {
+    transform: rotate(0);
+}
+
+
+/* ==========================================================================
+                                        TSR UI DOCK MATRIX LAYOUT SPECIFICATIONS
+                                    ========================================================================== */
+.tsrSecRotSectOvrvwSection {
+
+}
+
+.tsrSectorRotationDetailsWorkspaceCard {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+}
+
+.tsrSectorRotationCardHeaderTitle {
+    color: #1e3a8a !important;
+    /* Midnight Branding Accent */
+    font-size: 1.35rem;
+    letter-spacing: -0.2px;
+}
+
+/* Left Grid Metrics Panel Layout Framework */
+/* .tsrSectorRotationUnifiedMetricsPanel {
+                                        background-color: #ffffff;
+                                        border: 1px solid #e2e8f0;
+                                    } */
+
+.tsrSectorRotationMetricRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.72rem 1rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.tsrSectorRotationMetricRow:hover {
+    background-color: #f8fafc;
+}
+
+.tsrSecRotSectorDetailsSubText {
+    font-size: 0.88rem;
+    color: #475569;
+    font-weight: 500;
+}
+
+.tsrSecRotSectorDetailsValue {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+/* Right Grid: Combined Card Modifications */
+.tsrSectorRotationUnifiedTechCard {
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Vertical Stacking Blocks Layout Adjustments */
+.tsrSectorRotationRowCarouselBlock {
+    background-color: #ffffff;
+    padding: 0.25rem 0;
+    width: 100%;
+}
+
+/* Single-Line Compact Slider Element Accents */
+.tsrSectorRotationSliderSingleLine {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 0.45rem 0.65rem;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.tsrSectorRotationSliderSingleLine span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.1px;
+}
+
+.tsrSectorRotationSliderSingleLine strong {
+    font-size: 0.92rem;
+    font-weight: 800;
+}
+
+/* Owl Slider Micro Control Navigation Points */
+.tsrSectorRotationOwlMetricsSlider .owl-dots {
+    margin-top: 8px !important;
+}
+
+.tsrSectorRotationOwlMetricsSlider .owl-dot span {
+    background: #e2e8f0 !important;
+    width: 5px !important;
+    height: 5px !important;
+    margin: 3px !important;
+}
+
+.tsrSectorRotationOwlMetricsSlider .owl-dot.active span {
+    background: #2563eb !important;
+    width: 12px !important;
+}
+
+/* ==========================================================================
+   FIXED STOCKS SEGMENT CONTROLS PILL SPECIFICATION
+   ========================================================================== */
+
+.tsrSectorRotationStockSegmentWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.tsrSectorRotationStockSegmentWrapper .btn-group {
+    background-color: #f1f5f9 !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 50px !important;
+}
+
+.tsrSectorRotationSegmentButton {
+    border: 0 !important;
+    color: #475569 !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    padding: 0.45rem 1.4rem !important;
+    background: transparent !important;
+    border-radius: 50px !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.tsrSectorRotationSegmentButton:hover {
+    color: #1e3a8a !important;
+}
+
+/* Dynamic slider background transition on active radio check overlay */
+.btn-check:checked+.tsrSectorRotationSegmentButton {
+    background-color: #ffffff !important;
+    color: #2563eb !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* System DataTables Workspace Alignment Sync */
+#tsrSecRotOutperformTable_wrapper,
+#tsrSecRotUnderperformTable_wrapper {
+    font-size: 12px;
+}
+
+
+
+/* #tsrSecRotOutperformTable_wrapper table.dataTable thead th,
+#tsrSecRotUnderperformTable_wrapper table.dataTable thead th {
+    background-color: #f8fafc !important;
+    color: #475569 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.5px !important;
+    padding: 12px 10px !important;
+    border-bottom: 2px solid #cbd5e1 !important;
+} */
+
+/* #tsrSecRotOutperformTable_wrapper table.dataTable tbody td,
+#tsrSecRotUnderperformTable_wrapper table.dataTable tbody td {
+    padding: 12px 10px !important;
+    font-size: 0.9rem !important;
+    color: #334155 !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+} */
+
+/* .tsrSectorRotationGaugeContainer svg {
+    max-width: 100%;
+    height: auto;
+} */
