@@ -88,8 +88,8 @@ var miSrn = (function () {  // chart init Params
 
             // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=all`; // TODO - use this later
             // let url = `https://www.tsrbt1.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=all`;
-            let url = `http://127.0.0.1:5500/Temp/secRotData/secRot${duration}${sectorType}.json`;
-            // let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/secRot${duration}${sectorType}.json`;
+            // let url = `http://127.0.0.1:5500/Temp/secRotData/secRot${duration}${sectorType}.json`;
+            let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/secRot${duration}${sectorType}.json`;
 
             miSrnUtils.gd(url).then(data => {
 
@@ -2056,8 +2056,8 @@ var miSrn = (function () {  // chart init Params
 
             // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
             // let url = "https://www.tsrbt1.com/rt" + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
-            let url = `http://127.0.0.1:5500/Temp/secRotData/${sector["uriCode"]}.json`;
-            // let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["uriCode"]}.json`;
+            // let url = `http://127.0.0.1:5500/Temp/secRotData/${sector["uriCode"]}.json`;
+            let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["uriCode"]}.json`;
 
             // TODO - replace miSrnUtils.pd with jsu.isNotNull()
             // avoiding multiple API calls for same sector
@@ -2316,7 +2316,8 @@ var miSrn = (function () {  // chart init Params
 
             // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
             // let url = "https://www.tsrbt1.com/rt" + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
-            let url = `http://127.0.0.1:5500/Temp/secRotData/secRot${duration}${sectorType}`;
+            // let url = `http://127.0.0.1:5500/Temp/secRotData/secRot${duration}${sectorType}`;
+            let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/secRot${duration}${sectorType}`;
 
             // avoiding multiple API calls for same sector
             if (!(miSrnUtils.pd(sectorData) && sectorData.secType == secType && sectorData.secId == secId && sectorData["statusCode"] == "success")) {
@@ -2699,8 +2700,8 @@ var miSrn = (function () {  // chart init Params
         }
         // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
         // let url = `https://www.tsrbt1.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
-        let url = `http://127.0.0.1:5500/Temp/secRotData/${sector["uriCode"]}.json`;
-        // let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["uriCode"]}.json`;
+        // let url = `http://127.0.0.1:5500/Temp/secRotData/${sector["uriCode"]}.json`;
+        let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["uriCode"]}.json`;
 
         if (!(miSrnUtils.pd(sectorData) && sectorData.secType == secType && sectorData.secId == secId && sectorData["statusCode"] == "success")) {
             miSrnUtils.gd(url).then(data => {
