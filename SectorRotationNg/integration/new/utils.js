@@ -8,80 +8,94 @@ var miSrnUtils = (function () {
 
 
     var sectorRotationDef = {
-        "1d": {
-            "freq": "mm15",
-            "ema1": "5",
-            "ema2": "8",
-            "rtnBreak": "hh1"
-        },
+        "Short Term": {
+            "1d": {
+                "freq": "mm15",
+                "ema1": "5",
+                "ema2": "8",
+                "rtnBreak": "hh1"
+            },
+            "1w": {
+                "freq": "hh2",
+                "ema1": "5",
+                "ema2": "8",
+                "rtnBreak": "D"
+            },
 
-        "1w": {
-            "freq": "hh2",
-            "ema1": "5",
-            "ema2": "8",
-            "rtnBreak": "D"
+            "2w": {
+                "freq": "hh4",
+                "ema1": "5",
+                "ema2": "8",
+                "rtnBreak": "2D"
+            },
         },
-
-        "2w": {
-            "freq": "hh4",
-            "ema1": "5",
-            "ema2": "8",
-            "rtnBreak": "2D"
+        "Medium Term": {
+            "1m": {
+                "freq": "D",
+                "ema1": "5",
+                "ema2": "8",
+                "rtnBreak": "W"
+            },
+            "3m": {
+                "freq": "D",
+                "ema1": "13",
+                "ema2": "34",
+                "rtnBreak": "W"
+            },
+            "6m": {
+                "freq": "D",
+                "ema1": "15",
+                "ema2": "50",
+                "rtnBreak": "M"
+            },
         },
-        "1m": {
-            "freq": "D",
-            "ema1": "5",
-            "ema2": "8",
-            "rtnBreak": "W"
-        },
-        "3m": {
-            "freq": "D",
-            "ema1": "13",
-            "ema2": "34",
-            "rtnBreak": "W"
-        },
-        "6m": {
-            "freq": "D",
-            "ema1": "15",
-            "ema2": "50",
-            "rtnBreak": "M"
-        },
-        "1y": {
-            "freq": "D",
-            "ema1": "50",
-            "ema2": "200",
-            "rtnBreak": "Q"
-        },
-        "2y": {
-            "freq": "W",
-            "ema1": "13",
-            "ema2": "34",
-            "rtnBreak": "Q"
-        },
-        "5y": {
-            "freq": "M",
-            "ema1": "13",
-            "ema2": "34",
-            "rtnBreak": "Y"
+        "Long Term": {
+            "1y": {
+                "freq": "D",
+                "ema1": "50",
+                "ema2": "200",
+                "rtnBreak": "Q"
+            },
+            "2y": {
+                "freq": "W",
+                "ema1": "13",
+                "ema2": "34",
+                "rtnBreak": "Q"
+            },
+            "5y": {
+                "freq": "M",
+                "ema1": "13",
+                "ema2": "34",
+                "rtnBreak": "Y"
+            }
         }
     };
 
-    
+
     function populateDurationSelect(sectorDurationSelectId, selVal) {
 
         let durationSelect = document.getElementById(sectorDurationSelectId);
 
         let html = "";
 
-        let keys = Object.keys(sectorRotationDef);
+        let terms = Object.entries(sectorRotationDef);
+
         let defaultOption = selVal;
-        if (jsu.isNull(defaultOption)) {
+        if (jsu.isNull(defaultOption) || selVal == "") {
             defaultOption = "3m";
         }
-        html += `<option value='${defaultOption}'>${defaultOption.toUpperCase()}</option>` // default option
-        for (let i = 0; i < keys.length; i++) {
-            if (keys[i] != defaultOption)
-                html += `<option value='${keys[i]}'>${keys[i].toUpperCase()}</option>`
+
+        for (let i = 0; i < terms.length; i++) {
+            let durations = Object.keys(terms[i][1]);
+            html += `<optgroup label="${terms[i][0]}">`
+            for (let i = 0; i < durations.length; i++) {
+                if (durations[i] != defaultOption)
+                    html += `<option value='${durations[i]}'>${durations[i].toUpperCase()}</option>`
+                else {
+                    html += `<option value='${defaultOption}' selected>${defaultOption.toUpperCase()}</option>` // default option
+                }
+            }
+            html += `</optgroup>`;
         }
 
         durationSelect.innerHTML = html;
@@ -121,9 +135,14 @@ var miSrnUtils = (function () {
         return val;
     }
 
-    function getColoredValue(val, color) {
+    function getColoredValue(val, color, text) {
 
         val = getRoundedValue(val);
+
+        if (jsu.isNull(text) || typeof text != "string") {
+            text = "";
+        }
+
         let html = "";
 
         let positiveColor = "#059669"; // #31a745;
@@ -139,14 +158,18 @@ var miSrnUtils = (function () {
                 else if (val < 0) {
                     textColor = negativeColor;
                 }
-                html += `<div style='color: ${textColor}'> ${val} </div>`;
+                val += " " + text;
+                html += `<span style='color: ${textColor}'> ${val} </span>`;
             }
             else {
-                html += "<div style='color: black;'> - </div>";
+                html += "<span style='color: black;'> - </span>";
             }
         } else {
-            html += `<div style='color: ${color};'> ${val} </div>`;
+            val += " " + text;
+            html += `<span style='color: ${color};'> ${val} </span>`;
         }
+
+
 
         return html;
     }
@@ -188,13 +211,13 @@ var miSrnUtils = (function () {
     }
 
 
-    function makeDataTable(id) {    // init datatable
+    function makeDataTable(id, options) {    // init datatable
 
         if (paramDefined(mtgv) && paramDefined(mtgv.mtpp) && paramDefined(mtgv.mtpp)) {
             premInit = true;
         } else {
             setTimeout(() => {
-                makeDataTable(id);
+                makeDataTable(id, options);
             }, 500);
         }
 
@@ -203,26 +226,63 @@ var miSrnUtils = (function () {
                 // if (!$.fn.DataTable.isDataTable("#" + id)) { // do not reinitialize if table is already a dataTable - or else shows reinitialize error
                 // midt.pvdt(id);
                 // }
-                $('#' + id).DataTable({
-                    paging: false,
-                    responsive: true,
-                    scrollCollapse: false,
-                    scrollY: 250,
-                    scrollX: true
-                });
-            }, 100);
+                $('#' + id).DataTable(options);
+
+        }, 100);
+    }
+}
+
+    function expandSectorCompTable(btn, id) {
+    let opDivId = "tsrSecRotOpSectorsWrapper";
+    let upDivId = "tsrSecRotUpSectorsWrapper";
+    let btnArr = document.getElementsByClassName("tsrSecRotTableExpandCollapseBadge");
+
+    let opDiv = document.getElementById(opDivId);
+    let upDiv = document.getElementById(upDivId);
+    if (opDiv.classList.contains("col-xl-6")) {
+        opDiv.classList.remove("col-xl-6");
+        upDiv.classList.remove("col-xl-6");
+        opDiv.classList.add("col-12");
+        upDiv.classList.add("col-12");
+        for (let i = 0; i < btnArr.length; i++) {
+            let btn = btnArr[i];
+            btn.innerHTML = `
+                <span class="fw-medium me-2">Show less</span>
+                <i class="fas fa-expand"></i>
+            `;
         }
-
+    }
+    else {
+        opDiv.classList.remove("col-12");
+        upDiv.classList.remove("col-12");
+        opDiv.classList.add("col-xl-6");
+        upDiv.classList.add("col-xl-6");
+        for (let i = 0; i < btnArr.length; i++) {
+            let btn = btnArr[i];
+            btn.innerHTML = `
+                <span class="fw-medium me-2">Show more</span>
+                <i class="fas fa-expand"></i>
+            `;
+        }
     }
 
-    return {
-        pds: populateDurationSelect,
-        pd: paramDefined,
-        gd: getData,
-        grv: getRoundedValue,
-        gcv: getColoredValue,
-        slt: showLoginToast,
-        mdt: makeDataTable,
+    let div = document.getElementById(id);
+    div.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
 
-    }
-})();
+
+
+return {
+    pds: populateDurationSelect,
+    pd: paramDefined,
+    gd: getData,
+    grv: getRoundedValue,
+    gcv: getColoredValue,
+    slt: showLoginToast,
+    mdt: makeDataTable,
+    esct: expandSectorCompTable,
+}
+}) ();

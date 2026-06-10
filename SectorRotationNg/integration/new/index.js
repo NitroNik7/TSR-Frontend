@@ -23,6 +23,8 @@ var miSrn = (function () {  // chart init Params
     var stockTableId = "tsrSecRotStockComparisonTable"
     var stockContainerId = "tsrSecRotSectorStockContainer";
     var chartContainerId = "tsrSecRotChartContainer";
+    var stockSectionModalId = "tsrStockSectionModal";
+    var stockSectionDivId = "tsrStockSection";
 
     var allSectorDataClone;
     var allSectorData;
@@ -37,18 +39,22 @@ var miSrn = (function () {  // chart init Params
     init();
 
     function init() {
-        miSrnUtils.pds(sectorDurationSelectId, null);
-        paintTsrToolsContainer();
-
-        defStk = null;
-        json = null;
-        jPlist = [];
 
         let sectorTypeSelect = document.getElementById(sectorTypeSelectId);
         let durationSelect = document.getElementById(sectorDurationSelectId);
 
         let sectorType = sectorTypeSelect.value;
         let duration = durationSelect.value;
+
+
+        miSrnUtils.pds(sectorDurationSelectId, duration);
+        duration = durationSelect.value;
+        // paintTsrToolsContainer();
+
+        defStk = null;
+        json = null;
+        jPlist = [];
+
 
         let baseSectorContainer = document.getElementById(baseSectorSectionId);
         baseSectorContainer.innerHTML = "";
@@ -57,10 +63,19 @@ var miSrn = (function () {  // chart init Params
         sectorContainer.innerHTML = "";
 
         let sectorOverviewContainer = document.getElementById(sectorOverviewContainerId);
-        sectorOverviewContainer.innerHTML = "";
+        sectorOverviewContainer.innerHTML = `<div id="${chartContainerId}"></div>`
 
         // let chart = document.getElementById(chartContainerId);
         // chart.innerHTML = "";
+
+        let stockSectionModal = document.getElementById(stockSectionModalId);
+        $("#" + stockSectionModalId).draggable({ containment: 'parent' });
+        stockSectionModal.classList.add("web_dialog");
+        stockSectionModal.style.width = "calc(100% - 250px)";
+        stockSectionModal.style.maxHeight = "calc(100vh - 150px)";
+        stockSectionModal.style.fontFamily = "unset";
+
+
 
 
         if (miSrnUtils.pd(sectorTypeSelect) && miSrnUtils.pd(durationSelect)) {
@@ -72,9 +87,9 @@ var miSrn = (function () {  // chart init Params
             }
 
             // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=all`; // TODO - use this later
-            // let url = `https://www.topstockresearch.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=all`;
-            // let url = `http://127.0.0.1:5500/Temp/secRotData/secRot${duration}${sectorType}.json`;
-            let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/secRot${duration}${sectorType}.json`;
+            // let url = `https://www.tsrbt1.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=all`;
+            let url = `http://127.0.0.1:5500/Temp/secRotData/secRot${duration}${sectorType}.json`;
+            // let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/secRot${duration}${sectorType}.json`;
 
             miSrnUtils.gd(url).then(data => {
 
@@ -127,7 +142,7 @@ var miSrn = (function () {  // chart init Params
         // create accordion only if NIFTY (base sector) exists
         if (miSrnUtils.pd(baseSectorSection) && miSrnUtils.pd(allSectorDataClone[baseSector])) {
 
-            baseSectorSection.classList.add("tsrSectRotBaseIndexSection", "row", "g-4", "p-3", "my-4");
+            baseSectorSection.classList.add("tsrSectRotBaseIndexSection", "row", "g-4", "p-3", "mb-4", "d-none", "d-md-flex");
 
             let html = ``;
 
@@ -138,78 +153,107 @@ var miSrn = (function () {  // chart init Params
             html += `       <div class="tsrSecRotMetricCard">`
             html += `           <div class="tsrSecRotMetricTop">`
             html += `               <div class="tsrSecRotMetricIcon">`
-            html += `                   <i class="fas fa-chart-line"></i>`
+            // let niftyUrl = mintJsUtil.getRootUrl() + "/Screener/Markets/"; // TODO
+            // html += `                   <a href="${niftyUrl}">`
+            html += `                       <i class="fas fa-chart-line"></i>`
+            // html += `                   </a>`
             html += `               </div>`
-            if (isSectorIdxBased('op') || isSectorIdxBased('up')) {
-                html += `           <span class="tsrSecRotMetricBadge">
-                                        Benchmark
-                                    </span>`
-            }
+            html += `           <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
+            // html += `               <div class="tsrSecRotMetricIcon">`
+            // html += `                       <i class="fas fa-chart-line"></i>`
+            // html += `               </div>`
+            html += `               Benchmark`
             html += `           </div>`
-            html += `           <div class="tsrSecRotMetricTitle">
-                                    NIFTY 50
-                                </div>`
-            html += `           <div class="tsrSecRotMetricValue">
-                                    ${miSrnUtils.grv(allSectorDataClone[baseSector]["price"])}
-                                </div>`
-            html += `           <div class="tsrSecRotMetricChange positive">
-                                    <i class="fas fa-arrow-up"></i>
-                                    ${miSrnUtils.grv(allSectorDataClone[baseSector]["priceChange"])} %
-                                </div>`
+            // if (isSectorIdxBased('op') || isSectorIdxBased('up')) {
+            //     html += `           <span class="tsrSecRotMetricBadge">
+            //                             Benchmark
+            //                         </span>`
+            // }
+            html += `           </div>`
+            // html += `           <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
+            // // html += `               <div class="tsrSecRotMetricIcon">`
+            // // html += `                       <i class="fas fa-chart-line"></i>`
+            // // html += `               </div>`
+            // html += `               Benchmark`
+            // html += `           </div>`
+            // html += `           <div class="tsrSecRotMetricValue">`
+            html += `           <div class="tsrSecRotMetricHighlight">`
+            // html += `               <div class="tsrSecRotMetricIcon">`
+            // html += `                       <i class="fas fa-chart-line"></i>`
+            // html += `               </div>`
+            // html += `               ${miSrnUtils.grv(allSectorDataClone[baseSector]["price"])}
+            html += `               NIFTY`
+            html += `           </div>`
+            // html += `           <div class="tsrSecRotMetricChange positive">
+            //                         <i class="fas fa-arrow-up"></i>
+            //                         Market Cap Change: ${miSrnUtils.grv(allSectorDataClone[baseSector]["priceChange"])} %
+            //                     </div>`
+            let mktChgEleClass = "tsrSecRotMetricChange";
+            if (miSrnUtils.grv(allSectorDataClone[baseSector]["mcChg"] > 0)) {
+                mktChgEleClass += " positive";
+            } else {
+                mktChgEleClass += " negative";
+            }
+            html += `            <div class="tsrSecRotMetricSubtext" >`
+            // html += `                Market Cap Change: <span class="${mktChgEleClass}">${miSrnUtils.grv(allSectorDataClone[baseSector]["mcChg"])} | ${miSrnUtils.grv(allSectorDataClone[baseSector]["mcChgPc"])}</span>`
+            html += `                <p style="margin-bottom: 0;">Market Cap Change:</p><p> <b>${miSrnUtils.gcv(allSectorDataClone[baseSector]["mcChg"], null, true)} | ${miSrnUtils.gcv(allSectorDataClone[baseSector]["mcChgPc"], null, "%")}</b></p>`
+            html += `            </div>`
             html += `       </div>`
 
-            html += `       <!-- NIFTY 50 detailed card -->
-                            <div class="tsrSecRotMetricCard" style="display: none;">
+            // html += `       <!-- NIFTY 50 detailed card -->
+            /*
+                //                 <div class="tsrSecRotMetricCard" style="display: none;">
 
-                                <div class="tsrSecRotMetricTop">
-                                    <div class="tsrSecRotMetricIcon">
-                                        <i class="fas fa-chart-line"></i>
-                                    </div>
+                //                     <div class="tsrSecRotMetricTop">
+                //                         <div class="tsrSecRotMetricIcon">
+                //                             <i class="fas fa-chart-line"></i>
+                //                         </div>
 
-                                    <span class="tsrSecRotMetricBadge">
-                                        Benchmark
-                                    </span>
-                                </div>
+                //                         <span class="tsrSecRotMetricBadge">
+                //                             Benchmark
+                //                         </span>
+                //                     </div>
 
-                                <div class="tsrSecRotMetricTitle">
-                                    NIFTY 50
-                                </div>
+                //                     <div class="tsrSecRotMetricTitle">
+                //                         NIFTY 50
+                //                     </div>
 
-                                <div class="align-items-center d-flex tsrSecRotMetricValue"
-                                    style="gap: 10px;">
-                                    24,845.20
-                                    <div class="tsrSecRotMetricChange positive">
-                                        <i class="fas fa-arrow-up"></i>
-                                        1.84%
-                                    </div>
-                                </div>
+                //                     <div class="align-items-center d-flex tsrSecRotMetricValue"
+                //                         style="gap: 10px;">
+                //                         24,845.20
+                //                         <div class="tsrSecRotMetricChange positive">
+                //                             <i class="fas fa-arrow-up"></i>
+                //                             1.84%
+                //                         </div>
+                //                     </div>
 
-                                <div class="tsrSecRotMetricChange positive" style="display: none;">
-                                    <span class="me-2 tsrSecRotMetricSubtext"
-                                        style="font-weight: 400;">Period Change</span>
-                                    <br>
-                                    <i class="fas fa-arrow-up"></i>
-                                    1.84%
-                                </div>
-                                <div class="tsrSecRotMetricChange positive" style="display: none;">
-                                    <span class="me-2 tsrSecRotMetricSubtext"
-                                        style="font-weight: 400;">Market Cap Chg Pc
+                //                     <div class="tsrSecRotMetricChange positive" style="display: none;">
+                //                         <span class="me-2 tsrSecRotMetricSubtext"
+                //                             style="font-weight: 400;">Period Change</span>
+                //                         <br>
+                //                         <i class="fas fa-arrow-up"></i>
+                //                         1.84%
+                //                     </div>
+                //                     <div class="tsrSecRotMetricChange positive" style="display: none;">
+                //                         <span class="me-2 tsrSecRotMetricSubtext"
+                //                             style="font-weight: 400;">Market Cap Chg Pc
 
-                                    </span>
-                                    <i class="fas fa-arrow-up"></i>
-                                    1.84%
-                                </div>
+                //                         </span>
+                //                         <i class="fas fa-arrow-up"></i>
+                //                         1.84%
+                //                     </div>
 
-                                <div class="tsrSecRotMetricChange positive">
-                                    <span class="me-2 tsrSecRotMetricSubtext"
-                                        style="font-weight: 400;">Market Cap Chg</span>
-                                        <span style="font-weight: 300;"></span>
-                                    <br>
-                                    27373921 Cr
-                                    <span class=" tsrSecRotMetricSubtext">|</span>
-                                    <i class="fas fa-arrow-up"></i> 1.84%
-                                </div>
-                            </div>`
+                //                     <div class="tsrSecRotMetricChange positive">
+                //                         <span class="me-2 tsrSecRotMetricSubtext"
+                //                             style="font-weight: 400;">Market Cap Chg</span>
+                //                             <span style="font-weight: 300;"></span>
+                //                         <br>
+                //                         27373921 Cr
+                //                         <span class=" tsrSecRotMetricSubtext">|</span>
+                //                         <i class="fas fa-arrow-up"></i> 1.84%
+                //                     </div>
+                //                 </div>`
+            */
 
             html += `   </div>`
 
@@ -217,94 +261,95 @@ var miSrn = (function () {  // chart init Params
             // STRONGEST SECTOR CARD
             let opSectors = jsu.cloneObj(allSectorDataClone["opSec"]);
             let strongestSector = { name: "-", data: "-" };
+            let onclickFn = "";
             if (opSectors.length > 0) {
-                // TODO - SORT SECTORS IN DESC ORDER ACCORDING TO MARKET CAP / RELATIVE STRENGTH
+                // TODO -  IF NOT ALREADY SORTED, SORT SECTORS IN DESC ORDER ACCORDING TO MARKET CAP / RELATIVE STRENGTH
                 strongestSector.name = opSectors[0].name;
                 if (isSectorIdxBased('op')) {
-                    strongestSector.data = "Relative Returns vs NIFTY: " + miSrnUtils.grv(opSectors[0].vsNifty) + " %";
+                    strongestSector.data = "<p style='margin-bottom: 0;'>Relative Returns vs NIFTY:</p> <p style='margin-bottom: 0;'><b>" + miSrnUtils.gcv(opSectors[0].vsNifty, null, "%") + "</b></p>";
+                    // function paintChart(secType, secId, stockListType, stockCode, all, chartType, scrollTo)
+                    onclickFn = `miSrn.ssc('op', 0); miSrn.pc('op', '0', 'sectorList', '${opSectors[0].code}', false, 'inline', false);`;
                 } else {
-                    strongestSector.data = "Market Cap Change: " + miSrnUtils.grv(opSectors[0].mcChg) + " Cr.";
+                    strongestSector.data = "<p style='margin-bottom: 0;'>Market Cap Change:</p><p><b>" + miSrnUtils.gcv(opSectors[0].mcChg, null, "Cr.") + " | " + miSrnUtils.gcv(opSectors[0].mcChgPc, null, "%") + "</b></p>";
+                    onclickFn = "miSrn.ssc('op', 0);";
                 }
             }
             html += `   <div class="col-xl-3 col-md-6 mt-md-0 ">`
-            html += `        <div class="tsrSecRotMetricCard">`
+            html += `        <div class="tsrSecRotMetricCard" style="cursor: pointer;" onclick="${onclickFn}">`
             html += `            <div class="tsrSecRotMetricTop">`
             html += `                <div class="tsrSecRotMetricIcon">`
             html += `                    <i class="fas fa-bolt"></i>`
             html += `                </div>`
-            html += `            </div>`
-            html += `            <div class="tsrSecRotMetricTitle">`
+            html += `            <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
+            // html += `                <div class="tsrSecRotMetricIcon">`
+            // html += `                    <i class="fas fa-bolt"></i>`
+            // html += `                </div>`
             html += `                Strongest Sector`
             html += `            </div>`
+            html += `            </div>`
+            // html += `            <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
+            // // html += `                <div class="tsrSecRotMetricIcon">`
+            // // html += `                    <i class="fas fa-bolt"></i>`
+            // // html += `                </div>`
+            // html += `                Strongest Sector`
+            // html += `            </div>`
             html += `            <div class="tsrSecRotMetricHighlight positive">`
             html += `                ${strongestSector.name}`
             html += `            </div>`
-            html += `            <div class="tsrSecRotMetricSubtext">`
+            html += `            <div class="tsrSecRotMetricSubtext"  >`
             html += `                ${strongestSector.data}`
             html += `            </div>`
             html += `        </div>`
-
-            html += `       <!-- Detailed card -->
-                            <div class="tsrSecRotMetricCard" style="display: none;">
-
-                                <div class="tsrSecRotMetricTop">
-                                    <div class="tsrSecRotMetricIcon">
-                                        <i class="fas fa-bolt"></i>
-                                    </div>
-                                </div>
-
-                                <div class="tsrSecRotMetricTitle">
-                                    Strongest Sector
-                                </div>
-
-                                <div class="tsrSecRotMetricHighlight positive">
-                                    PSU BANK
-                                </div>
-
-                                <div class="tsrSecRotMetricChange positive">
-                                    <span class="tsrSecRotMetricSubtext" style="font-weight: 400;">
-                                        Relative Returns vs NIFTY 50
-                                    </span>
-                                    <br>
-                                        <i class="fas fa-arrow-up"></i>
-                                        +1.84%
-                                </div>
-                            </div>`
             html += `   </div> `
 
 
             // WEAKEST SECTOR CARD
             let upSectors = jsu.cloneObj(allSectorDataClone["upSec"]);
             let weakestSector = { name: "-", data: "-" };
+            onclickFn = "";
             if (upSectors.length > 0) {
                 // TODO - SORT SECTORS IN ASC ORDER ACCORDING TO MARKET CAP / RELATIVE STRENGTH
                 weakestSector.name = upSectors[0].name;
                 if (isSectorIdxBased('up')) {
-                    weakestSector.data = "Relative Returns vs NIFTY: " + miSrnUtils.grv(upSectors[0].vsNifty) + " %";
+                    weakestSector.data = "<p style='margin-bottom: 0;'>Relative Returns vs NIFTY:</p> <p style='margin-bottom: 0;'><b>" + miSrnUtils.gcv(upSectors[0].vsNifty, null, "%") + " </b></p>";
+                    onclickFn = `miSrn.ssc('up', 0); miSrn.pc('up', '0', 'sectorList', '${upSectors[0].code}', false, 'inline', false);`;
                 } else {
-                    weakestSector.data = "Market Cap Change: " + miSrnUtils.grv(upSectors[0].mcChg) + " Cr.";
+                    weakestSector.data = "<p style='margin-bottom: 0;'>Market Cap Change:</p> <p><b>" + miSrnUtils.gcv(upSectors[0].mcChg, null, "Cr.") + " | " + miSrnUtils.gcv(upSectors[0].mcChgPc, null, "%") + "</b></p>";
+                    onclickFn = `miSrn.ssc('up', 0);`;
                 }
             }
             html += `   <div class="col-xl-3 col-md-6 mt-md-0">`
-            html += `        <div class="tsrSecRotMetricCard">`
+            html += `        <div class="tsrSecRotMetricCard"  style="cursor: pointer;" onclick="${onclickFn}">`
             html += `            <div class="tsrSecRotMetricTop">`
-            html += `                <div class="tsrSecRotMetricIcon">`
-            html += `                    <i class="fas fa-arrow-trend-down"></i>`
+            html += `                <div class="tsrSecRotMetricIcon" style="color: #ff4d4d; background-color: #ffe8e8;">`
+            // html += `                    <i class="fas fa-arrow-trend-down"></i>`
+            html += `                       <i class="fas fa-bolt"></i>`
             html += `                </div>`
-            html += `            </div>`
-            html += `            <div class="tsrSecRotMetricTitle">`
+            html += `            <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
+            // html += `                <div class="tsrSecRotMetricIcon" style="color: #ff4d4d; background-color: #ffe8e8;">`
+            // // html += `                    <i class="fas fa-arrow-trend-down"></i>`
+            // html += `                       <i class="fas fa-bolt"></i>`
+            // html += `                </div>`
             html += `                Weakest Sector`
             html += `            </div>`
+            html += `            </div>`
+            // html += `            <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
+            // // html += `                <div class="tsrSecRotMetricIcon" style="color: #ff4d4d; background-color: #ffe8e8;">`
+            // // // html += `                    <i class="fas fa-arrow-trend-down"></i>`
+            // // html += `                       <i class="fas fa-bolt"></i>`
+            // // html += `                </div>`
+            // html += `                Weakest Sector`
+            // html += `            </div>`
             html += `            <div class="tsrSecRotMetricHighlight negative">`
             html += `                ${weakestSector.name}`
             html += `            </div>`
-            html += `            <div class="tsrSecRotMetricSubtext">`
+            html += `            <div class="tsrSecRotMetricSubtext"  >`
             html += `                ${weakestSector.data}`
             html += `            </div>`
             html += `        </div>`
             html += `   </div> `
 
-            // TRACKED SECTORS CARD
+            // SECTOR PERFORMANCE CARD
             let totalSectors = opSectors.length + upSectors.length;
             html += `   <div class="col-xl-3 col-md-6 mt-md-0">`
             html += `       <div class="tsrSecRotMetricCard">`
@@ -312,16 +357,68 @@ var miSrn = (function () {  // chart init Params
             html += `               <div class="tsrSecRotMetricIcon">`
             html += `                   <i class="fas fa-layer-group"></i>`
             html += `               </div>`
+            html += `           <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
+            // html += `               <div class="tsrSecRotMetricIcon">`
+            // html += `                   <i class="fas fa-layer-group"></i>`
+            // html += `               </div>`
+            html += `               Sector Performance`
             html += `           </div>`
-            html += `           <div class="tsrSecRotMetricTitle">`
-            html += `               Total Sectors`
             html += `           </div>`
-            html += `           <div class="tsrSecRotMetricValue">`
-            html += `               ${totalSectors}`
+
+
+            html += `           <div class="d-flex flex-column">`
+            // html += `               <div >`
+            // html += `                   <p style="margin-bottom: 0; font-size: 14px; text-wrap: nowrap;">`
+            // html += `                       <span style="color: #64748b;">Outperforming</span>`
+            // html += `                       <i class="fas fa-arrow-up me-2" style="color: green;"></i>`
+            // html += `                   </p>`
+            // html += `                   <h4 class="mb-1 mb-md-0" style="color: #059669;">`
+            // html += `                       ${opSectors.length}`
+            // html += `                   </h4>`
+            // html += `               </div>`
+            html += `               <div class="d-flex align-items-center mb-2">`
+            html += `                   <p style="margin-bottom: 0; font-size: 16px; text-wrap: nowrap;">`
+            html += `                       <i class="fas fa-arrow-up me-2" style="color: green;"></i>`
+            html += `                       <span style="color: #64748b;">Outperforming</span>`
+            html += `                   </p>`
+            html += `                   <h3 class="ms-3 mb-0" style="color: #059669; font-weight: 600;">`
+            html += `                       ${opSectors.length}`
+            html += `                   </h3>`
+            html += `               </div>`
+            // html += `               <div>`
+            // html += `                   <p style="margin-bottom: 0; font-size: 14px; text-wrap: nowrap;">`
+            // html += `                       <span style="color: #64748b;">Underperforming</span>`
+            // html += `                       <i class="fas fa-arrow-down me-2" style="color: #dc2626;"></i>`
+            // html += `                   </p>`
+            // html += `                   <h4 class="mb-1 mb-md-0" style="color: #dc2626; ">`
+            // html += `                       ${upSectors.length}`
+            // html += `                   </h4>`
+            // html += `               </div>`
+            html += `               <div class="d-flex align-items-center">`
+            html += `                   <p style="margin-bottom: 0; font-size: 16px; text-wrap: nowrap;">`
+            html += `                       <i class="fas fa-arrow-down me-2" style="color: #dc2626;"></i>`
+            html += `                       <span style="color: #64748b;">Underperforming</span>`
+            html += `                   </p>`
+            html += `                   <h3 class="ms-3 mb-0" style="color: #dc2626; font-weight: 600;">`
+            html += `                       ${upSectors.length}`
+            html += `                   </h3>`
+            html += `               </div>`
+            html += ``
+            // html += `               <div class="mb-1">`
+            // // <span style="color: #64748b;">Outperforming:</span>
+            // html += `                   <i class="fas fa-arrow-up me-2" style="color: green;"></i>  ${opSectors.length} `
+            // html += `               </div>`
+
+            // html += `               <h6 class="mb-1">`
+            // html += `                   <i class="fas fa-arrow-down me-2" style="color: red;"></i>  <span style="color: #64748b;">Underperforming:</span> ${upSectors.length} `
+            // html += `               </h6>`
+            // html += `               <p style="margin-bottom: 0;">OutPerforming: ${opSectors.length}</p>`
+            // html += `               <p style="margin-bottom: 0;">UnderPerforming: ${upSectors.length}</p>`
+            // html += `               ${totalSectors}`
             html += `           </div>`
-            html += `           <div class="tsrSecRotMetricSubtext">`
-            html += `               Currently Tracked`
-            html += `           </div>`
+            // html += `           <div class="tsrSecRotMetricSubtext">`
+            // html += `               Currently Tracked`
+            // html += `           </div>`
             html += `       </div>`
             html += `   </div>`
 
@@ -412,7 +509,7 @@ var miSrn = (function () {  // chart init Params
         html += `                         </div>`
         html += `                     </div>`
         html += `                     <div class="tsrSecRotTableExpandCollapseBadge d-none d-md-block"`
-        html += `                         onclick="expandSectorCompTable(this, 'tsrSecRotOpSectorsWrapper');">`
+        html += `                         onclick="miSrnUtils.esct(this, 'tsrSecRotOpSectorsWrapper');">`
         html += `                         <span class="fw-medium me-2">Show more</span>`
         html += `                         <i class="fas fa-expand"></i>`
         html += `                     </div>`
@@ -440,7 +537,7 @@ var miSrn = (function () {  // chart init Params
         html += `                       </div>`
         html += `                   </div>`
         html += `                   <div class="tsrSecRotTableExpandCollapseBadge d-none d-md-block"`
-        html += `                       onclick="expandSectorCompTable(this, 'tsrSecRotUpSectorsWrapper');">`
+        html += `                       onclick="miSrnUtils.esct(this, 'tsrSecRotUpSectorsWrapper');">`
         html += `                       <span class="fw-medium me-2">Show more</span>`
         html += `                       <i class="fas fa-expand"></i>`
         html += `                   </div>`
@@ -515,33 +612,35 @@ var miSrn = (function () {  // chart init Params
         html += `   <thead>`
         html += `       <tr>`
         html += `           <th></th>`
-        html += `           <th></th>`
+        // html += `           <th></th>`
         html += `           <th></th>`
         if (isIdxBased) {
             html += `       <th></th>`
         }
+        html += `           <th colspan="2">Stock Performance</th>`
         html += `           <th colspan="2">Market Cap</th>`
         if (isIdxBased) {
             html += `       <th></th>`
         }
-        html += `           <th colspan="2">Performance</th>`
         html += `           <th colspan="2">TSR Strength Index</th>`
         html += `           <th colspan="6">% Stocks</th>`
         html += `       </tr>`
         html += `       <tr>`
         html += `           <th>Rank</th>`
+        // html += `           <th></th>`
         html += `           <th>Sector</th>`
-        html += `           <th></th>`
         if (isIdxBased) {
-            html += `       <th>Relative Returns vs NIFTY</th>`
+            // html += `       <th>Relative Returns vs NIFTY</th>`
+            html += `       <th>Returns vs NIFTY (%)</th>`
         }
-        html += `           <th>Change (in Cr.)</th>`
+
+        html += `           <th>Leading</th>`
+        html += `           <th>Lagging</th>`
         html += `           <th>Change (%)</th>`
+        html += `           <th>Change (Cr.)</th>`
         if (isIdxBased) {
-            html += `           <th>Period Returns %</th>`
+            html += `           <th>Period Returns (%)</th>`
         }
-        html += `           <th>Out Performing</th>`
-        html += `           <th>Under Performing</th>`
         html += `           <th>Bullish Stocks</th>`
         html += `           <th>Bearish Stocks</th>`
         if (secType == "op") {
@@ -566,7 +665,7 @@ var miSrn = (function () {  // chart init Params
         if (sectors.length == 0) {
             html += `<tr>`;
             html += `   <td colspan = "13" class="text-center">`;
-            html += `       No records`;
+            html += `       <b>No records</b>`;
             html += `   </td>`;
             html += `</tr> `;
         }
@@ -575,9 +674,6 @@ var miSrn = (function () {  // chart init Params
                 let sector = sectors[i];
 
                 html += `       <tr>`
-                html += `           <td>${i + 1}</td>`
-                html += `           <td>${sector.name}</td>`
-
                 let onclickFn = "";
                 if (isIdxBased) {
                     onclickFn = `miSrn.ssc('${secType}', ${i}); miSrn.pc('${secType}', '${i}', 'sectorList', '${sector.code}', false, 'inline', false);`
@@ -587,19 +683,32 @@ var miSrn = (function () {  // chart init Params
                 html += `           <td>`
                 html += `               <button class="btn btn-sm btn-outline-primary"`
                 html += `                   style="font-size: 12px;" onclick="${onclickFn}">`
-                html += `                   Overview</button>`
+                html += `                   <b style="font-size: 16px; font-weight: 800;">${i + 1}</b>`
+                html += `                   View`
+                html += `                   <i class="fas fa-arrow-down"></i>`
+                html += `               </button>`
                 html += `           </td>`
-                if (isIdxBased) {
-                    html += `           <td>${miSrnUtils.gcv(sector.vsNifty)}</td>`
-                }
 
-                html += `           <td>${miSrnUtils.grv(sector.mcChg)}</td>`
-                html += `           <td>${miSrnUtils.grv(sector.mcChgPc)}</td>`
+                // html += `           <td>`
+                // html += `               <button class="btn btn-sm btn-outline-primary"`
+                // html += `                   style="font-size: 12px;" onclick="${onclickFn}">`
+                // html += `                   View`
+                // html += `                   <i class="fas fa-arrow-down"></i>`
+                // html += `               </button>`
+                // html += `           </td>`
+
+                html += `           <td><b>${sector.name}<b></td>`
+
                 if (isIdxBased) {
-                    html += `           <td>${miSrnUtils.grv(sector.periodReturn)}</td>`
+                    html += `           <td><b>${miSrnUtils.gcv(sector.vsNifty)}<b></td>`
                 }
                 html += `           <td>${sector.opEq}</td>`
                 html += `           <td>${sector.upEq}</td>`
+                html += `           <td><b>${miSrnUtils.gcv(sector.mcChgPc)}</b></td>`
+                html += `           <td>${miSrnUtils.grv(sector.mcChg)}</td>`
+                if (isIdxBased) {
+                    html += `           <td><span style='font-weight: 600;'>${miSrnUtils.gcv(sector.periodReturn)}</span</td>`
+                }
                 html += `           <td>${miSrnUtils.grv(sector.tsrBullish)}</td>`
                 html += `           <td>${miSrnUtils.grv(sector.tsrBearish)}</td>`
                 html += `           <td>${miSrnUtils.grv(sector.ma1 * 100)}</td>`
@@ -784,7 +893,7 @@ var miSrn = (function () {  // chart init Params
         html += `</div>`;
 
 
-        html += `<div class="d-flex justify-content-between flex-column flex-md-row">`
+        html += `<div class="d-flex justify-content-between flex-column flex-md-row mt-3">`
 
         // TODO hack recheck later
         if (isIdxBased) {
@@ -793,10 +902,10 @@ var miSrn = (function () {  // chart init Params
 
             html += `       <a class="link-primary" style="cursor:pointer" onclick="miSrn.pc('${secType}', 0, 'sectorList', '', true, 'inline', true);" oncontextmenu="return false;"> <span class="fas fa-chart-line"></span> Inline </a>`
             html += `       &emsp;|&emsp;`;
-            html += `       <a class="link-primary" style="color:#04a1f4;cursor:pointer" onclick="miSrn.pc('${secType}', 0, 'sectorList', '', true, 'tile', true);" oncontextmenu="return false;">  <span class="fas fa-chart-line"></span> Tile  </a>`
+            html += `       <a class="link-primary" style="cursor:pointer" onclick="miSrn.pc('${secType}', 0, 'sectorList', '', true, 'tile', true);" oncontextmenu="return false;">  <span class="fas fa-chart-line"></span> Tile  </a>`
             html += `   </div>`
         }
-        html += `           <div class="my-2">`
+        html += `           <div class="mt-2">`
         html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
         html += `                       <span style="color: red;">*</span>`
         html += `                           Sector / Index rating utilizes only Stocks beyond certain Market Capital`
@@ -813,9 +922,31 @@ var miSrn = (function () {  // chart init Params
         // let sectorCardContainer = document.getElementById(sectorCardContainerId);
         // sectorCardContainer.innerHTML = "";
 
-        if (sectors.length != 0) {
-            miSrnUtils.mdt(tableId);
+        if (!isMobile() && sectors.length != 0) {
+            let mdtOptions = {
+                paging: false,
+                info: false,
+                ordering: false,
+                responsive: true,
+                scrollCollapse: false,
+                searching: false,
+                scrollY: 250,
+                scrollX: true,
+                dom: 'Bfrtip',
+                buttons: [
+                    { extend: "copy", className: "btn btn-sm  btn-secondary ms-2    mt-1", text: " Copy" },
+                    { extend: "csv", className: "btn  btn-sm btn-secondary ms-2    mt-1", text: " CSV" },
+                    { extend: "excel", className: "btn  btn-sm btn-secondary ms-2     mt-1", text: " Excel" },
+                    { extend: "print", className: "btn  btn-sm btn-secondary ms-1    mt-1", text: " Print" }
+                ],
+                fixedColumns: {
+                    leftColumns: 2
+                }
+            }
+
+            miSrnUtils.mdt(tableId, mdtOptions);
         }
+
     }
 
     function showSectorCard(secType, secId) {
@@ -892,10 +1023,13 @@ var miSrn = (function () {  // chart init Params
 
 
         for (let i = 0; i < sectors.length; i++) {
-            processStockComparisonTable(secType, "opEq", i, true, false);
+            processStockTableSection(secType, "opEq", i, true, false);
         }
 
-        sectorOverviewContainer.scrollIntoView();
+        sectorOverviewContainer.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
 
         let items = Object.keys(tsrStrengthIndexList);
         for (let i = 0; i < items.length; i++) {
@@ -966,6 +1100,7 @@ var miSrn = (function () {  // chart init Params
                     items: 1
                 }
             },
+            smartSpeed: 0,
         }
 
         if (initSector) {
@@ -997,7 +1132,7 @@ var miSrn = (function () {  // chart init Params
                     items: 2
                 },
                 1000: {
-                    items: 3
+                    items: 5
                 }
             }
         };
@@ -1033,7 +1168,7 @@ var miSrn = (function () {  // chart init Params
                     items: 2
                 },
                 1000: {
-                    items: 3
+                    items: 5
                 }
             }
         };
@@ -1059,6 +1194,43 @@ var miSrn = (function () {  // chart init Params
             e.preventDefault();
             event.stopPropagation();
         });
+
+        var tsrStrengthIndex = {
+            margin: 10,
+            dots: true,
+            nav: false,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        };
+        $(".tsrStrengthIndex").owlCarousel(technicals);
+
+
+        $(".tsrStrengthIndex").on('mousedown', '.owl-stage', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+        });
+
+        $(".tsrStrengthIndex").on('drag.owl.carousel', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+        $(".tsrStrengthIndex").on('dragged.owl.carousel', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+
+        $(".tsrStrengthIndex").on('touchstart', '.owl-stage', function (e) {
+            e.preventDefault();
+            event.stopPropagation();
+        });
+
     };
 
     function paintSectorCard(secType, sectors, i) {
@@ -1512,7 +1684,7 @@ var miSrn = (function () {  // chart init Params
 
         html += `       <div class="tsrSecRotSectOvrvwSection border-0 p-3" data-hash="${i}">`
         html += `            <div class="card shadow-sm tsrSectorRotationDetailsWorkspaceCard">`
-        html += `                <div class="card-header bg-transparent p-4 border-bottom d-flex flex-wrap justify-content-between align-items-center gap-3">`
+        html += `                <div class="card-header p-4 border-bottom d-flex flex-wrap justify-content-between align-items-center gap-3">`
         /*
             html += `                    <div class="d-flex align-items-center gap-3">`
             html += `                        <h4 class="h5 mb-0 fw-bold text-dark tsrSectorRotationCardHeaderTitle"`
@@ -1589,19 +1761,19 @@ var miSrn = (function () {  // chart init Params
         if (miSrnUtils.pd(sectors[i].secIdx) && sectors[i].secIdx) {
             html += `                   <div class="col col-md-6 p-3" style='align-items: stretch;'>`
             html += `                       <section class="tsrSecRotLabel mb-4">`
-            html += `                          <div class="mb-3 d-flex justify-content-between" style="border-bottom: 1px solid lightgrey;">`
-            html += `                              <h6>Highlights</h6>`
+            html += `                          <div class="mb-3 d-flex justify-content-between">`
+            html += `                              <h6 style="border-bottom: 1px solid lightgrey;">Highlights</h6>`
             html += `                          </div>`
             html += `                          <div class="d-flex justify-content-between mb-3">`
             html += `                              <div class="w-100 d-flex flex-column">`
             html += `                                  <span>`
             html += `                                      Relative Returns`
             html += `                                  </span>`
-            html += `                                  <h4 style="color: black; white-space: nowrap;">${miSrnUtils.gcv(sectors[i]["vsNifty"])}</h4>`
+            html += `                                  <h4 style="color: black; white-space: nowrap;">${miSrnUtils.gcv(sectors[i]["vsNifty"], null, "%")}</h4>`
             html += `                              </div>`
             html += `                              <div class="w-100 d-flex flex-column">`
-            html += `                                  <span>Market Cap Change</span>`
-            html += `                                  <h4 style="color: black; white-space: nowrap;">${miSrnUtils.gcv(sectors[i]["mcChg"])}`
+            html += `                                  <span>Market Cap Change </span>`
+            html += `                                  <h4 style="color: black; white-space: nowrap;">${miSrnUtils.gcv(sectors[i]["mcChg"], null, "Cr.")}`
             html += `                                  </h4>`
             html += `                              </div> `
             html += `                          </div>`;
@@ -1609,62 +1781,54 @@ var miSrn = (function () {  // chart init Params
             html += `                              <div class="w-100 d-flex flex-column">`
             html += `                                  <span>`
             html += `                                      Outperformers`
-            html += `                                      <i class="fas fa-long-arrow-alt-up"></i>`
+            // html += `                                      <i class="fas fa-long-arrow-alt-up"></i>`
             html += `                                  </span>`
-            html += `                                  <h4>${sectors[i]["opEq"]}</h4>`;
+            html += `                                  <h4>${miSrnUtils.gcv(sectors[i]["opEq"])}</h4>`;
             html += `                              </div>`;
             html += `                              <div class="w-100 d-flex flex-column">`;
             html += `                                  <span>`;
             html += `                                      Underperformers`;
-            html += `                                      <i class="fas fa-long-arrow-alt-down"></i>`
+            // html += `                                      <i class="fas fa-long-arrow-alt-down"></i>`
             html += `                                  </span>`;
-            html += `                                  <h4>${sectors[i]["upEq"]}</h4>`
+            html += `                                  <h4>${miSrnUtils.gcv(sectors[i]["upEq"], "#dc2626")}</h4>`
             html += `                              </div>`
             html += `                          </div>`
             html += `                          <div class="d-flex justify-content-between mb-3">`
             html += `                              <div class="w-100 d-flex flex-column">`
-            html += `                                  <span>Price</span>`
+            html += `                                      <span>Price</span>`
             html += `                                      <h4 style="color: black; white-space: nowrap;">`
             html += miSrnUtils.gcv(sectors[i]["idxVals"]["price"]);
             html += `                                      </h4>`
             html += `                              </div>`
             html += `                              <div class="w-100 d-flex flex-column">`
-            html += `                                  <span>Price Change %</span>`
+            html += `                                  <span>Price Change</span>`
             html += `                                  <h4 style="color: black; white-space: nowrap;">`
-            html += miSrnUtils.gcv(sectors[i]["idxVals"]["priceChange"]);
+            html += miSrnUtils.gcv(sectors[i]["idxVals"]["priceChange"], null, "%");
             html += `                                  </h4>`
             html += `                              </div>`
             html += `                          </div>`
             html += `                       </section>`;
 
-            html += `                       <section class="mb-4">`
-            html += `                           <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
-            html += `                               <h6>${allSectorDataClone["rtnFreq"]} Returns (%)</h6>`
+            html += `                       <section class="mb-4" id="tsrStrengthIndex">`;
+            html += `                           <div class="mb-3">`
+            html += `                               <h6 style="border-bottom: 1px solid lightgrey; width: max-content;">Technical Strength Index</h6>`
             html += `                           </div>`
-            html += `                           <div class="owl-carousel owl-theme periodicReturns tsrSecRotLabel">`;
-
-            for (let j = 0; j < sectors[i]["idxVals"]["rtnList"].length; j++) {
-                html += `                           <div class="card d-flex flex-column p-3">`
-                html += `                               <p style="margin-bottom: 0;">`
-                if (j == 0) {
-                    html += `                               Latest`;
-                } else {
-                    html += `                               Latest - ${j}`;
-                }
-                html += `                               </p>`
-                html += `                               <h5 style="color: black; white-space: nowrap;">`
-                html += miSrnUtils.gcv(sectors[i]["idxVals"]["rtnList"][j]["rtn"]);
-                html += `                               </h5>`
-                html += `                           </div>`;
-            };
+            html += `                           <div class="col-12 col-md-6 d-flex flex-column justify-content-center w-100 my-5">`
+            html += `                               <div id='trendStrengthDiv${sectors[i]["id"]}' class="d-flex justify-content-center"></div>`
+            html += `                               <div class="tsr_strength_values_container">`
+            html += `                                   <div class="d-flex justify-content-center" id="strRank">`
+            html += `                                       <span style="font-size: 14px;"> ${sectors[i]["idxVals"]["techPosi"]} </span>`
+            html += `                                   </div>`
+            html += `                               </div>`
             html += `                           </div>`
             html += `                       </section>`;
+
             html += `                   </div>`;
 
             html += `                   <div class="col col-md-6 p-3">`;
             html += `                       <section class="mb-4">`;
-            html += `                           <div class="mb-3 d-flex justify-content-between align-items-center" style="border-bottom: 1px solid lightgrey;">`
-            html += `                               <h6>Technicals</h6>`
+            html += `                           <div class="mb-3 d-flex justify-content-between align-items-center">`
+            html += `                               <h6 style="border-bottom: 1px solid lightgrey; width: max-content;">Technicals</h6>`
             html += `                               <p style="font-size: 12px; margin-bottom: 0;">`
             html += `                                   <span style="color: red;">*</span>`
             html += `                                       Technicals based on ${allSectorDataClone["displayFreq"]} tick`
@@ -1698,19 +1862,30 @@ var miSrn = (function () {  // chart init Params
             html += `                           </div>`;
             html += `                       </section>`;
 
-            html += `                       <section id="tsrStrengthIndex">`;
-            html += `                           <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
-            html += `                               <h6>Technical Strength Index</h6>`
+            html += `                       <section class="mb-4">`
+            html += `                           <div class="mb-3">`
+            html += `                               <h6 style="border-bottom: 1px solid lightgrey; width: max-content;">${allSectorDataClone["rtnFreq"]} Returns</h6>`
             html += `                           </div>`
-            html += `                           <div class="col-12 col-md-6 d-flex flex-column justify-content-center w-100 my-5">`
-            html += `                               <div id='trendStrengthDiv${sectors[i]["id"]}' class="d-flex justify-content-center"></div>`
-            html += `                               <div class="tsr_strength_values_container">`
-            html += `                                   <div class="d-flex justify-content-center" id="strRank">`
-            html += `                                       <span style="font-size: 14px;"> ${sectors[i]["idxVals"]["techPosi"]} </span>`
-            html += `                                   </div>`
-            html += `                               </div>`
+            html += `                           <div class="owl-carousel owl-theme periodicReturns tsrSecRotLabel">`;
+
+            for (let j = 0; j < sectors[i]["idxVals"]["rtnList"].length; j++) {
+                html += `                           <div class="card d-flex flex-column p-3">`
+                html += `                               <p style="margin-bottom: 0; text-wrap: nowrap;">`
+                if (j == 0) {
+                    html += `                               Latest`;
+                } else {
+                    html += `                               Latest - ${j}`;
+                }
+                html += `                               </p>`
+                html += `                               <h5 style="color: black; white-space: nowrap;">`
+                html += miSrnUtils.gcv(sectors[i]["idxVals"]["rtnList"][j]["rtn"], null, "%");
+                html += `                               </h5>`
+                html += `                           </div>`;
+            };
             html += `                           </div>`
             html += `                       </section>`;
+
+
             html += `                   </div> `;
 
             // row ends
@@ -1721,7 +1896,7 @@ var miSrn = (function () {  // chart init Params
         html += '                   </div>';
 
         // Stock row
-        html += `                   <div id="${stockContainerId + i}" class="${stockContainerId} row container-md" >`;
+        html += `                   <div id="${stockContainerId + i}" class="${stockContainerId} row " >`;
         html += '                   </div>';
 
         // Chart Row
@@ -1789,45 +1964,47 @@ var miSrn = (function () {  // chart init Params
         // sector card body starts
 
         /*
-        // let sectorAnalysisUrl = mintJsUtil.getRootUrl() + "/Screener/Markets/" + sectors[i].url; // TODO
-        // let sectorAnalysisUrl = "http" + "/Screener/Markets/" + sectors[i].url;
-        // if (!sectors[i]["secIdx"]) {
-        //     sectorAnalysisUrl += "/All"
-        // }
+            // let sectorAnalysisUrl = mintJsUtil.getRootUrl() + "/Screener/Markets/" + sectors[i].url; // TODO
+            // let sectorAnalysisUrl = "http" + "/Screener/Markets/" + sectors[i].url;
+            // if (!sectors[i]["secIdx"]) {
+            //     sectorAnalysisUrl += "/All"
+            // }
         */
-        // html += `           <div class="card-body">`;
-        // html += `               <div class="row text-center">`;
-        // html += `                   <h6 class="">`;
-        // html += `                       <a href="${sectorAnalysisUrl}" target="_blank">`
-        // html += `                           View in Depth Analysis`
-        // html += `                           <i class="fas fa-external-link-square-alt"></i>`
-        // html += `                       </a>`
-        // html += `                   </h6>`
-        // html += `               </div>`;
-
-
-        // html += `               <div id="${stockTableContainerId + i}" class="${stockTableContainerId} row" >`;
-        // html += '               </div>';
-
-        // html += `               <div id="${stockContainerId + i}" class="${stockContainerId} row container-md" >`;
-
-        // html += '               </div>';
-
-
-        // html += `               <div class="d-flex flex-column text-end mt-2">`
-        // html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
-        // html += `                       <span style="color: red;">*</span>`
-        // html += `                           Sector / Index rating utilizes only Stocks beyond certain Market Capital`
-        // html += `                   </p>`
-        // html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
-        // html += `                       <span style="color: red;">*</span>`
-        // html += `                           Show all - includes Stocks across all Market Cap. Maximum of 20 stocks are shown`
-        // html += `                   </p>`
-        // html += `               </div>`
-
-        // html += `           </div> `; // card body closes here
-        // html += `       </div>`; // card closes here
-        // html += `   </div> `; // .tsrSecRotSectOvrvwSection closes here
+        /*
+         // html += `           <div class="card-body">`;
+         // html += `               <div class="row text-center">`;
+         // html += `                   <h6 class="">`;
+         // html += `                       <a href="${sectorAnalysisUrl}" target="_blank">`
+         // html += `                           View in Depth Analysis`
+         // html += `                           <i class="fas fa-external-link-square-alt"></i>`
+         // html += `                       </a>`
+         // html += `                   </h6>`
+         // html += `               </div>`;
+ 
+ 
+         // html += `               <div id="${stockTableContainerId + i}" class="${stockTableContainerId} row" >`;
+         // html += '               </div>';
+ 
+         // html += `               <div id="${stockContainerId + i}" class="${stockContainerId} row container-md" >`;
+ 
+         // html += '               </div>';
+ 
+ 
+         // html += `               <div class="d-flex flex-column text-end mt-2">`
+         // html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
+         // html += `                       <span style="color: red;">*</span>`
+         // html += `                           Sector / Index rating utilizes only Stocks beyond certain Market Capital`
+         // html += `                   </p>`
+         // html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
+         // html += `                       <span style="color: red;">*</span>`
+         // html += `                           Show all - includes Stocks across all Market Cap. Maximum of 20 stocks are shown`
+         // html += `                   </p>`
+         // html += `               </div>`
+ 
+         // html += `           </div> `; // card body closes here
+         // html += `       </div>`; // card closes here
+         // html += `   </div> `; // .tsrSecRotSectOvrvwSection closes here
+         */
         if (miSrnUtils.pd(sectors[i].secIdx) && sectors[i].secIdx) {
             //     html += `</div>`;
 
@@ -1840,7 +2017,7 @@ var miSrn = (function () {  // chart init Params
         return html;
     }
 
-    function processStockComparisonTable(secType, stockType, secId, show, update) {
+    function processStockTableSection(secType, stockType, secId, show, update) {
 
         let sectorTypeSelect = document.getElementById(sectorTypeSelectId);
 
@@ -1852,14 +2029,35 @@ var miSrn = (function () {  // chart init Params
 
         let html = "";
 
+        let mdtOptions = {
+            paging: false,
+            responsive: true,
+            scrollY: 250,
+            scrollX: true,
+            scrollCollapse: false,
+            searching: false,
+            dom: 'Bfrtip',
+            info: false,
+            buttons: [
+                { extend: "copy", className: "btn btn-sm  btn-secondary ms-2    mt-1", text: " Copy" },
+                { extend: "csv", className: "btn  btn-sm btn-secondary ms-2    mt-1", text: " CSV" },
+                { extend: "excel", className: "btn  btn-sm btn-secondary ms-2     mt-1", text: " Excel" },
+                { extend: "print", className: "btn  btn-sm btn-secondary ms-1    mt-1", text: " Print" }
+            ],
+            fixedColumns: {
+                leftColumns: 1,
+                rightColumns: 1,
+            }
+        }
+
         if (miSrnUtils.pd(sectorTypeSelect) && miSrnUtils.pd(durationSelect)) {
             let sectorType = sectorTypeSelect.value;
             let duration = durationSelect.value;
 
             // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
-            // let url = "https://www.topstockresearch.com/rt" + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
-            // let url = `http://127.0.0.1:5500/Temp/secRotData/${sector["uriCode"]}.json`;
-            let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["uriCode"]}.json`;
+            // let url = "https://www.tsrbt1.com/rt" + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+            let url = `http://127.0.0.1:5500/Temp/secRotData/${sector["uriCode"]}.json`;
+            // let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["uriCode"]}.json`;
 
             // TODO - replace miSrnUtils.pd with jsu.isNotNull()
             // avoiding multiple API calls for same sector
@@ -1873,12 +2071,13 @@ var miSrn = (function () {  // chart init Params
                     sectorData["secId"] = secId;
 
                     if (sectorData["statusCode"] == "success") {
-                        html = paintStockComparisonTable(sector, secType, stockType, secId);
+                        html = paintStockTableSection(sector, secType, stockType, secId);
                         container.innerHTML = html;
 
                         let stockList = sectorData[stockType + "List"];
                         if (stockList.length != 0) {
-                            miSrnUtils.mdt(stockTableId + secId);
+
+                            miSrnUtils.mdt(stockTableId + secId, mdtOptions);
                         }
                     }
 
@@ -1887,12 +2086,12 @@ var miSrn = (function () {  // chart init Params
             else {
                 let container = document.getElementById(stockTableContainerId + secId);
 
-                html = paintStockComparisonTable(sector, secType, stockType, secId);
+                html = paintStockTableSection(sector, secType, stockType, secId);
                 container.innerHTML = html;
 
                 let stockList = sectorData[stockType + "List"];
                 if (stockList.length != 0) {
-                    miSrnUtils.mdt(stockTableId + secId);
+                    miSrnUtils.mdt(stockTableId + secId, mdtOptions);
                 }
             }
         }
@@ -1905,13 +2104,13 @@ var miSrn = (function () {  // chart init Params
 
     };
 
-    function paintStockComparisonTable(sector, secType, stockType, secId) {
+    function paintStockTableSection(sector, secType, stockType, secId) {
 
 
         let html = "";
 
         // Radio buttons
-        // let onclickFn = `miSrn.ec(); miSrn.psct('${secType}','${stockType}', ${secId}, true, true);`
+        // let onclickFn = `miSrn.ec(); miSrn.psts('${secType}','${stockType}', ${secId}, true, true);`
         html += `   <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-3">`
         html += `       <div class="tsrSectorRotationStockSegmentWrapper">`
         html += `           <b class="me-3">STOCKS</b>`
@@ -1922,17 +2121,17 @@ var miSrn = (function () {  // chart init Params
             html += `               <input type="radio" class="btn-check" name="sector${secId}Stocks" id="outPerformingStocks${secId}" autocomplete="off">`
         }
 
-        html += `               <label class="btn btn-sm px-4 rounded-pill fw-bold text-uppercase tsrSectorRotationSegmentButton" for="tsrViewOutperforming" onclick="miSrn.ec(); miSrn.psct('${secType}','opEq', ${secId}, true, true);">`
-                                   
+        html += `               <label class="btn btn-sm px-4 rounded-pill fw-bold text-uppercase tsrSectorRotationSegmentButton" for="tsrViewOutperforming" onclick="miSrn.ec(); miSrn.psts('${secType}','opEq', ${secId}, true, true);">`
+
         html += `                   Outperforming`
         html += `               </label>`
-        
+
         if (stockType == "upEq") {
             html += `               <input type="radio" class="btn-check" name="sector${secId}Stocks" id="underPerformingStocks${secId}" autocomplete="off" checked>`
         } else {
             html += `               <input type="radio" class="btn-check" name="sector${secId}Stocks" id="underPerformingStocks${secId}" autocomplete="off">`
         }
-        html += `               <label class="btn btn-sm px-4 rounded-pill fw-bold text-uppercase tsrSectorRotationSegmentButton" for="tsrViewUnderperforming"  onclick="miSrn.ec(); miSrn.psct('${secType}','upEq', ${secId}, true, true);">`
+        html += `               <label class="btn btn-sm px-4 rounded-pill fw-bold text-uppercase tsrSectorRotationSegmentButton" for="tsrViewUnderperforming"  onclick="miSrn.ec(); miSrn.psts('${secType}','upEq', ${secId}, true, true);">`
         html += `                   Underperforming`
         html += `               </label>`
         html += `           </div>`
@@ -1955,7 +2154,7 @@ var miSrn = (function () {  // chart init Params
         //     html += `       <input type="radio" class="btn-check" name="sector${secId}Stocks" id="outPerformingStocks${secId}" autocomplete="off">`;
         // }
 
-        // html += `           <label class="btn btn-outline-secondary" for="outPerformingStocks${secId}" onclick=" miSrn.ec(); miSrn.psct('${secType}','opEq', ${secId}, true, true);">Out Performing</label>`;
+        // html += `           <label class="btn btn-outline-secondary" for="outPerformingStocks${secId}" onclick=" miSrn.ec(); miSrn.psts('${secType}','opEq', ${secId}, true, true);">Out Performing</label>`;
 
         // if (stockType == "upEq") {
         //     html += `       <input type="radio" class="btn-check" name="sector${secId}Stocks" id="underPerformingStocks${secId}" autocomplete="off" checked>`;
@@ -1964,7 +2163,7 @@ var miSrn = (function () {  // chart init Params
         //     html += `       <input type="radio" class="btn-check" name="sector${secId}Stocks" id="underPerformingStocks${secId}" autocomplete="off">`;
         // }
 
-        // html += `           <label class="btn btn-outline-secondary" for="underPerformingStocks${secId}" onclick=" miSrn.ec(); miSrn.psct('${secType}','upEq', ${secId}, true, true);">Under Performing</label>`;
+        // html += `           <label class="btn btn-outline-secondary" for="underPerformingStocks${secId}" onclick=" miSrn.ec(); miSrn.psts('${secType}','upEq', ${secId}, true, true);">Under Performing</label>`;
 
         // html += `       </div>`;
         // html += `   </div>`;
@@ -1972,7 +2171,7 @@ var miSrn = (function () {  // chart init Params
 
 
         // table
-        let tableFields = ["Name", "Price", "Price Chg %", "vs Nifty", "Period Return %", `EMA ${allSectorDataClone["ma1"]}`, `EMA ${allSectorDataClone["ma2"]}`, `Chart`];
+        let tableFields = ["Name", "", "Price", "Price Chg %", "vs Nifty", "Period Return %", `EMA ${allSectorDataClone["ma1"]}`, `EMA ${allSectorDataClone["ma2"]}`, `RSI`, `MACD`, `Signal`, `ST`, `Chart`];
 
         let isIdxBased = false;
         if (miSrnUtils.pd(sector.secIdx) && sector.secIdx) {
@@ -1980,9 +2179,9 @@ var miSrn = (function () {  // chart init Params
             tableFields.splice(4, 0, `vs ${sector.name}`);
         }
 
-        html += `                             <div style="max-height: 40vh; overflow: auto;">`
-
-        html += `                             <table id="${stockTableId + secId}" class="table align-middle tsrSecRotTable">`
+        // html += `                             <div style="max-height: 40vh; overflow: auto;">`
+        html += `                          <div>`
+        html += `                             <table id="${stockTableId + secId}" class="table align-middle tsrSecRotTable w-100">`
         html += `                               <thead>`;
         html += `                                   <tr>`;
         for (let i = 0; i < tableFields.length; i++) {
@@ -1995,22 +2194,35 @@ var miSrn = (function () {  // chart init Params
         let stockList = sectorData[stockType + "List"];
 
         if (stockList.length == 0) {
-            html += `<tr>`;
-            html += `   <td colspan="${tableFields.length}"  class="text-center">`
-            html += `       No records`
-            html += `   </td>`
-            html += `</tr>`;
-
+            html += `                               <tr>`;
+            html += `                                  <td colspan="${tableFields.length}"  class="text-center">`
+            html += `                                      No records`
+            html += `                                  </td>`
+            html += `                               </tr>`;
         }
         else {
             for (let i = 0; i < stockList.length; i++) {
 
                 html += `<tr>`;
+                html += `   <td title="${stockList[i]["name"]}"><b style="font-size: 15px;">${stockList[i]["code"]}</b></td>`;
+                // html += `   <td>`
+                // html += `       <a class="link-primary" style="cursor: pointer;"
+                //                 onclick="miSrn.pss('${secType}', '${stockType}', ${secId}, '${stockList[i]["code"]}', true);  
+                //                 miSrn.pc('${secType}', ${secId}, '${stockType}List', '${stockList[i]["code"]}', false, 'inline', false);"> ${stockList[i]["name"]} </a>`;
+                // html += `   </td>`;
+                let onclickFn = `miSrn.pss('${secType}', '${stockType}', ${secId}, '${stockList[i]["code"]}', true);  
+                                miSrn.pc('${secType}', ${secId}, '${stockType}List', '${stockList[i]["code"]}', false, 'inline', false);`;
+
                 html += `   <td>`
-                html += `       <a class="link-primary" style="cursor: pointer;"
-                                onclick="miSrn.pss('${secType}', '${stockType}', ${secId}, '${stockList[i]["code"]}', true);  
-                                miSrn.pc('${secType}', ${secId}, '${stockType}List', '${stockList[i]["code"]}', false, 'inline', false);"> ${stockList[i]["name"]} </a>`;
-                html += `</td>`;
+                html += `               <button class="btn btn-sm btn-outline-primary"`
+                html += `                   style="font-size: 12px;" onclick="${onclickFn}">`
+                html += `                   View</button>`
+                // <!-- Button trigger modal -->
+                // html += `           <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"`
+                // html += `               data-bs-target="#${stockSectionModalId}">`
+                // html += `               View`
+                // html += `           </button>`
+                html += `   </td>`
                 html += `   <td>${miSrnUtils.grv(stockList[i]["price"])}</td>`;
                 html += `   <td>${miSrnUtils.grv(stockList[i]["priceChange"])}</td>`;
                 html += `   <td>${miSrnUtils.grv(stockList[i]["vsNifty"])}</td>`;
@@ -2020,13 +2232,17 @@ var miSrn = (function () {  // chart init Params
                 html += `   <td>${miSrnUtils.grv(stockList[i]["periodReturn"])}</td>`;
                 html += `   <td>${miSrnUtils.grv(stockList[i]["eqVals"]["ma1"])}</td>`;
                 html += `   <td>${miSrnUtils.grv(stockList[i]["eqVals"]["ma2"])}</td>`;
+
+                html += `   <td>${miSrnUtils.grv(stockList[i]["eqVals"]["rsi"])}</td>`;
+                html += `   <td>${miSrnUtils.grv(stockList[i]["eqVals"]["macd"])}</td>`;
+                html += `   <td>${miSrnUtils.grv(stockList[i]["eqVals"]["signal"])}</td>`;
+                html += `   <td>${miSrnUtils.grv(stockList[i]["eqVals"]["st"])}</td>`;
                 html += `   <td>`;
                 html += `       <a style="cursor: pointer;" onclick="miSrn.pss('${secType}', '${stockType}', ${secId}, '${stockList[i]["code"]}', false);  miSrn.pc('${secType}', ${secId}, '${stockType}List', '${stockList[i]["code"]}', false, 'inline', true); ">`
                 html += `           <i style="color:grey; font-size:12pt;" class="fa fa-chart-line">`
                 html += `           </i>`
                 html += `       </a>`;
                 html += `   </td>`;
-
 
                 html += `</tr>`;
             }
@@ -2067,13 +2283,20 @@ var miSrn = (function () {  // chart init Params
 
     function processStockSection(secType, stockType, secId, stockCode, show) {
 
+        let stockSectionModal = document.getElementById(stockSectionModalId);
+        stockSectionModal.style.display = "block";
 
-        let stockContainer = document.getElementById(stockContainerId + secId);
+        let stockContainer = document.getElementById(stockSectionDivId);
+
+        // let stockContainer = document.getElementById(stockContainerId + secId);
 
 
         if (!show) {
             stockContainer.innerHTML = "";
-            stockContainer.parentElement.scrollIntoView();
+            stockContainer.parentElement.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
 
             return;
         }
@@ -2092,8 +2315,8 @@ var miSrn = (function () {  // chart init Params
             let sector = sectors[secId];
 
             // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
-            let url = "https://www.topstockresearch.com/rt" + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
-            // let url = `http://127.0.0.1:5500/Temp/secRotData/secRot${duration}${sectorType}`;
+            // let url = "https://www.tsrbt1.com/rt" + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+            let url = `http://127.0.0.1:5500/Temp/secRotData/secRot${duration}${sectorType}`;
 
             // avoiding multiple API calls for same sector
             if (!(miSrnUtils.pd(sectorData) && sectorData.secType == secType && sectorData.secId == secId && sectorData["statusCode"] == "success")) {
@@ -2125,94 +2348,246 @@ var miSrn = (function () {  // chart init Params
 
         let techUrl = mintJsUtil.getRootUrl() + '/Stock/' + stock["id"] + "/TechnicalAnalysis";
         let fundaUrl = mintJsUtil.getRootUrl() + '/Stock/' + stock["id"] + "/FundamentalAnalysis"
-        html += `                     <hr>`
+        // html += `                     <hr>`
         html += `                   <div class="row">`
-        html += `                       <div class="mb-3 text-center d-flex justify-content-between flex-column flex-md-row" style="border-bottom: 1px solid lightgrey;">`
-        html += `                           <h4>`
+        html += `                       <div class="text-center d-flex justify-content-between flex-column flex-lg-row">`
+        html += `                           <h2 style="margin-bottom: 0px;">`
         html += `                               ${stock["name"]}`
-        html += `                           </h4>`
-        html += `                           <div style="white-space: nowrap;" class="text-center">`
-        html += `                               View Analysis &emsp;`
-        html += `                               <a href="${techUrl}" target="_blank" class="text-primary" oncontextmenu="return false;">`
-        html += `                                   <span class="fas fa-chart-line"></span> Tech </a> |`
-        html += `                               <a href="${fundaUrl}" target="_blank" class="text-primary" oncontextmenu="return false;">`
-        html += `                                   <span class="fas fa-chart-line"></span> Funda`
-        html += `                               </a>`
+        html += `                           </h2>`
+        // html += `                           <div class="d-flex justify-content-between align-items-center" style="gap: 10px; margin-bottom: 8px;">`
+        // html += `                               <span style="font-size: 14px; font-weight: 200;">Price</span>`
+        // html += `                                   <h5 style="color: black; white-space: nowrap; margin-bottom: 0;">`
+        // html += miSrnUtils.gcv(stock["eqVals"]["price"]);
+        // html += `                                   </h5>`
+        // html += `                           </div>`
+        // html += `                           <div class="d-flex justify-content-between align-items-center" style="gap: 10px; margin-bottom: 8px;">`
+        // html += `                               <span style="font-size: 14px; font-weight: 200;">Price Change </span>`
+        // html += `                                   <h5 style="color: black; white-space: nowrap; margin-bottom: 0;">`
+        // html += miSrnUtils.gcv(stock["eqVals"]["priceChange"], null, "%");
+        // html += `                                   </h5>`
+
+        // html += `                           </div>`
+        html += `                           <div style="white-space: nowrap; gap: 10px;" class="text-center d-flex justify-content-between">`
+        html += `                               <span class="tsrSecRotLabel">View Analysis &emsp;</span>`
+        html += `                               <div>`
+        html += `                                   <a href="${techUrl}" target="_blank" class="text-primary" oncontextmenu="return false;">`
+        html += `                                       <span class="fas fa-chart-line"></span> Tech </a> | `
+        html += `                                   <a href="${fundaUrl}" target="_blank" class="text-primary" oncontextmenu="return false;">`
+        html += `                                       <span class="fas fa-chart-line"></span> Funda`
+        html += `                                   </a>`
+        html += `                               </div>`
         html += `                           </div>`
         html += `                       </div>`
         html += `                   </div>`
-        html += `                 <div class="col-12 col-md-6 my-3 my-md-0">`
-        html += `                   <section class="mb-4 tsrSecRotLabel">`
-        html += `                       <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
-        html += `                            <h6>Highlights</h6>`
+
+        html += `<hr>`
+
+
+        // HIGHLIGHTS SECTION
+        html += `                   <section class="tsrSecRotLabel">`
+        html += `                       <div class="mb-3">`
+        html += `                            <h6 style="border-bottom: 1px solid lightgrey; width: max-content;">Highlights</h6>`
         html += `                       </div>`
-        html += `                       <div class="d-flex justify-content-between mb-3">`
-        html += `                           <div class="w-100 d-flex flex-column">`
-        html += `                               <span style="font-weight: 100;">`
-        html += `                                   Relative Returns vs NIFTY`
-        html += `                               </span>`
-        html += `                               <h4 style="color: black; white-space: nowrap;">${miSrnUtils.gcv(stock["vsNifty"])}</h4>`
-        html += `                           </div>`
+        // html += `                       <div class="d-flex justify-content-between mb-3">`
+        // html += `                           <div class="w-100 d-flex flex-column">`
+        // html += `                               <span style="font-weight: 100;">`
+        // html += `                                   Relative Returns vs NIFTY`
+        // html += `                               </span>`
+        // html += `                               <h4 style="color: black; white-space: nowrap;">${miSrnUtils.gcv(stock["vsNifty"], null, "%")}</h4>`
+        // html += `                           </div>`
+        // if (miSrnUtils.pd(sector.secIdx) && sector.secIdx) {
+
+        //     html += `                           <div class="w-100 d-flex flex-column">`
+        //     html += `                               <span style="font-weight: 100;">`
+        //     html += `                                   Relative Returns vs ${sector["name"]}`
+        //     html += `                               </span>`
+        //     html += `                               <h4 style="color: black; white-space: nowrap;">${miSrnUtils.gcv(stock["vsIdx"], null, "%")}</h4>`
+        //     html += `                           </div>`
+        // }
+        // html += `                       </div>`
+
+        html += `                       <div class="d-flex flex-column flex-md-row justify-content-between mb-">`
+        html += `                           <div class="d-flex justify-content-between mb-3 w-100 ">`
+        html += `                               <div class="w-100 d-flex flex-column">`
+        html += `                                   <span style="font-weight: 100;">`
+        html += `                                       Relative Returns vs NIFTY`
+        html += `                                   </span>`
+        html += `                                   <h4 style="color: black; white-space: nowrap;">${miSrnUtils.gcv(stock["vsNifty"], null, "%")}</h4>`
+        html += `                               </div>`
         if (miSrnUtils.pd(sector.secIdx) && sector.secIdx) {
 
             html += `                           <div class="w-100 d-flex flex-column">`
             html += `                               <span style="font-weight: 100;">`
             html += `                                   Relative Returns vs ${sector["name"]}`
             html += `                               </span>`
-            html += `                               <h4 style="color: black; white-space: nowrap;">${miSrnUtils.gcv(stock["vsIdx"])}</h4>`
+            html += `                               <h4 style="color: black; white-space: nowrap;">${miSrnUtils.gcv(stock["vsIdx"], null, "%")}</h4>`
             html += `                           </div>`
         }
-        html += `                       </div>`
+        html += `                           </div>`
 
-        html += `                       <div class="d-flex justify-content-between mb-3">`
-
-        html += `                           <div class="w-100 d-flex flex-column">`
-        html += `                               <span style="font-weight: 100;">Price</span>`
-        html += `                                   <h4 style="color: black; white-space: nowrap;">`
+        html += `                           <div class="d-flex justify-content-between mb-3 w-100 ">`
+        html += `                               <div class="w-100 d-flex flex-column">`
+        html += `                                   <span style="font-weight: 100;">Price</span>`
+        html += `                                       <h4 style="color: black; white-space: nowrap;">`
         html += miSrnUtils.gcv(stock["eqVals"]["price"]);
-        html += `                                   </h4>`
-        html += `                           </div>`
+        html += `                                       </h4>`
+        html += `                               </div>`
 
 
-        html += `                           <div class="w-100 d-flex flex-column">`
-        html += `                               <span style="font-weight: 100;">Price Change %</span>`
-        html += `                                   <h4 style="color: black; white-space: nowrap;">`
-        html += miSrnUtils.gcv(stock["eqVals"]["priceChange"]);
-        html += `                                   </h4>`
+        html += `                               <div class="w-100 d-flex flex-column">`
+        html += `                                   <span style="font-weight: 100;">Price Change </span>`
+        html += `                                       <h4 style="color: black; white-space: nowrap;">`
+        html += miSrnUtils.gcv(stock["eqVals"]["priceChange"], null, "%");
+        html += `                                       </h4>`
+        html += `                               </div>`
         html += `                           </div>`
+
+        html += `                       </div>`
 
 
         html += `                   </section>`;
-
-
-        html += `                   <section>`;
-
-        html += `                           <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
-        html += `                               <h6>Technical Strength Index</h6>`
-        html += `                           </div>`
-        html += `                           <div id='trendStrengthDiv${stock["id"]}' class="d-flex justify-content-center"></div>`
-        html += `                               <div class="tsr_strength_values_container">`
-
-        html += `                               <div class="d-flex justify-content-center" id="strRank">`
-        html += `                                   <span style="font-size: 14px;"> ${stock["eqVals"]["techPosi"]} </span>`
-        html += `                               </div>`
-        html += `                           </div>`
-        html += `                   </section>`
-
-        html += `                 </div>`
-
-
-        html += `   <div class="col-12 col-md-6 my-3 my-md-0">`
+        // html += `                 <div class="col-12 col-md-6 my-3 my-md-0">`
         html += `           <section class="mb-4 tsrSecRotLabel">`
-        html += `               <div class="mb-3" style="border-bottom: 1px solid lightgrey;">`
-        html += `                   <h6>`
-        html += `                       ${allSectorDataClone["rtnFreq"]} Returns (%)`
+        html += `               <div class="mb-3">`
+        html += `                   <h6 style="border-bottom: 1px solid lightgrey; width: max-content;">`
+        html += `                       TSR Strength Index`
+        html += `                   </h6>`;
+        html += `               </div>`
+        html += `               <div>`
+        // html += `                   <table class="table table-striped"> 
+        //                                 <tbody>
+        //                                     <tr>
+        //                                         <td>Technical Strength</td>
+        //                                         <td><span style="color:orange;">Mild Bearish</span></td>
+        //                                     </tr>
+        //                                     <tr>
+        //                                         <td>Growth Index</td>
+        //                                         <td> <span style="color:#ff9999;  ">Low Growth Stock</span></td>
+        //                                     </tr>
+        //                                     <tr>
+        //                                         <td>Value Index</td>
+        //                                         <td> <span style="color:orange;  ">No Significant Value</span></td>
+        //                                     </tr>
+        //                                     <tr>
+        //                                         <td>Profitability Index</td>
+        //                                         <td> <span style="color:#ff4c4c;  ">Very Low Profitability Stock</span></td>
+        //                                     </tr>
+        //                                     <tr>
+        //                                         <td>Stability Index</td>
+        //                                         <td> <span style="color:#008B00;  ">Good Stability</span></td>
+        //                                     </tr>
+        //                                 </tbody>
+        //                             </table>`
+
+        html += `               <div class="owl-carousel owl-theme tsrStrengthIndex">`;
+
+        html += `                   <div class="card d-flex flex-column p-2">`
+        html += `                       <p style="margin-bottom: 0;">`
+        html += `                           Technical Strength`
+        html += `                       </p>`
+        html += `                       <h6 style="color: black; white-space: nowrap;">`
+        html += `                           Mild Bearish`
+        html += `                       </h6>`
+        html += `                   </div>`;
+        html += `                   <div class="card d-flex flex-column p-2">`
+        html += `                       <p style="margin-bottom: 0;">`
+        html += `                           Growth Index`
+        html += `                       </p>`
+        html += `                       <h6 style="color: black; white-space: nowrap;">`
+        html += `                           Low Growth Stock`
+        html += `                       </h6>`
+        html += `                   </div>`;
+        html += `                   <div class="card d-flex flex-column p-2">`
+        html += `                       <p style="margin-bottom: 0;">`
+        html += `                           Value Index`
+        html += `                       </p>`
+        html += `                       <h6 style="color: black; white-space: nowrap;">`
+        html += `                           No Significant Value`
+        html += `                       </h6>`
+        html += `                   </div>`;
+        html += `                   <div class="card d-flex flex-column p-2">`
+        html += `                       <p style="margin-bottom: 0;">`
+        html += `                           Profitability Index`
+        html += `                       </p>`
+        html += `                       <h6 style="color: black; white-space: nowrap;">`
+        html += `                           Very Low Profitability Stock`
+        html += `                       </h6>`
+        html += `                   </div>`;
+        html += `                   <div class="card d-flex flex-column p-2">`
+        html += `                       <p style="margin-bottom: 0;">`
+        html += `                           Stability Index`
+        html += `                       </p>`
+        html += `                       <h6 style="color: black; white-space: nowrap;">`
+        html += `                           Good Stability`
+        html += `                       </h6>`
+        html += `                   </div>`;
+
+        html += `               </div>`
+
+        html += `               </div>`
+        html += `           </section>`;
+
+
+        // FUNDAMENTALS SECTION
+        html += `           <section class="mb-4 tsrSecRotLabel">`;
+        html += `               <div class="mb-3 d-flex justify-content-between align-items-center flex-column flex-sm-row">`
+        html += `                   <h6 style="margin-bottom: 0; border-bottom: 1px solid lightgrey; width: max-content;">Fundamentals</h6>`
+        html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
+        html += `                       <span style="color: red;">*</span>`
+        html += `                           Fundamentals based on ${allSectorDataClone["displayFreq"]} tick`
+        html += `                   </p>`
+        html += `               </div>`;
+        html += `               <div class="owl-carousel owl-theme technicals">`;
+
+        // TODO hack
+        let fundaKeys = [];
+        if (miSrnUtils.pd(stock["eqVals"])) {
+            fundaKeys = Object.keys(stock["eqVals"]);
+
+        }
+
+        for (let j = 0; j < fundaKeys.length; j++) {
+            if (fundaKeys[j] == "ma1" || fundaKeys[j] == "ma2" || fundaKeys[j] == "rsi" || fundaKeys[j] == "macd" || fundaKeys[j] == "signal" || fundaKeys[j] == "st") {
+
+                html += `                   <div class="card d-flex flex-column p-2">`;
+                if (fundaKeys[j] == "ma1" || fundaKeys[j] == "ma2") {
+                    if (fundaKeys[j] == "ma1") {
+                        html += `                       <p style="margin-bottom: 0;">EMA ${allSectorDataClone["ma1"]}</p>`;
+                    } else if (fundaKeys[j] == "ma2") {
+                        html += `                       <p style="margin-bottom: 0;">EMA ${allSectorDataClone["ma2"]}</p>`;
+                    }
+                }
+                else {
+                    html += `                       <p style="margin-bottom: 0;">${fundaKeys[j].toUpperCase()}</p>`;
+                }
+                html += `                       <h5 style="color: orange; white-space: nowrap;">`;
+                html += miSrnUtils.gcv(stock["eqVals"][fundaKeys[j]]);
+                html += `                       </h5>`;
+                html += `                   </div>`;
+
+            }
+        }
+
+        html += `               </div>`;
+        html += `           </section>`;
+
+
+
+        // html += `                 </div>`
+
+
+        // html += `   <div class="col-12 col-md-6 my-3 my-md-0">`
+        // RETURNS SECTION
+        html += `           <section class="mb-4 tsrSecRotLabel">`
+        html += `               <div class="mb-3">`
+        html += `                   <h6 style="border-bottom: 1px solid lightgrey; width: max-content;">`
+        html += `                       ${allSectorDataClone["rtnFreq"]} Returns`
         html += `                   </h6>`;
         html += `               </div>`
         html += `               <div class="owl-carousel owl-theme periodicReturns">`;
 
         for (let j = 0; j < stock["eqVals"]["rtnList"].length; j++) {
-            html += `               <div class="card d-flex flex-column p-3">`
+            html += `               <div class="card d-flex flex-column p-2">`
 
             html += `                   <p style="margin-bottom: 0;">`
             if (j == 0) {
@@ -2222,16 +2597,17 @@ var miSrn = (function () {  // chart init Params
             }
             html += `                   </p>`
             html += `                   <h5 style="color: black; white-space: nowrap;">`
-            html += miSrnUtils.gcv(stock["eqVals"]["rtnList"][j]["rtn"]);
+            html += miSrnUtils.gcv(stock["eqVals"]["rtnList"][j]["rtn"], null, "%");
             html += `                   </h5>`
             html += `               </div>`;
         };
         html += `               </div>`
         html += `           </section>`;
 
+        // TECHNICALS SECTION
         html += `           <section class="mb-4 tsrSecRotLabel">`;
-        html += `               <div class="mb-3 d-flex justify-content-between align-items-center flex-column flex-sm-row" style="border-bottom: 1px solid lightgrey;">`
-        html += `                   <h6 style="margin-bottom: 0;">Technicals</h6>`
+        html += `               <div class="mb-3 d-flex justify-content-between align-items-center flex-column flex-sm-row">`
+        html += `                   <h6 style="margin-bottom: 0; border-bottom: 1px solid lightgrey; width: max-content;">Technicals</h6>`
         html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
         html += `                       <span style="color: red;">*</span>`
         html += `                           Technicals based on ${allSectorDataClone["displayFreq"]} tick`
@@ -2249,7 +2625,7 @@ var miSrn = (function () {  // chart init Params
         for (let j = 0; j < keys.length; j++) {
             if (keys[j] == "ma1" || keys[j] == "ma2" || keys[j] == "rsi" || keys[j] == "macd" || keys[j] == "signal" || keys[j] == "st") {
 
-                html += `                   <div class="card d-flex flex-column p-3">`;
+                html += `                   <div class="card d-flex flex-column p-2">`;
                 if (keys[j] == "ma1" || keys[j] == "ma2") {
                     if (keys[j] == "ma1") {
                         html += `                       <p style="margin-bottom: 0;">EMA ${allSectorDataClone["ma1"]}</p>`;
@@ -2272,15 +2648,15 @@ var miSrn = (function () {  // chart init Params
         html += `           </section>`;
 
 
-        html += `   </div>`;
+        // html += `   </div>`;
 
 
 
-        html += `                   <div class="text-center">`
-        html += `                       <a style="color: var(--primary-color,#006aff); cursor: pointer;" onclick="miSrn.pss('${secType}', '${stockType}', ${secId}, '${stock["code"]}', false)">`;
-        html += `                               Hide`;
-        html += `                       </a>`;
-        html += `                   </div>`;
+        // html += `                   <div class="text-center">`
+        // html += `                       <a style="color: var(--primary-color,#006aff); cursor: pointer;" onclick="miSrn.pss('${secType}', '${stockType}', ${secId}, '${stock["code"]}', false)">`;
+        // html += `                               Hide`;
+        // html += `                       </a>`;
+        // html += `                   </div>`;
 
         stockContainer.innerHTML = html;
 
@@ -2293,7 +2669,10 @@ var miSrn = (function () {  // chart init Params
             width: 240,
             height: 8
         });
-        stockContainer.scrollIntoView();
+        stockContainer.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
         initializeCarousal(false);
     }
 
@@ -2319,8 +2698,9 @@ var miSrn = (function () {  // chart init Params
 
         }
         // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
-        // let url = `http://127.0.0.1:5500/Temp/secRotData/${sector["uriCode"]}.json`;
-let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["uriCode"]}.json`;
+        // let url = `https://www.tsrbt1.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+        let url = `http://127.0.0.1:5500/Temp/secRotData/${sector["uriCode"]}.json`;
+        // let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["uriCode"]}.json`;
 
         if (!(miSrnUtils.pd(sectorData) && sectorData.secType == secType && sectorData.secId == secId && sectorData["statusCode"] == "success")) {
             miSrnUtils.gd(url).then(data => {
@@ -2358,14 +2738,23 @@ let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["ur
 
         let container = document.getElementById(chartContainerId);
 
-        container.classList.add("card");
+        // container.classList.add("card");
 
         let html = "";
+
+        if (stockListType == "sectorList") {
+            html += `
+                <div class="mb-3">
+                    <b>CHARTS</b>
+                </div>`
+        } else {
+            html += `
+                <div class="mb-3">
+                    <b>STOCK CHART</b>
+                </div>`
+        }
         html += `
 
-            <div class="card-header text-center" style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);">
-                <h5 class="card-title">Charts</h5>
-            </div>
 
             <div id='Html5'>
 
@@ -2417,7 +2806,10 @@ let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["ur
         container.innerHTML = html;
 
         if (scrollTo) {
-            container.scrollIntoView();
+            container.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
         }
 
         // json = flexParamToHtml(`cf=${allSectorDataClone["cf"]}&period=${allSectorDataClone["cp"]}`);
@@ -2605,7 +2997,7 @@ let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["ur
     return {
         init: init,
         ssc: showSectorCard,
-        psct: processStockComparisonTable,
+        psts: processStockTableSection,
         pss: processStockSection,
         pc: paintChart,
         ust: updateSectorTable,

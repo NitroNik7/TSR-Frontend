@@ -1,3 +1,5 @@
+<!-- <!DOCTYPE html> -->
+
 <html>
 
 <head>
@@ -287,6 +289,13 @@
     </style>
     <script type="text/javascript" async=""
         src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/10926652708/?random=1779799440742&amp;cv=11&amp;fst=1779799440742&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;en=gtag.config&amp;gtm=45be65l0h2v9232681565za200zd9232681565xec&amp;gcd=13l3l3l3l1l1&amp;dma=0&amp;tag_exp=0~115938466~115938469~116701381&amp;u_w=1397&amp;u_h=786&amp;url=https%3A%2F%2Fwww.topstockresearch.com%2Frt%2FScreener%2FMarkets%2FSectorRotation&amp;rcb=0&amp;frm=0&amp;tiba=Sector%20Rotation%20by%20Sector%20%2FIndustry%20%2FIndex%20-%20One%20Day%20to%205%20Yrs&amp;hn=www.googleadservices.com&amp;npa=0&amp;pscdl=noapi&amp;auid=640897339.1778678913&amp;uaa=x86&amp;uab=64&amp;uafvl=Chromium%3B148.0.7778.179%7CGoogle%2520Chrome%3B148.0.7778.179%7CNot%252FA)Brand%3B99.0.0.0&amp;uamb=0&amp;uam=&amp;uap=Windows&amp;uapv=19.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script>
+
+    <!-- Google font integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
 </head>
 
 
@@ -1320,26 +1329,24 @@
                             <link rel="stylesheet"
                                 href="https://nitronik7.github.io/TSR-Frontend/Plans/poc12/style.css">
 
-                            <div class="py-3" style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);">
-                                <!--      <div align='right'><span style="color:grey;font-size:12;"> Beta Release. Some change are Expected, Suggestion Welcomed &nbsp;&nbsp;&nbsp; </span></div> -->
+                            <div class="p-3" style="text-align: center; border-radius: 15px; background-color: whitesmoke;">
+                                
+                                
 
-                                <!-- page heading -->
-                                <div>
-                                    <h4 class="text-center" style="color: midnightblue;">
-                                        AI Powered
-                                    </h4>
-                                    <h1 class="text-center" style="color: midnightblue;font-weight: bold;">
-                                        Sector Rotation
+                                <div class=" mb-4">
+                                    <h1 style="font-weight: bold; font-size: 50px;">
+                                        <span style="font-weight: 500; font-size: 28px;">AI Powered</span> Sector
+                                        Rotation
                                         <img src="https://www.topstockresearch.com/static/img/FeaturedProduct/sectorRotation.png"
                                             alt="Sector Rotation" style="width: 50px; height: 50px;">
                                     </h1>
-                                    <p style="text-align: center;">Lorem, ipsum dolor sit amet consectetur adipisicing
+                                    <p style="margin-bottom: 0;">Lorem, ipsum dolor sit amet consectetur adipisicing
                                         elit. Fugit, consequuntur!</p>
                                 </div>
 
+
                                 <!-- settings menu -->
-                                <div class="d-flex justify-content-around mx-3 mx-md-5"
-                                    style="border-radius: 15px; background-color: white;">
+                                <div class="tsrSectRotSettingsSection ">
 
                                     <div class="row p-3 g-3 w-100 align-items-end">
                                         <div class="col-12 col-md-4 d-flex flex-column  ">
@@ -1362,41 +1369,92 @@
                                             </select>
                                         </div>
                                         <div class="col-12 col-md-4 d-flex justify-content-center">
-                                            <button type="button" class="btn btn-primary w-100" style="font-size: 16px; font-weight: bold;"
-                                                onclick="miSrn.init()">
+                                            <button type="button" class="btn btn-primary w-100"
+                                                style="font-size: 16px; font-weight: bold;" onclick="miSrn.init()">
                                                 <i class="fas fa-play"></i>
                                                 &nbsp; Run
                                             </button>
                                         </div>
+
+                                        <div id="secRotToastContainer" class="text-center"></div>
+
                                     </div>
-
-
-
-
                                 </div>
-
-                                <div id="secRotToastContainer" class="text-center my-3"></div>
                             </div>
 
-                            <div class="container-fluid tsrSecRotPage my-5">
+                            <!-- <hr> -->
+
+
+                            <!-- style="background: #f5f8fc;border-radius: 15px;" -->
+                            <div class="container-fluid tsrSecRotPage my-3" style="background-color: whitesmoke;">
 
                                 <!-- Base Index Section -->
                                 <section id="tsrSecRotBaseSectorSection">
                                 </section>
 
+
                                 <!-- Sector Comparison -->
-                                <section id="tsrSectRotSectCompareSection"
-                                    class="tsrSectRotSectCompareSection row g-4 p-3 my-4">
+                                <section id="tsrSectRotSectCompareSection" class="tsrSectRotSectCompareSection row g-3">
 
 
-
-                                </section>
-
-                                <!-- Sector Overview section -->
-                                <section id="tsrSecRotSectorOverviewContainer">
                                 </section>
 
                             </div>
+
+                            <!-- Sector Overview section -->
+                            <section id="tsrSecRotSectorOverviewContainer" class="tsrSecRotSectOvrvwSection p-3">
+                            </section>
+
+                            <!-- STOCK SECTION MODAL -->
+
+                            <div id="tsrStockSectionModal">
+                                <table style="width: 100%; border: 0px;" cellpadding="3" cellspacing="0">
+                                    <tbody>
+                                        <tr>
+                                            <td class="web_dialog_title align_left">
+                                                <!-- TODO -->
+                                                <!-- <a onclick="${USER_FUNC}('close')" id="btnClose">  -->
+                                                <font color="white"><span class="fa fa-remove fa-times "></span>
+                                                </font>
+                                                <!-- </a>  -->
+                                            </td>
+                                            <td class="web_dialog_title" style="text-align:center;">Stock Birds Eye View
+                                            </td>
+                                            <td class="web_dialog_title align_right">
+                                                <!-- <a onclick="${USER_FUNC}('close')" id="btnClose"> -->
+                                                <font color="white"><span class="fa fa-remove fa-times "></span>
+                                                </font>
+                                                <!-- </a>  -->
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div id="tsrStockSection">
+
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <!-- <div class="modal fade" id="tsrStockSectionModal" tabindex="-1" aria-labelledby="tsrStockSectionModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="tsrStockSectionModalLabel">Modal title</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ...
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
 
                             <script src="script.js"></script>
                             <script src="utils.js"></script>
@@ -1408,73 +1466,128 @@
                                 href="https://www.topstockresearch.com/static/css/v1/tsrchartsNgV0.0.6.css">
                             <script
                                 src="https://www.topstockresearch.com/static/js/chart/tsr_charts_minV0.9.2.209.js"></script>
-                            <script src="https://www.topstockresearch.com/static/js/tsr/tia/tia_minV0.0.0.16.js" "=""></script>
-<!-- <script src=" https://www.topstockresearch.com/static/js/tsr/mipl/miSrn_minV0.0.3.js" "=""></script> -->
-<div id=" ytVideoDiv"></div><div class="row mt-1">
-                                    <div class="col-md-12 d-none d-md-block text-center">
-                                        
-                                        <nav class="d-flex justify-content-center" aria-label="Page navigation example">
-                                            <ul class="pagination">
-                                                <span class="align-content-center">
-                                                    Stock Listing
-                                                </span>&nbsp;&nbsp;&nbsp;<li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/A" class="page-link">A</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/B" class="page-link">B</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/C" class="page-link">C</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/D" class="page-link">D</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/E" class="page-link">E</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/F" class="page-link">F</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/G" class="page-link">G</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/H" class="page-link">H</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/I" class="page-link">I</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/J" class="page-link">J</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/K" class="page-link">K</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/L" class="page-link">L</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/M" class="page-link">M</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/N" class="page-link">N</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/O" class="page-link">O</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/P" class="page-link">P</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/Q" class="page-link">Q</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/R" class="page-link">R</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/S" class="page-link">S</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/T" class="page-link">T</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/U" class="page-link">U</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/V" class="page-link">V</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/W" class="page-link">W</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/X" class="page-link">X</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/Y" class="page-link">Y</a>
-</li><li class="page-item">
-    <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/Z" class="page-link">Z</a>
-</li></ul>
-                                        </nav>
+                            <script
+                                src="https://www.topstockresearch.com/static/js/tsr/tia/tia_minV0.0.0.16.js"></script>
+                            <!-- <script src=" https://www.topstockresearch.com/static/js/tsr/mipl/miSrn_minV0.0.3.js" "=""></script> -->
+                            <div id=" ytVideoDiv"></div>
+                            <div class="row mt-1">
+                                <div class="col-md-12 d-none d-md-block text-center">
+
+                                    <nav class="d-flex justify-content-center" aria-label="Page navigation example">
+                                        <ul class="pagination">
+                                            <span class="align-content-center">
+                                                Stock Listing
+                                            </span>&nbsp;&nbsp;&nbsp;<li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/A"
+                                                    class="page-link">A</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/B"
+                                                    class="page-link">B</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/C"
+                                                    class="page-link">C</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/D"
+                                                    class="page-link">D</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/E"
+                                                    class="page-link">E</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/F"
+                                                    class="page-link">F</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/G"
+                                                    class="page-link">G</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/H"
+                                                    class="page-link">H</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/I"
+                                                    class="page-link">I</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/J"
+                                                    class="page-link">J</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/K"
+                                                    class="page-link">K</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/L"
+                                                    class="page-link">L</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/M"
+                                                    class="page-link">M</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/N"
+                                                    class="page-link">N</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/O"
+                                                    class="page-link">O</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/P"
+                                                    class="page-link">P</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/Q"
+                                                    class="page-link">Q</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/R"
+                                                    class="page-link">R</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/S"
+                                                    class="page-link">S</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/T"
+                                                    class="page-link">T</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/U"
+                                                    class="page-link">U</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/V"
+                                                    class="page-link">V</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/W"
+                                                    class="page-link">W</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/X"
+                                                    class="page-link">X</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/Y"
+                                                    class="page-link">Y</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href="https://www.topstockresearch.com/rt/StockAlphabeticalListing/Z"
+                                                    class="page-link">Z</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
 
 
-                                    </div>
-                                </div><script> let tsrUpdateJson = { "heading": "STRATEGIES", "list": [{ "label": "BTST", "link": "https://www.topstockresearch.com/rt/Screener/ExpertScreener/BTSTStrategies" }, { "label": "Breakout", "link": "https://www.topstockresearch.com/rt/Screener/ExpertScreener/BreakoutStrategies" }, { "label": "Swing", "link": "https://www.topstockresearch.com/rt/Screener/ExpertScreener/SwingTradingStrategies" }] }</script>
+                                </div>
+                            </div>
+                            <script> let tsrUpdateJson = { "heading": "STRATEGIES", "list": [{ "label": "BTST", "link": "https://www.topstockresearch.com/rt/Screener/ExpertScreener/BTSTStrategies" }, { "label": "Breakout", "link": "https://www.topstockresearch.com/rt/Screener/ExpertScreener/BreakoutStrategies" }, { "label": "Swing", "link": "https://www.topstockresearch.com/rt/Screener/ExpertScreener/SwingTradingStrategies" }] }</script>
                             <script> let fotdJson = {
                                     uri: mintJsUtil.getBaseWwwUrl() + '/static/docs/CustomScreener/Tech/RSI/RSIfod.html',
                                     link: mintJsUtil.getBaseWwwUrl() + '/rt/CustomStockScreener.tsr',
