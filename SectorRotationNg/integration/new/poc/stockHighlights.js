@@ -185,7 +185,7 @@ var miStkHl = (function () {  // chart init Params
         ];
 
         tsrMetricsHtml += `
-                    <section class="tsrSecRotSection">
+                    <section class="tsrSecRotSection bg-primary bg-opacity-25">
                         <div class="tsrSecRotSectionHd">
                             <span class="tsrSecRotSectionIcon tsrSecRotIconTsr"><i class="fas fa-tachometer-alt"></i></span>
                             <h6 class="tsrSecRotSectionTitle">TSR Metrics</h6>
