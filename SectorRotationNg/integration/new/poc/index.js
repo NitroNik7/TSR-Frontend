@@ -89,10 +89,11 @@ var miSrn = (function () {  // chart init Params
             // let url = `https://www.tsrbt1.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=all`;
             // let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/secRot${duration}${sectorType}.json`;
             // let url = `http://127.0.0.1:5500/Temp/secRotData/secRot${duration}${sectorType}.json`;
+            
             sectorType = sectorType.toUpperCase();
             duration = duration.toUpperCase();
 
-            let url = `http://127.0.0.1:5500/SectorRotationNg/integration/new/data/${sectorType}/${duration}_${sectorType}_ALL.json`;
+            let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${duration}_${sectorType}_ALL.json`;
             miSrnUtils.gd(url).then(data => {
                 allSectorData = data;
                 allSectorDataClone = jsu.cloneObj(allSectorData);
@@ -964,7 +965,7 @@ var miSrn = (function () {  // chart init Params
             sectorType = sectorType.toUpperCase();
             duration = duration.toUpperCase();
             let sectorCode = sector["uriCode"].toUpperCase();
-            let url = `http://127.0.0.1:5500/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${duration}_SECTOR.json`;
+            let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${duration}_SECTOR.json`;
 
             // avoiding multiple API calls for same sector
             if (!(isSectorLoaded(currSectorData, secType, secId))) {
@@ -1170,7 +1171,7 @@ var miSrn = (function () {  // chart init Params
             duration = duration.toUpperCase();
             let sectorCode = sector["uriCode"].toUpperCase();
 
-            let url = `http://127.0.0.1:5500/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${duration}_SECTOR.json`;
+            let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${duration}_SECTOR.json`;
 
             // avoiding multiple API calls for same sector
             if (!(isSectorLoaded(currSectorData, secType, secId))) {
@@ -1187,7 +1188,8 @@ var miSrn = (function () {  // chart init Params
                         let duration = durationSelect.value;
                         let freq = miSrnUtils.gf(duration);
                         // let url = `https://www.tsrbt1.com/rt/djs?freq=${duration}&type=eq&cat=EqSmry&code=${stockCode}&action=eq`;
-                        let url = `http://127.0.0.1:5500/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${freq}_${stockCode}.json`;
+                        // let url = `http://127.0.0.1:5500/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${freq}_${stockCode}.json`;
+                        let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${freq}_${stockCode}.json`;
 
 
                         miSrnUtils.gd(url).then(stockData => {
@@ -1213,7 +1215,7 @@ var miSrn = (function () {  // chart init Params
                 let duration = durationSelect.value;
                 let freq = miSrnUtils.gf(duration);
                 // let url = `https://www.tsrbt1.com/rt/djs?freq=${freq}&type=eq&cat=EqSmry&code=${stockCode}&action=eq`;
-                let url = `http://127.0.0.1:5500/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${freq}_${stockCode}.json`;
+                let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${freq}_${stockCode}.json`;
 
 
                 let stockList = currSectorData[stockType + "List"];
