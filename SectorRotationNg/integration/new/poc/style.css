@@ -738,7 +738,7 @@
 .tsrSecRotIconFund { background: #e0f2fe; color: #0284c7; }
 
 .tsrSecRotSectionTitle {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .07em;
@@ -774,7 +774,7 @@
 .tsrSecRotHlChange { background: #fdf4ff; }
 
 .tsrSecRotHlLabel {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: .06em;
@@ -783,7 +783,7 @@
 
 .tsrSecRotHlValue {
     font-size: 20px;
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.1;
 }
 
@@ -820,7 +820,7 @@
 }
 .tsrSecRotMetricPill:hover { box-shadow: var(--tsrSecRotShadowMd); transform: translateY(-1px); }
 
-.tsrSecRotMetricIcon { font-size: 15px; flex-shrink: 0; }
+.tsrSecRotMetricIcon { font-size: 24px; flex-shrink: 0; }
 
 .tsrSecRotMetricText {
     display: flex;
@@ -829,7 +829,7 @@
 }
 
 .tsrSecRotMetricLabel {
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .06em;
@@ -837,20 +837,11 @@
 }
 
 .tsrSecRotMetricVal {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-/* ════════════════════════════════════════════
-   DUAL-ROW (Returns+EMA / Tech+Funda)
-   ════════════════════════════════════════════ */
-.tsrSecRotDualRow {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
 }
 
 /* ════════════════════════════════════════════
@@ -870,7 +861,7 @@
 .tsrSecRotCarouselCard:hover { box-shadow: var(--tsrSecRotShadowMd); background: #fff; }
 
 .tsrSecRotCcLabel {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     color: var(--tsrSecRotMuted);
     text-transform: uppercase;
@@ -879,8 +870,8 @@
 }
 
 .tsrSecRotCcValue {
-    font-size: 15px;
-    font-weight: 800;
+    font-size: 20px;
+    font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
