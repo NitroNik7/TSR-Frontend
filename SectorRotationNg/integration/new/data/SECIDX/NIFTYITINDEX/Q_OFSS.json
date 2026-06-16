@@ -1,0 +1,237 @@
+{
+    "statusCode": "success",
+    "statusMsg": "Has Records",
+    "price": 9327.5,
+    "prevPrice": 6731.0,
+    "tsrRtn": [
+        {
+            "label": "1 Week",
+            "stkRtn": -6.128918633321592,
+            "idxRtn": 1.0964337738105905
+        },
+        {
+            "label": "2 Week",
+            "stkRtn": -6.387996788438379,
+            "idxRtn": 0.3189274183787901
+        },
+        {
+            "label": "1 Month",
+            "stkRtn": 3.5181177515121247,
+            "idxRtn": 1.0406524945893063
+        },
+        {
+            "label": "3 Month",
+            "stkRtn": 39.33079393532004,
+            "idxRtn": -0.0689516116239159
+        },
+        {
+            "label": "6 Month",
+            "stkRtn": 16.739674593241553,
+            "idxRtn": -9.30628830830157
+        },
+        {
+            "label": "1 Year",
+            "stkRtn": -0.8451153396406931,
+            "idxRtn": -5.0839337894062275
+        },
+        {
+            "label": "2 Year",
+            "stkRtn": 6.6871786659956385,
+            "idxRtn": 1.2862911157060164
+        },
+        {
+            "label": "5 Year",
+            "stkRtn": 152.8223128735414,
+            "idxRtn": 49.518652032843235
+        },
+        {
+            "label": "10 Year",
+            "stkRtn": 174.35437378669332,
+            "idxRtn": 189.14021812137014
+        }
+    ],
+    "tsrStr": {
+        "techStr": "Bullish",
+        "techClr": "#008B00",
+        "valStr": "Poor Value Stock",
+        "valClr": "#C0C0C0",
+        "stabStr": "Excellent Stability",
+        "stabClr": "#004F00",
+        "pftStr": "Good Profitability",
+        "pftClr": "#004F00",
+        "gwthStr": "Very Low Growth Stock",
+        "gwthClr": "#C0C0C0"
+    },
+    "funda": [
+        {
+            "label": "PE Ratio",
+            "val": "30.75",
+            "clrl": "#cc0000",
+            "intr": "Very Poor"
+        },
+        {
+            "label": "Price/ Book",
+            "val": "10.77",
+            "clrl": "#cc0000",
+            "intr": "Very Poor"
+        },
+        {
+            "label": "Price/ Sales",
+            "val": "10.58",
+            "clrl": "#cc0000",
+            "intr": "Very Poor"
+        },
+        {
+            "label": "Piotroski F Score",
+            "val": "6.0",
+            "clrl": "#96C8A2",
+            "intr": "Good"
+        },
+        {
+            "label": "Market Cap",
+            "val": "81209.25 (Cr)"
+        },
+        {
+            "label": "Enterprise Value",
+            "val": "79733.95 (Cr)"
+        },
+        {
+            "label": "ROA (TTM)",
+            "val": "27.849883083884148",
+            "clrl": "#004F00",
+            "intr": "Excellent"
+        },
+        {
+            "label": "ROE (TTM)",
+            "val": "35.02451038937945",
+            "clrl": "#008B00",
+            "intr": "Very Good"
+        },
+        {
+            "label": "Revenue",
+            "val": "12.05%",
+            "clrl": "green",
+            "intr": "7672.10 (Cr)"
+        },
+        {
+            "label": "Net Profit",
+            "val": "10.91%",
+            "clrl": "green",
+            "intr": "2639.30"
+        },
+        {
+            "label": "Altman Z Score",
+            "val": "25.876252181971104",
+            "clrl": "#004F00",
+            "intr": "Excellent"
+        },
+        {
+            "label": "Debt to Equity",
+            "val": "0.001648246342554143",
+            "clrl": "#004F00",
+            "intr": "Excellent"
+        },
+        {
+            "label": "Quick Ratio",
+            "val": "0.0",
+            "clrl": "#ff4c4c",
+            "intr": "Poor"
+        },
+        {
+            "label": "Cash Ratio",
+            "val": "3.8869841269841268",
+            "clrl": "#008B00",
+            "intr": "Very Good"
+        }
+    ],
+    "tech": [
+        {
+            "label": "RSI",
+            "val": 60.18341996850776,
+            "clrl": "orange",
+            "intr": "Neutral"
+        },
+        {
+            "label": "CMF",
+            "val": 0.18726480816170915,
+            "clrl": "#96C8A2",
+            "intr": "Mild Bullish"
+        },
+        {
+            "label": "MACD",
+            "val": 1390.1007622066736,
+            "clrl": "#008B00",
+            "intr": "Bullish"
+        },
+        {
+            "label": "ADX",
+            "val": 33.43057448137609,
+            "clrl": "#96C8A2",
+            "intr": "Mild Bullish"
+        },
+        {
+            "label": "SuperTrend",
+            "val": 13241.133936682316,
+            "clrl": "#ff4c4c",
+            "intr": "Bearish"
+        },
+        {
+            "label": "WILLiam %R",
+            "val": -38.02847861661334,
+            "clrl": "orange",
+            "intr": "Neutral"
+        },
+        {
+            "label": "Stochastic RSI",
+            "val": 27.934448040621636,
+            "clrl": "#004F00",
+            "intr": "Strong Bullish"
+        },
+        {
+            "label": "CCI",
+            "val": 62.28510380496208,
+            "clrl": "orange",
+            "intr": "Neutral"
+        },
+        {
+            "label": "MFI",
+            "val": 76.75295996583617,
+            "clrl": "orange",
+            "intr": "Neutral"
+        }
+    ],
+    "ema": [
+        {
+            "label": "5 EMA",
+            "val": 8379.171875,
+            "clrl": "#004F00",
+            "intr": "Strong Bullish"
+        },
+        {
+            "label": "10 EMA",
+            "val": 8048.9501953125,
+            "clrl": "orange",
+            "intr": "Neutral"
+        },
+        {
+            "label": "15 EMA",
+            "val": 7477.96826171875,
+            "clrl": "orange",
+            "intr": "Neutral"
+        },
+        {
+            "label": "20 EMA",
+            "val": 6952.7529296875,
+            "clrl": "#004F00",
+            "intr": "Strong Bullish"
+        },
+        {
+            "label": "50 EMA",
+            "val": 5060.26953125,
+            "clrl": "#004F00",
+            "intr": "Strong Bullish"
+        },
+        {},
+        {}
+    ]
+}

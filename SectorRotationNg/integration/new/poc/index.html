@@ -1329,42 +1329,17 @@
                             <link rel="stylesheet"
                                 href="https://nitronik7.github.io/TSR-Frontend/Plans/poc12/style.css">
 
-                            <div class="py-3" > <!-- style="background: linear-gradient(135deg, #dbeafe, #f1f5ff);" -->
-                                <!--      <div align='right'><span style="color:grey;font-size:12;"> Beta Release. Some change are Expected, Suggestion Welcomed &nbsp;&nbsp;&nbsp; </span></div> -->
+                            <div class="py-3">
 
-                                <!-- page heading -->
-                                <!-- <div>
-                                    <h4 style="color: midnightblue;">
-                                        AI Powered
-                                    </h4>
-                                    <h1  style="color: midnightblue;font-weight: bold;">
-                                        Sector Rotation
-                                        <img src="https://www.topstockresearch.com/static/img/FeaturedProduct/sectorRotation.png"
-                                            alt="Sector Rotation" style="width: 50px; height: 50px;">
-                                    </h1>
-                                    <p style="margin-bottom: 0;">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                        elit. Fugit, consequuntur!</p>
-                                </div> -->
-
-                                <div class="ms-5 mb-4">
-                                    <h4 style="color: midnightblue;">
-                                        AI Powered
-                                    </h4>
-                                    <h1 style="color: midnightblue;font-weight: bold;font-size: 50px;">
-                                        Sector Rotation
-                                        <img src="https://www.topstockresearch.com/static/img/FeaturedProduct/sectorRotation.png" alt="Sector Rotation" style="width: 50px; height: 50px;">
-                                    </h1>
-                                    <p style="margin-bottom: 0;">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                        elit. Fugit, consequuntur!</p>
-                                </div>
-
-                                <hr>
-
-                                <!-- settings menu -->
-                                <div class="d-flex justify-content-around"
-                                    style="border-radius: 15px; background-color: whitesmoke;">
+                                <div class="d-flex justify-content-around" style="border-radius: 15px; background-color: whitesmoke;">
 
                                     <div class="row p-3 g-3 w-100 align-items-end">
+
+                                        <h1 style="color: midnightblue;font-weight: bold;font-size: 50px;">
+                                            Sector Rotation
+                                            <sup style="top: -1em; font-size: 20px;">AI Powered</sup>
+                                        </h1>
+                                        <!-- settings menu -->
                                         <div class="col-12 col-md-4 d-flex flex-column  ">
                                             <label for="type" class="tsrHmControlLabel">
                                                 Type
@@ -1402,28 +1377,26 @@
                             </div>
 
                             <div class="container-fluid tsrSecRotPage my-3">
-
+                                <h4>Overview</h4>
                                 <!-- Base Index Section -->
                                 <section id="tsrSecRotBaseSectorSection">
                                 </section>
 
                                 <!-- Sector Comparison -->
                                 <section id="tsrSectRotSectCompareSection"
-                                    class="tsrSectRotSectCompareSection row g-4 p-3 my-4">
-
-
+                                    class="tsrSectRotSectCompareSection row g-4">
 
                                 </section>
 
-                                <!-- Sector Overview section -->
-                                <section id="tsrSecRotSectorOverviewContainer">
-                                </section>
-
+                                
                             </div>
-
+                            
+                            <!-- Sector Overview section -->
+                            <section id="tsrSecRotSectorOverviewContainer">
+                            </section>
                             <!-- STOCK SECTION MODAL -->
 
-                            <div id="tsrStockSectionModal">
+                            <div id="tsrSecRotStockSectionModal">
                                 <table style="width: 100%; border: 0px;" cellpadding="3" cellspacing="0">
                                     <tbody>
                                         <tr>
@@ -1444,7 +1417,9 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div id="tsrStockSection">
+                                <div id="tsrSecRotStockSectionHeader"></div>
+                                <div id="tsrSecRotStockSectionBody" style="max-height: 70vh; overflow:  auto;">
+>
 
                                 </div>
                             </div>
@@ -1858,6 +1833,44 @@
     <ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front"
         style="display: none;"></ul>
     <div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+    <!-- Code injected by live-server -->
+    <script>
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function () {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function (msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        }
+        else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
+    </script>
 </body>
 
 </html>

@@ -87,9 +87,9 @@ var miSrn = (function () {  // chart init Params
             }
 
             // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=all`; // TODO - use this later
-            // let url = `https://www.tsrbt1.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=all`;
+            let url = `https://www.tsrbt1.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=all`;
             // let url = `http://127.0.0.1:5500/Temp/secRotData/secRot${duration}${sectorType}.json`;
-            let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/secRot${duration}${sectorType}.json`;
+            // let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/secRot${duration}${sectorType}.json`;
 
             miSrnUtils.gd(url).then(data => {
 
@@ -158,24 +158,18 @@ var miSrn = (function () {  // chart init Params
             html += `                       <i class="fas fa-chart-line"></i>`
             // html += `                   </a>`
             html += `               </div>`
-            html += `           <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
-            // html += `               <div class="tsrSecRotMetricIcon">`
-            // html += `                       <i class="fas fa-chart-line"></i>`
-            // html += `               </div>`
-            html += `               Benchmark`
-            html += `           </div>`
             // if (isSectorIdxBased('op') || isSectorIdxBased('up')) {
             //     html += `           <span class="tsrSecRotMetricBadge">
             //                             Benchmark
             //                         </span>`
             // }
             html += `           </div>`
-            // html += `           <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
-            // // html += `               <div class="tsrSecRotMetricIcon">`
-            // // html += `                       <i class="fas fa-chart-line"></i>`
-            // // html += `               </div>`
-            // html += `               Benchmark`
-            // html += `           </div>`
+            html += `           <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
+            // html += `               <div class="tsrSecRotMetricIcon">`
+            // html += `                       <i class="fas fa-chart-line"></i>`
+            // html += `               </div>`
+            html += `               Benchmark`
+            html += `           </div>`
             // html += `           <div class="tsrSecRotMetricValue">`
             html += `           <div class="tsrSecRotMetricHighlight">`
             // html += `               <div class="tsrSecRotMetricIcon">`
@@ -201,59 +195,57 @@ var miSrn = (function () {  // chart init Params
             html += `       </div>`
 
             // html += `       <!-- NIFTY 50 detailed card -->
-            /*
-                //                 <div class="tsrSecRotMetricCard" style="display: none;">
+            //                 <div class="tsrSecRotMetricCard" style="display: none;">
 
-                //                     <div class="tsrSecRotMetricTop">
-                //                         <div class="tsrSecRotMetricIcon">
-                //                             <i class="fas fa-chart-line"></i>
-                //                         </div>
+            //                     <div class="tsrSecRotMetricTop">
+            //                         <div class="tsrSecRotMetricIcon">
+            //                             <i class="fas fa-chart-line"></i>
+            //                         </div>
 
-                //                         <span class="tsrSecRotMetricBadge">
-                //                             Benchmark
-                //                         </span>
-                //                     </div>
+            //                         <span class="tsrSecRotMetricBadge">
+            //                             Benchmark
+            //                         </span>
+            //                     </div>
 
-                //                     <div class="tsrSecRotMetricTitle">
-                //                         NIFTY 50
-                //                     </div>
+            //                     <div class="tsrSecRotMetricTitle">
+            //                         NIFTY 50
+            //                     </div>
 
-                //                     <div class="align-items-center d-flex tsrSecRotMetricValue"
-                //                         style="gap: 10px;">
-                //                         24,845.20
-                //                         <div class="tsrSecRotMetricChange positive">
-                //                             <i class="fas fa-arrow-up"></i>
-                //                             1.84%
-                //                         </div>
-                //                     </div>
+            //                     <div class="align-items-center d-flex tsrSecRotMetricValue"
+            //                         style="gap: 10px;">
+            //                         24,845.20
+            //                         <div class="tsrSecRotMetricChange positive">
+            //                             <i class="fas fa-arrow-up"></i>
+            //                             1.84%
+            //                         </div>
+            //                     </div>
 
-                //                     <div class="tsrSecRotMetricChange positive" style="display: none;">
-                //                         <span class="me-2 tsrSecRotMetricSubtext"
-                //                             style="font-weight: 400;">Period Change</span>
-                //                         <br>
-                //                         <i class="fas fa-arrow-up"></i>
-                //                         1.84%
-                //                     </div>
-                //                     <div class="tsrSecRotMetricChange positive" style="display: none;">
-                //                         <span class="me-2 tsrSecRotMetricSubtext"
-                //                             style="font-weight: 400;">Market Cap Chg Pc
+            //                     <div class="tsrSecRotMetricChange positive" style="display: none;">
+            //                         <span class="me-2 tsrSecRotMetricSubtext"
+            //                             style="font-weight: 400;">Period Change</span>
+            //                         <br>
+            //                         <i class="fas fa-arrow-up"></i>
+            //                         1.84%
+            //                     </div>
+            //                     <div class="tsrSecRotMetricChange positive" style="display: none;">
+            //                         <span class="me-2 tsrSecRotMetricSubtext"
+            //                             style="font-weight: 400;">Market Cap Chg Pc
 
-                //                         </span>
-                //                         <i class="fas fa-arrow-up"></i>
-                //                         1.84%
-                //                     </div>
+            //                         </span>
+            //                         <i class="fas fa-arrow-up"></i>
+            //                         1.84%
+            //                     </div>
 
-                //                     <div class="tsrSecRotMetricChange positive">
-                //                         <span class="me-2 tsrSecRotMetricSubtext"
-                //                             style="font-weight: 400;">Market Cap Chg</span>
-                //                             <span style="font-weight: 300;"></span>
-                //                         <br>
-                //                         27373921 Cr
-                //                         <span class=" tsrSecRotMetricSubtext">|</span>
-                //                         <i class="fas fa-arrow-up"></i> 1.84%
-                //                     </div>
-                //                 </div>`
-            */
+            //                     <div class="tsrSecRotMetricChange positive">
+            //                         <span class="me-2 tsrSecRotMetricSubtext"
+            //                             style="font-weight: 400;">Market Cap Chg</span>
+            //                             <span style="font-weight: 300;"></span>
+            //                         <br>
+            //                         27373921 Cr
+            //                         <span class=" tsrSecRotMetricSubtext">|</span>
+            //                         <i class="fas fa-arrow-up"></i> 1.84%
+            //                     </div>
+            //                 </div>`
 
             html += `   </div>`
 
@@ -280,19 +272,13 @@ var miSrn = (function () {  // chart init Params
             html += `                <div class="tsrSecRotMetricIcon">`
             html += `                    <i class="fas fa-bolt"></i>`
             html += `                </div>`
+            html += `            </div>`
             html += `            <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
             // html += `                <div class="tsrSecRotMetricIcon">`
             // html += `                    <i class="fas fa-bolt"></i>`
             // html += `                </div>`
             html += `                Strongest Sector`
             html += `            </div>`
-            html += `            </div>`
-            // html += `            <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
-            // // html += `                <div class="tsrSecRotMetricIcon">`
-            // // html += `                    <i class="fas fa-bolt"></i>`
-            // // html += `                </div>`
-            // html += `                Strongest Sector`
-            // html += `            </div>`
             html += `            <div class="tsrSecRotMetricHighlight positive">`
             html += `                ${strongestSector.name}`
             html += `            </div>`
@@ -325,6 +311,7 @@ var miSrn = (function () {  // chart init Params
             // html += `                    <i class="fas fa-arrow-trend-down"></i>`
             html += `                       <i class="fas fa-bolt"></i>`
             html += `                </div>`
+            html += `            </div>`
             html += `            <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
             // html += `                <div class="tsrSecRotMetricIcon" style="color: #ff4d4d; background-color: #ffe8e8;">`
             // // html += `                    <i class="fas fa-arrow-trend-down"></i>`
@@ -332,14 +319,6 @@ var miSrn = (function () {  // chart init Params
             // html += `                </div>`
             html += `                Weakest Sector`
             html += `            </div>`
-            html += `            </div>`
-            // html += `            <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
-            // // html += `                <div class="tsrSecRotMetricIcon" style="color: #ff4d4d; background-color: #ffe8e8;">`
-            // // // html += `                    <i class="fas fa-arrow-trend-down"></i>`
-            // // html += `                       <i class="fas fa-bolt"></i>`
-            // // html += `                </div>`
-            // html += `                Weakest Sector`
-            // html += `            </div>`
             html += `            <div class="tsrSecRotMetricHighlight negative">`
             html += `                ${weakestSector.name}`
             html += `            </div>`
@@ -357,16 +336,15 @@ var miSrn = (function () {  // chart init Params
             html += `               <div class="tsrSecRotMetricIcon">`
             html += `                   <i class="fas fa-layer-group"></i>`
             html += `               </div>`
+            html += `           </div>`
             html += `           <div class="tsrSecRotMetricTitle d-flex" style="gap: 10px;">`
             // html += `               <div class="tsrSecRotMetricIcon">`
             // html += `                   <i class="fas fa-layer-group"></i>`
             // html += `               </div>`
             html += `               Sector Performance`
             html += `           </div>`
-            html += `           </div>`
 
-
-            html += `           <div class="d-flex flex-column">`
+            html += `           <div class="d-flex flex-column flex-xxl-row" style="gap: 10px; height: 55%;">`
             // html += `               <div >`
             // html += `                   <p style="margin-bottom: 0; font-size: 14px; text-wrap: nowrap;">`
             // html += `                       <span style="color: #64748b;">Outperforming</span>`
@@ -376,12 +354,12 @@ var miSrn = (function () {  // chart init Params
             // html += `                       ${opSectors.length}`
             // html += `                   </h4>`
             // html += `               </div>`
-            html += `               <div class="d-flex align-items-center mb-2">`
-            html += `                   <p style="margin-bottom: 0; font-size: 16px; text-wrap: nowrap;">`
-            html += `                       <i class="fas fa-arrow-up me-2" style="color: green;"></i>`
+            html += `               <div class="h-100 d-flex flex-column">`
+            html += `                   <p style="margin-bottom: 0; font-size: 14px; text-wrap: nowrap;">`
             html += `                       <span style="color: #64748b;">Outperforming</span>`
+            html += `                       <i class="fas fa-arrow-up me-2" style="color: green;"></i>`
             html += `                   </p>`
-            html += `                   <h3 class="ms-3 mb-0" style="color: #059669; font-weight: 600;">`
+            html += `                   <h3 class="mb-1 mb-md-0 mt-0 mt-xxl-2" style="color: #059669;">`
             html += `                       ${opSectors.length}`
             html += `                   </h3>`
             html += `               </div>`
@@ -394,12 +372,12 @@ var miSrn = (function () {  // chart init Params
             // html += `                       ${upSectors.length}`
             // html += `                   </h4>`
             // html += `               </div>`
-            html += `               <div class="d-flex align-items-center">`
-            html += `                   <p style="margin-bottom: 0; font-size: 16px; text-wrap: nowrap;">`
-            html += `                       <i class="fas fa-arrow-down me-2" style="color: #dc2626;"></i>`
+            html += `               <div class="h-100 d-flex flex-column">`
+            html += `                   <p style="margin-bottom: 0; font-size: 14px; text-wrap: nowrap;">`
             html += `                       <span style="color: #64748b;">Underperforming</span>`
+            html += `                       <i class="fas fa-arrow-down me-2" style="color: #dc2626;"></i>`
             html += `                   </p>`
-            html += `                   <h3 class="ms-3 mb-0" style="color: #dc2626; font-weight: 600;">`
+            html += `                   <h3 class="mb-1 mb-md-0 mt-0 mt-xxl-2" style="color: #dc2626;">`
             html += `                       ${upSectors.length}`
             html += `                   </h3>`
             html += `               </div>`
@@ -612,35 +590,34 @@ var miSrn = (function () {  // chart init Params
         html += `   <thead>`
         html += `       <tr>`
         html += `           <th></th>`
-        // html += `           <th></th>`
+        html += `           <th></th>`
         html += `           <th></th>`
         if (isIdxBased) {
             html += `       <th></th>`
         }
-        html += `           <th colspan="2">Stock Performance</th>`
         html += `           <th colspan="2">Market Cap</th>`
         if (isIdxBased) {
             html += `       <th></th>`
         }
+        html += `           <th colspan="2">Stock Performance</th>`
         html += `           <th colspan="2">TSR Strength Index</th>`
         html += `           <th colspan="6">% Stocks</th>`
         html += `       </tr>`
         html += `       <tr>`
         html += `           <th>Rank</th>`
-        // html += `           <th></th>`
         html += `           <th>Sector</th>`
+        html += `           <th></th>`
         if (isIdxBased) {
             // html += `       <th>Relative Returns vs NIFTY</th>`
-            html += `       <th>Returns vs NIFTY (%)</th>`
+            html += `       <th>Returns vs NIFTY</th>`
         }
-
-        html += `           <th>Leading</th>`
-        html += `           <th>Lagging</th>`
         html += `           <th>Change (%)</th>`
-        html += `           <th>Change (Cr.)</th>`
+        html += `           <th>Change (in Cr.)</th>`
         if (isIdxBased) {
             html += `           <th>Period Returns (%)</th>`
         }
+        html += `           <th>Leading</th>`
+        html += `           <th>Lagging</th>`
         html += `           <th>Bullish Stocks</th>`
         html += `           <th>Bearish Stocks</th>`
         if (secType == "op") {
@@ -674,6 +651,9 @@ var miSrn = (function () {  // chart init Params
                 let sector = sectors[i];
 
                 html += `       <tr>`
+                html += `           <td><b>${i + 1}</b></td>`
+                html += `           <td><b>${sector.name}<b></td>`
+
                 let onclickFn = "";
                 if (isIdxBased) {
                     onclickFn = `miSrn.ssc('${secType}', ${i}); miSrn.pc('${secType}', '${i}', 'sectorList', '${sector.code}', false, 'inline', false);`
@@ -683,32 +663,21 @@ var miSrn = (function () {  // chart init Params
                 html += `           <td>`
                 html += `               <button class="btn btn-sm btn-outline-primary"`
                 html += `                   style="font-size: 12px;" onclick="${onclickFn}">`
-                html += `                   <b style="font-size: 16px; font-weight: 800;">${i + 1}</b>`
                 html += `                   View`
                 html += `                   <i class="fas fa-arrow-down"></i>`
                 html += `               </button>`
                 html += `           </td>`
-
-                // html += `           <td>`
-                // html += `               <button class="btn btn-sm btn-outline-primary"`
-                // html += `                   style="font-size: 12px;" onclick="${onclickFn}">`
-                // html += `                   View`
-                // html += `                   <i class="fas fa-arrow-down"></i>`
-                // html += `               </button>`
-                // html += `           </td>`
-
-                html += `           <td><b>${sector.name}<b></td>`
-
                 if (isIdxBased) {
-                    html += `           <td><b>${miSrnUtils.gcv(sector.vsNifty)}<b></td>`
+                    html += `           <td><b>${miSrnUtils.gcv(sector.vsNifty, null, "%")}<b></td>`
+                }
+
+                html += `           <td><b>${miSrnUtils.gcv(sector.mcChgPc, null, "%")}</b></td>`
+                html += `           <td>${miSrnUtils.grv(sector.mcChg)}</td>`
+                if (isIdxBased) {
+                    html += `           <td>${miSrnUtils.gcv(sector.periodReturn, "black", "%")}</td>`
                 }
                 html += `           <td>${sector.opEq}</td>`
                 html += `           <td>${sector.upEq}</td>`
-                html += `           <td><b>${miSrnUtils.gcv(sector.mcChgPc)}</b></td>`
-                html += `           <td>${miSrnUtils.grv(sector.mcChg)}</td>`
-                if (isIdxBased) {
-                    html += `           <td><span style='font-weight: 600;'>${miSrnUtils.gcv(sector.periodReturn)}</span</td>`
-                }
                 html += `           <td>${miSrnUtils.grv(sector.tsrBullish)}</td>`
                 html += `           <td>${miSrnUtils.grv(sector.tsrBearish)}</td>`
                 html += `           <td>${miSrnUtils.grv(sector.ma1 * 100)}</td>`
@@ -929,7 +898,6 @@ var miSrn = (function () {  // chart init Params
                 ordering: false,
                 responsive: true,
                 scrollCollapse: false,
-                searching: false,
                 scrollY: 250,
                 scrollX: true,
                 dom: 'Bfrtip',
@@ -1684,7 +1652,7 @@ var miSrn = (function () {  // chart init Params
 
         html += `       <div class="tsrSecRotSectOvrvwSection border-0 p-3" data-hash="${i}">`
         html += `            <div class="card shadow-sm tsrSectorRotationDetailsWorkspaceCard">`
-        html += `                <div class="card-header p-4 border-bottom d-flex flex-wrap justify-content-between align-items-center gap-3">`
+        html += `                <div class="card-header bg-transparent p-4 border-bottom d-flex flex-wrap justify-content-between align-items-center gap-3">`
         /*
             html += `                    <div class="d-flex align-items-center gap-3">`
             html += `                        <h4 class="h5 mb-0 fw-bold text-dark tsrSectorRotationCardHeaderTitle"`
@@ -1964,47 +1932,45 @@ var miSrn = (function () {  // chart init Params
         // sector card body starts
 
         /*
-            // let sectorAnalysisUrl = mintJsUtil.getRootUrl() + "/Screener/Markets/" + sectors[i].url; // TODO
-            // let sectorAnalysisUrl = "http" + "/Screener/Markets/" + sectors[i].url;
-            // if (!sectors[i]["secIdx"]) {
-            //     sectorAnalysisUrl += "/All"
-            // }
+        // let sectorAnalysisUrl = mintJsUtil.getRootUrl() + "/Screener/Markets/" + sectors[i].url; // TODO
+        // let sectorAnalysisUrl = "http" + "/Screener/Markets/" + sectors[i].url;
+        // if (!sectors[i]["secIdx"]) {
+        //     sectorAnalysisUrl += "/All"
+        // }
         */
-        /*
-         // html += `           <div class="card-body">`;
-         // html += `               <div class="row text-center">`;
-         // html += `                   <h6 class="">`;
-         // html += `                       <a href="${sectorAnalysisUrl}" target="_blank">`
-         // html += `                           View in Depth Analysis`
-         // html += `                           <i class="fas fa-external-link-square-alt"></i>`
-         // html += `                       </a>`
-         // html += `                   </h6>`
-         // html += `               </div>`;
- 
- 
-         // html += `               <div id="${stockTableContainerId + i}" class="${stockTableContainerId} row" >`;
-         // html += '               </div>';
- 
-         // html += `               <div id="${stockContainerId + i}" class="${stockContainerId} row container-md" >`;
- 
-         // html += '               </div>';
- 
- 
-         // html += `               <div class="d-flex flex-column text-end mt-2">`
-         // html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
-         // html += `                       <span style="color: red;">*</span>`
-         // html += `                           Sector / Index rating utilizes only Stocks beyond certain Market Capital`
-         // html += `                   </p>`
-         // html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
-         // html += `                       <span style="color: red;">*</span>`
-         // html += `                           Show all - includes Stocks across all Market Cap. Maximum of 20 stocks are shown`
-         // html += `                   </p>`
-         // html += `               </div>`
- 
-         // html += `           </div> `; // card body closes here
-         // html += `       </div>`; // card closes here
-         // html += `   </div> `; // .tsrSecRotSectOvrvwSection closes here
-         */
+        // html += `           <div class="card-body">`;
+        // html += `               <div class="row text-center">`;
+        // html += `                   <h6 class="">`;
+        // html += `                       <a href="${sectorAnalysisUrl}" target="_blank">`
+        // html += `                           View in Depth Analysis`
+        // html += `                           <i class="fas fa-external-link-square-alt"></i>`
+        // html += `                       </a>`
+        // html += `                   </h6>`
+        // html += `               </div>`;
+
+
+        // html += `               <div id="${stockTableContainerId + i}" class="${stockTableContainerId} row" >`;
+        // html += '               </div>';
+
+        // html += `               <div id="${stockContainerId + i}" class="${stockContainerId} row container-md" >`;
+
+        // html += '               </div>';
+
+
+        // html += `               <div class="d-flex flex-column text-end mt-2">`
+        // html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
+        // html += `                       <span style="color: red;">*</span>`
+        // html += `                           Sector / Index rating utilizes only Stocks beyond certain Market Capital`
+        // html += `                   </p>`
+        // html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
+        // html += `                       <span style="color: red;">*</span>`
+        // html += `                           Show all - includes Stocks across all Market Cap. Maximum of 20 stocks are shown`
+        // html += `                   </p>`
+        // html += `               </div>`
+
+        // html += `           </div> `; // card body closes here
+        // html += `       </div>`; // card closes here
+        // html += `   </div> `; // .tsrSecRotSectOvrvwSection closes here
         if (miSrnUtils.pd(sectors[i].secIdx) && sectors[i].secIdx) {
             //     html += `</div>`;
 
@@ -2034,10 +2000,8 @@ var miSrn = (function () {  // chart init Params
             responsive: true,
             scrollY: 250,
             scrollX: true,
-            scrollCollapse: false,
-            searching: false,
+            scrollCollapse: true,
             dom: 'Bfrtip',
-            info: false,
             buttons: [
                 { extend: "copy", className: "btn btn-sm  btn-secondary ms-2    mt-1", text: " Copy" },
                 { extend: "csv", className: "btn  btn-sm btn-secondary ms-2    mt-1", text: " CSV" },
@@ -2045,8 +2009,7 @@ var miSrn = (function () {  // chart init Params
                 { extend: "print", className: "btn  btn-sm btn-secondary ms-1    mt-1", text: " Print" }
             ],
             fixedColumns: {
-                leftColumns: 1,
-                rightColumns: 1,
+                leftColumns: 1
             }
         }
 
@@ -2055,9 +2018,9 @@ var miSrn = (function () {  // chart init Params
             let duration = durationSelect.value;
 
             // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
-            // let url = "https://www.tsrbt1.com/rt" + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+            let url = "https://www.tsrbt1.com/rt" + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
             // let url = `http://127.0.0.1:5500/Temp/secRotData/${sector["uriCode"]}.json`;
-            let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["uriCode"]}.json`;
+            // let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["uriCode"]}.json`;
 
             // TODO - replace miSrnUtils.pd with jsu.isNotNull()
             // avoiding multiple API calls for same sector
@@ -2179,8 +2142,8 @@ var miSrn = (function () {  // chart init Params
             tableFields.splice(4, 0, `vs ${sector.name}`);
         }
 
-        // html += `                             <div style="max-height: 40vh; overflow: auto;">`
-        html += `                          <div>`
+        html += `                             <div style="max-height: 40vh; overflow: auto;">`
+
         html += `                             <table id="${stockTableId + secId}" class="table align-middle tsrSecRotTable w-100">`
         html += `                               <thead>`;
         html += `                                   <tr>`;
@@ -2194,17 +2157,18 @@ var miSrn = (function () {  // chart init Params
         let stockList = sectorData[stockType + "List"];
 
         if (stockList.length == 0) {
-            html += `                               <tr>`;
-            html += `                                  <td colspan="${tableFields.length}"  class="text-center">`
-            html += `                                      No records`
-            html += `                                  </td>`
-            html += `                               </tr>`;
+            html += `<tr>`;
+            html += `   <td colspan="${tableFields.length}"  class="text-center">`
+            html += `       No records`
+            html += `   </td>`
+            html += `</tr>`;
+
         }
         else {
             for (let i = 0; i < stockList.length; i++) {
 
                 html += `<tr>`;
-                html += `   <td title="${stockList[i]["name"]}"><b style="font-size: 15px;">${stockList[i]["code"]}</b></td>`;
+                html += `   <td>${stockList[i]["name"]} </td>`;
                 // html += `   <td>`
                 // html += `       <a class="link-primary" style="cursor: pointer;"
                 //                 onclick="miSrn.pss('${secType}', '${stockType}', ${secId}, '${stockList[i]["code"]}', true);  
@@ -2315,9 +2279,8 @@ var miSrn = (function () {  // chart init Params
             let sector = sectors[secId];
 
             // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
-            // let url = "https://www.tsrbt1.com/rt" + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+            let url = "https://www.tsrbt1.com/rt" + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
             // let url = `http://127.0.0.1:5500/Temp/secRotData/secRot${duration}${sectorType}`;
-            let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/secRot${duration}${sectorType}`;
 
             // avoiding multiple API calls for same sector
             if (!(miSrnUtils.pd(sectorData) && sectorData.secType == secType && sectorData.secId == secId && sectorData["statusCode"] == "success")) {
@@ -2699,9 +2662,9 @@ var miSrn = (function () {  // chart init Params
 
         }
         // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
-        // let url = `https://www.tsrbt1.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+        let url = `https://www.tsrbt1.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
         // let url = `http://127.0.0.1:5500/Temp/secRotData/${sector["uriCode"]}.json`;
-        let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["uriCode"]}.json`;
+        // let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["uriCode"]}.json`;
 
         if (!(miSrnUtils.pd(sectorData) && sectorData.secType == secType && sectorData.secId == secId && sectorData["statusCode"] == "success")) {
             miSrnUtils.gd(url).then(data => {

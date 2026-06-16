@@ -48,13 +48,13 @@
     padding: 1.5rem;
 }
 
-.tsrSecRotLabel {
+/* .tsrSecRotLabel {
     font-size: 13px;
     font-weight: 600;
     margin-bottom: 8px;
     color: #334155;
     display: block;
-}
+} */
 
 .tsrSecRotSelect {
     border-radius: 12px;
@@ -227,7 +227,7 @@
      */
     /* border-bottom-width: 1px; */
     text-wrap: nowrap;
-    border: 1px solid rgba(0,0,0,0.08)
+    border: 1px solid rgba(0, 0, 0, 0.08)
 }
 
 .tsrSecRotTable td {
@@ -469,3 +469,139 @@
     max-width: 100%;
     height: auto;
 } */
+
+
+
+/* * STOCK SECTION CSS */
+/* Refined Popup Layout Configuration */
+/* .web-dialog {
+    background-color: #ffffff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    border: none !important;
+} */
+
+/* Tracking header titles */
+/* .tsrSecRotStockSectionTitle {
+    font-size: 0.8rem !important;
+    letter-spacing: 0.08rem;
+    color: #6c757d !important;
+    border-left: 3px solid #0d6efd;
+    padding-left: 8px;
+} */
+
+.tsrSecRotStockSectionTitle {
+    border-left: 3px solid #0d6efd;
+    padding-left: 8px;
+    letter-spacing: 0.5px;
+    color: #515151;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.tsrSecRotLabel {
+    font-size: .875em;
+    margin-bottom: .25rem !important;
+    color: #6c757d !important;
+
+
+}
+
+/* Custom internal card controls to fix long unrounded decimals */
+/* .web-dialog .card h5, 
+.web-dialog .card h6 {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+} */
+
+/* Smooth modal tracking scrollbars */
+/* .custom-modal-scroll {
+    max-height: calc(80vh - 85px);
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.custom-modal-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-modal-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.custom-modal-scroll::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+.custom-modal-scroll::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+} */
+
+/* Container workspace viewport configuration */
+.tsrSecRotWorkspace {
+    max-height: calc(85vh - 80px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #ffffff;
+}
+
+/* Sidebar panel distinct shading rules */
+.tsrSecRotSideSummaryPanel {
+    background-color: #f8fafc !important;
+}
+
+/* Micro metadata tags font mapping rules */
+.tsrSecRotLabelSmall {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04rem;
+}
+
+/* Truncation filters ensuring clean card dimensions on raw decimals */
+.tsrSecRotCarouselMetricItem h5,
+.tsrSecRotCarouselMetricItem span,
+.tsrSecRotMiniOverviewCard span,
+.tsrSecRotEmaRow span {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Score card layouts transitions setup */
+.tsrSecRotScorePill {
+    border-color: #f1f3f5 !important;
+    transition: background-color 0.15s ease-in-out;
+}
+.tsrSecRotScorePill:hover {
+    background-color: #f1f5f9 !important;
+}
+
+/* Border tracking adjustments */
+.tsrSecRotEmaGroupList .tsrSecRotEmaRow:last-child {
+    border-bottom: none !important;
+}
+
+/* Soft hover elevation parameters */
+.tsrSecRotCarouselMetricItem {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    border-color: #f1f5f9 !important;
+}
+.tsrSecRotCarouselMetricItem:hover {
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03) !important;
+}
+
+/* Mobile responsive layout overrides */
+@media (max-width: 1199.98px) {
+    .tsrSecRotWorkspace {
+        max-height: calc(100vh - 150px);
+    }
+    .tsrSecRotSideSummaryPanel {
+        border-end: none !important;
+        border-bottom: 2px solid #e2e8f0;
+    }
+}

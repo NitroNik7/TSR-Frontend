@@ -1,0 +1,1758 @@
+{
+    "statusCode": "success",
+    "statusMsg": "Has Records",
+    "opEqList": [
+        {
+            "id": "ACCORD",
+            "name": "Accord Synergy Ltd.",
+            "code": "ACCORD",
+            "fno": "false",
+            "funda": "true",
+            "scId": "178",
+            "ecId": "3105",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Telecom_Services",
+            "pts": 419.30768243099016,
+            "price": 86.0999984741211,
+            "priceChange": 4.999998139172066,
+            "techStrength": 0.8649122807017544,
+            "techPosi": "ACCORD is more bullish than 47.79 % of stocks ",
+            "eqVals": {
+                "ma1": 68.0388,
+                "ma2": 53.862377,
+                "rsi": 92.45110470852461,
+                "macd": 11.099588235800503,
+                "signal": 8.454666194589706,
+                "st": 76.70110335173203,
+                "price": 86.0999984741211,
+                "priceChange": 4.999998139172066,
+                "techStrength": 0.8649122807017544,
+                "techPosi": "ACCORD is more bullish than 47.79 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 4.999998139172066
+                    },
+                    {
+                        "rtn": 4.9936000026571
+                    },
+                    {
+                        "rtn": 4.973114075750657
+                    },
+                    {
+                        "rtn": 4.936530218158712
+                    },
+                    {
+                        "rtn": 4.9592869323103885
+                    },
+                    {
+                        "rtn": 4.972812204375774
+                    },
+                    {
+                        "rtn": 4.975528996771322
+                    },
+                    {
+                        "rtn": 4.9657493757026
+                    },
+                    {
+                        "rtn": 4.9415991457271895
+                    },
+                    {
+                        "rtn": 5.0000028790168045
+                    },
+                    {
+                        "rtn": 4.9504950495049505
+                    },
+                    {
+                        "rtn": 4.989608320196023
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 223.14586896292258,
+            "periodReturn": 223.07691735129868
+        },
+        {
+            "id": "STLTECH",
+            "name": "Sterlite Technologies Ltd.",
+            "code": "STLTECH",
+            "fno": "false",
+            "funda": "true",
+            "scId": "141",
+            "ecId": "1236",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Communication_Equipments",
+            "pts": 147.42313139307097,
+            "price": 583.6500244140625,
+            "priceChange": 2.682969624380387,
+            "techStrength": 0.636,
+            "techPosi": "STLTECH is more bullish than 47.59 % of stocks ",
+            "eqVals": {
+                "ma1": 562.4524,
+                "ma2": 468.07922,
+                "rsi": 66.44979436967422,
+                "macd": 65.85622621543592,
+                "signal": 70.60656818808805,
+                "st": 564.4290684833948,
+                "price": 583.6500244140625,
+                "priceChange": 2.682969624380387,
+                "techStrength": 0.636,
+                "techPosi": "STLTECH is more bullish than 47.59 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 2.682969624380387
+                    },
+                    {
+                        "rtn": -2.395458359526694
+                    },
+                    {
+                        "rtn": -5.00000398271819
+                    },
+                    {
+                        "rtn": 4.198540322887707
+                    },
+                    {
+                        "rtn": -4.997983400408761
+                    },
+                    {
+                        "rtn": -4.964698710562024
+                    },
+                    {
+                        "rtn": 4.995166164924749
+                    },
+                    {
+                        "rtn": 4.999575061884517
+                    },
+                    {
+                        "rtn": 4.991557860665507
+                    },
+                    {
+                        "rtn": 4.998598633331671
+                    },
+                    {
+                        "rtn": 4.9936415984266755
+                    },
+                    {
+                        "rtn": 4.99639919564362
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 190.67342503029673,
+            "periodReturn": 190.60447341867282
+        },
+        {
+            "id": "IDEA",
+            "name": "Vodafone Idea Ltd.",
+            "code": "IDEA",
+            "fno": "true",
+            "funda": "true",
+            "scId": "178",
+            "ecId": "138",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Telecom_Services",
+            "pts": 75.85773659550495,
+            "price": 14.899999618530273,
+            "priceChange": 5.151725746689297,
+            "techStrength": 0.7017751479289941,
+            "techPosi": "IDEA is more bullish than 6.25 % of stocks ",
+            "eqVals": {
+                "ma1": 14.193133,
+                "ma2": 13.052517,
+                "rsi": 70.61257641574548,
+                "macd": 0.775393343005339,
+                "signal": 0.8909035140957233,
+                "st": 13.623667927572876,
+                "price": 14.899999618530273,
+                "priceChange": 5.151725746689297,
+                "techStrength": 0.7017751479289941,
+                "techPosi": "IDEA is more bullish than 6.25 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 5.151725746689297
+                    },
+                    {
+                        "rtn": 2.0893368837317796
+                    },
+                    {
+                        "rtn": -1.838756878139782
+                    },
+                    {
+                        "rtn": -1.805550570105197
+                    },
+                    {
+                        "rtn": -3.678931088641254
+                    },
+                    {
+                        "rtn": 0.1339551485636758
+                    },
+                    {
+                        "rtn": 0.5387200111178514
+                    },
+                    {
+                        "rtn": 4.872885180035663
+                    },
+                    {
+                        "rtn": 1.505376638123661
+                    },
+                    {
+                        "rtn": -0.28591824522832215
+                    },
+                    {
+                        "rtn": -1.3399191112024582
+                    },
+                    {
+                        "rtn": 0.2828851547511898
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 55.92668820712886,
+            "periodReturn": 55.857736595504946
+        },
+        {
+            "id": "BBOX",
+            "name": "Black Box Ltd.",
+            "code": "BBOX",
+            "fno": "false",
+            "funda": "true",
+            "scId": "133",
+            "ecId": "2018",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Communication_Equipments",
+            "pts": 69.04682281941254,
+            "price": 1018.5999755859375,
+            "priceChange": 3.045015233782246,
+            "techStrength": 0.6871287128712871,
+            "techPosi": "BBOX is more bullish than 73.35 % of stocks ",
+            "eqVals": {
+                "ma1": 998.92474,
+                "ma2": 889.51105,
+                "rsi": 64.56889989520181,
+                "macd": 71.01242432792515,
+                "signal": 87.88884745510052,
+                "st": 931.6730199411948,
+                "price": 1018.5999755859375,
+                "priceChange": 3.045015233782246,
+                "techStrength": 0.6871287128712871,
+                "techPosi": "BBOX is more bullish than 73.35 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 3.045015233782246
+                    },
+                    {
+                        "rtn": -2.389652603468511
+                    },
+                    {
+                        "rtn": 4.391303751488444
+                    },
+                    {
+                        "rtn": -3.587759509355479
+                    },
+                    {
+                        "rtn": -6.2167965970042545
+                    },
+                    {
+                        "rtn": -0.49155323667489603
+                    },
+                    {
+                        "rtn": 2.073265296924494
+                    },
+                    {
+                        "rtn": 2.374491068092705
+                    },
+                    {
+                        "rtn": -1.414095843975802
+                    },
+                    {
+                        "rtn": 0.9111460202889882
+                    },
+                    {
+                        "rtn": 4.330555264600087
+                    },
+                    {
+                        "rtn": 1.6202377292039354
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 95.14698964397813,
+            "periodReturn": 95.07803803235421
+        },
+        {
+            "id": "TTML",
+            "name": "Tata Teleservices (Maharashtra) Ltd.",
+            "code": "TTML",
+            "fno": "false",
+            "funda": "true",
+            "scId": "178",
+            "ecId": "191",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Telecom_Services",
+            "pts": 66.63614949590828,
+            "price": 46.439998626708984,
+            "priceChange": 10.177928696387214,
+            "techStrength": 0.6882352941176471,
+            "techPosi": "TTML is more bullish than 20.01 % of stocks ",
+            "eqVals": {
+                "ma1": 43.618137,
+                "ma2": 42.979156,
+                "rsi": 62.91392459158666,
+                "macd": 0.47196007749437285,
+                "signal": 0.3631094029173963,
+                "st": 40.99676950779045,
+                "price": 46.439998626708984,
+                "priceChange": 10.177928696387214,
+                "techStrength": 0.6882352941176471,
+                "techPosi": "TTML is more bullish than 20.01 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 10.177928696387214
+                    },
+                    {
+                        "rtn": -0.8235258214613971
+                    },
+                    {
+                        "rtn": -1.960780862837913
+                    },
+                    {
+                        "rtn": -0.2989905001929721
+                    },
+                    {
+                        "rtn": -5.8058932279784905
+                    },
+                    {
+                        "rtn": 4.481664845086854
+                    },
+                    {
+                        "rtn": 1.3535217951883007
+                    },
+                    {
+                        "rtn": 1.019695506719967
+                    },
+                    {
+                        "rtn": 1.5533062399161683
+                    },
+                    {
+                        "rtn": -0.7474881676221231
+                    },
+                    {
+                        "rtn": -0.6036645539248692
+                    },
+                    {
+                        "rtn": 0.27939215309236937
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 18.146751323571504,
+            "periodReturn": 18.077799711947588
+        },
+        {
+            "id": "SASKEN",
+            "name": "Sasken Communication Techno. Ltd.",
+            "code": "SASKEN",
+            "fno": "false",
+            "funda": "true",
+            "scId": "177",
+            "ecId": "1207",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Telecom_Services",
+            "pts": 64.55640857324435,
+            "price": 2120.60009765625,
+            "priceChange": 2.3011335597327776,
+            "techStrength": 0.5196078431372549,
+            "techPosi": "SASKEN is more bullish than 90.00 % of stocks ",
+            "eqVals": {
+                "ma1": 2119.5212,
+                "ma2": 1874.1376,
+                "rsi": 58.54605807469153,
+                "macd": 169.65407234058057,
+                "signal": 194.47016232932987,
+                "st": 1887.7845925602026,
+                "price": 2120.60009765625,
+                "priceChange": 2.3011335597327776,
+                "techStrength": 0.5196078431372549,
+                "techPosi": "SASKEN is more bullish than 90.00 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 2.3011335597327776
+                    },
+                    {
+                        "rtn": -8.343658788662704
+                    },
+                    {
+                        "rtn": -2.28136047854265
+                    },
+                    {
+                        "rtn": 8.580807053424818
+                    },
+                    {
+                        "rtn": -2.2785600717244248
+                    },
+                    {
+                        "rtn": 0.9347501699155483
+                    },
+                    {
+                        "rtn": -2.084277299501586
+                    },
+                    {
+                        "rtn": -5.623262775283301
+                    },
+                    {
+                        "rtn": 3.01307869262545
+                    },
+                    {
+                        "rtn": 0.5269748800676182
+                    },
+                    {
+                        "rtn": 4.454417557617935
+                    },
+                    {
+                        "rtn": 7.744824437764765
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 97.44423992661366,
+            "periodReturn": 97.37528831498975
+        },
+        {
+            "id": "VINDHYATEL",
+            "name": "Vindhya Telelink",
+            "code": "VINDHYATEL",
+            "fno": "false",
+            "funda": "true",
+            "scId": "124",
+            "ecId": "1293",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Telecom_Services",
+            "pts": 60.078878903119445,
+            "price": 2087.800048828125,
+            "priceChange": 5.465754423954344,
+            "techStrength": 0.6617647058823529,
+            "techPosi": "VINDHYATEL is more bullish than 7.48 % of stocks ",
+            "eqVals": {
+                "ma1": 2009.736,
+                "ma2": 1800.393,
+                "rsi": 59.828263838370624,
+                "macd": 142.95620303029887,
+                "signal": 161.7311806646113,
+                "st": 1763.2342103847773,
+                "price": 2087.800048828125,
+                "priceChange": 5.465754423954344,
+                "techStrength": 0.6617647058823529,
+                "techPosi": "VINDHYATEL is more bullish than 7.48 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 5.465754423954344
+                    },
+                    {
+                        "rtn": -3.954204949239932
+                    },
+                    {
+                        "rtn": -3.4477844755288105
+                    },
+                    {
+                        "rtn": 12.045979733457173
+                    },
+                    {
+                        "rtn": -4.419811142233437
+                    },
+                    {
+                        "rtn": -7.807226363437422
+                    },
+                    {
+                        "rtn": -1.7227228338068181
+                    },
+                    {
+                        "rtn": 3.876486210013743
+                    },
+                    {
+                        "rtn": -3.0221165324092527
+                    },
+                    {
+                        "rtn": -1.2033520767360326
+                    },
+                    {
+                        "rtn": 3.9990590449306045
+                    },
+                    {
+                        "rtn": 5.767318163918151
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 76.19515785661504,
+            "periodReturn": 76.12620624499112
+        },
+        {
+            "id": "ASTRAMICRO",
+            "name": "Astra Microwave Products Ltd. ",
+            "code": "ASTRAMICRO",
+            "fno": "false",
+            "funda": "true",
+            "scId": "177",
+            "ecId": "784",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Communication_Equipments",
+            "pts": 59.5785043337321,
+            "price": 1443.800048828125,
+            "priceChange": 3.4018476214954947,
+            "techStrength": 0.7504950495049505,
+            "techPosi": "ASTRAMICRO is more bullish than 10.67 % of stocks ",
+            "eqVals": {
+                "ma1": 1369.3586,
+                "ma2": 1256.3622,
+                "rsi": 68.65837526684643,
+                "macd": 83.47180877334586,
+                "signal": 78.24371857603327,
+                "st": 1240.78368355982,
+                "price": 1443.800048828125,
+                "priceChange": 3.4018476214954947,
+                "techStrength": 0.7504950495049505,
+                "techPosi": "ASTRAMICRO is more bullish than 10.67 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 3.4018476214954947
+                    },
+                    {
+                        "rtn": -1.9727587127426955
+                    },
+                    {
+                        "rtn": -2.284415714704662
+                    },
+                    {
+                        "rtn": 3.221923351735219
+                    },
+                    {
+                        "rtn": -0.514269026285664
+                    },
+                    {
+                        "rtn": 3.0340458960290864
+                    },
+                    {
+                        "rtn": 4.079474351585014
+                    },
+                    {
+                        "rtn": -0.007561387865079021
+                    },
+                    {
+                        "rtn": 0.5774272859897369
+                    },
+                    {
+                        "rtn": -6.099736247298768
+                    },
+                    {
+                        "rtn": 0.3077090799118515
+                    },
+                    {
+                        "rtn": 2.9771572891718865
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 39.647455945356015,
+            "periodReturn": 39.5785043337321
+        },
+        {
+            "id": "DLINKINDIA",
+            "name": "D-Link (India) Ltd.",
+            "code": "DLINKINDIA",
+            "fno": "false",
+            "funda": "true",
+            "scId": "158",
+            "ecId": "1931",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Communication_Equipments",
+            "pts": 49.63757290151176,
+            "price": 501.6499938964844,
+            "priceChange": 2.189855394919162,
+            "techStrength": 0.722,
+            "techPosi": "DLINKINDIA is more bullish than 56.56 % of stocks ",
+            "eqVals": {
+                "ma1": 484.16083,
+                "ma2": 468.29315,
+                "rsi": 65.51552279383787,
+                "macd": 11.273994652833437,
+                "signal": 9.383668662202918,
+                "st": 458.16541155896505,
+                "price": 501.6499938964844,
+                "priceChange": 2.189855394919162,
+                "techStrength": 0.722,
+                "techPosi": "DLINKINDIA is more bullish than 56.56 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 2.189855394919162
+                    },
+                    {
+                        "rtn": -2.103902294091707
+                    },
+                    {
+                        "rtn": 1.6624454550494172
+                    },
+                    {
+                        "rtn": 0.6427247209254379
+                    },
+                    {
+                        "rtn": 2.6387447337205496
+                    },
+                    {
+                        "rtn": -0.5104723710215081
+                    },
+                    {
+                        "rtn": 1.74899295876614
+                    },
+                    {
+                        "rtn": -0.7782881230450278
+                    },
+                    {
+                        "rtn": 2.5121280639319408
+                    },
+                    {
+                        "rtn": -0.021560009097705394
+                    },
+                    {
+                        "rtn": -1.6537661176522045
+                    },
+                    {
+                        "rtn": 0.8984878767300095
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 27.342830565444647,
+            "periodReturn": 27.27387895382073
+        },
+        {
+            "id": "HFCL",
+            "name": "HFCL Ltd.",
+            "code": "HFCL",
+            "fno": "false",
+            "funda": "true",
+            "scId": "177",
+            "ecId": "2165",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Communication_Equipments",
+            "pts": 45.23324853377933,
+            "price": 171.86000061035156,
+            "priceChange": 4.997561278471794,
+            "techStrength": 0.5,
+            "techPosi": "HFCL is more bullish than 31.01 % of stocks ",
+            "eqVals": {
+                "ma1": 172.63998,
+                "ma2": 152.65097,
+                "rsi": 58.168208265783804,
+                "macd": 12.733842239579303,
+                "signal": 16.290761565467186,
+                "st": 198.24911618232966,
+                "price": 171.86000061035156,
+                "priceChange": 4.997561278471794,
+                "techStrength": 0.5,
+                "techPosi": "HFCL is more bullish than 31.01 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 4.997561278471794
+                    },
+                    {
+                        "rtn": -3.2109324788435547
+                    },
+                    {
+                        "rtn": -4.999715842439733
+                    },
+                    {
+                        "rtn": 0.07870882863419465
+                    },
+                    {
+                        "rtn": -4.999199286407306
+                    },
+                    {
+                        "rtn": -4.99797341790136
+                    },
+                    {
+                        "rtn": -1.1684478151872275
+                    },
+                    {
+                        "rtn": 4.985785563325179
+                    },
+                    {
+                        "rtn": 4.202328128926556
+                    },
+                    {
+                        "rtn": 1.3004314249982278
+                    },
+                    {
+                        "rtn": 3.4613640385466917
+                    },
+                    {
+                        "rtn": 7.490726136334165
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 130.84644672422166,
+            "periodReturn": 130.77749511259776
+        },
+        {
+            "id": "TATACOMM",
+            "name": "Tata Communications Ltd.",
+            "code": "TATACOMM",
+            "fno": "false",
+            "funda": "true",
+            "scId": "178",
+            "ecId": "190",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Telecom_Services",
+            "pts": 43.16214593797707,
+            "price": 1966.5999755859375,
+            "priceChange": 0.030517578125,
+            "techStrength": 0.6719999999999999,
+            "techPosi": "TATACOMM is more bullish than 23.83 % of stocks ",
+            "eqVals": {
+                "ma1": 1931.3527,
+                "ma2": 1808.7236,
+                "rsi": 63.73984476190046,
+                "macd": 87.20629481216679,
+                "signal": 95.17769126751743,
+                "st": 1746.9189802190192,
+                "price": 1966.5999755859375,
+                "priceChange": 0.030517578125,
+                "techStrength": 0.6719999999999999,
+                "techPosi": "TATACOMM is more bullish than 23.83 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 0.030517578125
+                    },
+                    {
+                        "rtn": -0.6368126827761724
+                    },
+                    {
+                        "rtn": 0.14171103799056875
+                    },
+                    {
+                        "rtn": 3.6729981218671366
+                    },
+                    {
+                        "rtn": -3.3912862573960303
+                    },
+                    {
+                        "rtn": -0.6646897164967892
+                    },
+                    {
+                        "rtn": 2.6994918839684945
+                    },
+                    {
+                        "rtn": 1.4426608280570892
+                    },
+                    {
+                        "rtn": -1.8737786920378874
+                    },
+                    {
+                        "rtn": -1.139950351860687
+                    },
+                    {
+                        "rtn": -0.0813574496999979
+                    },
+                    {
+                        "rtn": -2.1153750692573285
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 35.76204314449755,
+            "periodReturn": 35.69309153287363
+        },
+        {
+            "id": "SHYAMTEL",
+            "name": "Shyam Telecom",
+            "code": "SHYAMTEL",
+            "fno": "false",
+            "funda": "true",
+            "scId": "177",
+            "ecId": "1426",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Communication_Equipments",
+            "pts": 43.063250790638115,
+            "price": 14.90999984741211,
+            "priceChange": -1.9723878368340368,
+            "techStrength": 0.26126126126126126,
+            "techPosi": "SHYAMTEL is more bearish than 0.798 % of stocks ",
+            "eqVals": {
+                "ma1": 16.796017,
+                "ma2": 17.44706,
+                "rsi": 26.01263877590273,
+                "macd": -0.9188783461323915,
+                "signal": -0.33631447929950264,
+                "st": 16.127082689996982,
+                "price": 14.90999984741211,
+                "priceChange": -1.9723878368340368,
+                "techStrength": 0.26126126126126126,
+                "techPosi": "SHYAMTEL is more bearish than 0.798 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": -1.9723878368340368
+                    },
+                    {
+                        "rtn": -1.997425325213993
+                    },
+                    {
+                        "rtn": -1.9583036477349962
+                    },
+                    {
+                        "rtn": -1.981422305775511
+                    },
+                    {
+                        "rtn": -1.94292476117319
+                    },
+                    {
+                        "rtn": -1.964285349359301
+                    },
+                    {
+                        "rtn": -1.983664904872931
+                    },
+                    {
+                        "rtn": -1.9450810153991127
+                    },
+                    {
+                        "rtn": -1.962985883159652
+                    },
+                    {
+                        "rtn": -1.9791126980866431
+                    },
+                    {
+                        "rtn": -1.9935287851905064
+                    },
+                    {
+                        "rtn": -1.9545738682964202
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 49.76774526033986,
+            "periodReturn": 49.69879364871594
+        },
+        {
+            "id": "GTL",
+            "name": "GTL Ltd.",
+            "code": "GTL",
+            "fno": "false",
+            "funda": "true",
+            "scId": "178",
+            "ecId": "780",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Telecom_Services",
+            "pts": 30.70102935476401,
+            "price": 8.40999984741211,
+            "priceChange": 2.56097613453228,
+            "techStrength": 0.6839999999999999,
+            "techPosi": "GTL is more bullish than 50.91 % of stocks ",
+            "eqVals": {
+                "ma1": 8.036124,
+                "ma2": 7.6985693,
+                "rsi": 62.85259699855015,
+                "macd": 0.266252840269372,
+                "signal": 0.1904886342563467,
+                "st": 7.564891627477486,
+                "price": 8.40999984741211,
+                "priceChange": 2.56097613453228,
+                "techStrength": 0.6839999999999999,
+                "techPosi": "GTL is more bullish than 50.91 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 2.56097613453228
+                    },
+                    {
+                        "rtn": -1.2048238454422584
+                    },
+                    {
+                        "rtn": -3.7122934927215954
+                    },
+                    {
+                        "rtn": -2.26757161207728
+                    },
+                    {
+                        "rtn": 8.353800034655633
+                    },
+                    {
+                        "rtn": 8.388816181630379
+                    },
+                    {
+                        "rtn": 1.3495328411464271
+                    },
+                    {
+                        "rtn": 0.2706357413782323
+                    },
+                    {
+                        "rtn": 0.1354979930841814
+                    },
+                    {
+                        "rtn": -1.7310267706912397
+                    },
+                    {
+                        "rtn": 0.13333638509114584
+                    },
+                    {
+                        "rtn": -0.7936500427734288
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 23.92756497557251,
+            "periodReturn": 23.858613363948592
+        },
+        {
+            "id": "FROG",
+            "name": "Frog Cellsat Ltd.",
+            "code": "FROG",
+            "fno": "false",
+            "funda": "true",
+            "scId": "177",
+            "ecId": "4402",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Communication_Equipments",
+            "pts": 28.17735864419853,
+            "price": 177.9499969482422,
+            "priceChange": 3.3691566990385233,
+            "techStrength": 0.6745098039215687,
+            "techPosi": "FROG is more bullish than 81.99 % of stocks ",
+            "eqVals": {
+                "ma1": 170.18,
+                "ma2": 168.11455,
+                "rsi": 56.66204455512779,
+                "macd": 1.1674533703055374,
+                "signal": 0.24443843075128047,
+                "st": 184.70955318725893,
+                "price": 177.9499969482422,
+                "priceChange": 3.3691566990385233,
+                "techStrength": 0.6745098039215687,
+                "techPosi": "FROG is more bullish than 81.99 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 3.3691566990385233
+                    },
+                    {
+                        "rtn": -1.0632218985721982
+                    },
+                    {
+                        "rtn": 4.598733763630864
+                    },
+                    {
+                        "rtn": -2.0318002863584
+                    },
+                    {
+                        "rtn": -1.536673785665374
+                    },
+                    {
+                        "rtn": 1.5606559769475468
+                    },
+                    {
+                        "rtn": 3.6946583522185112
+                    },
+                    {
+                        "rtn": -0.7274913431000068
+                    },
+                    {
+                        "rtn": 1.7581682525703197
+                    },
+                    {
+                        "rtn": -1.0680500059880385
+                    },
+                    {
+                        "rtn": 3.01792075426481
+                    },
+                    {
+                        "rtn": 4.983500364196576
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 31.30051278289397,
+            "periodReturn": 31.231561171270055
+        },
+        {
+            "id": "MTNL",
+            "name": "Mahanagar Telephone Nigam Ltd.",
+            "code": "MTNL",
+            "fno": "false",
+            "funda": "true",
+            "scId": "178",
+            "ecId": "62",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Telecom_Services",
+            "pts": 24.863497312814918,
+            "price": 30.84000015258789,
+            "priceChange": 7.9831958308136315,
+            "techStrength": 0.6274509803921569,
+            "techPosi": "MTNL is more bullish than 79.13 % of stocks ",
+            "eqVals": {
+                "ma1": 29.980062,
+                "ma2": 29.921024,
+                "rsi": 54.836663065668276,
+                "macd": 0.0029644607695615832,
+                "signal": 0.048650206888604317,
+                "st": 28.53363695036029,
+                "price": 30.84000015258789,
+                "priceChange": 7.9831958308136315,
+                "techStrength": 0.6274509803921569,
+                "techPosi": "MTNL is more bullish than 79.13 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 7.9831958308136315
+                    },
+                    {
+                        "rtn": -2.0240142720716716
+                    },
+                    {
+                        "rtn": -3.2846708399674975
+                    },
+                    {
+                        "rtn": 1.2428583345495858
+                    },
+                    {
+                        "rtn": -3.967740458826865
+                    },
+                    {
+                        "rtn": 0.6493531425117677
+                    },
+                    {
+                        "rtn": 1.0498677809387533
+                    },
+                    {
+                        "rtn": 0.26315764707211003
+                    },
+                    {
+                        "rtn": 1.945003117510842
+                    },
+                    {
+                        "rtn": -1.2255741394108195
+                    },
+                    {
+                        "rtn": -2.5185624688100456
+                    },
+                    {
+                        "rtn": 1.9420677053534279
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 18.32048593903148,
+            "periodReturn": 18.251534327407565
+        },
+        {
+            "id": "DIGISPICE",
+            "name": "DiGiSPICE Technologies Ltd.",
+            "code": "DIGISPICE",
+            "fno": "false",
+            "funda": "true",
+            "scId": "132",
+            "ecId": "2444",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Telecom_Services",
+            "pts": 21.319725036621094,
+            "price": 20.3799991607666,
+            "priceChange": 0.2952729667494311,
+            "techStrength": 0.614,
+            "techPosi": "DIGISPICE is more bullish than 3.56 % of stocks ",
+            "eqVals": {
+                "ma1": 20.157534,
+                "ma2": 19.862333,
+                "rsi": 58.46127039164847,
+                "macd": 0.19943655860422993,
+                "signal": 0.17192334212873478,
+                "st": 18.42072324697677,
+                "price": 20.3799991607666,
+                "priceChange": 0.2952729667494311,
+                "techStrength": 0.614,
+                "techPosi": "DIGISPICE is more bullish than 3.56 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 0.2952729667494311
+                    },
+                    {
+                        "rtn": -0.09833066673368332
+                    },
+                    {
+                        "rtn": -0.586505069669501
+                    },
+                    {
+                        "rtn": 1.0869531415134905
+                    },
+                    {
+                        "rtn": -0.3937004178520325
+                    },
+                    {
+                        "rtn": 1.2961128404976336
+                    },
+                    {
+                        "rtn": -0.6438883837369955
+                    },
+                    {
+                        "rtn": 1.5593631105518695
+                    },
+                    {
+                        "rtn": 0.20160790257601657
+                    },
+                    {
+                        "rtn": 0.506587551313138
+                    },
+                    {
+                        "rtn": -1.398604796419596
+                    },
+                    {
+                        "rtn": 2.09076917211151
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 15.601826672659069,
+            "periodReturn": 15.532875061035153
+        },
+        {
+            "id": "BIRLACABLE",
+            "name": "Birla Cable Ltd.",
+            "code": "BIRLACABLE",
+            "fno": "false",
+            "funda": "true",
+            "scId": "124",
+            "ecId": "1345",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Communication_Equipments",
+            "pts": 15.186327282464383,
+            "price": 194.1300048828125,
+            "priceChange": 4.997569107938127,
+            "techStrength": 0.484,
+            "techPosi": "BIRLACABLE is more bullish than 8.57 % of stocks ",
+            "eqVals": {
+                "ma1": 197.14142,
+                "ma2": 181.16623,
+                "rsi": 53.73917083835776,
+                "macd": 11.026850482924146,
+                "signal": 13.190531865226086,
+                "st": 223.69916879821548,
+                "price": 194.1300048828125,
+                "priceChange": 4.997569107938127,
+                "techStrength": 0.484,
+                "techPosi": "BIRLACABLE is more bullish than 8.57 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 4.997569107938127
+                    },
+                    {
+                        "rtn": -4.459489816185687
+                    },
+                    {
+                        "rtn": -4.99754188919692
+                    },
+                    {
+                        "rtn": -4.235818476441057
+                    },
+                    {
+                        "rtn": -4.997761271842934
+                    },
+                    {
+                        "rtn": -4.998302420817837
+                    },
+                    {
+                        "rtn": 4.998657055293088
+                    },
+                    {
+                        "rtn": 4.995793804637535
+                    },
+                    {
+                        "rtn": 4.99999625275329
+                    },
+                    {
+                        "rtn": 4.997164797279464
+                    },
+                    {
+                        "rtn": 4.997840238456182
+                    },
+                    {
+                        "rtn": 4.99743778306598
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 40.81426074148145,
+            "periodReturn": 40.74530912985753
+        },
+        {
+            "id": "CORDSCABLE",
+            "name": "Cords Cable Industries",
+            "code": "CORDSCABLE",
+            "fno": "false",
+            "funda": "true",
+            "scId": "124",
+            "ecId": "1324",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Communication_Equipments",
+            "pts": 13.077015750388437,
+            "price": 211.88999938964844,
+            "priceChange": 4.953192347432704,
+            "techStrength": 0.5812749003984063,
+            "techPosi": "CORDSCABLE is more bullish than 62.18 % of stocks ",
+            "eqVals": {
+                "ma1": 212.88379,
+                "ma2": 205.02383,
+                "rsi": 52.15734329675491,
+                "macd": 3.994091479103332,
+                "signal": 7.502420487504546,
+                "st": 198.10454342799477,
+                "price": 211.88999938964844,
+                "priceChange": 4.953192347432704,
+                "techStrength": 0.5812749003984063,
+                "techPosi": "CORDSCABLE is more bullish than 62.18 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 4.953192347432704
+                    },
+                    {
+                        "rtn": -0.8106484970572067
+                    },
+                    {
+                        "rtn": -2.807757107355586
+                    },
+                    {
+                        "rtn": -1.8880294387045964
+                    },
+                    {
+                        "rtn": -2.831520586584338
+                    },
+                    {
+                        "rtn": 0.5308698417788322
+                    },
+                    {
+                        "rtn": 0.3628482829797502
+                    },
+                    {
+                        "rtn": -2.385218895969385
+                    },
+                    {
+                        "rtn": -2.1368129076056936
+                    },
+                    {
+                        "rtn": -4.997911854699179
+                    },
+                    {
+                        "rtn": -1.5108005201193566
+                    },
+                    {
+                        "rtn": 6.116584889597134
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 38.1890216133503,
+            "periodReturn": 38.12007000172638
+        },
+        {
+            "id": "NDLVENTURE",
+            "name": "NDL Ventures Ltd.",
+            "code": "NDLVENTURE",
+            "fno": "false",
+            "funda": "true",
+            "scId": "133",
+            "ecId": "608",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Communication_Equipments",
+            "pts": 9.912588806871156,
+            "price": 129.5800018310547,
+            "priceChange": 2.281158208190148,
+            "techStrength": 0.6442307692307692,
+            "techPosi": "NDLVENTURE is more bullish than 74.58 % of stocks ",
+            "eqVals": {
+                "ma1": 128.84995,
+                "ma2": 126.02616,
+                "rsi": 54.87985736726674,
+                "macd": 1.742270146721765,
+                "signal": 2.2556319712268236,
+                "st": 115.09032053820883,
+                "price": 129.5800018310547,
+                "priceChange": 2.281158208190148,
+                "techStrength": 0.6442307692307692,
+                "techPosi": "NDLVENTURE is more bullish than 74.58 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 2.281158208190148
+                    },
+                    {
+                        "rtn": -1.108421014893488
+                    },
+                    {
+                        "rtn": -1.476580932838562
+                    },
+                    {
+                        "rtn": 0.8531809245361531
+                    },
+                    {
+                        "rtn": -0.6166677546478851
+                    },
+                    {
+                        "rtn": -1.1204277857438014
+                    },
+                    {
+                        "rtn": 0.6752528963830865
+                    },
+                    {
+                        "rtn": -2.411252152016122
+                    },
+                    {
+                        "rtn": 2.1572766516950304
+                    },
+                    {
+                        "rtn": -0.7516554875855375
+                    },
+                    {
+                        "rtn": 1.0355984176088016
+                    },
+                    {
+                        "rtn": -0.3516333038624026
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 13.110914301194441,
+            "periodReturn": 13.041962689570525
+        },
+        {
+            "id": "AVANTEL",
+            "name": "Avantel Ltd.",
+            "code": "AVANTEL",
+            "fno": "false",
+            "funda": "true",
+            "scId": "177",
+            "ecId": "6095",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Communication_Equipments",
+            "pts": 7.137200247210405,
+            "price": 166.52999877929688,
+            "priceChange": 5.9620736185097,
+            "techStrength": 0.6290836653386453,
+            "techPosi": "AVANTEL is more bullish than 47.76 % of stocks ",
+            "eqVals": {
+                "ma1": 166.29875,
+                "ma2": 162.11345,
+                "rsi": 52.32347715716229,
+                "macd": 2.337831856332457,
+                "signal": 4.121156177878439,
+                "st": 156.77130128843916,
+                "price": 166.52999877929688,
+                "priceChange": 5.9620736185097,
+                "techStrength": 0.6290836653386453,
+                "techPosi": "AVANTEL is more bullish than 47.76 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 5.9620736185097
+                    },
+                    {
+                        "rtn": -2.96968421457228
+                    },
+                    {
+                        "rtn": -3.5778037026409115
+                    },
+                    {
+                        "rtn": 4.354845284013297
+                    },
+                    {
+                        "rtn": -5.278334171965131
+                    },
+                    {
+                        "rtn": -3.4431804310191763
+                    },
+                    {
+                        "rtn": 0.17074732895196781
+                    },
+                    {
+                        "rtn": -0.24980268135058736
+                    },
+                    {
+                        "rtn": 1.5743011763372536
+                    },
+                    {
+                        "rtn": -2.2381334487649482
+                    },
+                    {
+                        "rtn": -1.8644509638658369
+                    },
+                    {
+                        "rtn": 2.2168173547215826
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": 15.754952847675941,
+            "periodReturn": 15.686001236052025
+        }
+    ],
+    "upEqList": [
+        {
+            "id": "BHARTIHEXA",
+            "name": "Bharti Hexacom Ltd.",
+            "code": "BHARTIHEXA",
+            "fno": "false",
+            "funda": "true",
+            "scId": "178",
+            "ecId": "5446",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Telecom_Services",
+            "pts": -16.046782502802834,
+            "price": 1477.4000244140625,
+            "priceChange": -0.07439807818312479,
+            "techStrength": 0.354,
+            "techPosi": "BHARTIHEXA is more bearish than 20.94 % of stocks ",
+            "eqVals": {
+                "ma1": 1490.3364,
+                "ma2": 1512.5813,
+                "rsi": 43.714036487792946,
+                "macd": -17.266654884344916,
+                "signal": -12.331412657289054,
+                "st": 1573.6496918405173,
+                "price": 1477.4000244140625,
+                "priceChange": -0.07439807818312479,
+                "techStrength": 0.354,
+                "techPosi": "BHARTIHEXA is more bearish than 20.94 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": -0.07439807818312479
+                    },
+                    {
+                        "rtn": 1.4617107838217793
+                    },
+                    {
+                        "rtn": -1.2603399539808668
+                    },
+                    {
+                        "rtn": 1.443497339508339
+                    },
+                    {
+                        "rtn": -1.7358967356889565
+                    },
+                    {
+                        "rtn": -0.5908848814615586
+                    },
+                    {
+                        "rtn": -0.4611617811072484
+                    },
+                    {
+                        "rtn": 0.44307033392246026
+                    },
+                    {
+                        "rtn": -1.6246187015723386
+                    },
+                    {
+                        "rtn": 1.2504146554246072
+                    },
+                    {
+                        "rtn": -2.509778357235984
+                    },
+                    {
+                        "rtn": -1.540436456996149
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": -2.855023392380131,
+            "periodReturn": -2.923975004004047
+        },
+        {
+            "id": "SARTELE",
+            "name": "Sar Televenture Ltd.",
+            "code": "SARTELE",
+            "fno": "false",
+            "funda": "true",
+            "scId": "177",
+            "ecId": "5066",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Communication_Equipments",
+            "pts": -15.030947255113027,
+            "price": 111.25,
+            "priceChange": 3.4402574088831828,
+            "techStrength": 0.2529411764705882,
+            "techPosi": "SARTELE is more bearish than 80.79 % of stocks ",
+            "eqVals": {
+                "ma1": 124.35236,
+                "ma2": 138.40608,
+                "rsi": 21.78337385865801,
+                "macd": -10.198568419762069,
+                "signal": -8.362310642544072,
+                "st": 131.09615095574645,
+                "price": 111.25,
+                "priceChange": 3.4402574088831828,
+                "techStrength": 0.2529411764705882,
+                "techPosi": "SARTELE is more bearish than 80.79 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 3.4402574088831828
+                    },
+                    {
+                        "rtn": -7.244496867243531
+                    },
+                    {
+                        "rtn": -2.6856941138533603
+                    },
+                    {
+                        "rtn": -3.0512611500744096
+                    },
+                    {
+                        "rtn": -5.6792028799412035
+                    },
+                    {
+                        "rtn": -0.03836060561293973
+                    },
+                    {
+                        "rtn": 1.2427231871966018
+                    },
+                    {
+                        "rtn": -0.7707129094412332
+                    },
+                    {
+                        "rtn": -3.7462929802893354
+                    },
+                    {
+                        "rtn": -2.2125519889113936
+                    },
+                    {
+                        "rtn": -1.9559031867860195
+                    },
+                    {
+                        "rtn": 0.9332397869903765
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": -40.05483740882819,
+            "periodReturn": -40.12378902045211
+        },
+        {
+            "id": "KAVDEFENCE",
+            "name": "Kavveri Defence & Wireless Technologies Limited",
+            "code": "KAVDEFENCE",
+            "fno": "false",
+            "funda": "true",
+            "scId": "177",
+            "ecId": "1322",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Telecom_Services",
+            "pts": -12.76197314136364,
+            "price": 60.43000030517578,
+            "priceChange": 2.267727448176702,
+            "techStrength": 0.41600000000000004,
+            "techPosi": "KAVDEFENCE is more bearish than 11.20 % of stocks ",
+            "eqVals": {
+                "ma1": 61.168713,
+                "ma2": 62.4222,
+                "rsi": 45.69752152365149,
+                "macd": -1.0526845410570402,
+                "signal": -0.7165261362418952,
+                "st": 69.03010279947468,
+                "price": 60.43000030517578,
+                "priceChange": 2.267727448176702,
+                "techStrength": 0.41600000000000004,
+                "techPosi": "KAVDEFENCE is more bearish than 11.20 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 2.267727448176702
+                    },
+                    {
+                        "rtn": -0.10143934360638052
+                    },
+                    {
+                        "rtn": -2.134343365553977
+                    },
+                    {
+                        "rtn": 1.1040479439432203
+                    },
+                    {
+                        "rtn": -3.127532545469449
+                    },
+                    {
+                        "rtn": -2.5734150050339673
+                    },
+                    {
+                        "rtn": 4.989222990515169
+                    },
+                    {
+                        "rtn": -1.726661621000906
+                    },
+                    {
+                        "rtn": 1.4375395328886846
+                    },
+                    {
+                        "rtn": -4.992151125727929
+                    },
+                    {
+                        "rtn": -2.345550383651038
+                    },
+                    {
+                        "rtn": -2.291789590082336
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": -3.1346359181281565,
+            "periodReturn": -3.203587529752072
+        },
+        {
+            "id": "RCOM",
+            "name": "Reliance Communications Ltd.",
+            "code": "RCOM",
+            "fno": "false",
+            "funda": "true",
+            "scId": "178",
+            "ecId": "6",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Telecom_Services",
+            "pts": -7.237113180848741,
+            "price": 0.9300000071525574,
+            "priceChange": 1.086955465418649,
+            "techStrength": 0.372,
+            "techPosi": "RCOM is more bearish than 14.16 % of stocks ",
+            "eqVals": {
+                "ma1": 0.9339566,
+                "ma2": 0.93484557,
+                "rsi": 49.00507840362203,
+                "macd": 8.357049452294429E-4,
+                "signal": -0.0023026701578155845,
+                "st": 0.9026473334205831,
+                "price": 0.9300000071525574,
+                "priceChange": 1.086955465418649,
+                "techStrength": 0.372,
+                "techPosi": "RCOM is more bearish than 14.16 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 1.086955465418649
+                    },
+                    {
+                        "rtn": -2.127657550770317
+                    },
+                    {
+                        "rtn": -3.0927866092331895
+                    },
+                    {
+                        "rtn": -1.020407170268328
+                    },
+                    {
+                        "rtn": 1.0309268214748768
+                    },
+                    {
+                        "rtn": 3.1914926670751487
+                    },
+                    {
+                        "rtn": 4.444446946367871
+                    },
+                    {
+                        "rtn": 0.0
+                    },
+                    {
+                        "rtn": 0.0
+                    },
+                    {
+                        "rtn": -1.0989065691980104
+                    },
+                    {
+                        "rtn": 1.111116703645831
+                    },
+                    {
+                        "rtn": 0.0
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": -4.054758991205218,
+            "periodReturn": -4.123710602829134
+        },
+        {
+            "id": "INDUSTOWER",
+            "name": "Indus Towers Ltd.",
+            "code": "INDUSTOWER",
+            "fno": "true",
+            "funda": "true",
+            "scId": "177",
+            "ecId": "2350",
+            "ccId": "in",
+            "sector": "Communication",
+            "industry": "Telecom_Services",
+            "pts": -2.4716658249738437,
+            "price": 421.20001220703125,
+            "priceChange": 1.9854751106613198,
+            "techStrength": 0.45,
+            "techPosi": "INDUSTOWER is more bearish than 88.67 % of stocks ",
+            "eqVals": {
+                "ma1": 423.54422,
+                "ma2": 423.91162,
+                "rsi": 47.745308894273776,
+                "macd": -0.5359596626644247,
+                "signal": 1.594869803682942,
+                "st": 405.40125747922554,
+                "price": 421.20001220703125,
+                "priceChange": 1.9854751106613198,
+                "techStrength": 0.45,
+                "techPosi": "INDUSTOWER is more bearish than 88.67 % of stocks ",
+                "rtnList": [
+                    {
+                        "rtn": 1.9854751106613198
+                    },
+                    {
+                        "rtn": -0.036304949461515974
+                    },
+                    {
+                        "rtn": -1.4902241513962955
+                    },
+                    {
+                        "rtn": -1.5839493363080124
+                    },
+                    {
+                        "rtn": -0.8146165599255788
+                    },
+                    {
+                        "rtn": -0.18585626387718499
+                    },
+                    {
+                        "rtn": 0.29123950709419905
+                    },
+                    {
+                        "rtn": 0.01165520476715653
+                    },
+                    {
+                        "rtn": -0.5330903338677416
+                    },
+                    {
+                        "rtn": -2.3979133307660967
+                    },
+                    {
+                        "rtn": 1.3295100958094557
+                    },
+                    {
+                        "rtn": 0.6924408540103866
+                    }
+                ],
+                "relRtn": 0.0
+            },
+            "vsNifty": -4.647706638114521,
+            "periodReturn": -4.716658249738437
+        }
+    ]
+}
