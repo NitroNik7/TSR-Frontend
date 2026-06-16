@@ -1,9 +1,0 @@
-
-ALL:
-https://www.tsrbt1.com/rt/djs?id=3m&type=industry&cat=SecRot&action=all
-
-Sector:
-https://www.tsrbt1.com/rt/djs?id=3m&type=industry&cat=SecRot&action=one&code=DEFENCE
-
-STOCK:
-https://www.tsrbt1.com/rt/djs?freq=Q&type=eq&cat=EqSmry&code=DATAPATTNS&action=eq

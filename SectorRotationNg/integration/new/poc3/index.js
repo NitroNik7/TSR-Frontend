@@ -89,7 +89,6 @@ var miSrn = (function () {  // chart init Params
             // let url = `https://www.tsrbt1.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=all`;
             // let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/secRot${duration}${sectorType}.json`;
             // let url = `http://127.0.0.1:5500/Temp/secRotData/secRot${duration}${sectorType}.json`;
-            
             sectorType = sectorType.toUpperCase();
             duration = duration.toUpperCase();
 
@@ -1188,7 +1187,6 @@ var miSrn = (function () {  // chart init Params
                         let duration = durationSelect.value;
                         let freq = miSrnUtils.gf(duration);
                         // let url = `https://www.tsrbt1.com/rt/djs?freq=${duration}&type=eq&cat=EqSmry&code=${stockCode}&action=eq`;
-                        // let url = `http://127.0.0.1:5500/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${freq}_${stockCode}.json`;
                         let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${freq}_${stockCode}.json`;
 
 
@@ -1240,251 +1238,389 @@ var miSrn = (function () {  // chart init Params
 
 function paintStockSection(secType, sector, stockType, secId, stockCode, stock) {
 
-    let stockSectionModal   = document.getElementById("tsrSecRotStockSectionModal");
+    let stockSectionModal = document.getElementById(stockSectionModalId);
     stockSectionModal.style.display = "block";
 
-    let stockSectionHeader  = document.getElementById("tsrSecRotStockSectionHeader");
-    let stockSectionBody    = document.getElementById("tsrSecRotStockSectionBody");
+    let stockSectionHeader = document.getElementById(stockSectionHeaderId);
+    let stockSectionBody = document.getElementById(stockSectionBodyId);
 
-    let techUrl  = mintJsUtil.getRootUrl() + '/Stock/' + stock["id"] + "/TechnicalAnalysis";
-    let fundaUrl = mintJsUtil.getRootUrl() + '/Stock/' + stock["id"] + "/FundamentalAnalysis";
-    
-    // Configurable paths or parameters for Buy/Sell workflow routes
-    let buyUrl   = mintJsUtil.getRootUrl() + '/Stock/' + stock["id"] + "/BuyScreen";
-    let sellUrl  = mintJsUtil.getRootUrl() + '/Stock/' + stock["id"] + "/SellScreen";
+    const techUrl =
+        mintJsUtil.getRootUrl() +
+        "/Stock/" +
+        stock.id +
+        "/TechnicalAnalysis";
 
-    /* ── helpers ── */
-    const fmt = (v, suffix = "") => (v == null ? "—" : (parseFloat(v) % 1 === 0 ? parseFloat(v).toFixed(0) : parseFloat(v).toFixed(2)) + suffix);
-    const signCls = v => (parseFloat(v) >= 0 ? "tsrSecRotPos" : "tsrSecRotNeg");
+    const fundaUrl =
+        mintJsUtil.getRootUrl() +
+        "/Stock/" +
+        stock.id +
+        "/FundamentalAnalysis";
 
-    // ╔══════════════════════════════════════════════════════╗
-    // ║                    HEADER                           ║
-    // ╚══════════════════════════════════════════════════════╝
-    let headerHtml = `
-    <div class="tsrSecRotHeader">
-        <div class="tsrSecRotHeaderInner">
+    // ==================================================
+    // HEADER
+    // ==================================================
 
-            <div class="tsrSecRotTitleGroup">
-                <span class="tsrSecRotTickerBadge">${stock["id"]}</span>
-                <div>
-                    <div class="tsrSecRotStockName">${stock["name"]}</div>
-                    <div class="tsrSecRotHeaderSub">
-                        <span class="tsrSecRotPriceTag">
-                            <i class="fas fa-rupee-sign me-1"></i>${fmt(stock["price"])}
-                        </span>
-                        <span class="tsrSecRotChangeTag ${signCls(stock["priceChange"])}">
-                            <i class="fas fa-${parseFloat(stock["priceChange"]) >= 0 ? 'caret-up' : 'caret-down'} me-1"></i>${fmt(stock["priceChange"])}%
-                        </span>
-                    </div>
-                </div>
-            </div>
+    stockSectionHeader.innerHTML = `
+    <div class="stock-header">
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+
             <div>
-            <a href="${buyUrl}" class="btn btn-success tsrSecRotActionBtn tsrSecRotBtnBuy">
-                    <i class="fas fa-shopping-cart me-1"></i>Buy
-                </a>
-                <a href="${sellUrl}" class="btn btn-danger tsrSecRotActionBtn tsrSecRotBtnSell">
-                    <i class="fas fa-gavel me-1"></i>Sell
-                </a>
-            </div>
-
-            <div class="tsrSecRotHeaderActions">
-                
-                
-
-                <span class="tsrSecRotViewLabel">View Analysis</span>
-                <a href="${techUrl}" target="_blank" class="tsrSecRotActionBtn tsrSecRotBtnTech" oncontextmenu="return false;">
-                    <i class="fas fa-chart-line me-1"></i>Technical
-                </a>
-                <a href="${fundaUrl}" target="_blank" class="tsrSecRotActionBtn tsrSecRotBtnFunda" oncontextmenu="return false;">
-                    <i class="fas fa-university me-1"></i>Fundamental
-                </a>
-            </div>
-
-        </div>
-
-        <div class="tsrSecRotHeaderRule"></div>
-    </div>`;
-
-    // ╔══════════════════════════════════════════════════════╗
-    // ║                     BODY                            ║
-    // ╚══════════════════════════════════════════════════════╝
-    let bodyHtml = `<div class="tsrSecRotBody">`;
-
-    /* ── 1. HIGHLIGHTS ── */
-    bodyHtml += `
-    <section class="tsrSecRotSection">
-        <div class="tsrSecRotSectionHd">
-            <span class="tsrSecRotSectionIcon tsrSecRotIconHl"><i class="fas fa-bolt"></i></span>
-            <h6 class="tsrSecRotSectionTitle">Highlights</h6>
-        </div>
-        <div class="tsrSecRotHighlightsGrid">
-
-            <div class="tsrSecRotHlCard tsrSecRotHlNifty">
-                <span class="tsrSecRotHlLabel">vs NIFTY</span>
-                <span class="tsrSecRotHlValue ${signCls(stock["vsNifty"])}">${fmt(stock["vsNifty"])}%</span>
-                <span class="tsrSecRotHlIcon"><i class="fas fa-chart-area"></i></span>
-            </div>`;
-
-    if (jsu.isNotNull(stock.vsIdx) && stock.vsIdx) {
-        bodyHtml += `
-            <div class="tsrSecRotHlCard tsrSecRotHlSector">
-                <span class="tsrSecRotHlLabel">vs ${sector["name"]}</span>
-                <span class="tsrSecRotHlValue ${signCls(stock["vsIdx"])}">${fmt(stock["vsIdx"])}%</span>
-                <span class="tsrSecRotHlIcon"><i class="fas fa-building"></i></span>
-            </div>`;
-    }
-
-    bodyHtml += `
-            <div class="tsrSecRotHlCard tsrSecRotHlPrice">
-                <span class="tsrSecRotHlLabel">Current Price</span>
-                <span class="tsrSecRotHlValue tsrSecRotNeutral">₹${fmt(stock["price"])}</span>
-                <span class="tsrSecRotHlIcon"><i class="fas fa-rupee-sign"></i></span>
-            </div>
-
-            <div class="tsrSecRotHlCard tsrSecRotHlChange">
-                <span class="tsrSecRotHlLabel">Price Change</span>
-                <span class="tsrSecRotHlValue ${signCls(stock["priceChange"])}">${fmt(stock["priceChange"])}%</span>
-                <span class="tsrSecRotHlIcon"><i class="fas fa-percentage"></i></span>
-            </div>
-
-        </div>
-    </section>`;
-
-    /* ── 2. TSR METRICS – pill row ── */
-    const tsrMetrics = [
-        { label: "Technical",    val: stock["tsrStr"]["techStr"],  clr: stock["tsrStr"]["techClr"],  icon: "fa-chart-bar"    },
-        { label: "Value",        val: stock["tsrStr"]["valStr"],   clr: stock["tsrStr"]["valClr"],   icon: "fa-coins"        },
-        { label: "Stability",    val: stock["tsrStr"]["stabStr"],  clr: stock["tsrStr"]["stabClr"],  icon: "fa-shield-alt"   },
-        { label: "Profitability",val: stock["tsrStr"]["pftStr"],   clr: stock["tsrStr"]["pftClr"],   icon: "fa-piggy-bank"   },
-        { label: "Growth",       val: stock["tsrStr"]["gwthStr"],  clr: stock["tsrStr"]["gwthClr"],  icon: "fa-seedling"     },
-    ];
-
-    bodyHtml += `
-    <section class="tsrSecRotSection">
-        <div class="tsrSecRotSectionHd">
-            <span class="tsrSecRotSectionIcon tsrSecRotIconTsr"><i class="fas fa-tachometer-alt"></i></span>
-            <h6 class="tsrSecRotSectionTitle">TSR Metrics</h6>
-        </div>
-        <div class="tsrSecRotMetricsRow">`;
-
-    tsrMetrics.forEach(m => {
-        bodyHtml += `
-            <div class="tsrSecRotMetricPill">
-                <span class="tsrSecRotMetricIcon" style="color:${m.clr}"><i class="fas ${m.icon}"></i></span>
-                <div class="tsrSecRotMetricText">
-                    <span class="tsrSecRotMetricLabel">${m.label}</span>
-                    <span class="tsrSecRotMetricVal" style="color:${m.clr}">${m.val}</span>
+                <div class="stock-header-name">
+                    ${stock.name}
                 </div>
-            </div>`;
-    });
 
-    bodyHtml += `</div></section>`;
-
-    /* ── 3 + 4. RETURNS & EMA – side-by-side carousels ── */
-    bodyHtml += `<div class="tsrSecRotDualRow">`;
-
-    // Returns
-    bodyHtml += `
-    <section class="tsrSecRotSection tsrSecRotHalf">
-        <div class="tsrSecRotSectionHd">
-            <span class="tsrSecRotSectionIcon tsrSecRotIconRet"><i class="fas fa-history"></i></span>
-            <h6 class="tsrSecRotSectionTitle">Returns</h6>
-        </div>
-        <div class="owl-carousel owl-theme tsrSecRotCarousel periodicReturns">`;
-
-    stock["tsrRtn"].forEach((r, j) => {
-        if (jsu.isNull(r["label"])) return;
-        const v = parseFloat(r["stkRtn"]);
-        bodyHtml += `
-            <div class="tsrSecRotCarouselCard">
-                <span class="tsrSecRotCcLabel">${r["label"]}</span>
-                <span class="tsrSecRotCcValue ${v >= 0 ? 'tsrSecRotPos' : 'tsrSecRotNeg'}">
-                    <i class="fas fa-${v >= 0 ? 'caret-up' : 'caret-down'} me-1"></i>${fmt(v)}%
-                </span>
-            </div>`;
-    });
-
-    bodyHtml += `</div></section>`;
-
-    // EMA
-    bodyHtml += `
-    <section class="tsrSecRotSection tsrSecRotHalf">
-        <div class="tsrSecRotSectionHd">
-            <span class="tsrSecRotSectionIcon tsrSecRotIconEma"><i class="fas fa-wave-square"></i></span>
-            <h6 class="tsrSecRotSectionTitle">EMA</h6>
-        </div>
-        <div class="owl-carousel owl-theme tsrSecRotCarousel periodicReturns">`;
-
-    stock["ema"].forEach((e, j) => {
-        if (jsu.isNull(e["label"])) return;
-        bodyHtml += `
-            <div class="tsrSecRotCarouselCard">
-                <span class="tsrSecRotCcLabel">${e["label"]}</span>
-                <span class="tsrSecRotCcValue" style="color:${e["clrl"] || '#334155'}">
-                    ${fmt(e["val"])}
-                </span>
-                <span class="tsrSecRotCcSub" style="color:${e["clrl"] || '#64748b'}">${e["intr"] || ""}</span>
-            </div>`;
-    });
-
-    bodyHtml += `</div></section></div>`;
-
-    /* ── 5 + 6. TECHNICALS & FUNDAMENTALS – side-by-side carousels ── */
-    bodyHtml += `<div class="tsrSecRotDualRow">`;
-
-    if (jsu.isNotNull(stock["tech"])) {
-        bodyHtml += `
-        <section class="tsrSecRotSection tsrSecRotHalf">
-            <div class="tsrSecRotSectionHd">
-                <span class="tsrSecRotSectionIcon tsrSecRotIconTech"><i class="fas fa-microscope"></i></span>
-                <h6 class="tsrSecRotSectionTitle">Technicals</h6>
+                <div class="stock-header-symbol">
+                    ${stock.id}
+                </div>
             </div>
-            <div class="owl-carousel owl-theme tsrSecRotCarousel technicals">`;
 
-        stock["tech"].forEach((t, j) => {
-            if (jsu.isNull(t["label"])) return;
-            bodyHtml += `
-                <div class="tsrSecRotCarouselCard tsrSecRotCcThree">
-                    <span class="tsrSecRotCcLabel">${t["label"]}</span>
-                    <span class="tsrSecRotCcValue" style="color:${t["clrl"] || '#334155'}">${miSrnUtils.gcv(t["val"], t["clrl"], null)}</span>
-                    <span class="tsrSecRotCcSub" style="color:${t["clrl"] || '#64748b'}">${t["intr"] || ""}</span>
-                </div>`;
-        });
+            <div class="d-flex gap-2">
 
-        bodyHtml += `</div></section>`;
-    }
+                <a href="${techUrl}"
+                   target="_blank"
+                   class="btn btn-light stock-action-btn">
 
-    if (jsu.isNotNull(stock["funda"])) {
-        bodyHtml += `
-        <section class="tsrSecRotSection tsrSecRotHalf">
-            <div class="tsrSecRotSectionHd">
-                <span class="tsrSecRotSectionIcon tsrSecRotIconFund"><i class="fas fa-landmark"></i></span>
-                <h6 class="tsrSecRotSectionTitle">Fundamentals</h6>
+                    <i class="fas fa-chart-line me-1"></i>
+                    Technical
+                </a>
+
+                <a href="${fundaUrl}"
+                   target="_blank"
+                   class="btn btn-outline-light stock-action-btn">
+
+                    <i class="fas fa-building me-1"></i>
+                    Fundamental
+                </a>
+
             </div>
-            <div class="owl-carousel owl-theme tsrSecRotCarousel technicals">`;
 
-        stock["funda"].forEach((f, j) => {
-            if (jsu.isNull(f["label"])) return;
-            bodyHtml += `
-                <div class="tsrSecRotCarouselCard tsrSecRotCcThree">
-                    <span class="tsrSecRotCcLabel" title="${f["label"]}">${f["label"]}</span>
-                    <span class="tsrSecRotCcValue" style="color:${f["clrl"] || '#334155'}">${miSrnUtils.gcv(f["val"], f["clrl"], null)}</span>
-                    <span class="tsrSecRotCcSub" style="color:${f["clrl"] || '#64748b'}">${f["intr"] || ""}</span>
-                </div>`;
-        });
+        </div>
 
-        bodyHtml += `</div></section>`;
-    }
+    </div>
+    `;
 
-    bodyHtml += `</div>`; // end dual row
-    bodyHtml += `</div>`; // end tsrSecRotBody
+    // ==================================================
+    // BODY
+    // ==================================================
 
-    /* ── Injections ── */
-    stockSectionHeader.innerHTML = headerHtml;
-    stockSectionBody.innerHTML   = bodyHtml;
+    // ${buildQuickSummary(stock)}
+    let bodyHtml = `
+    <div class="stock-scroll">
 
-    initializeCarousal(false);
+
+        ${buildHighlights(stock, sector)}
+
+        ${buildTSRMetrics(stock)}
+
+        ${buildReturns(stock)}
+
+        ${buildFundamentals(stock)}
+
+        ${buildTechnicals(stock)}
+
+        ${buildEMA(stock)}
+
+    </div>
+    `;
+
+    stockSectionBody.innerHTML = bodyHtml;
 }
+
+function buildQuickSummary(stock) {
+
+    return `
+    <div class="alert alert-light shadow-sm border rounded-4 mb-4">
+
+        <strong>Quick View</strong>
+
+        <span class="badge bg-success ms-2">
+            ${stock.tsrStr.techStr}
+        </span>
+
+        <span class="badge bg-primary ms-2">
+            ${stock.tsrStr.stabStr}
+        </span>
+
+        <span class="badge bg-success ms-2">
+            ${stock.tsrStr.pftStr}
+        </span>
+
+        <span class="badge bg-secondary ms-2">
+            ${stock.tsrStr.gwthStr}
+        </span>
+
+    </div>
+    `;
+}
+
+function buildHighlights(stock, sector) {
+
+    return `
+    <section class="mb-5">
+
+        <div class="tsr-section-title">
+            Market Snapshot
+        </div>
+
+        <div class="row g-3">
+
+            ${buildKpiCard(
+                "Current Price",
+                "₹" + miSrnUtils.gcv(stock.price),
+                "text-dark"
+            )}
+
+            ${buildKpiCard(
+                "Price Change",
+                miSrnUtils.gcv(stock.priceChange, null, "%"),
+                stock.priceChange >= 0
+                    ? "kpi-positive"
+                    : "kpi-negative"
+            )}
+
+            ${buildKpiCard(
+                "Returns vs NIFTY",
+                miSrnUtils.gcv(stock.vsNifty, null, "%"),
+                "kpi-positive"
+            )}
+
+            ${buildKpiCard(
+                `Returns vs ${sector.name}`,
+                miSrnUtils.gcv(stock.vsIdx, null, "%"),
+                "kpi-positive"
+            )}
+
+        </div>
+
+    </section>
+    `;
+}
+
+function buildKpiCard(label, value, valueClass) {
+
+    return `
+    <div class="col-lg-3 col-md-6">
+
+        <div class="kpi-card">
+
+            <div class="kpi-label">
+                ${label}
+            </div>
+
+            <div class="kpi-value ${valueClass}">
+                ${value}
+            </div>
+
+        </div>
+
+    </div>
+    `;
+}
+
+function buildTSRMetrics(stock) {
+
+    const m = stock.tsrStr;
+
+    return `
+    <section class="mb-5">
+
+        <div class="tsr-section-title">
+            TSR Ratings
+        </div>
+
+        <div class="row g-3">
+
+            ${metric("Technical Strength", m.techStr, m.techClr)}
+            ${metric("Value Index", m.valStr, m.valClr)}
+            ${metric("Stability Index", m.stabStr, m.stabClr)}
+            ${metric("Profitability", m.pftStr, m.pftClr)}
+            ${metric("Growth Index", m.gwthStr, m.gwthClr)}
+
+        </div>
+
+    </section>
+    `;
+}
+
+function metric(label, value, color) {
+
+    return `
+    <div class="col-lg col-md-6">
+
+        <div class="metric-card">
+
+            <div class="metric-label">
+                ${label}
+            </div>
+
+            <div class="metric-value"
+                 style="color:${color}">
+                ${value}
+            </div>
+
+        </div>
+
+    </div>
+    `;
+}
+
+function buildReturns(stock) {
+
+    let html = `
+    <section class="mb-5">
+
+        <div class="tsr-section-title">
+            Returns
+        </div>
+
+        <div class="data-grid">
+    `;
+
+    stock.tsrRtn.forEach(r => {
+
+        html += `
+        <div class="data-card">
+
+            <div class="data-card-label">
+                ${r.label}
+            </div>
+
+            <div class="data-card-value">
+                ${miSrnUtils.gcv(r.stkRtn, null, "%")}
+            </div>
+
+        </div>
+        `;
+    });
+
+    html += `</div></section>`;
+
+    return html;
+}
+
+function buildEMA(stock) {
+
+    let html = `
+    <section class="mb-5">
+
+        <div class="tsr-section-title">
+            EMA Levels
+        </div>
+
+        <div class="data-grid">
+    `;
+
+    stock.ema.forEach(e => {
+
+        if (!e.label) return;
+
+        html += `
+        <div class="data-card">
+
+            <div class="data-card-label">
+                ${e.label}
+            </div>
+
+            <div class="data-card-value"
+                 style="color:${e.clrl}">
+                ${miSrnUtils.gcv(e.val)}
+            </div>
+
+        </div>
+        `;
+    });
+
+    html += `</div></section>`;
+
+    return html;
+}
+
+function buildTechnicals(stock) {
+
+    if (!stock.tech) return "";
+
+    let html = `
+    <section class="mb-5">
+
+        <div class="tsr-section-title">
+            Technical Indicators
+        </div>
+
+        <div class="data-grid">
+    `;
+
+    stock.tech.forEach(t => {
+
+        html += `
+        <div class="data-card">
+
+            <div class="data-card-label">
+                ${t.label}
+            </div>
+
+            <div class="data-card-value"
+                 style="color:${t.clrl}">
+                ${miSrnUtils.gcv(t.val)}
+            </div>
+
+            <div class="data-card-sub"
+                 style="color:${t.clrl}">
+                ${t.intr}
+            </div>
+
+        </div>
+        `;
+    });
+
+    html += `</div></section>`;
+
+    return html;
+}
+
+function buildFundamentals(stock) {
+
+    if (!stock.funda) return "";
+
+    let html = `
+    <section>
+
+        <div class="tsr-section-title">
+            Fundamental Metrics
+        </div>
+
+        <div class="data-grid">
+    `;
+
+    stock.funda.forEach(f => {
+
+        html += `
+        <div class="data-card">
+
+            <div class="data-card-label">
+                ${f.label}
+            </div>
+
+            <div class="data-card-value"
+                 style="color:${f.clrl || "#111827"}">
+                ${miSrnUtils.gcv(f.val)}
+            </div>
+
+            <div class="data-card-sub"
+                 style="color:${f.clrl || "#64748b"}">
+                ${f.intr || ""}
+            </div>
+
+        </div>
+        `;
+    });
+
+    html += `</div></section>`;
+
+    return html;
+}
+
+
 
     function paintChart(secType, secId, stockListType, stockCode, all, chartType, scrollTo) {
 
