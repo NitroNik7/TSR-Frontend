@@ -1505,7 +1505,23 @@
 
                             <link rel="stylesheet" href="style.css">
 
-                            <div class="container-md">
+                            <style>
+                                .sub-heading h2 {
+                                    position: relative;
+                                }
+
+                                .sub-heading h2:before {
+                                    position: absolute;
+                                    left: 1px;
+                                    bottom: -5px;
+                                    width: 120px;
+                                    height: 3px;
+                                    content: "";
+                                    background-color: #090977;
+                                }
+                            </style>
+
+                            <div class="container-md sub-heading">
 
                                 <h2 style="font-weight: 700;">NSE Live Advance Decline Ratio</h2>
                             </div>
@@ -1523,9 +1539,9 @@
                                 <div class="tsrAdrChartMasterContainer">
                                     <div class="tsrAdrChartScrollContainer">
                                         <div class="tsrAdrSelColor" style="justify-content: end;">
-            <p class="tsrAdrAdvanceLabel">Advances</p>
-            <p class="tsrAdrDeclineLabel">Declines</p>
-        </div>
+                                            <p class="tsrAdrAdvanceLabel">Advances</p>
+                                            <p class="tsrAdrDeclineLabel">Declines</p>
+                                        </div>
                                         <svg width="100%" preserveAspectRatio="xMidYMid meet" style="height: 230px;"
                                             viewBox="0 0 1400 350" height="370" preserveAspectRatio="xMidYMid meet">
                                             <g transform="translate(30, 340)" fill="none" font-size="10"
@@ -1642,14 +1658,19 @@
                                             </div>
                                         </div>
 
-
-                                        <div class="tsrAdrSideMetricsGrid" style="color: gray; background-color: lightgray;">
+                                        <!-- TODO -->
+                                        <div class="tsrAdrSideMetricsGrid"
+                                            style="color: gray; background-color: lightgray;">
 
                                             <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                                class="tsrAdrLink"
-                                                style="text-wrap: nowrap; height: 40px;color: gray;">
+                                                class="tsrAdrLink" style="text-wrap: nowrap; height: 40px;color: gray;">
                                                 <i class="fas fa-th me-1"></i>
                                                 Heat Map
+                                            </a>
+                                            <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
+                                                class="tsrAdrLink" style="text-wrap: nowrap; height: 40px;color: gray;">
+                                                <i class="fas fa-th me-1"></i>
+                                                Stock list
                                             </a>
                                         </div>
                                     </div>
@@ -1725,7 +1746,7 @@
                                     </select>
                                     &nbsp;&nbsp; -->
                                     <div class="ms-5" style="display: inline;"></div>
-                                        <span class="tsrHmSettingsRowLabel">Tick</span>
+                                    <span class="tsrHmSettingsRowLabel">Tick</span>
                                     &nbsp;&nbsp;
                                     <select id="adrFreq" class="tsrSecRotDropbtnIdx"
                                         onchange="JavaScript:dyadr.ua('chart');">
@@ -1759,7 +1780,7 @@
 
                                         <div class="tsrAdrRowCard">
                                             <div class="tsrAdrAssetIdentity">
-                                                <a href="#" class="tsrAdrLink tsrAssetName">F&amp;O Stocks 
+                                                <a href="#" class="tsrAdrLink tsrAssetName">F&amp;O Stocks
                                                     <i class="fas fa-arrow-right ms-1"></i>
 
                                                 </a>
@@ -1884,7 +1905,8 @@
                                                 </div>
                                                 <div class="tsrAdrBarValueLabel tsrAdrTextRed">45%</div>
                                             </div>
-                                            <div class="tsrAdrSideMetricsGrid" style="background-color: grey; display: flex; padding: 0; margin-top: 0;">
+                                            <div class="tsrAdrSideMetricsGrid"
+                                                style="background-color: grey; display: flex; padding: 0; margin-top: 0;">
 
                                                 <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
                                                     class="tsrAdrLink"
