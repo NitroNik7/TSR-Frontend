@@ -29,7 +29,18 @@ var htmlU = mintHtmlUtil;
 		displaySelectedFields();
 	}
 
+/*
+	function addNewFilterPost(json){
 
+		let filterTable = $("#" + CS_FILTERS_TABLE);
+		
+		filterTable.append(json.html);
+
+		addFilterChange(type, json.id);
+
+		mtgv.cs.editActive.push(json); 
+	}
+*/
 	function listOpCompChg(id, type){
 
 		// HARD CODING TYPE ... Look for a better logic
@@ -66,8 +77,7 @@ var htmlU = mintHtmlUtil;
 		displaySelectedFields();
 	}
 
-
-	function opsCompare( type){
+	function opsCompareNg( type){
 		var def = getObjFrmArr(LIST_OPS_COMPARE , type);
 		var id =  myTsrScreener. getNextId(def.id+'Id') // price Range Comparision
 		var obj={ id :id, ops:BASIC_OPS[0].id, noData:true, hasData:true, type:type , csType : def.csType };
@@ -76,8 +86,25 @@ var htmlU = mintHtmlUtil;
 		mtgv.cs.screenerData[def.scrData].push(obj); 
 		var html = csh.dynTr(obj, csh.opsCompTd(obj,def));
 
+		// return html
+
+		return { html : html , id : id};
+	}
+
+	function opsCompare( type){
+		// var def = getObjFrmArr(LIST_OPS_COMPARE , type);
+		// var id =  myTsrScreener. getNextId(def.id+'Id') // price Range Comparision
+		// var obj={ id :id, ops:BASIC_OPS[0].id, noData:true, hasData:true, type:type , csType : def.csType };
+		// // set LIST item to select
+		// obj.field = def.list[0].id ,
+		// mtgv.cs.screenerData[def.scrData].push(obj); 
+		// var html = csh.dynTr(obj, csh.opsCompTd(obj,def));
+
+		// html+= opsCompareNg( type);
+		let json = opsCompareNg( type);
+
 		var ctrl = jsu.getObjFrmArr(daily_tabs ,def.csType);
-        $('#'+ ctrl.tab).append( html);
+        $('#'+ ctrl.tab).append(json. html);
         displaySelectedFields();
 
 	}
@@ -114,10 +141,29 @@ var htmlU = mintHtmlUtil;
 
 		var validV1=false;
 		if(containsString([CS_ABOVE,CS_BELOW,CS_EQUALS],ops, true)){
+			
+			
+
 			validV1 = isInputNumber (csTypeId+'v1');
+
+			if(validV1){
+				validV1 = isInputPositiveNumber(csTypeId+'v1')	
+			}
+			
+
+
 		}else if(ops==CS_BETWEEN){
 			validV1 = isInputNumber (csTypeId+'v1');
 			validV2 = isInputNumber (csTypeId+'v2');
+
+			if(validV1){
+				validV1 = isInputPositiveNumber(csTypeId+'v1')	
+			}
+
+			if(validV2){
+				validV2 = isInputPositiveNumber(csTypeId+'v2')	
+			}
+
 		}
 		
 		aebbData.hasData = true; // Has data is true unless ops is not selected....
@@ -381,6 +427,69 @@ var htmlU = mintHtmlUtil;
 
 	// function edit
 
+	function editRow(tab, obj){
+		var json = getSelectedField(obj);
+
+		console.log('1er');
+
+		// if(id== BV_CS){
+
+		// }else{
+
+		let html =''
+		let div =''
+		let tabObj = jsu.getObjFrmArr(daily_tabs,tab);
+
+		if(	json.type =='aebb'){
+
+			html = window[tabObj.tabObj]['gfr'](json.id);
+
+			
+
+
+			// return;
+		}else{
+			
+			html = window[tabObj.tabObj]['gfr'](json.type, json.id);
+
+			// div = json.id + 'Td2Div';
+		}
+
+		div = json.id + 'Td2Div';
+			
+			htmlU.addMsgToDiv( div, true, html );
+		// }
+
+		// if(PRICE_CS== id) {   // containsString()
+			
+		// }else if(id== VOL_CS){
+			
+
+		// }else if(id== HL_CS){
+			
+		// }else if(id== BV_CS){
+			
+		// }else if(id==MA_CS){
+			
+		// }else if(id==TI_CS){
+			
+		// }else if(id==DIV_CS){
+
+		// }else if(id==PP_CS){
+
+		// }else if(id==STR_CS){
+
+		// }else if(id==CP_CS){
+		
+		// }else if(id==FIN_RAT_NG){
+			
+		// }else if(id==FIN_STMT_NG){
+		// }
+
+
+	}
+
+
 	function delRow(obj){
 
 		var json = getSelectedField(obj);
@@ -392,7 +501,40 @@ var htmlU = mintHtmlUtil;
 			
 			// $("#" + selectDD).val("na").change();
 			// aebbObj.ops = 'na';
-			setObjDelCommonFnc( aebbObj,  json.id +'ops' , 'ops');
+
+
+			// todo - fix hack to enable filter in filter menu
+			// HACK
+			// let tempAebbObj = jsu.cloneObj(aebbObj);
+			let param = "";
+
+			if (jsu.isNull(aebbObj)) {
+				if (json.id == "priceGainLoss") {
+					param =  "priceCs" + "_" +  "gainLoss"
+					if(mtgv.cs.ng){
+						$('#'+json.id).remove();
+						csh.ef(param);
+					}
+
+					return;
+				}
+			}
+			else if (json.id == "csPrice") {
+				param =  aebbObj.csType + "_" +  "price"
+			} else if (json.id == "csVol") {
+				param =  aebbObj.csType + "_" +  "tickVol"
+			} else if (json.id == "csDayVol") {
+				param =  aebbObj.csType + "_" +  "dayVol"
+			}
+
+
+			setObjDelCommonFnc( aebbObj, json.id, json.id +'ops' , 'ops', param);
+
+			if(mtgv.cs.ng){
+				$('#'+json.id).remove();
+			}
+
+
 		}else if(json.type == 'trend'){
 			var trendDef =  jsu.getObjFrmArr(TRENDING_DEF, json.id);
 			var obj = json.scrData.trend[  trendDef.obj];
@@ -402,7 +544,17 @@ var htmlU = mintHtmlUtil;
 			// obj.hasData = false;
 			setObjDelCommonFnc( obj,  json.id +'TrendDd' ,'id' );
 		}else if(json.type == 'hlSus'){  // Individual Object ...
-			setObjDelCommonFnc( json.scrData,  'hlSusHistDd' ,'hlSustain' );
+			let param = "hlCs_hls"
+
+			// HACK HACK...
+			
+			if(mtgv.cs.ng){
+				$('#'+ 'hlSustain').remove();
+				csh.ef(param);
+			}
+
+			// setObjDelCommonFnc(json.scrData, 'hlSusHistDd', 'hlSustain', "", param);
+			// setObjDelCommonFnc( json.scrData,  'hlSusHistDd' ,'hlSustain' );
 
 		}else if(json.type == 'hlHist'){
 			var obj = jsu.getObjFrmArr(json.arr, json.id);
@@ -474,10 +626,25 @@ var htmlU = mintHtmlUtil;
 		displaySelectedFields();
 	}
 
-	function setObjDelCommonFnc(obj, ddToReset, selId){
+	function setObjDelCommonFnc(obj, id,  ddToReset, selId, param){
 		obj[selId] = NA_VAL;
 		$("#" + ddToReset).val(NA_VAL).change();
 		obj.hasData = false;
+
+		if(mtgv.cs.ng){
+			$('#'+selId).remove();
+
+			// let param = obj.csType +'_' +obj.id;
+			if(jsu.isNotNull(param)){
+				csh.ef(param);
+			}
+		
+		}
+
+
+
+
+
 	}
 
 	function enableControl(obj){
@@ -577,6 +744,30 @@ var htmlU = mintHtmlUtil;
 
 		// if()
 
+		arr = getItemArray(type);
+
+		
+		selObj.arr = arr;
+
+		return selObj;
+	}
+
+
+	function getSelObject(type , id){
+		let objList = getItemArray(type);
+
+		let obj =  jsu.getObjFrmArr(objList, id)
+
+		return obj;
+
+	}
+
+
+	function getItemArray(type){
+
+		var scrData =  mtgv.cs.screenerData;
+
+		let arr = null;
 
 		if(jsu.arrayContainsId(LIST_OPS_COMPARE, type )){
 			var scrObj = jsu.getObjFrmArr(LIST_OPS_COMPARE , type).scrData;
@@ -589,6 +780,15 @@ var htmlU = mintHtmlUtil;
 		if(type =='hlHist') arr = scrData.hlHist;
 
 
+
+		// Price 
+
+		if(jsu.containsString (['dynpriceComp', 'priceGain' , 'dynpriceTrendNg' , 'dynSpTimepriceComp',
+				'dynAdvOhlcComp', 'priceBoBd',CS_TURNOVER , CS_VWAP , 'rallyBaseCom' ], type )){
+			arr = scrData[type ];
+		}
+
+/*
 		if(type == 'dynpriceComp') arr = scrData.dynpriceComp;
 		if(type == 'priceGain') arr = scrData.priceGain;		
 		if(type == 'dynpriceTrendNg') arr = scrData.dynpriceTrendNg;		
@@ -607,25 +807,50 @@ var htmlU = mintHtmlUtil;
 
 
 		if(type == 'rallyBaseCom') arr = scrData.rallyBaseCom;	
+*/
 
 
-
-		if(type == 'dynvolComp') arr = scrData.dynvolComp;
-		if(type == 'dynvolTrendNg') arr = scrData.dynvolTrendNg;
-		if(type == 'volGain') arr = scrData.volGain;
-		if(type == 'dynSpTimevolComp') arr = scrData.dynSpTimevolComp;
+		// Volume
 
 		if(type =='volc') arr= scrData.volComp;
 		if(type =='tkHistVol') arr= scrData.tickHistVol;
 
 
+		if(jsu.containsString (['dynvolComp', 'dynvolTrendNg' , 'volGain' , 'dynSpTimevolComp',
+				'dynAdvOhlcComp', 'priceBoBd',CS_TURNOVER , CS_VWAP , 'rallyBaseCom' ], type )){
+			arr = scrData[type ];
+		}
+
+/*
+		if(type == 'dynvolComp') arr = scrData.dynvolComp;
+		if(type == 'dynvolTrendNg') arr = scrData.dynvolTrendNg;
+		if(type == 'volGain') arr = scrData.volGain;
+		if(type == 'dynSpTimevolComp') arr = scrData.dynSpTimevolComp;
+*/
+		
+
+
+		// high Lows
+
 		if(type=='pricHl') arr= scrData.priceHlComp;
 
 
-		if(type =='hlComp') arr= scrData.hlComp;
-		if(type =='hlRangeComp') arr= scrData.hlRangeComp;
+		if(jsu.containsString (['hlComp', 'hlRangeComp' ], type )){
+			arr = scrData[type ];
+		}
+
+		// if(type =='hlComp') arr= scrData.hlComp;
+		// if(type =='hlRangeComp') arr= scrData.hlRangeComp;
 		
 		
+		// Moving Average .... 
+
+		if(jsu.containsString (['pma', 'maco' , 'maTrend' , 'maFakeBreak',
+				'maSupResBounce', 'maCon','maDiv' , 'maHist' , 'maOl' ], type )){
+			arr = scrData[type + 'Comp'];
+		}
+
+/*
 		if(type=='pma') arr= scrData.pmaComp;
 		if(type=='maco') arr= scrData.macoComp;
 		if(type=='maTrend') arr= scrData.maTrendComp;
@@ -636,10 +861,22 @@ var htmlU = mintHtmlUtil;
 		if(type=='maDiv') arr= scrData.maDivComp;
 		if(type=='maHist') arr= scrData.maHistComp;
 
+		if(type=='maOl') arr= scrData.maOlComp;
+*/		
+
 
 		if(type=='finNgComp') arr = scrData.finNgComp;
 		if(type=='finStmtNgComp') arr = scrData.finStmtNgComp;
 
+
+
+		// tech 
+
+		if(jsu.containsString (['techNgComp', 'techAbsComp' , 'techCoComp' , 'techIchiComp',
+				'techDivComp', 'techDiyBiComp','techDiyOlComp'], type )){
+			arr = scrData[type];
+		}
+/*
 		
 		if(type=='techNgComp') arr = scrData.techNgComp;
 		if(type=='techAbsComp') arr = scrData.techAbsComp;
@@ -650,10 +887,21 @@ var htmlU = mintHtmlUtil;
 
 		if(type=='techDiyBiComp') arr = scrData.techDiyBiComp;
 		if(type=='techDiyOlComp') arr = scrData.techDiyOlComp;
-
+*/
 		
 
 		// Strength
+
+		if(jsu.containsString (['techStrComp', 'techRankComp' , 'gwthStrComp' , 'gwthRankComp',
+				'valStrComp', 'valRankComp','pftStrComp'  ,'pftRankComp' , 
+
+				'stabStrComp', 'stabRankComp' ,'returnsComp','returnsRankComp',
+				'relPriceStrComp' ,'relStrComp'
+			], type )){
+			arr = scrData[type];
+		}
+
+/*
 		if(type=='techStrComp') arr = scrData.techStrComp;
 		if(type=='techRankComp') arr = scrData.techRankComp;
 
@@ -670,14 +918,12 @@ var htmlU = mintHtmlUtil;
 		if(type=='stabStrComp') arr = scrData.stabStrComp;
 		if(type=='stabRankComp') arr = scrData.stabRankComp;
 
-
-
-
 		if(type=='returnsComp') arr = scrData.returnsComp;
 		if(type=='returnsRankComp') arr = scrData.returnsRankComp;
 		if(type=='relPriceStrComp') arr = scrData.relPriceStrComp;
 		if(type=='relStrComp') arr = scrData.relStrComp;
 
+*/
 		if(type=='patternNg') arr= scrData.patternNg;
 
 		if(type=='pp') arr = scrData.ppComp;
@@ -709,10 +955,13 @@ var htmlU = mintHtmlUtil;
 		if(containsString( [FIN_BAL_SHEET, FIN_RATIO, FIN_BASIC, FIN_CASH_FLOW, FIN_INCOME],  type ,true) ) arr= scrData.csCagr;
 		if(type==FIN_QTRLY) arr= scrData.csQoq;
 
-		selObj.arr = arr;
 
-		return selObj;
+		return arr;
+
 	}
+
+
+
 
 	// Objects ....
 
@@ -793,12 +1042,30 @@ var htmlU = mintHtmlUtil;
 	}
 
 
+	function getStockBasketVal (){
+
+
+		if(mtgv.cs.ng){
+			return  htmlU.getInputVal('stkType');
+				
+		}else{
+			return  htmlU.getRadioVal('stkType');
+		}
+
+	}
+
+
 	return {
+
+
+		// anfp : addNewFilterPost,
 
 		gct : getCrossTick,
 		// tabs : tabs
 		csAebbChg : csAebbChg,
 		listOpCompChg : listOpCompChg,
+
+		ocn : opsCompareNg,
 		opsCompare : opsCompare,
 
 		vf : validateFields,
@@ -806,6 +1073,11 @@ var htmlU = mintHtmlUtil;
 
 
 		stc : setTabCount,
+
+		gia : getItemArray,
+		gso : getSelObject,
+
+		er : editRow,
 
 		dr : delRow,
 		ec : enableControl,
@@ -821,7 +1093,9 @@ var htmlU = mintHtmlUtil;
 		has5MinTick : has5MinTick,
 		goit:  getOnlyIntraTick,
 
-		ifc : isFeatureChecked
+		ifc : isFeatureChecked,
+
+		gsbv : getStockBasketVal
 
 	}
 

@@ -263,31 +263,31 @@ var tband =  (function () {
 			// html +=getStandardOps(techObj, objDef, func);
 			if( jsu.containsString([CS_ABOVE , CS_BELOW  ] , techObj.ops )  ){
 
-				html+=   SP_3 + getDropDown(fieldList, id+'fieldType', 'width:100px',func, id, techObj.fieldType);
+				html+=   SP_3 + getDropDown(fieldList, id+'fieldType', '',func, id, techObj.fieldType);
 				html+= SP_3  + ' for min ' + getInputTxtParam( id+'v1' , 2, techObj.v1, func , id)	 
 					+ htmlU.getSpan('(<b>Optional</b> 0 for latest, Range 0-5)' , 'grey', 8) + " Ticks" ;	
 
 			}else if( jsu.containsString([CS_CO_ABV , CS_CO_BLW ] , techObj.ops)){
 
-				html+=   SP_3 + getDropDown(fieldList, id+'fieldType', 'width:100px',func, id, techObj.fieldType);
+				html+=   SP_3 + getDropDown(fieldList, id+'fieldType', '',func, id, techObj.fieldType);
 				html+=  '# ' + getInputTxtParam( id+'v1' , 3, techObj.v1, func , id)	;
 				html+= SP_3 +htmlU.getSpan('Ticks Back' , 'grey', 10) + htmlU.getSpan('(<b>Optional</b> Empty =   latest or 0, Range 0-5) ' , 'grey', 8)
 
 			}else if( jsu.containsString([CS_CO_ABV_WITHIN , CS_CO_BLW_WITHIN ] , techObj.ops)){
 
-				html+=   SP_3 + getDropDown(fieldList, id+'fieldType', 'width:100px',func, id, techObj.fieldType);
+				html+=   SP_3 + getDropDown(fieldList, id+'fieldType', '',func, id, techObj.fieldType);
 				html+= SP_3 + htmlU.getSpan('Within last '  ,'grey'  ,10) + getInputTxtParam( id+'v1' , 3, techObj.v1, func , id)	;
 				html+= ' Ticks' + htmlU.getSpan('(0 for latest, Range 0-5) ' , 'grey', 8) 
 
 			}else if( jsu.containsString([WITHIN , MORE_THAN ] , techObj.ops)){
 
-				html+= SP_3 +      getDropDown(PC_COMP_LOW, id+'tolPc', 'width:70px',func, id, techObj.tolPc)+" % of " ;//
+				html+= SP_3 +      getDropDown(PC_COMP_LOW, id+'tolPc', '',func, id, techObj.tolPc)+" % of " ;//
 
-				html+=   SP_3 + getDropDown(fieldList, id+'fieldType', 'width:100px',func, id, techObj.fieldType);
+				html+=   SP_3 + getDropDown(fieldList, id+'fieldType', '',func, id, techObj.fieldType);
 			} else if( jsu.containsString([TRENDING_UP , TRENDING_DOWN , FLAT_BULL , FLAT_BEAR ] , techObj.ops )  ){
 				if(jsu.isNull(techObj.v1)) techObj.v1 = 5;
 
-				html+=   SP_3 + getDropDown(fieldList, id+'fieldType', 'width:100px',func, id, techObj.fieldType);
+				html+=   SP_3 + getDropDown(fieldList, id+'fieldType', '',func, id, techObj.fieldType);
 				html+= SP_3  + ' for min ' + getInputTxtParam( id+'v1' , 2, techObj.v1, func , id)	 + " Ticks" ;
 
 			} else if( jsu.containsString([OL_SUP , OL_RES  ] , techObj.ops )  ){
@@ -295,7 +295,7 @@ var tband =  (function () {
 				if(jsu.isNull(techObj.v1)) techObj.v1 = 1;
 
 				
-				html+=   SP_3 + getDropDown(fieldList, id+'fieldType', 'width:100px',func, id, techObj.fieldType);
+				html+=   SP_3 + getDropDown(fieldList, id+'fieldType', '',func, id, techObj.fieldType);
 				html+= BREAK_LINE;
 				html+= SP_3  + ' reached min gap ' + getInputTxtParam( id+'v1' , 2, techObj.v1, func , id)	 + " %" ;
 				html+= SP_3  + ' and latest tick within  ' + getInputTxtParam( id+'v2' , 2, techObj.v2, func , id)	 + " (Optional) Ticks" ;
@@ -324,7 +324,7 @@ var tband =  (function () {
 
 		html +=  doBold("Squeeze");
 
-		html+=   SP_3 + getDropDown(LIST_BAND, id+'ops', 'width:90px',func, id, techObj.ops); 
+		html+=   SP_3 + getDropDown(LIST_BAND, id+'ops', '',func, id, techObj.ops); 
 
 		if( jsu.containsString(['bandAnySqueeze' , 'bandAnyBO'  , 'bandAnyBD'  ] , techObj.ops )  ){
 			// nothing extra
@@ -806,7 +806,7 @@ var tband =  (function () {
 
 		var text ='';
 
-		text= 'Bollinger Band '  + opsObj.label;
+		text=   htmlU.doBold('Bollinger Squeeze ' )  + opsObj.label;
 
 		
 

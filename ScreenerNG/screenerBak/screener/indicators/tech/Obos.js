@@ -367,7 +367,7 @@ var tobos =  (function () {
 		// if( jsu.containsString([ BULL_MACO ,  BEAR_MACO ,  ] , techObj.ops )  ){
 		if( jsu.arrayContainsId(COMMON_MACO_OPS , techObj.ops )  ){
 
-			html += cst.gmtd(techObj, objDef, func);
+			html += cst.gmtd(techObj, objDef, func , true);
 
 		}else if( jsu.containsString([ BULL_SWING_REJ ,  BEAR_SWING_REJ , INDI_DOUBLE_BOTTOM ,INDI_DOUBLE_TOP ] , techObj.ops )  ){
 			// do nothing
@@ -624,7 +624,7 @@ var tobos =  (function () {
 			if( jsu.arrayContainsId(COMMON_MACO_OPS , techObj.ops )  ){	
 				var v1 = jsu.getNumericValue(techObj.v1 );
 
-				if( !jsu.isInteger(v1) || (v1 < 2 || v1> 20  ) ){
+				if( !jsu.isInteger(v1) || (v1 < 2 || v1> 100  ) ){
 					goodData = false;
 				}else{
 					text+= ' ' + opsObj.label + ' ' +v1 + ' '+ techObj.maType;

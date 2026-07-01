@@ -300,7 +300,7 @@ var tindis =  (function () {
 		}else if (techObj.subType ==  ADX){	
 			cst.tmlc(techObj ,jsu.getListToIdArr(ADX_ADDI_OPS));
 		
-		}else if (techObj.subType ==  AROON){	
+		}else if (techObj.subType ==  'AroonIndi'){	
 			cst.tmlc(techObj ,jsu.getListToIdArr(AROON_ADDI_OPS));
 
 		}else if (techObj.subType ==  RVI){	

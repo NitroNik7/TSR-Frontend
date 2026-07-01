@@ -21,6 +21,21 @@ var maDiy =  (function () {
 
 	function addMaHist(){
 
+		let type = null;
+
+		let json = addNewFilter(type);
+
+		$('#maCtrlTab').append(json.html );
+
+	    addFilterChange(type, json.id)
+	    
+
+	    var element = document.querySelector('#csControlsDiv');
+	    element.scrollTop = 0;
+	}
+
+
+	function addNewFilter(type){
 		var MA_HIST_TYPES = getMaHistTypes();
 
 		// var maComp = mtgv.cs.screenerData.maHistComp;
@@ -40,14 +55,14 @@ var maDiy =  (function () {
 		// var html = '<tr id='+maHistObj.id+'>'	+ createTd(createDiv(maHistObj.id+'Td2Div', td)) +'</tr>';
 		var html = getMaHistRow(maHistObj);
 
-	    $('#maCtrlTab').append( html);
 
+		return { html : html , id : id};
+	}
 
-	    maHistChg(id);
+	function addFilterChange(type, id){
+		maHistChg(id);
 	    csu.dsf();
 
-	    var element = document.querySelector('#csControlsDiv');
-	    element.scrollTop = 0;
 	}
 
 
@@ -284,6 +299,14 @@ var maDiy =  (function () {
 	}
 
 	return {
+
+		// new 
+		anf : addNewFilter,
+
+		afc : addFilterChange,
+
+		// new
+
 
 		ghr : getMaHistRow,
 		add : addMaHist,

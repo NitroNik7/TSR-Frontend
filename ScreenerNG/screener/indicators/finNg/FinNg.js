@@ -192,11 +192,36 @@ var csFrNg =  (function () {
 
 	}
 
-	function getFormRow(type, id){
+	function getFormRow(type, id, state){
 		let obj =   csu.gso('finNgComp', id)
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
 		return getRatioRow(obj)
 
 	}
+
+	function getFormTd(type, id, state){
+
+		let obj =   csu.gso('finNgComp', id)
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
+		return getHtmlTds(obj)
+
+
+	}
+
 
 
 	function addNewFilter(type,baseField){
@@ -304,6 +329,7 @@ var csFrNg =  (function () {
 
 
 		  	var param = 'finNgComp:'+id; // Vol Compare
+		  	html+= csh.gept(finObj, FIN_RAT_NG,  param);
 			html+= SP_3 + csh.delIcon(param) ; // '<a  onClick="javascript:'+thisAlias+'.delRow(\''+delObj+'\');"><font size="4" color="red"><span class="glyphicon glyphicon-remove"></span></font> </a> ';
 
 
@@ -639,25 +665,33 @@ var csFrNg =  (function () {
 
 	  		if(finObj.strat == STRAT_VALUE_BASED){  
 		  		
-	  			if(isInputNumber(id+'v1'   ) ){
-				
+	  			if(!isInputNumber(id+'v1'   ) ){
+					return;
 				} 
-				if( finObj.ops ==  CS_BETWEEN && !isInputNumber(id+'v2'   )) {
+				if(!jsu.hasInput(id+'v1')) return;
+
+				if( finObj.ops ==  CS_BETWEEN ) {
 					
+					if(!isInputNumber(id+'v2'   )) return;
+
+
+					if(!jsu.hasInput(id+'v2')) return;
 				}
 		  	
 		  	}else if(finObj.strat == STRAT_COMP_AVG){  
 
-		  		jsu.isIntegerInput(id+'v3') 
-		  		jsu.inputNumberRange(id+'v3', 2, 10) ;
+		  		if(!jsu.isIntegerInput(id+'v3')) return;
+
+		  		if(!jsu.inputNumberRange(id+'v3', 2, 10)) return;
 
 		  		// if(isInputNumber(id+'v1'   ) ){ } 
-		  		if(isInputNumber(id+'v1'   ) ){ } 
+		  		if(!isInputNumber(id+'v1'   ) ){ return } 
+
 				if( finObj.ops ==  CS_BETWEEN && !isInputNumber(id+'v2'   )) {}
 
 		  	} else if(finObj.strat == STRAT_VS_AVG){
-		  		jsu.isIntegerInput(id+'v1') 
-		  		jsu.inputNumberRange(id+'v1', 2, 10) ;
+		  		if(!jsu.isIntegerInput(id+'v1') ) return;
+		  		if(!jsu.inputNumberRange(id+'v1', 2, 10) ) return;
 		  		
 		  		if(jsu.isNotNull( finObj.v2) &&  isInputPositiveNumber(id+'v2'   ) ){ } 
 
@@ -665,20 +699,21 @@ var csFrNg =  (function () {
 		  	} else if(finObj.strat == STRAT_VS_HIST){	
 
 		  		if(jsu.isNotNull( finObj.v1)){
-		  			isInputPositiveNumber(id+'v1'   ) ;
+		  			if(!isInputPositiveNumber(id+'v1'   ) ) return;
 		  		}
 		  	} else if(finObj.strat == STRAT_CAGR){	
-		  		jsu.isIntegerInput(id+'v3') 
-		  		jsu.inputNumberRange(id+'v3', 2, 10) ;
+		  		if(!jsu.isIntegerInput(id+'v3') ) return;
+		  		if(!jsu.inputNumberRange(id+'v3', 2, 10) ) return
 
-		  		if(isInputNumber(id+'v1'   ) ){ } 
+		  		if(!isInputNumber(id+'v1'   ) ){ return} 
 				if( finObj.ops ==  CS_BETWEEN && !isInputNumber(id+'v2'   )) {}
 
 		  	} else if(finObj.strat == STRAT_TREND){	
-		  		jsu.isIntegerInput(id+'v1') 
-		  		jsu.inputNumberRange(id+'v1', 2, 10) ;
+		  		if(!jsu.isIntegerInput(id+'v1') ) return;
+		  		if(!jsu.inputNumberRange(id+'v1', 2, 10) );
 		  	} else if(finObj.strat == STRAT_VS_ANOTHER){	
 		  		if(jsu.isNotNull( finObj.v1)){
+
 		  			isInputPositiveNumber(id+'v1'   );
 		  		}
 		  	
@@ -975,9 +1010,13 @@ var csFrNg =  (function () {
 
 			var secParam =thisRatio.id;
 
+
+			let mobFilter = FIN_RAT_NG +'_'+ngRatio.id + '_'+thisRatio.id;
+			
 			let obj = {  id :  "finNgComp" , label : thisRatio.label + ", " + thisRatio.sLabel  , slabel : thisRatio.sLabel    ,
 			 	tab : FIN_RAT_NG,  type : 'btn'  ,
-			  	filtDef : {obj:thisObject, fnc: 'ae' , params:  ngRatio.id  + PARAM_DELIM +thisRatio.id} 
+			  	filtDef : {obj:thisObject, fnc: 'ae' , params:  ngRatio.id  + PARAM_DELIM +thisRatio.id} ,
+			  	mobFilter: mobFilter
 			};
 
 			if(jsu.containsString(['piotroskiF','roe','roa', 'peTtm',	'debt2Eq', 'cashRatio'], thisRatio.id)){
@@ -995,6 +1034,12 @@ var csFrNg =  (function () {
 	}
 
 
+
+	function ngSearch(item, filterDef, params ){
+
+		paintFilterRow(params[0], params[1] );
+	}
+
 	function paintFilterRow(type, subType) {
 		// { html: html, id: id }
 
@@ -1010,7 +1055,7 @@ var csFrNg =  (function () {
 		addFilterChange(type,  newFilterRow["id"]);
 
 		// mtgv.cs.editActive.push(newFilterRow); 
-
+		csh.sib(false);
 	}
 
 	return {
@@ -1022,11 +1067,15 @@ var csFrNg =  (function () {
 
 		gfr : getFormRow,
 
+		gftd : getFormTd,
+
 		anf : addNewFilter,
 
 		afc : addFilterChange,
 
 		pfr : paintFilterRow,
+
+		ngs : ngSearch,
 
 		// New Ends
 

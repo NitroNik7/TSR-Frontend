@@ -10,14 +10,14 @@ var daily_tabs = [
 				{id: PRICE_CS, label:'PriceAction',  tabObj : 'csp',   tab:  'priceCtrlTab',  map : PRICE_AEBB_MAP  , ANALYSIS_CAT : ANALYSIS_CAT_COMMON , mig: true} , // Price  Custom Screener Div
 				{id: VOL_CS, label:'Volume', tabObj : 'csv', tab:  'volCtrlTab',  map : VOL_AEBB_MAP , ANALYSIS_CAT : ANALYSIS_CAT_COMMON  , mig: true} , //  Volume Custom Screener Div
 				{id: HL_CS, label:'High/Low', tabObj : 'cshl', tab : 'hlCtrlTab', map : null , ANALYSIS_CAT : ANALYSIS_CAT_COMMON , mig: true } , //  Volume Custom Screener Div
-				{id: BV_CS, label:'Beta/Vols', tabObj : '',tab : 'bvCtrlTab', map : null , ANALYSIS_CAT : ANALYSIS_CAT_COMMON } , //  Volume Custom Screener Div
+				{id: BV_CS, label:'Beta/Vols', tabObj : 'csbv',tab : 'bvCtrlTab', map : null , ANALYSIS_CAT : ANALYSIS_CAT_COMMON } , //  Volume Custom Screener Div
 
 				{id: PP_CS, label :'Pivot/Fib',tabObj : 'cspp', tab : 'ppCtrlTab', map : null , ANALYSIS_CAT : ANALYSIS_CAT_TECH  , mig: true} ,
 				
 				{id: STR_CS, label :'Strength',tabObj : 'csstr', tab : 'strCtrlTab', map : null , ANALYSIS_CAT : ANALYSIS_CAT_COMMON , mig: true } , //Tech Strength.....
 
 				{id: MA_CS, label:'Mov Avg',  tabObj : 'csma', map:null , ANALYSIS_CAT : ANALYSIS_CAT_TECH , mig: true} ,
-				{id: TI_CS, label:'TechIndi',  tabObj : 'cst', map:null , ANALYSIS_CAT : ANALYSIS_CAT_TECH , mig: true} ,
+				{id: TI_CS, label:'Technicals',  tabObj : 'cst', map:null , ANALYSIS_CAT : ANALYSIS_CAT_TECH , mig: true} ,
 				{id: DIV_CS, label:'Divergence',tabObj : 'csd', map:null , ANALYSIS_CAT : ANALYSIS_CAT_TECH , mig: true} ,
 
 				{id: CP_CS, label:'Chart Patterns',tabObj : 'cscp', map:null , ANALYSIS_CAT : ANALYSIS_CAT_TECH, mig: true} ,

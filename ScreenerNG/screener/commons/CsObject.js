@@ -37,7 +37,7 @@ var csos =  (function () {
 		// Common in Cs Commons
 		{ id : 'trend' , type : 'obj' , numId : null ,nonstd : true  },
 
-		{ id : 'priceGainLoss' , type : 'obj' , nonstd : true  },
+		{ id : 'priceGainLoss' , type : 'obj' , nonstd : true  , 'ops' : NA_VAL },
 
 		{ id : OPEN_RANGE_OLD , type : 'obj' , nonstd : true  },  // Range Breakout / down
 

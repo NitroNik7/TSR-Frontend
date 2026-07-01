@@ -83,6 +83,8 @@ var maOlDiy =  (function () {
 		var leftIndiHtml = getMaHtml(maOlObj);
 		var rightIndiHtml = getOlHtml(maOlObj);
 
+		html+= htmlU.doBold("MA / Overlays Comp : ")
+
 
 		html+= leftIndiHtml;
 		html+= CS_DIV_WITH_MGN;
@@ -99,6 +101,9 @@ var maOlDiy =  (function () {
 		// }	
 
 		var param = 'maOl' + ':'+param; // Vol Compare
+
+		html+= csh.gept(maOlObj, MA_CS,  param);
+		
 		html+= SP_3 + csh.delIcon(param) ;
 
 		return html;
@@ -203,6 +208,7 @@ var maOlDiy =  (function () {
 
 			var text ='';
 
+			text += htmlU.doBold("MA / Overlays Comp : ");
 			var obj = mtgv.cs.screenerData.maOlComp[i];
 			
 			
@@ -253,7 +259,7 @@ var maOlDiy =  (function () {
 
 		add : addMaOl,
 		gmo : getMaOlRow,
-		
+		gftd : getMaOlTd,
 		mac : maOlChg, 
 		vf : validateFields
 	}

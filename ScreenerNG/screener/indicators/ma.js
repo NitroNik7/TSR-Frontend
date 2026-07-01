@@ -134,13 +134,21 @@ var csma =  (function () {
 	}
 
 
-	function getFormRow(type, id){ //MA_PRICE_OPTIONS
+	function getFormRow(type, id , state){ //MA_PRICE_OPTIONS
 		// var scrData = mtgv.cs.screenerData;
 		// let objList = scrData[type+'Comp'];
 
 		// let obj =  jsu.getObjFrmArr(objList, id)
 
 		let obj =   csu.gso(type, id)
+
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
 
 		if(type=='pma'){
     	    return getPmaHtml(obj);
@@ -157,9 +165,47 @@ var csma =  (function () {
 		}else if(type == 'maDiv'){
     	    return getMaDivHtml(obj);
     	}else if(type == 'maHist'){
-    	    return maDiy.gmo(obj );
+    	    return maDiy.ghr(obj );
 		}else if(type == 'maOl'){
     	    return maOlDiy.gmo(obj );
+		}
+	}
+
+
+	function getFormTd(type, id , state){ //MA_PRICE_OPTIONS
+		// var scrData = mtgv.cs.screenerData;
+		// let objList = scrData[type+'Comp'];
+
+		// let obj =  jsu.getObjFrmArr(objList, id)
+
+		let obj =   csu.gso(type, id)
+
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
+		if(type=='pma'){
+    	    return getPricemaTd2(obj);
+		}else if(type=='maco'){
+    	    return getMacoTd(obj);
+		}else if(type=='maTrend'){
+    	    return getMaTrendTd(obj);
+		}else if(type == 'maFakeBreak'){
+    	    return getMaFakeBreakTd(obj);
+		}else if(type == 'maSupResBounce'){
+    	    return getMaSupResBounceTd(obj);
+		}else if(type == 'maCon'){
+    	    return getMaConTd(obj);
+		}else if(type == 'maDiv'){
+    	    return getMaDivTd(obj);
+    	}else if(type == 'maHist'){
+    	    return maDiy.gftd(obj );
+		}else if(type == 'maOl'){
+    	    return maOlDiy.gftd(obj );
 		}
 	}
 
@@ -328,6 +374,7 @@ var csma =  (function () {
 
 		var ticks = csu.gct(maObj , 'maTick');
 
+		// html+= BR_2
 		html+=  ' On ' + 	getDropDown(ticks, id+'maTick', null,func, id, maObj.maTick);
 		html+=  ' Tick,  '  
 
@@ -364,6 +411,7 @@ var csma =  (function () {
 
 		html+='</div>';
 
+		html+= BREAK_LINE;
 		return html;
 	}
 
@@ -395,7 +443,7 @@ var csma =  (function () {
 
 		html+= getCrossTickSpec(pmaObj , 'pma', func);
 
-		html+= doBold('Price  : ') ;
+		html+= doBold('Price / MA : ') + 'Price' + SP_3;
 
 		html +=  getDropDown(mtgv.mtpp.MA_PRICE_OPTIONS, id+'ops', null,func, id, pmaObj.ops);
 
@@ -432,6 +480,10 @@ var csma =  (function () {
 		
 
 		var param = 'pma:'+id; // Vol Compare
+
+		html+= csh.gept(pmaObj, MA_CS,  param);
+
+
 		html+= SP_3 + csh.delIcon(param) ; // '<a  onClick="javascript:'+thisAlias+'.delRow(\''+delObj+'\');"><font size="4" color="red"><span class="glyphicon glyphicon-remove"></span></font> </a> ';
 		html+= SP_3 +getSpan( supportedRange, 'grey',8)	;	
 
@@ -495,7 +547,7 @@ var csma =  (function () {
 
 			var selParam = 'pma:' +obj.id;
 			if(obj.goodData){
-				var text = '';
+				var text = doBold('Price / MA : ');
 
 				if(  mtgv.mtpp.crossFreq &&   jsu.isNotNull(obj.priceField ) ){
 					var fieldDef =  getObjFrmArr(MA_PRICE_FIELDS, obj.priceField);
@@ -570,6 +622,7 @@ var csma =  (function () {
 		var func = 'csma.macoChg';
 		var html = '' ;
 
+		// html+=  doBold('Two MA / Cross ');
 
 		html+= getCrossTickSpec(macoObj , 'maco', func);
 
@@ -590,7 +643,7 @@ var csma =  (function () {
 		}
 */		
 
-		html+='Compare MA';
+		html+= htmlU.doBold( 'Compare Two MA : ' ); 
 		html+= SP_3 + getInputTxtParam( id+'ma1' , 3, macoObj.ma1, func , id)	;
 		html+= SP_3 + getDropDown(mtgv.mtpp.MA_TYPE, id+'type1', 'width:60px',func, id, macoObj.type1); 
 		html+= SP_3 + getDropDown(mtgv.mtpp.MA_PRICE_OPTIONS, id+'ops', null,func, id, macoObj.ops);
@@ -610,6 +663,9 @@ var csma =  (function () {
 		}
 
 		var param = 'maco:'+id; // Vol Compare
+
+		html+= csh.gept(macoObj, MA_CS,  param);
+		
 		html+= SP_3 + csh.delIcon(param) ; // '<a  onClick="javascript:'+thisAlias+'.delRow(\''+delObj+'\');"><font size="4" color="red"><span class="glyphicon glyphicon-remove"></span></font> </a> ';
 
 		return html;		
@@ -624,13 +680,13 @@ var csma =  (function () {
 		csu.setProp(scrData.macoComp, ['ops','type1', 'type2', 'ma1','ma2' , 'tolPc' ,'maTick'   ,'baseMaField' ,'compMaField'],id);
 
 		htmlU.addMsgToDiv(  obj.id+'Td2Div' , true, getMacoTd(obj) );
-
+		obj.goodData = true;
 
 		if(!isIntegerInput(id+'ma1') || !isIntegerInput(id+'ma2') ||
 		 	 !inputNumberRange (id+'ma1', 1,201) || !inputNumberRange (id+'ma2', 1,201)){
 			obj.goodData = false;
 		}
-		obj.goodData = true;
+		
 		csu.setProp(scrData.macoComp, ['ops','type1', 'type2', 'ma1','ma2' , 'tolPc' ,'maTick'  ,'baseMaField' ,'compMaField'],id);
 
 		
@@ -659,7 +715,7 @@ var csma =  (function () {
 				// validResults.validFieldCount++;
 				var text =''
 
-
+				text+= htmlU.doBold( 'Compare Two MA : ' );
 				if(mtgv.mtpp.crossFreq){
 					if(jsu.isNull(obj.maTick ))  obj.maTick = 'scrFreq';	
 					if(obj.maTick == 'scrFreq'){
@@ -735,6 +791,9 @@ var csma =  (function () {
 			html+=  ' Tick - '  
 		}
 */		
+
+		html+= htmlU.doBold("Trending MA : ")
+
 		html+= getCrossTickSpec(maTrendObj , 'maTrend', func);
 
 
@@ -742,8 +801,8 @@ var csma =  (function () {
 
 		 html+= SP_3 + getInputTxtParam(id+'ma' ,3, maTrendObj.ma , func , id );
 
-		html+= SP_3 + getDropDown(mtgv.mtpp.MA_TYPE, id+'type', 'width:60px',func, id, maTrendObj.type); 
-		html+= SP_3 + getDropDown(mtgv.mtpp.TRENDING_MA_OPS, id+'ops', 'width:120px',func, id, maTrendObj.ops); 
+		html+= SP_3 + getDropDown(mtgv.mtpp.MA_TYPE, id+'type', '',func, id, maTrendObj.type); 
+		html+= SP_3 + getDropDown(mtgv.mtpp.TRENDING_MA_OPS, id+'ops', '',func, id, maTrendObj.ops); 
 		html+= SP_3 + 'for Minimum'
 		html+= SP_3 + getInputTxtParam( id+'ticks' , 3, maTrendObj.ticks, func , id)	;
 		html+= SP_3 +getSpan(' Supported Ticks 2-50' , 'grey',8)	;
@@ -755,6 +814,9 @@ var csma =  (function () {
 
 
 		var param = 'maTrend:'+id; // Vol Compare
+
+		html+= csh.gept(maTrendObj, MA_CS,  param);
+
 		html+= SP_3 + csh.delIcon(param) ; // '<a  onClick="javascript:'+thisAlias+'.delRow(\''+delObj+'\');"><font size="4" color="red"><span class="glyphicon glyphicon-remove"></span></font> </a> ';
 
 		return html;		
@@ -819,7 +881,7 @@ var csma =  (function () {
 			if(obj.goodData){
 				// validResults.validFieldCount++;
 				var text =''
-
+				text += htmlU.doBold("Trending MA : ")
 
 				if(mtgv.mtpp.crossFreq){
 					if(jsu.isNull(obj.maTick ))  obj.maTick = 'scrFreq';	
@@ -874,6 +936,8 @@ var csma =  (function () {
 		var func = 'csma.fbc'; 
 		var html = '' ;
 
+		html+= htmlU.doBold( 'MA Fake Breakout : ' ); 
+
 		html+= getCrossTickSpec(maFakeObj , 'maFakeBreak', func);
 
 
@@ -891,6 +955,8 @@ var csma =  (function () {
 
 		html+= ' ' + getDropDown(mtgv.mtpp.MA_TYPE, id+'maType', null,func, id, maFakeObj.maType);  		
 
+		html+= BR_2
+
 		html+= ' for max ' + getInputTxtParam( id+'fakePeriod' , 5, maFakeObj.fakePeriod, func , id)	+ htmlU.getSpan(' Range 1-10' , 'grey',8)	;	;
 
 		// html+= ' ' + getInputTxtParam( id+'ma' , 5, maFakeObj.ma, func , id) + ' Ticks '	;
@@ -903,13 +969,19 @@ var csma =  (function () {
 
 		html+= ' breach within last ' + getInputTxtParam( id+'period' , 5, maFakeObj.period , func , id) +' Tick '	+ htmlU.getSpan(' Range 2-50' , 'grey',8)	;	;
 
+
 		if(mtgv.mtpp.crossFreq){
+			html += BREAK_LINE
 			html+= cst.acscb(maFakeObj.id);
 		}
 
 
 
 		var param = 'maFakeBreak:'+id; // Vol Compare
+
+		html+= csh.gept(maFakeObj, MA_CS,  param);
+
+
 		html+= SP_3 + csh.delIcon(param) ; // '<a  onClick="javascript:'+thisAlias+'.delRow(\''+delObj+'\');"><font size="4" color="red"><span class="glyphicon glyphicon-remove"></span></font> </a> ';
 
 		return html;
@@ -978,7 +1050,7 @@ var csma =  (function () {
 			if(obj.goodData){
 				// validResults.validFieldCount++;
 				var text =''
-
+				text += htmlU.doBold( 'MA Fake Breakout : ' )
 
 				// High Price Fake Break Break out on 20 SMA for max 1 Tick with max Breach of 1 %
 
@@ -1048,6 +1120,8 @@ var csma =  (function () {
 		var func = 'csma.spbc'; 
 		var html = '' ;
 
+		html+= htmlU.doBold( 'Bounce From MA : ' ); 
+
 		html+= getCrossTickSpec(maSupResObj , 'maSupResBounce', func);
 
 		// TODO  -- ADD Other content ....
@@ -1062,6 +1136,8 @@ var csma =  (function () {
 
 		html+= ' ' + getDropDown(mtgv.mtpp.MA_TYPE, id+'maType', null,func, id, maSupResObj.maType);  
 
+		html+= BR_2;
+
 		html+= ' at least ' + getInputTxtParam( id+'bounceTimes' , 5, maSupResObj.bounceTimes, func , id) + ' times ' 	+ htmlU.getSpan(' Range 1-5' , 'grey',8)	;	;
 
 		html+= ' with price within  ' + getInputTxtParam( id+'bouncePc' , 5, maSupResObj.bouncePc, func , id) + ' % of bounce'	+ htmlU.getSpan(' Range .1-5%' , 'grey',8)	;	;
@@ -1074,6 +1150,11 @@ var csma =  (function () {
 		}
 
 		var param = 'maSupResBounce:'+id; // Vol Compare
+
+		html+= csh.gept(maSupResObj, MA_CS,  param);
+
+
+
 		html+= SP_3 + csh.delIcon(param) ; // '<a  onClick="javascript:'+thisAlias+'.delRow(\''+delObj+'\');"><font size="4" color="red"><span class="glyphicon glyphicon-remove"></span></font> </a> ';
 
 		return html;
@@ -1144,7 +1225,7 @@ var csma =  (function () {
 			if(obj.goodData){
 				// validResults.validFieldCount++;
 				var text =''
-
+				text += htmlU.doBold( 'Bounce From MA : ' );
 				// High Price bounced from 20 MA Support at least 1 Time with price within 1 % of MA level
 
 				if(mtgv.mtpp.crossFreq){
@@ -1214,6 +1295,8 @@ var csma =  (function () {
 		var func = 'csma.mcc'; 
 		var html = '' ;
 
+		html+= htmlU.doBold( 'MA Convergence : ' ); 
+
 		html+= getCrossTickSpec(maConObj , 'maCon', func);
 
 		// TODO  -- ADD Other content ....
@@ -1229,6 +1312,8 @@ var csma =  (function () {
 
 		html+= '  ' + getInputTxtParam( id+'ma2' , 5, maConObj.ma2, func , id) +	htmlU.getSpan(' Supported MA range 2-200' , 'grey',8)	;	
 
+		html+= BR_2;
+
 		html+= ' ' + getDropDown(mtgv.mtpp.MA_TYPE, id+'maType2', null,func, id, maConObj.maType2);  		
 
 		html+= ' for min '+ getInputTxtParam( id+'conDays' , 5, maConObj.conDays, func , id)    +' Ticks'  +	htmlU.getSpan(' Supported range 2-20' , 'grey',8)	;
@@ -1237,7 +1322,14 @@ var csma =  (function () {
 			html+= cst.acscb(maConObj.id);
 		}
 
+
+		// html+= csh.gept(maConObj, );
+
 		var param = 'maCon:'+id; // Vol Compare
+
+		html+= csh.gept(maConObj, MA_CS,  param);
+
+
 		html+= SP_3 + csh.delIcon(param) ; // '<a  onClick="javascript:'+thisAlias+'.delRow(\''+delObj+'\');"><font size="4" color="red"><span class="glyphicon glyphicon-remove"></span></font> </a> ';
 
 		return html;
@@ -1308,6 +1400,8 @@ var csma =  (function () {
 				// validResults.validFieldCount++;
 				var text =''
 
+				text += htmlU.doBold( 'MA Convergence : ' )
+
 				text += ma1Trend.label + ' ' + ma1 + ' ' + maType1.label + ' '
 
 				if(mtgv.mtpp.crossFreq){
@@ -1368,6 +1462,8 @@ var csma =  (function () {
 		var func = 'csma.mdc'; 
 		var html = '' ;
 
+		html+= htmlU.doBold( 'MA Divergence : ' ); 
+
 		html+= getCrossTickSpec(maDivObj , 'maDiv', func);
 
 		//   20 SMA is diverging with  50 SMA for min 10 days after BULL Crossover happened within 20 ticks ....   
@@ -1378,6 +1474,8 @@ var csma =  (function () {
 
 		html+= ' ' + getDropDown(mtgv.mtpp.MA_TYPE, id+'maType1', null,func, id, maDivObj.maType1);  		
 
+		html+= BR_2;
+
 		html+= '  is diverging with ' + getDropDown(MA_TREND, id+'ma2Trend', null,func, id, maDivObj.ma2Trend); 
 
 		html+= '  ' + getInputTxtParam( id+'ma2' , 5, maDivObj.ma2, func , id) +	htmlU.getSpan(' Supported MA range 2-200' , 'grey',8)	;	
@@ -1386,6 +1484,8 @@ var csma =  (function () {
 
 		html+= ' for min '+ getInputTxtParam( id+'divDays' , 5, maDivObj.divDays, func , id)    +' Ticks'  +	htmlU.getSpan(' Supported range 2-20' , 'grey',8)	;
 
+		html+= BR_2;
+		
 		html+= ' after ' +   getDropDown(DIV_TYPE_LEAN, id+'coType', null,func, id, maDivObj.coType); 
 
 		html+= ' Crossover happened within ' + getInputTxtParam( id+'coDays' , 5, maDivObj.coDays, func , id)  +	htmlU.getSpan(' Supported range 2-20' , 'grey',8)	;
@@ -1397,6 +1497,9 @@ var csma =  (function () {
 		}
 
 		var param = 'maDiv:'+id; // Vol Compare
+
+		html+= csh.gept(maDivObj, MA_CS,  param);
+		
 		html+= SP_3 + csh.delIcon(param) ; // '<a  onClick="javascript:'+thisAlias+'.delRow(\''+delObj+'\');"><font size="4" color="red"><span class="glyphicon glyphicon-remove"></span></font> </a> ';
 
 		return html;
@@ -1475,6 +1578,7 @@ var csma =  (function () {
 
 				var text =''
 
+				text += htmlU.doBold( 'MA Divergence : ' );
 				
 
 				text += ma1Trend.label + ' ' + ma1 + ' ' + maType1.label + ' '
@@ -1485,6 +1589,8 @@ var csma =  (function () {
 				}
 
 				text += ' is diverging with ';
+
+				// text+= BR_2;
 
 				text += ma2Trend.label + ' ' + ma2 + ' ' + maType2.label + ' '
 
@@ -1591,36 +1697,36 @@ var csma =  (function () {
 		// var filer = [];
 		
 		filer.push({  id :  "pmaComp" , label : 'Price MA Comparision' , slabel : 'Moving Average'  , tab : MA_CS, 
-			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'pma' } , subDef : mtgv.mtpp.MA_TYPE }) ; 
+			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'pma' } , subDef : mtgv.mtpp.MA_TYPE, mobFilter: "maCs_pma" }) ; 
 
 		filer.push({  id :  "macoComp" , label : 'MA Cross Over' , slabel : 'Moving Average Crossover'  , tab : MA_CS, 
-			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'maco' } , subDef : mtgv.mtpp.MA_TYPE}) ; 
+			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'maco' } , subDef : mtgv.mtpp.MA_TYPE , mobFilter: "maCs_maco"}) ; 
 
 
 		filer.push({  id :  "maTrendComp" , label : 'MA Trend' , slabel : 'Trending Moving Average'  , tab : MA_CS, 
-			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'maTrend' }, subDef : mtgv.mtpp.MA_TYPE }) ; 
+			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'maTrend' }, subDef : mtgv.mtpp.MA_TYPE , mobFilter: "maCs_maTrend"}) ; 
 
 		if( mtgv.mtpp.crossFreq){
 
 				filer.push({  id :  "maFakeBreakComp" , label : 'MA Fake Breakout' , slabel : 'Moving Average Fake Breakout'  , tab : MA_CS, 
-					type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'maFakeBreak' } , subDef : mtgv.mtpp.MA_TYPE}) ; 
+					type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'maFakeBreak' } , subDef : mtgv.mtpp.MA_TYPE , mobFilter: "maCs_maFakeBreak"}) ; 
 
 
 				filer.push({  id :  "maSupResBounceComp" , label : 'Bounce From MA' , slabel : 'Bounce from Moving Average'  , tab : MA_CS, 
-					type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'maFakeBreak' }, subDef : mtgv.mtpp.MA_TYPE }) ; 
+					type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'maFakeBreak' }, subDef : mtgv.mtpp.MA_TYPE , mobFilter: "maCs_maFakeBreak"}) ; 
 
 				filer.push({  id :  "maConComp" , label : 'MA Convergence' , slabel : 'Moving Average Convergence'  , tab : MA_CS, 
-					type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'maCon' }, subDef : mtgv.mtpp.MA_TYPE }) ; 
+					type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'maCon' }, subDef : mtgv.mtpp.MA_TYPE , mobFilter: "maCs_maCon"}) ; 
 
 				filer.push({  id :  "maDivComp" , label : 'MA Divergence' , slabel : 'Moving Average Divergence'  , tab : MA_CS, 
-					type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'maDiv' }, subDef : mtgv.mtpp.MA_TYPE }) ; 
+					type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'maDiv' }, subDef : mtgv.mtpp.MA_TYPE , mobFilter: "maCs_maDiv"}) ; 
 		}
 
-		defFilter.push({  id :  "pmaComp" , label : 'Price MA Comparision' , slabel : 'Moving Average'  , tab : MA_CS, 
-			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'pma' } , subDef : mtgv.mtpp.MA_TYPE }) ; 
+		// defFilter.push({  id :  "pmaComp" , label : 'Price MA Comparision' , slabel : 'Moving Average'  , tab : MA_CS, 
+		// 	type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'pma' } , subDef : mtgv.mtpp.MA_TYPE , mobFilter: ""}) ; 
 
-		defFilter.push({  id :  "macoComp" , label : 'MA Cross Over' , slabel : 'Moving Average Crossover'  , tab : MA_CS, 
-			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'maco' } , subDef : mtgv.mtpp.MA_TYPE}) ; 
+		// defFilter.push({  id :  "macoComp" , label : 'MA Cross Over' , slabel : 'Moving Average Crossover'  , tab : MA_CS, 
+		// 	type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addMa' , params:  'maco' } , subDef : mtgv.mtpp.MA_TYPE, mobFilter: ""}) ; 
 
 
 
@@ -1628,6 +1734,12 @@ var csma =  (function () {
 	}
 
 
+	function ngSearch(item, filterDef, params ){
+
+		let type = item.id.replace('Comp' ,'');
+
+		paintFilterRow(type);
+	}
 
 	function paintFilterRow(type) {
 		// { html: html, id: id }
@@ -1645,7 +1757,7 @@ var csma =  (function () {
 		addFilterChange(type, newFilterRow["id"]);
 
 		
-
+		csh.sib(false);
 	}
 
 
@@ -1658,11 +1770,14 @@ return{
 
 	gfr : getFormRow,
 
+	gftd : getFormTd,
+
 	anf : addNewFilter,
 
 	afc : addFilterChange,
 
 	pfr : paintFilterRow,
+	ngs : ngSearch,
 
 	// New Ends
 

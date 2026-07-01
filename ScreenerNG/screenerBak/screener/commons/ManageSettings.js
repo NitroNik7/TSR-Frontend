@@ -404,6 +404,9 @@ var csmng = (function () {  // my Ui Head
 		function userAction(type, id){
 
 			if(type=='run'){
+				$('#'+CS_FILTERS_TABLE).empty();
+				csh.sib(false);
+
 				applyUserSetting(id);
 			}else if(type=='showEdit'){
 				showEdit(id);

@@ -1,38 +1,66 @@
-###### Files Modified / Created
+### Files Modified / Created
 
 ---------
 CS files
 ---------
 
-CustScrUtil.js:
+###### dataDef.js
+
+Updated:
+    DIVERGENCE_DEF
+Added:
+
+Removed:
+
+TODO:
+
+
+##### NgAdvanceFunction.js
 
 Updated:
 
 Added:
 
-Removed(as unnecessary):
+Removed:
 
 TODO:
 
----------------------------------------------------
-
-csHtmlHelper.js:
+###### csHtmlHelper.js
 
 Updated:
-    disableFilter()
-    enableFilter()
-    return: gtdh
+    getMiddleRowNg()
+    showInstrBox()
+    updateHelpText()
+    variable declarations
+    
+Added:
+
+Removed:
+
+TODO:
+
+###### mobileCsHtmlHelper.js
+
+Updated:
 
 Added:
 
-Removed(as unnecessary):
+Removed:
 
 TODO:
-getSelFieldsCheckRowHtml()
-getInstrBoxHtml()
-showInstrBox()
-updateHelpText()
-getFilterControlNg() // for later
+
+##### Others
+
+##### styles.css
+
+Updated:
+    .tsrCsNgInstrBox a:hover 
+
+Added:
+
+Removed:
+
+TODO:
 
 ----------------------------------------------------
 
@@ -45,13 +73,19 @@ Filters
 Other Files
 -------
 
-style.css
-
-
-
 
 ----------
 Doubts 
 ----------
 
 
+
+##### fileName
+
+Updated:
+
+Added:
+
+Removed:
+
+TODO:

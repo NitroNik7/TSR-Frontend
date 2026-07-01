@@ -240,13 +240,20 @@ var pdef =  (function () {
 	VWAP_PRICE_FIELDS = VWAP_PRICE_FIELDS.concat(V_HA_FIELDS);
 	VWAP_PRICE_FIELDS.push(HA_HLC3_DEF);
 
-let VWAP_OL = MA_TYPE_BASIC.slice();
+	let VWAP_OL = MA_TYPE_BASIC.slice();
 	VWAP_OL.push({id: 'wma', label: "WMA"});
-	VWAP_OL.push({id: 'bollingerUB', label: "Bollinger UB"});
-	VWAP_OL.push({id: 'bollingerMB', label: "Bollinger MB"});
-	VWAP_OL.push({id: 'bollingerLB', label: "Bollinger LB"});
-	VWAP_OL.push({id: SUPER_TREND, label: "Super Trend"});
-	VWAP_OL.push({id: PSAR, label: "Parabolic SAR"});
+
+	for( let i=0;i<olHistComp.olt.length;i++){
+		VWAP_OL.push(olHistComp.olt[i]);
+	}
+
+
+
+	// VWAP_OL.push({id: 'bollingerUB', label: "Bollinger UB"});
+	// VWAP_OL.push({id: 'bollingerMB', label: "Bollinger MB"});
+	// VWAP_OL.push({id: 'bollingerLB', label: "Bollinger LB"});
+	// VWAP_OL.push({id: SUPER_TREND, label: "Super Trend"});
+	// VWAP_OL.push({id: PSAR, label: "Parabolic SAR"});
 
 
 	let VBAND_FIELDS = CLOSE_FIELDS_NO_VOL.slice();

@@ -187,13 +187,21 @@ var cspp =  (function () {
 	}
 
 
-	function getFormRow(type, id){ //MA_PRICE_OPTIONS
+	function getFormRow(type, id, state){ //MA_PRICE_OPTIONS
 		// var scrData = mtgv.cs.screenerData;
 		// let objList = scrData[type+'Comp'];
 
 		// let obj =  jsu.getObjFrmArr(objList, id)
 
 		let obj =   csu.gso(type, id)
+
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
 
 		if(type=='pp'){
     	    return getPpLevelsHtml(obj);
@@ -204,6 +212,32 @@ var cspp =  (function () {
 		}
 	}
 
+
+
+	function getFormTd(type, id, state){ //MA_PRICE_OPTIONS
+		// var scrData = mtgv.cs.screenerData;
+		// let objList = scrData[type+'Comp'];
+
+		// let obj =  jsu.getObjFrmArr(objList, id)
+
+		let obj =   csu.gso(type, id)
+
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
+		if(type=='pp'){
+    	    return getTD(obj);
+    	}else if(type=='cpr'){
+    	    return getCprTD(obj);    
+		}else if(type=='fibr'){
+    	    return getFibrTD(obj);
+		}
+	}
 
 
 	function getControls(){
@@ -261,7 +295,7 @@ var cspp =  (function () {
 
 			html = getCprHtml(cprObj);
 
-		}else if(type=='maTrend'){
+		}else if(type=='fibr'){
 
 			var id =  myTsrScreener.getNextId(type +'Id');
 
@@ -342,7 +376,10 @@ var cspp =  (function () {
 
 		var id = ppObj.id;
 		var func = 'cspp.ppChg';
-		var td2 = doBold('Latest Price') + SP_3 +   getDropDown(PP_CO, id+'ppOps', 'width:100px',func, id, ppObj.ppOps);
+
+		let td2 = doBold('Pivot Levels : ');
+
+		td2 += 'Latest Price' + SP_3 +   getDropDown(PP_CO, id+'ppOps', 'width:100px',func, id, ppObj.ppOps);
 
 		if(ppObj.ppOps == WITHIN || ppObj.ppOps == MORE_THAN ){
 			// tolVal = jsu.isNotNull(ppObj.tolval) ? ppObj.tolval : 1;
@@ -361,6 +398,9 @@ var cspp =  (function () {
 
 		// var html = csh.opCompHtml(tecObj, func);
 		var param = ppObj.type + ':'+id; // Vol Compare
+
+		td2 += csh.gept(ppObj, PP_CS,  param);
+
 		td2+= SP_3 + csh.delIcon(param) ;
 
 
@@ -388,14 +428,14 @@ var cspp =  (function () {
 
 			var ppTick =  getObjFrmArr(getFreqMap() , obj.ppTick) ;  // getDropDown(AB_CO_OPS, id+'ppOps', 'width:100px',func, id, ppObj.ppOps);
 
-			var text = ''
+			var text = doBold('Pivot Levels : ');
 
 			if( ( params.scrData.scrFreq =='W' || params.scrData.scrFreq =='M' )  && (ppOps.id == CS_CO_ABV || ppOps.id == CS_CO_BLW  ) ){
 				text += " Cross Above / Below is not supported on Weekly / Monthly Ticks "    ;
 
 				obj.goodData = false;
 			}else{
-				text = 'Latest price   ' ;
+				text += 'Latest price   ' ;
 				text+= ppOps.label
 				if(obj.ppOps == WITHIN || obj.ppOps == MORE_THAN ){
 					var tolPc =  getObjFrmArr(PC_COMP_LOW , obj.tolPc) ; 
@@ -433,7 +473,11 @@ var cspp =  (function () {
 		var id = cprObj.id;
 		var func = 'cspp.cprChg';
 
-		var td2 = getDropDown(CPR_CS_RPT, id+'rpt', null,func, id, cprObj.rpt)
+
+		let td2 = doBold('Central Pivot : ');
+
+
+		td2 += getDropDown(CPR_CS_RPT, id+'rpt', null,func, id, cprObj.rpt)
 
 		td2+= SP_3 + 'On' + SP_3 + getDropDown(getFreqMap(), id+'ppTick', null,func, id, cprObj.ppTick) + SP_3 + 'Tick';
 
@@ -442,6 +486,9 @@ var cspp =  (function () {
 		}
 
 		var param = cprObj.type + ':'+id; // Vol Compare
+
+		td2+= csh.gept(cprObj, PP_CS,  param);
+
 		td2+= SP_3 + csh.delIcon(param) ;
 
 		var td =  createTd(createDiv(cprObj.id+'Td2Div', td2, null));
@@ -489,7 +536,9 @@ var cspp =  (function () {
 
 			var text = ''
 
-			text = rpt.label  ;
+			text += doBold('Central Pivot : ')
+
+			text += rpt.label  ;
 
 			text += " on " + ppTick.label + " Tick" ;
 
@@ -523,7 +572,7 @@ var cspp =  (function () {
 		
 		var func = 'cspp.fibrChg';
 
-		let  td = '<b>Price Retracing</b> from ';
+		let  td = '<b> Fibonacci : </b> Price Retracing from ';
 
 		
 		
@@ -559,7 +608,7 @@ var cspp =  (function () {
 
 		td+= BR_2  ;
 
-		td += doBold(' Now ') + htmlU.getDropDown(FIB_OPS, id+'ops', null,func, id, fibrObj.ops) ;
+		td += ' Now ' + htmlU.getDropDown(FIB_OPS, id+'ops', null,func, id, fibrObj.ops) ;
 
 		td += SP_3+ htmlU.getDropDown(FIB_LEVELS, id+'levels', null,func, id, fibrObj.levels) ;
 
@@ -585,6 +634,8 @@ var cspp =  (function () {
 		td+= ' Levels';
 
 		var param = 'fibr' + ':'+id; // Vol Compare
+
+		td+= csh.gept(fibrObj, PP_CS,  param);
 		td += SP_3 + csh.delIcon(param) ;
 
 
@@ -653,7 +704,7 @@ var cspp =  (function () {
 			let text =''
 			// hard coding 
 			if(fibrObj.goodData ){
-				text = 'Price Retracing from '
+				text = doBold('Fibonacci ')+ 'Price Retracing from '
 
 				
 
@@ -726,15 +777,15 @@ var cspp =  (function () {
 		// var filer = [];
 		
 		filer.push({  id :  "ppComp" , label : 'Pivot Point'    , tab : PP_CS, 
-			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addPP' , params:  'pp' } , subDef :pivot_fields }) ;  //   JavaScript:cscmn.atn('price','priceCs');
+			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addPivot' , params:  'pp' } , subDef :pivot_fields , mobFilter: "pivotCs_pricePivotLevel" }) ;  //   JavaScript:cscmn.atn('price','priceCs');
 
 
 		filer.push({  id :  "cprComp" , label : 'Central Pivot Point'  ,  tab : PP_CS, 
-			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addCpr' , params:  'cpr' } , subDef : CPR_CS_RPT }) ;  //   JavaScript:cscmn.atn('price','priceCs');
+			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addPivot' , params:  'cpr' } , subDef : CPR_CS_RPT , mobFilter: "pivotCs_centralPivotLevel"}) ;  //   JavaScript:cscmn.atn('price','priceCs');
 
 		if( mtgv.mtpp.crossFreq){
 			let obj = {  id :  "fibrComp" , label : 'Fibonacci Retracement'  ,  tab : PP_CS, 
-				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addFibr' , params:  'fibr' } , subDef : [] }
+				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addPivot' , params:  'fibr' } , subDef : [] , mobFilter: "pivotCs_FibRetracement"}
 
 			filer.push(obj) ;  //   JavaScript:cscmn.atn('price','priceCs');
 
@@ -763,6 +814,10 @@ var cspp =  (function () {
 	}
 
 
+	function ngSearch(item, filterDef, params ){
+		paintFilterRow(params);
+	}
+
 	function paintFilterRow(type) {
 		// { html: html, id: id }
 
@@ -778,6 +833,7 @@ var cspp =  (function () {
 		
 		addFilterChange(type, newFilterRow["id"]);
 
+		csh.sib(false);
 	}
 
 
@@ -790,11 +846,14 @@ var cspp =  (function () {
 
 		gfr : getFormRow,
 
+		gftd : getFormTd,
+
 		anf : addNewFilter,
 
 		afc : addFilterChange,
 
 		pfr : paintFilterRow,
+		ngs : ngSearch,
 
 		// New Ends
 

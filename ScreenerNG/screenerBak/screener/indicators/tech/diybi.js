@@ -41,8 +41,10 @@ var diybi =  (function () {
 
 	var BI_DIY_OBJ_PROP = ['ops','idL', 'idR','strat', 'v1', 'v2']; //biDiyObjProps
 
-	function addDiyBi(diyType){
-		// var techDiyBiComp = mtgv.cs.screenerData.techDiyBiComp;
+
+
+	function addNewFilter(diyType){
+
 		var id =  myTsrScreener.getNextId( 'techDiyBiCompId');
 
 		var biDiyObj = null;
@@ -53,17 +55,28 @@ var diybi =  (function () {
 
 		getDiyObjArray().push(biDiyObj); // add to array
 
-/*
-		var td = getHtmlTds(biDiyObj);
-
-		var html = '<tr id='+biDiyObj.id+'>'	+ createTd(createDiv(biDiyObj.id+'Td2Div', td)) +'</tr>';
-*/
 		var html = getHtmlRow(biDiyObj);
 
-	    $('#tecCtrlTab').append( html);
+		return { html : html , id : id};
+
+	}
+
+	function addFilterChange(type, id){
+		bottomIndiChg(id);
+	    // csu.dsf();
+
+	}
+
+	function addDiyBi(diyType){
+		// var techDiyBiComp = mtgv.cs.screenerData.techDiyBiComp;
 
 
-	    bottomIndiChg(id);
+		let json = addNewFilter(diyType);
+
+	    $('#tecCtrlTab').append( json.html);
+
+	    addFilterChange(diyType, json.id);
+
 	    csu.dsf();
 
 	    var element = document.querySelector('#csControlsDiv');
@@ -783,6 +796,15 @@ var diybi =  (function () {
 	
 
 	return {
+
+		// new 
+		anf : addNewFilter,
+
+		afc : addFilterChange,
+
+		// new
+
+
 		ghr : getHtmlRow,
 		add : addDiyBi,
 		bic : bottomIndiChg,

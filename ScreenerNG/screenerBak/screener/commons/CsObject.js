@@ -161,6 +161,9 @@ var csos =  (function () {
 		{ id : 'maDivComp' , type : 'arr' , numId : 'maDivCompId' },
 		{ id : 'maHistComp' , type : 'arr' , numId : 'maHistCompId' },
 
+		{ id : 'maOlComp' , type : 'arr' , numId : 'maOlCompId' },
+
+
 
 		// Tech ...
 

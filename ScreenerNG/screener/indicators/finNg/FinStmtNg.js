@@ -167,11 +167,35 @@ var csStmtNg =  (function () {
 		return '<tr id='+finObj.id+'>'+ createTd(createDiv(finObj.id+'Td2Div', getHtmlTds(finObj))) +'</tr>';
 	}
 
-	function getFormRow(type, id){
+	function getFormRow(type, id, state){
 		let obj =   csu.gso('finStmtNgComp', id)
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
 		return getRatioRow(obj)
 
 	}
+
+	function getFormTd(type, id, state){
+		let obj =   csu.gso('finStmtNgComp', id)
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
+		return getHtmlTds(obj)
+
+	}
+
+	// getFormTd
 
 	function addNewFilter(type,baseField){
 
@@ -275,6 +299,9 @@ var csStmtNg =  (function () {
 		  	}
 
 		  	var param = 'finStmtNgComp:'+id; // Vol Compare
+
+		  	html+= csh.gept(finObj, FIN_STMT_NG,  param);
+
 			html+= SP_3 + csh.delIcon(param) ; // '<a  onClick="javascript:'+thisAlias+'.delRow(\''+delObj+'\');"><font size="4" color="red"><span class="glyphicon glyphicon-remove"></span></font> </a> ';
 
 		  	return html;
@@ -484,26 +511,38 @@ var csStmtNg =  (function () {
 
 	  		if(finObj.strat == STRAT_VALUE_BASED){  
 		  		
-	  			if(isInputNumber(id+'v1'   ) ){			} 
-				if( finObj.ops ==  CS_BETWEEN && !isInputNumber(id+'v2'   )) {}
+	  			if(!jsu.hasInput(id+'v1')) return;
+
+				if( finObj.ops ==  CS_BETWEEN ) {
+					if(!isInputNumber(id+'v2'   )) return;
+					if(!jsu.hasInput(id+'v2') ) return;
+				}
 		  	
 		  	}else if(finObj.strat == STRAT_COMP_GROWTH){  
 
-		  		if(isInputNumber(id+'v1'   ) ){ } 
+		  		if(!isInputNumber(id+'v1'   ) ){  return;} 
 				if( finObj.ops ==  CS_BETWEEN && !isInputNumber(id+'v2'   )) {}
 
 		  	}else if(finObj.strat == STRAT_COMP_HIST_GROWTH){   // new
+		  		if(!jsu.hasInput(id+'v2') ) return;
 		  		if(isInputNumber(id+'v1'   ) ){ } 
 	  	
 		  	} else if(finObj.strat == STRAT_CAGR){	
+		  		if(!jsu.hasInput(id+'v1')) return;
+
+		  		if(!jsu.hasInput(id+'v3') ) return;
 
 		  		jsu.isIntegerInput(id+'v3') 
 		  		jsu.inputNumberRange(id+'v3', 2, 10) ;
 
 		  		if(isInputNumber(id+'v1'   ) ){ } 
-				if( finObj.ops ==  CS_BETWEEN && !isInputNumber(id+'v2'   )) {}
+				if( finObj.ops ==  CS_BETWEEN ) {
+					isInputNumber(id+'v2'   )
+
+				}
 	
 		  	} else if(finObj.strat == STRAT_VS_AVG){
+		  		if(!jsu.hasInput(id+'v1')) return;
 		  		
 		  		jsu.isIntegerInput(id+'v1') 
 		  		jsu.inputNumberRange(id+'v1', 2, 10) ;
@@ -515,6 +554,8 @@ var csStmtNg =  (function () {
 		  			isInputPositiveNumber(id+'v1'   ) ;
 		  		}
 		  	} else if(finObj.strat == STRAT_TREND){	
+		  		if(!jsu.hasInput(id+'v1')) return;
+		  		
 		  		jsu.isIntegerInput(id+'v1') 
 		  		jsu.inputNumberRange(id+'v1', 2, 10) ;
 		  	} else if(finObj.strat == STRAT_VS_TREND_CHG){	 // New 
@@ -757,9 +798,12 @@ var csStmtNg =  (function () {
 
 			var secParam =thisRatio.id;
 
+			let mobFilter = FIN_STMT_NG +'_'+ngRatio.id + '_'+thisRatio.id;
+
 			filer.push({  id :  "finStmtNgComp" , label : thisRatio.label + suffix + ", " + thisRatio.sLabel  , slabel : thisRatio.sLabel    ,
 			 	tab : FIN_STMT_NG,  type : 'btn'  ,
-			  	filtDef : {obj:thisObject, fnc: 'ae' , params:  ngRatio.id  + PARAM_DELIM +thisRatio.id} 
+			  	filtDef : {obj:thisObject, fnc: 'ae' , params:  ngRatio.id  + PARAM_DELIM +thisRatio.id} ,
+			  	 mobFilter: mobFilter
 			}) ; 
 		}
 		
@@ -778,6 +822,10 @@ var csStmtNg =  (function () {
 		}
 	}
 
+	function ngSearch(item, filterDef, params ){
+
+		paintFilterRow(params[0], params[1] );
+	}
 
 	function paintFilterRow(type, subType) {
 		// { html: html, id: id }
@@ -793,7 +841,7 @@ var csStmtNg =  (function () {
 
 		addFilterChange(type,  newFilterRow["id"]);
 
-		
+		csh.sib(false);
 
 	}
 
@@ -805,11 +853,16 @@ var csStmtNg =  (function () {
 
 		gfr : getFormRow,
 
+		gftd : getFormTd,
+
+
 		anf : addNewFilter,
 
 		afc : addFilterChange,
 
 		pfr : paintFilterRow,
+
+		ngs : ngSearch,
 
 		// New Ends
 

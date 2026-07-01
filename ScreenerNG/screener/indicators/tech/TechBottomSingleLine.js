@@ -108,9 +108,9 @@ var tibsl =  (function () {
 
 		}
 
-		// var opsOption = getOpsOptions(techObj, objDef);
+		// var opsOption = getOpsOptions(techObj, objDef); // width:'+ddWidth+'px
 
-		return    getDropDown(opsOption, techObj.id+'ops', 'width:'+ddWidth+'px',func, techObj.id, techObj.ops); 
+		return    getDropDown(opsOption, techObj.id+'ops', '',func, techObj.id, techObj.ops); 
 
 
 		// return options;

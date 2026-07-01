@@ -210,7 +210,7 @@ var tobos =  (function () {
 
 			html+=  ' RSI Period ' + getInputTxtParam( id+'p1' , 3, techObj.p1, func , param)	;
 
-			html+=  ' On ' + getDropDown(CLOSE_FIELDS_NO_VOL, id+'priceField', 'width:90px',func, param, techObj.priceField) +' ' ;
+			html+=  ' On ' + getDropDown(CLOSE_FIELDS_NO_VOL, id+'priceField', '',func, param, techObj.priceField) +' ' ;
 
 		}else  if(techObj.indi == MFI ){	
 			
@@ -238,7 +238,7 @@ var tobos =  (function () {
 
 			html+=  ' RSI Period ' + getInputTxtParam( id+'p1' , 3, techObj.p1, func , param)	;	
 
-			html+=   ' On ' + getDropDown(CLOSE_FIELDS_NO_VOL, id+'field', 'width:90px',func, param, techObj.field) +' ' ;										
+			html+=   ' On ' + getDropDown(CLOSE_FIELDS_NO_VOL, id+'field', '',func, param, techObj.field) +' ' ;										
 
 			html+=  ' Sto Period ' + getInputTxtParam( id+'p2' , 3, techObj.p2, func , param)	;
 
@@ -310,10 +310,11 @@ var tobos =  (function () {
 
 
 		}
+		// width:'+ddWidth+'px
 
 		// var opsOption = getOpsOptions(techObj, objDef);
 
-		return    getDropDown(opsOption, techObj.id+'ops', 'width:'+ddWidth+'px',func, techObj.id, techObj.ops); 
+		return    getDropDown(opsOption, techObj.id+'ops', '',func, techObj.id, techObj.ops); 
 
 
 		// return options;

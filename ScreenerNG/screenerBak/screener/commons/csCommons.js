@@ -308,6 +308,19 @@ var cscmn =  (function () {
 
 
 	function addComp(type, csType){
+
+
+		let json = addCompRow(type, csType);
+		var tabDef = jsu.getObjFrmArr(daily_tabs, csType)
+
+		$('#' + tabDef.tab).append( json.html);
+
+	    csu.dsf(); // displaySelectedFields();	
+	}
+
+	function addCompRow(type, csType){
+
+
 			var obj = jsu.getObjFrmArr(TICK_COMP_MAP, type);
 
 			var id =  myTsrScreener.getNextId(obj.nextId)
@@ -330,9 +343,10 @@ var cscmn =  (function () {
 			var tabDef = jsu.getObjFrmArr(daily_tabs, csType)
 
 
-	        $('#' + tabDef.tab).append( getCompHtml(compObj, type));
+	        let html =   getCompHtml(compObj, type);
 
-	        csu.dsf(); // displaySelectedFields();	
+	        return { html : html , id : id};
+
 	}
 
 	
@@ -350,6 +364,13 @@ var cscmn =  (function () {
 			// html+= SP_3 + csh.delIcon(param) ; 
 			// setCompStatus(compObj , type);
 
+			if(mtgv.cs.ng){
+				var html = '<tr id=' + compObj.id + '>'
+						+ createTd(createDiv(compObj.id + 'Td2Div', html, null)) + '</tr>';
+				return html;			
+			}
+
+
 			return  csh.dynTr(compObj, {td1 : doBold(obj.label), td2 : html })
 		}
 
@@ -359,7 +380,14 @@ var cscmn =  (function () {
 			var fncParam = csTypeId +PARAM_DELIM + type;
 
 			var html = '' 
+
 			var obj = jsu.getObjFrmArr(TICK_COMP_MAP, type);
+
+			if(mtgv.cs.ng){
+				html += doBold(obj.label)+BREAK_LINE;
+			}
+
+
 
 			html+=getDropDown(TICK_PERIOD, csTypeId+'tperiod1', null,func, fncParam, compObj.tperiod1)
 			html+=  SP_3 + getDropDown(getTickMap(), csTypeId+'tick1', null,func, fncParam, compObj.tick1);
@@ -618,8 +646,10 @@ var cscmn =  (function () {
 	**********************************************************************************************/
 
 
-	function addSpecificTimeComp(type, csType){
-			var obj = jsu.getObjFrmArr(TICK_SP_COMP_MAP, type);
+
+	function addSpecificTimeCompNg(type, csType){
+	
+		var obj = jsu.getObjFrmArr(TICK_SP_COMP_MAP, type);
 
 			var id =  myTsrScreener.getNextId(obj.nextId)
 
@@ -643,12 +673,52 @@ var cscmn =  (function () {
 			var tabDef = jsu.getObjFrmArr(daily_tabs, csType)
 
 
-	        $('#' + tabDef.tab).append( getSpTimeCompHtml(compObj, type));
+	        html = getSpTimeCompHtml(compObj, type);
 
-	        compChgSpecTime(id, type);
+	        return { html : html , id : id};
+	}		
+
+
+
+
+	function addSpecificTimeComp(type, csType){
+
+/*
+			var obj = jsu.getObjFrmArr(TICK_SP_COMP_MAP, type);
+
+			var id =  myTsrScreener.getNextId(obj.nextId)
+
+
+			var periodmap = getSpetimeTickMap()
+			
+			var compObj={ id :id, tick1:getTickMap()[3].id,     tperiod1 : periodmap[0].id,
+				ops:AEB_OPS[0].id,
+				tick2:getTickMap()[1].id,     tperiod2 : periodmap[1].id
+				
+			 };
+
+			 // Set OHLC
+			 if(jsu.isNotNull(obj.map)){
+			 	compObj. field1  =  obj.map[ obj.defFirstIdx].id;
+			 	compObj. field2  =  obj.map[ obj.defSecIdx].id;
+			 }
+
+			 mtgv.cs.screenerData['dynSpTime'+ type +'Comp' ].push(compObj); 
+
+			var tabDef = jsu.getObjFrmArr(daily_tabs, csType)
+*/
+
+		let json = addSpecificTimeCompNg(type, csType);
+
+	        $('#' + tabDef.tab).append( json.html);
+
+	        compChgSpecTime(json.id, type);
 
 	        csu.dsf(); // displaySelectedFields();	
 	}	
+
+
+
 
 	function getSpTimeCompHtml(compObj, type){
 
@@ -661,7 +731,15 @@ var cscmn =  (function () {
 		var html = getCompSpTimeTd( compObj , type)
 
 
+		if(mtgv.cs.ng){
+				var html = '<tr id=' + obj.id + '>'
+					+ createTd(createDiv(obj.id + 'Td2Div', html, null)) + '</tr>';
+				return html;			
+		}
+
 		return  csh.dynTr(compObj, {td1 : doBold(obj.label), td2 : html })
+
+
 	}
 
 
@@ -674,6 +752,11 @@ var cscmn =  (function () {
 		var obj = jsu.getObjFrmArr(TICK_SP_COMP_MAP, type);
 
 		var PERIOD_MAP = getSpetimeTickMap()
+
+		if(mtgv.cs.ng){
+			html += doBold(obj.label)+BREAK_LINE;
+
+		}
 
 
 		html+=getDropDown(PERIOD_MAP, csTypeId+'tperiod1', null,func, fncParam, compObj.tperiod1)
@@ -1094,8 +1177,29 @@ var cscmn =  (function () {
 								OHLC Advance
 	**********************************************************************************************/
 
+	function addAdvanceOhlcNg(){
+		var id =  myTsrScreener.getNextId('dynAdvOhlcCompId')
+
+		var compObj = {
+			id : id,  aot : 'hlIdx' 
+		};
+
+
+
+		mtgv.cs.screenerData.dynAdvOhlcComp.push(compObj); 
+
+		let html =  getAdvOhlcHtml(compObj);
+
+
+		return { html : html , id : id};
+	}
+
+
+
+
 	function addAdvanceOhlc(){
 
+/*
 		var id =  myTsrScreener.getNextId('dynAdvOhlcCompId')
 
 		var compObj = {
@@ -1107,8 +1211,12 @@ var cscmn =  (function () {
 		mtgv.cs.screenerData.dynAdvOhlcComp.push(compObj); 
 
 		$('#priceCtrlTab' ).append( getAdvOhlcHtml(compObj));
+*/
+		let json = addAdvanceOhlcNg();
 
-		compChgAdvOhlc(id );
+		$('#priceCtrlTab' ).append( json.html);
+
+		compChgAdvOhlc(json.id );
 
 		csu.dsf(); // displaySelectedFields();	
 
@@ -1117,6 +1225,12 @@ var cscmn =  (function () {
 	function getAdvOhlcHtml(compObj){
 
 		var html = getAdvOhlcTd( compObj )
+
+		if(mtgv.cs.ng){
+			var html = '<tr id=' + compObj.id + '>'
+					+ createTd(createDiv(compObj.id + 'Td2Div', html, null)) + '</tr>';
+			return html;			
+		}
 
 		return  csh.dynTr(compObj, {td1 : doBold('Advanced OHLCV'), td2 : html })
 	}
@@ -1130,6 +1244,11 @@ var cscmn =  (function () {
 		var fncParam = csTypeId ;
 
 		let html = '' ;
+
+		if(mtgv.cs.ng){
+			html+=doBold('Advanced OHLCV') +BR_2;
+		}
+
 
 		html+=getDropDown(pdef.oao, csTypeId+'aot', null,func, fncParam, compObj.aot); // Advance OHLC Type
 
@@ -1492,6 +1611,7 @@ var cscmn =  (function () {
 
 	function addTrendNg(type, csType){
 
+/*
 				var obj = jsu.getObjFrmArr(TICK_TREND_MAP, type);
 
 				var id =  myTsrScreener.getNextId(obj.nextId)
@@ -1513,19 +1633,60 @@ var cscmn =  (function () {
 
 
 		        $('#' + tabDef.tab).append( getTrendNgHtml(trendObj, type));
+*/
+			let json =getTrendNgRow( type)
 
-		        csu.dsf(); // displaySelectedFields();	
+
+
+			$('#' + tabDef.tab).append(json.html);
+
+		    csu.dsf(); // displaySelectedFields();	
 		}
 
+	function getTrendNgRow(type){
+
+		var obj = jsu.getObjFrmArr(TICK_TREND_MAP, type);
+
+		var id =  myTsrScreener.getNextId(obj.nextId)
+
+		var trendObj={ id :id, tick:getTickMap()[0].id,    
+			trendType:TREND_NG_OPS[0].id, period : 3, trendPc: null,  trendEx: null ,
+			candleType : CANDLE_TYPES[0].id
+			
+		 };
+
+		 if(jsu.isNotNull(obj.map)){
+		 	trendObj. field  =  obj.map[ obj.defFirstIdx].id;
+		 }
+
+		 mtgv.cs.screenerData['dyn'+ type +'TrendNg' ].push(trendObj); 
 
 
-	function getTrendNgHtml( trendObj , type){
+		var tabDef = jsu.getObjFrmArr(daily_tabs, obj.csType)
+
+
+        let html = getTrendNgHtml(trendObj, type);
+
+        return { html : html , id : id};
+	}	
+
+
+
+
+	function getTrendNgHtml( trendObj , type){	
 			var csTypeId = trendObj.id;
 			var fncParam = csTypeId +PARAM_DELIM + type;
 			
 			var obj = jsu.getObjFrmArr(TICK_TREND_MAP, type);
 			
 			var html = getTrendNgTd( trendObj , type)
+
+			if(mtgv.cs.ng){
+				var html = '<tr id=' + trendObj.id + '>'
+						+ createTd(createDiv(trendObj.id + 'Td2Div', html, null)) + '</tr>';
+				return html;			
+			}
+
 
 
 			return  csh.dynTr(trendObj, {td1 : doBold(obj.label), td2 : html })
@@ -1540,6 +1701,12 @@ var cscmn =  (function () {
 
 			var html = '' 
 			var obj = jsu.getObjFrmArr(TICK_TREND_MAP, type);
+
+			if(mtgv.cs.ng){
+
+				html+=doBold(obj.label) +BR_2;
+
+			}
 
 					
 			html+=  getDropDown(getTickMap(), csTypeId+'tick', null,func, fncParam, trendObj.tick);
@@ -2028,11 +2195,15 @@ var cscmn =  (function () {
 
 		// TREND 
 		// tpv : trendPeriodVal.
+
+		gtnr : getTrendNgRow,
 		tht : getTrendHtml,
 		tc  : trendChg,
 		vt : validateTrending,
 
 		ac : addComp,
+		acr : addCompRow,
+
 		cc : compChg,
 		gch : getCompHtml,
 		vc : validateComp,
@@ -2042,6 +2213,10 @@ var cscmn =  (function () {
 
 		// OHLC Sp Time 
 		astc : addSpecificTimeComp,
+
+
+		astcn : addSpecificTimeCompNg,
+
 		ccst : compChgSpecTime,
 		spch :	getSpTimeCompHtml,
 		vspt : validateSpTimeComp,
@@ -2049,6 +2224,9 @@ var cscmn =  (function () {
 		
 		// Advanced OHLC  
 		aao : addAdvanceOhlc,
+		aaon : addAdvanceOhlcNg,
+
+
 		ccao : compChgAdvOhlc,
 		aoh :	getAdvOhlcHtml,
 		vao : validateAdvOhlc,

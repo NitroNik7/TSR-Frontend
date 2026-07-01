@@ -2,8 +2,8 @@
 
 var LIST_TECH_ABS =[
 
-		
-	];
+
+];
 
 var LIST_TECH_CO =[
 
@@ -21,11 +21,11 @@ var TECH_BLW_MA = 'blwMa';
 
 	// var BULL_MACO = 'BullMaCo';
 	// var BEAR_MACO = 'BearMaCo';
-	var BULL_SWING_REJ = 'BullSwingRej';
-	var BEAR_SWING_REJ = 'BearSwingRej';
+var BULL_SWING_REJ = 'BullSwingRej';
+var BEAR_SWING_REJ = 'BearSwingRej';
 
-    var INDI_DOUBLE_BOTTOM = "indiDoubleBottom";
-    var INDI_DOUBLE_TOP = "indiDoubleTop";
+var INDI_DOUBLE_BOTTOM = "indiDoubleBottom";
+var INDI_DOUBLE_TOP = "indiDoubleTop";
 
 
 var INDI_PRICE_PC = 'IndiPricePc';
@@ -36,10 +36,10 @@ var PRICE_TO_INDI_PC = 'PriceToIndiPc';
 
 
 var COMMON_MACO_OPS = [
-		{id: TECH_ABV_MA, label:'Above Its MA'},
-		{id: BULL_MACO, label:'Bullish MA Crossovers'},
-		{id: TECH_BLW_MA, label:'Below Its MA'},
-		{id: BEAR_MACO, label:'Bearish MA Crossovers'},
+	{id: TECH_ABV_MA, label:'Above Its MA'},
+	{id: BULL_MACO, label:'Bullish MA Crossovers'},
+	{id: TECH_BLW_MA, label:'Below Its MA'},
+	{id: BEAR_MACO, label:'Bearish MA Crossovers'},
 ];
 
 
@@ -86,10 +86,15 @@ var cst =  (function () {
 	function getTiHtml(id){
 
 		
-		let html = '';
+		// let html = '';
+		var html ='<br/><div id="'+id+'Div">';
+
+		html+= '<table id="tecCtrlTab" '+TAB_INDI_STYLE+'  "  >';
 
 		html+= getAllRows(id);
 
+		html+= '</table>';
+		
 		html+= SP_3 + htmlU.getSpan(doBold("Click on any Tech Indicator to Configure Screener. You can add More than One of any type "), 'grey' , 10);
 
 		html+= getControls();
@@ -101,14 +106,13 @@ var cst =  (function () {
 	}
 
 	function getAllRows(id){
+
+		let html =''
 		var scrData = mtgv.cs.screenerData;
 
 		// var html ='';
 		// var html ='';
-		var html ='<br/><div id="'+id+'Div">';
-
-		html+= '<table id="tecCtrlTab" '+TAB_INDI_STYLE+'  "  >';
-
+		
 		for(var i=0;i<scrData.techNgComp.length;i++){
 			html+=getTechNgHtml(scrData.techNgComp[i]);
 		}
@@ -132,34 +136,71 @@ var cst =  (function () {
 		}
 
 
-		html+= '</table>';
+		
 
 		return html;
 
 	}
 
-	function getFormRow(type, id){ //MA_PRICE_OPTIONS
+	function getFormRow(type, id, state){ //MA_PRICE_OPTIONS
 		// var scrData = mtgv.cs.screenerData;
 		// let objList = scrData[type+'Comp'];
 		// let obj =  jsu.getObjFrmArr(objList, id)
 
 		let obj =   csu.gso(type, id)
 
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			obj.disabled  = false;
+		}
+
 
 		if(type=='techNgComp'){
-    	    return getTechNgHtml(obj);
+			return getTechNgHtml(obj);
 		}else if(type=='techAbsComp'){
-    	    return getTiAbsHtml(obj);
+			return getTiAbsHtml(obj);
 		}else if(type=='techCoComp'){
-    	    return getTiCoHtml(obj);
+			return getTiCoHtml(obj);
 		}else if(type == 'techIchiComp'){
-    	    return ichiOld.gih(obj);
+			return ichiOld.gih(obj);
 		}else if(type == 'techDiyBiComp'){
-    	    return diybi.ghr(obj);
+			return diybi.ghr(obj);
 		}
 
 
 	}
+
+
+	function getFormTd(type, id, state){ //MA_PRICE_OPTIONS
+		// var scrData = mtgv.cs.screenerData;
+		// let objList = scrData[type+'Comp'];
+		// let obj =  jsu.getObjFrmArr(objList, id)
+
+		let obj =   csu.gso(type, id)
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			obj.disabled  = false;
+		}
+
+
+		if(type=='techNgComp'){
+			return getTechNgHtmlTds(obj);
+		}else if(type == 'techIchiComp'){
+			return ichiOld.gftd(obj);
+		}else if(type == 'techDiyBiComp'){
+			return diybi.ghr(obj);
+		}
+
+
+	}
+
+
+	
 
 
 	function getControls(){
@@ -263,7 +304,7 @@ var cst =  (function () {
 
 		html+= doBold('Accumulation / Distribution : ') ; 		
 		html+= htmlU.getButtonP('CMF' , 'cst.atn', CMF +  PARAM_DELIM  + CMF ,'CMF (Chaikin Money Flow');
-		html+= htmlU.getSpan("ADI / OBV / PVT Coming soon" , 'grey', 10);
+		// html+= htmlU.getSpan("ADI / OBV / PVT Coming soon" , 'grey', 10);
 
 		// html+= SMALL_BR  + TSR_HR +SMALL_BR
 		html+= '</td></tr>';
@@ -332,27 +373,32 @@ var cst =  (function () {
 		let html = null;
 
 		if(subType == null || subType =='diy'){
-			return diybi.anf(type);
+			return diybi.anf(indi);
 
 		}else{
 
-			var techNgComp = mtgv.cs.screenerData.techNgComp;
-			id =  myTsrScreener.getNextId( 'techNgCompId');
+			if(indi == 'techIchiComp'){
+				return ichiOld.anf(indi);
+			}
 
 			var tecObj = null;
-
+			var techNgComp = mtgv.cs.screenerData.techNgComp;
+			id =  myTsrScreener.getNextId( 'techNgCompId');
 			if(indi == ICHIMOKU){
 
 				tecObj = imccs.cio(id);
+				id = tecObj.id;
 
 			}else{
+				
 
-				var tecObj = { id :id,   ops :mtgv.mtpp.TECH_OPS[0].id ,  type : 'techIndi' ,  subType:subType, indi: indi};
-			
+				tecObj = { id :id,   ops :mtgv.mtpp.TECH_OPS[0].id ,  type : 'techIndi' ,  subType:subType, indi: indi};
+
 				if(tecObj.indi == BOLLINGER && tecObj.subType ==  'squeeze'){
 					tecObj.ops= LIST_BB_SQUEEZE [0].id;
-				}
+				}	
 			}
+
 
 			techNgComp.push(tecObj);
 
@@ -370,8 +416,10 @@ var cst =  (function () {
 
 		if(subType == null || subType =='diy'){
 
+		}else if(type == 'techIchiComp'){
+			ichiOld.ichiChg(id);
 		}else{
-	    	techNgChg(id);
+			techNgChg(id);
 		}
 		csu.dsf();
 	}
@@ -427,16 +475,16 @@ var cst =  (function () {
 		let json = addNewFilter(indi, subType);
 
 
-	    $('#tecCtrlTab').append( json.html);
+		$('#tecCtrlTab').append( json.html);
 
-	    addFilterChange(indi , subType, json.id);
+		addFilterChange(indi , subType, json.id);
 
 
 	    // techNgChg(id);
 	    // csu.dsf();
 
-	     var element = document.querySelector('#csControlsDiv');
-	    element.scrollTop = 0;
+		var element = document.querySelector('#csControlsDiv');
+		element.scrollTop = 0;
 
 
 	}
@@ -469,25 +517,25 @@ var cst =  (function () {
 			html+= tindis.git(techObj, objDef, func);
 
 		// }else if( techObj.subType ==  CMF  || techObj.subType ==  ROC  || techObj.subType ==  ATR     ){ // || techObj.subType ==  AWESOME_OSC
-	
+
 		}else if(jsu.containsString([CMF, ATR, ROC, STD_DEV], techObj.subType)){	
 
 			// html+=   SP_3 + getDropDown(mtgv.mtpp.TECH_OPS, id+'ops', 'width:90px',func, id, techObj.ops); 
 			// html +=getStandardOps(techObj, objDef, func);
 			html+= tibsl.gtd(techObj, objDef, func);
-		
+
 
 		}else if( jsu.containsString( ['macd' , ADX , 'AroonIndi' , RVI] ,   techObj.subType )) { //}   techObj.subType ==  'macd' ){
 			// html+=  getMacdTd(techObj , objDef, func);
 			// html+= 	getTMultiLineTd(techObj , objDef, func, 'macd', LIST_MACD, MACD_ADDI_OPS, ['macBul' , 'macBear' ] , ['macBulWithin' , 'macBearWithin' ] )  			
-		
+
 			html+= tindis.git(techObj, objDef, func);
 
 
 		// }else if(techObj.subType ==  RVI ){
 			// html+=  getMacdTd(techObj , objDef, func);
 			// html+= 	getTMultiLineTd(techObj , objDef, func, RVI, LIST_RVI, RVI_ADDI_OPS, ['rviBul' , 'rviBear' ] , ['rviBulWithin' , 'rviBearWithin' ] )  			
-		
+
 
 /*
 		}else if(techObj.subType ==  'sto' ){
@@ -500,7 +548,7 @@ var cst =  (function () {
 
 		// }else if(techObj.subType ==  ADX ){
 		// 	html+= 	getTMultiLineTd(techObj , objDef, func, ADX, LIST_ADX, ADX_ADDI_OPS, ['adxP2M' , 'adxM2P' ] , ['adxP2MWithin' , 'adxM2PWithin' ] )  			
-		
+
 		// }else if(techObj.subType ==  'AroonIndi' ){
 		// 	html+= 	getTMultiLineTd(techObj , objDef, func, 'aroonUp', LIST_AROON, AROON_ADDI_OPS, ['aroonUpCO' , 'aroonDownCO' ] , ['aroonUpCOWithin' , 'aroonDownCOWithin' ] )  			
 		}else if(jsu.containsString([ICHIMOKU], techObj.subType)){	
@@ -516,6 +564,9 @@ var cst =  (function () {
 
 
 		var param = 'techNgComp' + ':'+id; // Vol Compare
+
+		html+= csh.gept(techObj, TI_CS,  param);
+		
 		html+= SP_3 + csh.delIcon(param) ;
 
 		return html;
@@ -535,7 +586,7 @@ var cst =  (function () {
 
 		var  opsList = mtgv.mtpp.TECH_OPS.slice();
 		if(techObj.fieldType == defField){
-			 opsList = opsList.concat(addiOption);
+			opsList = opsList.concat(addiOption);
 		}
 
 		html+=   SP_3 + getDropDown(fieldList, id+'fieldType', null,func, id, techObj.fieldType);
@@ -595,7 +646,7 @@ var cst =  (function () {
 			}
 
 			html+= SP_3  + ' for min ' + getInputTxtParam( id+'v3' , 2, techObj.v3, func , id)	 
-				+ htmlU.getSpan('(<b>Optional</b> 0 for latest, Range 0-9)' , 'grey', 8) + " Ticks" ;			
+			+ htmlU.getSpan('(<b>Optional</b> 0 for latest, Range 0-9)' , 'grey', 8) + " Ticks" ;			
 		}else if( jsu.containsString([CS_CO_ABV , CS_CO_BLW ] , techObj.ops)){
 
 			// if(jsu.isNull())
@@ -613,15 +664,15 @@ var cst =  (function () {
 			html+= ' Ticks' + htmlU.getSpan('(0 for latest, Range 0-5) ' , 'grey', 8) 
 		}else if( jsu.containsString([WITHIN , MORE_THAN ] , techObj.ops)){
 			// if(jsu.isNull())
-			html+= SP_3 +      getDropDown(PC_COMP_LOW, id+'tolPc', 'width:70px',func, id, techObj.tolPc)+" of " ;//
+			html+= SP_3 +      getDropDown(PC_COMP_LOW, id+'tolPc', '',func, id, techObj.tolPc)+" of " ;//
 
 			html+= SP_3 +  getInputTxtParam( id+'v1' , 3, techObj.v1, func , id)	 +" Level";
 			
 		}else if( jsu.containsString([TRENDING_UP , TRENDING_DOWN ] , techObj.ops)){ // trending ...
 			html+= SP_3 +  ' for '  + getInputTxtParam( id+'v1' , 3, techObj.v1, func , id) +' Ticks ' +htmlU.getSpan('(Range 2-20) ' , 'grey', 8) 	;
 			html+= SP_3 +   htmlU.getSpan('With Exception of ' , 'grey', 9)  + getInputTxtParam( id+'v2' , 3, techObj.v2, func , id) 
-				+ htmlU.getSpan('(Optional Range 1-3) ' , 'grey', 9) 	
-				 +' Ticks ';
+			+ htmlU.getSpan('(Optional Range 1-3) ' , 'grey', 9) 	
+			+' Ticks ';
 		}
 		return html;
 
@@ -660,11 +711,19 @@ var cst =  (function () {
 
 		if( jsu.containsString([CS_ABOVE , CS_BELOW  ,CS_BETWEEN  ] , techObj.ops )  ){
 
-			if(!inputNumberRange(id+'v1' , objDef.min  , objDef.max   ) ){
+			if(!inputNumberRange(id+'v1' , objDef.min  , objDef.max   )   ){
 				// obosObj.goodData =false;
-				// return;
+				return;
 			} 
-			if( techObj.ops ==  CS_BETWEEN && !inputNumberRange(id+'v2' , objDef.min  , objDef.max   )) {
+
+
+			if(!jsu.hasInput(id+'v1')) return;
+
+			if( techObj.ops ==  CS_BETWEEN ) {
+
+				jsu.inputNumberRange(id+'v2' , objDef.min  , objDef.max   )
+				jsu.hasInput(id+'v2');
+
 				// obosObj.goodData =false;
 				// return;
 			}
@@ -679,32 +738,35 @@ var cst =  (function () {
 		}else if( jsu.containsString([CS_CO_ABV , CS_CO_BLW , CS_CO_ABV_WITHIN , CS_CO_BLW_WITHIN ] , techObj.ops)){
 			if(!inputNumberRange(id+'v1' , objDef.min  , objDef.max   ) ){
 				// obosObj.goodData =false;
-				// return;
+				return;
 			} 
+
+			if(!jsu.hasInput(id+'v1')) return;
 			var v2 = htmlU.getInputVal(id+'v2');
 			if(jsu.isNotNull(v2)){
 				if( !isIntegerInput(id+'v2') || !inputNumberRange (id+'v2', 0,5)  ){
 					// obosObj.goodData =false;
-					// return;
+					return;
 				}
 			}
 		}else if( jsu.containsString([WITHIN , MORE_THAN ] , techObj.ops)){
 			if(!inputNumberRange(id+'v1' , objDef.min  , objDef.max   ) ){
 				// obosObj.goodData =false;
-				// return;
+				return;
 			} 
-
-
+			if(!jsu.hasInput(id+'v1')) return;
+			// jsu.hasInput(id+'v1');
 		}else if( jsu.containsString([TRENDING_UP , TRENDING_DOWN ] , techObj.ops)){ // trending ...
 			if( !isIntegerInput(id+'v1') || !inputNumberRange (id+'v1', 2,20)  ){
 					// obosObj.goodData =false;
 					// return;
 			}
+			if(!jsu.hasInput(id+'v1')) return;
 			var v2 = htmlU.getInputVal(id+'v2');
 			if(jsu.isNotNull(v2)){
 				if( !isIntegerInput(id+'v2') || !inputNumberRange (id+'v2', 1,4)  ){
 					// obosObj.goodData =false;
-					// return;
+					return;
 				}
 			}
 		}
@@ -717,7 +779,7 @@ var cst =  (function () {
 			if(jsu.isNotNull(htmlU.getInputVal(id+'v1'))){
 				if( !isIntegerInput(id+'v1') || !inputNumberRange (id+'v1', 0,5)  ){
 					// obosObj.goodData =false;
-					// return;
+					return;
 				}
 			}
 		}
@@ -822,88 +884,88 @@ var cst =  (function () {
 
 		
 
-			var text = '' ;
+		var text = '' ;
 
-			var goodData = true;
-
-
-			text+= fieldName ;
-
-			var opsObj = jsu.getObjFrmArr( mtgv.mtpp.TECH_OPS ,  techObj.ops);
-
-			
-
-			var v1 = getNumericValue(techObj.v1 );
-			var v2 = getNumericValue(techObj.v2 );
-			var v3 = getNumericValue(techObj.v3 );
+		var goodData = true;
 
 
-			if( jsu.containsString([CS_ABOVE , CS_BELOW  ,CS_BETWEEN  ] , techObj.ops )  ){
+		text+= fieldName ;
 
-				text+= ' ' + opsObj.label + ' ' +v1;
+		var opsObj = jsu.getObjFrmArr( mtgv.mtpp.TECH_OPS ,  techObj.ops);
 
 
-				if(  !jsu.isNumber(v1) || v1 == null ||   v1 < objDef.min || v1> objDef.max   ) {
+
+		var v1 = getNumericValue(techObj.v1 );
+		var v2 = getNumericValue(techObj.v2 );
+		var v3 = getNumericValue(techObj.v3 );
+
+
+		if( jsu.containsString([CS_ABOVE , CS_BELOW  ,CS_BETWEEN  ] , techObj.ops )  ){
+
+			text+= ' ' + opsObj.label + ' ' +v1;
+
+
+			if(  !jsu.isNumber(v1) || v1 == null ||   v1 < objDef.min || v1> objDef.max   ) {
+				goodData =false;
+			} else{
+
+			}
+
+			if( techObj.ops ==  CS_BETWEEN ){
+
+
+				if( !jsu.isNumber(v2) ||   v2 ==null ||  v2 < objDef.min || v2> objDef.max  ) {
 					goodData =false;
-				} else{
-
+				}else{
+					text += " and " +v2;
 				}
-
-				if( techObj.ops ==  CS_BETWEEN ){
-
-
-					if( !jsu.isNumber(v2) ||   v2 ==null ||  v2 < objDef.min || v2> objDef.max  ) {
-						goodData =false;
-					}else{
-						text += " and " +v2;
-					}
-				}
-				if(v3 !=null){
-					if( !jsu.isInteger(v3) || (v3 < 0 || v3> 10  ) ){
-						goodData =false;
-					}else{
-						text += ' for minimum ' + v3 + " Ticks";
-					}
-				}
-			}else if( jsu.containsString([CS_CO_ABV , CS_CO_BLW , CS_CO_ABV_WITHIN , CS_CO_BLW_WITHIN ] , techObj.ops)){
-				if( !jsu.isNumber(v1) ||  v1 ==null || v1 < objDef.min || v1> objDef.max   ) {
+			}
+			if(v3 !=null){
+				if( !jsu.isInteger(v3) || (v3 < 0 || v3> 10  ) ){
 					goodData =false;
-				} 
-				text+= ' ' + opsObj.label + ' ' +v1 ;
+				}else{
+					text += ' for minimum ' + v3 + " Ticks";
+				}
+			}
+		}else if( jsu.containsString([CS_CO_ABV , CS_CO_BLW , CS_CO_ABV_WITHIN , CS_CO_BLW_WITHIN ] , techObj.ops)){
+			if( !jsu.isNumber(v1) ||  v1 ==null || v1 < objDef.min || v1> objDef.max   ) {
+				goodData =false;
+			} 
+			text+= ' ' + opsObj.label + ' ' +v1 ;
 
-				if(v2 !=null){
-					if( !jsu.isInteger(v2) || (v2 < 0 || v2> 5  ) ){
-						goodData =false;
+			if(v2 !=null){
+				if( !jsu.isInteger(v2) || (v2 < 0 || v2> 5  ) ){
+					goodData =false;
+				}else{
+					if(v2 ==0)  {
+						text+= ' in latest tick' ;
 					}else{
-						if(v2 ==0)  {
-							text+= ' in latest tick' ;
+						if( jsu.containsString([CS_CO_ABV , CS_CO_BLW ], techObj.ops )){
+							text+= ' '+ v2+' tick back' ;
 						}else{
-							if( jsu.containsString([CS_CO_ABV , CS_CO_BLW ], techObj.ops )){
-								text+= ' '+ v2+' tick back' ;
-							}else{
-								text+= ' within last '+ (v2 +1)+ ' ticks' ;
-							}
+							text+= ' within last '+ (v2 +1)+ ' ticks' ;
+						}
 
 							// text+= ' in latest tick' ;
-						}
 					}
-				}else{
-					text+= ' in latest tick' ;
 				}
+			}else{
+				text+= ' in latest tick' ;
+			}
 
-			}else if( jsu.containsString([WITHIN , MORE_THAN ] , techObj.ops)){
-				if(!jsu.isNumber(v1) ||  v1== null ||  v1 < objDef.min || v1> objDef.max   ) {
-					goodData =false;
-				}else{
-					var tolPc =  getObjFrmArr(PC_COMP_LOW , techObj.tolPc) ; 
-					text+= ' ' + opsObj.label + ' '  + tolPc.label +" of "  +v1 ;
-				}
+		}else if( jsu.containsString([WITHIN , MORE_THAN ] , techObj.ops)){
+			if(!jsu.isNumber(v1) ||  v1== null ||  v1 < objDef.min || v1> objDef.max   ) {
+				goodData =false;
+			}else{
+				var tolPc =  getObjFrmArr(PC_COMP_LOW , techObj.tolPc) ; 
+				text+= ' ' + opsObj.label + ' '  + tolPc.label +" of "  +v1 ;
+			}
 
 			}else if( jsu.containsString([TRENDING_UP , TRENDING_DOWN ] , techObj.ops)){ // trending ...
 
 				text+= ' ' + opsObj.label ;
 				if(v1== null || !jsu.isInteger(v1) || v1 < 2 || v1> 20   ){
-						goodData =false;
+					goodData =false;
 				}else{
 					text+= ' for last '  +v1 + ' Ticks ';
 				}
@@ -924,85 +986,85 @@ var cst =  (function () {
 			// }else{
 			// 	return { goodData : goodData , text : invalidText };
 			// }
-	}
-
-	function validateNgMultiLine(techObj, validResults, objDef , defField,  fieldList,addiOption, daysCo , daysWitin ){
-
-		var valObj = null;
-
-		
-		var fieldName = objDef.shortName;
-		if(techObj.fieldType != defField){
-			var fieldObj = 	jsu.getObjFrmArr(fieldList , techObj.fieldType);
-			fieldName = fieldObj.label;
 		}
 
+		function validateNgMultiLine(techObj, validResults, objDef , defField,  fieldList,addiOption, daysCo , daysWitin ){
 
-		if(  jsu.containsString(jsu.getListToIdArr(addiOption) , techObj.ops )  ){
-			var v1 = getNumericValue(techObj.v1 );
-			
-			var opsObj = jsu.getObjFrmArr( addiOption ,  techObj.ops);
-			var text = opsObj.label;
+			var valObj = null;
 
-			if(jsu.isNull(v1)){
-				valObj = {goodData : true , text : text + ' in latest tick' };
-			}else{
-				
+
+			var fieldName = objDef.shortName;
+			if(techObj.fieldType != defField){
+				var fieldObj = 	jsu.getObjFrmArr(fieldList , techObj.fieldType);
+				fieldName = fieldObj.label;
+			}
+
+
+			if(  jsu.containsString(jsu.getListToIdArr(addiOption) , techObj.ops )  ){
+				var v1 = getNumericValue(techObj.v1 );
+
+				var opsObj = jsu.getObjFrmArr( addiOption ,  techObj.ops);
+				var text = opsObj.label;
+
+				if(jsu.isNull(v1)){
+					valObj = {goodData : true , text : text + ' in latest tick' };
+				}else{
+
 
 				// text+= ' ' + opsObj.label + ' ' +v1 ;
-				if( !jsu.isInteger(v1) || (v1 < 0 || v1> 5  ) ){
-					valObj = {goodData :false };
-				}else{
-					// var text ='';
-					if(v1 ==0)  {
-							text+= ' in latest tick' ;
+					if( !jsu.isInteger(v1) || (v1 < 0 || v1> 5  ) ){
+						valObj = {goodData :false };
 					}else{
-						if( jsu.containsString(daysCo, techObj.ops )){
-							text+= ' '+ v1+' tick back' ;
+					// var text ='';
+						if(v1 ==0)  {
+							text+= ' in latest tick' ;
 						}else{
-							text+= ' within last '+ (v1 +1)+ ' ticks' ;
+							if( jsu.containsString(daysCo, techObj.ops )){
+								text+= ' '+ v1+' tick back' ;
+							}else{
+								text+= ' within last '+ (v1 +1)+ ' ticks' ;
+							}
 						}
 					}
+					valObj = {goodData : true , text : text };
 				}
-				valObj = {goodData : true , text : text };
+			}else{
+				valObj = validateNgCmn(techObj, validResults, objDef, fieldName);
 			}
-		}else{
-			valObj = validateNgCmn(techObj, validResults, objDef, fieldName);
+
+			valObj.fieldName = fieldName;
+			return valObj;
 		}
 
-		valObj.fieldName = fieldName;
-		return valObj;
-	}
-
-	
-
-	function validateTechNg(techObj, validResults){
-
-		var valObj = null;
-
-		var objDef =  jsu.getObjFrmArr( ALL_INDIS_MAP, techObj.indi );
-		var OPS_LIST = mtgv.mtpp.TECH_OPS ;
 
 
-		if(techObj.subType == 'obos' || techObj.subType ==  'sto'  || techObj.subType ==  'stoRsi'){
-			valObj = tobos.vobos(techObj, validResults);
+		function validateTechNg(techObj, validResults){
+
+			var valObj = null;
+
+			var objDef =  jsu.getObjFrmArr( ALL_INDIS_MAP, techObj.indi );
+			var OPS_LIST = mtgv.mtpp.TECH_OPS ;
+
+
+			if(techObj.subType == 'obos' || techObj.subType ==  'sto'  || techObj.subType ==  'stoRsi'){
+				valObj = tobos.vobos(techObj, validResults);
 		// }else 
 
 
 
 		// if( techObj.subType ==CMF  || techObj.subType ==  ROC || techObj.subType ==  ATR     ){
-		}else if(jsu.containsString([CMF, ATR, ROC, STD_DEV], techObj.subType)){		
+			}else if(jsu.containsString([CMF, ATR, ROC, STD_DEV], techObj.subType)){		
 
 			// valObj = validateNgCmn(techObj, validResults , objDef, objDef.shortName);
-			valObj = tibsl.vti(techObj, validResults);
+				valObj = tibsl.vti(techObj, validResults);
 
-		
+
 		}else if( jsu.containsString( ['macd', ADX ,'AroonIndi', RVI , AWESOME_OSC] ,   techObj.subType)  ){ //   techObj.subType == 'macd'  ){
-		
+
 			valObj = tindis.vt(techObj, validResults , objDef, objDef.shortName);
 
 		}else if(techObj.subType == ICHIMOKU ){	
-		
+
 			valObj = imccs.vic(techObj, validResults , objDef )
 		}else{
 			// BANDS ...
@@ -1019,7 +1081,7 @@ var cst =  (function () {
 		techObj.csType	 = TI_CS;
 
 		var selParam = 'techNgComp' + ':'+techObj.id; // Vol Compare
-	
+
 
 		if(valObj.goodData){
 			csh.cdt(techObj,valObj.text, validResults, selParam, true);
@@ -1049,7 +1111,7 @@ var cst =  (function () {
 
 			// if(obj.subType == 'obos'){
 
-				validateTechNg(obj, validResults);
+			validateTechNg(obj, validResults);
 			// }
 		}
 		diybi.vf(validResults);
@@ -1080,12 +1142,12 @@ var cst =  (function () {
 		var html=''
 		if(mtgv.mtpp.crossFreq){
 
-				var checked  = isChecked(id+'SetCB') ? 'checked' : '';
+			var checked  = isChecked(id+'SetCB') ? 'checked' : '';
 
 				// html+= " | "  
 
-				html += BREAK_LINE + htmlU.getCheckboxP(id+'SetCB', 'cst.shCs'  , checked, id ) +SP_2  + htmlU.getPlainGlaf('fas fa-tools' , 'black', 16  ) +' Customize' ;
-			}
+			html += BREAK_LINE + htmlU.getCheckboxP(id+'SetCB', 'cst.shCs'  , checked, id ) +SP_2  + htmlU.getPlainGlaf('fas fa-tools' , 'black', 16  ) +' Customize' ;
+		}
 
 		return html;	
 	}
@@ -1227,22 +1289,22 @@ var cst =  (function () {
 	function priceIndiRatioChg(techObj){   //pirc
 		if( jsu.arrayContainsId(PRICE_RAT_OPS , techObj.ops )  ){
 
-			if( !isPositiveNumInput(id+'v1')   ){
+			if( !hasInput(id+'v1')   ){
 			}  // only ma --- v1 ...
 			
 			if(jsu.containsString( [CS_BETWEEN],   techObj.ops2 )) {
-				if( !isPositiveNumInput(id+'v2')) {}
+				if( !hasInput(id+'v2')) {}
 			}
 
 
-		}
 	}
+}
 
 
 
 	// Swing Rejection  
 
-	function getSwingRejectionOption(indi, label){
+function getSwingRejectionOption(indi, label){
 /*
 		var options = [];
 
@@ -1252,43 +1314,43 @@ var cst =  (function () {
 		}
 		return options;
 */
-		var srOptions =  addMoreOption(indi, label, COMMON_SR_OPS);
+	var srOptions =  addMoreOption(indi, label, COMMON_SR_OPS);
 
-		var doubTopOptions =  addMoreOption(indi, label, INDI_DOUBLE_TOP_BOT);
+	var doubTopOptions =  addMoreOption(indi, label, INDI_DOUBLE_TOP_BOT);
 
 
-		return jsu.arrayAddAll(srOptions,  doubTopOptions, true);
+	return jsu.arrayAddAll(srOptions,  doubTopOptions, true);
+}
+
+
+function addMoreOption(indi, label, moreOptions){
+
+	var options = [];
+
+	for(var i=0; i<moreOptions.length;i++ ){
+		var obj = moreOptions[i];
+		options.push(  { id: obj.id , label : label +' ' + obj.label   });
 	}
-
-
-	function addMoreOption(indi, label, moreOptions){
-
-		var options = [];
-
-		for(var i=0; i<moreOptions.length;i++ ){
-			var obj = moreOptions[i];
-			options.push(  { id: obj.id , label : label +' ' + obj.label   });
-		}
-		return options;
-	}
+	return options;
+}
 
 
 
 
 
-	function getCrossTickChange(techObj ){
+function getCrossTickChange(techObj ){
 
-		if(!mtgv.mtpp.crossFreq){ return; }
+	if(!mtgv.mtpp.crossFreq){ return; }
 
-		var id = techObj.id;
+	var id = techObj.id;
 
-		var objDef =  jsu.getObjFrmArr( ALL_INDIS_MAP, techObj.indi );
+	var objDef =  jsu.getObjFrmArr( ALL_INDIS_MAP, techObj.indi );
 
-		var FIELDS = objDef.fields;
+	var FIELDS = objDef.fields;
 
-		if(FIELDS !=null){
+	if(FIELDS !=null){
 
-			var FIELDS_TO_VAL = jsu.getArrayKeys(FIELDS);
+		var FIELDS_TO_VAL = jsu.getArrayKeys(FIELDS);
 
 			mcval.vstf(techObj,  id,  null, null, null); // other  params non Man Field
 
@@ -1297,7 +1359,7 @@ var cst =  (function () {
 
 				// if( techObj.ops ==  BULL_MACO  ||  techObj.ops ==  BEAR_MACO) { 
 				if( jsu.arrayContainsId(COMMON_MACO_OPS , techObj.ops )  ){
-						techObj.custom = true;
+					techObj.custom = true;
 				}
 
 			}else{
@@ -1341,8 +1403,36 @@ var cst =  (function () {
 				secParam ='AroonIndi'
 			}
 
+			let mobFilter =''
+			if(jsu.isNotNull(thisIndi.techType)){
+				mobFilter = TI_CS +'_'+thisIndi.techType.toLowerCase() + '_'+thisIndi.id;
+			}else{
+				console.log('Missing Tech Type ' + thisIndi.id );
+			}
+
+			if(thisIndi.subType =='volatility'){
+				mobFilter = TI_CS +'_'+ 'volatility' + '_'+thisIndi.id;
+			}else if(thisIndi.id  == BOLLINGER){
+				mobFilter = "tiCs_bands_pcAndBoll";
+
+			}else if(thisIndi.id  == KELTNER){
+				mobFilter = "tiCs_bands_pcAndKeltner";
+			}else if(thisIndi.id  == PSAR){
+				mobFilter = "tiCs_bands_paraSar";
+			}else if(thisIndi.id  == SUPER_TREND){
+				mobFilter = "tiCs_indi_st";
+			}else if(thisIndi.id  == ICHIMOKU){	
+				mobFilter = "tiCs_bands_Ichimoku";
+			}
+
+			
+
+
 			let obj = {  id :  "techNgComp" , label : thisIndi.label, slabel : thisIndi.shortName    , tab : TI_CS, 
-						type : 'btn'  , filtDef : {obj:thisObject, fnc: 'atn' , params:  thisIndi.id  + PARAM_DELIM +secParam} }
+				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'atn' , params:  thisIndi.id  + PARAM_DELIM +secParam} ,
+				mobFilter: mobFilter
+
+			}
 
 			filer.push(obj) ; 
 
@@ -1353,10 +1443,18 @@ var cst =  (function () {
 		}
 
 		filer.push({  id :  "techNgComp" , label : 'Bollinger Band Squeeze', tab : TI_CS, 
-						type : 'btn'  , filtDef : {obj:thisObject, fnc: 'atn' , params:  BOLLINGER  + PARAM_DELIM +'squeeze'} }) ; 
+			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'atn' , params:  BOLLINGER  + PARAM_DELIM +'squeeze'},
+			mobFilter : "tiCs_bands_bollSqueeze"
+		}) ; 
 
 		return filer ;
 	}
+
+	function ngSearch(item, filterDef, params ){
+
+		paintFilterRow(params[0], params[1] );
+	}
+
 
 	function paintFilterRow(type, subType) {
 		// { html: html, id: id }
@@ -1372,7 +1470,7 @@ var cst =  (function () {
 		
 		addFilterChange(type, subType, newFilterRow["id"]);
 
-		
+		csh.sib(false);
 
 	}
 
@@ -1387,11 +1485,16 @@ var cst =  (function () {
 
 		gfr : getFormRow,
 
+		gftd : getFormTd,
+
 		anf : addNewFilter,
 
 		afc : addFilterChange,
 
 		pfr : paintFilterRow,
+
+		ngs : ngSearch,
+		
 		// New Ends
 
 

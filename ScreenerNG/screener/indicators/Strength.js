@@ -152,7 +152,7 @@ var csstr =  (function () {
 
 
 	function getAllRows(){
-
+		var scrData = mtgv.cs.screenerData;
 		let html = '';
 
 		for(var i=0;i<scrData.techStrComp.length;i++){
@@ -179,9 +179,16 @@ var csstr =  (function () {
 	}
 
 
-	function getFormRow(type, id){ 
+	function getFormRow(type, id, state){ 
 
 		let obj =   csu.gso(type, id)
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
 
 		if(type=='techStrComp'){
     	    return getTecStrHtml(obj);
@@ -198,7 +205,41 @@ var csstr =  (function () {
     	    return getFundaStrRow(obj, label);
 		}else if (  jsu.containsString( ['gwthRankComp'   , 'valRankComp'  , 'pftRankComp'  , 'stabRankComp'  ] , type   ) ){
 			var label = getFundaLabel(type) ;
-			return getFundaRankRow(techRankobj, label)
+			return getFundaRankRow(obj, label)
+		}
+
+	}
+
+
+	
+
+	function getFormTd(type, id, state){ 
+
+		let obj =   csu.gso(type, id)
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
+		if(type=='techStrComp'){
+    	    return getTecStrHtmlTds(obj);
+		}else if(type=='techRankComp'){
+    	    return getTecRankHtmlTds(obj);
+		}else if(type=='returnsComp'){
+    	    return getReturnsHtmlTds(obj);
+		}else if(type=='returnsRankComp'){
+    	    return getReturnRankHtmlTds(obj);
+		}else if(type=='relPriceStrComp'){
+    	    return getRelPriceStrHtmlTds(obj);
+		}else if (  jsu.containsString( ['gwthStrComp'   , 'valStrComp'  , 'pftStrComp'  , 'stabStrComp'  ] , type   ) ){
+    	    var label = getFundaLabel(type) ;
+    	    return getFundaStrHtmlTds(obj, label);
+		}else if (  jsu.containsString( ['gwthRankComp'   , 'valRankComp'  , 'pftRankComp'  , 'stabRankComp'  ] , type   ) ){
+			var label = getFundaLabel(type) ;
+			return getFundaRankHtmlTds(obj, label)
 		}
 
 	}
@@ -353,18 +394,29 @@ var csstr =  (function () {
 
 
 	function getTecStrHtml(techStrobj){
-		var tds = getTecStrHtmlTds(techStrobj);
-		var html = '<tr id='+techStrobj.id+'>'
-			 + createTd( createDiv(techStrobj.id+'Td1Div', tds.td1, null)  , CS_LABEL_WIDTH) 
-			 + createTd(createDiv(techStrobj.id+'Td2Div', tds.td2, null)) +'</tr>';
-			 return html;
+		var html = getTecStrHtmlTds(techStrobj);
+
+
+
+		// if(mtgv.cs.ng){
+
+
+			return  '<tr id='+techStrobj.id+'>'
+			 + createTd(createDiv(techStrobj.id+'Td2Div',  html, null)) +'</tr>';
+		// }
+
+		// var html = '<tr id='+techStrobj.id+'>'
+		// 	 + createTd( createDiv(techStrobj.id+'Td1Div', tds.td1, null)  , CS_LABEL_WIDTH) 
+		// 	 + createTd(createDiv(techStrobj.id+'Td2Div', tds.td2, null)) +'</tr>';
+		// 	 return html;
 	}
 
 	function getTecStrHtmlTds(techStrobj){
 		var id = techStrobj.id;
 		var func = 'csstr.tsc';
 		var td1 = " Technical Strength";
-		var html = ' '
+		var html =  htmlU.doBold("Technical Strength : ")
+
 		html+=  getDropDown(LIST_TEC_STR, id+'strType', null,func, id, techStrobj.strType);
 		html+= SP_3 + 'Stocks on  '
 
@@ -372,8 +424,13 @@ var csstr =  (function () {
 		html += '  Tick';
 
 		var param = techStrobj.type + ':'+id; // Vol Compare
+		html+= csh.gept(techStrobj, STR_CS,  param);
 		html+= SP_3 + csh.delIcon(param) ;
-		return  {td1 : td1, td2 : html };
+
+		// html+= csh.gept(techStrobj, STR_CS,  param);
+
+		return html;
+		// return  {td1 : td1, td2 : html };
 	}
 
 	function tecStrChg(id){
@@ -387,11 +444,19 @@ var csstr =  (function () {
 
 
 	function getTecRankHtml(techRankobj){
-		var tds = getTecRankHtmlTds(techRankobj);
-		var html = '<tr id='+techRankobj.id+'>'
-			 + createTd( createDiv(techRankobj.id+'Td1Div', tds.td1, null)  , CS_LABEL_WIDTH) 
-			 + createTd(createDiv(techRankobj.id+'Td2Div', tds.td2, null)) +'</tr>';
-			 return html;
+		var html = getTecRankHtmlTds(techRankobj);
+
+		// if(mtgv.cs.ng){
+			return '<tr id='+techRankobj.id+'>'
+			 + createTd(createDiv(techRankobj.id+'Td2Div',  html, null)) +'</tr>';
+			 ;
+		// }
+
+
+		// var html = '<tr id='+techRankobj.id+'>'
+		// 	 + createTd( createDiv(techRankobj.id+'Td1Div', tds.td1, null)  , CS_LABEL_WIDTH) 
+		// 	 + createTd(createDiv(techRankobj.id+'Td2Div', tds.td2, null)) +'</tr>';
+		// 	 return html;
 	}
 
 
@@ -399,8 +464,10 @@ var csstr =  (function () {
 		var id = techRankobj.id;
 		var func = 'csstr.trc';
 		var td1 = " Tech Rank ";
-		var html = ' More '
-		html+=  getDropDown(LIST_BULL_BEAR, id+'rankType', null,func, id, techRankobj.rankType);
+		var html = '  '
+		 html+= htmlU.doBold('Tech Rank  : ');
+
+		html+=  'More '+ getDropDown(LIST_BULL_BEAR, id+'rankType', null,func, id, techRankobj.rankType);
 		html+= SP_3 + ' Than  '
 
 		html+= SP_3 + getInputTxtParam( id +'rankPc' , 3, techRankobj.rankPc, func, id ) + htmlU.getSpan(' (value - 1 to 99) ', 'grey', 8) ;
@@ -410,8 +477,11 @@ var csstr =  (function () {
 		html += '  Tick';
 
 		var param = techRankobj.type + ':'+id; // Vol Compare
+		html+= csh.gept(techRankobj, STR_CS,  param);
 		html+= SP_3 + csh.delIcon(param) ;
-		return  {td1 : td1, td2 : html };
+
+		// return  {td1 : td1, td2 : html };
+		return html;
 	}
 
 
@@ -468,19 +538,28 @@ var csstr =  (function () {
 
 
 	function getFundaStrRow(strobj, label){
-		var tds = getFundaStrHtmlTds(strobj);
-		var html = '<tr id='+strobj.id+'>'
-			 + createTd( createDiv(strobj.id+'Td1Div',label, null)  , CS_LABEL_WIDTH) 
-			 + createTd(createDiv(strobj.id+'Td2Div', tds.td2, null)) +'</tr>';
-			 return html;
+		var html = getFundaStrHtmlTds(strobj, label);
+
+		// if(mtgv.cs.ng){
+			return '<tr id='+strobj.id+'>'
+			 + createTd(createDiv(strobj.id+'Td2Div',  html, null)) +'</tr>';
+			 ;
+		// }
+
+		// var html = '<tr id='+strobj.id+'>'
+		// 	 + createTd( createDiv(strobj.id+'Td1Div',label, null)  , CS_LABEL_WIDTH) 
+		// 	 + createTd(createDiv(strobj.id+'Td2Div', tds.td2, null)) +'</tr>';
+		// 	 return html;
 	}
 
 
-	function getFundaStrHtmlTds(strComp){
+	function getFundaStrHtmlTds(strComp, label){
 		var id = strComp.id;
 		var func = 'csstr.fsc';
 		var td1 = " Technical Strength";
 		var html = ' '
+
+		html+= htmlU.doBold(label + ' : ')
 
 		var list = getFundaList(strComp.type);
 
@@ -488,8 +567,10 @@ var csstr =  (function () {
 		
 
 		var param = strComp.type + ':'+id; // Vol Compare
+		html+= csh.gept(strComp, STR_CS,  param);
 		html+= SP_3 + csh.delIcon(param) ;
-		return  {td1 : td1, td2 : html };
+		// return  {td1 : td1, td2 : html };
+		return html
 	}
 
 
@@ -509,20 +590,28 @@ var csstr =  (function () {
 	}
 
 	function getFundaRankRow(strobj, label){
-		var tds = getFundaRankHtmlTds(strobj);
-		var html = '<tr id='+strobj.id+'>'
-			 + createTd( createDiv(strobj.id+'Td1Div',label, null)  , CS_LABEL_WIDTH) 
-			 + createTd(createDiv(strobj.id+'Td2Div', tds.td2, null)) +'</tr>';
-			 return html;
+		var html = getFundaRankHtmlTds(strobj, label);
+
+
+		// if(mtgv.cs.ng){
+			return '<tr id='+strobj.id+'>'
+			 + createTd(createDiv(strobj.id+'Td2Div',  html, null)) +'</tr>';
+			 // return;
+		// }
+
+		// var html = '<tr id='+strobj.id+'>'
+		// 	 + createTd( createDiv(strobj.id+'Td1Div',label, null)  , CS_LABEL_WIDTH) 
+		// 	 + createTd(createDiv(strobj.id+'Td2Div', tds.td2, null)) +'</tr>';
+		// 	 return html;
 	}
 
 
 
-	function getFundaRankHtmlTds(rankObj){
+	function getFundaRankHtmlTds(rankObj, label){
 		var id = rankObj.id;
 		var func = 'csstr.frc';
 		var td1 = "  ";
-		var html = ' More  '
+		var html =htmlU.doBold( label +'  : ') +  ' More  '
 
 
 		html+=   getDropDown(LIST_BULL_BEAR, id+'rankType', null,func, id, rankObj.rankType);
@@ -535,8 +624,11 @@ var csstr =  (function () {
 		// html += '  Tick';
 
 		var param = rankObj.type + ':'+id; // Vol Compare
+		html+= csh.gept(rankObj, STR_CS,  param);
 		html+= SP_3 + csh.delIcon(param) ;
-		return  {td1 : td1, td2 : html };
+		// return  {td1 : td1, td2 : html };
+
+		return html;
 	}
 
 
@@ -630,11 +722,19 @@ var csstr =  (function () {
 	*********************************************/
 
 	function getReturnsHtml(returnsobj){
-		var tds = getReturnsHtmlTds(returnsobj);
-		var html = '<tr id='+returnsobj.id+'>'
-			 + createTd( createDiv(returnsobj.id+'Td1Div', tds.td1, null)  , CS_LABEL_WIDTH) 
-			 + createTd(createDiv(returnsobj.id+'Td2Div', tds.td2, null)) +'</tr>';
-			 return html;
+		var html = getReturnsHtmlTds(returnsobj);
+
+		// if(mtgv.cs.ng){
+			return '<tr id='+returnsobj.id+'>'
+			 + createTd(createDiv(returnsobj.id+'Td2Div',   html, null)) +'</tr>';
+			 ;
+		// }
+
+
+		// var html = '<tr id='+returnsobj.id+'>'
+		// 	 + createTd( createDiv(returnsobj.id+'Td1Div', tds.td1, null)  , CS_LABEL_WIDTH) 
+		// 	 + createTd(createDiv(returnsobj.id+'Td2Div', tds.td2, null)) +'</tr>';
+		// 	 return html;
 	}
 
 	function getReturnsHtmlTds(returnsobj){
@@ -642,6 +742,9 @@ var csstr =  (function () {
 		var func = 'csstr.src'; // Stock returns Change
 		var td1 = " Stock Returns  ";
 		var html = ''
+
+		html+= htmlU.doBold('Stock Returns  : ')
+
 		html+=  getDropDown(RS_PERIODS, id+'period', null,func, id, returnsobj.period);
 		html+= SP_3 + " returns ";
 
@@ -657,8 +760,11 @@ var csstr =  (function () {
 		html+= htmlU.getSpan(' (in %) ', 'grey', 8) ;
 
 		var param = returnsobj.type + ':'+id; // Vol Compare
+		html+= csh.gept(returnsobj, STR_CS,  param);
+
 		html+= SP_3 + csh.delIcon(param) ;
-		return  {td1 : td1, td2 : html };
+		// return  {td1 : td1, td2 : html };
+		return html;
 	}
 
 	function returnsChg(id){  // src -- Stock returns Change
@@ -667,9 +773,9 @@ var csstr =  (function () {
 
 		csu.setProp(mtgv.cs.screenerData.returnsComp, ['period', 'ops','v1', 'v2'],id);
 
-		var td = getReturnsHtmlTds( returnsobj);
+		var html = getReturnsHtmlTds( returnsobj);
 
-		htmlU.addMsgToDiv( returnsobj.id+'Td2Div', true, td.td2);
+		htmlU.addMsgToDiv( returnsobj.id+'Td2Div', true, html);
 
 		// var pc = htmlU.getInputVal(id +'v1' )
 		if(jsu.isIntegerInput(id +'v1') && jsu.isPositiveIntegerInput ( id +'v1', 1,99) ){
@@ -690,10 +796,13 @@ var csstr =  (function () {
 	*********************************************/
 
 	function getReturnRankHtml(returnRankobj){
-		var tds = getReturnRankHtmlTds(returnRankobj);
+		var html = getReturnRankHtmlTds(returnRankobj);
+
+
+
 		var html = '<tr id='+returnRankobj.id+'>'
-			 + createTd( createDiv(returnRankobj.id+'Td1Div', tds.td1, null)  , CS_LABEL_WIDTH) 
-			 + createTd(createDiv(returnRankobj.id+'Td2Div', tds.td2, null)) +'</tr>';
+			 // + createTd( createDiv(returnRankobj.id+'Td1Div', tds.td1, null)  , CS_LABEL_WIDTH) 
+			 + createTd(createDiv(returnRankobj.id+'Td2Div', html, null)) +'</tr>';
 			 return html;
 	}
 
@@ -702,7 +811,9 @@ var csstr =  (function () {
 		var id = returnRankobj.id;
 		var func = 'csstr.rrc';
 		var td1 = " Returns  Rank ";
-		var html = ''
+		var html = htmlU.doBold(" Returns  Rank ");
+
+
 		html+=  getDropDown(RS_PERIODS, id+'period', null,func, id, returnRankobj.period);
 		html+= SP_3 + ' Returns  '
 
@@ -713,8 +824,11 @@ var csstr =  (function () {
 		html+= ' % of Stocks   '
 
 		var param = returnRankobj.type + ':'+id; // Vol Compare
+		html+= csh.gept(returnRankobj, STR_CS,  param);
+
 		html+= SP_3 + csh.delIcon(param) ;
-		return  {td1 : td1, td2 : html };
+		// return  {td1 : td1, td2 : html };
+		return html;
 	}
 
 
@@ -737,11 +851,19 @@ var csstr =  (function () {
 	*********************************************/
 
 	function getRelPriceStrHtml(rpsobj){
-		var tds = getRelPriceStrHtmlTds(rpsobj);
-		var html = '<tr id='+rpsobj.id+'>'
-			 + createTd( createDiv(rpsobj.id+'Td1Div', tds.td1, null)  , CS_LABEL_WIDTH) 
-			 + createTd(createDiv(rpsobj.id+'Td2Div', tds.td2, null)) +'</tr>';
-			 return html;
+		var html = getRelPriceStrHtmlTds(rpsobj);
+
+
+		// if(mtgv.cs.ng){
+			return '<tr id='+rpsobj.id+'>'
+			 + createTd(createDiv(rpsobj.id+'Td2Div',   html, null)) +'</tr>';
+			 ;
+		// }
+
+		// var html = '<tr id='+rpsobj.id+'>'
+		// 	 + createTd( createDiv(rpsobj.id+'Td1Div', tds.td1, null)  , CS_LABEL_WIDTH) 
+		// 	 + createTd(createDiv(rpsobj.id+'Td2Div', tds.td2, null)) +'</tr>';
+		// 	 return html;
 	}
 
 	function getRelPriceStrHtmlTds(rpsobj){
@@ -749,6 +871,8 @@ var csstr =  (function () {
 		var func = 'csstr.rpsc'; // relPriceStrChg
 		var td1 = "Relative Price Strength  ";
 		var html = ''
+
+		html+= htmlU.doBold('Relative Price Strength  : ')
 
 		html+=  getDropDown(RS_PERIODS, id+'period', null,func, id, rpsobj.period);
 		html+= SP_3 + htmlU.getSpan('Relative Strength wrt', 'grey' , 10);
@@ -763,8 +887,11 @@ var csstr =  (function () {
 		html+= SP_3 +" %"
 
 		var param = rpsobj.type + ':'+id; // Vol Compare
+		html+= csh.gept(rpsobj, STR_CS,  param);
 		html+= SP_3 + csh.delIcon(param) ;
-		return  {td1 : td1, td2 : html };
+		// return  {td1 : td1, td2 : html };
+
+		return html;
 	}
 
 	function relPriceStrChg(id){  // rpsc
@@ -775,9 +902,14 @@ var csstr =  (function () {
 
 		var td = getRelPriceStrHtmlTds( rpsobj);
 
-		htmlU.addMsgToDiv( rpsobj.id+'Td2Div', true, td.td2);
+		htmlU.addMsgToDiv( rpsobj.id+'Td2Div', true, td);
 
 		// var pc = htmlU.getInputVal(id +'v1' )
+
+		if(!jsu.hasInput(id +'v1')){
+
+		}	
+
 		if(jsu.isNumber(id +'v1') && jsu.isNumber ( id +'v1', 1,99) ){
 				// good Numbber.... Do not Remove ... Kept For marking border of Text box...
 				// return;
@@ -799,7 +931,7 @@ var csstr =  (function () {
 			obj.csType = STR_CS;
 			var tick = getObjFrmArr( FREQ_SCR_MAP,  obj.tick); 
 			var strType = getObjFrmArr( LIST_TEC_STR, obj.strType);
-			var text = strType.label + ' Stocks at ' + tick.label + ' Tick' ;
+			var text =  doBold('Tech Strength :') + strType.label + ' Stocks at ' + tick.label + ' Tick' ;
 			// validResults.validFields+= getSpan(text, 'green', CS_SEL_FONT_SIZE) + '<br/>';
 			// validResults.validFieldCount++;
 
@@ -815,6 +947,8 @@ var csstr =  (function () {
 			var pc = obj.rankPc;
 
 			var text = '';
+
+			text+= doBold('Tech Rank :') 
 
 			if(jsu.isNotNull( pc)) pc = Number(pc);
 
@@ -842,7 +976,9 @@ var csstr =  (function () {
 			var v1 = obj.v1;
 			var v2 = obj.v2;
 
-			var text = period.label;
+
+
+			var text = doBold('Relative Strength :') + period.label;
 			var goodData = true;
 
 			if(jsu.isNotNull( v1)) v1 = Number(v1);
@@ -884,6 +1020,8 @@ var csstr =  (function () {
 
 			var text = '';
 
+			text += doBold('Returns Rank :')
+
 			if(jsu.isNotNull( pc)) pc = Number(pc);
 
 			if(jsu.isInteger(pc) && (pc >=1 && pc <= 99)){
@@ -915,10 +1053,12 @@ var csstr =  (function () {
 
 			var text = '';
 
+			text += doBold('Relative Strength :')
+
 			if(jsu.isNotNull( v1)) v1 = Number(v1);
 
 			if(jsu.isNumber(v1) ){
-				text =  period.label + ' returns compared to '+ idx.label + ' returns ' + ops.label + ' ' + v1 +'%';
+				text +=  period.label + ' returns compared to '+ idx.label + ' returns ' + ops.label + ' ' + v1 +'%';
 
 				var selParam = obj.type + ':'+obj.id; // Vol Compare
 
@@ -933,16 +1073,16 @@ var csstr =  (function () {
 		}
 
 
-		validateFundaStr(validResults , 'gwthStrComp');
+		validateFundaStr(validResults , 'gwthStrComp' , 'Growth Strength');
 		validateFundaRank(validResults ,  'gwthRankComp'  , 'TSR Growth Rank');
 
-		validateFundaStr(validResults , 'valStrComp');
+		validateFundaStr(validResults , 'valStrComp' , 'Value Strength');
 		validateFundaRank(validResults , 'valRankComp'   , 'TSR Value Rank');
 
-		validateFundaStr(validResults , 'pftStrComp');
+		validateFundaStr(validResults , 'pftStrComp' , 'Profit Strength');
 		validateFundaRank(validResults , 'pftRankComp'   , 'TSR Profit Rank');
 
-		validateFundaStr(validResults , 'stabStrComp');
+		validateFundaStr(validResults , 'stabStrComp' ,  'Stability Strength');
 		validateFundaRank(validResults , 'stabRankComp'   , 'TSR Stability Rank');
 		
 
@@ -957,7 +1097,7 @@ var csstr =  (function () {
 			var obj = objList[i];
 			obj.csType = STR_CS;
 			var strType = getObjFrmArr( list, obj.strType);
-			var text = strType.label ;
+			var text = doBold(strType.label) ;
 			var selParam = obj.type + ':'+obj.id; // Vol Compare
 			csh.cdt(obj,text, validResults, selParam, true);
 		}
@@ -975,7 +1115,7 @@ var csstr =  (function () {
 			var rankType = getObjFrmArr( LIST_BULL_BEAR, obj.rankType);
 			var pc = obj.rankPc;
 
-			var text = label;
+			var text = doBold(label);
 
 			var rankLabel = getFundaLabel(type);
 
@@ -1002,15 +1142,17 @@ var csstr =  (function () {
 		// var filer = [];
 		
 		filer.push({  id :  "techStrComp" , label : 'Technical Strength'    , tab : STR_CS, 
-			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'techStrComp' } , subDef :LIST_TEC_STR }) ;  //   JavaScript:cscmn.atn('price','priceCs');
+			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'techStrComp' } 
+			, subDef :LIST_TEC_STR  ,mobFilter: "strCs_techStr" }) ;  //   JavaScript:cscmn.atn('price','priceCs');
 
 
 		filer.push({  id :  "techRankComp" , label : 'Technical Rank'    , tab : STR_CS, 
-			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'techStrComp' }  }) ;  //   JavaScript:cscmn.atn('price','priceCs');
+			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'techStrComp' },mobFilter: "strCs_techRank"  }) ;  //   JavaScript:cscmn.atn('price','priceCs');
 
 
 		filer.push({  id :  "returnsComp" , label : 'Stock Returns'    , tab : STR_CS, 
-				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'techStrComp' } , subDef : RS_PERIODS  }) ;
+				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'techStrComp' } , 
+				subDef : RS_PERIODS,mobFilter: "strCs_addReturns"  }) ;
 
 		if(jsu.isMigContext()){
 
@@ -1018,7 +1160,8 @@ var csstr =  (function () {
 			// 	type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'techStrComp' }  }) ;  //   JavaScript:cscmn.atn('price','priceCs');
 
 			filer.push({  id :  "relPriceStrComp" , label : 'Relative Price Strength'    , tab : STR_CS, 
-				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'relPriceStrComp' }  }) ;  //   JavaScript:cscmn.atn('price','priceCs');
+				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'relPriceStrComp' },
+				mobFilter: "strCs_relPcStr"  }) ;  //   JavaScript:cscmn.atn('price','priceCs');
 
 			// filer.push({  id :  "relStrComp" , label : 'Technical Rank'    , tab : STR_CS, 
 			// 	type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'techStrComp' }  }) ;  //   JavaScript:cscmn.atn('price','priceCs');
@@ -1026,37 +1169,42 @@ var csstr =  (function () {
 		}
 
 
-		filer.push({  id :  "gwthStrComp" , label : 'Growh Rank'    , tab : STR_CS, 
-				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'gwthStrComp' }   }) ;
+		filer.push({  id :  "gwthStrComp" , label : 'Growth Rank'    , tab : STR_CS, 
+				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'gwthStrComp' } ,
+				mobFilter: "strCs_tsrGrowthIdx"  }) ;
 
-		filer.push({  id :  "gwthRankComp" , label : 'Growh Index'    , tab : STR_CS, 
-				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'gwthRankComp' }    }) ;
+		filer.push({  id :  "gwthRankComp" , label : 'Growth Index'    , tab : STR_CS, 
+				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'gwthRankComp' } ,
+				mobFilter: "strCs_TsrGrowthRank"  }) ;
 
 
 		filer.push({  id :  "pftStrComp" , label : 'Profitability Index'    , tab : STR_CS, 
-				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'pftStrComp' }   }) ;
+				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'pftStrComp' },mobFilter: "strCs_tsrPftIdx"   }) ;
 
 		filer.push({  id :  "pftRankComp" , label : 'Profitability Rank'    , tab : STR_CS, 
-				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'pftRankComp' }   }) ;
+				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'pftRankComp' } ,mobFilter: "strCs_tsrPftRank"  }) ;
 
 
 		filer.push({  id :  "valStrComp" , label : 'Valuation Index'    , tab : STR_CS, 
-				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'valStrComp' }   }) ;
+				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'valStrComp' }  ,mobFilter: "strCs_TsrValIdx" }) ;
 
 		filer.push({  id :  "valRankComp" , label : 'Valuation Rank'    , tab : STR_CS, 
-				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'valRankComp' }   }) ;
+				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'valRankComp' } ,mobFilter: "strCs_TsrValRank"  }) ;
 
 
 		filer.push({  id :  "stabStrComp" , label : 'Stability Index'    , tab : STR_CS, 
-				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'stabStrComp' }   }) ;
+				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'stabStrComp' } ,mobFilter: "strCs_tsrStabIdx"  }) ;
 
 		filer.push({  id :  "stabRankComp" , label : 'Stability Rank'    , tab : STR_CS, 
-				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'stabRankComp' }   }) ;
+				type : 'btn'  , filtDef : {obj:thisObject, fnc: 'addStr' , params:  'stabRankComp' },mobFilter: "strCs_tsrStabRank"   }) ;
 
 
 		return filer ;
 	}
 
+	function ngSearch(item, filterDef, params ){
+		paintFilterRow(item.id);
+	}
 
 	function paintFilterRow(type) {
 		// { html: html, id: id }
@@ -1073,7 +1221,7 @@ var csstr =  (function () {
 		
 		addFilterChange(type, newFilterRow["id"]);
 
-		
+		csh.sib(false);
 
 	}
 
@@ -1086,6 +1234,8 @@ var csstr =  (function () {
 		gar : getAllRows,
 
 		gfr : getFormRow,
+		
+		gftd : getFormTd,
 
 		anf : addNewFilter,
 
@@ -1093,6 +1243,7 @@ var csstr =  (function () {
 
 		pfr : paintFilterRow,
 
+		ngs : ngSearch,
 		// New Ends
 
 		

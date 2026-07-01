@@ -25,16 +25,21 @@ var csfstr = (function () {  //CS Filter Struc
 		insideTabs = document.getElementById("insideTabs");
 		selectFieldsButton = document.querySelector(".selectfields-Button");
 
-		addResizerListeners();
+		if(!mtgv.cs.ng){
+			addResizerListeners();
 
-		addCollapsableBtnListeners();
-		addSelFldListeners();
+			addCollapsableBtnListeners();
+			addSelFldListeners();
 
-		new ResizeObserver(() => initwrapperWidth()).observe(wrapper);
+			new ResizeObserver(() => initwrapperWidth()).observe(wrapper);
 
-		new ResizeObserver(() => initScrollBtns()).observe(insideTabs);
+			new ResizeObserver(() => initScrollBtns()).observe(insideTabs);
 
-		addScrollBarEventListner();
+			addScrollBarEventListner();
+
+			
+		}
+
 	}
 
 
@@ -125,6 +130,8 @@ function addScrollBarEventListner(){
 	function addResizerListeners(){
 
 		if(isMobile()) return;
+
+
 
 		resizer.addEventListener('mousedown', function (e) {
 		    e.preventDefault();

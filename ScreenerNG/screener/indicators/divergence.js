@@ -109,12 +109,35 @@ var csd =  (function () {
 	}
 
 
-	function getFormRow(type, id){ //MA_PRICE_OPTIONS
+	function getFormRow(type, id, state){ //MA_PRICE_OPTIONS
 
 		let obj =  jsu.getObjFrmArr(mtgv.cs.screenerData.techDivComp, id)
 
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
 		return getDivTr(obj);
 	}
+
+
+	function getFormTd(type, id, state){ //MA_PRICE_OPTIONS
+
+		let obj =  jsu.getObjFrmArr(mtgv.cs.screenerData.techDivComp, id)
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
+		return getDivTr(obj);
+	}
+
 
 
 	function getControls(){
@@ -221,12 +244,56 @@ var csd =  (function () {
 		return { html : html , id : id};
 	}
 
-	function addFilterChange(type, id){ //MA_PRICE_OPTIONS
+	function addFilterChange(type, subtype,id){ //MA_PRICE_OPTIONS
 		techDivChg(id);
 	}
 
 
 	function getDivTr(techDivObj){
+		
+		// var td1 = createTd(td1Txt)
+
+
+		var td2 = getTD( techDivObj );
+
+		// var html = '<tr id='+techDivObj.id+'>' + td1	+ createTd(createDiv(techDivObj.id+'Td2Div', td2)) +'</tr>';
+
+		// if(mtgv.cs.ng){
+
+			html = '<tr id='+techDivObj.id+'>' +  createTd(createDiv(  techDivObj.id+'Td2Div',  td2)) +'</tr>';
+
+		// }else{
+
+
+		// 	html = '<tr id='+techDivObj.id+'>' + td1	+ createTd(createDiv(techDivObj.id+'Td2Div', td2)) +'</tr>';
+		// }
+
+
+
+		return html;
+	}
+
+
+
+
+
+	function addDiv(indi, subType){
+
+		let json = addNewFilter(indi);
+		
+	    $('#techDivCtrlTab').append( json.html);
+
+	    techDivChg(json.id);
+	    csu.dsf();
+
+	}
+
+
+	function getTD(techDivObj){
+
+		var html= '';
+
+		
 		var objDef =  jsu.getObjFrmArr( ALL_INDIS_MAP, techDivObj.indi );
 		
 		if(techDivObj.indi == MACD_HIST){
@@ -254,47 +321,8 @@ var csd =  (function () {
 
 		td1Txt ='<div>' + td1Txt +'</div>'  // required to remove Default styling of BS
 
-		// var td1 = createTd(td1Txt)
 
-
-		var td2 = getTD( techDivObj );
-
-		// var html = '<tr id='+techDivObj.id+'>' + td1	+ createTd(createDiv(techDivObj.id+'Td2Div', td2)) +'</tr>';
-
-		// if(mtgv.cs.ng){
-
-			html = '<tr id='+techDivObj.id+'>' +  createTd(createDiv(  techDivObj.id+'Td2Div', td1Txt	+ td2)) +'</tr>';
-
-		// }else{
-
-
-		// 	html = '<tr id='+techDivObj.id+'>' + td1	+ createTd(createDiv(techDivObj.id+'Td2Div', td2)) +'</tr>';
-		// }
-
-
-
-		return html;
-	}
-
-
-	function addDiv(indi, subType){
-
-		let json = addNewFilter(indi);
-		
-	    $('#techDivCtrlTab').append( json.html);
-
-	    techDivChg(json.id);
-	    csu.dsf();
-
-	}
-
-
-	function getTD(techDivObj){
-
-		var html= '';
-
-		
-
+		html+= td1Txt;
 
 		for(var i=0;i<mtgv.mtpp.DIV_TYPE.length ; i++){
 
@@ -317,6 +345,12 @@ var csd =  (function () {
 
 
 		var param = 'techDivComp' + ':'+techDivObj.id; // Vol Compare
+
+
+		html+= csh.gept(techDivObj, DIV_CS,  param);
+
+
+
 		html+= SP_3 + csh.delIcon(param) ;
 
 		return html;
@@ -438,14 +472,27 @@ var csd =  (function () {
 					secParam ='obos'
 				}
 				
-				if (thisIndi.id  == MACD ){
+			}else	if (thisIndi.id  == MACD ){
 					secParam ='macd'
 				}else if (thisIndi.id  == AROON ){
 					secParam ='AroonIndi'
 				}
 
+				let mobFilter =''
+				if(jsu.isNotNull(thisIndi.techType)){
+					mobFilter = DIV_CS +'_'+thisIndi.techType.toLowerCase() + '_'+thisIndi.id;
+				}else{
+					console.log('Missing Tech Type ' + thisIndi.id );
+				}
+
+				if(thisIndi.subType =='volatility'){
+					mobFilter = DIV_CS +'_'+ 'volatility' + '_'+thisIndi.id;
+				}
+
 				let obj = {  id :  "techDivComp" , label : thisIndi.label +' Divergence', slabel : thisIndi.shortName +' Divergence'   , tab : DIV_CS, 
-							type : 'btn'  , filtDef : {obj:thisObject, fnc: 'adv' , params:  thisIndi.id  + PARAM_DELIM +secParam} }
+							type : 'btn'  , filtDef : {obj:thisObject, fnc: 'adv' , params:  thisIndi.id  + PARAM_DELIM +secParam} ,
+						mobFilter: mobFilter	
+					}
 
 
 				filer.push(obj) ; 
@@ -453,7 +500,7 @@ var csd =  (function () {
 				if(jsu.containsString([ RSI_SMOOTH, MACD], thisIndi.id)){
 					defFilter.push(obj);
 				}
-			}	
+				
 			
 
 		}
@@ -461,6 +508,11 @@ var csd =  (function () {
 						type : 'btn'  , filtDef : {obj:thisObject, fnc: 'adv' , params:  MACD_HIST  + PARAM_DELIM + MACD_HIST} }) ; 
 
 		return filer ;
+	}
+
+	function ngSearch(item, filterDef, params ){
+
+		paintFilterRow(params[0], params[1] );
 	}
 
 
@@ -478,6 +530,8 @@ var csd =  (function () {
 
 		mtgv.cs.editActive.push(newFilterRow); 
 
+		csh.sib(false);
+
 	}
 
 	return {
@@ -490,11 +544,16 @@ var csd =  (function () {
 
 		gfr : getFormRow,
 
+		gftd : getFormTd,
+
+
 		anf : addNewFilter,
 
 		afc : addFilterChange,
 
 		pfr : paintFilterRow,
+
+		ngs : ngSearch,
 
 		// New Ends
 

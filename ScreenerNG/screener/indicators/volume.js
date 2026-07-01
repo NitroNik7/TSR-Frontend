@@ -112,8 +112,27 @@ var csv =  (function () {
 		var scrData = mtgv.cs.screenerData;
 		let html ='';
 
-		for(var i=0;i< VOL_AEBB_MAP.length ;i++) html+= csh.aebbStrut(VOL_AEBB_MAP[i].id, VOL_LABEL_WIDTH);
 
+		if(mtgv.cs.ng){
+
+			let csVolObj = jsu.getObjFrmArr(mtgv.cs.screenerData.aebb, "csVol");
+
+			if(csVolObj.hasData){
+				html+= csh.aebbStrut('csVol', null);	
+			}
+
+			let csDayVolObj = jsu.getObjFrmArr(mtgv.cs.screenerData.aebb, "csDayVol");
+
+			if(csDayVolObj.hasData){
+				html+= csh.aebbStrut('csDayVol', null);	
+			}
+			
+			
+
+		}else{
+
+			for(var i=0;i< VOL_AEBB_MAP.length ;i++) html+= csh.aebbStrut(VOL_AEBB_MAP[i].id, VOL_LABEL_WIDTH);
+		}
 /*	
 		html+= cscmn.tht(scrData.trend.volDaysTrend , 'volDays');	
 		html+= cscmn.tht(scrData.trend.volTicksTrend , 'volTicks');	
@@ -146,22 +165,75 @@ var csv =  (function () {
 	}
 
 
-	function getFormRow(type, id){ //MA_PRICE_OPTIONS
-		let obj =   csu.gso(type, id)
+	function getFormRow(type, id, state){ //MA_PRICE_OPTIONS
+		
+
+		let obj =   null;
+
+		if(type=='csDayVol' || type=='csVol'){
+			obj = getObjFrmArr(mtgv.cs.screenerData.aebb, type);
+		}else{
+			obj = csu.gso(type, id)
+		}
+
 
 		if(type=='csVol'){ // Tick Vol 
     		return csh.aebbStrut('csVol', null);;
 		}else if(type=='csDayVol'){	 // daily Vol
 			return csh.aebbStrut('csDayVol', null);
-		}else if(type=='ac'){
-    	      return cscmn. acr('vol', VOL_CS);
-		}else if(type=='atn'){
-    	     return  cscmn.gtnr('vol', VOL_CS); 
-		}else if(type == 'athv'){
-    	      return getTickHistVolHtml(tickHistVol);
+		}
+
+		
+
+		if(type=='ac' || type =='dynvolComp'){
+    	      return cscmn. gch( obj,'vol');
+		}else if(type=='atn' ||  type =='dynvolTrendNg'){
+    	     return  cscmn.gth(obj, 'vol'); 
+		}else if(type == 'athv' || type =='tkHistVol'){
+    	      return getTickHistVolHtml(obj);
 		}
 
 	}
+
+	function getFormTd(type, id, state){ //MA_PRICE_OPTIONS
+		
+
+		let obj =   null;
+
+		if(type=='csDayVol' || type=='csVol'){
+			obj = getObjFrmArr(mtgv.cs.screenerData.aebb, type);
+		}else{
+			obj = csu.gso(type, id)
+		}
+
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
+		if(type=='csVol'){ // Tick Vol 
+    		return csh.aebbStruttd(obj, 'csVol', null);;
+
+    		
+		}else if(type=='csDayVol'){	 // daily Vol
+			return csh.aebbStruttd(obj, 'csDayVol', null);
+		}
+
+		
+
+		if(type=='ac' || type =='dynvolComp'){
+    	      return cscmn. gchtd( obj,'vol');
+		}else if(type=='atn' ||  type =='dynvolTrendNg'){
+    	     return  cscmn.gttd(obj, 'vol'); 
+		}else if(type == 'athv' || type =='tkHistVol'){
+    	      return getTickHistVolTd(obj);
+		}
+
+	}
+
 
 	function getControls(){
 		let html ='';
@@ -170,13 +242,20 @@ var csv =  (function () {
 
 		html+= SP_3 +getButtonP( 'Volume Trending' , 'cscmn.atn', 'vol'+PARAM_DELIM+VOL_CS);
 
-		html+= SP_3 +getButton('Tick Vol Vs. Hist Avg' , 'csv.athv');
+		html+= SP_3 +htmlU.getButtonP('Tick Vol Vs. Hist Avg' , 'csv.av', 'athv' );
 
 
 		return html;
 	}
 
 	function addVolume(type){ //MA_PRICE_OPTIONS
+
+		if(!mtgv.cs.ng){
+			if( type=='csVol' ||   type == 'csDayVol'){
+				return;
+			}
+		}
+
 
 		let json = addNewFilter(type);
 
@@ -196,14 +275,14 @@ function addNewFilter(type){
 
 		if(type=='csVol'){ // Tick Vol 
 			html = csh.aebbStrut('csVol', null);;
-
+			id = type;
     	
 		}else if(type=='csDayVol'){	 // daily Vol
-			
+			id = type;
 			html = csh.aebbStrut('csDayVol', null);;
 		}else if(type=='ac'){
 
-			return cscmn. acr('vol', VOL_CS);
+			return cscmn. acr('vol', 'VOL_CS');
 
 		}else if(type=='atn'){
     	      
@@ -232,7 +311,7 @@ function addNewFilter(type){
 			csu.csAebbChg(type);
 		}else if(type=='ac'){
 			 cscmn.cc(id, 'vol');
-		}else if(type=='atn'){
+		}else if(type=='atn'   || type =='dynvolTrendNg'){
 			 cscmn.tnc(id, 'vol');
 		}else if(type == 'athv'){
 			tickHistVolChg(id);
@@ -275,6 +354,9 @@ function addNewFilter(type){
 		html+=  SP_3 +' of Previous' +SP_3;
 		html+= getDropDown(getVolMap(), csTypeId+'period', null,func, csTypeId, volObj.period)
 		var param = 'volc:'+csTypeId; // Vol Compare
+
+		html+= csh.gept(volObj, VOL_CS,  param);
+
 		html+= SP_3 + csh.delIcon(param) ; // '<a  onClick="javascript:'+thisAlias+'.delRow(\''+delObj+'\');"><font size="4" color="red"><span class="glyphicon glyphicon-remove"></span></font> </a> ';
 		
 
@@ -311,7 +393,7 @@ function addNewFilter(type){
 	}
 */
 
-	function getTickHistVolHtml(volObj){
+	function getTickHistVolTd(volObj){
 		var csTypeId = volObj.id;
 		var func = 'csv.thvc';
 
@@ -324,7 +406,7 @@ function addNewFilter(type){
 			+ SP_3 + getDropDown(GT_LT_OPS, csTypeId+'ops', null,func, csTypeId, volObj.ops)
 				
 			+SP_3 + getDropDown(PERCENT_CMP, csTypeId+'pc', null,func, csTypeId, volObj.pc)
-			+ BREAK_LINE + ' <b>Previous</b> ' + BREAK_LINE 
+			+ BR_2 + ' Previous '  
 			+ SP_3 + getInputTxtParam( csTypeId+'ticks' , 3, volObj.ticks, func , csTypeId)
 			+ SP_3 +' SMA ' +  getSpan(' Supported MA range 2-100' , 'grey',8)	
 			+ SP_3  + getCrossFreqInput(volObj, func, 'compareTick') 
@@ -336,7 +418,7 @@ function addNewFilter(type){
 			+ SP_3 + getDropDown(GT_LT_OPS, csTypeId+'ops', null,func, csTypeId, volObj.ops)
 				
 			+SP_3 + getDropDown(PERCENT_CMP, csTypeId+'pc', null,func, csTypeId, volObj.pc)
-			+ BREAK_LINE + ' Previous '
+			+ BR_2 + ' Previous '
 			+ SP_3 + getInputTxtParam( csTypeId+'ticks' , 3, volObj.ticks, func , csTypeId)
 			+ SP_3 +' SMA ' +  getSpan(' Supported MA range 2-100' , 'grey',8)	
 			+ htmlU.getSpan(' Tick Volume' , 'grey' , 10)
@@ -367,8 +449,29 @@ function addNewFilter(type){
 
 
 		var param = 'tkHistVol:'+csTypeId; // Vol Compare
+
+		html+= csh.gept(volObj, VOL_CS,  param);
+		
 		html+= SP_3 + csh.delIcon(param) ; // '<a  onClick="javascript:'+thisAlias+'.delRow(\''+delObj+'\');"><font size="4" color="red"><span class="glyphicon glyphicon-remove"></span></font> </a> ';
-		return  csh.dynTr(volObj, {td1 : doBold('Tick Vol Vs Hist Avg'), td2 : html })
+		
+
+		return html;
+
+	}
+
+	function getTickHistVolHtml(volObj){
+		
+		let html = getTickHistVolTd(volObj);
+
+		// if(mtgv.cs.ng){
+				 html = '<tr id=' + volObj.id + '>'
+						+ createTd(createDiv(volObj.id + 'Td2Div', doBold('Tick Vol Vs Hist Avg : ')  +  html, null)) + '</tr>';
+				return html;			
+			// }
+
+
+		// return  csh.dynTr(volObj, {td1 : doBold('Tick Vol Vs Hist Avg'), td2 : html })
+
 
 	}
 
@@ -437,16 +540,16 @@ function addNewFilter(type){
 				csh.cdt(obj,' Invalid value Tick Vol', params, selParam, false);
 			}else{
 
-				var text =tickType.label +' ';
+				var text =doBold('Tick Vol Vs Hist Avg : ');
+
+				text += tickType.label +' ';
 
 				if(obj.baseTick !=null){
 					var avilTicks = mtgv.mtpp.FREQ_SCR_MAP;
 					var baseTick = getObjFrmArr(avilTicks, obj.baseTick);
 					if(baseTick == null){
-						text = " Screener Tick volume " ;
+						text += " Screener Tick volume " ;
 					}
-
-
 				}
 
 				text += ops.label + ' ' + ticks + ' Tick Average Volume ';
@@ -488,28 +591,36 @@ function addNewFilter(type){
 	function getCustScrFilter(filer){
 		// var filer = [];
 
-		// filer.push({  id :  "csVolops" , label : 'Tick Volume'  , sLabel : 'Volume'  , tab : VOL_CS, type : 'dd' }) ;
+		filer.push({  id :  "csVolops" , label : 'Tick Volume'  , sLabel : 'Volume'  , tab : VOL_CS, type : 'dd' ,
+				filtDef : {obj: thisObject, fnc: 'av' , params: 'csVol' }, mobFilter: "volCs_tickVol" }) ;
 		
-		filer.push({  id :  "csDayVolops" , label : 'Days Volume'  , sLabel : 'Days Volume'  , tab : VOL_CS, type : 'dd' }) ;
+		filer.push({  id :  "csDayVolops" , label : 'Days Volume'  , sLabel : 'Days Volume'  , tab : VOL_CS, type : 'dd',
+				filtDef : {obj: thisObject, fnc: 'av' , params: 'csDayVol' } , mobFilter: "volCs_dayVol" }) ;
 
 
 		filer.push({  id :  "dynvolComp" , label : 'Volume Gain '  , sLabel : 'OHLC Compare '  , tab : VOL_CS, 
-			type : 'btn'  , filtDef : {obj:'cscmn', fnc: 'ac' , params:  'vol' + PARAM_DELIM + VOL_CS } }) ;    
+			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'av' , params:  'ac' } , mobFilter: "volCs_compPrevTick"}) ;    
 
 	
 		filer.push({  id :  "dynvolTrendNg" , label : 'Volume Trending '    , tab : VOL_CS, 
-			type : 'btn'  , filtDef : {obj:'cscmn', fnc: 'atn' , params:  'vol' + PARAM_DELIM + VOL_CS } }) ;  //   JavaScript:cscmn.atn('price','priceCs');
+			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'av' , params:  'atn' } , mobFilter: "volCs_volTrend"}) ;  //   JavaScript:cscmn.atn('price','priceCs');
 
 
 		filer.push({  id :  "tickHistVol" , label : 'Compare with Historical Volume '  ,  tab : VOL_CS, 
-			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'athv' , params:  null } }) ;  //   JavaScript:cscmn.atn('price','priceCs');
+			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'av' , params:  'athv' } , mobFilter: "volCs_tickVolVsHistAvg"}) ;  //   JavaScript:cscmn.atn('price','priceCs');
 
 		return filer ;
 
 	}
 
+	function ngSearch(item, filterDef, params ){
+		paintFilterRow(params);
+	}
 
 	function paintFilterRow(type) {
+
+
+		console.log('1v')
 
 		mtgv.cs.editActive = [];
 		let newFilterRow = addNewFilter(type);
@@ -523,7 +634,7 @@ function addNewFilter(type){
 		
 		addFilterChange(type, newFilterRow["id"]);
 		
-
+		csh.sib(false);
 	}
 
 
@@ -535,12 +646,16 @@ function addNewFilter(type){
 
 		gfr : getFormRow,
 
+		gftd : getFormTd,
+
 		anf : addNewFilter,
 
 		afc : addFilterChange,
 
 		pfr : paintFilterRow,
 
+		ngs : ngSearch,
+		
 		// New Ends
 
 

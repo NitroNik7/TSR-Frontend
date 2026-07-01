@@ -19,7 +19,7 @@ var miSrn = (function () {  // chart init Params
     var sectorDurationSelectId = "tsrSecRotDurationSelect";
 
     var baseSectorSectionId = "tsrSecRotBaseSectorSection";
-    var sectorCompSectionId = "tsrSectRotSectCompareSection";
+    var sectorTableSectionId = "tsrSectRotSectCompareSection";
     var opSectorTableDivId = "tsrSecRotOpSectorTable";
     var upSectorTableDivId = "tsrSecRotUpSectorTable";
     var sectorOverviewContainerId = "tsrSecRotSectorOverviewContainer";
@@ -27,9 +27,9 @@ var miSrn = (function () {  // chart init Params
     var stockTableId = "tsrSecRotStockComparisonTable"
     var stockContainerId = "tsrSecRotSectorStockContainer";
     var chartContainerId = "tsrSecRotChartContainer";
-    var stockSectionModalId = "tsrSecRotStockSectionModal";
-    var stockSectionHeaderId = "tsrSecRotStockSectionHeader";
-    var stockSectionBodyId = "tsrSecRotStockSectionBody";
+    var stockHlPopupId = "tsrSecRotStockSectionPopup";
+    // var stockSectionHeaderId = "tsrSecRotStockSectionHeader";
+    // var stockSectionBodyId = "tsrSecRotStockSectionBody";
 
     var allSectorData;
     var allSectorDataClone;
@@ -41,10 +41,15 @@ var miSrn = (function () {  // chart init Params
     let sectorTypeSelect = document.getElementById(sectorTypeSelectId);
     let durationSelect = document.getElementById(sectorDurationSelectId);
 
+
     // Start
     init();
 
     function init() {
+
+        htmlU.addCssToHead("tsrSecRotSettings", miSrnUtils.css);
+
+
         let sectorType = sectorTypeSelect.value;
         let duration = durationSelect.value;
 
@@ -55,27 +60,36 @@ var miSrn = (function () {  // chart init Params
         json = null;
         jPlist = [];
 
-        let baseSectorContainer = document.getElementById(baseSectorSectionId);
-        baseSectorContainer.innerHTML = "";
+        let gifUrl = mintJsUtil.getBaseUrl() + "/static/img/LoadingMedium.gif";
 
-        let sectorContainer = document.getElementById(sectorCompSectionId);
+        let baseSectorContainer = document.getElementById(baseSectorSectionId);
+        baseSectorContainer.innerHTML = `
+                            <div style="width: 50px;">
+                                <img src="${gifUrl}" title="loading"></img>
+                            </div>  
+        `;
+
+
+        let sectorContainer = document.getElementById(sectorTableSectionId);
         sectorContainer.innerHTML = "";
 
         let sectorOverviewContainer = document.getElementById(sectorOverviewContainerId);
-        sectorOverviewContainer.innerHTML = `<div id="${chartContainerId}"></div>`
+        sectorOverviewContainer.innerHTML = ``
 
-        // let chart = document.getElementById(chartContainerId);
-        // chart.innerHTML = "";
+        let chart = document.getElementById(chartContainerId);
+        chart.innerHTML = "";
 
-        $("#" + stockSectionModalId).draggable({ containment: 'parent' });
-        let stockSectionModal = document.getElementById(stockSectionModalId);
-        stockSectionModal.classList.add("web_dialog");
-        stockSectionModal.style.width = "calc(100% - 250px)";
-        stockSectionModal.style.minWidth = "300px";
-        stockSectionModal.style.height = "calc(80% - 150px)";
-        stockSectionModal.style.minHeight = "70vh";
-        stockSectionModal.style.fontFamily = "unset";
-        stockSectionModal.style.overflow = "unset";
+        let popupDiv = document.getElementById(stockHlPopupId);
+        popupDiv.innerHTML = "";
+
+        if (window.miStkHl) {
+            miStkHl.cp(stockHlPopupId);
+        }
+
+
+
+        // miStkHl.init(true, stockHlPopupId);
+        // miStkHl.ip(stockHlPopupId);
 
         if (validateSecRotSettings()) {
 
@@ -85,7 +99,12 @@ var miSrn = (function () {  // chart init Params
                 miSrnUtils.slt(false);
             }
 
-            // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=all`; // TODO - use this later
+            let url = "";
+            if (jsu.isNotNull(mintJsUtil.getRootUrl())) {
+                url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=all`; 
+            } else {
+                url = `https://www.tsrbt1.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=all`;
+            }
             // let url = `https://www.tsrbt1.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=all`;
             // let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/secRot${duration}${sectorType}.json`;
             // let url = `http://127.0.0.1:5500/Temp/secRotData/secRot${duration}${sectorType}.json`;
@@ -93,7 +112,7 @@ var miSrn = (function () {  // chart init Params
             sectorType = sectorType.toUpperCase();
             duration = duration.toUpperCase();
 
-            let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${duration}_${sectorType}_ALL.json`;
+            // let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${duration}_${sectorType}_ALL.json`;
             miSrnUtils.gd(url).then(data => {
                 allSectorData = data;
                 allSectorDataClone = jsu.cloneObj(allSectorData);
@@ -122,7 +141,7 @@ var miSrn = (function () {  // chart init Params
                     allSectorDataClone["upSec"] = newUpSectors;
 
                     paintBaseSectorSection();
-                    paintSectorCompSection();
+                    paintSectorTableSection();
                 }
             });
         }
@@ -135,7 +154,7 @@ var miSrn = (function () {  // chart init Params
 
         // create accordion only if NIFTY (base sector) exists
         if (jsu.isNotNull(baseSectorSection) && jsu.isNotNull(allSectorDataClone[baseSector])) {
-            baseSectorSection.classList.add("tsrSectRotBaseIndexSection", "row", "g-4", "p-3", "mb-4", "d-none", "d-md-flex");
+            // baseSectorSection.classList.add("tsrSectRotBaseIndexSection", "row", "p-3", "mb-4", "d-none", "d-md-flex");
 
             let html = ``;
             // let technicalsUrl = mintJsUtil.getRootUrl() + "/Stock/NIFTY/TechnicalAnalysis";
@@ -144,7 +163,7 @@ var miSrn = (function () {  // chart init Params
             html += `       <div class="tsrSecRotMetricCard">`
             html += `           <div class="tsrSecRotMetricTop">`
             html += `               <div class="tsrSecRotMetricIcon">`
-            // let niftyUrl = mintJsUtil.getRootUrl() + "/Screener/Markets/"; // TODO
+            // let niftyUrl = mintJsUtil.getRootUrl() + "/Screener/Markets/";
             // html += `                   <a href="${niftyUrl}">`
             html += `                       <i class="fas fa-chart-line"></i>`
             // html += `                   </a>`
@@ -191,7 +210,6 @@ var miSrn = (function () {  // chart init Params
             let strongestSector = { name: "-", data: "-" };
             let onclickFn = "";
             if (opSectors.length > 0) {
-                // TODO -  IF NOT ALREADY SORTED, SORT SECTORS IN DESC ORDER ACCORDING TO MARKET CAP / RELATIVE STRENGTH
                 strongestSector.name = opSectors[0].name;
                 if (isSectorIdxBased('op')) {
                     strongestSector.data = "<p style='margin-bottom: 0;'>Relative Returns vs NIFTY:</p> <p style='margin-bottom: 0;'><b>" + miSrnUtils.gcv(opSectors[0].vsNifty, null, "%") + "</b></p>";
@@ -229,7 +247,6 @@ var miSrn = (function () {  // chart init Params
             let weakestSector = { name: "-", data: "-" };
             onclickFn = "";
             if (upSectors.length > 0) {
-                // TODO - SORT SECTORS IN ASC ORDER ACCORDING TO MARKET CAP / RELATIVE STRENGTH
                 weakestSector.name = upSectors[0].name;
                 if (isSectorIdxBased('up')) {
                     weakestSector.data = "<p style='margin-bottom: 0;'>Relative Returns vs NIFTY:</p> <p style='margin-bottom: 0;'><b>" + miSrnUtils.gcv(upSectors[0].vsNifty, null, "%") + " </b></p>";
@@ -340,14 +357,16 @@ var miSrn = (function () {  // chart init Params
         }
     }
 
-    function paintSectorCompSection() {
-        let sectorTableSection = document.getElementById(sectorCompSectionId);
+    function paintSectorTableSection() {
+        let sectorTableSection = document.getElementById(sectorTableSectionId);
+
+        isIdxBased = isSectorIdxBased('op');
 
         let html = "";
         // html += `       <!-- Outperforming -->`
         html += `       <div id="tsrSecRotOpSectorsWrapper" class="col-xl-6">`
         html += `           <div class="card tsrSecRotTableCard">`
-        html += `                 <div class="card-header tsrSecRotTableHeader outperform">`
+        html += `                 <div class="card-header tsrSecRotTableHeader outperform" style="background-color: #e4f7ee;">`
         html += `                     <div>`
         html += `                         <h6 class="mb-1">`
         html += `                             <i class="fas fa-arrow-up me-2" style="color: green;"></i>`
@@ -357,7 +376,7 @@ var miSrn = (function () {  // chart init Params
         html += `                             Sectors outperforming benchmark`
         html += `                         </div>`
         html += `                     </div>`
-        html += `                     <div class="tsrSecRotTableExpandCollapseBadge d-none d-md-block"`
+        html += `                     <div class="tsrSecRotTableExpandCollapseBadge d-none d-xl-block"`
         html += `                         onclick="miSrnUtils.esct(this, 'tsrSecRotOpSectorsWrapper');">`
         html += `                         <span class="fw-medium me-2">Show more</span>`
         html += `                         <i class="fas fa-expand"></i>`
@@ -366,6 +385,23 @@ var miSrn = (function () {  // chart init Params
         html += `                 <div class="card-body">`
         html += `                     <div id="${opSectorTableDivId}" class="table-responsive">`
         html += `                     </div>`
+
+        let opSectors = jsu.cloneObj(allSectorDataClone["opSec"]);
+        if (isIdxBased && opSectors.length > 0) {
+            html += `               <div class="border border-1 mt-4 p-3 d-flex flex-column flex-sm-row align-items-baseline" style="gap: 10px; border-radius: 10px;">                  
+                                        <p style="margin-bottom: 0; text-transform: uppercase;letter-spacing: 1px;font-size: 15px;font-weight: bold;color: #64748b; ">
+                                            Compare Sectorial Indices on Chart
+                                        </p>                   
+                                        <div class="d-flex" style="gap: 10px;">                    
+                                            <a class="tsrSecRotTabBtnIdx" style="cursor:pointer; padding: 5px 16px; box-shadow: 1px 1px 4px grey; background-color: white;" onclick="miSrn.pc('op', 0, 'sectorList', '', true, 'inline', true);" oncontextmenu="return false;"> 
+                                                <span class="fas fa-chart-line"></span> Inline 
+                                            </a>         
+                                            <a class="tsrSecRotTabBtnIdx" style="cursor:pointer;  padding: 5px 16px; box-shadow: 1px 1px 4px grey; background-color: white;" onclick="miSrn.pc('op', 0, 'sectorList', '', true, 'tile', true);" oncontextmenu="return false;">
+                                                <span class="fas fa-chart-line"></span> Tile  
+                                            </a>       
+                                        </div>   
+                                    </div>`
+        }
         html += `                 </div>`
         html += `             </div>`
         html += `         </div>`
@@ -373,7 +409,7 @@ var miSrn = (function () {  // chart init Params
         // html += `       <!-- Underperforming -->`
         html += `       <div id="tsrSecRotUpSectorsWrapper" class="col-xl-6">`
         html += `           <div class="card tsrSecRotTableCard">`
-        html += `               <div class="card-header tsrSecRotTableHeader underperform">`
+        html += `               <div class="card-header tsrSecRotTableHeader underperform"  style="background-color: #ffe3e6;">`
         html += `                   <div>`
         html += `                       <h6 class="mb-1">`
         html += `                           <i class="fas fa-arrow-down me-2" style="color: red;"></i>`
@@ -383,7 +419,7 @@ var miSrn = (function () {  // chart init Params
         html += `                           Sectors lagging benchmark`
         html += `                       </div>`
         html += `                   </div>`
-        html += `                   <div class="tsrSecRotTableExpandCollapseBadge d-none d-md-block"`
+        html += `                   <div class="tsrSecRotTableExpandCollapseBadge d-none d-xl-block"`
         html += `                       onclick="miSrnUtils.esct(this, 'tsrSecRotUpSectorsWrapper');">`
         html += `                       <span class="fw-medium me-2">Show more</span>`
         html += `                       <i class="fas fa-expand"></i>`
@@ -392,6 +428,23 @@ var miSrn = (function () {  // chart init Params
         html += `               <div class="card-body">`
         html += `                   <div id="${upSectorTableDivId}"  class="table-responsive">`
         html += `                   </div>`
+
+        let upSectors = jsu.cloneObj(allSectorDataClone["upSec"]);
+        if (isIdxBased && upSectors.length > 0) {
+            html += `               <div class="border border-1 mt-4 p-3 d-flex flex-column flex-sm-row align-items-baseline" style="gap: 10px;  border-radius: 10px;">                  
+                                        <p style="margin-bottom: 0; text-transform: uppercase;letter-spacing: 1px;font-size: 15px;font-weight: bold;color: #64748b;">
+                                            View Sectors on Chart
+                                        </p>                   
+                                        <div class="d-flex" style="gap: 10px;">                    
+                                            <a class="tsrSecRotTabBtnIdx" style="cursor:pointer; padding: 5px 16px; box-shadow: 1px 1px 4px grey; background-color: white;" onclick="miSrn.pc('up', 0, 'sectorList', '', true, 'inline', true);" oncontextmenu="return false;"> 
+                                                <span class="fas fa-chart-line"></span> Inline 
+                                            </a>         
+                                            <a class="tsrSecRotTabBtnIdx" style="cursor:pointer;  padding: 5px 16px; box-shadow: 1px 1px 4px grey; background-color: white;" onclick="miSrn.pc('up', 0, 'sectorList', '', true, 'tile', true);" oncontextmenu="return false;">
+                                                <span class="fas fa-chart-line"></span> Tile  
+                                            </a>       
+                                        </div>   
+                                    </div>`
+        }
         html += `               </div>`
         html += `           </div>`
         html += `       </div>`
@@ -442,8 +495,13 @@ var miSrn = (function () {  // chart init Params
             html += `       <th></th>`
         }
         html += `           <th colspan="2">Stock Performance</th>`
-        html += `           <th colspan="2">TSR Strength Index</th>`
-        html += `           <th colspan="6">% Stocks</th>`
+        if (isIdxBased) {
+            html += `           <th colspan="6">Sectorial Index <span style="font-size: 10px;">(Technicals)</span></th>`
+        } else {
+            html += `           <th colspan="9">Sector Summary <span style="font-size: 10px;">(Technicals)<span></th>`
+        }
+        // html += `           <th colspan="2">TSR Strength Index</th>`
+        // html += `           <th colspan="6">% Stocks</th>`
         html += `       </tr>`
         html += `       <tr>`
         html += `           <th>Rank</th>`
@@ -460,28 +518,46 @@ var miSrn = (function () {  // chart init Params
         }
         html += `           <th>Leading</th>`
         html += `           <th>Lagging</th>`
-        html += `           <th>Bullish Stocks</th>`
-        html += `           <th>Bearish Stocks</th>`
+        // html += `           <th>Bullish Stocks</th>`
+        // html += `           <th>Bearish Stocks</th>`
         if (isIdxBased) {
-            if (secType == "op") {
-                html += `       <th> Above EMA ${allSectorDataClone["ma1"]} </th> `
-                html += `       <th> Above EMA ${allSectorDataClone["ma2"]} </th> `
-                html += `       <th> ADX > 20 </th> `
-                html += `       <th> RSI > 50 </th> `
-                html += `       <th> MACD > 0 </th> `
-                html += `       <th> MACD > Signal </th> `
-            }
-            else {
-                html += `       <th> Below EMA ${allSectorDataClone["ma1"]} </th> `
-                html += `       <th> Below EMA ${allSectorDataClone["ma2"]} </th> `
-                html += `       <th> ADX < 20 </th> `
-                html += `       <th> RSI < 50 </th> `
-                html += `       <th> MACD < 0 </th> `
-                html += `       <th> MACD < Signal </th> `
-            }
+            html += `       <th>EMA ${allSectorDataClone["ma1"]}</th>`
+            html += `       <th>EMA ${allSectorDataClone["ma2"]}</th>`
+            html += `       <th>RSI</th>`
+            html += `       <th>MACD</th>`
+            html += `       <th>Signal</th>`
+            html += `       <th>ST</th>`
         } else {
-
+            html += `       <th>Tech Strength</th>`
+            html += `       <th>PE</th>`
+            html += `       <th>PB</th>`
+            html += `       <th>ROA</th>`
+            html += `       <th>ROE</th>`
+            // html += `       <th>Net Margin</th>`
+            // html += `       <th>Ebit Margin</th>`
+            html += `       <th>Cash Ratio</th>`
+            // html += `       <th>Current Ratio</th>` 
+            html += `       <th>Debt to Equity</th>`
         }
+        // if (isIdxBased) {
+        //     if (secType == "op") {
+        //         html += `       <th> Above EMA ${allSectorDataClone["ma1"]} </th> `
+        //         html += `       <th> Above EMA ${allSectorDataClone["ma2"]} </th> `
+        //         html += `       <th> ADX > 20 </th> `
+        //         html += `       <th> RSI > 50 </th> `
+        //         html += `       <th> MACD > 0 </th> `
+        //         html += `       <th> MACD > Signal </th> `
+        //     }
+        //     else {
+        //         html += `       <th> Below EMA ${allSectorDataClone["ma1"]} </th> `
+        //         html += `       <th> Below EMA ${allSectorDataClone["ma2"]} </th> `
+        //         html += `       <th> ADX < 20 </th> `
+        //         html += `       <th> RSI < 50 </th> `
+        //         html += `       <th> MACD < 0 </th> `
+        //         html += `       <th> MACD < Signal </th> `
+        //     }
+        // } else {
+        // }
         html += `       </tr>`
         html += `   </thead>`
         html += `   <tbody>`
@@ -498,7 +574,11 @@ var miSrn = (function () {  // chart init Params
 
                 html += `       <tr>`
                 html += `           <td><b>${i + 1}</b></td>`
-                html += `           <td><b>${sector.name}<b></td>`
+                if (isIdxBased) {
+                    html += `           <td><b>${sector.name}<b></td>`
+                } else {
+                    html += `           <td><b>${sector.sname}<b></td>`
+                }
 
                 let onclickFn = "";
                 if (isIdxBased) {
@@ -524,44 +604,49 @@ var miSrn = (function () {  // chart init Params
                 }
                 html += `           <td>${sector.opEq}</td>`
                 html += `           <td>${sector.upEq}</td>`
-                html += `           <td>${miSrnUtils.grv(sector.tsrBullish)}</td>`
-                html += `           <td>${miSrnUtils.grv(sector.tsrBearish)}</td>`
-                html += `           <td>${miSrnUtils.grv(sector.ma1 * 100)}</td>`
-                html += `           <td>${miSrnUtils.grv(sector.ma2 * 100)}</td>`
-                html += `           <td>${miSrnUtils.grv(sector.adx * 100)}</td>`
-                html += `           <td>${miSrnUtils.grv(sector.rsi * 100)}</td>`
-                html += `           <td>${miSrnUtils.grv(sector.macd0 * 100)}</td>`
-                html += `           <td>${miSrnUtils.grv(sector.macds * 100)}</td>`
+                // html += `           <td>${miSrnUtils.grv(sector.tsrBullish)}</td>`
+                // html += `           <td>${miSrnUtils.grv(sector.tsrBearish)}</td>`
+                if (isIdxBased) {
+                    let idxVals = sector["idxVals"];
+                    html += `           <td>${miSrnUtils.grv(idxVals.ma1)}</td>`
+                    html += `           <td>${miSrnUtils.grv(idxVals.ma2)}</td>`
+                    html += `           <td>${miSrnUtils.grv(idxVals.rsi)}</td>`
+                    html += `           <td>${miSrnUtils.grv(idxVals.macd)}</td>`
+                    html += `           <td>${miSrnUtils.grv(idxVals.signal)}</td>`
+                    html += `           <td>${miSrnUtils.grv(idxVals.st)}</td>`
+                } else {
+                    let tsrStr = sector["tsrStr"]
+                    html += `           <td><span style="color: ${tsrStr.techClr};">${miSrnUtils.grv(tsrStr.techStr)}</span></td>`
+                    html += `           <td>${miSrnUtils.grv(tsrStr.pe)}</td>`
+                    html += `           <td>${miSrnUtils.grv(tsrStr.pb)}</td>`
+                    html += `           <td>${miSrnUtils.grv(tsrStr.roa * 100)}</td>`
+                    html += `           <td>${miSrnUtils.grv(tsrStr.roe * 100)}</td>`
+                    // html += `           <td>${miSrnUtils.grv(tsrStr.netMgn * 100 )}</td>`
+                    // html += `           <td>${miSrnUtils.grv(tsrStr.ebitMgn * 100)}</td>`
+                    html += `           <td>${miSrnUtils.grv(tsrStr.cashRatio)}</td>`
+                    // html += `           <td>${miSrnUtils.grv(tsrStr.curRatio)}</td>`
+                    html += `           <td>${miSrnUtils.grv(tsrStr.dtToEq)}</td>`
+                }
                 html += `       </tr>`
             }
         }
         html += `   </tbody>`
         html += `</table>`
 
-        html += `</div>`;
+        // html += `</div>`;
 
 
-        html += `<div class="d-flex justify-content-between flex-column flex-md-row mt-3">`
+        // html += `<div class="d-flex justify-content-between flex-column flex-md-row mt-3">`
 
-        // TODO hack recheck later
-        if (isIdxBased) {
-            html += `   <div style="white-space: nowrap;">`
-            html += `       View Chart &emsp;`;
-
-            html += `       <a class="link-primary" style="cursor:pointer" onclick="miSrn.pc('${secType}', 0, 'sectorList', '', true, 'inline', true);" oncontextmenu="return false;"> <span class="fas fa-chart-line"></span> Inline </a>`
-            html += `       &emsp;|&emsp;`;
-            html += `       <a class="link-primary" style="cursor:pointer" onclick="miSrn.pc('${secType}', 0, 'sectorList', '', true, 'tile', true);" oncontextmenu="return false;">  <span class="fas fa-chart-line"></span> Tile  </a>`
-            html += `   </div>`
-        }
-        html += `           <div class="mt-2">`
-        html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
-        html += `                       <span style="color: red;">*</span>`
-        html += `                           Sector / Index rating utilizes only Stocks beyond certain Market Capital`
-        html += `                   </p>`
-        html += `           </div>`
+        // html += `           <div class="mt-2">`
+        // html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
+        // html += `                       <span style="color: red;">*</span>`
+        // html += `                           Sector / Index rating utilizes only Stocks beyond certain Market Capital`
+        // html += `                   </p>`
+        // html += `           </div>`
 
 
-        html += `</div>`
+        // html += `</div>`
 
 
         sectorTableDiv.innerHTML = html;
@@ -570,7 +655,11 @@ var miSrn = (function () {  // chart init Params
         // let sectorCardContainer = document.getElementById(sectorCardContainerId);
         // sectorCardContainer.innerHTML = "";
 
-        if (!isMobile() && sectors.length != 0) {
+        if (!isMobile()) {
+            // let scrollCollapseParam = false;
+            // if (sectors.length == 0) {
+            //     scrollCollapseParam = true;
+            // }
             let mdtOptions = {
                 paging: false,
                 info: false,
@@ -581,10 +670,10 @@ var miSrn = (function () {  // chart init Params
                 scrollX: true,
                 dom: 'Bfrtip',
                 buttons: [
-                    { extend: "copy", className: "btn btn-sm  btn-secondary ms-2    mt-1", text: " Copy" },
-                    { extend: "csv", className: "btn  btn-sm btn-secondary ms-2    mt-1", text: " CSV" },
-                    { extend: "excel", className: "btn  btn-sm btn-secondary ms-2     mt-1", text: " Excel" },
-                    { extend: "print", className: "btn  btn-sm btn-secondary ms-1    mt-1", text: " Print" }
+                    { extend: "copy", className: "btn btn-sm tsrSecRotDtBtn ms-2    mt-1", text: " Copy" },
+                    { extend: "csv", className: "btn  btn-sm tsrSecRotDtBtn ms-2    mt-1", text: " CSV" },
+                    { extend: "excel", className: "btn  btn-sm tsrSecRotDtBtn ms-2     mt-1", text: " Excel" },
+                    { extend: "print", className: "btn  btn-sm tsrSecRotDtBtn ms-1    mt-1", text: " Print" }
                 ],
                 fixedColumns: {
                     leftColumns: 2
@@ -686,9 +775,12 @@ var miSrn = (function () {  // chart init Params
     function paintSectorCard(secType, sectors, i) {
         let html = "";
 
+        let headerBg = secType == "op" ? "#e4f7ee" : "#ffe3e6";
+
         html += `       <div class="tsrSecRotSectOvrvwSection border-0 p-3" data-hash="${i}">`
         html += `            <div class="card shadow-sm tsrSectorRotationDetailsWorkspaceCard">`
-        html += `                <div class="card-header bg-transparent p-4 border-bottom d-flex flex-wrap justify-content-between align-items-center gap-3">`
+        // ------------------------- CARD HEADER STARTS ------------------------------------
+        html += `                <div class="card-header p-3 border-bottom" style="background-color: ${headerBg};">`
         /*
             html += `                    <div class="d-flex align-items-center gap-3">`
             html += `                        <h4 class="h5 mb-0 fw-bold text-dark tsrSectorRotationCardHeaderTitle"`
@@ -698,12 +790,12 @@ var miSrn = (function () {  // chart init Params
             html += `                            Overview</span>`
             html += `                    </div>`
         */
-        // html += `                    <div class="d-flex justify-content-between align-items-center">`
+        html += `                    <div class="d-flex justify-content-between align-items-center">`
         // secType, stockType, secId, show, update
         if (i != 0) {
-            html += `                   <div style="cursor: pointer; white-space: nowrap;" class="link-primary sectorCardsCarousalPrev" onclick="miSrn.psts('${secType}','opEq', ${i - 1}, true, true);">`
+            html += `                   <div style="cursor: pointer; white-space: nowrap;" class="btn btn-sm sectorCardsCarousalPrev  text-black" onclick="miSrn.psts('${secType}','opEq', ${i - 1}, true, true);">`
             html += `                       <i class="fas fa-arrow-left"></i>`
-            html += `                       <span class="d-none d-md-inline text-muted">`
+            html += `                       <span class="d-none d-md-inline">`
             html += `                           &nbsp;`
             html += `                           Prev`
             html += `                       </span>`
@@ -729,34 +821,53 @@ var miSrn = (function () {  // chart init Params
         html += `                               </b>`
         html += `                           </p>`
         html += `                       </h5>`
+        let sectorAnalysisUrl = mintJsUtil.getRootUrl() + "/Screener/Markets/" + sectors[i].url; 
 
+
+        let rotType = htmlU.getInputVal('tsrSecRotTypeSelect');
+
+        if (rotType == 'sector') {
+            sectorAnalysisUrl += '/All';
+        }
+
+
+
+        html += `                               <a href="${sectorAnalysisUrl}" target="_blank" class="tsrSecRotTabBtnIdx d-none d-md-block">`
+        // html += `                                   View in Depth Analysis`
+        html += `                                   ${sectors[i].id} Deep Dive`
+        html += `                                   <i class="fas fa-external-link-square-alt"></i>`
+        html += `                               </a>`
         if (i != sectors.length - 1) {
-            html += `                   <div style="cursor: pointer; white-space: nowrap;" class="link-primary sectorCardsCarousalNext" onclick="miSrn.psts('${secType}','opEq', ${i + 1}, true, true);">`
-            html += `                       <span class="d-none d-md-inline  text-muted">`
+            html += `                   <div style="cursor: pointer; white-space: nowrap;" class="btn btn-sm sectorCardsCarousalNext text-black" onclick="miSrn.psts('${secType}','opEq', ${i + 1}, true, true);">`
+            html += `                       <span class="d-none d-md-inline ">`
             html += `                           Next`
             html += `                           &nbsp;`
             html += `                       </span>`
             html += `                       <i class="fas fa-arrow-right"></i>`
             html += `                   </div>`
         }
-        html += `                </div>` // CARD HEADER ENDS
+        html += `                   </div>`
 
-        let sectorAnalysisUrl = mintJsUtil.getRootUrl() + "/Screener/Markets/" + sectors[i].url; // TODO
+        html += `                       <div class="mt-2  d-flex d-md-none">`;
+        // html += `                           <h6 class="">`;
+        html += `                               <a href="${sectorAnalysisUrl}" target="_blank" class="tsrSecRotTabBtnIdx mx-auto" style="width: max-content;" >`
+        // html += `                                   View in Depth Analysis`
+        html += `                                   ${sectors[i].id} Deep Dive `
+        html += `                                   <i class="fas fa-external-link-square-alt"></i>`
+        html += `                               </a>`
+        // html += `                           </h6>`
+        html += `                       </div>`;
+        html += `               </div>`
+        // ------------------------- CARD HEADER ENDS ----------------------------------------
+
         // let sectorAnalysisUrl = "http" + "/Screener/Markets/" + sectors[i].url;
         if (!sectors[i]["secIdx"]) {
             sectorAnalysisUrl += "/All"
         }
         html += `                <div class="card-body p-4">`
-        html += `                   <div class="row text-center">`;
-        html += `                       <h6 class="">`;
-        html += `                           <a href="${sectorAnalysisUrl}" target="_blank">`
-        html += `                               View in Depth Analysis`
-        html += `                               <i class="fas fa-external-link-square-alt"></i>`
-        html += `                           </a>`
-        html += `                       </h6>`
-        html += `                   </div>`;
 
-        // * Highlights row
+        // ------------------------- HIGHLIGHTS ROW STARTS ----------------------
+        /*
         html += `                   <div class="row">`;
         if (jsu.isNotNull(sectors[i].secIdx) && sectors[i].secIdx) {
             html += `                   <div class="col col-md-6 p-3" style='align-items: stretch;'>`
@@ -903,6 +1014,9 @@ var miSrn = (function () {  // chart init Params
             // row ends
         }
         html += `                   </div> `;
+        */
+        // ------------------------- HIGHLIGHTS ROW STARTS ----------------------
+
         // Stock Table row
         html += `                   <div id="${stockTableContainerId + i}" class="${stockTableContainerId} row" >`;
         html += '                   </div>';
@@ -911,8 +1025,8 @@ var miSrn = (function () {  // chart init Params
         // html += `                   <div id="${stockContainerId + i}" class="${stockContainerId} row " >`;
         // html += '                   </div>';
         // Chart Row
-        html += `                   <div id="${chartContainerId}" class="row">`;
-        html += '                   </div>';
+        // html += `                   <div id="${chartContainerId}" class="row">`;
+        // html += '                   </div>';
         html += `                </div>`
         html += `            </div>`
         html += `        </div>`
@@ -943,35 +1057,50 @@ var miSrn = (function () {  // chart init Params
             scrollCollapse: true,
             dom: 'Bfrtip',
             buttons: [
-                { extend: "copy", className: "btn btn-sm  btn-secondary ms-2    mt-1", text: " Copy" },
-                { extend: "csv", className: "btn  btn-sm btn-secondary ms-2    mt-1", text: " CSV" },
-                { extend: "excel", className: "btn  btn-sm btn-secondary ms-2     mt-1", text: " Excel" },
-                { extend: "print", className: "btn  btn-sm btn-secondary ms-1    mt-1", text: " Print" }
+                { extend: "copy", className: "btn btn-sm  tsrSecRotDtBtn ms-2 mt-1", text: " Copy" },
+                { extend: "csv", className: "btn  btn-sm tsrSecRotDtBtn ms-2 mt-1", text: " CSV" },
+                { extend: "excel", className: "btn  btn-sm tsrSecRotDtBtn ms-2 mt-1", text: " Excel" },
+                { extend: "print", className: "btn  btn-sm tsrSecRotDtBtn ms-1 mt-1", text: " Print" }
             ],
             fixedColumns: {
                 leftColumns: 1
             }
         }
 
+
+        let gifUrl = mintJsUtil.getBaseUrl() + "/static/img/LoadingMedium.gif";
+
+        html += `                       <div style="width: 50px;">`
+        html += `                           <img src="${gifUrl}" title="loading"></img>`
+        html += `                       </div>`
+
+        let container = document.getElementById(stockTableContainerId + secId);
+        container.innerHTML = html;
+
+        html = "";
+
         if (validateSecRotSettings()) {
             let sectorType = sectorTypeSelect.value;
             let duration = durationSelect.value;
 
-            // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+            let url = "";
+            if (jsu.isNotNull(mintJsUtil.getRootUrl())) {
+                url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+            } else {
+                url = "https://www.tsrbt1.com/rt" + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+            }
             // let url = `http://127.0.0.1:5500/Temp/secRotData/${sector["uriCode"]}.json`;
             // let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["uriCode"]}.json`;
-            // let url = "https://www.tsrbt1.com/rt" + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
 
             sectorType = sectorType.toUpperCase();
             duration = duration.toUpperCase();
             let sectorCode = sector["uriCode"].toUpperCase();
-            let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${duration}_SECTOR.json`;
+            // let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${duration}_SECTOR.json`;
 
             // avoiding multiple API calls for same sector
             if (!(isSectorLoaded(currSectorData, secType, secId))) {
 
                 miSrnUtils.gd(url).then(sectorData => {
-                    let container = document.getElementById(stockTableContainerId + secId);
 
                     currSectorData = sectorData;
                     currSectorData["secType"] = secType;
@@ -989,8 +1118,6 @@ var miSrn = (function () {  // chart init Params
                 });
             }
             else {
-                let container = document.getElementById(stockTableContainerId + secId);
-
                 html = paintStockTableSection(sector, secType, stockType, secId);
                 container.innerHTML = html;
 
@@ -1001,22 +1128,22 @@ var miSrn = (function () {  // chart init Params
             }
         }
 
-        if (update) {
-            let container = document.getElementById(stockTableContainerId + secId);
-            container.innerHTML = html;
-            return;
-        }
+        // if (update) {
+        //     container.innerHTML = html;
+        //     return;
+        // }
     }
 
     function paintStockTableSection(sector, secType, stockType, secId) {
         let html = "";
 
-        // Radio buttons
+        //  ---------------------------- Radio buttons Row starts --------------------------------------
         // let onclickFn = `miSrn.ec(); miSrn.psts('${secType}','${stockType}', ${secId}, true, true);`
         html += `               <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-3">`
         html += `                   <div class="tsrSectorRotationStockSegmentWrapper">`
         html += `                       <b class="me-3">STOCKS</b>`
         html += `                       <div class="btn-group p-1 bg-light border rounded-pill" role="group" aria-label="Stock Performance View Filter">`
+
         if (stockType == "opEq") {
             html += `               <input type="radio" class="btn-check" name="sector${secId}Stocks" id="outPerformingStocks${secId}" autocomplete="off" checked>`
         } else {
@@ -1024,8 +1151,7 @@ var miSrn = (function () {  // chart init Params
         }
 
         html += `                           <label class="btn btn-sm px-4 rounded-pill fw-bold text-uppercase tsrSectorRotationSegmentButton" for="tsrViewOutperforming" onclick="miSrn.ec(); miSrn.psts('${secType}','opEq', ${secId}, true, true);">`
-
-        html += `                   Outperforming`
+        html += `                               Outperforming`
         html += `                           </label>`
 
         if (stockType == "upEq") {
@@ -1033,17 +1159,25 @@ var miSrn = (function () {  // chart init Params
         } else {
             html += `               <input type="radio" class="btn-check" name="sector${secId}Stocks" id="underPerformingStocks${secId}" autocomplete="off">`
         }
+
         html += `                           <label class="btn btn-sm px-4 rounded-pill fw-bold text-uppercase tsrSectorRotationSegmentButton" for="tsrViewUnderperforming"  onclick="miSrn.ec(); miSrn.psts('${secType}','upEq', ${secId}, true, true);">`
-        html += `                   Underperforming`
+        html += `                               Underperforming`
         html += `                           </label>`
         html += `                       </div>`
         html += `                   </div>`
-        html += `                   <span class="text-muted small italic opacity-75">* Technical markers
-                                                        evaluate on live dynamic ticking intervals</span>`
+        html += `
+            <div class="tsrSecRotTickNote">
+                        <span class="tsrSecRotTickAsterisk">*</span> Values based on ${allSectorDataClone["displayFreq"]} Tick
+                    </div>
+        `
+        // html += `                   <span class="text-muted small italic opacity-75">* Technical markers
+        //                                                 evaluate on live dynamic ticking intervals</span>`
         html += `               </div>`
 
-        // table
-        let tableFields = ["Name", "", "Price", "Price Chg %", "vs Nifty", "Period Return %", `EMA ${allSectorDataClone["ma1"]}`, `EMA ${allSectorDataClone["ma2"]}`, `RSI`, `MACD`, `Signal`, `ST`, `Chart`];
+        //  ---------------------------- Radio buttons Row ends --------------------------------------
+
+        // ----------------------------- Table Row starts ----------------------------------------
+        let tableFields = ["Code", "", "Price", "Price Chg %", "vs Nifty %", "Period Return %", "Tech Strength %", `EMA ${allSectorDataClone["ma1"]}`, `EMA ${allSectorDataClone["ma2"]}`, `RSI`, `MACD`, `Signal`, `ST`, `Chart`];
 
         let isIdxBased = false;
         if (jsu.isNotNull(sector.secIdx) && sector.secIdx) {
@@ -1051,7 +1185,7 @@ var miSrn = (function () {  // chart init Params
             tableFields.splice(4, 0, `vs ${sector.name}`);
         }
 
-        html += `                  <div>`
+        html += `                  <div class="table-responsive ">`
         html += `                       <table id="${stockTableId + secId}" class="table align-middle tsrSecRotTable w-100">`
         html += `                           <thead>`;
         html += `                               <tr>`;
@@ -1071,12 +1205,11 @@ var miSrn = (function () {  // chart init Params
             html += `   </td>`
             html += `</tr>`;
 
-        }
-        else {
+        } else {
             for (let i = 0; i < stockList.length; i++) {
 
                 html += `<tr>`;
-                html += `   <td>${stockList[i]["name"]} </td>`;
+                html += `   <td><b title="${stockList[i]["name"]}">${stockList[i]["code"]}</b></td>`;
                 // html += `   <td>`
                 // html += `       <a class="link-primary" style="cursor: pointer;"
                 //                 onclick="miSrn.pss('${secType}', '${stockType}', ${secId}, '${stockList[i]["code"]}', true);  
@@ -1096,12 +1229,13 @@ var miSrn = (function () {  // chart init Params
                 // html += `           </button>`
                 html += `   </td>`
                 html += `   <td>${miSrnUtils.grv(stockList[i]["price"])}</td>`;
-                html += `   <td>${miSrnUtils.grv(stockList[i]["priceChange"])}</td>`;
-                html += `   <td>${miSrnUtils.grv(stockList[i]["vsNifty"])}</td>`;
+                html += `   <td><b>${miSrnUtils.gcv(stockList[i]["priceChange"])}</b></td>`;
+                html += `   <td><b>${miSrnUtils.gcv(stockList[i]["vsNifty"])}</b></td>`;
                 if (isIdxBased) {
                     html += `   <td>${miSrnUtils.grv(stockList[i]["vsIdx"])}</td>`;
                 }
-                html += `   <td>${miSrnUtils.grv(stockList[i]["periodReturn"])}</td>`;
+                html += `   <td><b>${miSrnUtils.gcv(stockList[i]["periodReturn"])}</b></td>`;
+                html += `   <td>${miSrnUtils.grv(stockList[i]["techStrength"] * 100)}</td>`;
                 html += `   <td>${miSrnUtils.grv(stockList[i]["eqVals"]["ma1"])}</td>`;
                 html += `   <td>${miSrnUtils.grv(stockList[i]["eqVals"]["ma2"])}</td>`;
 
@@ -1110,7 +1244,7 @@ var miSrn = (function () {  // chart init Params
                 html += `   <td>${miSrnUtils.grv(stockList[i]["eqVals"]["signal"])}</td>`;
                 html += `   <td>${miSrnUtils.grv(stockList[i]["eqVals"]["st"])}</td>`;
                 html += `   <td>`;
-                html += `       <a style="cursor: pointer;" onclick="miSrn.pss('${secType}', '${stockType}', ${secId}, '${stockList[i]["code"]}', false);  miSrn.pc('${secType}', ${secId}, '${stockType}List', '${stockList[i]["code"]}', false, 'inline', true); ">`
+                html += `       <a style="cursor: pointer;" onclick="miSrn.pc('${secType}', ${secId}, '${stockType}List', '${stockList[i]["code"]}', false, 'inline', true); ">`
                 html += `           <i style="color:grey; font-size:12pt;" class="fa fa-chart-line">`
                 html += `           </i>`
                 html += `       </a>`;
@@ -1123,32 +1257,42 @@ var miSrn = (function () {  // chart init Params
         html += `                           </tbody>`;
         html += `                       </table>`;
         html += `                   </div>`
+        // ----------------------------- Table row ends ------------------------------------------
 
         if (stockList.length > 0) {
-            html += `                       <div class="d-flex flex-column flex-md-row justify-content-between my-3">`
-            html += `                           <div style="white-space: nowrap;">`
-            html += `                               View Chart &emsp;`;
-            html += `                                   <a class="link-primary" style="cursor:pointer" onclick=" miSrn.pss('${secType}', '${stockType}', ${secId}, '', false); miSrn.pc('${secType}', ${secId}, '${stockType}List', '', true, 'inline', true);" oncontextmenu="return false;"> <span class="fas fa-chart-line"></span> Inline </a>`
-            html += `&emsp;|&emsp;`;
-            html += `                                   <a class="link-primary" style="cursor:pointer" onclick=" miSrn.pss('${secType}', '${stockType}', ${secId}, '', false); miSrn.pc('${secType}', ${secId}, '${stockType}List', '', true, 'tile', true);" oncontextmenu="return false;">  <span class="fas fa-chart-line"></span> Tile  </a>`
-            html += `                           </div>`
+            // html += `                       <div>`
+            // html += `       <p style="margin-bottom: 0; text-transform: uppercase;letter-spacing: 1px;font-size: 13px;font-weight: bold;">View Sectors on Chart</p>`;
+            html += `   <div class="border border-1 mt-4 p-3 d-flex flex-column flex-sm-row align-items-baseline" style="gap: 10px; border-radius: 10px;">`
+            html += `       <p style="margin-bottom: 0; text-transform: uppercase;letter-spacing: 1px;font-size: 13px;font-weight: bold;color: #64748b;">Compare Stocks on Chart</p>`;
+            html += `       <div class="d-flex" style="gap: 10px;">`
+            // miSrn.pss('${secType}', '${stockType}', ${secId}, '', false); miSrn.pc('${secType}', ${secId}, '${stockType}List', '', true, 'inline', true);
+            html += `           <a class="tsrSecRotTabBtnIdx" style="cursor:pointer; padding: 5px 16px; box-shadow: 1px 1px 4px grey; background-color: white;" onclick="miSrn.pc('${secType}', ${secId}, '${stockType}List', '', true, 'inline', true);" oncontextmenu="return false;"> <span class="fas fa-chart-line"></span> Inline </a>`
+            // miSrn.pss('${secType}', '${stockType}', ${secId}, '', false); miSrn.pc('${secType}', ${secId}, '${stockType}List', '', true, 'tile', true);
+            html += `           <a class="tsrSecRotTabBtnIdx" style="cursor:pointer;  padding: 5px 16px;  box-shadow: 1px 1px 4px grey; background-color: white;" onclick="miSrn.pc('${secType}', ${secId}, '${stockType}List', '', true, 'tile', true);" oncontextmenu="return false;">  <span class="fas fa-chart-line"></span> Tile  </a>`
+            html += `       </div>`
+            html += `   </div>`
+            // html += `                           <div style="white-space: nowrap;">`
+            // html += `                               View Chart &emsp;`;
+            // html += `                                   <a class="link-primary" style="cursor:pointer" onclick=" miSrn.pss('${secType}', '${stockType}', ${secId}, '', false); miSrn.pc('${secType}', ${secId}, '${stockType}List', '', true, 'inline', true);" oncontextmenu="return false;"> <span class="fas fa-chart-line"></span> Inline </a>`
+            // html += `&emsp;|&emsp;`;
+            // html += `                                   <a class="link-primary" style="cursor:pointer" onclick=" miSrn.pss('${secType}', '${stockType}', ${secId}, '', false); miSrn.pc('${secType}', ${secId}, '${stockType}List', '', true, 'tile', true);" oncontextmenu="return false;">  <span class="fas fa-chart-line"></span> Tile  </a>`
+            // html += `                           </div>`
         }
-        else {
-            html += `                       <div class="d-flex flex-column flex-md-row justify-content-end my-3">`
+        // else {
+        //     html += `                       <div class="d-flex flex-column flex-md-row justify-content-end my-3">`
+        // }
 
-        }
-
-        html += `               <div class="d-flex flex-column text-end">`
-        html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
-        html += `                       <span style="color: red;">*</span>`
-        html += `                           Sector / Index rating utilizes only Stocks beyond certain Market Capital`
-        html += `                   </p>`
-        html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
-        html += `                       <span style="color: red;">*</span>`
-        html += `                           Show all - includes Stocks across all Market Cap. Maximum of 20 stocks are shown`
-        html += `                   </p>`
-        html += `               </div>`
-        html += `         </div>`
+        // html += `               <div class="d-flex flex-column text-end">`
+        // html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
+        // html += `                       <span style="color: red;">*</span>`
+        // html += `                           Sector / Index rating utilizes only Stocks beyond certain Market Capital`
+        // html += `                   </p>`
+        // html += `                   <p style="font-size: 12px; margin-bottom: 0;">`
+        // html += `                       <span style="color: red;">*</span>`
+        // html += `                           Show all - includes Stocks across all Market Cap. Maximum of 20 stocks are shown`
+        // html += `                   </p>`
+        // html += `               </div>`
+        // html += `         </div>`
 
         return html;
     }
@@ -1162,16 +1306,21 @@ var miSrn = (function () {  // chart init Params
             let sectors = [...allSectorDataClone[secType + "Sec"]];
             let sector = sectors[secId];
 
-            // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+            let url = "";
+            if (jsu.isNotNull(mintJsUtil.getRootUrl())) {
+                url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+            } else {
+                url = "https://www.tsrbt1.com/rt" + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+
+            }
             // let url = `http://127.0.0.1:5500/Temp/secRotData/secRot${duration}${sectorType}`;
             // https://www.tsrbt1.com/rt/djs?id=3m&type=industry&cat=SecRot&action=one&code=DEFENCE
-            // let url = "https://www.tsrbt1.com/rt" + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
 
             sectorType = sectorType.toUpperCase();
             duration = duration.toUpperCase();
             let sectorCode = sector["uriCode"].toUpperCase();
 
-            let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${duration}_SECTOR.json`;
+            // let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${duration}_SECTOR.json`;
 
             // avoiding multiple API calls for same sector
             if (!(isSectorLoaded(currSectorData, secType, secId))) {
@@ -1182,32 +1331,63 @@ var miSrn = (function () {  // chart init Params
                         currSectorData["secType"] = secType;
                         currSectorData["secId"] = secId;
 
-                        let stockList = currSectorData[stockType + "List"];
-                        let stockMetaData = mintJsUtil.getObjFrmArrByField(stockList, "code", stockCode);
+                        // let stockList = currSectorData[stockType + "List"];
+                        // let stockMetaData = mintJsUtil.getObjFrmArrByField(stockList, "code", stockCode);
 
                         let duration = durationSelect.value;
                         let freq = miSrnUtils.gf(duration);
-                        // let url = `https://www.tsrbt1.com/rt/djs?freq=${duration}&type=eq&cat=EqSmry&code=${stockCode}&action=eq`;
+
+                        // let url = "";
+                        // if (jsu.isNotNull(mintJsUtil.getRootUrl())) {
+
+                        // }else{
+                        //     url = `https://www.tsrbt1.com/rt/djs?freq=${freq}&type=eq&cat=EqSmry&code=${stockCode}&action=eq`;
+                        // }
                         // let url = `http://127.0.0.1:5500/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${freq}_${stockCode}.json`;
-                        let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${freq}_${stockCode}.json`;
+                        // let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${freq}_${stockCode}.json`;
 
 
-                        miSrnUtils.gd(url).then(stockData => {
-                            if (stockData.statusCode == "success") {
-                                let stock = stockData;
-                                stock.id = stockMetaData['id'];
-                                stock.name = stockMetaData['name'];
-                                stock.code = stockCode;
-                                stock.sectorName = sector["name"];
-                                stock.vsNifty = stockMetaData['vsNifty'];
-                                if (jsu.isNotNull(stockMetaData['vsIdx'])) {
-                                    stock.vsIdx = stockMetaData['vsIdx'];
-                                }
-                                stock.priceChange = stockMetaData['priceChange'];
-                                // paintStockSection(secType, sector, stockType, secId, stockCode);
-                                miStkHl.pss(stock);
-                            }
-                        });
+                        // miSrnUtils.gd(url).then(stockData => {
+                        //     if (stockData.statusCode == "success") {
+                        //         let stock = stockData;
+                        //         stock.id = stockMetaData['id'];
+                        //         stock.name = stockMetaData['name'];
+                        //         stock.code = stockCode;
+                        //         stock.sectorName = sector["name"];
+                        //         stock.vsNifty = stockMetaData['vsNifty'];
+                        // if (jsu.isNotNull(stockMetaData['vsIdx'])) {
+                        //     stock.vsIdx = stockMetaData['vsIdx'];
+                        // }
+                        //         stock.priceChange = stockMetaData['priceChange'];
+                        //         // paintStockSection(secType, sector, stockType, secId, stockCode);
+                        //         miStkHl.pss(stock, true, stockHlPopupId);
+                        //     }
+                        // });
+                        let stockList = currSectorData[stockType + "List"];
+                        let stockMetaData = mintJsUtil.getObjFrmArrByField(stockList, "code", stockCode);
+
+                        // miSrnUtils.gd(url).then(stockData => {
+                        //     if (stockData.statusCode == "success") {
+                        let stock = {};
+                        stock.id = stockMetaData['id'];
+                        stock.name = stockMetaData['name'];
+                        stock.code = stockCode;
+                        stock.sectorName = sector["name"];
+                        stock.vsNifty = stockMetaData['vsNifty'];
+                        stock.priceChange = stockMetaData['priceChange'];
+
+                        if (jsu.isNotNull(stockMetaData['vsIdx'])) {
+                            stock.vsIdx = stockMetaData['vsIdx'];
+                        }
+                        //         stock.priceChange = stockMetaData['priceChange'];
+                        // paintStockSection(secType, sector, stockType, secId, stockCode, stock);
+                        let params = {};
+                        params.stock = stock;
+                        params.id = duration;
+                        params.freq = miSrnUtils.gt(duration);;
+
+                        // params.stock
+                        miStkHl.pss(params, true, stockHlPopupId);
 
                         // paintStockSection(secType, sector, stockContainer, stockType, secId, stockCode);
                     }
@@ -1218,302 +1398,41 @@ var miSrn = (function () {  // chart init Params
                 let duration = durationSelect.value;
                 let freq = miSrnUtils.gf(duration);
                 // let url = `https://www.tsrbt1.com/rt/djs?freq=${freq}&type=eq&cat=EqSmry&code=${stockCode}&action=eq`;
-                let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${freq}_${stockCode}.json`;
+                // // let url = `https://nitronik7.github.io/TSR-Frontend/SectorRotationNg/integration/new/data/${sectorType}/${sectorCode}/${freq}_${stockCode}.json`;
 
 
                 let stockList = currSectorData[stockType + "List"];
                 let stockMetaData = mintJsUtil.getObjFrmArrByField(stockList, "code", stockCode);
 
-                miSrnUtils.gd(url).then(stockData => {
-                    if (stockData.statusCode == "success") {
-                        let stock = stockData;
-                        stock.id = stockMetaData['id'];
-                        stock.name = stockMetaData['name'];
-                        stock.code = stockCode;
-                        stock.sectorName = sector["name"];
-                        stock.vsNifty = stockMetaData['vsNifty'];
-                        if (jsu.isNotNull(stockMetaData['vsIdx'])) {
-                            stock.vsIdx = stockMetaData['vsIdx'];
-                        }
-                        stock.priceChange = stockMetaData['priceChange'];
-                        // paintStockSection(secType, sector, stockType, secId, stockCode, stock);
-                        miStkHl.pss(stock);
-                    }
-                });
+                // miSrnUtils.gd(url).then(stockData => {
+                //     if (stockData.statusCode == "success") {
+                let stock = {};
+                stock.id = stockMetaData['id'];
+                stock.name = stockMetaData['name'];
+                stock.code = stockCode;
+                stock.sectorName = sector["name"];
+                stock.vsNifty = stockMetaData['vsNifty'];
+                stock.priceChange = stockMetaData['priceChange'];
+                if (jsu.isNotNull(stockMetaData['vsIdx'])) {
+                    stock.vsIdx = stockMetaData['vsIdx'];
+                }
+                //         stock.priceChange = stockMetaData['priceChange'];
+                // paintStockSection(secType, sector, stockType, secId, stockCode, stock);
+                let params = {};
+                params.stock = stock;
+                // params.freq = duration;
+
+                params.id = duration;
+                params.freq = miSrnUtils.gt(duration);;
+
+
+                // params.stock
+                miStkHl.pss(params, true, stockHlPopupId);
+                //     }
+                // });
             }
         };
     }
-
-    /*
-        function paintStockSection(secType, sector, stockType, secId, stockCode, stock) {
-
-            let stockSectionModal = document.getElementById("tsrSecRotStockSectionModal");
-            stockSectionModal.style.display = "block";
-
-            let modalHtml = ``;
-            // <!-- <a onclick="${USER_FUNC}('close')" id="btnClose"> -->
-            modalHtml += `
-                                    <table style="width: 100%; border: 0px; background: linear-gradient(120deg, var(--tsrSecRotBlueDark) 0%, var(--tsrSecRotBlue) 100%);" cellpadding="3" cellspacing="0">
-                                        <tbody>
-                                            <tr>
-                                                
-                                                <td style="padding: 7px; font-weight: 500; color: white; ">${stockCode} Highlights</td>
-                                                <td class="align_right">
-                                                    <font color="white"><span class="fa fa-remove fa-times "></span>
-                                                    </font>
-                                                    <!-- </a>  -->
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div id="tsrSecRotStockSectionHeader"></div>
-                                    <div id="tsrSecRotStockSectionBody" style="max-height: 70vh; overflow:  auto;"></div>
-            `
-            stockSectionModal.innerHTML = modalHtml;
-
-            let stockSectionHeader = document.getElementById("tsrSecRotStockSectionHeader");
-            let stockSectionBody = document.getElementById("tsrSecRotStockSectionBody");
-
-            let techUrl = mintJsUtil.getRootUrl() + '/Stock/' + stock["id"] + "/TechnicalAnalysis";
-            let fundaUrl = mintJsUtil.getRootUrl() + '/Stock/' + stock["id"] + "/FundamentalAnalysis";
-
-            // Configurable paths or parameters for Buy/Sell workflow routes
-            let buyUrl = mintJsUtil.getRootUrl() + '/Stock/' + stock["id"] + "/BuyScreen";
-            let sellUrl = mintJsUtil.getRootUrl() + '/Stock/' + stock["id"] + "/SellScreen";
-
-            //  ── helpers ──
-            const fmt = (v, suffix = "") => (v == null ? "—" : (parseFloat(v) % 1 === 0 ? parseFloat(v).toFixed(0) : parseFloat(v).toFixed(2)) + suffix);
-            const signCls = v => (parseFloat(v) >= 0 ? "tsrSecRotPos" : "tsrSecRotNeg");
-
-            // ╔══════════════════════════════════════════════════════╗
-            // ║                    HEADER                           ║
-            // ╚══════════════════════════════════════════════════════╝
-            let headerHtml = `
-            <div class="tsrSecRotHeader">
-                <div class="tsrSecRotHeaderInner">
-
-                    <div class="tsrSecRotTitleGroup">
-                        <span class="tsrSecRotTickerBadge">${stock["id"]}</span>
-                        <div>
-                            <div class="tsrSecRotStockName">${stock["name"]}</div>
-                            <div class="tsrSecRotHeaderSub">
-                                <span class="tsrSecRotPriceTag">
-                                    <i class="fas fa-rupee-sign me-1"></i>${fmt(stock["price"])}
-                                </span>
-                                <span class="tsrSecRotChangeTag ${signCls(stock["priceChange"])}">
-                                    <i class="fas fa-${parseFloat(stock["priceChange"]) >= 0 ? 'caret-up' : 'caret-down'} me-1"></i>${fmt(stock["priceChange"])}%
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <a onclick="" class="btn btn-success tsrSecRotActionBtn tsrSecRotBtnBuy">
-                            <i class="fas fa-shopping-cart me-1"></i>Buy
-                        </a>
-                        <a onclick="" class="btn btn-danger tsrSecRotActionBtn tsrSecRotBtnSell">
-                            <i class="fas fa-gavel me-1"></i>Sell
-                        </a>
-
-                        <a onclick="" class="btn btn-warning tsrSecRotActionBtn tsrSecRotBtnSell">
-                            <i class="fas fa-bell me-1"></i>Alert
-                        </a>
-                    </div>
-
-                    <div class="tsrSecRotHeaderActions">
-                        <span class="tsrSecRotViewLabel">View Analysis</span>
-                        <a href="${techUrl}" target="_blank" class="tsrSecRotActionBtn tsrSecRotBtnTech" oncontextmenu="return false;">
-                            <i class="fas fa-chart-line me-1"></i>Technical
-                        </a>
-                        <a href="${fundaUrl}" target="_blank" class="tsrSecRotActionBtn tsrSecRotBtnFunda" oncontextmenu="return false;">
-                            <i class="fas fa-university me-1"></i>Fundamental
-                        </a>
-                    </div>
-                </div>
-
-                <div class="tsrSecRotHeaderRule"></div>
-            </div>`;
-
-            // ╔══════════════════════════════════════════════════════╗
-            // ║                     BODY                            ║
-            // ╚══════════════════════════════════════════════════════╝
-            let bodyHtml = `<div class="tsrSecRotBody">`;
-
-            //  ── 1. HIGHLIGHTS ── 
-            bodyHtml += `
-        <section class="tsrSecRotSection">
-            <div class="tsrSecRotSectionHd">
-                <span class="tsrSecRotSectionIcon tsrSecRotIconHl"><i class="fas fa-bolt"></i></span>
-                <h6 class="tsrSecRotSectionTitle">Highlights</h6>
-            </div>
-            <div class="tsrSecRotHighlightsGrid">
-
-                <div class="tsrSecRotHlCard tsrSecRotHlNifty">
-                    <span class="tsrSecRotHlLabel">vs NIFTY</span>
-                    <span class="tsrSecRotHlValue ${signCls(stock["vsNifty"])}">${fmt(stock["vsNifty"])}%</span>
-                    <span class="tsrSecRotHlIcon"><i class="fas fa-chart-area"></i></span>
-                </div>`;
-
-            if (jsu.isNotNull(stock.vsIdx) && stock.vsIdx) {
-                bodyHtml += `
-                <div class="tsrSecRotHlCard tsrSecRotHlSector">
-                    <span class="tsrSecRotHlLabel">vs ${sector["name"]}</span>
-                    <span class="tsrSecRotHlValue ${signCls(stock["vsIdx"])}">${fmt(stock["vsIdx"])}%</span>
-                    <span class="tsrSecRotHlIcon"><i class="fas fa-building"></i></span>
-                </div>`;
-            }
-
-            bodyHtml += `
-                <div class="tsrSecRotHlCard tsrSecRotHlPrice">
-                    <span class="tsrSecRotHlLabel">Current Price</span>
-                    <span class="tsrSecRotHlValue tsrSecRotNeutral">₹${fmt(stock["price"])}</span>
-                    <span class="tsrSecRotHlIcon"><i class="fas fa-rupee-sign"></i></span>
-                </div>
-
-                <div class="tsrSecRotHlCard tsrSecRotHlChange">
-                    <span class="tsrSecRotHlLabel">Price Change</span>
-                    <span class="tsrSecRotHlValue ${signCls(stock["priceChange"])}">${fmt(stock["priceChange"])}%</span>
-                    <span class="tsrSecRotHlIcon"><i class="fas fa-percentage"></i></span>
-                </div>
-
-            </div>
-        </section>`;
-
-            //  ── 2. TSR METRICS – pill row ── 
-            const tsrMetrics = [
-                { label: "Technical", val: stock["tsrStr"]["techStr"], clr: stock["tsrStr"]["techClr"], icon: "fa-chart-bar" },
-                { label: "Value", val: stock["tsrStr"]["valStr"], clr: stock["tsrStr"]["valClr"], icon: "fa-coins" },
-                { label: "Stability", val: stock["tsrStr"]["stabStr"], clr: stock["tsrStr"]["stabClr"], icon: "fa-shield-alt" },
-                { label: "Profitability", val: stock["tsrStr"]["pftStr"], clr: stock["tsrStr"]["pftClr"], icon: "fa-piggy-bank" },
-                { label: "Growth", val: stock["tsrStr"]["gwthStr"], clr: stock["tsrStr"]["gwthClr"], icon: "fa-seedling" },
-            ];
-
-            bodyHtml += `
-        <section class="tsrSecRotSection">
-            <div class="tsrSecRotSectionHd">
-                <span class="tsrSecRotSectionIcon tsrSecRotIconTsr"><i class="fas fa-tachometer-alt"></i></span>
-                <h6 class="tsrSecRotSectionTitle">TSR Metrics</h6>
-            </div>
-            <div class="tsrSecRotMetricsRow">`;
-
-            tsrMetrics.forEach(m => {
-                bodyHtml += `
-                <div class="tsrSecRotMetricPill">
-                    <span class="tsrSecRotMetricIcon" style="color:${m.clr}"><i class="fas ${m.icon}"></i></span>
-                    <div class="tsrSecRotMetricText">
-                        <span class="tsrSecRotMetricLabel">${m.label}</span>
-                        <span class="tsrSecRotMetricVal" style="color:${m.clr}">${m.val}</span>
-                    </div>
-                </div>`;
-            });
-
-            bodyHtml += `</div></section>`;
-
-            //  ── 3 + 4. RETURNS & EMA – side-by-side carousels ── 
-            bodyHtml += `<div class="tsrSecRotDualRow">`;
-
-            // Returns
-            bodyHtml += `
-        <section class="tsrSecRotSection tsrSecRotHalf">
-            <div class="tsrSecRotSectionHd">
-                <span class="tsrSecRotSectionIcon tsrSecRotIconRet"><i class="fas fa-history"></i></span>
-                <h6 class="tsrSecRotSectionTitle">Returns</h6>
-            </div>
-            <div class="owl-carousel owl-theme tsrSecRotCarousel periodicReturns">`;
-
-            stock["tsrRtn"].forEach((r, j) => {
-                if (jsu.isNull(r["label"])) return;
-                const v = parseFloat(r["stkRtn"]);
-                bodyHtml += `
-                <div class="tsrSecRotCarouselCard">
-                    <span class="tsrSecRotCcLabel">${r["label"]}</span>
-                    <span class="tsrSecRotCcValue ${v >= 0 ? 'tsrSecRotPos' : 'tsrSecRotNeg'}">
-                        <i class="fas fa-${v >= 0 ? 'caret-up' : 'caret-down'} me-1"></i>${fmt(v)}%
-                    </span>
-                </div>`;
-            });
-
-            bodyHtml += `</div></section>`;
-
-            // EMA
-            bodyHtml += `
-        <section class="tsrSecRotSection tsrSecRotHalf">
-            <div class="tsrSecRotSectionHd">
-                <span class="tsrSecRotSectionIcon tsrSecRotIconEma"><i class="fas fa-wave-square"></i></span>
-                <h6 class="tsrSecRotSectionTitle">EMA</h6>
-            </div>
-            <div class="owl-carousel owl-theme tsrSecRotCarousel periodicReturns">`;
-
-            stock["ema"].forEach((e, j) => {
-                if (jsu.isNull(e["label"])) return;
-                bodyHtml += `
-                <div class="tsrSecRotCarouselCard">
-                    <span class="tsrSecRotCcLabel">${e["label"]}</span>
-                    <span class="tsrSecRotCcValue" style="color:${e["clrl"] || '#334155'}">
-                        ${fmt(e["val"])}
-                    </span>
-                    <span class="tsrSecRotCcSub" style="color:${e["clrl"] || '#64748b'}">${e["intr"] || ""}</span>
-                </div>`;
-            });
-
-            bodyHtml += `</div></section></div>`;
-
-            //  ── 5 + 6. TECHNICALS & FUNDAMENTALS – side-by-side carousels ── 
-            bodyHtml += `<div class="tsrSecRotDualRow">`;
-
-            if (jsu.isNotNull(stock["tech"])) {
-                bodyHtml += `
-            <section class="tsrSecRotSection tsrSecRotHalf">
-                <div class="tsrSecRotSectionHd">
-                    <span class="tsrSecRotSectionIcon tsrSecRotIconTech"><i class="fas fa-microscope"></i></span>
-                    <h6 class="tsrSecRotSectionTitle">Technicals</h6>
-                </div>
-                <div class="owl-carousel owl-theme tsrSecRotCarousel technicals">`;
-
-                stock["tech"].forEach((t, j) => {
-                    if (jsu.isNull(t["label"])) return;
-                    bodyHtml += `
-                    <div class="tsrSecRotCarouselCard tsrSecRotCcThree">
-                        <span class="tsrSecRotCcLabel">${t["label"]}</span>
-                        <span class="tsrSecRotCcValue" style="color:${t["clrl"] || '#334155'}">${miSrnUtils.gcv(t["val"], t["clrl"], null)}</span>
-                        <span class="tsrSecRotCcSub" style="color:${t["clrl"] || '#64748b'}">${t["intr"] || ""}</span>
-                    </div>`;
-                });
-
-                bodyHtml += `</div></section>`;
-            }
-
-            if (jsu.isNotNull(stock["funda"])) {
-                bodyHtml += `
-            <section class="tsrSecRotSection tsrSecRotHalf">
-                <div class="tsrSecRotSectionHd">
-                    <span class="tsrSecRotSectionIcon tsrSecRotIconFund"><i class="fas fa-landmark"></i></span>
-                    <h6 class="tsrSecRotSectionTitle">Fundamentals</h6>
-                </div>
-                <div class="owl-carousel owl-theme tsrSecRotCarousel technicals">`;
-
-                stock["funda"].forEach((f, j) => {
-                    if (jsu.isNull(f["label"])) return;
-                    bodyHtml += `
-                    <div class="tsrSecRotCarouselCard tsrSecRotCcThree">
-                        <span class="tsrSecRotCcLabel" title="${f["label"]}">${f["label"]}</span>
-                        <span class="tsrSecRotCcValue" style="color:${f["clrl"] || '#334155'}">${miSrnUtils.gcv(f["val"], f["clrl"], null)}</span>
-                        <span class="tsrSecRotCcSub" style="color:${f["clrl"] || '#64748b'}">${f["intr"] || ""}</span>
-                    </div>`;
-                });
-
-                bodyHtml += `</div></section>`;
-            }
-
-            bodyHtml += `</div>`; // end dual row
-            bodyHtml += `</div>`; // end tsrSecRotBody
-
-            //  ── Injections ── 
-            stockSectionHeader.innerHTML = headerHtml;
-            stockSectionBody.innerHTML = bodyHtml;
-
-            initializeCarousal(false);
-        }
-    */
 
     function paintChart(secType, secId, stockListType, stockCode, all, chartType, scrollTo) {
 
@@ -1534,8 +1453,12 @@ var miSrn = (function () {  // chart init Params
             processChart(sector, secType, stockListType, stockCode, all, chartType, scrollTo);
 
         }
-        // let url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
-        let url = `https://www.tsrbt1.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+        let url = "";
+        if (jsu.isNotNull(mintJsUtil.getRootUrl())) {
+            url = mintJsUtil.getRootUrl() + `/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+        } else {
+            url = `https://www.tsrbt1.com/rt/djs?id=${duration}&type=${sectorType}&cat=SecRot&action=one&code=${sector["uriCode"]}`;
+        }
         // let url = `http://127.0.0.1:5500/Temp/secRotData/${sector["uriCode"]}.json`;
         // let url = `https://nitronik7.github.io/TSR-Frontend/Temp/secRotData/${sector["uriCode"]}.json`;
 
@@ -1574,22 +1497,26 @@ var miSrn = (function () {  // chart init Params
         }
 
         let container = document.getElementById(chartContainerId);
+        container.style.display = "block";
 
         // container.classList.add("card");
 
         let html = "";
 
+        html += `<div class="card p-3">`
+
         if (stockListType == "sectorList") {
             html += `
-                <div class="mb-3">
-                    <b>CHARTS</b>
-                </div>`
+                    <div class="mb-3">
+                        <b>SECTOR CHART</b>
+                    </div>`
         } else {
             html += `
-                <div class="mb-3">
-                    <b>STOCK CHART</b>
-                </div>`
+                    <div class="mb-3">
+                        <b>STOCK CHART</b>
+                    </div>`
         }
+
         html += `
 
 
@@ -1622,7 +1549,9 @@ var miSrn = (function () {  // chart init Params
                     <div id='chartWrap'>
 
                         <div id='tsrchart' style="font-size:10px;width:100%">
-                            <img src="${gifUrl}" title="loading"></img>
+                            <div style="height: 50px; width: 50px;">
+                                <img src="${gifUrl}" title="loading"></img>
+                            </div>    
                         </div>
 
                     </div>
@@ -1639,6 +1568,8 @@ var miSrn = (function () {  // chart init Params
 
             </div>
         `;
+
+        html += ` </div>`
 
         container.innerHTML = html;
 
@@ -1691,6 +1622,9 @@ var miSrn = (function () {  // chart init Params
             myTsrChartInit.init(defStk, json, chartType);
 
         }
+
+
+        htmlU.focusToDiv('tsrSecRotChartContainer')
     }
 
     function validateSecRotSettings() {
@@ -1720,7 +1654,7 @@ var miSrn = (function () {  // chart init Params
         return false;
     }
 
-    function paintTsrToolsContainer() { // TODO - REMOVE IF NOT REQUIRED
+    function paintTsrToolsContainer() { 
         let toolsContainer = document.getElementById(toolsContainerId);
 
         let tools = [

@@ -60,6 +60,8 @@ var imccs =  (function () {
 
 	function createIchiObj(id){
 
+
+		// let id =  myTsrScreener.getNextId( 'techNgCompId');
 		var defOption = CORE_OPS[0];
 
 		var tecObj = { id :id, type : 'techIndi' ,  subType:ICHIMOKU, indi: ICHIMOKU,
@@ -146,15 +148,15 @@ var imccs =  (function () {
 		var ichiDef = jsu.getObjFrmArr(CORE_OPS, techObj.f1);
 
 
-		html+=   SP_3 + getDropDown(CORE_OPS, id+'f1', 'width:90px',func, id, techObj.f1);
+		html+=   SP_3 + getDropDown(CORE_OPS, id+'f1', '',func, id, techObj.f1);
 
-		html+=   SP_3 + getDropDown(ichiDef.baseFields, id+'f2', 'width:90px',func, id, techObj.f2);
+		html+=   SP_3 + getDropDown(ichiDef.baseFields, id+'f2', '',func, id, techObj.f2);
 
 
-		html+=   SP_3 + getDropDown(ichiDef.opsFields, id+'ops', 'width:90px',func, id, techObj.ops);
+		html+=   SP_3 + getDropDown(ichiDef.opsFields, id+'ops', '',func, id, techObj.ops);
 
 		if(ichiDef.compareFields.length >0){
-			html+=   SP_3 + getDropDown(ichiDef.compareFields, id+'f3', 'width:90px',func, id, techObj.f3);
+			html+=   SP_3 + getDropDown(ichiDef.compareFields, id+'f3', '',func, id, techObj.f3);
 		}
 
 

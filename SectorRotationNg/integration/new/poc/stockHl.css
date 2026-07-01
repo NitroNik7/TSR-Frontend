@@ -1,0 +1,543 @@
+/* ============================================================
+   TSR Stock Birds Eye View – Popup Styles
+   Prefix : tsrSecRot
+   Requires: Bootstrap 5, Font Awesome 5, Owl Carousel
+   ============================================================ */
+
+/* -- Design tokens -- */
+:root {
+    --tsrSecRotBlueDark: #0d2d6e;
+    /* TSR brand deep navy  */
+    --tsrSecRotBlue: #1a56db;
+    /* TSR brand blue       */
+    --tsrSecRotBlueMid: #2563eb;
+    --tsrSecRotGold: #f59e0b;
+    /* accent               */
+    --tsrSecRotPos: #059669;
+    --tsrSecRotPosBg: #ecfdf5;
+    --tsrSecRotNeg: #dc2626;
+    --tsrSecRotNegBg: #fef2f2;
+    --tsrSecRotNeutral: #334155;
+    --tsrSecRotSurface: #f8fafc;
+    --tsrSecRotBorder: #e2e8f0;
+    --tsrSecRotCardBg: #ffffff;
+    --tsrSecRotMuted: #64748b;
+    --tsrSecRotRadius: 10px;
+    --tsrSecRotRadiusSm: 6px;
+    --tsrSecRotShadow: 0 1px 4px rgba(0, 0, 0, .08);
+    --tsrSecRotShadowMd: 0 4px 16px rgba(13, 45, 110, .12);
+}
+
+/* -- Colour helpers -- */
+.tsrSecRotPos {
+    color: var(--tsrSecRotPos) !important;
+}
+
+.tsrSecRotNeg {
+    color: var(--tsrSecRotNeg) !important;
+}
+
+.tsrSecRotNeutral {
+    color: var(--tsrSecRotNeutral) !important;
+}
+
+/* ============================================
+   HEADER WITH BUY/SELL UTILITIES
+   ============================================ */
+.tsrSecRotHeader {
+    background: linear-gradient(120deg, var(--tsrSecRotBlueDark) 0%, var(--tsrSecRotBlue) 100%);
+    padding: 14px 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.tsrSecRotHeaderInner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-bottom: 12px;
+}
+
+/* Title group */
+.tsrSecRotTitleGroup {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1 1 1;
+    /* min-width: 0; */
+}
+
+.tsrSecRotTickerBadge {
+    background: var(--tsrSecRotGold);
+    color: #1a1a1a;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .06em;
+    padding: 3px 9px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-transform: uppercase;
+}
+
+.tsrSecRotStockName {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tsrSecRotHeaderSub {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 3px;
+    flex-wrap: wrap;
+}
+
+.tsrSecRotPriceTag {
+    color: rgba(255, 255, 255, .85);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tsrSecRotChangeTag {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 1px 8px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .12);
+}
+
+.tsrSecRotChangeTag.tsrSecRotPos {
+    color: #6ee7b7 !important;
+}
+
+.tsrSecRotChangeTag.tsrSecRotNeg {
+    color: #fca5a5 !important;
+}
+
+/* Action buttons container */
+.tsrSecRotHeaderActions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.tsrSecRotViewLabel {
+    color: rgba(255, 255, 255, .55);
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.tsrSecRotActionBtn {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    text-decoration: none !important;
+    transition: transform .15s, box-shadow .15s;
+    white-space: nowrap;
+}
+
+.tsrSecRotActionBtn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+}
+
+.tsrSecRotBtnTech {
+    background: rgba(255, 255, 255, .15);
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, .3);
+}
+
+.tsrSecRotBtnFunda {
+    background: var(--tsrSecRotGold);
+    color: #1a1a1a !important;
+    border: none;
+}
+
+/* Buy & Sell Native Accents */
+.tsrSecRotBtnBuy {
+    font-weight: 700 !important;
+    letter-spacing: 0.02em;
+}
+
+.tsrSecRotBtnSell {
+    font-weight: 700 !important;
+    letter-spacing: 0.02em;
+}
+
+/* Accent rule */
+.tsrSecRotHeaderRule {
+    height: 3px;
+    background: linear-gradient(90deg, var(--tsrSecRotGold) 0%, transparent 70%);
+    border-radius: 2px 2px 0 0;
+}
+
+/* ============================================
+   BODY WRAPPER
+   ============================================ */
+.tsrSecRotBody {
+    padding: 18px 18px 24px;
+    background: var(--tsrSecRotSurface);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* ============================================
+   SECTION COMMON
+   ============================================ */
+.tsrSecRotSection {
+    background: var(--tsrSecRotCardBg);
+    border: 1px solid var(--tsrSecRotBorder);
+    border-radius: var(--tsrSecRotRadius);
+    padding: 14px 16px 16px;
+    box-shadow: var(--tsrSecRotShadow);
+}
+
+.tsrSecRotSectionHd {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* margin-bottom: 12px; */
+}
+
+.tsrSecRotSectionIcon {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.tsrSecRotIconHl {
+    background: #ede9fe;
+    color: #7c3aed;
+}
+
+.tsrSecRotIconTsr {
+    background: #dbeafe;
+    color: var(--tsrSecRotBlue);
+}
+
+.tsrSecRotIconRet {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.tsrSecRotIconEma {
+    /* background: #fef3c7; */
+    /* color: #d97706;  */
+    background: #dbeafe;
+    color: #1a56db;
+}
+
+.tsrSecRotIconTech {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.tsrSecRotIconFund {
+    background: #e0f2fe;
+    color: #0284c7;
+}
+
+.tsrSecRotSectionTitle {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: var(--tsrSecRotNeutral);
+    margin: 0;
+}
+
+/* ============================================
+   HIGHLIGHTS GRID
+   ============================================ */
+.tsrSecRotHighlightsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+}
+
+.tsrSecRotHlCard {
+    position: relative;
+    border-radius: var(--tsrSecRotRadiusSm);
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow: hidden;
+    border: 1px solid var(--tsrSecRotBorder);
+    transition: box-shadow .2s;
+}
+
+.tsrSecRotHlCard:hover {
+    box-shadow: var(--tsrSecRotShadowMd);
+}
+
+.tsrSecRotHlNifty {
+    background: #f0fdf4;
+}
+
+.tsrSecRotHlSector {
+    background: #eff6ff;
+}
+
+.tsrSecRotHlPrice {
+    background: #fefce8;
+}
+
+.tsrSecRotHlChange {
+    background: #fdf4ff;
+}
+
+.tsrSecRotHlLabel {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--tsrSecRotMuted);
+}
+
+.tsrSecRotHlValue {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.tsrSecRotHlIcon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    opacity: .07;
+    color: #000;
+}
+
+/* ============================================
+   TSR METRICS PILL ROW
+   ============================================ */
+.tsrSecRotMetricsRow {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tsrSecRotMetricPill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--tsrSecRotSurface);
+    border: 1px solid var(--tsrSecRotBorder);
+    border-radius: 30px;
+    padding: 7px 14px 7px 10px;
+    flex: 1 1 250px;
+    /* min-width: 0;  */
+    max-width: 400px;
+    transition: box-shadow .2s, transform .15s;
+}
+
+.tsrSecRotMetricPill:hover {
+    box-shadow: var(--tsrSecRotShadowMd);
+    transform: translateY(-1px);
+}
+
+.tsrSecRotMetricIcon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.tsrSecRotMetricText {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.tsrSecRotMetricLabel {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--tsrSecRotMuted);
+}
+
+.tsrSecRotMetricVal {
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ============================================
+   CAROUSEL CARDS
+   ============================================ */
+.tsrSecRotCarouselCard {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 12px;
+    border-radius: var(--tsrSecRotRadiusSm);
+    border: 1px solid var(--tsrSecRotBorder);
+    background: var(--tsrSecRotSurface);
+    gap: 3px;
+    transition: box-shadow .15s;
+    min-height: 64px;
+}
+
+.tsrSecRotCarouselCard:hover {
+    box-shadow: var(--tsrSecRotShadowMd);
+    background: #fff;
+}
+
+.tsrSecRotCcLabel {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--tsrSecRotMuted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    white-space: nowrap;
+}
+
+.tsrSecRotCcValue {
+    font-size: 20px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--tsrSecRotNeutral);
+}
+
+.tsrSecRotCcSub {
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tsrSecRotCcThree {
+    min-height: 76px;
+}
+
+/* Owl carousel tweaks */
+.tsrSecRotCarousel .owl-dots {
+    margin-top: 8px !important;
+}
+
+.tsrSecRotCarousel .owl-dot span {
+    width: 6px !important;
+    height: 6px !important;
+    background: var(--tsrSecRotBorder) !important;
+    margin: 0 3px !important;
+}
+
+.tsrSecRotCarousel .owl-dot.active span {
+    background: var(--tsrSecRotBlue) !important;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN (Desktop, Laptop, Tablet, Mobile)
+   ============================================ */
+@media (max-width: 992px) {
+    .tsrSecRotActionBtn {
+        padding: 5px 10px;
+        font-size: 11.5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tsrSecRotDualRow {
+        grid-template-columns: 1fr;
+    }
+
+    .tsrSecRotHeaderActions {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 6px;
+    }
+
+    .tsrSecRotHighlightsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tsrSecRotStockName {
+        font-size: 13px;
+    }
+
+    .tsrSecRotMetricsRow {
+        gap: 6px;
+    }
+
+    .tsrSecRotMetricPill {
+        flex: 1 1 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tsrSecRotHighlightsGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .tsrSecRotBody {
+        padding: 12px 12px 18px;
+        gap: 12px;
+    }
+
+    .tsrSecRotHeader {
+        padding: 10px 12px 0;
+    }
+
+    .tsrSecRotActionBtn {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+
+    .tsrSecRotViewLabel {
+        display: none;
+    }
+}
+
+
+/* -- Technicals Tick Marker Note -- */
+.tsrSecRotTickNote {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--tsrSecRotNeutral);
+    /* background-color: var(--tsrSecRotSurface); */
+    background-color: white;
+    border: 1px solid var(--tsrSecRotBorder);
+    border-radius: var(--tsrSecRotRadiusSm);
+    padding: 3px 8px;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+}
+
+.tsrSecRotTickAsterisk {
+    color: var(--tsrSecRotNeg);
+    margin-right: 1px;
+}
+
+/* Tablet & Mobile responsive optimization tweaks */
+/* @media (max-width: 576px) {
+    .tsrSecRotTickNote {
+        font-size: 10px;
+        padding: 2px 6px;
+    }
+} */

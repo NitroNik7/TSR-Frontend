@@ -107,6 +107,9 @@ var diybi =  (function () {
 		if(jsu.isNull( biDiyObj.idL ) || biDiyObj.idL == CS_NOT_SELECTED){
 			html+=  doBold( " Advance Config : ("+biDiyObj.diyType+") " ) +  getDropDown(diyIndis, id+'idL', null,func, id, '') +' ' ;
 
+
+			html+= csh.gept(biDiyObj, TI_CS,  delparam);
+
 			html+= SP_3 + csh.delIcon(delparam) ;
 
 		}else{
@@ -188,7 +191,7 @@ var diybi =  (function () {
 		if(indiObj.advOpt ){
 			indiHtml += BR_2;
 
-			indiHtml+= htmlU.getSpan(' On ' , 'grey' , 10) + 	getDropDown(ticks, indiObj.id+'techTick', 'width:90px',func, param, indiObj.techTick) 
+			indiHtml+= htmlU.getSpan(' On ' , 'grey' , 10) + 	getDropDown(ticks, indiObj.id+'techTick', '',func, param, indiObj.techTick) 
 				+ htmlU.getSpan(' Tick ' , 'grey' , 10) 
 
 			if(indiDef != null){// case of RHS with OHLC only
@@ -293,8 +296,13 @@ var diybi =  (function () {
 			var compOpsHtml = cscmn.gcoh(biDiyObj ,biDiyObj.id , func , param);
 
 			if(jsu.isNotNull(compOpsHtml)){
-				html+= CS_DIV_WITH_MGN + compOpsHtml   + SP_3 + csh.delIcon(delParam) +'</div>';	
+				html+= CS_DIV_WITH_MGN + compOpsHtml   + SP_3 
+
+				html+= csh.gept(biDiyObj, TI_CS,  delParam);
+				html+= csh.delIcon(delParam) +'</div>';	
 			}else{
+
+				html+= csh.gept(biDiyObj, TI_CS,  delParam);
 				html+= SP_3 + csh.delIcon(delParam) ;
 			}
 			
@@ -806,6 +814,7 @@ var diybi =  (function () {
 
 
 		ghr : getHtmlRow,
+		gftd :getHtmlTds,
 		add : addDiyBi,
 		bic : bottomIndiChg,
 		vf : validateFields

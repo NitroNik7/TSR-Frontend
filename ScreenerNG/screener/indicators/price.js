@@ -16,8 +16,6 @@ var PRICE_AEBB_MAP =  [{id: 'csPrice' , label: 'Price' , csType: PRICE_CS},
 
 
 var PRICE_MAP = pdef . priceMap;
-var AVG_PRICE_RANGE = pdef.avgPriceRange;
-var BETA_PERIOD = pdef.betaPeriod;
 
 
 
@@ -227,10 +225,58 @@ var csp =  (function () {
 
 		let html ='';
 
-		for(var i=0;i< PRICE_AEBB_MAP.length ;i++) html+= csh.aebbStrut(PRICE_AEBB_MAP[i].id, PRICE_LABEL_WIDTH);
+		if(mtgv.cs.ng){
+
+			let csPriceObj = jsu.getObjFrmArr(mtgv.cs.screenerData.aebb, "csPrice");
+
+			if(csPriceObj.hasData){
+				html+= csh.aebbStrut('csPrice', null);	
+			}
+
+			let priceGainLossObj = mtgv.cs.screenerData.priceGainLoss;
+
+			if(  priceGainLossObj.ops !=null &&  priceGainLossObj.ops != 'na'){
+				html+= getPriceGainLossRow();	
+			}
+			
+			let trendCanObj =  scrData[TREND_CANDLE_BOBD];
+
+			if( jsu.isNotNull( trendCanObj) && trendCanObj.enabled){
+				html+= getTrendingCandleRow();
+			}
+
+			if( jsu.isNotNull(scrData[OPEN_RANGE_NG]) && scrData[OPEN_RANGE_NG].enabled){
+				html+= openRangeStratRow();
+			}
+			if( jsu.isNotNull(scrData[PREV_RANGE_BOBD])   &&  scrData[PREV_RANGE_BOBD].enabled){
+				html+= prevRangeStartRow();
+			}
+			if( jsu.isNotNull(scrData[GAPS_NG])  &&  scrData[GAPS_NG].enabled  ){
+				html+= gapStratRow();
+			}
+			if( jsu.isNotNull(scrData[OPEN_RANGE_OLD])  &&  scrData[OPEN_RANGE_OLD].enabled){
+				html+= getRangeBoDwnRowOld();
+			}
+
+			if( jsu.isNotNull(scrData[GAP_RUNAWAY])  &&  scrData[GAP_RUNAWAY].enabled){
+				html+= gapRunAwayRow();
+			}
+			if( jsu.isNotNull(scrData[GAP_FILL])  &&  scrData[GAP_FILL].enabled){
+				html+= gapRunAwayFillRow();
+			}
 
 
-		html+=     '<tr><td><b>Gain Loss in %</b></td> ' +   createTd( createDiv('priceGainLossDiv', createTableData(PRICE_GAIN_LOSS) ) ) + '</tr>';
+
+		}else{
+
+			for(var i=0;i< PRICE_AEBB_MAP.length ;i++) html+= csh.aebbStrut(PRICE_AEBB_MAP[i].id, PRICE_LABEL_WIDTH);
+
+			html+=     '<tr>' +   createTd( createDiv('priceGainLossTd2Div', createTableData(PRICE_GAIN_LOSS) ) ) + '</tr>';
+
+		}
+
+
+
 
 
 		// if(mtgv.mtpp.crossFreq){
@@ -304,8 +350,8 @@ var csp =  (function () {
 			// html+=     '<tr><td><b>Trending Candle</b></td> ' +   createTd( createDiv(PRICE_TRENDING_CANDLE+ 'Div', createTableData(PRICE_TRENDING_CANDLE) ) ) + '</tr>';
 		
 			if(trendCandleChecked){
-				html+=     '<tr id="'+TREND_CANDLE_BOBD+'TrId"  ><td><b>Open Range Strategy</b></td> ' 
-					+   createTd( createDiv('trendcandleTdDiv', getTrendCandleTd(TREND_CANDLE_BOBD) ) ) + '</tr>';
+				html+=     '<tr id="'+TREND_CANDLE_BOBD+'"  >' 
+					+   createTd( createDiv('trendcandleTd2Div', getTrendCandleTd(TREND_CANDLE_BOBD) ) ) + '</tr>';
 			}
 
 
@@ -314,8 +360,8 @@ var csp =  (function () {
 				// '<p class="mb-1"></p>' + htmlU.getSpan('Retiring End Jun <b>Use Open Range Strategy Below</b>', 'orange', 8)
 				// +'</td> ' 
 				// 	+   createTd( createDiv('rangeBoDwnDiv', createTableData(PRICE_RANGE_BREAK_OUT_DOWN) ) ) + '</tr>';
-				html+=     '<tr id="'+OPEN_RANGE_OLD+'TrId"  ><td><b>Range Break Out/Down (old)</b></td> ' 
-					+   createTd( createDiv('orOldTdDiv', getOpeningRangeOldTd(OPEN_RANGE_OLD) ) ) + '</tr>';
+				html+=     '<tr id="'+OPEN_RANGE_OLD+'"  > ' 
+					+   createTd( createDiv('orOldTd2Div', getOpeningRangeOldTd(OPEN_RANGE_OLD) ) ) + '</tr>';
 			}
 
 			// html+=     '<tr><td><b>Gap Up/Down Run Away</b></td> ' +   createTd( createDiv( PRICE_GAP_RUN_AWAY + 'Div', createTableData(PRICE_GAP_RUN_AWAY) ) ) + '</tr>';
@@ -324,29 +370,29 @@ var csp =  (function () {
 		
 
 			if(gapRunChecked){
-				html+=     '<tr id="'+GAP_RUNAWAY+'TrId"  ><td><b>Gap Up/Down Run Away	</b></td> ' 
-					+   createTd( createDiv(GAP_RUNAWAY+ 'Div', createGapRunAwayTd(GAP_RUNAWAY) ) ) + '</tr>';
+				html+=     '<tr id="'+GAP_RUNAWAY+'"  >' 
+					+   createTd( createDiv(GAP_RUNAWAY+ 'Td2Div', createGapRunAwayTd(GAP_RUNAWAY) ) ) + '</tr>';
 			}
 
 			if(gapFillChecked){
-				html+=     '<tr id="'+GAP_FILL+'TrId"  ><td><b>Gap Up/Down Run Away	</b></td> ' 
-					+   createTd( createDiv(GAP_FILL+ 'Div', createGapFillTd(GAP_FILL) ) ) + '</tr>';
+				html+=     '<tr id="'+GAP_FILL+'"  > ' 
+					+   createTd( createDiv(GAP_FILL+ 'Td2Div', createGapFillTd(GAP_FILL) ) ) + '</tr>';
 			}
 
 
 			if(!jsu.isMigContext()  && orNgChecked){
-				html+=     '<tr id="'+OPEN_RANGE_NG+'TrId"  ><td><b>Open Range Strategy</b></td> ' 
-					+   createTd( createDiv('orNgTdDiv', getOpeningRangeNgTd(OPEN_RANGE_NG) ) ) + '</tr>';
+				html+=     '<tr id="'+OPEN_RANGE_NG+'"  > ' 
+					+   createTd( createDiv('orNgTd2Div', getOpeningRangeNgTd(OPEN_RANGE_NG) ) ) + '</tr>';
 			}
 
 			if(!jsu.isMigContext()  && prevRangChecked){
-				html+=     '<tr id="'+PREV_RANGE_BOBD+'TrId"  ><td><b>Previous Range Strategy</b></td> ' 
-					+   createTd( createDiv(PREV_RANGE_BOBD +  'TdDiv', getPreviousRangeTd(PREV_RANGE_BOBD) ) ) + '</tr>';
+				html+=     '<tr id="'+PREV_RANGE_BOBD+'"  >' 
+					+   createTd( createDiv(PREV_RANGE_BOBD +  'Td2Div', getPreviousRangeTd(PREV_RANGE_BOBD) ) ) + '</tr>';
 			}
 
 			if(!jsu.isMigContext()  && gapNgChecked){
-				html+=     '<tr id="'+GAPS_NG+'TrId"  ><td><b>Gap Strategy</b></td> ' 
-					+   createTd( createDiv(GAPS_NG+ 'TdDiv', getGapNgTd(GAPS_NG) ) ) + '</tr>';
+				html+=     '<tr id="'+GAPS_NG+'"  >' 
+					+   createTd( createDiv(GAPS_NG+ 'Td2Div', getGapNgTd(GAPS_NG) ) ) + '</tr>';
 			}
 
 		}
@@ -356,36 +402,36 @@ var csp =  (function () {
 	}
 
 
-	function getFormRow(type, id){ 
-		let obj =   csu.gso(type, id)
+	function getFormRow(type, id, state){ 
+		
+
+		let obj = null;
+
+		if(type=='csPrice'){
+			obj = getObjFrmArr(mtgv.cs.screenerData.aebb, type);
+		}else if(type== PRICE_GAIN_LOSS){
+
+			obj = mtgv.cs.screenerData[PRICE_GAIN_LOSS];
+
+		}else if(jsu.containsString([TREND_CANDLE_BOBD, OPEN_RANGE_NG, PREV_RANGE_BOBD,GAPS_NG, OPEN_RANGE_OLD, GAP_RUNAWAY, GAP_FILL ] , type)){
+			obj = mtgv.cs.screenerData[type] ;
+		}else {
+			obj =   csu.gso(type, id);
+		}
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
 
 		if(type=='csPrice'){ // Tick Vol 
     		return csh.aebbStrut(type, null);;
 		}else if(type== PRICE_GAIN_LOSS){	 // daily Vol
 			
 			return  getPriceGainLossRow();
-
-		}else if(type=='ac'){
-			return cscmn. acr('price', PRICE_CS);
-
-		}else if(type=='atn'){ // OHLC TRENDING 
-    	      return  cscmn.gtnr('price', PRICE_CS); 
-		}else if(type == 'turnOver'){
-			return csfdc.gth(type);
-
-	    }else if(type == CS_VWAP){    
-	    	return  getVwapHtml(obj);
-
-		}else if(type == 'priceBoBd'){    	
-			return getBreakOutDownHtml(obj);
-
-		}else if(type == 'dynSpTimepriceComp'){    
-			cscmn. spch(obj,price )
-
-		}else if(type == 'dynAdvOhlcComp'){    
-			cscmn.aoh(obj)
-		}else if(type == 'rallyBaseCom'){    		
-			return getRbcHtml(obj);
 
 		}else if(type == TREND_CANDLE_BOBD){			
 			return getTrendingCandleRow()
@@ -408,6 +454,116 @@ var csp =  (function () {
 		}else if(type == GAP_FILL){	
 
 			return gapRunAwayFillRow();
+
+		}
+
+		// let obj =   csu.gso(type, id)
+
+		 if(type=='ac' || type == 'dynpriceComp'){
+			return cscmn. gch(obj, 'price');
+
+		}else if(type=='atn' || type =='dynpriceTrendNg'){ // OHLC TRENDING 
+    	      return  cscmn.gth(obj, 'price'); 
+		}else if(type == 'turnOver'){
+			return csfdc.gth(obj,'turnOver');
+
+	    }else if(type == CS_VWAP){    
+	    	return  getVwapHtml(obj);
+
+		}else if(type == 'priceBoBd'){    	
+			return getBreakOutDownHtml(obj);
+
+		}else if(type == 'dynSpTimepriceComp'){    
+			return cscmn. spch(obj,'price' )
+
+		}else if(type == 'dynAdvOhlcComp'){    
+			return cscmn.aoh(obj)
+		}else if(type == 'rallyBaseCom'){    		
+			return getRbcHtml(obj);
+
+		}
+
+	}
+
+
+	function getFormTd(type, id, state){ 
+		
+
+		let obj = null;
+
+		if(type=='csPrice'){
+			obj = getObjFrmArr(mtgv.cs.screenerData.aebb, type);
+		
+		}else if(type== PRICE_GAIN_LOSS){
+
+			obj = mtgv.cs.screenerData[PRICE_GAIN_LOSS];
+		}else if(jsu.containsString([TREND_CANDLE_BOBD, OPEN_RANGE_NG, PREV_RANGE_BOBD,GAPS_NG, OPEN_RANGE_OLD, GAP_RUNAWAY, GAP_FILL ] , type)){
+			obj = mtgv.cs.screenerData[type] ;
+		}else {
+			obj =   csu.gso(type, id);
+		}
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
+
+		if(type=='csPrice'){ // Tick Vol 
+    		return csh.aebbStruttd(obj, type, null);;
+		}else if(type== PRICE_GAIN_LOSS){	 // daily Vol
+			
+			return  createTableData(PRICE_GAIN_LOSS)
+
+		}else if(type == TREND_CANDLE_BOBD){			
+			return getTrendCandleTd(TREND_CANDLE_BOBD) 
+		}else if(type == OPEN_RANGE_NG){
+			return getOpeningRangeNgTd(OPEN_RANGE_NG);
+
+		}else if(type == PREV_RANGE_BOBD){	
+			return getPreviousRangeTd(PREV_RANGE_BOBD) ;
+
+		}else if(type == GAPS_NG){	
+			return getGapNgTd(GAPS_NG) ;
+
+		}else if(type == OPEN_RANGE_OLD){	
+			return  getOpeningRangeOldTd(OPEN_RANGE_OLD) 
+
+		}else if(type == GAP_RUNAWAY){	
+			return createGapRunAwayTd(GAP_RUNAWAY)
+
+		}else if(type == GAP_FILL){	
+
+			return createGapFillTd(GAP_FILL);
+
+		}
+
+		// let obj =   csu.gso(type, id)
+
+		 if(type=='ac' || type == 'dynpriceComp'){
+			return cscmn. gchtd(obj, 'price');
+
+		}else if(type=='atn' || type =='dynpriceTrendNg'){ // OHLC TRENDING 
+    	      return  cscmn.gttd(obj, 'price'); 
+		}else if(type == 'turnOver'){
+
+			return csfdc.gttd(obj,'turnOver');
+
+	    }else if(type == CS_VWAP){    
+	    	return  getVwapTd(obj);
+
+		}else if(type == 'priceBoBd'){    	
+			return getBreakOutDownTD(obj);
+
+		}else if(type == 'dynSpTimepriceComp'){    
+			return cscmn. spchtd(obj,'price' )
+
+		}else if(type == 'dynAdvOhlcComp'){    
+			return cscmn.aohtd(obj)
+		}else if(type == 'rallyBaseCom'){    		
+			return getRbcTD(obj);
 
 		}
 
@@ -446,18 +602,18 @@ var csp =  (function () {
 		if(mtgv.mtpp.crossFreq  && mtgv.mtpp.pr   ){
 
 			if(!jsu.isMigContext() && mtgv.mtpp.rt){ // for real time ...
-				html+=  SP_3 +getButtonP( 'A / MA / PP - VWAP' , 'csp.awap', '');	
+				html+=  SP_3 +getButtonP( 'A / MA / PP - VWAP' , 'csp.apf', CS_VWAP);	
 			}
 
-			html+=  SP_3 +getButtonP( 'Break Out / Down' , 'csp.abod', '');
+			html+=  SP_3 +getButtonP( 'Break Out / Down' , 'csp.apf', 'priceBoBd');
 
 			html+= BR_2;
 			// if(mtgv.mtpp.int  ){
-			html+= SP_3 +getButtonP('OHLC Specific Time Compare' , 'cscmn.astc', 'price'+PARAM_DELIM+PRICE_CS);
+			html+= SP_3 +getButtonP('OHLC Specific Time Compare' , 'csp.apf', 'dynSpTimepriceComp');
 			
-			html+= SP_3 +getButtonP('OHLCV Advanced' , 'cscmn.aao', 'price'+PARAM_DELIM+PRICE_CS);
+			html+= SP_3 +getButtonP('OHLCV Advanced' , 'csp.apf', 'dynAdvOhlcComp');
 			
-			html+=  SP_3 +getButtonP( 'Demand & Supply Zones ' , 'csp.arbc', RALL_BASE_COMBO[0].id+PARAM_DELIM+PRICE_CS);
+			html+=  SP_3 +getButtonP( 'Demand & Supply Zones ' , 'csp.apf', 'rallyBaseCom');
 			
 			if( mtgv.mtpp.int ){
 				
@@ -469,24 +625,24 @@ var csp =  (function () {
 
 			var trendCandleChechedLab = trendCandleChecked ? 'checked' : ''
 
-			html+=  SP_3  +getCheckboxP( TREND_CANDLE_BOBD , 'csp.tcc', trendCandleChechedLab, null) + ' Trending Candles ';
+			html+=  SP_3  +getCheckboxP( TREND_CANDLE_BOBD+ 'CB' , 'csp.tcc', trendCandleChechedLab, null) + ' Trending Candles ';
 
 			if(!jsu.isMigContext() ){  // Only Real Time
 
 				var orngChechedLab = orNgChecked ? 'checked' : ''
 
-				html+=  SP_3 + ' | ' +getCheckboxP( OPEN_RANGE_NG , 'csp.ornc', orngChechedLab, null) + ' Open Range Strategies ';
+				html+=  SP_3 + ' | ' +getCheckboxP( OPEN_RANGE_NG  + 'CB', 'csp.ornc', orngChechedLab, null) + ' Open Range Strategies ';
 
 			}
 
 			var prngChechedLab = prevRangChecked ? 'checked' : ''
 
-			html+=  SP_3 + ' | ' +getCheckboxP( PREV_RANGE_BOBD , 'csp.prch', prngChechedLab, null) + ' Previous Range Strategies ';
+			html+=  SP_3 + ' | ' +getCheckboxP( PREV_RANGE_BOBD + 'CB' , 'csp.prch', prngChechedLab, null) + ' Previous Range Strategies ';
 
 
 			var gapNgChechedLab = gapNgChecked ? 'checked' : ''
 
-			html+=  SP_3 + ' | ' +getCheckboxP( GAPS_NG , 'csp.gnc', gapNgChechedLab, null) + ' Gap Strategies ';
+			html+=  SP_3 + ' | ' +getCheckboxP( GAPS_NG + 'CB' , 'csp.gnc', gapNgChechedLab, null) + ' Gap Strategies ';
 			
 			html+= BR_2;
 
@@ -503,17 +659,17 @@ var csp =  (function () {
 
 				var oldChecked = (orOldChecked) ? 'checked' :''
 
-				html+=  SP_3 + getCheckboxP( OPEN_RANGE_OLD , 'csp.oroc', oldChecked, null) + ' Open Range Breakout / Down(old) ';
+				html+=  SP_3 + getCheckboxP( OPEN_RANGE_OLD + 'CB' , 'csp.oroc', oldChecked, null) + ' Open Range Breakout / Down(old) ';
 
 			}
 
 			var gapRunChechedLab = gapRunChecked ? 'checked' : ''
 
-			html+=  SP_3 + ' | ' +getCheckboxP( GAP_RUNAWAY , 'csp.grc', gapRunChechedLab, null) + 'Gap Up/Down Run Away (old) ';
+			html+=  SP_3 + ' | ' +getCheckboxP( GAP_RUNAWAY + 'CB', 'csp.grc', gapRunChechedLab, null) + 'Gap Up/Down Run Away (old) ';
 
 			var gapFillCheckedLab = gapFillChecked ? 'checked' : ''
 
-			html+=  SP_3 + ' | ' +getCheckboxP( GAP_FILL , 'csp.gfc', gapFillCheckedLab, null) + ' Gap Fill / Potential	 (old)';
+			html+=  SP_3 + ' | ' +getCheckboxP( GAP_FILL + 'CB', 'csp.gfc', gapFillCheckedLab, null) + ' Gap Fill / Potential	 (old)';
 
 		}else{
 
@@ -544,9 +700,9 @@ var csp =  (function () {
 
 
 
-	function addPriceFilter(type){ //MA_PRICE_OPTIONS
+	function addPriceFilter(type, subType){ //MA_PRICE_OPTIONS
 
-		let json = addNewFilter(type);
+		let json = addNewFilter(type, subType);
 
 		$('#priceCtrlTab').append(json.html );
 
@@ -555,7 +711,7 @@ var csp =  (function () {
 	}
 
 
-	function addNewFilter(type){
+	function addNewFilter(type, subType){ // subtype is required for Search
 
 		var scrData = mtgv.cs.screenerData;
 		var id =  '';
@@ -564,7 +720,7 @@ var csp =  (function () {
 
 		if(type=='csPrice'){ // Tick Vol 
 			html = csh.aebbStrut('csPrice', null);;
-
+			id = type;
     	
 		}else if(type==PRICE_GAIN_LOSS){	 // daily Vol
 			
@@ -573,7 +729,7 @@ var csp =  (function () {
 			id = mtgv.cs. screenerData[PRICE_GAIN_LOSS].id
 		}else if(type=='ac'){
 
-			return cscmn. acr('price', PRICE_CS);  // OHLC Compare
+			return cscmn. acr('price', 'PRICE_CS');  // OHLC Compare
 
 		}else if(type=='atn'){ // OHLC TRENDING 
     	      
@@ -586,7 +742,7 @@ var csp =  (function () {
 	    }else if(type == CS_VWAP){    
 
 	    	var obj = mtgv.cs.screenerData[CS_VWAP];
-			var id =  myTsrScreener.getNextId( CS_VWAP +'Id');
+			id =  myTsrScreener.getNextId( CS_VWAP +'Id');
 
 			var ticks = csu.gct({} , null);
 
@@ -595,6 +751,10 @@ var csp =  (function () {
 				tick1: SHORT_PERIODS[0].id, field1 : CLOSE , goodData : true 
 			};
 
+			if(jsu.isNotNull(subType )){
+				obj.type = subType;
+			}
+
 			mtgv.cs.screenerData[CS_VWAP].push(obj); 
 
 			html = getVwapHtml(obj);
@@ -602,7 +762,7 @@ var csp =  (function () {
 		}else if(type == 'priceBoBd'){    	
 
 			var priceBoBd = mtgv.cs.screenerData.priceBoBd;
-			var id =  myTsrScreener.getNextId( 'priceBoBdId');
+			id =  myTsrScreener.getNextId( 'priceBoBdId');
 
 			var ticks = csu.gct({} , null);
 
@@ -622,10 +782,10 @@ var csp =  (function () {
 		}else if(type == 'dynAdvOhlcComp'){    
 			return cscmn. aaon('price', PRICE_CS)
 
-		}else if(type == 'rallyBaseCom'){    		
+		}else if(type == 'rallyBaseCom'  || type =='rbr'){    		
 
 			var rallyBaseCom = mtgv.cs.screenerData.rallyBaseCom;
-			var id =  myTsrScreener.getNextId( 'rallyBaseComId');
+			id =  myTsrScreener.getNextId( 'rallyBaseComId');
 
 			var ticks = csu.gct({} , null);
 
@@ -634,37 +794,50 @@ var csp =  (function () {
 				minLegIn : 2 ,minLegOut : 2.5 , goodData : true , 
 				tick1: ticks[0].id
 			};
-
-			if(jsu.isNotNull(type)){
-				obj.type  = type;
+			if(jsu.isNotNull(subType )){
+				obj.type = subType;
 			}
+
+
+			// if(jsu.isNotNull(type)){
+			// 	obj.type  = type;
+			// }
 
 			mtgv.cs.screenerData.rallyBaseCom.push(obj); 
 
 			html =  getRbcHtml(obj);
 
-		}else if(type == TREND_CANDLE_BOBD){			
+		}else if(type == TREND_CANDLE_BOBD){		
+
+			id = 	TREND_CANDLE_BOBD;
 			html = getTrendingCandleRow()
 
 		}else if(type == OPEN_RANGE_NG){
+			id = 	OPEN_RANGE_NG;
 			html = openRangeStratRow();		
 
 		}else if(type == PREV_RANGE_BOBD){	
+			id = PREV_RANGE_BOBD	 
 			html = prevRangeStartRow();
 
 		}else if(type == GAPS_NG){	
+			id =GAPS_NG
 			html = gapStratRow();
 
 		}else if(type == OPEN_RANGE_OLD){	
+			id =OPEN_RANGE_OLD
 			html = getRangeBoDwnRowOld();
 
 		}else if(type == GAP_RUNAWAY){	
+			id =GAP_RUNAWAY
 			html = gapRunAwayRow();
 
 		}else if(type == GAP_FILL){	
-
+			id =GAP_FILL
 			html = gapRunAwayFillRow();
 		}
+
+
 
 		return { html : html , id : id};
 
@@ -682,11 +855,11 @@ var csp =  (function () {
 			priceChange();
 
 		}else if(type=='ac'){
-			return cscmn. acr('price', PRICE_CS);
+			cscmn. cc(id, 'price');
 
 		}else if(type=='atn'){ // OHLC TRENDING 
 
-    	      return cscmn.gtnr('price', PRICE_CS);
+    	      cscmn.tnc(  id , 'price');
 		}else if(type == 'turnOver'){
 			csfdc.ua(id)
 
@@ -702,7 +875,7 @@ var csp =  (function () {
 		}else if(type == 'dynAdvOhlcComp'){    
 			cscmn.ccao(id )
 
-		}else if(type == 'rallyBaseCom'){    		
+		}else if(type == 'rallyBaseCom'  || type =='rbr'){    		
 			rbcChange(id);
 
 		}else if(type == TREND_CANDLE_BOBD){
@@ -730,127 +903,114 @@ var csp =  (function () {
 
 
 
+	function addPriceFilters(type){ //MA_PRICE_OPTIONS
+
+		if(!mtgv.cs.ng){
+			if( type=='csPrice' ||   type ==PRICE_GAIN_LOSS){
+				return;
+			}
+		}
+
+		if(type == TREND_CANDLE_BOBD){
+			// trendingCandleBoDwnCB
+			$('#trendingCandleBoDwnCB').prop('checked', true);
+			trendingCandleChange()
+			return;
+		}else if(type == OPEN_RANGE_NG){		
+			// orNgCB
+			$('#orNgCB').prop('checked', true);
+			openRangeNgChg();
+			return;
+		}else if(type == PREV_RANGE_BOBD){	
+			// prevRngBoBdCB
+			$('#prevRngBoBdCB').prop('checked', true);
+			previousRangeChange();
+			return;
+		}else if(type == GAPS_NG){		
+			$('#gapNgCB').prop('checked', true);
+			gapsNgChg();
+			return;
+		}
+
+
+		let json = addNewFilter(type);
+
+		$('#priceCtrlTab').append(json.html );
+
+		addFilterChange(type , json.id);
+
+	}
+
+
+
 	function getPriceGainLossRow(){
 
-		let html = doBold(' Gain / Loss (%) : ' ) + createTableData(PRICE_GAIN_LOSS)
+		let html = createTableData(PRICE_GAIN_LOSS)
 
-		return '<tr id="'+PRICE_GAIN_LOSS+'">' +createTd(createDiv( PRICE_GAIN_LOSS +'Div' , html ))  + '</tr>';
+		return '<tr id="'+PRICE_GAIN_LOSS+'">' +createTd(createDiv( PRICE_GAIN_LOSS +'Td2Div' , html ))  + '</tr>';
 	}
 
 
 	function getTrendingCandleRow(){
 
-		let html = doBold(' Trending Candle Row ' ) + getTrendCandleTd(TREND_CANDLE_BOBD) 
+		let html = getTrendCandleTd(TREND_CANDLE_BOBD) 
 
-		return '<tr id="'+TREND_CANDLE_BOBD+'TrId"  > ' 
-					+   createTd( createDiv('trendcandleTdDiv', html) ) + '</tr>';
+		return '<tr id="'+TREND_CANDLE_BOBD+'"  > ' 
+					+   createTd( createDiv(TREND_CANDLE_BOBD+'Td2Div', html) ) + '</tr>';
 	}
 
 
 	function getRangeBoDwnRowOld(){
 
-		let html = doBold(' Range Break Out/Down (old) ' ) + getOpeningRangeOldTd(OPEN_RANGE_OLD) 
+		let html =  getOpeningRangeOldTd(OPEN_RANGE_OLD) 
 
-		return '<tr id="'+TREND_CANDLE_BOBD+'TrId"  > ' 
-					+   createTd( createDiv('orOldTdDiv', html) ) + '</tr>';
+		return '<tr id="'+OPEN_RANGE_OLD+'"  > ' 
+					+   createTd( createDiv(OPEN_RANGE_OLD+'Td2Div', html) ) + '</tr>';
 
 	}
 
 	function gapRunAwayRow(){
 
-		let html = doBold(' Gap Up/Down Run Away ' ) +createGapRunAwayTd(GAP_RUNAWAY)
+		let html = createGapRunAwayTd(GAP_RUNAWAY)
 
-		return    '<tr id="'+GAP_RUNAWAY+'TrId"  >' 
-					+   createTd( createDiv(GAP_RUNAWAY+ 'Div', html ) ) + '</tr>';
+		return    '<tr id="'+GAP_RUNAWAY+'"  >' 
+					+   createTd( createDiv(GAP_RUNAWAY+ 'Td2Div', html ) ) + '</tr>';
 	}
 
 	function gapRunAwayFillRow(){
 
-		let html = doBold(' Gap Up/Down Run Away Fill ' ) + createGapFillTd(GAP_FILL);
+		let html =  createGapFillTd(GAP_FILL);
 
-		return '<tr id="'+GAP_FILL+'TrId"  > ' 
-					+   createTd( createDiv(GAP_FILL+ 'Div', html ) ) + '</tr>';
+		return '<tr id="'+GAP_FILL+'"  > ' 
+					+   createTd( createDiv(GAP_FILL+ 'Td2Div', html ) ) + '</tr>';
 	}
 
 	function openRangeStratRow(){
 
-		let html =   doBold('Open Range Strategy') + getOpeningRangeNgTd(OPEN_RANGE_NG);
+		let html =    getOpeningRangeNgTd(OPEN_RANGE_NG);
 
-		return '<tr id="'+OPEN_RANGE_NG+'TrId"  > ' 
-					+   createTd( createDiv('orNgTdDiv', html ) ) + '</tr>'
+		return '<tr id="'+OPEN_RANGE_NG+'"  > ' 
+					+   createTd( createDiv(OPEN_RANGE_NG+'Td2Div', html ) ) + '</tr>'
 	}
 
 	function prevRangeStartRow(){
 
-		let html = doBold( 'Previous Range Strategy') + getPreviousRangeTd(PREV_RANGE_BOBD) ;
+		let html =  getPreviousRangeTd(PREV_RANGE_BOBD) ;
 
-		return '<tr id="'+PREV_RANGE_BOBD+'TrId"  > ' 
-					+   createTd( createDiv(PREV_RANGE_BOBD +  'TdDiv', html) ) + '</tr>';
+		return '<tr id="'+PREV_RANGE_BOBD+'"  > ' 
+					+   createTd( createDiv(PREV_RANGE_BOBD +  'Td2Div', html) ) + '</tr>';
 	}
 
 	function gapStratRow(){
 
-		let html = doBold('Gap Strategy') +   getGapNgTd(GAPS_NG) ;
+		let html =  getGapNgTd(GAPS_NG) ;
 
-		return  '<tr id="'+GAPS_NG+'TrId"  >' 
-					+   createTd( createDiv(GAPS_NG+ 'TdDiv', html ) )+ '</tr>';
+		return  '<tr id="'+GAPS_NG+'"  >' 
+					+   createTd( createDiv(GAPS_NG+ 'Td2Div', html ) )+ '</tr>';
 	}
 
 
-	function getBetaVolHtml(id){
-		var scrData = mtgv.cs.screenerData;
-		var html ='';
-		var html ='<br/><div id="'+id+'Div">';
-		html+= '<table id="bvCtrlTab" class="'+INDI_TABLE_STYLE+' "  >';
-
-		for(var i=0;i< scrData.prComp.length;i++){
-				html+= csh.opsCompRow(scrData.prComp[i]) ;
-			}	
-			for(var i=0;i< scrData.betaComp.length;i++){	
-				html+= csh.opsCompRow(scrData.betaComp[i]) ;
-			}
-
-		html+= '</table>';
-
-		html+= SP_3 + getButtonP('Add Price Range' , 'csu.opsCompare','prc');
-		html+= SP_3 + getButtonP('Add Beta' , 'csu.opsCompare','beta');
-
-
-
-		html+='<div '+CS_HELP_DIV_STYLE +'>';  
-
-
-		var  helpText = "Currently Both Price range and beta is Calculated Every Day at the end of day.  "
-			+" We are working to work on intraday Values soon."
-
-			+"<br/> Standard Deviation is Coming soon "
-		
-			+"<br/> Price Range is a Volatility Indicator "
-			+"where  extreme price(High/low) of the period is averaged to give sense of price movement in that duration. "
-			+"<br/>Beta is Calculated Using NIFTY as index. "
-			+"We provide beta for multiple time frames to cater for different type of trader needs "
-			+" Custom Beta (Including custom index) Coming soon. "
-			+" Please share ideas so that we can incorporate  to meet your requirements also"
-			;
-		
-		if(!isMobile()){	
-
-			html+=  getSpan(helpText,  'grey', 10);
-
-		}	
-		// html+= BR_2 + getSpan(ohlcComp,  'grey', 10);
-
-		html+='</div>';
-
-
-		
-		html+='</div>';
-		html+='<br/>';
-
-
-
-		return html;
-	}
+	
 
 
 
@@ -894,14 +1054,14 @@ var csp =  (function () {
 		var html = getBreakOutDownTD(boBdObj);
 
 
-		if(mtgv.cs.ng){
+		// if(mtgv.cs.ng){
 				var html = '<tr id=' + boBdObj.id + '>'
 						+ createTd(createDiv(boBdObj.id + 'Td2Div', html, null)) + '</tr>';
 				return html;			
-		}
+		// }
 
 
-		return  csh.dynTr(boBdObj, {td1 : doBold('Break out/Down'), td2 : html })
+		// return  csh.dynTr(boBdObj, {td1 : doBold('Break out/Down'), td2 : html })
 
 
 
@@ -918,9 +1078,9 @@ var csp =  (function () {
 		var html = '' 
 
 
-		if(mtgv.cs.ng){
+		// if(mtgv.cs.ng){
 			html+= doBold('Break out/Down') + BR_2;
-		}
+		// }
 
 		// html+= 'Latest ' 
 
@@ -940,11 +1100,11 @@ var csp =  (function () {
 */
 		// Order of fields , Tick Number is other way round due to historical reason...
 		var ticks = csu.gct(boBdObj , 'tick2');
-		html+= SP_3 +	getDropDown(ticks, boBdObj.id+'tick2', 'width:90px',func, boBdObj.id, boBdObj.tick2) ;
+		html+= SP_3 +	getDropDown(ticks, boBdObj.id+'tick2', '',func, boBdObj.id, boBdObj.tick2) ;
 
 		html+=SP_3;
 
-		html+= 	getDropDown(CLOSE_FIELDS_NO_VOL, id+'field2', 'width:90px',func, id, boBdObj.field2);
+		html+= 	getDropDown(CLOSE_FIELDS_NO_VOL, id+'field2', '',func, id, boBdObj.field2);
 
 		html+=  SP_3+   htmlU.getCheckboxP( boBdObj.id+ 'advOpt', func,  ( boBdObj.advOpt ? 'checked' : '' ), boBdObj.id  ) + ' Advance Options '
 
@@ -979,7 +1139,7 @@ var csp =  (function () {
 
 				html+= "Using " 
 
-				html+= 	getDropDown(BO_BD_RANGE, boBdObj.id+'period3', 'width:90px',func, boBdObj.id, boBdObj.period3) ;
+				html+= 	getDropDown(BO_BD_RANGE, boBdObj.id+'period3', '',func, boBdObj.id, boBdObj.period3) ;
 			
 				if(boBdObj.period3 == WITHIN){
 					html+=  SP_3 +getInputTxtParam( id+'period4' , 3, boBdObj.period4, func , fncParam)  + htmlU.getSpan(' (Optional)', 'grey', 10)	;
@@ -1002,11 +1162,11 @@ var csp =  (function () {
 
 
 
-				html+= 	getDropDown(ticks, boBdObj.id+'tick1', 'width:90px',func, boBdObj.id, boBdObj.tick1) ;
+				html+= 	getDropDown(ticks, boBdObj.id+'tick1', '',func, boBdObj.id, boBdObj.tick1) ;
 
 				html+=SP_3;
 
-				html+= 	getDropDown(CLOSE_FIELDS_NO_VOL, id+'field1', 'width:90px',func, id, boBdObj.field1);
+				html+= 	getDropDown(CLOSE_FIELDS_NO_VOL, id+'field1', '',func, id, boBdObj.field1);
 
 				html+=  ' for Break Out / Down Level' ;
 				html+= BREAK_LINE
@@ -1028,6 +1188,9 @@ var csp =  (function () {
 		
 
 	   	var param = 'priceBoBd'+':'+id  ; 
+
+	   	html+= csh.gept(boBdObj, PRICE_CS,  param);
+
 		html+= SP_3 + csh.delIcon(param) ; 
 
 		return html;
@@ -1135,6 +1298,8 @@ var csp =  (function () {
 			var goodData = true;
 
 			var text =''
+
+			text+= htmlU.doBold("Break Out/Down : ")
 
 			var typeObj =  jsu.getObjFrmArr( PRICE_BREAK_OUT , boBdObj.type );
 
@@ -1311,15 +1476,15 @@ var csp =  (function () {
 		var html = getVwapTd(obj);
 
 
-		if(mtgv.cs.ng){
+		// if(mtgv.cs.ng){
 			var html = '<tr id=' + obj.id + '>'
 						+ createTd(createDiv(obj.id + 'Td2Div', html, null)) + '</tr>';
 			return html;			
-		}
+		// }
 
 
 
-		return  csh.dynTr(obj, {td1 : doBold('Wt Abv Price (WAP) '), td2 : html })
+		// return  csh.dynTr(obj, {td1 : doBold('Wt Abv Price (WAP) '), td2 : html })
 
 
 	}
@@ -1332,11 +1497,11 @@ var csp =  (function () {
 
 		var html = '' 
 
-		if(mtgv.cs.ng){
+		// if(mtgv.cs.ng){
 
 			html+=doBold('Wt Abv Price (WAP) ') +BR_2;
 
-		}
+		// }
 
 		if(!obj.advOpt){
 			html+=  htmlU.getCheckboxP(id+ 'advOpt' , func,  (obj.advOpt ? 'checked' : '' ), id  ) + SP_2 +' Advance Options '
@@ -1446,6 +1611,7 @@ var csp =  (function () {
 
 
 		var param = CS_VWAP+':'+id  ; 
+		html+= csh.gept(obj, PRICE_CS,  param);
 		html+= SP_3 + csh.delIcon(param) ; 
 
 		return html;
@@ -1795,7 +1961,7 @@ var csp =  (function () {
 
 			var selParam =  CS_VWAP +':'+obj.id ;// + '
 
-			var text =''
+			var text = htmlU .doBold('VWAP : ');
 
 			var opsObj = jsu.getObjFrmArr( VWAP_OP_BAND_OPT , obj.ops ); 
 
@@ -2011,13 +2177,13 @@ var csp =  (function () {
 
 		var html = getRbcTD(obj);
 
-		if(mtgv.cs.ng){
+		// if(mtgv.cs.ng){
 			var html = '<tr id=' + obj.id + '>'
 					+ createTd(createDiv(obj.id + 'Td2Div', html, null)) + '</tr>';
 			return html;			
-		}
+		// }
 
-		return  csh.dynTr(obj, {td1 : doBold('Rally Base Combo'), td2 : html })
+		// return  csh.dynTr(obj, {td1 : doBold('Rally Base Combo'), td2 : html })
 
 
 	}
@@ -2030,11 +2196,11 @@ var csp =  (function () {
 
 		var html = '' 
 
-		if(mtgv.cs.ng){
+		// if(mtgv.cs.ng){
 
-			html+=doBold('Rally Base Combo') +BR_2;
+			html+=doBold('Demand & Supply Zones : ') +BR_2;
 
-		}
+		// }
 
 
 		html+=getDropDown(RALL_BASE_COMBO, id+'type', null,func, fncParam, obj.type)
@@ -2050,7 +2216,7 @@ var csp =  (function () {
 			html+= BR_2;
 
 			var ticks = csu.gct(obj , 'tick1');
-			// html+= SP_3 +	getDropDown(ticks, obj.id+'tick1', 'width:90px',func, obj.id, obj.tick1) ;
+			// html+= SP_3 +	getDropDown(ticks, obj.id+'tick1', '',func, obj.id, obj.tick1) ;
 
 			
   
@@ -2121,11 +2287,12 @@ var csp =  (function () {
 
 
 			html+= BR_2;		
-			html+= ' on '  + getDropDown(ticks, obj.id+'tick1', 'width:90px',func, obj.id, obj.tick1)   + ' tick ';
+			html+= ' on '  + getDropDown(ticks, obj.id+'tick1', '',func, obj.id, obj.tick1)   + ' tick ';
 
 		}
 
 		var param = 'rallyBaseCom'+':'+id  ; 
+		html+= csh.gept(obj, PRICE_CS,  param);
 		html+= SP_3 + csh.delIcon(param) ; 
 
 		return html;
@@ -2238,7 +2405,7 @@ var csp =  (function () {
 
 			var goodData = true;
 
-			var text =''
+			var text = htmlU.doBold('Demand & Supply Zone : ');
 
 			var typeObj =  jsu.getObjFrmArr( RALL_BASE_COMBO , obj.type );
 
@@ -2294,14 +2461,14 @@ var csp =  (function () {
 			}
 
 
-			if(!htmlU.isChecked(OPEN_RANGE_NG)){
-				$("#" + OPEN_RANGE_NG +'TrId').remove();
+			if(!htmlU.isChecked(OPEN_RANGE_NG +'CB')){
+				$("#" + OPEN_RANGE_NG +'').remove();
 				orNgObj.enabled= false;
-
+				csu.dsf();
 				return;
 			}
 
-			if(!htmlU.divExist(OPEN_RANGE_NG+'TrId')) {// Row Not Exist 
+			if(!htmlU.divExist(OPEN_RANGE_NG+'Td2Div')) {// Row Not Exist 
 				var row = getOpeningRangeNgTr();
 				$('#priceCtrlTab' ).append( row);
 				orNgObj.enabled= true;
@@ -2326,7 +2493,7 @@ var csp =  (function () {
 
 		var td =  getOpeningRangeNgTd();
 
-		htmlU.addMsgToDiv('orNgTdDiv', true,  td);
+		htmlU.addMsgToDiv('orNgTd2Div', true,  td);
 
 		if(jsu.isNotNull(orNgObj.orNgMinRan)){
 			if(!jsu.isPositiveNumInput ('orNgMinRan') ) orNgObj.goodData = false;
@@ -2354,8 +2521,8 @@ var csp =  (function () {
 	
 	function getOpeningRangeNgTr(){
 
-		var html = '<tr id="'+OPEN_RANGE_NG+'TrId"  ><td><b>Open Range Strategies</b></td> ' 
-				+   createTd( createDiv('orNgTdDiv', getOpeningRangeNgTd() ) ) + '</tr>';
+		var html = '<tr id="'+OPEN_RANGE_NG+'"  > ' 
+				+   createTd( createDiv(OPEN_RANGE_NG+'Td2Div', getOpeningRangeNgTd() ) ) + '</tr>';
 
 		return html;
 	}
@@ -2379,10 +2546,10 @@ var csp =  (function () {
 			orNgObj.orNgtype = 'prBO' ;
 		}
 
-		var html ='';
+		var html ='<b>Open Range Strategies</b>';
 
 		var ticks = csu.gct(orNgObj , 'tick1');
-		html+= 	getDropDown(ticks, 'orNgtick1', 'width:90px',func, null, orNgObj.orNgtick1) ;
+		html+= 	getDropDown(ticks, 'orNgtick1', '',func, null, orNgObj.orNgtick1) ;
 
 		html+=  SP_3+ getDropDown(PR_BO_DWN_NG_LIST,  'orNgtype', null, func, null, orNgObj.orNgtype); // rangeBoDwnType
 
@@ -2460,7 +2627,8 @@ var csp =  (function () {
 			}
 		}
 
-		var param = orNgObj.id+':'+1  ; 
+		var param = orNgObj.id+':'+orNgObj.id  ; 
+		html+= csh.gept(orNgObj, PRICE_CS,  param);
 		html+= SP_3 + csh.delIcon(param) ; 
 
 		return html;
@@ -2481,6 +2649,8 @@ var csp =  (function () {
 		var tick1Obj = jsu.getObjFrmArr(ticks, orNgObj.orNgtick1);		
 
 		var  text =  '';
+
+		text +=  htmlU.doBold('Open Range : ')
 
 		text+= 'Opening : ' + tick1Obj.label ;
 		text+= ",   Price '" + ngType.label + "'" ;
@@ -2543,13 +2713,14 @@ var csp =  (function () {
 				$("#prevRngBoBd" ).prop("checked", true);
 			}
 
-			if(!htmlU.isChecked(PREV_RANGE_BOBD)){
-				$("#" + PREV_RANGE_BOBD +'TrId').remove();
+			if(!htmlU.isChecked(PREV_RANGE_BOBD +'CB')){
+				$("#" + PREV_RANGE_BOBD +'').remove();
 				obj.enabled= false;
+				csu.dsf();
 				return;
 			}
 
-			if(!htmlU.divExist(PREV_RANGE_BOBD+'TrId')) {// Row Not Exist 
+			if(!htmlU.divExist(PREV_RANGE_BOBD+'Td2Div')) {// Row Not Exist 
 				var row = getPreviousRangeTr();
 				$('#priceCtrlTab' ).append( row);
 				obj.enabled= true;
@@ -2573,7 +2744,7 @@ var csp =  (function () {
 
 		var td =  getPreviousRangeTd();
 
-		htmlU.addMsgToDiv(PREV_RANGE_BOBD +  'TdDiv', true,  td);
+		htmlU.addMsgToDiv(PREV_RANGE_BOBD +  'Td2Div', true,  td);
 
 		if(jsu.isNotNull(obj.prevRangeMinRan)){
 			if(!jsu.isPositiveNumInput ('prevRangeMinRan') ) obj.goodData = false;
@@ -2610,8 +2781,8 @@ var csp =  (function () {
 
 	function getPreviousRangeTr(){
 
-		var html = '<tr id="'+PREV_RANGE_BOBD+'TrId"  ><td><b>Previous Range Strategies</b></td> ' 
-				+   createTd( createDiv(PREV_RANGE_BOBD +  'TdDiv', getPreviousRangeTd() ) ) + '</tr>';
+		var html = '<tr id="'+PREV_RANGE_BOBD+'"  > ' 
+				+   createTd( createDiv(PREV_RANGE_BOBD +  'Td2Div', getPreviousRangeTd() ) ) + '</tr>';
 
 		return html;
 	}
@@ -2639,7 +2810,7 @@ var csp =  (function () {
 			obj.prevRangetype = 'prBO' ;
 		}
 
-		var html ='';
+		var html ='<b>Previous Range Strategies</b> ';
 
 		
 		html+= 'Previous '  	;
@@ -2652,7 +2823,7 @@ var csp =  (function () {
 			html += htmlU.getSpan( '  Val Between [1 to 100]','grey', 10  ) +' '
 		}
 
-		html+=	getDropDown(pdef.prt(), 'prevRangetick1', 'width:90px',func, null, obj.prevRangetick1) ;
+		html+=	getDropDown(pdef.prt(), 'prevRangetick1', '',func, null, obj.prevRangetick1) ;
 
 		html+=  SP_3+ getDropDown(PR_BO_DWN_NG_LIST,  'prevRangetype', null, func, null, obj.prevRangetype); // rangeBoDwnType
 
@@ -2744,7 +2915,8 @@ var csp =  (function () {
 			}
 		}
 
-		var param = obj.id+':'+1  ; 
+		var param = obj.id+':'+ obj.id  ; 
+		html+= csh.gept(obj, PRICE_CS,  param);
 		html+= SP_3 + csh.delIcon(param) ; 
 
 		return html;
@@ -2765,6 +2937,8 @@ var csp =  (function () {
 		var tick1Obj = jsu.getObjFrmArr(pdef.prt(), obj.prevRangetick1);		
 
 		var  text =  '';
+
+		text +=  htmlU.doBold('Previous Range : ')
 
 		text+= 'Opening : ' + tick1Obj.label ;
 		text+= ",   Price '" + ngType.label + "'" ;
@@ -2822,14 +2996,14 @@ var csp =  (function () {
 		if(mtgv.cs.ng){
 			obj.enabled= true;
 		}else{
-			if(!htmlU.isChecked(GAPS_NG)){
-				$("#" + GAPS_NG +'TrId').remove();
+			if(!htmlU.isChecked(GAPS_NG +'CB')){
+				$("#" + GAPS_NG +'').remove();
 				obj.enabled= false;
-
+				csu.dsf();
 				return;
 			}
 
-			if(!htmlU.divExist(GAPS_NG+'TrId')) {// Row Not Exist 
+			if(!htmlU.divExist(GAPS_NG+'Td2Div')) {// Row Not Exist 
 				var row = getGapsNgTr();
 				$('#priceCtrlTab' ).append( row);
 				obj.enabled= true;
@@ -2860,7 +3034,7 @@ var csp =  (function () {
 
 		var td =  getGapNgTd();
 
-		htmlU.addMsgToDiv(GAPS_NG + 'TdDiv', true,  td);
+		htmlU.addMsgToDiv(GAPS_NG + 'Td2Div', true,  td);
 
 		// TODO ..... Validations
 
@@ -2902,8 +3076,8 @@ var csp =  (function () {
 
 
 	function getGapsNgTr(){
-		var html = '<tr id="'+GAPS_NG+'TrId"  ><td><b>Gap Strategies</b></td> ' 
-				+   createTd( createDiv( GAPS_NG + 'TdDiv', getGapNgTd() ) ) + '</tr>';
+		var html = '<tr id="'+GAPS_NG+'"  > ' 
+				+   createTd( createDiv( GAPS_NG + 'Td2Div', getGapNgTd() ) ) + '</tr>';
 		return html;
 	}
 
@@ -2925,7 +3099,7 @@ var csp =  (function () {
 
 		var isAdvOptionChecked = obj.advOpt	
 
-		var html ='';
+		var html ='<b>Gap Strategies : </b>';
 
 		html += 'Min ' + getInputTxtParam(GAPS_NG+ 'minGapPc' , 2,  obj.minGapPc , func,  null)  + ' %'; 
 
@@ -3013,7 +3187,8 @@ var csp =  (function () {
 		}
 
 
-		var param = obj.id+':'+1  ; 
+		var param = obj.id+':'+ obj.id  ; 
+		html+= csh.gept(obj, PRICE_CS,  param);
 		html+= SP_3 + csh.delIcon(param) ; 
 
 		return html;
@@ -3037,6 +3212,8 @@ var csp =  (function () {
 		// 	];
 
 		var text =''
+
+		text+= htmlU.doBold("Gap Strategies : ");
 
 		if(obj.goodData){
 
@@ -3106,19 +3283,19 @@ var csp =  (function () {
 		var obj = mtgv.cs. screenerData[OPEN_RANGE_OLD];
 
 		if(mtgv.cs.ng){
-			orNgObj.enabled= true;
+			obj.enabled= true;
 		}else{
-			if(!htmlU.isChecked(OPEN_RANGE_OLD)){
-				$("#" + OPEN_RANGE_OLD +'TrId').remove();
-				orNgObj.enabled= false;
-
+			if(!htmlU.isChecked(OPEN_RANGE_OLD+'CB')){
+				$("#" + OPEN_RANGE_OLD +'').remove();
+				obj.enabled= false;
+				csu.dsf();
 				return;
 			}
 
-			if(!htmlU.divExist(OPEN_RANGE_OLD+'TrId')) {// Row Not Exist 
+			if(!htmlU.divExist(OPEN_RANGE_OLD+'')) {// Row Not Exist 
 				var row = getOpeningRangeOldTr();
 				$('#priceCtrlTab' ).append( row);
-				orNgObj.enabled= true;
+				obj.enabled= true;
 			}
 		}
 
@@ -3129,7 +3306,7 @@ var csp =  (function () {
 
 		var td =  getOpeningRangeOldTd();
 
-		htmlU.addMsgToDiv('orOldTdDiv', true,  td);
+		htmlU.addMsgToDiv(OPEN_RANGE_OLD+'Td2Div', true,  td);
 
 		var validMin = obj.id+'minTicks';
 		
@@ -3161,11 +3338,11 @@ var csp =  (function () {
 
 	function getOpeningRangeOldTr(){
 
-		var html = '<tr id="'+OPEN_RANGE_OLD+'TrId"  ><td><b>Open Range Strategies</b> <br/> '
+		var html = '<tr id="'+OPEN_RANGE_OLD+'"  > '
 				+  htmlU.getSpan('Older Version use <b>Open Range Strategies</b> intead ' , 'orange', 10 ) +
 
 				'</td> ' 
-				+   createTd( createDiv('orOldTdDiv', getOpeningRangeOldTd() ) ) + '</tr>';
+				+   createTd( createDiv(OPEN_RANGE_OLD +'Td2Div', getOpeningRangeOldTd() ) ) + '</tr>';
 
 		return html;
 	}
@@ -3187,10 +3364,10 @@ var csp =  (function () {
 			obj.baseTick = baseTicks[2].id;
 		}
 
-		var html =''
+		var html =  htmlU.doBold('Open Range ') +'(Old)';
 
 		html+= 'Opening ';
-		html+= getDropDown(baseTicks, type+'baseTick', 'width:90px',func, obj.id,  obj[ 'baseTick']); 
+		html+= getDropDown(baseTicks, type+'baseTick', '',func, obj.id,  obj[ 'baseTick']); 
 		// html+= ' Tick ';
 		html+=SP_3;
 		html+=  getDropDown(CANDLE_RANGE,  type+ 'candleRange', null, func, type, obj[ 'candleRange']); // gapFill
@@ -3205,14 +3382,17 @@ var csp =  (function () {
 
 			var boDnTicks = csu.goit();
 
+			html+= BR_2;
+
 			html+= getSpan(' after staying in the Range of last ', 'grey', 10);;
+
 			html+= getInputTxtParam( type+'minTicks' , 2,  obj[ 'minTicks'], func,  obj.id) ; 
 
 			html+= ' to  ';
 			html+= getInputTxtParam( type+'maxTicks' , 2,  obj[ 'maxTicks'], func,  obj.id) ; 
 
 			html+=SP_3;	
-			html+=getDropDown(boDnTicks, type+'boDnTick', 'width:90px',func, obj.id, obj[ 'boDnTick']); 
+			html+=getDropDown(boDnTicks, type+'boDnTick', '',func, obj.id, obj[ 'boDnTick']); 
 			html+= getSpan(' Ticks - Valid range 1 to 75', 'grey', 10) ; //' Tick & Sustaining';
 
 			if(   obj.type == 'prBOSus' ||   obj.type == 'prBDwnSus'  ){
@@ -3223,7 +3403,8 @@ var csp =  (function () {
 
 		}
 
-		var param = obj.id+':'+1  ; 
+		var param = obj.id+':'+ obj.id  ; 
+		html+= csh.gept(obj, PRICE_CS,  param);
 		html+= SP_3 + csh.delIcon(param) ; 
 		return html;
 
@@ -3313,13 +3494,14 @@ var csp =  (function () {
 
 
 			
-			if(!htmlU.isChecked(TREND_CANDLE_BOBD)){
-				$("#" + TREND_CANDLE_BOBD +'TrId').remove();
+			if(!htmlU.isChecked(TREND_CANDLE_BOBD+'CB')){
+				$("#" + TREND_CANDLE_BOBD +'').remove();
 				obj.enabled= false;
+				csu.dsf();
 				return;
 			}
 
-			if(!htmlU.divExist(TREND_CANDLE_BOBD+'TrId')) {// Row Not Exist 
+			if(!htmlU.divExist(TREND_CANDLE_BOBD+'Td2Div')) {// Row Not Exist 
 				var row = getTrendCandleTr();
 				$('#priceCtrlTab' ).append( row);
 				obj.enabled= true;
@@ -3334,7 +3516,7 @@ var csp =  (function () {
 
 		var html = getTrendCandleTd(obj. id );
 
-		htmlU.addMsgToDiv( obj.id + 'Div' , true, html);
+		htmlU.addMsgToDiv( obj.id + 'Td2Div' , true, html);
 
 		var validV1 = obj.id+'minTicks';
 
@@ -3353,8 +3535,8 @@ var csp =  (function () {
 
 	function getTrendCandleTr(){
 
-		var html = '<tr id="'+TREND_CANDLE_BOBD+'TrId"  ><td><b>Trending Candle</b></td> ' 
-				+   createTd( createDiv( TREND_CANDLE_BOBD + 'Div', getTrendCandleTd() ) ) + '</tr>';
+		var html = '<tr id="'+TREND_CANDLE_BOBD+'"  > ' 
+				+   createTd( createDiv( TREND_CANDLE_BOBD + 'Td2Div', getTrendCandleTd() ) ) + '</tr>';
 		return html;
 	}
 
@@ -3373,7 +3555,9 @@ var csp =  (function () {
 			// 	obj.type = TREND_CANDLE_LIST[1].id;
 			// }
 
-			var html =''
+			var html =  htmlU.doBold('Trending Candles'); 
+
+
 			html+=  getDropDown(TREND_CANDLE_LIST,  type+ 'type', null, func, type, obj[ 'type']); // gapFill
 			html+=SP_3;
 			
@@ -3409,20 +3593,21 @@ var csp =  (function () {
 				if( obj.type == 'hhHlBDPot' ) {
 					html+= BR_2
 					html+= " with latest within " +
-					getDropDown(PC_COMP_LOW, type+'withinPC', 'width:90px',func, obj.id, obj[ 'withinPC'])
+					getDropDown(PC_COMP_LOW, type+'withinPC', '',func, obj.id, obj[ 'withinPC'])
 
 					+"  % Previous Low";
 				}	
 				if(  obj.type =='lhLlBOPot' ){
 					html+= BR_2
 					html+= " with latest within " +
-					getDropDown(PC_COMP_LOW, type+'withinPC', 'width:90px',func, obj.id, obj[ 'withinPC'])
+					getDropDown(PC_COMP_LOW, type+'withinPC', '',func, obj.id, obj[ 'withinPC'])
 
 					+"  % Previous Low";
 				}   
 
 			// }
-			var param = obj.id+':'+1  ; 
+			var param = obj.id+':'+ obj.id  ; 
+			html+= csh.gept(obj, PRICE_CS,  param);
 			html+= SP_3 + csh.delIcon(param) ; 
 			return html;
 	}
@@ -3497,13 +3682,14 @@ var csp =  (function () {
 		if(mtgv.cs.ng){
 			obj.enabled= true;
 		}else{	
-			if(!htmlU.isChecked(GAP_RUNAWAY)){
-				$("#" + GAP_RUNAWAY +'TrId').remove();
+			if(!htmlU.isChecked(GAP_RUNAWAY + 'CB')){
+				$("#" + GAP_RUNAWAY +'').remove();
 				obj.enabled= false;
+				csu.dsf();
 				return;
 			}
 
-			if(!htmlU.divExist(GAP_RUNAWAY+'TrId')) {// Row Not Exist 
+			if(!htmlU.divExist(GAP_RUNAWAY+'Td2Div')) {// Row Not Exist 
 				var row = getGapRunAwayTr();
 				$('#priceCtrlTab' ).append( row);
 				obj.enabled= true;
@@ -3548,8 +3734,8 @@ var csp =  (function () {
 	}
 
 	function getGapRunAwayTr(){
-		var html = '<tr id="'+GAP_RUNAWAY+'TrId"  ><td><b>Gap Up/Down Run Away</b></td> ' 
-				+   createTd( createDiv( GAP_RUNAWAY + 'Div', createGapRunAwayTd() ) ) + '</tr>';
+		var html = '<tr id="'+GAP_RUNAWAY+'"  > ' 
+				+   createTd( createDiv( GAP_RUNAWAY + 'Td2Div', createGapRunAwayTd() ) ) + '</tr>';
 		return html;
 	}
 
@@ -3566,7 +3752,7 @@ var csp =  (function () {
 				obj.gapPc = PC_COMP_LOW[5].id;
 			}			
 
-			var html = ''
+			var html =  htmlU.doBold('Gap Up/Down Run Away');
 			html+= ' Min ' +  getInputTxtParam( type+'gapPc' , 2,  obj[ 'gapPc'], func,  obj.id) ;  //  getDropDown(PC_COMP_LOW,  type+ 'gapPc', null, func, type, obj[ 'gapPc']);  
 
 			html+=' %';
@@ -3582,11 +3768,12 @@ var csp =  (function () {
 				var runAwayTick = csu.gct(obj ,  obj.runAwayTick);
 
 				html+= ' on ';
-				html+= getDropDown(baseTicks, type+'baseTick', 'width:90px',func, obj.id,  obj[ 'baseTick']); 
+				html+= getDropDown(baseTicks, type+'baseTick', '',func, obj.id,  obj[ 'baseTick']); 
 				// html+= ' Tick';
 
 				html+= ' Tick ' + getDropDown(CANDLE_RANGE,  type+ 'candleRange', null, func, type, obj[ 'candleRange']); 
 
+				html+= BR_2;
 
 				html+= getSpan(' and Run away in range of last  ', 'grey', 10);;
 				html+= getInputTxtParam( type+'minTicks' , 2,  obj[ 'minTicks'], func,  obj.id) ; 
@@ -3599,14 +3786,15 @@ var csp =  (function () {
 				// html+= getInputTxtParam( type+'Ticks' , 2,  obj[ 'Ticks'], func,  obj.id) ; 
 
 				html+=SP_3;
-				html+=getDropDown(runAwayTick, type+'runAwayTick', 'width:90px',func, obj.id, obj[ 'runAwayTick']); 
+				html+=getDropDown(runAwayTick, type+'runAwayTick', '',func, obj.id, obj[ 'runAwayTick']); 
 				html+=  getSpan(' Tick - Valid range 1 to 10');
 				// html+= getInputTxtParam( type+'sustainCandle' , 2,  obj[ 'sustainCandle'], func,  obj.id) ; 
 				// html+= getSpan(' Candles ');
 
 			// }
 
-			var param = obj.id+':'+1  ; 
+			var param = obj.id+':'+ obj.id  ; 
+			html+= csh.gept(obj, PRICE_CS,  param);
 		html+= SP_3 + csh.delIcon(param) ; 
 		return html;
 
@@ -3677,26 +3865,31 @@ var csp =  (function () {
 		var goodData = true;
 			var obj = mtgv.cs. screenerData.gapFill;
 
-			if(!htmlU.isChecked(GAP_FILL)){
-				$("#" + GAP_FILL +'TrId').remove();
-				obj.enabled= false;
-				return;
-			}
-
-			if(!htmlU.divExist(GAP_FILL+'TrId')) {// Row Not Exist 
-				var row = getGapFillTr();
-				$('#priceCtrlTab' ).append( row);
+			if(mtgv.cs.ng){
 				obj.enabled= true;
+			}else{	
+
+				if(!htmlU.isChecked(GAP_FILL+ 'CB')){
+					$("#" + GAP_FILL +'').remove();
+					obj.enabled= false;
+					csu.dsf();
+					return;
+				}
+
+				if(!htmlU.divExist(GAP_FILL+'Td2Div')) {// Row Not Exist 
+					var row = getGapFillTr();
+					$('#priceCtrlTab' ).append( row);
+					obj.enabled= true;
+				}
+
 			}
-
-
 			// obj. id =  PRICE_GAP_FILL ;
 
 			csu.setProp([obj], [  'type' ,  'fillPC' , 'baseTick' , 'fillTick' , 'candleRange' ,  'minTicks' , 'maxTicks' , 'gapPc'], obj.id);
 
 			var html = createGapFillTd(obj. id );
 
-			htmlU.addMsgToDiv( obj.id + 'Div' , true, html);
+			htmlU.addMsgToDiv( obj.id + 'Td2Div' , true, html);
 
 			var validMinGap = obj.id+'gapPc';
 			// jsu.inputNumberRange(validMinGap);
@@ -3740,8 +3933,8 @@ var csp =  (function () {
 
 
 	function getGapFillTr(){
-		var html = '<tr id="'+GAP_FILL+'TrId"  ><td><b>Gap Up/Down Run Away</b></td> ' 
-				+   createTd( createDiv( GAP_FILL + 'Div', createGapFillTd() ) ) + '</tr>';
+		var html = '<tr id="'+GAP_FILL+'"  > ' 
+				+   createTd( createDiv( GAP_FILL + 'Td2Div', createGapFillTd() ) ) + '</tr>';
 		return html;
 	}
 
@@ -3751,7 +3944,7 @@ var csp =  (function () {
 
 		var type = GAP_FILL;
 
-		var html = ''
+		var html = htmlU.doBold('Gap Fill');
 
 		var obj = mtgv.cs.screenerData[type];
 
@@ -3795,7 +3988,7 @@ var csp =  (function () {
 					html+= getInputTxtParam( type+'minTicks' , 2,  obj[ 'minTicks'], func,  obj.id) ; 
 
 					html+=SP_3;
-					html+= getDropDown(fillTick, type+'fillTick', 'width:90px',func, obj.id, obj[ 'fillTick']); 
+					html+= getDropDown(fillTick, type+'fillTick', '',func, obj.id, obj[ 'fillTick']); 
 					html+= getSpan(' Tick & Sustaining for up to ', 'grey', 10);;
 					html+= getInputTxtParam( type+'maxTicks' , 2,  obj[ 'maxTicks'], func,  obj.id) ; 
 					html+= getSpan(' Candles ', 'grey', 10);;
@@ -3811,14 +4004,14 @@ var csp =  (function () {
 					html+= getInputTxtParam( type+'minTicks' , 2,  obj[ 'minTicks'], func,  obj.id) ; 
 
 					html+=SP_3;
-					html+= getDropDown(fillTick, type+'fillTick', 'width:90px',func, obj.id, obj[ 'fillTick']); 
+					html+= getDropDown(fillTick, type+'fillTick', '',func, obj.id, obj[ 'fillTick']); 
 					html+= getSpan(' Tick & and is currently ', 'grey', 10);;
 
 
 
 					html += ' within ';
 
-					// html+=getDropDown(PC_COMP_LOW, type+'fillPC', 'width:90px',func, obj.id, obj[ 'fillPC']); 
+					// html+=getDropDown(PC_COMP_LOW, type+'fillPC', '',func, obj.id, obj[ 'fillPC']); 
 					html+= getInputTxtParam( type+'fillPC' , 2,  obj[ 'fillPC'], func,  obj.id) ; 
 
 
@@ -3827,7 +4020,8 @@ var csp =  (function () {
 				}
 			// }
 
-		var param = obj.id+':'+1  ; 
+		var param = obj.id+':'+ obj.id ; 
+		html+= csh.gept(obj, PRICE_CS,  param);
 		html+= SP_3 + csh.delIcon(param) ; 
 		return html;
 
@@ -3910,9 +4104,9 @@ var csp =  (function () {
 
 			obj. id =  type
 
-			if(mtgv.cs.ng){
+			// if(mtgv.cs.ng){
 				html = doBold(' Gain / Loss (%) : ' );	
-			}
+			// }
 			
 
 			html+= getDropDown(GAIN_LOSS,  obj.id+'type', null, func, obj.id, obj.type);
@@ -3923,14 +4117,19 @@ var csp =  (function () {
 				var ticks = csu.gct(obj , 'Tick');
 
 				html+= 'On ';
-				html+=getDropDown(ticks, obj.id+'baseTick', 'width:90px',func, obj.id, obj.baseTick) 
+				html+=getDropDown(ticks, obj.id+'baseTick', '',func, obj.id, obj.baseTick) 
 				html+= ' Tick';
 			// }
 
 			html+=SP_3;
 
 			html+=  csh.opCompHtml(obj,   func, null, " %" , 3) 	;
-		
+
+			if(mtgv.cs.ng){
+				var selParam =  PRICE_GAIN_LOSS + ':' + obj.id
+				html+= csh.gept(obj, PRICE_CS,  selParam);
+				html += SP_3 + csh.delIcon(selParam) ;
+			}
 		}
 		
 
@@ -3954,7 +4153,7 @@ var csp =  (function () {
 
 			var html = createTableData(obj. id );
 
-			htmlU.addMsgToDiv('priceGainLossDiv' , true, html);
+			htmlU.addMsgToDiv('priceGainLossTd2Div' , true, html);
 
 			csu.valNSetAeb( obj. id , obj.ops, obj.v1, obj.v2,  obj);
 		}
@@ -4018,7 +4217,10 @@ var csp =  (function () {
 			if( ops!=null &&  ops.id != CS_NOT_SELECTED){
 				if(obj.goodData  ){
 						
-					var text =  gainLoss.label +  ' Over Previous ';
+
+					var text = doBold(' Gain / Loss (%) : ' );	
+
+					text +=  gainLoss.label +  ' Over Previous ';
 
 					if(	mtgv.mtpp.crossFreq){
 
@@ -4081,8 +4283,12 @@ var csp =  (function () {
 	function getCustScrFilter(filer, defFilter){
 		// var filer = [];
 
-		// filer.push({  id :  "csPriceops" , label : 'Close Price'  , sLabel : 'Close'  , tab : PRICE_CS, type : 'dd' }) ;
-		filer.push({  id :  "priceGainLossops" , label : 'Price Change'  , sLabel : 'Gain , Loss'  , tab : PRICE_CS, type : 'dd' }) ;
+		filer.push({  id :  "csPrice" , label : 'Price'  , sLabel : 'Close Price'  , tab : PRICE_CS, type : 'dd' ,
+			filtDef : {obj: thisObject, fnc: 'apf' , params: 'csPrice' }, mobFilter: "priceCs_price"
+		}) ;
+		filer.push({  id :  "priceGainLoss" , label : 'Price Change'  , sLabel : 'Gain , Loss'  , tab : PRICE_CS, type : 'dd' ,
+				filtDef : {obj: thisObject, fnc: 'apf' , params: PRICE_GAIN_LOSS } , mobFilter: "priceCs_gainLoss"
+			}) ;
 		
 
 /*
@@ -4098,47 +4304,51 @@ var csp =  (function () {
 			// 	type : 'dd'  , subDef : PR_BO_DWN_LIST}) ;	
 
 			filer.push({  id :  "orNg" , label : 'Open Range Breakout (ORB)'  , sLabel : 'ORB-Open Range Breakout  '  , tab : PRICE_CS, 
-				type : 'btn'  , filtDef : {obj:'csp', fnc: 'ornc' , params: 'SEARCH' } }) ;
+				type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params: OPEN_RANGE_NG }, mobFilter: "priceCs_orNg" }) ;
 
 			filer.push({  id :  "prevRngBoBd" , label : 'Previous Range Breakout '  , sLabel : 'Previous Range Breakout '  , tab : PRICE_CS, 
-				type : 'btn'  , filtDef : {obj:'csp', fnc: 'prch' , params: 'SEARCH' } }) ;
+				type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params: PREV_RANGE_BOBD } , mobFilter:  "priceCs_prevRng"}) ;
+
+			filer.push({  id :  GAPS_NG , label : 'Gap Strategies '  , sLabel : 'Gap Strategies '  , tab : PRICE_CS, 
+				type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params: GAPS_NG }, mobFilter: 	""}) ;
+		
 
 		}
 
 		filer.push({  id :  "dynpriceComp" , label : 'OHLC Filter '  , sLabel : 'OHLC Compare '  , tab : PRICE_CS, 
-			type : 'btn'  , filtDef : {obj:'cscmn', fnc: 'ac' , params:  'price' + PARAM_DELIM + PRICE_CS } }) ; 
+			type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params:  'ac'  }, mobFilter: "priceCs_ohlcCompare"}) ; 
 
 
 		// RBR
 		if( mtgv.mtpp.crossFreq){
 					filer.push({  id :  "rallyBaseCom" , label : 'RBR (Rally Base Rally) '  , sLabel : 'RBR (Rally Base Rally)'  , tab : PRICE_CS, 
-			type : 'btn'  , filtDef : {obj:'csp', fnc: 'arbc' , params:  'rbr'  } }) ; 
+			type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params:   'rallyBaseCom'+ PARAM_DELIM +'rbr'  } , mobFilter: ""}) ; 
 
 			filer.push({  id :  "rallyBaseCom" , label : 'RBD (Rally Base Drop) '  , sLabel : 'RBD (Rally Base Drop)'  , tab : PRICE_CS, 
-				type : 'btn'  , filtDef : {obj:'csp', fnc: 'arbc' , params:  'rbd'  } }) ; 
+				type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params:   'rallyBaseCom'+ PARAM_DELIM +'rbd'  } , mobFilter: ""}) ; 
 
 
 
 			filer.push({  id :  "rallyBaseCom" , label : 'DBR (Drop Base Rally) '  , sLabel : 'DBR (Drop Base Rally)'  , tab : PRICE_CS, 
-				type : 'btn'  , filtDef : {obj:'csp', fnc: 'arbc' , params:  'dbr' } }) ; 
+				type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf', params:   'rallyBaseCom'+ PARAM_DELIM +'dbr' }, mobFilter:  ""}) ; 
 
 			filer.push({  id :  "rallyBaseCom" , label : 'DBD (Drop Base Drop) '  , sLabel : 'DBD (Drop Base Drop)'  , tab : PRICE_CS, 
-				type : 'btn'  , filtDef : {obj:'csp', fnc: 'arbc' , params:  'dbd' } }) ; 
+				type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params:   'rallyBaseCom'+ PARAM_DELIM +'dbd' } , mobFilter: ""}) ; 
 
 
 			if(!jsu.isMigContext()){
 
 				filer.push({  id :  CS_VWAP , label : 'VWAP'  , sLabel : 'VWAP'  , tab : PRICE_CS, 
-					type : 'btn'  , filtDef : {obj:'csp', fnc: 'awap' , params:  'vwap'} }) ;    
+					type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params: CS_VWAP +PARAM_DELIM+'vwap'} , mobFilter: "priceCs_vwap"}) ;    
 
 				filer.push({  id :  CS_VWAP , label : 'Anchored WAP'  , sLabel : 'AVWAP'  , tab : PRICE_CS, 
-				type : 'btn'  , filtDef : {obj:'csp', fnc: 'awap' , params:  'avwap'} }) ;    
+				type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params:  CS_VWAP +PARAM_DELIM+ 'avwap'} , mobFilter: "priceCs_vwap"}) ;    
 
 				filer.push({  id :  CS_VWAP , label : 'Moving VWAP'  , sLabel : 'MVWAP'  , tab : PRICE_CS, 
-					type : 'btn'  , filtDef : {obj:'csp', fnc: 'awap' , params:  'mvwap'} }) ;    
+					type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params:   CS_VWAP +PARAM_DELIM+'mvwap'} , mobFilter: "priceCs_vwap"}) ;    
 
 				filer.push({  id :  CS_VWAP , label : 'Time WAP'  , sLabel : 'Time WAP'  , tab : PRICE_CS, 
-					type : 'btn'  , filtDef : {obj:'csp', fnc: 'awap' , params:  'twap'} }) ;    
+					type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf', params:   CS_VWAP +PARAM_DELIM+'twap'}, mobFilter:  "priceCs_vwap"}) ;    
 
 			}	
 
@@ -4155,36 +4365,28 @@ var csp =  (function () {
 		// Trending
 
 		filer.push({  id :  "trendingCandleBoDwntype" , label : 'Trending candle '  , sLabel : 'Trending candle '  , tab : PRICE_CS, 
-			type : 'btn'  , filtDef : {obj:'csp', fnc: 'tcc' , params: 'SEARCH' } }) ;    
+			type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params: TREND_CANDLE_BOBD }, mobFilter: "priceCs_trendingCandleBoDwn" }) ;    
 
 
 		filer.push({  id :  CS_TURNOVER , label : 'Turnover  (Price x Vol)'  , sLabel : 'Turnover'  , tab : PRICE_CS, 
-			type : 'btn'  , filtDef : {obj:'csfdc', fnc: 'an' , params:  CS_TURNOVER} }) ;    
+			type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params:  CS_TURNOVER} , mobFilter: "priceCs_turnover"}) ;    
 
 
 
 		filer.push({  id :  "dynpriceTrendNg" , label : 'OHLC Trending '  , sLabel : 'OHLC Trending '  , tab : PRICE_CS, 
-			type : 'btn'  , filtDef : {obj:'cscmn', fnc: 'atn' , params:  'price' + PARAM_DELIM + PRICE_CS } }) ;  //   JavaScript:cscmn.atn('price','priceCs');
+			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'apf' , params:  'atn'  } , mobFilter:  "priceCs_ohlcTrending"}) ;  //   JavaScript:cscmn.atn('price','priceCs');
+
+
+
 
 		if( mtgv.mtpp.crossFreq){
 
 			filer.push({  id :  "priceBoBd" , label : 'Breakout / Down '  , sLabel : 'Breakout / Down'  , tab : PRICE_CS, 
-				type : 'btn'  , filtDef : {obj: thisObject, fnc: 'abod' , params:  null } }) ;  //   JavaScript:cscmn.atn('price','priceCs');
+				type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params:  'priceBoBd' }, mobFilter: "priceCs_breakOutBreakDown"}) ;  //   JavaScript:cscmn.atn('price','priceCs');
 
 		}
 
-		if(!jsu.isMigContext()){
-					// BETA   onclick="JavaScript:csu.opsCompare('prc');"
-
-			filer.push({  id :  "prComp" , label : 'Price Range'    , tab : BV_CS, 
-				type : 'btn'  , filtDef : {obj:'csu', fnc: 'opsCompare' , params:  'prc' } , subDef :AVG_PRICE_RANGE }) ;  //   JavaScript:cscmn.atn('price','priceCs');
-			//onclick="JavaScript:csu.opsCompare('beta');"
-
-			filer.push({  id :  "betaComp" , label : 'Beta '  ,  tab : BV_CS, 
-				type : 'btn'  , filtDef : {obj:'csu', fnc: 'opsCompare' , params:  'beta' } , subDef : BETA_PERIOD }) ;  //   JavaScript:cscmn.atn('price','priceCs');
-
-		}
-
+		
 
 		// ---------
 
@@ -4193,12 +4395,12 @@ var csp =  (function () {
 		if( mtgv.mtpp.crossFreq){
 
 			defFilter.push({  id :  "rallyBaseCom" , label : 'RBR (Rally Base Rally) '  , sLabel : 'RBR (Rally Base Rally)'  , tab : PRICE_CS, 
-			type : 'btn'  , filtDef : {obj:'csp', fnc: 'arbc' , params:  'rbr'  } }) ; 
+			type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params:  'rallyBaseCom'+ PARAM_DELIM +'rbr'  } , mobFilter: ""}) ; 
 
 			 
 
 			defFilter.push({  id :  "priceBoBd" , label : 'Breakout / Down '  , sLabel : 'Breakout / Down'  , tab : PRICE_CS, 
-			type : 'btn'  , filtDef : {obj: thisObject, fnc: 'abod' , params:  null } }) ;  //   JavaScript:cscmn.atn('price','priceCs');
+			type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params:  'priceBoBd' }, mobFilter: "priceCs_breakOutBreakDown"}) ;  //   JavaScript:cscmn.atn('price','priceCs');
 
  
 
@@ -4206,11 +4408,11 @@ var csp =  (function () {
 
 		if (!jsu.isMigContext()) {
 
-				defFilter.push({  id :  "prComp" , label : 'Price Range'    , tab : BV_CS, 
-					type : 'btn'  , filtDef : {obj:'csu', fnc: 'opsCompare' , params:  'prc' } , subDef :AVG_PRICE_RANGE });
+				// defFilter.push({  id :  "prComp" , label : 'Price Range'    , tab : BV_CS, 
+				// 	type : 'btn'  , filtDef : {obj:'csu', fnc: 'opsCompare' , params:  'prc' } , subDef :AVG_PRICE_RANGE });
 
 				defFilter.push({  id :  CS_VWAP , label : 'VWAP'  , sLabel : 'VWAP'  , tab : PRICE_CS, 
-				type : 'btn'  , filtDef : {obj:'csp', fnc: 'awap' , params:  'vwap'} }) ;  
+				type : 'btn'  , filtDef : {obj: thisObject, fnc: 'apf' , params:  'vwap'} , mobFilter:   "priceCs_vwap"}) ;  
 		}
 
 
@@ -4219,10 +4421,24 @@ var csp =  (function () {
 
 	}
 
-	function paintFilterRow(type) {
+
+	function ngSearch(item, filterDef, params ){
+
+		if(Array.isArray(params)){
+			paintFilterRow(params[0], params[1]); 
+		}else{
+			paintFilterRow(params); 	
+		}
+
+		
+	}
+
+
+
+	function paintFilterRow(type, subType) {
 
 		mtgv.cs.editActive = [];
-		let newFilterRow = addNewFilter(type);
+		let newFilterRow = addNewFilter(type, subType);
 
 		let filterTable = $("#" + CS_FILTERS_TABLE);
 		
@@ -4233,6 +4449,7 @@ var csp =  (function () {
 		
 		addFilterChange(type, newFilterRow["id"]);
 		
+		csh.sib(false);
 
 	}
 
@@ -4246,17 +4463,22 @@ var csp =  (function () {
 
 		gfr : getFormRow,
 
+		gftd : getFormTd,
+
 		anf : addNewFilter,
 
 		afc : addFilterChange,
 
 		pfr : paintFilterRow,
 
+		ngs : ngSearch,
 		// New Ends
+
+		apf : addPriceFilters,
 
 
 		pht : getPriceHtml,
-		bvh : getBetaVolHtml,
+		
 		prc : priceChange,
 		vf : validateFields,
 		ctd : createTableData,
@@ -4294,7 +4516,8 @@ var csp =  (function () {
 		gfc : gapFillChange,
 
 		// vbb : validateBoBd
-		gcsf : getCustScrFilter
+		gcsf : getCustScrFilter,
+		
 
 	}
 

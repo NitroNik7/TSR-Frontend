@@ -404,6 +404,8 @@ var csmng = (function () {  // my Ui Head
 		function userAction(type, id){
 
 			if(type=='run'){
+				
+
 				applyUserSetting(id);
 			}else if(type=='showEdit'){
 				showEdit(id);

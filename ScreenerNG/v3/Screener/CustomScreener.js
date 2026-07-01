@@ -111,12 +111,6 @@ var myTsrScreener = (function () {
 
     function init() {
 
-        // todo remove
-        mtgv.mtpp.analCat.push("tech");
-        mtgv.mtpp.analCat.push("fno");
-        mtgv.mtpp.analCat.push("portfolio");
-        mtgv.mtpp.analCat.push("dashboard");
-
 
         mintHtmlUtil.addMsgToDiv('csDiv', true, myTsrScreener.getScreenerHtml());
 

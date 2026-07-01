@@ -79,6 +79,9 @@ var maDiy =  (function () {
 		// var id = maHistObj.id;
 		// var func = 'csma.mdc'; 
 		var html = '' ;
+
+		html+= htmlU.doBold("MA Hist Comp : ")
+
 		var param = maHistObj.id ; // param should always be of DIY Object ...
 
 		var leftIndiHtml = getIndiHtml(maHistObj,  'idL', 'indObL');
@@ -102,6 +105,9 @@ var maDiy =  (function () {
 		}	
 
 		var param = 'maHist' + ':'+param; // Vol Compare
+
+		html+= csh.gept(maHistObj, MA_CS,  param);
+		
 		html+= SP_3 + csh.delIcon(param) ;
 
 		return html;
@@ -236,7 +242,7 @@ var maDiy =  (function () {
 		var leftText= getindiText( diyComp.indObL, validObj);
 		var rightText= getindiText( diyComp.indObR, validObj);
 
-		var text = leftText + cscmn.dot(diyComp, rightText );
+		var text =  htmlU.doBold("MA Hist Comp : ") +  leftText + cscmn.dot(diyComp, rightText );
 
 		csh.cdt(diyComp,text, validResults, selParam, true);
 
@@ -306,7 +312,7 @@ var maDiy =  (function () {
 		afc : addFilterChange,
 
 		// new
-
+		gftd : getMaHistTd,
 
 		ghr : getMaHistRow,
 		add : addMaHist,

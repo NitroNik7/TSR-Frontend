@@ -12,10 +12,80 @@ var csh = (function () {
 
 	var BACK_TEST_DIV = 'backtestDiv';
 
+	// modified
+	let helpTextDivId = "tsrCsNgHelpTextDiv";
+	let instrBoxId = "tsrCsInstrBox";
+	let sfCheckRowId = "tsrCsSelFieldsCheckRow";
+
+
+
+
+	let CS_NG_DD_SEl = '#csDiv .dropdown-toggle';
 
 	function initHtml() {
 		return initNg();
 	}
+
+
+	function getToggleNgView() {
+
+		if (isMobile()) return '';
+
+		if (inMyTsr) return ''
+
+		// let ngScr = localStorage.getItem( "csngscr" );
+
+		// if(ngScr == null || ngScr == 'false'){
+		// 	mtgv.cs.ng =    false;
+		// }else{
+		// 	mtgv.cs.ng =    true;	
+		// }
+
+
+		let VIEW_TYPE = [
+			{ id: 'ng', label: "Modern View" },
+			{ id: 'default', label: "Classic View" }
+
+		]
+
+
+		let html = "";
+		html += `<div class="d-flex justify-content-end">`
+		html += `<div id="chooseCsView" class="d-flex miCtrl" align='right'>`
+
+
+		let selVal = mtgv.cs.ng ? 'ng' : 'default';
+
+		html += htmlU.crg('csNgRadioBtn', 'myTsrScreener.tcsn', VIEW_TYPE, selVal,);
+
+		// html += '<b>Stock Basket </b> : ' + htmlU.crg('stkType', scrAlias + '.cbc', mtgv.mtpp.CLASSI, mtgv.mtpp.DEF_CLASSI);
+
+
+		// html += `	<p class="me-3" style="margin: 0;">Choose View</p>`
+		// html += `	<div class="mx-3">`
+		// html += `		<input class="form-check-input" type="radio" id="csNgRadioBtn" name="csNgRadioBtn" 
+		// value="ng" ${mtgv.cs.ng ? 'Checked' : ''}  onChange='myTsrScreener.tcsn()' >`
+		// html += `		<label for="csNgRadioBtn" style="font-weight: bold; color: cornflowerblue">Modern View</label>`
+		// html += `	</div>`
+		// html += `	<div class="mx-3">`
+		// html += `		<input class="form-check-input" type="radio" id="csDefaultRadioBtn" name="csNgRadioBtn" 
+		// value="default" ${!mtgv.cs.ng ? 'Checked' : ''}  onChange='myTsrScreener.tcsn()' >`
+		// html += `		<label for="csDefaultRadioBtn">Classic View</label>`
+		// html += `	</div>`
+
+
+		html += `</div>`
+		html += `</div>`
+		if (mtgv.cs.ng) {
+			html += `<hr>`
+		}
+
+
+
+		return html;
+
+	}
+
 
 	// modified
 	function initNg() {
@@ -24,24 +94,46 @@ var csh = (function () {
 
 		var html = '';
 
+		html = getToggleNgView();
+		// html+= htmlU.createStyleDiv('temp', getToggleNgView() , null );
+
 		// html+=htmlU.getLoadingDiv(SCR_INIT_LD_DIV,null);
 
-		if (mtgv.cs.ng) {
-			if (window.innerWidth > 768) { // TODO write a function for this condition
-				html += getCsWrapperNg();
-			} else {
-				html += mcsh.gch();
-			}
-		}
-		else {
-			html += getCsWrapper();
+		// function isMobile() { 
+		// var f = window.screen.availHeight; 
+		// return 500 > document.body.getBoundingClientRect().width || 500 > f ? !0 : !1 }
+
+		if (mintJsUtil.isMyContext()) {
+			mtgv.cs.ng = false;
 		}
 
+
+		if (isMobile()) {
+
+			mtgv.cs.ng = true;
+			html += mcsh.gch();
+		} else {
+
+
+
+			$("#chooseCsView").toggleClass("d-none d-flex");
+			if (mtgv.cs.ng) {
+				html += getCsWrapperNg();
+			}
+			else {
+				html += getCsWrapper();
+			}
+		}
 
 		return html;
 	}
 
+	// added
 	function getCsWrapper() {
+		let csDiv = document.getElementById("csDiv");
+		csDiv.setAttribute("style", "");
+		csDiv.classList.remove("d-flex", "flex-column", "border", "p-2");
+
 		var html = "";
 		html += TSR_HR;
 
@@ -67,11 +159,11 @@ var csh = (function () {
 								</font>
 							</a>
 						</div>
-	
+
 						<hr style="margin:1px;height:1;padding:1px;color:#adb5bd">
 						<div id="csSelFieldsDiv" style="margin:5px; overflow: auto;  max-height: 150px;"></div>
 					</div>
-				</div>`
+		</div>`
 			html += BREAK_LINE;
 		}
 
@@ -118,7 +210,7 @@ var csh = (function () {
 			var tickFunc = 'myTsrScreener.sfc';
 
 			html += ` <label for="scrFreq" style="width: 30%; text-align: start; align-content: center; ">Tick:
-                                        </label>`
+		</label>`
 
 			html += getDropDown(mtgv.mtpp.FREQ_SCR_MAP, 'scrFreq', 'width: 60%', tickFunc, null, scrFreq);
 
@@ -129,7 +221,7 @@ var csh = (function () {
 
 			html += ` <label for="csAcFilter" style="width: 30%; text-align: start; align-content: center; ">
 				Search:
-                                        </label>`
+		</label>`
 
 			html += mintSrch.gs('width:60%;');
 			html += DIV_END
@@ -141,7 +233,7 @@ var csh = (function () {
 
 			html += ` <label for="myScrSetting" style="width: 30%; text-align: start; align-content: center; ">
 				My Settings:
-                                        </label>`
+		</label>`
 
 			html += '<select id ="myScrSetting"    '
 
@@ -470,10 +562,9 @@ var csh = (function () {
 		}
 	}
 
-	// DESKTOP CS NG code starts
 	function getCsWrapperNg() {
 		let csDiv = document.getElementById("csDiv");
-		csDiv.setAttribute("style", "max-height: 70vh; min-height: 400px; overflow: hidden;");
+		csDiv.setAttribute("style", "max-height: 70vh; min-height: 600px; overflow: hidden;");
 		csDiv.classList.add("d-flex", "flex-column", "border", "p-2");
 
 		let html = "";
@@ -489,20 +580,11 @@ var csh = (function () {
 		return html;
 	}
 
+
 	function getTopRowNg() {
 
 
-		let scrFreq = localStorage.getItem("csscrFreq");
 
-		if (scrFreq == null) {
-			if (jsu.isMigContext()) {
-				scrFreq = FREQ_DAILY;
-			} else {
-				scrFreq = (mtgv.mktDet.mktHours ? FREQ_INTRA_DAILY : FREQ_DAILY)
-			}
-		}
-
-		mtgv.cs.screenerData.scrFreq = scrFreq;
 
 		var tickFunc = 'myTsrScreener.sfc';
 
@@ -517,8 +599,9 @@ var csh = (function () {
 		html += `					<div class="d-flex ms-2">`
 
 
-		html += getDropDown(mtgv.mtpp.FREQ_SCR_MAP, 'scrFreq', 'width:70%; margin-left: 10px;', tickFunc, null, scrFreq); // todo get stock basket dropdown
+		// html += getDropDown(mtgv.mtpp.FREQ_SCR_MAP, 'scrFreq', 'width:70%; margin-left: 10px;', tickFunc, null, scrFreq); // todo get stock basket dropdown
 		html += getTickDropdownHtml();
+		html += getStockBasketHtml();
 
 		// todo get mySettings dropdown
 		// html += getDropDown(mtgv.mtpp.FREQ_SCR_MAP, 'scrFreq', 'width:70%;', tickFunc, null, scrFreq); 
@@ -529,11 +612,49 @@ var csh = (function () {
 
 		html += `					</div>`
 		html += `				</div>`
+
+		html += htmlU.createEmptyDiv(CS_SCR_SB_FB_DIV, true);   //	
 		// html += `			</div>`
 
 		return html;
 
 	}
+
+
+	function getStockBasketHtml() {
+
+		let sbFunc = 'JavaScript:myTsrScreener.cbc();'
+		let html = ''
+
+		if (isMobile()) {
+			html += `<select id="stkType" onchange="${sbFunc}" class="form-select ms-1" style="">` // modified
+		} else {
+			html += `<select id="stkType" onchange="${sbFunc}" class="form-select ms-3" style="width: max-content;">` // modified	
+		}
+
+
+
+		if (mtgv.mtpp.pr || (jsu.isMigContext() && userProf.status == 'signedIn')) {
+			var sblcfg = {
+				fieldName: 'stkType', obj: scrAlias, fnc: 'cbc',
+				selected: mtgv.mtpp.CLASSI[1].id, stkBsktCat: null
+			};
+			html += msbu.ua('getsb', sblcfg);
+		} else {
+			// htmlU.crg('stkType', scrAlias + '.cbc', mtgv.mtpp.CLASSI, mtgv.mtpp.DEF_CLASSI);
+			// mtgv.mtpp.DEF_CLASSI
+
+			html += htmlU.addOptions(mtgv.mtpp.CLASSI, mtgv.mtpp.DEF_CLASSI)
+		}
+
+
+		html += `</select>`
+
+
+
+		return html;
+	}
+
 
 
 	function getTickDropdownHtml() {
@@ -545,6 +666,7 @@ var csh = (function () {
 		// 	{ "id": "W", "label": "Weekly", "sf": "WEEKLY", "sLabel": "w", "cp": 4, "period": "1Y" },
 		// 	{ "id": "M", "label": "Monthly", "sf": "MONTHLY", "sLabel": "m", "cp": 10, "period": "10Y" }
 		// ]
+
 		for (let i = 0; i < FREQ_SCR_MAP.length; i++) {
 			let freq = FREQ_SCR_MAP[i];
 			let enabled = false;
@@ -564,9 +686,38 @@ var csh = (function () {
 		let html = "";
 		var tickFunc = 'myTsrScreener.sfc()';
 
-		html += `<select id="scrFreq" onchange="${tickFunc}" class="form-select ms-3">`
+		let scrFreq = localStorage.getItem("csscrFreq");
+
+		if (scrFreq == null) {
+			if (jsu.isMigContext()) {
+				scrFreq = FREQ_DAILY;
+			} else {
+				scrFreq = (mtgv.mktDet.mktHours ? FREQ_INTRA_DAILY : FREQ_DAILY)
+			}
+		}
+
+		mtgv.cs.screenerData.scrFreq = scrFreq;
+
+
+		if (isMobile()) {
+			html += `<select id="scrFreq" onchange="${tickFunc}" class="form-select ms-1" style="">` // modified
+		} else {
+			html += `<select id="scrFreq" onchange="${tickFunc}" class="form-select ms-3" style="width: max-content;">` // modified	
+		}
+
+
+
+
 		for (let i = 0; i < enabledTicks.length; i++) {
-			html += `<option value="${enabledTicks[i].id}">${enabledTicks[i].label}</option>`
+
+
+			let selectedTick = (enabledTicks[i].id === scrFreq) ? 'selected' : '';
+
+
+			html += `<option value="${enabledTicks[i].id}" ${selectedTick}  >${enabledTicks[i].label}</option>`
+
+
+
 		}
 		for (let i = 0; i < disabledTicks.length; i++) {
 			html += `<option value="${disabledTicks[i].id}" disabled>${disabledTicks[i].label}</option>`
@@ -577,22 +728,23 @@ var csh = (function () {
 		return html;
 	}
 
-	let infoBoxId = "tsrCsFilterInfoBox";
+
+
+
 
 	function getMiddleRowNg() {
 		var html = ``;
 
 		let dropdownIdSuffix = "DropdownMenu";
 
-		html += `			<div id="tsrCsMiddleRow" class="d-flex" style="overflow-x: hidden; overscroll-behavior: contain;">`;
-
+		html += `			<div id="tsrCsMiddleRow" class="d-flex" style="overflow-x: hidden;">`;
 		html += `				<div class="d-flex flex-column">`;
 
 		let DROPDOWN_MENU_STYLE = "";
 		for (let i = 0; i < mtgv.cs.tabs.length; i++) { // for each cat.
 			let tabId = mtgv.cs.tabs[i]["tab"];
 			html += `<div class="btn-group dropend">`
-			html += `	<button type="button" class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3" data-bs-toggle="dropdown" aria-expanded="false"  data-bs-auto-close="outside" onclick="csh.smh(this); myTsrScreener.showControl('${mtgv.cs.tabs[i]["id"]}'); csh.cd('${infoBoxId}')" >`
+			html += `	<button type="button" class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3" data-bs-toggle="dropdown" aria-expanded="false"  data-bs-auto-close="outside" onclick="csh.smh(this); myTsrScreener.showControl('${mtgv.cs.tabs[i]["id"]}'); ')" >` // modified
 			html += mtgv.cs.tabs[i]["label"];
 			html += `	</button>`
 			let subMenu = mtgv.cs.tabs[i]["subMenu"]; // can be an arr of filters or an arr of nested filters
@@ -606,7 +758,7 @@ var csh = (function () {
 					if (jsu.isNull(nestedMenu)) { // if nestedMenu does not exist, i.e. item is a single filter
 						DROPDOWN_MENU_STYLE = "overflow-y: auto;"; // max-height: 500px;  adds overflow property to list if there are no dropdowns(subMenu's) in it
 						let idStr = mtgv.cs.tabs[i]["id"] + "_" + item["id"];
-						html += getFilterHtml(item, idStr);
+						html += getFilterBtnHtml(item, idStr);
 					} else { // nestedMenu exists
 						DROPDOWN_MENU_STYLE = ""; // "overflow-y: auto; overflow-x: hidden;" - removing these two conditions makes the 3rd submenu visible. "overflow-y: unset; overflow-x: unset;"" also works
 
@@ -621,7 +773,7 @@ var csh = (function () {
 
 							let nestedItem = nestedMenu[k];
 							let idStr = mtgv.cs.tabs[i]["id"] + "_" + item["id"] + "_" + nestedItem["id"];
-							html += getFilterHtml(nestedItem, idStr);
+							html += getFilterBtnHtml(nestedItem, idStr);
 
 						}
 						html += `</ul>`
@@ -641,14 +793,21 @@ var csh = (function () {
 		}
 		html += `				</div>`;
 		html += `				<div class="d-flex flex-column w-100" style="position: sticky; top: 0px;">`
-		html += `					<div id="tsrCsSelFieldsCheckRow" style="display: none;">`
-		html += getSelFieldsCheckRowHtml();
+		// modified
+		html += `					<div id="${sfCheckRowId}" style="display: none;">`
+		// html += getSelFieldsCheckRowHtml();
 		html += `					</div>`
-		html += `					<div id="tsrCsInstrBox" style="display: block; width: 275px;">`
-		html += getInstrBoxHtml();
+		html += `					<div id="${helpTextDivId}" style="display: none;">`
+		html += `					</div>`
+		// -------
+
+		html += `					<div id="tsrCsInstrBox" class="tsrCsNgInstrBox flex-column justify-content-evenly" style="display: flex; height: 100%;">`
+		html += csngaf.gibh();
+
+
 		html += `					</div>`
 		html += `					<div id="csControlsDiv" class="d-flex me-2 w-100 miCtrl">`
-		html += `						<table id="${CS_FILTERS_TABLE}" class="table table-bordered table-striped  " style="white-space: nowrap; margin: 20px;" width="100%">`
+		html += `						<table id="${CS_FILTERS_TABLE}" class="table table-bordered table-striped  " style=" margin: 20px; border-color:cadetblue" width="100%; ">`  // white-space: nowrap;
 		html += `						</table>`
 		html += `					</div>`
 		// html += `					<div id="csSelFieldsDivWrap" class="ms-2 w-100">`
@@ -664,86 +823,69 @@ var csh = (function () {
 		return html;
 	}
 
-	function getSelFieldsCheckRowHtml() { // todo add functionality to checkboxes
+	function getSelFieldsCheckRowHtml() {
+
+
 		let html = "";
 
+		let Modes = [
+			{ id: 'default', label: 'Default' }, { id: 'edit', label: 'Edit' }, { id: 'view', label: 'View' }
+		]
+
+		let fnc = ''
+
+		// todo add functionality to checkboxes
 		html += `						<div class="mx-3">`
-		html += `							<div class="d-flex" style="font-size: 14px;">`
+		html += `							<div class="d-flex miCtrl" style="font-size: 16px;">`
 		html += `								<p>`
-		html += `									View added filters with`
+		html += `									View Filters Mode : `
 		html += `								</p>`
-		html += `								<div class="mx-2">`
-		html += `									<input type="checkbox" id="html" value="sfForm">`
-		html += `									<label for="html">Forms</label>`
-		html += `								</div>`
-		html += `								<div class="mx-2">`
-		html += `									<input type="checkbox" id="css" value="sfLabel">`
-		html += `									<label for="css">Labels</label>`
-		html += `								</div>`
+
+		html += SP_3 + htmlU.crg('name', fnc, Modes, 'default', '', '', '') // createRadioGrp(name, fnc, vals, id, fncParams, multLine , multLineStrict){
+		// html += `								<div class="mx-2">`
+		// html += `									<input type="checkbox" id="html" value="sfForm">`
+		// html += `									<label for="html">Forms</label>`
+		// html += `								</div>`
+		// html += `								<div class="mx-2">`
+		// html += `									<input type="checkbox" id="css" value="sfLabel">`
+		// html += `									<label for="css">Labels</label>`
+		// html += `								</div>`
+
+
 		html += `							</div>`
-		html += `							<div id="${infoBoxId}">`
-		html += `							</div>`
+		// html += `							<div id="${infoBoxId}">`
+		// html += `							</div>`
 		html += `						</div>`
 
 		return html;
 	}
 
-	function getInstrBoxHtml() { // todo update preCreatedScr arr
-
-		let html = "";
 
 
-		let preCreatedScr = [
-			{ id: "scr1", label: "RSI Above 20", func: "" },
-			{ id: "scr2", label: "Supertrend Crossover", func: "" },
-			{ id: "scr3", label: "Gainers", func: "" },
-		];
 
-		html += `	<div class="d-flex justify-content-evenly">`
-		html += `		<div class="tsrCsNgArrowEle">`
-		html += `		</div>`
-		html += `		<div class="ms-3">`
-		html += `			<span style="font-size: 20px;">`
-		html += `				Add a Filter`
-		html += `			</span>`
-		html += `		</div>`
-		html += `	</div>`
-		html += `	<p class="ms-5 my-3 text-center">OR</p>`
-		html += `	<div class="align-items-center d-flex flex-column ms-5">`
-		html += `		<span>Run Pre-created Screener</span>`
-		html += `		<div class="d-flex flex-column w-75">`
+	// todo - to be called after reset / if no filter is selected
+	function showInstrBox(show) {
 
-		for (let i = 0; i < preCreatedScr.length; i++) {
-			let func = preCreatedScr[i].func + "();";
-			html += `			<button onclick="${func}" class="btn btn-sm btn-outline-secondary d-flex justify-content-evenly align-items-center my-2">`
-			html += `				<i class="fas fa-play"></i>`
-			html += `				<span>${preCreatedScr[i].label}</span>`
-			html += `			</button>`
+
+		if (!mtgv.cs.ng || isMobile()) {
+			return;
 		}
 
-		html += `		</div>`
-		html += `	</div>`
-
-		return html;
-	}
-
-
-	function showInstrBox(show) { // todo - to be called after reset / if no filter is selected
-
-		let instrBoxId = "tsrCsInstrBox";
 		let instrBox = document.getElementById(instrBoxId);
-
-		let sfCheckRowId = "tsrCsSelFieldsCheckRow";
 		let sfCheckRow = document.getElementById(sfCheckRowId);
+		let helpTextDiv = document.getElementById(helpTextDivId);
 
 		if (show) {
-			instrBox.style.display = "block";
+			instrBox.style.display = "flex";
 			sfCheckRow.style.display = "none";
+			helpTextDiv.style.display = "none";
 		} else {
 			instrBox.style.display = "none";
 			sfCheckRow.style.display = "block";
+			helpTextDiv.style.display = "block";
 		}
 	}
+
 
 	function setMenuHeight(ele) {
 		let nextEle = ele.nextElementSibling;
@@ -752,7 +894,7 @@ var csh = (function () {
 		nextEle.style.maxHeight = tsrCsMiddleRow.getBoundingClientRect().height;
 	}
 
-	function getFilterHtml(filterItem, idStr) {
+	function getFilterBtnHtml(filterItem, idStr) {
 
 		// let id = "" + filterItem["id"];
 
@@ -789,21 +931,32 @@ var csh = (function () {
 			}
 		}
 
-		let plansUrl = ""; // todo
+		let plansUrl = jsu.getMyTsrUrl() + '/TsrPlans';
 		// -----------------HTML SECTION-----------------
 
 		let html = "";
+		var onclickFunc = "";
 		if (prFilter) {
 			if (prUser) {
 				if (addOnce) {
+					if (jsu.isNotNull(filterItem.url)) {
+						onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); csh.uht('${idStr}'); ${func}(${params}); csh.df('${idStr}');`;
+					} else {
+						onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); ${func}(${params}); csh.df('${idStr}');`;
+					}
 					html += `<li>`
-					html += `	<a id="${idStr}" class="dropdown-item" onclick=" csh.ttcm(); csh.uht('${idStr}'); ${func}(${params}); csh.df('${idStr}');" style="text-wrap: nowrap; font-size: 16px; color: black;">`
+					html += `	<a id="${idStr}" class="dropdown-item" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px; color: black;">`
 					html += filterItem["label"]
 					html += `	</a>`
 					html += `</li>`
 				} else {
+					if (jsu.isNotNull(filterItem.url)) {
+						onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); csh.uht('${idStr}'); ${func}(${params});`;
+					} else {
+						onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); ${func}(${params});`;
+					}
 					html += `<li>`
-					html += `	<a  id="${idStr}" class="dropdown-item" onclick=" csh.ttcm(); csh.uht('${idStr}'); ${func}(${params})" style="text-wrap: nowrap; font-size: 16px; color: black;">`
+					html += `	<a  id="${idStr}" class="dropdown-item" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px; color: black;">`
 					html += filterItem["label"]
 					html += `	</a>`
 					html += `</li>`
@@ -820,14 +973,24 @@ var csh = (function () {
 			}
 		} else {
 			if (addOnce) {
+				if (jsu.isNotNull(filterItem.url)) {
+					onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); csh.uht('${idStr}'); ${func}(${params}); csh.df('${idStr}');`;
+				} else {
+					onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); ${func}(${params}); csh.df('${idStr}');`;
+				}
 				html += `<li>`
-				html += `	<a id="${idStr}" class="dropdown-item" onclick=" csh.ttcm(); csh.uht('${idStr}'); ${func}(${params}); csh.df('${idStr}'); " style="text-wrap: nowrap; font-size: 16px; color: black;">`
+				html += `	<a id="${idStr}" class="dropdown-item" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px; color: black;">`
 				html += filterItem["label"]
 				html += `	</a>`
 				html += `</li>`
 			} else {
+				if (jsu.isNotNull(filterItem.url)) {
+					onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); csh.uht('${idStr}'); ${func}(${params});`;
+				} else {
+					onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); ${func}(${params});`;
+				}
 				html += `<li>`
-				html += `	<a id="${idStr}"class="dropdown-item" onclick=" csh.ttcm(); csh.uht('${idStr}'); ${func}(${params})" style="text-wrap: nowrap; font-size: 16px; color: black;">`
+				html += `	<a id="${idStr}"class="dropdown-item" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px; color: black;">`
 				html += filterItem["label"]
 				html += `	</a>`
 				html += `</li>`
@@ -837,22 +1000,16 @@ var csh = (function () {
 		return html;
 	}
 
-	function toggleTsrCsMenu() { // for hiding dropdowns when a filter btn is clicked
-		var dropdownElementList = [].slice.call(document.querySelectorAll('#csDiv .dropdown-toggle'))
-		var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
-			return new bootstrap.Dropdown(dropdownToggleEl);
-		});
-
-		for (let i = 0; i < dropdownList.length; i++) {
-			dropdownList[i].toggle();
-		}
-	}
 
 	function clearDiv(id) {
 		htmlU.addMsgToDiv(id, true, "");
 	}
 
 	function disableFilter(idStr) {
+
+		if (isMobile()) {
+			return;
+		}
 
 		let filterEle = document.getElementById(idStr);
 		let filterObj = getFilterObjFromScrData(idStr);
@@ -861,7 +1018,7 @@ var csh = (function () {
 		filterEle.setAttribute("onclick", "");
 
 		filterEle.setAttribute("style", "text-wrap: nowrap; font-size: 16px;");
-		filterEle.classList.toggle("tsrCsNgFilter"); // .tsrCsNgFilter in style.css
+		filterEle.classList.toggle("tsrCsFilter"); // .tsrCsFilter in style.css
 
 		let html = ``;
 
@@ -874,6 +1031,11 @@ var csh = (function () {
 	}
 
 	function enableFilter(idStr) {
+
+		if (isMobile()) {
+			return;
+		}
+
 		let filterEle = document.getElementById(idStr);
 		let filterObj = getFilterObjFromScrData(idStr);
 
@@ -887,12 +1049,18 @@ var csh = (function () {
 		}
 
 		let htmlFunc = filterObj["func"] + "(" + params + ")";
-		let func = `csh.ttcm(); csh.uht('${idStr}'); ${htmlFunc}; csh.df('${idStr}');`
-		//  let func = `csh.ttcm(); csh.uht('${idStr}'); ${func}(${params}); csh.df('${idStr}')`
+		let func = "";
+		if (jsu.isNotNull(filterObj.url)) {
+			func = `csngutil.ttcm('${CS_NG_DD_SEl}'); csh.uht('${idStr}'); ${htmlFunc}; csh.df('${idStr}');`
+		} else {
+			func = `csngutil.ttcm('${CS_NG_DD_SEl}'); ${htmlFunc}; csh.df('${idStr}');`
+		}
+
+		//  let func = `csngutil.ttcm(); csh.uht('${idStr}'); ${func}(${params}); csh.df('${idStr}')`
 
 		filterEle.setAttribute("onclick", func);
 		filterEle.setAttribute("style", "text-wrap: nowrap; font-size: 16px; color: black;");
-		filterEle.classList.toggle("tsrCsNgFilter");
+		filterEle.classList.toggle("tsrCsFilter");
 
 		let html = ``;
 		html += filterObj["label"];
@@ -902,36 +1070,46 @@ var csh = (function () {
 
 	}
 
-	function updateHelpText(idStr) { // todo load content using url
+	function updateHelpText(idStr) { // todo div width 
 
 		let filterObj = getFilterObjFromScrData(idStr);
 
 		if (jsu.isNotNull(filterObj)) {
-			var html = "";
+			getData(filterObj.url).then((data) => { // if html is fetched correctly
+				var html = "";
 
-			html += `<div>`
-			html += `	<button type="button" class="btn btn-outline-primary btn-sm d-inline-flex align-items-baseline" data-bs-toggle="dropdown" aria-expanded="false">`
-			html += `		<span class="me-2">${filterObj["label"]}</span>`
-			html += `		<i class="fas fa-info-circle"></i>`
-			html += `	</button>`
-			html += `	<div class="dropdown-menu text-center p-3" style="height: 80%; overflow: auto;">`
-			html += `		<div>`
+				html += `<div class="ms-4">`
+				html += `	<button type="button" class="btn btn-outline-primary btn-sm d-inline-flex align-items-baseline" data-bs-toggle="dropdown" aria-expanded="false">`
+				html += `		<span class="me-2">${filterObj["label"]}</span>`
+				html += `		<i class="fas fa-info-circle"></i>`
+				html += `	</button>`
+				html += `	<div class="dropdown-menu text-center p-3" style="max-height: 80%; overflow: auto;">`
+				html += data;
+				html += `	</div>`
+				html += `</div>`
 
-			html += `			<img src="https://tutorials.topstockresearch.com/ChartPatterns/Triangles/TypesofTrianglesChartPatterns.png" class="img-fluid img-thumbnail" alt="...">`
-			html += `		</div>`
-			html += `		<div>`
-			html += `			<p>`
-			html += `				Some example text that's free-flowing within the dropdown menu.`
-			html += `				Some example text that's free-flowing within the dropdown menu.`
-			html += `			</p>`
-			html += `		</div>`
+				htmlU.addMsgToDiv(helpTextDivId, true, html);
+				htmlU.divShow(helpTextDivId);
+			}).catch((err) => { // if HTML cannot be fetched
+				if (jsu.isNotNull(err)) {
+					htmlU.addMsgToDiv(helpTextDivId, true, "");
+					htmlU.divHide(helpTextDivId);
+				}
+			});
 
-			html += `	</div>`
-			html += `</div>`
-			htmlU.addMsgToDiv(infoBoxId, true, html);
+		} else { // if no filterObj is found 
+			htmlU.addMsgToDiv(helpTextDivId, true, "");
+			htmlU.divHide(helpTextDivId);
 		}
 	}
 
+	async function getData(url) {
+		const res = await fetch(url);
+		const data = await res.text();
+
+		return data;
+
+	}
 
 	function getFilterObjFromScrData(idStr) {
 		let idArr = idStr.split("_");
@@ -939,16 +1117,19 @@ var csh = (function () {
 		let filterObj = null;
 		for (let i = 0; i < idArr.length; i++) {
 			filterObj = jsu.getObjFrmArr(objArr, idArr[i]);
-			let subMenu = filterObj["subMenu"];
-			if (jsu.isNotNull(subMenu)) {
-				objArr = subMenu;
+			if (jsu.isNotNull(filterObj)) {
+				let subMenu = filterObj["subMenu"];
+				if (jsu.isNotNull(subMenu)) {
+					objArr = subMenu;
+				}
 			}
 		}
 
 		return filterObj;
 	}
 
-	function getFilterControlNg() { // todo add styles to btns
+
+	function getFilterControlNg() {
 
 		var custBtnClass = 'btn btn-outline-dark border-0';
 
@@ -957,152 +1138,43 @@ var csh = (function () {
 		var func = scrAlias + '.' + 'screenNow';
 		let tabindex = 1;
 
+		// let style = "width: 15%;"; // todo add style to btn
 
 		html += '<div class="d-flex justify-content-evenly">'
 
 		html += htmlU.getCusBtn('Run ', func, 'run', 'Run Screener', custBtnClass, 'fas fa-play', tabindex);
 
-		// html += `
-		// 			<button type="button" class="btn d-flex justify-content-evenly align-items-center" style="min-width: 100px;" onclick="${func}('run')">
-		// 				<i class="fas fa-play"></i>
-		// 				<span style="font-size: 16px;">Run</span>
-		// 			</button>
-		// `;
-
-		html += `	<div class="vr"></div>`;
 
 		html += htmlU.getCusBtn('Reset', func, 'reset', 'Reset Screener', custBtnClass, 'fas fa-undo', tabindex);
-		// html += `
-		// 			<button type="button" class="btn d-flex justify-content-evenly align-items-center" style="min-width: 100px;" onclick="${func}('reset')">
-		// 				<i class="fas fa-undo"></i>
-		// 				<span style="font-size: 16px;">Reset</span>
-		// 			</button>
-		// `;
-		html += `	<div class="vr"></div>`;
+
 
 		html += htmlU.getCusBtn('Save ', func, 'save', 'Save Screener', custBtnClass, 'fas fa-save', tabindex);
-		// html += `
-		// 			<button type="button" class="btn d-flex justify-content-evenly align-items-center" style="min-width: 100px;" onclick="${func}('save)">
-		// 				<i class="fas fa-save"></i>
-		// 				<span style="font-size: 16px;">Save</span>
-		// 			</button>
-		// `;
 
-		html += `	<div class="vr"></div>`;
 
-		html += htmlU.getCusBtn('Alert ', func, 'alert', 'Add Alert', custBtnClass, 'fas fa-bell', tabindex);
-		// html += `
-		// 			<button type="button" class="btn d-flex justify-content-evenly align-items-center" style="min-width: 100px;" onclick="${func}('alertNew)">
-		// 				<i class="fas fa-bell"></i>
-		// 				<span style="font-size: 16px;">Alert</span>
-		// 			</button>
-		// `;
+		html += htmlU.getCusBtn('Alert ', func, 'alertNew', 'Add Alert', custBtnClass, 'fas fa-bell', tabindex);
 
-		html += `	<div class="vr"></div>`;
 		html += `
 					<div class="d-flex justify-content-between align-items-center p-0">
-						<label class="form-check-label" style="text-wrap: nowrap;" for="autoRefreshCheck">
+						<label class="form-check-label" style="text-wrap: nowrap;" for="csAutoRefCB">
 							Auto Refresh
 						</label>
-						<input type="checkbox" class="form-check-input dropup ms-2" id="autoRefreshCheck" onchange="toggleCsAdvancedOptions()">
+						<input type="checkbox" class="form-check-input dropup ms-2" id="csAutoRefCB" 
+							onchange="csngaf.ua('autoRefresh')">
 					</div>
 		`
-		html += `	<div class="vr"></div>`;
+		// html += `	<div class="vr"></div>`;
 
-
-		html += `	<div id="tsrCsAdvancedOptions" class="btn-group dropup" style="min-width: 100px;">`;
-		html += `
-						<button type="button" class="btn w-100 dropdown-toggle d-flex justify-content-evenly align-items-center" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-							<span style="font-size: 16px;">More</span>
-						</button>
-		`;
-
-		html += `
-						<div class="dropdown-menu">
-							<form class="m-0" style="width: 500px;">
-								<div class="d-flex flex-column">
-		`
-		html += `
-									<div class="mx-3">
-										<div class="d-flex justify-content-between p-0">`
-		// html +=  miscru.arcb() + 'Auto Refresh';
-		html += `							<label class="form-check-label" style="text-wrap: nowrap;" for="dropdownCheck1">
-												Auto Refresh
-											</label>
-											${miscru.arcb()}
-										</div>
-										<div id="csAutoRefDiv" class="mt-2" style="">
-
-										</div>`
-		html += `					</div>`
-
-		// html += `					<hr style="margin: 0.5rem 0">`
-
-		// html += miscru.srcb() + ' Stock Relevance';
-
-		html += `
-									<div class="mx-3">
-										<div class="d-flex justify-content-between p-0">
-											<label class="form-check-label" style="text-wrap: nowrap;"
-												for="dropdownCheck2">
-												Stock Relevance
-											</label>
-											${miscru.srcb()}
-										</div>
-										<div id="csstkRelDiv" class="mt-2" style="">
-										</div>
-									</div>
-		`
-		// html += `					<hr style="margin: 0.5rem 0">`
-
-		// ${misu.csua('gctcb', scrAlias, 'screenNow', 'run')} // -- for custom results checkbox
-		html += `
-									<div class="mx-3">
-										<div class="d-flex justify-content-between p-0">
-											<label class="form-check-label" style="text-wrap: nowrap;"
-												for="dropdownCheck3">
-												Custom Results
-											</label>
-											<input type="checkbox" class="form-check-input" id="dropdownCheck3" onchange="showCsAdvancedOptions()">
-										</div>
-										<div id="cstRsltDiv" class="mt-2" style="">
-
-										</div>
-									</div>
-		`
-
-		// html += `					<hr style="margin: 0.5rem 0">`
-		// html+= getCheckboxP('csBt' , 'csh.bt', null,'bt') // -- for backtest checkbox
-		html += `					<div class="mx-3">
-										<div class="d-flex justify-content-between p-0">
-											<label class="form-check-label" style="text-wrap: nowrap;"
-												for="dropdownCheck4">
-												Backtest
-											</label>
-											${getCheckboxP('csBt', 'csh.bt', null, 'bt')}
-										</div>
-										<div id="backtestDiv" style="" class="mt-2">
-
-										</div>
-									</div>
-				`
-		html += `
-								</div>
-							</form>
-						</div>
-		`;
+		html += csngaf.sm();
 
 
 		html += `	</div>`
 		html += `</div>`
 
+		html += htmlU.createEmptyDiv(CS_SCR_CTRL_FB_DIV, true);   //CS_SCR_SB_FB_DIV	 // modified
+
 
 		return html;
 	}
-
-	// DESKTOP CS NG code ends
-
-
 
 	// HTML Creation Starts
 	function opsCompTd(obj, def) {
@@ -1110,10 +1182,21 @@ var csh = (function () {
 		var func = 'csu' + '.' + def.func;
 
 		var funcParam = id + PARAM_DELIM + def.id
-		var html = htmlU.getDropDown(def.list, id + def.field, null, func, funcParam, obj.field)
+
+		var html = ''
+
+		html += doBold(def.label + ' : ');
+
+
+		html += htmlU.getDropDown(def.list, id + def.field, null, func, funcParam, obj.field)
+
+
 		html += SP_3 + csh.opCompHtml(obj, func, funcParam);
 		html += ' %';
 		var param = def.id + ':' + id;
+
+		html += csh.gept(obj, obj.csType, param);
+
 		html += SP_3 + csh.delIcon(param);
 
 
@@ -1131,19 +1214,23 @@ var csh = (function () {
 		return { td1: doBold(def.label), td2: html };
 	}
 
+	// function opsCompRowNg(obj) {
+
+	// }
+
 	function opsCompRow(obj) {
 		var def = getObjFrmArr(LIST_OPS_COMPARE, obj.type);
 		var html = csh.dynTr(obj, opsCompTd(obj, def));
 		var ctrl = jsu.getObjFrmArr(daily_tabs, def.csType);
 
-		$('#' + ctrl.tab).append(html);
-		csu.dsf(); // displaySelectedFields();
+		// $('#' + ctrl.tab).append(html);
+		// csu.dsf(); // displaySelectedFields();
 		return html;
 	}
 
 	function dynTr(obj, tds) {
 		var html = '<tr id=' + obj.id + '>'
-			+ createTd(createDiv(obj.id + 'Td1Div', tds.td1, null), CS_LABEL_WIDTH)
+			// + createTd(createDiv(obj.id + 'Td1Div', tds.td1, null), CS_LABEL_WIDTH)
 			+ createTd(createDiv(obj.id + 'Td2Div', tds.td2, null)) + '</tr>';
 		return html;
 	}
@@ -1151,6 +1238,18 @@ var csh = (function () {
 	function getBasicOpCompHtml(obj, func, funcParam, suffixPc, textBoxSize) {  // getBasicOpCompHtml
 
 		var html = '';
+
+		// if(mtgv.cs.ng){
+
+
+		var aeebDef = getObjFrmArr(AEBB_MAP, obj.id);
+		if (aeebDef != null) {
+			html += doBold(aeebDef.label) + " : ";
+		}
+
+
+
+		// }
 
 		if (jsu.isNull(textBoxSize)) textBoxSize = 10;
 
@@ -1161,42 +1260,93 @@ var csh = (function () {
 		var id = obj.id;
 		if (jsu.isNull(funcParam)) funcParam = id;
 
-		html += htmlU.getDropDown(BASIC_OPS, id + 'ops', null, func, funcParam, obj.ops);
+		let OpsList = BASIC_OPS;
+
+		if (mtgv.cs.ng) {
+			jsu.removeFromArrayWithId(OpsList, 'na');
+		}
+
+
+		html += htmlU.getDropDown(OpsList, id + 'ops', null, func, funcParam, obj.ops);
 		html += SP_3;
 		if (isNotNull(obj.ops) && obj.ops == CS_BETWEEN) {
 			html += getInputTxtParam(id + 'v1', textBoxSize, obj.v1, func, funcParam) + suffixPc;
 			html += SP_3 + 'And' + SP_3
 			html += htmlU.getInputTxtParam(id + 'v2', textBoxSize, obj.v2, func, funcParam) + suffixPc;
-		} else if (isNull(obj.ops) || obj.ops == CS_NOT_SELECTED) {
+			// } else if (isNull(obj.ops) || obj.ops == CS_NOT_SELECTED) {
 			// html+=' You can screen '+aeebDef.label+' using > , = , <  or Between'
 		} else {
-			html += getInputTxtParam(id + 'v1', textBoxSize, obj.v1, func, funcParam) + suffixPc;
+
+
+			if (mtgv.cs.ng) {
+				html += getInputTxtParam(id + 'v1', textBoxSize, obj.v1, func, funcParam) + suffixPc;
+			} else {
+				if (jsu.isNotNull(obj.ops) && obj.ops != NA_VAL) {
+					html += getInputTxtParam(id + 'v1', textBoxSize, obj.v1, func, funcParam) + suffixPc;
+				}
+			}
+
+
+
 		}
+
+		if (mtgv.cs.ng) {
+
+			var aeebDef = getObjFrmArr(AEBB_MAP, obj.id);
+
+
+			if (aeebDef != null) {  // beta and vols also uses it.
+				var selParam = 'aebb' + ':' + obj.id
+
+				html += csh.gept(obj, aeebDef.csType, selParam);
+
+				html += SP_3 + csh.delIcon(selParam);
+			}
+			// val2+= SP_3 + csh.delIcon(selParam) ;
+
+			// var html = '<tr>' +  aeebDef.label  +' : '  +createTd(createDiv(csTypeId + 'Div', val2, null)) + '</tr>';
+			// return html;
+
+
+		}
+
+
 		return html;
 	}
 
-	function getAebbHtml(csTypeId, ops, v1, v2) {
+	function getAebbHtml(csTypeId, ops, v1, v2, disabled) {
 		// var csTypeId='csPrice';
 		var func = 'csu.csAebbChg';
 		var aeebDef = getObjFrmArr(AEBB_MAP, csTypeId);
 
-		var obj = { id: csTypeId, ops: ops, v1: v1, v2: v2, csType: aeebDef.csType };
+		// if(aeebDef.ops == null){
+		// 	ops =  CS_ABOVE;
+		// }
+
+
+
+		var obj = { id: csTypeId, ops: ops, v1: v1, v2: v2, csType: aeebDef.csType, disabled: disabled };
 		var html = csh.opCompHtml(obj, func);
 		return { label: aeebDef.label, ctrl: html };
 	}
 
-	function getAebbStructureHtml(csTypeId, labelWidth) {
 
+	function getAebbStructureTd(obj, csTypeId, labelWidth) {
 		if (jsu.isNull(labelWidth)) labelWidth = CS_LABEL_WIDTH
 
 		// var data = getAebbData(csTypeId); 
 		var data = getObjFrmArr(mtgv.cs.screenerData.aebb, csTypeId);
 
-		var tds = getAebbHtml(csTypeId, data.ops, data.v1, data.v2)
+		var tds = getAebbHtml(csTypeId, data.ops, data.v1, data.v2, obj.disabled)
 
 		var val = doBold(tds.label);
 
 		var aeebDef = getObjFrmArr(AEBB_MAP, csTypeId);
+
+		if (jsu.isNull(aeebDef.ops) && mtgv.cs.ng) {
+			aeebDef.ops = CS_ABOVE;
+		}
+
 		if (jsu.isNotNull(aeebDef.info)) {
 			val += htmlU.getSpan(" (" + aeebDef.info + ")", 'grey', 8);
 		}
@@ -1206,10 +1356,32 @@ var csh = (function () {
 			val2 += htmlU.getSpan(" (" + aeebDef.postInfo + ")", 'grey', 8);
 		}
 
+		return val2
+
+	}
 
 
-		var html = '<tr>' + createTd(val, labelWidth) + createTd(createDiv(csTypeId + 'Div', val2, null)) + '</tr>';
+	function getAebbStructureHtml(csTypeId, labelWidth) {
+		var aeebDef = getObjFrmArr(AEBB_MAP, csTypeId);
+
+		// aeebDef.id = 
+
+		let val2 = getAebbStructureTd(aeebDef, csTypeId, labelWidth);
+
+
+		// if(mtgv.cs.ng){
+		var html = '<tr id="' + aeebDef.id + '">'
+			+ createTd(createDiv(aeebDef.id + 'Td2Div', val2, null)) + '</tr>';
 		return html;
+		// }
+
+
+		// var html = '<tr id="'+csTypeId +'"  >' + createTd(val, labelWidth) + createTd(createDiv(csTypeId + 'Div', val2, null)) + '</tr>';
+
+
+
+
+		// return html;
 		// html+= getAebbHtml(csTypeId ,data.ops,data.v1,data.v2 );			
 
 		// return getAebbHtml(csTypeId ,data.ops,data.v1,data.v2 );		;
@@ -1252,6 +1424,9 @@ var csh = (function () {
 
 	// HTML Creation ENDS 
 	function createDisplayText(obj, text, params, selParam, valid) {
+
+		console.log('1cd');
+
 		// Count of fields per tab .... // Bad Deign but at a quick Workaround.. 
 		// Related with   CustScrUtil.validateFields
 		let elem = jsu.getObjFrmArr(mtgv.cs.TabCount, obj.csType);
@@ -1281,9 +1456,12 @@ var csh = (function () {
 			+ SP_3 + csh.delIcon(selParam) //  htmlU. getGlaf('fa fa-remove', 'red', 14, 'func', 'param', 'Delete'
 
 
-		if (!mtgv.cs.ng) {
 
-			TSR_HR; //'<hr/>';
+		if (mtgv.cs.ng) {
+			if (isMobile()) { text += TSR_HR; }
+		} else {
+
+			text += TSR_HR; //'<hr/>';
 		}
 
 		if (valid) {
@@ -1291,24 +1469,39 @@ var csh = (function () {
 
 
 			if (mtgv.cs.ng) {
-
-
 				let activeObj = jsu.getObjFrmArr(mtgv.cs.editActive, obj.id)
+				if (isMobile()) {
+					// htmlU.addMsgToDiv('csSelFieldsDiv' , false, text , textColor , 14);
 
-				if (activeObj == null) {  // Not to show label when elem is active ...
+					params.validFields += getSpan(text, textColor, 14);
+				} else {
 
-					// let tableElement = document.getElementById(CS_FILTERS_TABLE);
 
-					// let rowObj = mintJsUtil.getObjFrmArr(allRows, obj.id);
 
-					let tdDiv = obj.id + 'Td2Div';
 
-					htmlU.addMsgToDiv(tdDiv, true, text, textColor, 14);
+					if (activeObj == null) {  // Not to show label when elem is active ...
+
+						let tdDiv = obj.id + 'Td2Div';
+
+						htmlU.addMsgToDiv(tdDiv, true, text, textColor, 14);
+
+
+
+					}
+
 
 				}
 
+				let divEle = document.getElementById(obj.id);
 
+				if (jsu.isNotNull(divEle)) {
+					if (obj.disabled) {
+						divEle.classList.add("tsrCsNgDisabledFilter");
+					} else {
+						divEle.classList.remove("tsrCsNgDisabledFilter");
+					}
 
+				}
 
 
 			} else {
@@ -1317,11 +1510,14 @@ var csh = (function () {
 
 		} else {
 			// params.validFieldCount++;
-			params.invalidFields += getSpan(text, textColor, CS_SEL_FONT_SIZE);
+
 
 			if (mtgv.cs.ng) {
 				let tdDiv = obj.id + 'Td2DivFb';
+				params.invalidFields += getSpan(text, textColor, 14);
 				htmlU.addMsgToDiv(tdDiv, true, text, textColor, 14);
+			} else {
+				params.invalidFields += getSpan(text, textColor, CS_SEL_FONT_SIZE);
 			}
 
 
@@ -1337,11 +1533,11 @@ var csh = (function () {
 	}
 
 	function createPlayIcon(param) {
-		return '<a  onClick="javascript:' + 'csu.ec(\'' + param + '\');"  title="Enable this filter for Run"><font size="4" color="green"><span class="fa  fa-play" ></span></font> </a> ';
+		return '<a  onClick="javascript:' + 'csu.ec(\'' + param + '\');"  style="pointer-events: auto;" title="Enable this filter for Run"><font size="4" color="green"><span class="fa  fa-play" ></span></font> </a> ';
 	}
 
 	function createDelIcon(param) {
-		return '<a  onClick="javascript:' + 'csu.dr(\'' + param + '\');"  title="Delete Row"><font size="4" color="red"><span class="fa fa-remove fa-times" ></span></font> </a> ';
+		return '<a  onClick="javascript:' + 'csu.dr(\'' + param + '\');"   style="pointer-events: auto;"   title="Delete Row"><font size="4" color="red"><span class="fa fa-remove fa-times" ></span></font> </a> ';
 	}
 
 	function createEditIcon(param, selParam) {
@@ -1360,7 +1556,7 @@ var csh = (function () {
 			func = `myTsrScreener.showControl('${param}','${selParam}' );`
 		}
 
-		let edit = `<a  onClick="javascript:${func}"  title="Edit (Change Value)"><font size="4" color="grey"><span class="fa fa-edit" ></span></font> </a> `
+		let edit = `<a  onClick="javascript:${func}"  title="Edit (Change Value)" style="pointer-events: auto;" ><font size="4" color="grey"><span class="fa fa-edit" ></span></font> </a> `
 		return edit;
 
 		// return '<a  onClick="javascript:'+'myTsrScreener.showControl(\''+param+'\');"  title="Edit (Change Value)"><font size="4" color="grey"><span class="fa fa-edit" ></span></font> </a> ';
@@ -1395,7 +1591,11 @@ var csh = (function () {
 
 		var freq = mintHtmlUtil.getInputVal('scrFreq');;
 
-		var classiId = $('input[name=stkType]:checked').val();
+
+		var classiId = csu.gsbv();
+
+
+		// var classiId = $('input[name=stkType]:checked').val();
 
 
 		var sbAndCat = msbu.ua('getStockBasketAndCat', mtgv.mtpp.sblcfg.stkBsktCat, classiId);
@@ -1617,6 +1817,38 @@ var csh = (function () {
 	}
 
 
+	function getEnabledPauseText(obj, csType, selParam) {
+
+		if (!mtgv.cs.ng) {
+			return ''
+		}
+
+
+		let text = SP_3;
+
+		text += '<a  style="pointer-events:auto;opacity:1;" '
+
+		// func = `csu.er('${param}','${selParam}' );`
+
+		if (obj.disabled) {
+
+
+			text += '   onClick="javascript:'
+				+ `csu.er('${csType}','${selParam}' ,'enable');"`
+				+ ' title="Enable this filter for Run"><font size="4" color="green"><span class="fa  fa-play" ></span></font> </a> ';
+
+			// textColor ='grey';
+		} else {
+			// text += SP_3 +  createPauseIcon(selParam);
+			text += '   onClick="javascript:'
+				+ `csu.er('${csType}','${selParam}' ,'disable');"`
+				+ ' title="Disable i.e. this filter will not be selected for Run"><font size="4" color="grey"><span class="fa fa-pause" ></span></font> </a> '
+
+		}
+
+		return text;
+	}
+
 	return {
 		// tabs : tabs
 
@@ -1630,6 +1862,8 @@ var csh = (function () {
 		opCompHtml: getBasicOpCompHtml,
 
 		aebbHtm: getAebbHtml,
+
+		aebbStruttd: getAebbStructureTd,
 		aebbStrut: getAebbStructureHtml,
 		aebbStrutNg: getAebbStructureHtmlNg,
 		df: disableFilter,
@@ -1637,15 +1871,18 @@ var csh = (function () {
 		cd: clearDiv,
 		uht: updateHelpText,
 		smh: setMenuHeight,
-		ttcm: toggleTsrCsMenu,
+
 		sib: showInstrBox,
 		gtdh: getTickDropdownHtml,
+		gsbh: getStockBasketHtml,
+		gfofsd: getFilterObjFromScrData,
 
 		cdt: createDisplayText,
 		delIcon: createDelIcon,
 		editIcon: createEditIcon,
 		disableIcon: createPauseIcon,
 		enableIcon: createPlayIcon,
+		gept: getEnabledPauseText,
 
 		ssf: showSelectedFields,
 

@@ -399,6 +399,30 @@ var cscp =  (function () {
 		var html ='<br/><div id="'+id+'Div"  >';
 		html+= '<table id="'+id+'CtrlTab" '+TAB_INDI_STYLE+'   >';
 		
+		html+= getAllRows();
+
+		html+="</table>";
+		
+
+		html+= '<table id="	" class="table table-bordered   "  >';
+
+		// ------------ Overbought / Sold ----------------- 
+		html+= getControls();	
+
+		html+= '</table>';
+
+
+		// html+= " <br> More Chart Patterns Coming Soon.."
+
+		html +='</div><br/><br/>'; //pvCsDiv
+		return html;
+	}
+
+
+	function getAllRows(){
+		var patternNg= mtgv.cs.screenerData.patternNg
+		let html = '';
+
 		for(var i=0;i < patternNg.length ;i++ ) {
 
 			var cpObj = patternNg[i];
@@ -407,48 +431,52 @@ var cscp =  (function () {
 
 
 			html+=getRows(cpObj , def );
-
-			// if(def.patType =='candle'  || def.pat =='ha'){
-			// 	html+=getRows(cpObj , def )
-
-			// }else if(def.id == 'narRng'){
-			// 	html+= getNrRow(cpObj);	
-			// }else if(def.id == 'wideRng'){
-			// 	html+= getWrRow(cpObj);	
-			// }
-
-
 		}
 
-		html+="</table>";
 
-		// for(var i=0;i<CP_FIELDS.length;i++ ){
-		// 	var obj = CP_FIELDS[i];
-		// 	var pattern = jsu.getObjFrmArr(screenerData.patterns, obj.id);
-		// 	var selectedObj = (pattern ==null ? null : pattern.pat) 
-		// 	html += '<tr>' + createTd( doBold(obj.label ), chartPatternLabelWidth) + createTd( getDropDown(obj.elems, obj.id+'Dd', null, thisAlias+".cpc", null, selectedObj)) +'</tr>';
-		// }
+		return html;
+	}
 
-		// for(var i=0;i<CP_COMP_FIELDS.length;i++ ){
-		// 	var obj = CP_COMP_FIELDS[i];
-		// 	var compPatterns = jsu.getObjFrmArr(screenerData.compPatterns, obj.id);
-		
-		// 	if(obj.id == 'narRng'){
-		// 		html+= getNrRow(compPatterns);	
-		// 	}
+	function getFormRow(type, id, state){ 
 
-		// 	if(obj.id == 'wideRng'){
-		// 		html+= getWrRow(compPatterns);	
-		// 	}
+		let obj =  jsu.getObjFrmArr(mtgv.cs.screenerData.patternNg, id)
 
-			
-		// }
 
-		// html+= '</table>'; // BS TAB START...		
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
 
-		html+= '<table id="	" class="table table-bordered   "  >';
+		var def = jsu.getObjFrmArr( CP_FIELDS  , obj.indi);
+		return getRows(obj, def, null);
 
-		// ------------ Overbought / Sold ----------------- 
+	}
+
+	function getFormTd(type, id, state){ 
+
+		let obj =  jsu.getObjFrmArr(mtgv.cs.screenerData.patternNg, id)
+
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
+		var def = jsu.getObjFrmArr( CP_FIELDS  , obj.indi);
+		return getTD( obj, def, null);
+
+	}
+
+	
+
+	function getControls(){
+
+		let html =''
+
 		html+= '<tr><td>';
 
 		html+= doBold('Candle / HA : ') ; 		
@@ -503,25 +531,99 @@ var cscp =  (function () {
 
 		html+= '</td></tr>';
 
-
-		html+= '</table>';
-
-
-		// html+= " <br> More Chart Patterns Coming Soon.."
-
-		html +='</div><br/><br/>'; //pvCsDiv
 		return html;
+
 	}
 
 
-	function getRows(cpObj , def, srchPattern ){
-		var html=  '<tr><td>';
+	function addNewFilter(indi, subType, srchPattern){
 
+		var patternNg = mtgv.cs.screenerData.patternNg;
+
+		var patternObj = null;
+
+		if(jsu.containsString(['bullCs', 'bearCs'   , 'odCs' , 'haCs' ,'popBul' ,'popBear' , 'tri' , 'chn', 'tl', 'hhll'] , indi)){
+
+			for(var i= 0;i< patternNg.length; i++){
+
+				if(patternNg[i].indi == indi){
+
+					patternObj = patternNg[i];
+
+					var id = patternObj.id+'patternNg'+srchPattern;
+
+					if(patternObj.pat.indexOf(srchPattern) ==-1){
+						patternObj.pat+= ','+srchPattern;
+					}
+
+
+					 $( "#"+id)  .prop('checked', true);
+
+	
+					break;
+				
+				}
+			}
+		}
+
+		if(patternObj == null){  // case of WR / NR and new Candle / HA type
+			var id =  myTsrScreener.getNextId( 'patternNgId');
+
+			patternObj = { id :id,  type : 'patternNg' ,   indi: indi  }
+
+			if(indi == 'masCan' || indi == 'narRng'){
+				patternObj.firstBoBd = true;
+			}
+
+			if(srchPattern !=null){
+				patternObj.pat = srchPattern;
+			}
+
+
+			patternNg.push(patternObj);
+
+			var def = jsu.getObjFrmArr( CP_FIELDS  , patternObj.indi);
+		
+			var html = '';
+
+			
+			html =  getRows(patternObj, def, srchPattern);
+			
+		    // $('#cpCsCtrlTab').append( html);
+
+		}
+	
+
+		return { html : html , id : id};
+	}
+
+
+	function addFilterChange(type, subType, id){ //MA_PRICE_OPTIONS
+		// techDivChg(id);
+		chartPatternChange(id);
+	    csu.dsf();
+	}
+
+
+
+	function addChartPattern(indi, subType, srchPattern){
+		let json = addNewFilter(indi, subType, srchPattern);
+
+		$('#cpCsCtrlTab').append(json.html );
+
+		addFilterChange(indi , json.id);
+	}
+
+
+
+	function getRows(cpObj , def, srchPattern ){
+		// var html=  '<tr><td>';
+/*
 		var td1Txt = doBold(def.shortName ) ;
 
 		if(mtgv.mtpp.crossFreq){ // Cross Freq....
 
-			td1Txt += htmlU.getSpan(' On ' , 'grey' , 10) + BR_2;
+			td1Txt += htmlU.getSpan(' On ' , 'grey' , 10) ;
 			var ticks = csu.gct(cpObj , 'cpTick');
 
 			td1Txt +=  	getDropDown(ticks, cpObj.id+'cpTick', 'width:90px',fncChg, cpObj.id, cpObj.cpTick) 
@@ -529,7 +631,7 @@ var cscp =  (function () {
 		}
 
 		if(mtgv.mtpp.cp.stp && (def.patType =='candle')    ){  // Show Prev Patterns only for premium Candle ... 
-			td1Txt += htmlU.getSpan(' On ' , 'grey' , 10) + BR_2;
+			td1Txt += htmlU.getSpan(' On ' , 'grey' , 10) ;
 			td1Txt +=  	getDropDown(STP_TICK, cpObj.id+'tickPeriod', 'width:90px',fncChg, cpObj.id, cpObj.tickPeriod) 
 			+ htmlU.getSpan(' Tick ' , 'grey' , 10)
 
@@ -539,9 +641,13 @@ var cscp =  (function () {
 
 		td1Txt ='<div>' + td1Txt +'</div>'  // required to remove Default styling of BS
 
-		var td1 = createTd(td1Txt)
+		// var td1 = createTd(td1Txt)
+
+*/
 		var td2 = getTD( cpObj , def,  srchPattern);
-		var html = '<tr id='+cpObj.id+'>' + td1	+ createTd(createDiv(cpObj.id+'Td2Div', td2)) +'</tr>';
+
+
+		var html = '<tr id='+cpObj.id+'>' + createTd(createDiv(cpObj.id+'Td2Div',  td2)) +'</tr>';
 
 		return html;	
 
@@ -552,8 +658,34 @@ var cscp =  (function () {
 	function getTD(cpObj, def, srchPattern){
 
 		var html= '';
-		
+
+			
+/*
+		var td1Txt = doBold(def.shortName ) ;
+
+		if(mtgv.mtpp.crossFreq){ // Cross Freq....
+
+			td1Txt += htmlU.getSpan(' On ' , 'grey' , 10) ;
+			var ticks = csu.gct(cpObj , 'cpTick');
+
+			td1Txt +=  	getDropDown(ticks, cpObj.id+'cpTick', 'width:90px',fncChg, cpObj.id, cpObj.cpTick) 
+			+ htmlU.getSpan(' Tick ' , 'grey' , 10)
+		}
+
+		if(mtgv.mtpp.cp.stp && (def.patType =='candle')    ){  // Show Prev Patterns only for premium Candle ... 
+			td1Txt += htmlU.getSpan(' On ' , 'grey' , 10) ;
+			td1Txt +=  	getDropDown(STP_TICK, cpObj.id+'tickPeriod', 'width:90px',fncChg, cpObj.id, cpObj.tickPeriod) 
+			+ htmlU.getSpan(' Tick ' , 'grey' , 10)
+
+		}
+
+		html+= td1Txt;
+*/
+
+
 		if(def.patType == 'range'){  // WR / NR
+
+			cpObj.goodData = true;
 
 			if(def.id == 'narRng') html +=  getNrTd(cpObj);
 			if(def.id == 'wideRng') html +=  getWrTd(cpObj);
@@ -562,10 +694,18 @@ var cscp =  (function () {
 
 		}else if(def.patType == 'candle' && (def.id =='bullCs' || def.id =='bearCs')){	
 
+			html+= getCommon(cpObj);	
+
 			html+= handleBullBearMultiCandle(cpObj, def, srchPattern);
+			var param = 'patternNg' + ':'+cpObj.id; 
+			html+= csh.gept(cpObj, CP_CS,  param);
+
+
+		html+= SP_3 + csh.delIcon(param) ;
 
 		}else{   // candle / Ha and TL ?
 
+			html+= getCommon(cpObj);	
 			if( jsu.isNull( cpObj.pat)) cpObj.pat = '';
 
 
@@ -622,14 +762,46 @@ var cscp =  (function () {
 
 
 			html+='</div>';
+			var param = 'patternNg' + ':'+cpObj.id; 
 
+			html+= csh.gept(cpObj, CP_CS,  param);
+
+			html+= SP_3 + csh.delIcon(param) ;
 		}
 
-		var param = 'patternNg' + ':'+cpObj.id; 
-		html+= SP_3 + csh.delIcon(param) ;
+		
 
 		return html;
 	}
+
+	function getCommon(cpObj ){
+
+		var def = jsu.getObjFrmArr( CP_FIELDS  , cpObj.indi);
+
+		var td1Txt = doBold(def.shortName ) ;
+
+		if(mtgv.mtpp.crossFreq){ // Cross Freq....
+
+			td1Txt += htmlU.getSpan(' On ' , 'grey' , 10) ;
+			var ticks = csu.gct(cpObj , 'cpTick');
+
+			td1Txt +=  	getDropDown(ticks, cpObj.id+'cpTick', '',fncChg, cpObj.id, cpObj.cpTick) 
+			+ htmlU.getSpan(' Tick ' , 'grey' , 10)
+		}
+
+		if(mtgv.mtpp.cp.stp && (def.patType =='candle')    ){  // Show Prev Patterns only for premium Candle ... 
+			td1Txt += htmlU.getSpan(' On ' , 'grey' , 10) ;
+			td1Txt +=  	getDropDown(STP_TICK, cpObj.id+'tickPeriod', '',fncChg, cpObj.id, cpObj.tickPeriod) 
+			+ htmlU.getSpan(' Tick ' , 'grey' , 10)
+
+		}
+
+		td1Txt+= BR_2;
+		return td1Txt;
+
+
+	}
+
 
 	function handleBullBearMultiCandle(cpObj, def, srchPattern){
 		var html= '';
@@ -726,7 +898,9 @@ var cscp =  (function () {
 	function getNrTd(pattern){
 
 
-
+		if(jsu.isNull(pattern.pat)){
+			pattern.pat = NARROW_RANGE_PAT[0].id;
+		}
 
 		if(jsu.isNull(pattern.v1)){
 			pattern.v1 = 4;
@@ -736,13 +910,16 @@ var cscp =  (function () {
 
 		var td2 = '';
 
-		td2 += getDropDown( getArrRange(3, 18, 1, 'Ticks'), pattern.id +'nrtDd', null, thisAlias+".cpc", null, pattern.v1);
+		td2+= getCommon(pattern)
 
-		td2 += SP_3 +  getDropDown(NARROW_RANGE_PAT , pattern.id +'nrpDd', null, thisAlias+".cpc", null, pattern.pat)
+
+		td2 += getDropDown( getArrRange(3, 18, 1, 'Ticks'), pattern.id +'nrtDd', null, thisAlias+".cpc", pattern.id, pattern.v1);
+
+		td2 += SP_3 +  getDropDown(NARROW_RANGE_PAT , pattern.id +'nrpDd', null, thisAlias+".cpc", pattern.id, pattern.pat)
 
 // --   RANGE_TYPE
 
-		td2 += SP_3 + ' on ' +SP_3 + getDropDown(RANGE_TYPE , pattern.id +'rangeType', null, thisAlias+".cpc", null, pattern.rangeType)
+		td2 += SP_3 + ' on ' +SP_3 + getDropDown(RANGE_TYPE , pattern.id +'rangeType', null, thisAlias+".cpc", pattern.id, pattern.rangeType)
 
 /*
 		if(mtgv.mtpp.rt && jsu.containsString( ['narRangeBull', 'narRangeBear'] , pattern.pat )){
@@ -758,6 +935,12 @@ var cscp =  (function () {
 		 	}
 		 }
 */
+
+		var param = 'patternNg' + ':'+pattern.id; 
+
+		td2+= csh.gept(pattern, CP_CS,  param);
+
+		td2+= SP_3 + csh.delIcon(param) ;
 
 		return td2;
 
@@ -781,21 +964,31 @@ var cscp =  (function () {
 			pattern.v1 = 8;  pattern.v1 = 1.8; 
 		}
 
+		if(jsu.isNull(pattern.pat)){
+			pattern.pat = WIDE_RANGE_PAT[0].id;
+		}
 
 
 		var html =''   // pat and tick  , multiple (wrjdd)
 
 		var td2 = '';
+		td2+= getCommon(pattern)
+		td2+= getDropDown( getArrRange(3, 18, 1, 'Ticks'), pattern.id +'wrtDd', null, thisAlias+".cpc", pattern.id, pattern.v1);
 
-		td2+= getDropDown( getArrRange(3, 18, 1, 'Ticks'), pattern.id +'wrtDd', null, thisAlias+".cpc", null, pattern.v1);
-
-		td2  += SP_3  + getDropDown(WIDE_RANGE_PAT , pattern.id +'wrpDd', 'width:100px', thisAlias+".cpc", null, pattern.pat)
+		td2  += SP_3  + getDropDown(WIDE_RANGE_PAT , pattern.id +'wrpDd', '', thisAlias+".cpc", pattern.id, pattern.pat)
 		
-		td2 += SP_3 + 'on' +SP_3 + getDropDown(RANGE_TYPE , pattern.id +'rangeType', null, thisAlias+".cpc", null, pattern.rangeType);
+		td2 += SP_3 + 'on' +SP_3 + getDropDown(RANGE_TYPE , pattern.id +'rangeType', null, thisAlias+".cpc", pattern.id, pattern.rangeType);
 
 		
-		td2 += SP_3 + ' with WR Min' +SP_3 + 	getDropDown( getArrRange(120, 18, 20, ' %'), pattern.id +'wrjDd', null, thisAlias+".cpc", null, pattern.v2)
+		td2 += SP_3 + ' with WR Min' +SP_3 + 	getDropDown( getArrRange(120, 18, 20, ' %'), pattern.id +'wrjDd', pattern.id, thisAlias+".cpc", null, pattern.v2)
 		+"  of Prev Ticks"
+
+
+		var param = 'patternNg' + ':'+pattern.id; 
+		td2+= csh.gept(pattern, CP_CS,  param);
+		td2+= SP_3 + csh.delIcon(param) ;
+
+
 		return td2;
 		// return '<tr>' + createTd( doBold('Wide Range' )) + createTd( td2) +'</tr>';
 
@@ -811,10 +1004,14 @@ var cscp =  (function () {
 			pattern.v1 = 4;
 		}
 
+		if(jsu.isNull(pattern.pat)){
+			pattern.pat = MASTER_CANDLE_PAT[0].id;
+		}
+
 		// var cbId = cpObj.id+cpObj.type+cpType.id;
 
 		var td2 = '';
-
+		td2+= getCommon(pattern)
 		td2 += getDropDown( getArrRange(2, 18, 1, 'Inside Candles'), pattern.id +'mciDd', null, thisAlias+".cpc", pattern.id, pattern.v1);
 
 		td2 += SP_3 +  getDropDown(MASTER_CANDLE_PAT , pattern.id +'mcpDd', null, thisAlias+".cpc", pattern.id, pattern.pat)
@@ -834,6 +1031,11 @@ var cscp =  (function () {
 			 	td2+= ' Only First Breakout / Down . ' + htmlU.getSpan('Works in Live Market','grey', 10 );
 		 	}
 		 }
+
+		 var param = 'patternNg' + ':'+pattern.id; 
+		 td2 += csh.gept(pattern, CP_CS,  param);
+		 
+		td2+= SP_3 + csh.delIcon(param) ;
 
 		return td2;
 
@@ -856,91 +1058,6 @@ var cscp =  (function () {
 
 
 
-	function addChartPattern(indi, subType, srchPattern){
-		var patternNg = mtgv.cs.screenerData.patternNg;
-
-		var patternObj = null;
-
-		if(jsu.containsString(['bullCs', 'bearCs'   , 'odCs' , 'haCs' ,'popBul' ,'popBear' , 'tri' , 'chn', 'tl', 'hhll'] , indi)){
-
-			for(var i= 0;i< patternNg.length; i++){
-
-				if(patternNg[i].indi == indi){
-
-					patternObj = patternNg[i];
-
-					var id = patternObj.id+'patternNg'+srchPattern;
-
-					 $( "#"+id)  .prop('checked', true);
-
-/*
-					if(jsu.isNull(patternObj.pat)){
-						patternObj.pat =srchPattern; // first time...
-
-
-					}else{
-						var patterns  = patternObj.pat.split(",");
-						var already = false;
-
-						for(var j=0;j< patterns.length ;j++){
-
-							var pattern = patterns[j];
-
-							if(pattern == srchPattern){
-								already = true;
-								break;
-							}
-						}
-
-						if(!already){
-							if(patterns.length ==0)  {
-								patternObj.pat =srchPattern; // first time...
-							}else{
-								patternObj.pat =  patternObj.pat + ',' +   srchPattern; // first time...
-							}
-						}
-					}
-
-*/	
-					break;
-				
-				}
-			}
-		}
-
-		if(patternObj == null){  // case of WR / NR and new Candle / HA type
-			var id =  myTsrScreener.getNextId( 'patternNgId');
-
-			patternObj = { id :id,  type : 'patternNg' ,   indi: indi  }
-
-			if(indi == 'masCan' || indi == 'narRng'){
-				patternObj.firstBoBd = true;
-			}
-
-
-			patternNg.push(patternObj);
-
-			var def = jsu.getObjFrmArr( CP_FIELDS  , patternObj.indi);
-		
-			var html = '';
-
-			
-			html =  getRows(patternObj, def, srchPattern);
-			 
-			
-		    $('#cpCsCtrlTab').append( html);
-
-		}
-
-
-		
-
-	    chartPatternChange(id);
-	    csu.dsf();
-
-	}
-
-
 
 
 	function chartPatternChange(id){
@@ -952,21 +1069,24 @@ var cscp =  (function () {
 		for (var i=0 ;i< patternNg.length ; i++){
 			var pattern = patternNg [i];
 
+
+			if(pattern.id != id){
+				continue;
+			}
+
 			pattern.cpTick = htmlU.getInputVal(pattern.id+'cpTick');
 			pattern.tickPeriod = htmlU.getInputVal(pattern.id+'tickPeriod');
 
 			if(pattern.indi == 'narRng'){
-				pattern.pat =  htmlU.getInputVal(pattern.id +'nrpDd');
-				pattern.v1 =  htmlU.getInputVal(pattern.id +'nrtDd');
-				pattern.rangeType =  htmlU.getInputVal(pattern.id +'rangeType');
-
+				
 				pattern.goodData = true;
+				// if(pattern.id == id){
 
-				if(pattern.id == id){
+
 					 // console.log ('ha ha');
 					 var td2 = getNrTd(pattern);
 					 htmlU.addMsgToDiv( pattern.id + 'Td2Div' , true,  td2);
-				}
+				// }
 
 			}else if(pattern.indi == 'wideRng'){
 				pattern.pat =  htmlU.getInputVal(pattern.id +'wrpDd');
@@ -989,12 +1109,12 @@ var cscp =  (function () {
 
 				 // ,
 
-				if(pattern.id == id){
+				// if(pattern.id == id){
 					 // console.log ('ha ha');
 					 var td2 = getMcTd(pattern);
 					 htmlU.addMsgToDiv( pattern.id + 'Td2Div' , true,  td2);
 
-				}
+				// }
 
 
 
@@ -1194,9 +1314,55 @@ var cscp =  (function () {
 
 	}
 
+	function ngSearch(item, filterDef, params ){
+
+
+
+		paintFilterRow(params[0], params[1] , params[2] );
+	}
+
+
+	function paintFilterRow(type, subType, srchPattern) {
+		// { html: html, id: id }
+
+		mtgv.cs.editActive = [];
+		let newFilterRow = addNewFilter(type, subType, srchPattern);
+
+		let filterTable = $("#" + CS_FILTERS_TABLE);
+		
+		filterTable.append(newFilterRow.html);
+
+		mtgv.cs.editActive.push(newFilterRow); 
+
+		addFilterChange(type, subType, newFilterRow["id"]);
+
+		
+		csh.sib(false);
+	}
 
 
 	return {
+
+		// New Starts 
+
+		gar : getAllRows,
+
+		gfr : getFormRow,
+
+		gftd : getFormTd,
+
+
+		anf : addNewFilter,
+
+		afc : addFilterChange,
+
+		pfr : paintFilterRow,
+
+		ngs : ngSearch,
+
+		// New Ends
+
+
 		cpht : getCpHtml,
 		acp : addChartPattern,
 		cpc : chartPatternChange,

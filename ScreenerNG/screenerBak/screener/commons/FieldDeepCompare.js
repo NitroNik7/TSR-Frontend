@@ -43,8 +43,7 @@ var csfdc =  (function () { // CS Field Deep Compare
 
 
 
-	function addNew(type){
-		// init();
+	function addNewRow(type){
 
 		var obj = jsu.getObjFrmArr(PARAM_LIST , type);
 
@@ -60,9 +59,30 @@ var csfdc =  (function () { // CS Field Deep Compare
 
 		objArr.push(finObj); 
 
-		$('#' + obj.tab ).append( getTrHtml(finObj, type));
+		let html = getTrHtml(finObj, type);
 
-		csu.dsf(); // displaySelectedFields();	
+
+		return { html : html , id : id};
+		
+
+	}
+
+
+
+	function addNew(type){
+		// init();
+
+		var obj = jsu.getObjFrmArr(PARAM_LIST , type);
+
+		let json = addNewRow(type);
+
+		$('#' + obj.tab).append( json.html);
+
+	    csu.dsf(); // displaySelectedFields();	
+
+		// $('#' + obj.tab ).append( getTrHtml(finObj, type));
+
+		// csu.dsf(); // displaySelectedFields();	
 	}
 
 	
@@ -80,6 +100,12 @@ var csfdc =  (function () { // CS Field Deep Compare
 
 		var obj = jsu.getObjFrmArr(PARAM_LIST , objType);
 
+		if(mtgv.cs.ng){
+				var html = '<tr id=' + compObj.id + '>'
+						+ createTd(createDiv(compObj.id + 'Td2Div', html, null)) + '</tr>';
+				return html;			
+			}
+
 		return  csh.dynTr(finObj, {td1 : doBold( obj.label ), td2 : html })
 	}
 
@@ -91,10 +117,13 @@ var csfdc =  (function () { // CS Field Deep Compare
 	  	var id = finObj.id;
 
 	  	var params =  id +  PARAM_DELIM  + finObj.strat ;
-
+	  	var obj = jsu.getObjFrmArr(PARAM_LIST , objType);
 	  	var html =''
 
-	  	
+	  	if(mtgv.cs.ng){
+			html += doBold(obj.label)+BREAK_LINE;
+
+		}
 
 	  	html+=  SP_2 +  getDropDown(STRAT_OPT, id+'strat', null,func, params, finObj.strat);	
 
@@ -502,6 +531,8 @@ var csfdc =  (function () { // CS Field Deep Compare
 
 	return {
 		an : addNew,
+
+		anr : addNewRow,
 		gth : getTrHtml,
 
 		gpd : getPriceDenom,

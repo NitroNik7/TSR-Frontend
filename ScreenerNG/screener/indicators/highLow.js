@@ -106,13 +106,23 @@ var cshl =  (function () {
 
 
 	function getAllRows(){
-
+		var scrData = mtgv.cs.screenerData;
 
 		let html ='';
 
 		if(!jsu.isMigContext()){
+			var hlObject = mtgv.cs. screenerData.hlSustain;
 
-			html+= getHlSustainRow();
+			if(mtgv.cs.ng){
+				if( !jsu.isNullDef(hlObject.hlSusHist) && jsu.isNotNull(hlObject.hlSus) ){
+
+					html+= getHlSustainRow();
+				}
+
+			}else{
+				html+= getHlSustainRow();
+			}
+
 		}
 
 		
@@ -144,18 +154,60 @@ var cshl =  (function () {
 	}
 
 
-	function getFormRow(type, id){ //MA_PRICE_OPTIONS
+	function getFormRow(type, id, state){ //MA_PRICE_OPTIONS
 
 		let obj =   csu.gso(type, id)
 
-		if(type=='hls'){ // add new Intraday.....
+		if(type=='hls'  || type == 'hlSustain'){
+			obj= mtgv.cs. screenerData.hlSustain;
+		}
+
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
+
+		if(type=='hls'  || type == 'hlSustain'){ // add new Intraday.....
     	    return getHlSustainRow();
-		}else if(type=='anhl'){
+		}else if(type=='anhl'  || type =='hlComp' ){
     	     return getNewHlCompHtml(obj);
-		}else if(type=='anhlr'){
+		}else if(type=='anhlr'   || type =='hlRange' || type =='hlRangeComp'){
     	     return getNewHlRangeNgHtml(obj);
-		}else if(type == 'hlc'){
+		}else if(type == 'hlc' || type =='priceHlComp' || type =='pricHl'){
     	     return getHlCompHtml(obj);
+		}
+	}
+
+
+	function getFormTd(type, id, state){ //MA_PRICE_OPTIONS
+
+		let obj =   csu.gso(type, id)
+
+		if(type=='hls'  || type == 'hlSustain'){
+			obj= mtgv.cs. screenerData.hlSustain;
+		}
+
+
+		if(jsu.isNotNull(state)){
+			if(state == 'enable')  obj.disabled  = false;
+			if(state == 'disable') obj.disabled  = true	;
+		}else{
+			 obj.disabled  = false;
+		}
+
+
+		if(type=='hls'  || type == 'hlSustain'){ // add new Intraday.....
+    	    return hlSustainTd();
+		}else if(type=='anhl'  || type =='hlComp' ){
+    	     return getNewHlCompTd(obj);
+		}else if(type=='anhlr'   || type =='hlRange' || type =='hlRangeComp'){
+    	     return getNewHlRangeNgTd(obj);
+		}else if(type == 'hlc' || type =='priceHlComp' || type =='pricHl'){
+    	     return getHlCompTd(obj);
 		}
 	}
 
@@ -195,7 +247,7 @@ var cshl =  (function () {
 
 		let html =''
 
-		if(type=='hls'){
+		if(type=='hls'  || type == 'hlSustain'){
 			var highLowObj = mtgv.cs. screenerData.hlSustain;
 
 			// highLowObj
@@ -241,7 +293,7 @@ var cshl =  (function () {
 
 	function addFilterChange(type, id){ //MA_PRICE_OPTIONS
 		
-		if(type=='hls'){ // add new Intraday
+		if(type=='hls' || type == 'hlSustain'){ // add new Intraday
     	    hlSustainChg()
 		}else if(type=='anhl'){
     	    hlNewChg(id)
@@ -432,18 +484,17 @@ var cshl =  (function () {
 **********************************************************************************************/
 
 
-
-
-
-	function getNewHlCompHtml(hlComp){
-
-
+	function getNewHlCompTd(hlComp){
 		var csTypeId = hlComp.id;
 		var func = 'cshl.hlnc';
 
 		var fncParam = csTypeId ;;
 
 		var html='';
+
+
+		html+= htmlU.doBold('New High/Low : ') ;
+
 
 		html+= SP_3 + getInputTxtParam( csTypeId+'period' , 3, hlComp.period, func , csTypeId)
 
@@ -464,7 +515,21 @@ var cshl =  (function () {
 
 
 		var param = 'hlComp:'+csTypeId; 
+
+		html+= csh.gept(hlComp, HL_CS,  param);
+
 		html+= SP_3 + csh.delIcon(param) ;
+
+		return html;
+	}
+
+
+	function getNewHlCompHtml(hlComp){
+
+
+		
+
+		let  html = getNewHlCompTd(hlComp)
 
 		html =  createDiv(hlComp.id+'Td2Div', html);
 
@@ -508,6 +573,8 @@ var cshl =  (function () {
 			var text = '';
 			obj.csType = HL_CS;
 
+
+			text += htmlU.doBold('New High/Low : ') ;
 
 			if( jsu.isNumber(obj.period) && Number(obj.period) >0){
 				text +=  obj.period ;
@@ -572,11 +639,7 @@ var cshl =  (function () {
 									New High / Lows Range Flexible
 **********************************************************************************************/
 
-
-
-
-	function getNewHlRangeNgHtml(hlRangeComp){
-
+	function getNewHlRangeNgTd(hlRangeComp){
 
 		var csTypeId = hlRangeComp.id;
 		var func = 'cshl.hlrc';
@@ -584,6 +647,8 @@ var cshl =  (function () {
 		var fncParam = csTypeId ;;
 
 		var html='';
+
+		html+= htmlU.doBold('New High/Low Range : ') ;
 
 		html+= SP_3 + getInputTxtParam( csTypeId+'period' , 3, hlRangeComp.period, func , csTypeId)
 
@@ -600,7 +665,19 @@ var cshl =  (function () {
 
 
 		var param = 'hlRangeComp:'+csTypeId; 
+
+		html+= csh.gept(hlRangeComp, HL_CS,  param);
+
 		html+= SP_3 + csh.delIcon(param) ;
+
+		return html;
+	}
+
+
+	function getNewHlRangeNgHtml(hlRangeComp){
+
+
+		let html = getNewHlRangeNgTd(hlRangeComp);
 
 		html =  createDiv(hlRangeComp.id+'Td2Div', html);
 		return '<tr id="'+hlRangeComp.id+'">' +createTd( html ) +'</tr>';
@@ -641,7 +718,7 @@ var cshl =  (function () {
 			var goodData = true;
 			var text = '';
 
-
+			text += htmlU.doBold('New High/Low Range : ') ;
 
 			if( jsu.isNumber(obj.period) && Number(obj.period) >0){
 				text +=  obj.period ;
@@ -722,7 +799,7 @@ var cshl =  (function () {
 			
 		// }
 
-		return '<tr id="hlSustain">' +createTd(createDiv( 'hlSusDiv' , td ))  + '</tr>';
+		return '<tr id="hlSustain">' +createTd(createDiv( 'hlSustainTd2Div' , td ))  + '</tr>';
 
 
 	}
@@ -742,6 +819,12 @@ var cshl =  (function () {
 		if(!mtgv.cs.ng){
 			periodMap.splice(0, 0, {id:NA_VAL, label : 'Select One' });	
 		}
+
+
+		if(mtgv.cs.ng){
+			if ( jsu.isNull(highLowObj.hlSusHist) )  highLowObj.hlSusHist = HL_PERIOD[1].id;
+			if ( jsu.isNull(highLowObj.hlSus) )  highLowObj.hlSus = 'high';
+		}
 		
 
 
@@ -750,7 +833,7 @@ var cshl =  (function () {
 
 			
 
-		var td = 'New  Intraday ' + val ;
+		var td = doBold( 'New Intraday '+ " : " + val  );
 
 		if( jsu.isNullDef(highLowObj.hlSusHist)){
 			td+= SP_3 +  htmlU.getSpan("Works for Intraday Only when Price has hit a new High/Low and is sustaining ", 'grey',10) ; 
@@ -769,7 +852,10 @@ var cshl =  (function () {
 			var highLowObj = mtgv.cs. screenerData.hlSustain;
 			highLowObj.id = 'hlSustain';
 
-			var selParam =  'hlSus' + ':' + 'hlSus'
+			var selParam =  'hlSustain' + ':' + 'hlSustain'
+
+			td+= csh.gept(highLowObj, HL_CS,  selParam);
+
 			td+= SP_3 + csh.delIcon(selParam) ; // '<a  onClick="javascript:'+thisAlias+'.delRow(\''+delObj+'\');"><font size="4" color="red"><span class="glyphicon glyphicon-remove"></span></font> </a> ';
 
 			
@@ -788,7 +874,12 @@ var cshl =  (function () {
 		hlObject. hlSusHist  =  htmlU.getInputVal('hlSusHistDd'); ;
 		hlObject. hlSus = htmlU.getInputVal('hlSusDd');  ;
 
-		htmlU.addMsgToDiv(  'hlSusDiv'	, true, hlSustainTd());
+		if(! jsu.isNullDef(hlObject.hlSusHist)  &&  jsu.isNull(hlObject. hlSus) ){
+			hlObject.hlSus = 'high';
+		}
+
+
+		htmlU.addMsgToDiv(  'hlSustainTd2Div'	, true, hlSustainTd());
 		
 		hlObject. hlSus = htmlU.getInputVal('hlSusDd');  // setting again when doing for first time...
 
@@ -798,9 +889,11 @@ var cshl =  (function () {
 
 	function validateHlSus(validResults){
 
+		console.log('vhls')
+
 		var hlObject = mtgv.cs. screenerData.hlSustain;
 
-		if( jsu.isNullDef(hlObject.hlSusHist)){
+		if( jsu.isNullDef(hlObject.hlSusHist) || jsu.isNull(hlObject.hlSus) ){
 			hlObject.hasData = false;
 			return;
 		}
@@ -811,12 +904,13 @@ var cshl =  (function () {
 		var hlObj = jsu.getObjFrmArr(HIGH_LOW, hlObject.hlSus);
 
 
-		hlObject.valiMsg =  'Made new ' + periodObj.label + " " + hlObj.label + ' and sustaining vis-a-vis previous day' ;
+		hlObject.valiMsg =  htmlU.doBold("Intraday High/Low : ") +   'Made new ' + periodObj.label + " " + hlObj.label + ' and sustaining vis-a-vis previous day' ;
 
 		// hlObject.id = 
 
+		hlObject.csType=HL_CS ;
 
-		var selParam =  'hlSus' + ':' + 'hlSus'
+		var selParam =  'hlSustain' + ':' + 'hlSustain'
 		if(hlObject.goodData){
 			// validResults.validFieldCount++;
 			csh.cdt(hlObject,hlObject.valiMsg, validResults, selParam, true);
@@ -855,7 +949,13 @@ var cshl =  (function () {
 	function getHlCompTd(obj){
 		var id = obj.id;
 		var func = 'cshl.hlcc';
-		var html =  'Latest Price ' + getDropDown(NEAR_FAR, id+'nearFar', null,func, id, obj.nearFar);
+
+
+		var html = '';
+		html+= htmlU.doBold('Compare With Hist High / Lows : ') ;
+
+
+		html +=  'Latest Price ' + getDropDown(NEAR_FAR, id+'nearFar', null,func, id, obj.nearFar);
 		html+=  SP_3 ;
 		
 		html+=getDropDown(PERCENT_CMP, id+'pcCmp', null,func, id, obj.pcCmp)
@@ -872,6 +972,8 @@ var cshl =  (function () {
 		html+=  SP_3 ;
 		html+= getDropDown(HIGH_LOW, id+'hl', null,func, id, obj.hl)
 		var param = 'pricHl:'+id; // Vol Compare
+		html+= csh.gept(obj, HL_CS,  param);
+
 		html+= SP_3 + csh.delIcon(param) ; // '<a  onClick="javascript:'+thisAlias+'.delRow(\''+delObj+'\');"><font size="4" color="red"><span class="glyphicon glyphicon-remove"></span></font> </a> ';
 
 		return html;
@@ -904,7 +1006,10 @@ var cshl =  (function () {
 			var nearFar = getObjFrmArr( NEAR_FAR,  obj.nearFar); 
 			var hlPeriod = getObjFrmArr( HL_PERIOD_HIST, obj.hlPeriod);
 			var hl = getObjFrmArr( HIGH_LOW, obj.hl);
-			var text = 'Close Price ' +nearFar.label + ' ' + pcCmp.label  + ' Of ' + hlPeriod.label + ' ' +hl.label;
+
+			var text = htmlU.doBold('Compare With Hist High / Lows : ') ;
+
+			 text += 'Close Price ' +nearFar.label + ' ' + pcCmp.label  + ' Of ' + hlPeriod.label + ' ' +hl.label;
 
 			obj.csType = HL_CS;
 			obj.goodData = true;
@@ -960,7 +1065,8 @@ var cshl =  (function () {
 
 		
 		if(!jsu.isMigContext() && mtgv.mtpp.crossFreq){
-			filer.push({  id :  "hlSusDiv" , label : 'New Intraday High'  , sLabel : 'New Intraday High'  , tab : HL_CS, type : 'dd' }) ;	
+			filer.push({  id :  "hlSusDiv" , label : 'New Intraday High'  , sLabel : 'New Intraday High'  ,
+			 tab : HL_CS, type : 'dd' }) ;	
 		}
 		
 		
@@ -968,7 +1074,7 @@ var cshl =  (function () {
 		// JavaScript:cshl.anhl('hl');
 
 		let obj = {  id :  "hlComp" , label : 'New High Low '  , sLabel : 'New High , New Low '  , tab : HL_CS, 
-			type : 'btn'  , filtDef : {obj: thisObject, fnc: 'anhl' , params:  'hl' } };
+			type : 'btn'  , filtDef : {obj: thisObject, fnc: 'anhl' , params:  'hl' } , mobFilter: "hlCs_newHls"};
 
 		defFilter.push(obj)
 
@@ -976,16 +1082,49 @@ var cshl =  (function () {
 		filer.push(obj) ;    
 
 		filer.push({  id :  "hlRangeComp" , label : 'New High Low within '    , tab : HL_CS, 
-			type : 'btn'  , filtDef : {obj:'cscmn', fnc: 'anhlr' , params:  'hl' } }) ;  
+			type : 'btn'  , filtDef : {obj:'cscmn', fnc: 'anhlr' , params:  'hl' } , mobFilter: "hlCs_newHlrange"}) ;  
 
 
 		filer.push({  id :  "priceHlComp" , label : 'High Low Range Compare '  , sLabel : 'OHLC Trending '  , tab : HL_CS, 
-			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'hlc' , params:  'hl' } }) ; 
+			type : 'btn'  , filtDef : {obj:thisObject, fnc: 'hlc' , params:  'hl' } , mobFilter: "hlCs_compHistHl"}) ; 
 
 		return filer ;
 
 	}
 
+	function ngSearch(item, filterDef, params ){
+
+		let id = ''
+
+		let type = item.id
+
+		if(type =='hlSusDiv'){ // add new Intraday
+    	    id = 'hls'
+		}else if(type=='hlComp'){
+    	    id = 'anhl'
+		}else if(type=='hlRangeComp'){
+    	   id = 'anhlr'
+		}else if(type == 'priceHlComp'){
+    	   id ='hlc'
+		}
+
+/*
+	if(type=='hls'){ // add new Intraday
+    	    hlSustainChg()
+		}else if(type=='anhl'){
+    	    hlNewChg(id)
+		}else if(type=='anhlr'){
+    	    hlRangeNgChg(id);
+		}else if(type == 'hlc'){
+    	    hlCompChg(id)
+		}
+*/
+
+
+
+
+		paintFilterRow(id);
+	}
 
 
 	function paintFilterRow(type) {
@@ -1003,7 +1142,7 @@ var cshl =  (function () {
 		
 		addFilterChange(type, newFilterRow["id"]);
 
-		
+		csh.sib(false);
 
 	}
 
@@ -1019,12 +1158,15 @@ var cshl =  (function () {
 
 		gfr : getFormRow,
 
+		gftd : getFormTd,
+
 		anf : addNewFilter,
 
 		afc : addFilterChange,
 
 		pfr : paintFilterRow,
 
+		ngs : ngSearch,
 		// New Ends
 
 

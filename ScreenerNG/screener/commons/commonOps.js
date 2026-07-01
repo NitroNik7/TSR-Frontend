@@ -736,3 +736,86 @@ var TICK_TREND_MAP =[
 		{id : 'vol'  , label: 'Volume Trending' , obj: 'dynvolTrendNg'  ,  nextId : 'volTrendId', csType : VOL_CS  },
 	];
 
+
+
+
+let tsrCsNgCss = `
+.tsrCsFilter {
+    text-wrap: nowrap;
+    font-size: 16px;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    cursor: pointer;
+}
+
+.tsrCsFilter:hover {
+    background: none !important;
+    cursor: default;
+}
+
+.tsrCsNgArrowEle {
+    position: relative;
+    top: 14px;
+    height: 3px;
+    width: 50px;
+    background-color: rgb(13 110 253);
+    background-color: #91989e;
+    background-color: #19e5ff;
+}
+
+.tsrCsNgArrowEle::after,
+.tsrCsNgArrowEle::before {
+    content: "";
+    position: absolute;
+    height: 50px;
+    width: 25px;
+    background-color: rgb(13 110 253);
+    background-color: rgb(108 117 125);
+    background-color: white;
+    
+}
+
+.tsrCsNgArrowEle::after {
+    transform: rotate(45deg);
+    top: -38px;
+}
+
+.tsrCsNgArrowEle::before {
+    transform: rotate(-45deg);
+    top: -11px;
+    left: -5px;
+}
+
+
+.tsrCsNgInstrBox a:hover { /* modified */
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: white;
+    color: rgb(13 110 253);
+}
+
+
+.tsrMoCsCatButton.active {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    font-weight: bold;
+}
+
+.miVertDivider {
+    align-items: center;
+}
+
+.miVertLine {
+    border-top: 1px solid #ccc;
+    width: 100%;
+}
+
+.tsrCsNgDisabledFilter {
+	pointer-events : none;
+	opacity : 0.5;
+}
+
+
+`;

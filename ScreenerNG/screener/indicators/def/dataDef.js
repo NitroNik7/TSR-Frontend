@@ -1,15 +1,16 @@
 
-var csTabDataDefNg =  (function () {
+var csTabDataDefNg = (function () {
 
     var htmlU = mintHtmlUtil;
     var jsu = mintJsUtil;
-// ==============================================
-//                  PRICE_ACTION_DEF
-// ==============================================
+    // ==============================================
+    //                  PRICE_ACTION_DEF
+    // ==============================================
 
+    let baseUrl = jsu.getStaticUrl();
 
     var PRICE_ACTION_DEF = [
-        { id: "price", label: "Price", title: "Price", func: "csp.pfr", params: ["csPrice"], subMenu: null, addOnce: true, premium: false },
+        { id: "price", label: "Price", title: "Price", func: "csp.pfr", params: ["csPrice"], subMenu: null, addOnce: true, premium: false, url: "http://127.0.0.1:5500/Temp/index.html" },
         { id: "gainLoss", label: "Gain Loss in %", title: "Gain Loss in %", func: "csp.pfr", params: ["priceGainLoss"], subMenu: null, addOnce: true, premium: false },
         { id: "ohlcCompare", label: "OHLC Compare", title: "Add OHLC Compare", func: "csp.pfr", params: ["ac"], subMenu: null, addOnce: false, premium: false },
         { id: "ohlcTrending", label: "OHLC Trending", title: "Add OHLC Trending", func: "csp.pfr", params: ["atn"], subMenu: null, addOnce: false, premium: false },
@@ -23,6 +24,9 @@ var csTabDataDefNg =  (function () {
         { id: "orNg", label: "Open Range Strategies", title: "Add Open Range Strategies", func: "csp.pfr", params: [OPEN_RANGE_NG], subMenu: null, addOnce: false, premium: true },
         { id: "gapRunAway", label: "Previous Range Strategies", title: "Add Previous Range Strategies", func: "csp.pfr", params: [PREV_RANGE_BOBD], subMenu: null, addOnce: false, premium: true },
         { id: "gapFill", label: "Gap Strategies", title: "Add Gap Strategies", func: "csp.pfr", params: [GAPS_NG], subMenu: null, addOnce: false, premium: true },
+        { id: OPEN_RANGE_OLD, label: "Open Range Breakout / Down(old)", title: "", func: "csp.pfr", params: [OPEN_RANGE_OLD], subMenu: null, addOnce: false, premium: true },
+        { id: "gapRunAwayOld", label: "Gap Up/Down Run Away (old)", title: "", func: "csp.pfr", params: [GAP_RUNAWAY], subMenu: null, addOnce: false, premium: true },
+        { id: "gapFillOld", label: "Gap Fill / Potential (old)", title: "", func: "csp.pfr", params: [GAP_FILL], subMenu: null, addOnce: false, premium: true },
     ]
 
     // ==============================================
@@ -51,10 +55,10 @@ var csTabDataDefNg =  (function () {
     // ==============================================
 
     var HIGH_LOWS_DEF = [
-        { id: "", label: "New Intraday", title: "Add New Intraday High Lows", func: "cshl.pfr", params: ['hls'], subMenu: null, addOnce: true, premium: false }, // todo need a function
-        { id: "", label: "New High Lows", title: "Add New High Lows", func: "cshl.pfr", params: ["anhl"], subMenu: null, addOnce: false, premium: false },
-        { id: "", label: "New High Low Range", title: "Add New High Low Range", func: "cshl.pfr", params: ["anhlr"], subMenu: null, addOnce: false, premium: false },
-        { id: "", label: "Compare With Historical High Lows", title: "Compare With Historical High Lows", func: "cshl.pfr", params: ["hlc"], subMenu: null, addOnce: false, premium: false },
+        { id: "hls", label: "New Intraday", title: "Add New Intraday High Lows", func: "cshl.pfr", params: ['hls'], subMenu: null, addOnce: true, premium: false }, // todo need a function
+        { id: "newHls", label: "New High Lows", title: "Add New High Lows", func: "cshl.pfr", params: ["anhl"], subMenu: null, addOnce: false, premium: false },
+        { id: "newHlrange", label: "New High Low Range", title: "Add New High Low Range", func: "cshl.pfr", params: ["anhlr"], subMenu: null, addOnce: false, premium: false },
+        { id: "compHistHl", label: "Compare With Historical High Lows", title: "Compare With Historical High Lows", func: "cshl.pfr", params: ["hlc"], subMenu: null, addOnce: false, premium: false },
     ];
 
     // ==============================================
@@ -62,8 +66,8 @@ var csTabDataDefNg =  (function () {
     // ==============================================
 
     var BETA_VOLS_DEF = [
-        { id: "priceRange", label: "Price Range", title: "Add Price Range", func: "csu.opsCompare", params: ["prc"], subMenu: null, addOnce: false, premium: false },
-        { id: "Beta", label: "Beta", title: "Add Beta", func: "csu.opsCompare", params: ["beta"], subMenu: null, addOnce: false, premium: false },
+        { id: "priceRange", label: "Price Range", title: "Add Price Range", func: "csbv.pfr", params: ["prc"], subMenu: null, addOnce: false, premium: false },
+        { id: "Beta", label: "Beta", title: "Add Beta", func: "csbv.pfr", params: ["beta"], subMenu: null, addOnce: false, premium: false },
     ]
 
     // ==============================================
@@ -84,18 +88,18 @@ var csTabDataDefNg =  (function () {
     // ==============================================
 
     var STRENGTH_DEF = [
-        { id: "", label: "Tech Strength", title: "Add Tech Strength", func: "csstr.pfr", params: ["techStrComp"], subMenu: null, addOnce: false, premium: false },
-        { id: "", label: "Tech Rank", title: "Add Tech Rank", func: "csstr.pfr", params: ["techRankComp"], subMenu: null, addOnce: false, premium: false },
-        { id: "", label: "Returns", title: "Add Returns", func: "csstr.pfr", params: ["returnsComp"], subMenu: null, addOnce: false, premium: false },
-        { id: "", label: "Relative Price Strength", title: "Add Relative Price Strength", func: "csstr.pfr", params: ["relPriceStrComp"], subMenu: null, addOnce: false, premium: false },
-        { id: "", label: "TSR Growth Index", title: "Add TSR Growth Index", func: "csstr.pfr", params: ["gwthStrComp"], subMenu: null, addOnce: false, premium: false },
-        { id: "", label: "TSR Growth Rank", title: "Add TSR Growth Rank", func: "csstr.pfr", params: ["gwthRankComp"], subMenu: null, addOnce: false, premium: false },
-        { id: "", label: "TSR Value Index", title: "Add TSR Value Index", func: "csstr.pfr", params: ["valStrComp"], subMenu: null, addOnce: false, premium: false },
-        { id: "", label: "TSR Value Rank", title: "Add TSR Value Rank", func: "csstr.pfr", params: ["valRankComp"], subMenu: null, addOnce: false, premium: false },
-        { id: "", label: "TSR Profit Index", title: "Add TSR Profit Index", func: "csstr.pfr", params: ["pftStrComp"], subMenu: null, addOnce: false, premium: false },
-        { id: "", label: "TSR Profit Rank", title: "Add TSR Profit Rank", func: "csstr.pfr", params: ["pftRankComp"], subMenu: null, addOnce: false, premium: false },
-        { id: "", label: "TSR Stablity Index", title: "Add TSR Stablity Index", func: "csstr.pfr", params: ["stabStrComp"], subMenu: null, addOnce: false, premium: false },
-        { id: "", label: "TSR Stablity Rank", title: "Add TSR Stablity Rank", func: "csstr.pfr", params: ["stabRankComp"], subMenu: null, addOnce: false, premium: false },
+        { id: "techStr", label: "Tech Strength", title: "Add Tech Strength", func: "csstr.pfr", params: ["techStrComp"], subMenu: null, addOnce: false, premium: false },
+        { id: "techRank", label: "Tech Rank", title: "Add Tech Rank", func: "csstr.pfr", params: ["techRankComp"], subMenu: null, addOnce: false, premium: false },
+        { id: "addReturns", label: "Returns", title: "Add Returns", func: "csstr.pfr", params: ["returnsComp"], subMenu: null, addOnce: false, premium: false },
+        { id: "relPcStr", label: "Relative Price Strength", title: "Add Relative Price Strength", func: "csstr.pfr", params: ["relPriceStrComp"], subMenu: null, addOnce: false, premium: false },
+        { id: "tsrGrowthIdx", label: "TSR Growth Index", title: "Add TSR Growth Index", func: "csstr.pfr", params: ["gwthStrComp"], subMenu: null, addOnce: false, premium: false },
+        { id: "TsrGrowthRank", label: "TSR Growth Rank", title: "Add TSR Growth Rank", func: "csstr.pfr", params: ["gwthRankComp"], subMenu: null, addOnce: false, premium: false },
+        { id: "TsrValIdx", label: "TSR Value Index", title: "Add TSR Value Index", func: "csstr.pfr", params: ["valStrComp"], subMenu: null, addOnce: false, premium: false },
+        { id: "TsrValRank", label: "TSR Value Rank", title: "Add TSR Value Rank", func: "csstr.pfr", params: ["valRankComp"], subMenu: null, addOnce: false, premium: false },
+        { id: "tsrPftIdx", label: "TSR Profit Index", title: "Add TSR Profit Index", func: "csstr.pfr", params: ["pftStrComp"], subMenu: null, addOnce: false, premium: false },
+        { id: "tsrPftRank", label: "TSR Profit Rank", title: "Add TSR Profit Rank", func: "csstr.pfr", params: ["pftRankComp"], subMenu: null, addOnce: false, premium: false },
+        { id: "tsrStabIdx", label: "TSR Stablity Index", title: "Add TSR Stablity Index", func: "csstr.pfr", params: ["stabStrComp"], subMenu: null, addOnce: false, premium: false },
+        { id: "tsrStabRank", label: "TSR Stablity Rank", title: "Add TSR Stablity Rank", func: "csstr.pfr", params: ["stabRankComp"], subMenu: null, addOnce: false, premium: false },
     ];
 
 
@@ -108,6 +112,8 @@ var csTabDataDefNg =  (function () {
         { id: "maco", label: "Compare Two MA's", title: "Add Compare Two MA's", func: "csma.pfr", params: ["maco"], subMenu: null, addOnce: false, premium: false },
         { id: "maTrend", label: "Trending MA", title: "Add Trending MA", func: "csma.pfr", params: ["maTrend"], subMenu: null, addOnce: false, premium: true },
         { id: "maHist", label: "DIY Hist Compare", title: "Add DIY Hist Compare", func: "csma.pfr", params: ["maHist"], subMenu: null, premium: true, addOnce: false },
+        { id: "maOl", label: "MA vs Bollinger / Supertrend", title: "Compare Moving Average with Bollinger / Supertrend", func: "csma.pfr", params: ["maOl"], subMenu: null, premium: true, addOnce: false },
+
         { id: "maFakeBreak", label: "MA Fake Break", title: "Add MA Fake Break", func: "csma.pfr", params: ["maFakeBreak"], subMenu: null, addOnce: false, premium: true },
         { id: "maSupResBounce", label: "Bounced From MA", title: "Add Bounced From MA", func: "csma.pfr", params: ["maSupResBounce"], subMenu: null, addOnce: false, premium: true },
         { id: "maCon", label: "MA Convergence", title: "Add MA Convergence", func: "csma.pfr", params: ["maCon"], subMenu: null, addOnce: false, premium: true },
@@ -122,67 +128,67 @@ var csTabDataDefNg =  (function () {
 
     var TECH_OBOS_CODE = "obos";
     var OBOS_LIST = [
-        { id: "aroon", label: "Aroon Osc", title: "Add Aroon Oscillator", func: "cst.pfr", params: ["aroon", TECH_OBOS_CODE],  addOnce: false, premium: false },
-        { id: "cci", label: "CCI", title: "Add CCI (Commodity Channel Index)", func: "cst.pfr", params: ["cci", TECH_OBOS_CODE],  addOnce: false, premium: false },
-        { id: "mfi", label: "MFI", title: "Add MFI (Money Flow Index)", func: "cst.pfr", params: ["mfi", TECH_OBOS_CODE],  addOnce: false, premium: false },
-        { id: "rsi", label: "RSI (Fast)", title: "Add RSI (Fast)", func: "cst.pfr", params: ["rsi", TECH_OBOS_CODE],  addOnce: false, premium: false },
-        { id: "rsis", label: "RSI", title: "Add RSI ( Relative Strength Indicator)", func: "cst.pfr", params: ["rsis", TECH_OBOS_CODE],  addOnce: false, premium: false },
-        { id: "stof", label: "Sto Fast", title: "Add Stochastic Fast", func: "cst.pfr", params: ["stof", TECH_OBOS_CODE],  addOnce: false, premium: false },
-        { id: "stos", label: "Sto Slow", title: "Add Stochastic Slow", func: "cst.pfr", params: ["stos", TECH_OBOS_CODE],  addOnce: false, premium: false },
-        { id: "stoRsi", label: "Sto RSI (FAST)", title: "Add Stochastic RSI", func: "cst.pfr", params: ["stoRsi", TECH_OBOS_CODE],  addOnce: false, premium: false },
-        { id: "stoRsiSlow", label: "Sto RSI", title: "Add Stochastic RSI", func: "cst.pfr", params: ["stoRsiSlow", TECH_OBOS_CODE] ,  addOnce: false, premium: false},
-        { id: "uo", label: "UO", title: "Add UO (Ultimate Oscillator)", func: "cst.pfr", params: ["uo", TECH_OBOS_CODE],  addOnce: false, premium: false },
-        { id: "wr", label: "W%R", title: "Add W%R ( Williams %R)", func: "cst.pfr", params: ["wr", TECH_OBOS_CODE],  addOnce: false, premium: false },
+        { id: "aroon", label: "Aroon Osc", title: "Add Aroon Oscillator", func: "cst.pfr", params: ["aroon", TECH_OBOS_CODE], addOnce: false, premium: false },
+        { id: "cci", label: "CCI", title: "Add CCI (Commodity Channel Index)", func: "cst.pfr", params: ["cci", TECH_OBOS_CODE], addOnce: false, premium: false },
+        { id: "mfi", label: "MFI", title: "Add MFI (Money Flow Index)", func: "cst.pfr", params: ["mfi", TECH_OBOS_CODE], addOnce: false, premium: false },
+        { id: "rsi", label: "RSI (Fast)", title: "Add RSI (Fast)", func: "cst.pfr", params: ["rsi", TECH_OBOS_CODE], addOnce: false, premium: false },
+        { id: "rsis", label: "RSI", title: "Add RSI ( Relative Strength Indicator)", func: "cst.pfr", params: ["rsis", TECH_OBOS_CODE], addOnce: false, premium: false },
+        { id: "stof", label: "Sto Fast", title: "Add Stochastic Fast", func: "cst.pfr", params: ["stof", TECH_OBOS_CODE], addOnce: false, premium: false },
+        { id: "stos", label: "Sto Slow", title: "Add Stochastic Slow", func: "cst.pfr", params: ["stos", TECH_OBOS_CODE], addOnce: false, premium: false },
+        { id: "stoRsi", label: "Sto RSI (FAST)", title: "Add Stochastic RSI", func: "cst.pfr", params: ["stoRsi", TECH_OBOS_CODE], addOnce: false, premium: false },
+        { id: "stoRsiSlow", label: "Sto RSI", title: "Add Stochastic RSI", func: "cst.pfr", params: ["stoRsiSlow", TECH_OBOS_CODE], addOnce: false, premium: false },
+        { id: "uo", label: "UO", title: "Add UO (Ultimate Oscillator)", func: "cst.pfr", params: ["uo", TECH_OBOS_CODE], addOnce: false, premium: false },
+        { id: "wr", label: "W%R", title: "Add W%R ( Williams %R)", func: "cst.pfr", params: ["wr", TECH_OBOS_CODE], addOnce: false, premium: false },
     ];
 
     var OVERLAYS_LIST = [
-        { id: "", label: "Price & Bollinger", title: "Add Add Price Comparision With Bollinger Band", func: "cst.pfr", params: ["bb", "price"],  addOnce: false, premium: false },
-        { id: "", label: "Bollinger Squeeze", title: "Add Bollinger Bands Squeeze", func: "cst.pfr", params: ["bb", "squeeze"],  addOnce: false, premium: false },
-        { id: "", label: "Ichimoku (old)", title: "Add Ichimoku Old", func: "ichiOld.aim", params: ["techIchiComp"],  addOnce: false, premium: false },
-        { id: "", label: "Ichimoku", title: "Add Ichimoku Cloud", func: "cst.pfr", params: ["ichimoku", "ichimoku"],  addOnce: false, premium: false },
-        { id: "", label: "Price & Keltner", title: "Add Price Comparision With Keltner Channel", func: "cst.pfr", params: ["keltner", "price"],  addOnce: false, premium: false },
-        { id: "", label: "PSAR", title: "Add Parabolic SAR", func: "cst.pfr", params: ["psar", "psar"],  addOnce: false, premium: false },
+        { id: "pcAndBoll", label: "Price & Bollinger", title: "Add Add Price Comparision With Bollinger Band", func: "cst.pfr", params: ["bb", "price"], addOnce: false, premium: false },
+        { id: "bollSqueeze", label: "Bollinger Squeeze", title: "Add Bollinger Bands Squeeze", func: "cst.pfr", params: ["bb", "squeeze"], addOnce: false, premium: false },
+        { id: "IchimokuOld", label: "Ichimoku (old)", title: "Add Ichimoku Old", func: "cst.pfr", params: ["techIchiComp", "techIchiComp"], addOnce: false, premium: false },
+        { id: "Ichimoku", label: "Ichimoku", title: "Add Ichimoku Cloud", func: "cst.pfr", params: ["ichimoku", "ichimoku"], addOnce: false, premium: false },
+        { id: "pcAndKeltner", label: "Price & Keltner", title: "Add Price Comparision With Keltner Channel", func: "cst.pfr", params: ["keltner", "price"], addOnce: false, premium: false },
+        { id: "paraSar", label: "PSAR", title: "Add Parabolic SAR", func: "cst.pfr", params: ["psar", "psar"], addOnce: false, premium: false },
     ];
 
     var TREND_MOM_LIST = [
-        { id: "adx", label: "ADX", title: "Add ADX (Average Directional Index)", func: "cst.pfr", params: ["adx", "adx"],  addOnce: false, premium: false },
-        { id: "aroon", label: "Aroon", title: "Add Aroon", func: "cst.pfr", params: ["aroon", "AroonIndi"],  addOnce: false, premium: false },
-        { id: "aweOsc", label: "AweOsc", title: "Add Awesome Oscillator", func: "cst.pfr", params: ["aweOsc", "aweOsc"],  addOnce: false, premium: false },
-        { id: "mac", label: "MACD", title: "Add MACD (Moving Average Conv & Divergence)", func: "cst.pfr", params: ["mac", "macd"] ,  addOnce: false, premium: false},
-        { id: "roc", label: "ROC", title: "Add ROC (Rate of Change)", func: "cst.pfr", params: ["roc", "roc"],  addOnce: false, premium: false },
-        { id: "rvi", label: "RVI", title: "Add RVI (Relative Vigor Idx)", func: "cst.pfr", params: ["rvi", "rvi"] ,  addOnce: false, premium: false},
-        { id: "st", label: "Supertrend", title: "Add Supertrend", func: "cst.pfr", params: ["st", "st"],  addOnce: false, premium: false },
+        { id: "adx", label: "ADX", title: "Add ADX (Average Directional Index)", func: "cst.pfr", params: ["adx", "adx"], addOnce: false, premium: false },
+        { id: "aroon", label: "Aroon", title: "Add Aroon", func: "cst.pfr", params: ["aroon", "AroonIndi"], addOnce: false, premium: false },
+        { id: "aweOsc", label: "AweOsc", title: "Add Awesome Oscillator", func: "cst.pfr", params: ["aweOsc", "aweOsc"], addOnce: false, premium: false },
+        { id: "mac", label: "MACD", title: "Add MACD (Moving Average Conv & Divergence)", func: "cst.pfr", params: ["mac", "macd"], addOnce: false, premium: false },
+        { id: "roc", label: "ROC", title: "Add ROC (Rate of Change)", func: "cst.pfr", params: ["roc", "roc"], addOnce: false, premium: false },
+        { id: "rvi", label: "RVI", title: "Add RVI (Relative Vigor Idx)", func: "cst.pfr", params: ["rvi", "rvi"], addOnce: false, premium: false },
+        { id: "st", label: "Supertrend", title: "Add Supertrend", func: "cst.pfr", params: ["st", "st"], addOnce: false, premium: false },
     ];
 
     var ACC_DIST_LIST = [
-        { id: "cmf", label: "CMF", title: "Add CMF (Chaikin Money Flow)", func: "cst.pfr", params: ["cmf", "cmf"],  addOnce: false, premium: false },
+        { id: "cmf", label: "CMF", title: "Add CMF (Chaikin Money Flow)", func: "cst.pfr", params: ["cmf", "cmf"], addOnce: false, premium: false },
     ];
 
     var VOLATILITY_LIST = [
-        { id: "atr", label: "ATR", title: "Add ATR (Average True Range)", func: "cst.pfr", params: ["atr", "atr"],  addOnce: false, premium: false },
-        { id: "stdDev", label: "Std Dev", title: "Add Standard Deviation", func: "cst.pfr", params: ["stdDev", "stdDev"] ,  addOnce: false, premium: false},
+        { id: "atr", label: "ATR", title: "Add ATR (Average True Range)", func: "cst.pfr", params: ["atr", "atr"], addOnce: false, premium: false },
+        { id: "stdDev", label: "Std Dev", title: "Add Standard Deviation", func: "cst.pfr", params: ["stdDev", "stdDev"], addOnce: false, premium: false },
     ];
 
     var DIY_LIST = [
-        { id: "", label: "Over Bot/Sold", title: "Add DIY Deep Compare Over Bot/Sold Indicators", func: "cst.pfr", params: ["Obos"], addOnce: false, premium: true },
-        { id: "", label: "Trend Indi", title: "Add DIY Deep Compare Trend Indicators", func: "cst.pfr", params: ["Trend"], addOnce: false, premium: true },
-        { id: "", label: "Momentum Indi", title: "Add DIY Deep Compare Momentum Indicators", func: "cst.pfr", params: ["Momentum"], addOnce: false, premium: true },
-        { id: "", label: "Accumulation Dist", title: "Add DIY Deep Compare Accumulation Distribution Indicators", func: "cst.pfr", params: ["AccDist"], addOnce: false, premium: true },
-        { id: "", label: "Volatility", title: "Add DIY Deep Compare Volatility Indicators", func: "cst.pfr", params: ["Volatility"], addOnce: false, premium: true },
-        { id: "", label: "Overlays", title: "Add DIY Deep Compare Overlays", func: "cst.pfr", params: ["Overlays"], addOnce: false, premium: true },
+        { id: "obos", label: "Over Bot/Sold", title: "Add DIY Deep Compare Over Bot/Sold Indicators", func: "cst.pfr", params: ["Obos"], addOnce: false, premium: true },
+        { id: "trendIndi", label: "Trend Indi", title: "Add DIY Deep Compare Trend Indicators", func: "cst.pfr", params: ["Trend"], addOnce: false, premium: true },
+        { id: "momIndi", label: "Momentum Indi", title: "Add DIY Deep Compare Momentum Indicators", func: "cst.pfr", params: ["Momentum"], addOnce: false, premium: true },
+        { id: "accDist", label: "Accumulation Dist", title: "Add DIY Deep Compare Accumulation Distribution Indicators", func: "cst.pfr", params: ["AccDist"], addOnce: false, premium: true },
+        { id: "volatility", label: "Volatility", title: "Add DIY Deep Compare Volatility Indicators", func: "cst.pfr", params: ["Volatility"], addOnce: false, premium: true },
+        { id: "overlays", label: "Overlays", title: "Add DIY Deep Compare Overlays", func: "cst.pfr", params: ["Overlays"], addOnce: false, premium: true },
     ];
 
 
     var TECH_INDI_DEF = [
         { id: TECH_OBOS_CODE, label: "Over Bot/Sold", func: null, params: null, subMenu: OBOS_LIST },
-        { id: "overlays", label: "Overlays", func: null, params: null, subMenu: OVERLAYS_LIST },
-        { id: "trendMom", label: "Trend/Momentum", func: null, params: null, subMenu: TREND_MOM_LIST },
-        { id: "accDist", label: "Accumulation / Distribution", func: null, params: null, subMenu: ACC_DIST_LIST },
-        { id: "vol", label: "Volatility", func: null, params: null, subMenu: VOLATILITY_LIST },
+        { id: "bands", label: "Overlays", func: null, params: null, subMenu: OVERLAYS_LIST },
+        { id: "indi", label: "Trend/Momentum", func: null, params: null, subMenu: TREND_MOM_LIST },
+        { id: "volindi", label: "Accumulation / Distribution", func: null, params: null, subMenu: ACC_DIST_LIST },
+        { id: "volatility", label: "Volatility", func: null, params: null, subMenu: VOLATILITY_LIST },
         { id: "diy", label: "DIY - Advance Comparision", func: null, params: null, subMenu: DIY_LIST },
     ];
 
-
+    // modified
     // ==============================================
     //                  DIVERGENCE_DEF
     // ==============================================
@@ -190,39 +196,42 @@ var csTabDataDefNg =  (function () {
     var DIV_OBOS_CODE = "obos";
 
     var DIV_OBOS_LIST = [
-        { id: "aroonOsc", label: "Aroon Osc", title: "Aroon Oscillator", func: "csd.pfr", params: ["aroonOsc", DIV_OBOS_CODE],  addOnce: false, premium: false },
-        { id: "cci", label: "CCI", title: "CCI (Commodity Channel Index)", func: "csd.pfr", params: ["cci", DIV_OBOS_CODE] ,  addOnce: false, premium: false},
-        { id: "mfi", label: "MFI", title: "MFI (Money Flow Index)", func: "csd.pfr", params: ["mfi", DIV_OBOS_CODE] ,  addOnce: false, premium: false},
-        { id: "rsi", label: "RSI (Fast)", title: "RSI (Fast)", func: "csd.pfr", params: ["rsi", DIV_OBOS_CODE],  addOnce: false, premium: false },
-        { id: "rsis", label: "RSI", title: "RSI ( Relative Strength Indicator)", func: "csd.pfr", params: ["rsis", DIV_OBOS_CODE] ,  addOnce: false, premium: false},
-        { id: "stof", label: "Sto Fast", title: "Stochastic Fast", func: "csd.pfr", params: ["stof", "sto"] ,  addOnce: false, premium: false},
-        { id: "stos", label: "Sto Slow", title: "Stochastic Slow", func: "csd.pfr", params: ["stos", "sto"] ,  addOnce: false, premium: false},
-        { id: "stoRsi", label: "Sto RSI (FAST)", title: "Stochastic RSI", func: "csd.pfr", params: ["stoRsi", "stoRsi"],  addOnce: false, premium: false },
-        { id: "stoRsiSlow", label: "Sto RSI", title: "Stochastic RSI", func: "csd.pfr", params: ["stoRsiSlow", "stoRsi"],  addOnce: false, premium: false },
-        { id: "uo", label: "UO", title: "UO (Ultimate Oscillator)", func: "csd.pfr", params: ["uo", DIV_OBOS_CODE],  addOnce: false, premium: false },
-        { id: "wr", label: "W%R", title: "W%R ( Williams %R)", func: "csd.pfr", params: ["wr", DIV_OBOS_CODE],  addOnce: false, premium: false },
+        { id: "aroonOsc", label: "Aroon Osc", title: "Aroon Oscillator", func: "csd.pfr", params: ["aroonOsc", DIV_OBOS_CODE], addOnce: false, premium: false },
+        { id: "cci", label: "CCI", title: "CCI (Commodity Channel Index)", func: "csd.pfr", params: ["cci", DIV_OBOS_CODE], addOnce: false, premium: false },
+        { id: "mfi", label: "MFI", title: "MFI (Money Flow Index)", func: "csd.pfr", params: ["mfi", DIV_OBOS_CODE], addOnce: false, premium: false },
+        { id: "rsi", label: "RSI (Fast)", title: "RSI (Fast)", func: "csd.pfr", params: ["rsi", DIV_OBOS_CODE], addOnce: false, premium: false },
+        { id: "rsis", label: "RSI", title: "RSI ( Relative Strength Indicator)", func: "csd.pfr", params: ["rsis", DIV_OBOS_CODE], addOnce: false, premium: false },
+        { id: "stof", label: "Sto Fast", title: "Stochastic Fast", func: "csd.pfr", params: ["stof", "sto"], addOnce: false, premium: false },
+        { id: "stos", label: "Sto Slow", title: "Stochastic Slow", func: "csd.pfr", params: ["stos", "sto"], addOnce: false, premium: false },
+        { id: "stoRsi", label: "Sto RSI (FAST)", title: "Stochastic RSI", func: "csd.pfr", params: ["stoRsi", "stoRsi"], addOnce: false, premium: false },
+        { id: "stoRsiSlow", label: "Sto RSI", title: "Stochastic RSI", func: "csd.pfr", params: ["stoRsiSlow", "stoRsi"], addOnce: false, premium: false },
+        { id: "uo", label: "UO", title: "UO (Ultimate Oscillator)", func: "csd.pfr", params: ["uo", DIV_OBOS_CODE], addOnce: false, premium: false },
+        { id: "wr", label: "W%R", title: "W%R ( Williams %R)", func: "csd.pfr", params: ["wr", DIV_OBOS_CODE], addOnce: false, premium: false },
 
     ];
+
     var TREND_DIV_LIST = [
-        { id: "adx", label: "ADX", title: "ADX (Average Directional Index)", func: "csd.pfr", params: ["adx", "adx"],  addOnce: false, premium: false },
-        { id: "atr", label: "ATR", title: "ATR (Average True Range)", func: "csd.pfr", params: ["atr", "atr"],  addOnce: false, premium: false },
-        { id: "aweOsc", label: "AweOsc", title: "Awesome Oscillator", func: "csd.pfr", params: ["aweOsc", "aweOsc"],  addOnce: false, premium: false },
-        { id: "mac", label: "MACD", title: "MACD (Moving Average Conv & Divergence)", func: "csd.pfr", params: ["mac", "macd"],  addOnce: false, premium: false },
-        { id: "macdHist", label: "MACD Hist", title: "MACD Histogram", func: "csd.pfr", params: ["macdHist", "macdHist"],  addOnce: false, premium: false },
-        { id: "roc", label: "ROC", title: "ROC (Rate of Change)", func: "csd.pfr", params: ["roc", "roc"],  addOnce: false, premium: false },
-        { id: "rvi", label: "RVI", title: "RVI (Relative Vigor Idx)", func: "csd.pfr", params: ["rvi", "rvi"],  addOnce: false, premium: false },
+        { id: "adx", label: "ADX", title: "ADX (Average Directional Index)", func: "csd.pfr", params: ["adx", "adx"], addOnce: false, premium: false },
+        { id: "atr", label: "ATR", title: "ATR (Average True Range)", func: "csd.pfr", params: ["atr", "atr"], addOnce: false, premium: false },
+        { id: "aweOsc", label: "AweOsc", title: "Awesome Oscillator", func: "csd.pfr", params: ["aweOsc", "aweOsc"], addOnce: false, premium: false },
+        { id: "mac", label: "MACD", title: "MACD (Moving Average Conv & Divergence)", func: "csd.pfr", params: ["mac", "macd"], addOnce: false, premium: false },
+        { id: "macdHist", label: "MACD Hist", title: "MACD Histogram", func: "csd.pfr", params: ["macdHist", "macdHist"], addOnce: false, premium: false },
+        { id: "roc", label: "ROC", title: "ROC (Rate of Change)", func: "csd.pfr", params: ["roc", "roc"], addOnce: false, premium: false },
+        { id: "rvi", label: "RVI", title: "RVI (Relative Vigor Idx)", func: "csd.pfr", params: ["rvi", "rvi"], addOnce: false, premium: false },
 
     ];
+
     var VOL_DIV_LIST = [
-        { id: "cmf", label: "CMF", title: "CMF Chaikin Money Flow", func: "csd.pfr", params: ["cmf", "cmf"],  addOnce: false, premium: false },
-        { id: "adi", label: "ADI", title: "ADI Accumulation Distribution Index", func: "csd.pfr", params: ["adi", "adi"],  addOnce: false, premium: false },
+        { id: "cmf", label: "CMF", title: "CMF Chaikin Money Flow", func: "csd.pfr", params: ["cmf", "cmf"], addOnce: false, premium: false },
+        { id: "adi", label: "ADI", title: "ADI Accumulation Distribution Index", func: "csd.pfr", params: ["adi", "adi"], addOnce: false, premium: false },
     ];
+
 
 
     var DIVERGENCE_DEF = [
         { id: DIV_OBOS_CODE, label: "Over Bot/Sold", func: null, params: null, subMenu: DIV_OBOS_LIST },
-        { id: "", label: "Trend", func: null, params: null, subMenu: TREND_DIV_LIST },
-        { id: "", label: "Volume Based", func: null, params: null, subMenu: VOL_DIV_LIST },
+        { id: "divTrend", label: "Trend", func: null, params: null, subMenu: TREND_DIV_LIST },
+        { id: "divVol", label: "Volume Based", func: null, params: null, subMenu: VOL_DIV_LIST },
     ];
 
 
@@ -286,18 +295,23 @@ var csTabDataDefNg =  (function () {
     var CANDLE_RANGE_LIST = [];
     var CHART_PATTERNS = [];
 
-    for (let i = 0; i < CP_FIELDS.length; i++) {
-        let field = CP_FIELDS[i];
+    var CP_FIELDS_CLONE = jsu.cloneObj(CP_FIELDS);
+
+    for (let i = 0; i < CP_FIELDS_CLONE.length; i++) {
+        let field = CP_FIELDS_CLONE[i];
         field["title"] = "Add " + field["id"];
-        field["func"] = "cscp.acp";
-        if (field["patType"] == CANDLE_LIST_CODE) {
+        field["func"] = "cscp.pfr";
+        if (field["patType"] == CANDLE_LIST_CODE || field["patType"] == "ha") {
             field["params"] = [field["id"], CANDLE_LIST_CODE];
             CANDLE_LIST.push(field);
         } else if (field["patType"] == RANGE_LIST_CODE) {
             field["params"] = [field["id"], RANGE_LIST_CODE];
+            // field["url"] = "http://127.0.0.1:5500/v4/TypesofTrianglesChartPatterns.png";
             CANDLE_RANGE_LIST.push(field);
         } else if (field["patType"] == PATTERN_LIST_CODE) {
             field["params"] = [field["id"], PATTERN_LIST_CODE];
+            field["addOnce"] = false;
+            field["premium"] = true;
             CHART_PATTERNS.push(field);
         }
     }
@@ -324,22 +338,25 @@ var csTabDataDefNg =  (function () {
 
     var HL_LIST = [];
 
+    var RATIO_PRICE_CLONE = jsu.cloneObj(RATIO_PRICE);
+    var SHARE_FIELD_CLONE = jsu.cloneObj(SHARE_FIELD);
     function inithighlights() {
         if (HL_LIST.length > 0) {
             return; // Already inited .... 
         }
 
-        HL_LIST.push(jsu.getObjFrmArr(RATIO_PRICE, 'marCap'));
-        HL_LIST.push(jsu.getObjFrmArr(RATIO_PRICE, 'divYield'));
-        HL_LIST.push(jsu.getObjFrmArr(SHARE_FIELD, 'shInst'));
-        HL_LIST.push(jsu.getObjFrmArr(SHARE_FIELD, 'shInsider'));
-        HL_LIST.push(jsu.getObjFrmArr(RATIO_PRICE, 'fwdPe'));
-        HL_LIST.push(jsu.getObjFrmArr(RATIO_PRICE, 'entVal'));
-        HL_LIST.push(jsu.getObjFrmArr(SHARE_FIELD, 'outShare'));
-        HL_LIST.push(jsu.getObjFrmArr(SHARE_FIELD, 'floatShare'));
-        HL_LIST.push(jsu.getObjFrmArr(SHARE_FIELD, 'floatToOsShare'));
-        HL_LIST.push(jsu.getObjFrmArr(SHARE_FIELD, 'faceVal'));
+        HL_LIST.push(jsu.getObjFrmArr(RATIO_PRICE_CLONE, 'marCap'));
+        HL_LIST.push(jsu.getObjFrmArr(RATIO_PRICE_CLONE, 'divYield'));
+        HL_LIST.push(jsu.getObjFrmArr(SHARE_FIELD_CLONE, 'shInst'));
+        HL_LIST.push(jsu.getObjFrmArr(SHARE_FIELD_CLONE, 'shInsider'));
+        HL_LIST.push(jsu.getObjFrmArr(RATIO_PRICE_CLONE, 'fwdPe'));
+        HL_LIST.push(jsu.getObjFrmArr(RATIO_PRICE_CLONE, 'entVal'));
+        HL_LIST.push(jsu.getObjFrmArr(SHARE_FIELD_CLONE, 'outShare'));
+        HL_LIST.push(jsu.getObjFrmArr(SHARE_FIELD_CLONE, 'floatShare'));
+        HL_LIST.push(jsu.getObjFrmArr(SHARE_FIELD_CLONE, 'floatToOsShare'));
+        HL_LIST.push(jsu.getObjFrmArr(SHARE_FIELD_CLONE, 'faceVal'));
     }
+
 
     inithighlights();
 
@@ -352,7 +369,7 @@ var csTabDataDefNg =  (function () {
 
     function addToRatioList(LIST, DEF, LIST_CODE, func) {
         // let defClone = mintJsUtil.cloneArray(DEF);
-        let defClone = structuredClone(DEF);
+        let defClone = jsu.cloneObj(DEF);
 
         for (let i = 0; i < defClone.length; i++) {
             if (defClone[i]["id"] == "period")
@@ -405,7 +422,7 @@ var csTabDataDefNg =  (function () {
 
     function addStmtToList(LIST, DEF, LIST_CODE, func) {
         // let defClone = mintJsUtil.cloneArray(DEF); // todo ASK Rohit Sir
-        let defClone = structuredClone(DEF);
+        let defClone = jsu.cloneObj(DEF);
         for (let i = 0; i < defClone.length; i++) {
             if (defClone[i]["id"] == "period" || !(jsu.isNotNull(defClone[i]["ngDiy"]) && defClone[i]["ngDiy"]))
                 continue;
@@ -440,45 +457,45 @@ var csTabDataDefNg =  (function () {
     ];
 
 
-    function enrich(){
+    function enrich() {
 
-        for(let i=0;i< daily_tabs.length ;i++){
+        for (let i = 0; i < daily_tabs.length; i++) {
 
             let tab = daily_tabs[i];
 
-            let id =tab.id;
-             if(PRICE_CS == id) {   // containsString()
-               tab.subMenu = PRICE_ACTION_DEF;
+            let id = tab.id;
+            if (PRICE_CS == id) {   // containsString()
+                tab.subMenu = PRICE_ACTION_DEF;
 
-            }else if(id== VOL_CS){
+            } else if (id == VOL_CS) {
                 tab.subMenu = VOL_DEF
 
-            }else if(id== HL_CS){
+            } else if (id == HL_CS) {
                 tab.subMenu = HIGH_LOWS_DEF
-            }else if(id== BV_CS){
+            } else if (id == BV_CS) {
                 tab.subMenu = BETA_VOLS_DEF
-            }else if(id==MA_CS){
+            } else if (id == MA_CS) {
                 tab.subMenu = MA_DEF
-            }else if(id==TI_CS){
+            } else if (id == TI_CS) {
                 tab.subMenu = TECH_INDI_DEF
-            }else if(id==DIV_CS){
-                tab.subMenu =DIVERGENCE_DEF
+            } else if (id == DIV_CS) {
+                tab.subMenu = DIVERGENCE_DEF
 
-            }else if(id==PP_CS){
+            } else if (id == PP_CS) {
                 tab.subMenu = PIVOT_DEF
-            }else if(id==STR_CS){
-               tab.subMenu = STRENGTH_DEF
-            }else if(id==CP_CS){
-                tab.subMenu =CHART_PATTERN_DEF
-            
-            }else if(id==FIN_RAT_NG){
-                tab.subMenu = FIN_RATIO_DEF
-                
-            }else if(id==FIN_STMT_NG){
-                tab.subMenu = FIN_STMT_DEF
-                
+            } else if (id == STR_CS) {
+                tab.subMenu = STRENGTH_DEF
+            } else if (id == CP_CS) {
+                tab.subMenu = CHART_PATTERN_DEF
 
-           
+            } else if (id == FIN_RAT_NG) {
+                tab.subMenu = FIN_RATIO_DEF
+
+            } else if (id == FIN_STMT_NG) {
+                tab.subMenu = FIN_STMT_DEF
+
+
+
             }
 
         }
@@ -488,9 +505,9 @@ var csTabDataDefNg =  (function () {
     }
 
 
-return {
+    return {
 
-    enrich : enrich
+        enrich: enrich
 
     }
 

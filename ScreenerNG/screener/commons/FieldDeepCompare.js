@@ -89,24 +89,24 @@ var csfdc =  (function () { // CS Field Deep Compare
 
 
 
-	function getTrHtml(finObj, objType){
+	function getTrHtml(compObj, objType){
 		init();
 
 		// if(!mtgv.mtpp.crossFreq){
 		// 	return '';
 		// }
 
-		var html = getHtmlTds(finObj , objType);
+		var html = getHtmlTds(compObj , objType);
 
 		var obj = jsu.getObjFrmArr(PARAM_LIST , objType);
 
-		if(mtgv.cs.ng){
+		// if(mtgv.cs.ng){
 				var html = '<tr id=' + compObj.id + '>'
 						+ createTd(createDiv(compObj.id + 'Td2Div', html, null)) + '</tr>';
 				return html;			
-			}
+			// }
 
-		return  csh.dynTr(finObj, {td1 : doBold( obj.label ), td2 : html })
+		// return  csh.dynTr(compObj, {td1 : doBold( obj.label ), td2 : html })
 	}
 
 
@@ -120,10 +120,10 @@ var csfdc =  (function () { // CS Field Deep Compare
 	  	var obj = jsu.getObjFrmArr(PARAM_LIST , objType);
 	  	var html =''
 
-	  	if(mtgv.cs.ng){
-			html += doBold(obj.label)+BREAK_LINE;
+	  	// if(mtgv.cs.ng){
+			html += doBold(obj.label)+BR_2;
 
-		}
+		// }
 
 	  	html+=  SP_2 +  getDropDown(STRAT_OPT, id+'strat', null,func, params, finObj.strat);	
 
@@ -151,6 +151,9 @@ var csfdc =  (function () { // CS Field Deep Compare
 		}
 
 		var param =  objType +':'+id; // Vol Compare
+
+		html+= csh.gept(finObj, obj.csType,  param);
+
 		html+= SP_3 + csh.delIcon(param) ; // '<a  onClick="javascript:'+thisAlias+'.delRow(\''+delObj+'\');"><font size="4" color="red"><span class="glyphicon glyphicon-remove"></span></font> </a> ';
 
 		return html;
@@ -534,6 +537,7 @@ var csfdc =  (function () { // CS Field Deep Compare
 
 		anr : addNewRow,
 		gth : getTrHtml,
+		gttd : getHtmlTds,
 
 		gpd : getPriceDenom,
 		ua : userAction,

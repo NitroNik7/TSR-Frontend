@@ -160,7 +160,7 @@ var ichiOld =  (function () {
 
 
 
-	function addIchiMoku(type){
+	function addNewFilter(type){
 
 		var scrData = mtgv.cs.screenerData;
 
@@ -171,20 +171,47 @@ var ichiOld =  (function () {
 			var tds = getTecIchiHtmlTds(techIchiObj);
 			var html = '<tr id='+techIchiObj.id+'>'
 				 // + createTd( createDiv(techIchiObj.id+'Td1Div', tds.td1, null)  , CS_LABEL_WIDTH) 
-				 + createTd(createDiv(techIchiObj.id+'Td2Div',  tds.td2, null)) +'</tr>';
-			$('#tecCtrlTab').append( html);
+				 + createTd(createDiv(techIchiObj.id+'Td2Div',  tds, null)) +'</tr>';
+			// $('#tecCtrlTab').append( html);
 
 
-			csu.dsf();
+		return { html : html , id : id};		 
 
+		// let json = addNewFilter(type);
+
+	}
+
+	function addIchiMoku(type){
+
+		// var scrData = mtgv.cs.screenerData;
+
+		// var id =  myTsrScreener.getNextId(type +'CompId');
+
+		// 	var techIchiObj={ id :id, ichiFilters : LIST_ICHI[0].id ,type:type, goodData : true};
+		// 	scrData.techIchiComp.push(techIchiObj);
+		// 	var tds = getTecIchiHtmlTds(techIchiObj);
+		// 	var html = '<tr id='+techIchiObj.id+'>'
+		// 		 // + createTd( createDiv(techIchiObj.id+'Td1Div', tds.td1, null)  , CS_LABEL_WIDTH) 
+		// 		 + createTd(createDiv(techIchiObj.id+'Td2Div',  tds.td2, null)) +'</tr>';
+		// 	$('#tecCtrlTab').append( html);
+
+
+		// 	csu.dsf();
+
+		let json = addNewFilter(type);
+
+		$('#tecCtrlTab').append(json.html );
+
+		addFilterChange(type , json.id);
+		csu.dsf();
 	}
 
 
 	function getIchiCoHtml(techIchiObj){
-			var tds = getTecIchiHtmlTds(techIchiObj);
+			var td = getTecIchiHtmlTds(techIchiObj);
 			var html = '<tr id='+techIchiObj.id+'>'
 				 // + createTd( createDiv(techIchiObj.id+'Td1Div', tds.td1, null)  , CS_LABEL_WIDTH) 
-				 + createTd(createDiv(techIchiObj.id+'Td2Div',  tds.td2, null)) +'</tr>';
+				 + createTd(createDiv(techIchiObj.id+'Td2Div',  td, null)) +'</tr>';
 				 return html;
 	}
 
@@ -194,6 +221,11 @@ var ichiOld =  (function () {
 		var td1 = " Ichimoku Filter";
 		var html = td1  +" : " +  getDropDown(LIST_ICHI, id+'ichiFilters', null,func, id, techIchiObj.ichiFilters);
 		var param = techIchiObj.type + ':'+id; 
+
+
+
+		html+= csh.gept(techIchiObj, TI_CS,  param);
+		
 		html+= SP_3 + csh.delIcon(param) ;
 
 
@@ -201,7 +233,8 @@ var ichiOld =  (function () {
 
 		html+= getSpan('Please use '+doBold( 'New high Low / Range')+' Option Button <i class="fas fa-long-arrow-alt-down"></i> Instead. This will be removed by 31st Mar' , 'grey' , 10  );
 
-		return  {td1 : td1, td2 : html };
+		// return  {td1 : td1, td2 : html };
+		return html;
 	}
 
 	function ichiChg(id){
@@ -233,7 +266,10 @@ var ichiOld =  (function () {
 
 	return {
 
+		anf : addNewFilter,
 		aim : addIchiMoku,
+
+		gftd :getTecIchiHtmlTds,
 		gih: getIchiCoHtml,
 		ichiChg : ichiChg,
 		valiIchi : validateIchimoku

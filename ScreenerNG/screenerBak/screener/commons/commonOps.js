@@ -736,3 +736,52 @@ var TICK_TREND_MAP =[
 		{id : 'vol'  , label: 'Volume Trending' , obj: 'dynvolTrendNg'  ,  nextId : 'volTrendId', csType : VOL_CS  },
 	];
 
+
+
+
+let tsrCsNgCss = `
+.tsrCsFilter {
+    text-wrap: nowrap;
+    font-size: 16px;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    cursor: pointer;
+}
+
+.tsrCsFilter:hover {
+    background: none !important;
+    cursor: default;
+}
+
+.tsrCsNgArrowEle {
+    position: relative;
+    top: 14px;
+    height: 3px;
+    width: 50px;
+    /* background-color: rgb(13 110 253); */
+    background-color: rgb(108 117 125);
+}
+
+.tsrCsNgArrowEle::after,
+.tsrCsNgArrowEle::before {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 15px;
+    /* background-color: rgb(13 110 253); */
+    background-color: rgb(108 117 125);
+
+}
+
+.tsrCsNgArrowEle::after {
+    transform: rotate(45deg);
+    top: 4px;
+
+}
+
+.tsrCsNgArrowEle::before {
+    transform: rotate(-45deg);
+    top: -4px;
+
+}`;

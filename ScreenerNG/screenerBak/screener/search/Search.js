@@ -125,6 +125,19 @@ var mintSrch =  (function () {
 			myTsrScreener.showControl(item.tab);
 			var filtDef = item.filtDef;
 
+
+			if(mtgv.cs.ng){
+
+
+				var params = (filtDef == null) ? null :   filtDef.params.split(PARAM_DELIM);
+				let tab = jsu.getObjFrmArr(daily_tabs, item.tab);
+
+				window[tab.tabObj].ngs(item, filtDef, params );
+
+
+			}else{
+
+
                		if(jsu.isNull(filtDef.params) ){
                			window[filtDef.obj][filtDef.fnc]();
                		}else  {
@@ -143,7 +156,7 @@ var mintSrch =  (function () {
                				window[filtDef.obj][filtDef.fnc](params[0] , params[1]  ,params[2] , params[3] );
                			}
                		}
-
+      }
 
 	}
 

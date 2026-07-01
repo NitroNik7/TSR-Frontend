@@ -350,8 +350,7 @@ var cscmn =  (function () {
 	}
 
 	
-
-	function getCompHtml( compObj , type){
+	function getCompTdHtml( compObj , type){
 			var csTypeId = compObj.id;
 			var func = 'cscmn.cc';
 			var fncParam = csTypeId +PARAM_DELIM + type;
@@ -360,18 +359,21 @@ var cscmn =  (function () {
 			
 			var html = getCompTd( compObj , type)
 
-			// var param = 'dyn'+ type +'Comp'+':'+csTypeId  ; //+ ':'+type ;  dynpriceComp
-			// html+= SP_3 + csh.delIcon(param) ; 
-			// setCompStatus(compObj , type);
+			return html
+}
 
-			if(mtgv.cs.ng){
-				var html = '<tr id=' + compObj.id + '>'
+
+	function getCompHtml( compObj , type){
+			let html = getCompTdHtml( compObj , type);
+
+			// if(mtgv.cs.ng){
+				html = '<tr id=' + compObj.id + '>'
 						+ createTd(createDiv(compObj.id + 'Td2Div', html, null)) + '</tr>';
 				return html;			
-			}
+			// }
 
 
-			return  csh.dynTr(compObj, {td1 : doBold(obj.label), td2 : html })
+			// return  csh.dynTr(compObj, {td1 : doBold(obj.label), td2 : html })
 		}
 
 		function getCompTd( compObj , type){
@@ -383,9 +385,9 @@ var cscmn =  (function () {
 
 			var obj = jsu.getObjFrmArr(TICK_COMP_MAP, type);
 
-			if(mtgv.cs.ng){
+			// if(mtgv.cs.ng){
 				html += doBold(obj.label)+BREAK_LINE;
-			}
+			// }
 
 
 
@@ -435,6 +437,9 @@ var cscmn =  (function () {
 			// html+=getDropDown(OHLC_MAP, csTypeId+'ohlc2', null,func, fncParam, compObj.ohlc2)
 
 			var param = 'dyn'+ type +'Comp'+':'+csTypeId  ; //+ ':'+type ;  dynpriceComp
+
+			html+= csh.gept(compObj, obj.csType,  param);
+
 			html+= SP_3 + csh.delIcon(param) ; 
 			// setCompStatus(compObj , type);
 
@@ -731,13 +736,13 @@ var cscmn =  (function () {
 		var html = getCompSpTimeTd( compObj , type)
 
 
-		if(mtgv.cs.ng){
-				var html = '<tr id=' + obj.id + '>'
-					+ createTd(createDiv(obj.id + 'Td2Div', html, null)) + '</tr>';
+		// if(mtgv.cs.ng){
+				var html = '<tr id=' + compObj.id + '>'
+					+ createTd(createDiv(compObj.id + 'Td2Div', html, null)) + '</tr>';
 				return html;			
-		}
+		// }
 
-		return  csh.dynTr(compObj, {td1 : doBold(obj.label), td2 : html })
+		// return  csh.dynTr(compObj, {td1 : doBold(obj.label), td2 : html })
 
 
 	}
@@ -753,10 +758,10 @@ var cscmn =  (function () {
 
 		var PERIOD_MAP = getSpetimeTickMap()
 
-		if(mtgv.cs.ng){
+		// if(mtgv.cs.ng){
 			html += doBold(obj.label)+BREAK_LINE;
 
-		}
+		// }
 
 
 		html+=getDropDown(PERIOD_MAP, csTypeId+'tperiod1', null,func, fncParam, compObj.tperiod1)
@@ -792,6 +797,9 @@ var cscmn =  (function () {
 		html += getCompOpsHtml(compObj ,csTypeId , func , fncParam );
 
 		var param = 'dynSpTime'+ type +'Comp'+':'+csTypeId  ; //+ ':'+type ;  dynpriceComp
+
+		html+= csh.gept(compObj, obj.csType,  param);
+
 		html+= SP_3 + csh.delIcon(param) ; 
 
 		return html;
@@ -1226,13 +1234,13 @@ var cscmn =  (function () {
 
 		var html = getAdvOhlcTd( compObj )
 
-		if(mtgv.cs.ng){
+		// if(mtgv.cs.ng){
 			var html = '<tr id=' + compObj.id + '>'
 					+ createTd(createDiv(compObj.id + 'Td2Div', html, null)) + '</tr>';
 			return html;			
-		}
+		// }
 
-		return  csh.dynTr(compObj, {td1 : doBold('Advanced OHLCV'), td2 : html })
+		// return  csh.dynTr(compObj, {td1 : doBold('Advanced OHLCV'), td2 : html })
 	}
 
 	function getAdvOhlcTd( compObj ){
@@ -1245,9 +1253,9 @@ var cscmn =  (function () {
 
 		let html = '' ;
 
-		if(mtgv.cs.ng){
+		// if(mtgv.cs.ng){
 			html+=doBold('Advanced OHLCV') +BR_2;
-		}
+		// }
 
 
 		html+=getDropDown(pdef.oao, csTypeId+'aot', null,func, fncParam, compObj.aot); // Advance OHLC Type
@@ -1263,6 +1271,8 @@ var cscmn =  (function () {
 		}
 
 		var param = 'dynAdvOhlcComp'+':'+csTypeId  ; //+ ':'+type ;  dynpriceComp
+
+		html+= csh.gept(compObj, PRICE_CS,  param);
 
 		html+= SP_3 + csh.delIcon(param) ; 
 
@@ -1515,7 +1525,8 @@ var cscmn =  (function () {
 		for( var i=0 ;i<dynAdvOhlcComp.length ;i++ ){
 			var compObj = dynAdvOhlcComp[i];
 
-			let text ='';
+			let text = htmlU.doBold( 'Advance OHLC : ' );
+
 
 			if(compObj.goodData){
 				
@@ -1535,7 +1546,7 @@ var cscmn =  (function () {
 				var hlObj = jsu.getObjFrmArr(OPS_HL, compObj.hlType );
 
 
-				text += aotType.label +  ' : '; 
+				text += aotType.label +  ' <br> '; 
 
 				if(compObj.aot == 'hlIdx'){
 
@@ -1629,14 +1640,14 @@ var cscmn =  (function () {
 				 mtgv.cs.screenerData['dyn'+ type +'TrendNg' ].push(trendObj); 
 
 
-				var tabDef = jsu.getObjFrmArr(daily_tabs, csType)
+				
 
 
 		        $('#' + tabDef.tab).append( getTrendNgHtml(trendObj, type));
 */
-			let json =getTrendNgRow(trendObj, type)
+			let json =getTrendNgRow( type)
 
-
+			var tabDef = jsu.getObjFrmArr(daily_tabs, csType)
 
 			$('#' + tabDef.tab).append(json.html);
 
@@ -1662,7 +1673,7 @@ var cscmn =  (function () {
 		 mtgv.cs.screenerData['dyn'+ type +'TrendNg' ].push(trendObj); 
 
 
-		var tabDef = jsu.getObjFrmArr(daily_tabs, csType)
+		var tabDef = jsu.getObjFrmArr(daily_tabs, obj.csType)
 
 
         let html = getTrendNgHtml(trendObj, type);
@@ -1681,15 +1692,15 @@ var cscmn =  (function () {
 			
 			var html = getTrendNgTd( trendObj , type)
 
-			if(mtgv.cs.ng){
+			// if(mtgv.cs.ng){
 				var html = '<tr id=' + trendObj.id + '>'
 						+ createTd(createDiv(trendObj.id + 'Td2Div', html, null)) + '</tr>';
 				return html;			
-			}
+			// }
 
 
 
-			return  csh.dynTr(trendObj, {td1 : doBold(obj.label), td2 : html })
+			// return  csh.dynTr(trendObj, {td1 : doBold(obj.label), td2 : html })
 		}	
 
 
@@ -1702,11 +1713,11 @@ var cscmn =  (function () {
 			var html = '' 
 			var obj = jsu.getObjFrmArr(TICK_TREND_MAP, type);
 
-			if(mtgv.cs.ng){
+			// if(mtgv.cs.ng){
 
 				html+=doBold(obj.label) +BR_2;
 
-			}
+			// }
 
 					
 			html+=  getDropDown(getTickMap(), csTypeId+'tick', null,func, fncParam, trendObj.tick);
@@ -1739,6 +1750,9 @@ var cscmn =  (function () {
 			html+=  htmlU.getSpan( ' (Optional) # of times When Criteria Does not Match. Valid Range 0-5' , 'grey' , 10);
 
 			var param = 'dyn'+ type +'TrendNg'+':'+csTypeId  ; 
+
+			html+= csh.gept(trendObj, obj.csType,  param);
+
 			html+= SP_3 + csh.delIcon(param) ; 
 
 			return html;
@@ -1799,8 +1813,11 @@ var cscmn =  (function () {
 			var goodData = true;
 
 			if(price){
+				text+= htmlU.doBold('OHLC Trending : ');
+
 				text += fieldObj.label + ' Price ' ;
 			}else{
+				text+= htmlU.doBold('Volume Trending : ');
 				text += ' Volume ' ;
 			}
 
@@ -2205,6 +2222,8 @@ var cscmn =  (function () {
 		acr : addCompRow,
 
 		cc : compChg,
+
+		gchtd : getCompTdHtml,
 		gch : getCompHtml,
 		vc : validateComp,
 
@@ -2218,6 +2237,8 @@ var cscmn =  (function () {
 		astcn : addSpecificTimeCompNg,
 
 		ccst : compChgSpecTime,
+
+		spchtd : getCompSpTimeTd,
 		spch :	getSpTimeCompHtml,
 		vspt : validateSpTimeComp,
 
@@ -2228,6 +2249,7 @@ var cscmn =  (function () {
 
 
 		ccao : compChgAdvOhlc,
+		aohtd :	getAdvOhlcTd,
 		aoh :	getAdvOhlcHtml,
 		vao : validateAdvOhlc,
 
@@ -2235,6 +2257,8 @@ var cscmn =  (function () {
 		// Trend NG
 		atn : addTrendNg,
 		tnc : trendNgChg,
+
+		gttd : getTrendNgTd,
 		gth : getTrendNgHtml,
 		vtn : validateTrendNg,
 

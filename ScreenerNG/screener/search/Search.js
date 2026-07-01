@@ -26,6 +26,8 @@ var mintSrch =  (function () {
 		 csv.gcsf(FILTERS, DEF_FILTERS);
 		 cshl.gcsf(FILTERS, DEF_FILTERS);
 
+		 csbv.gcsf(FILTERS, DEF_FILTERS);
+
 		 cspp.gcsf(FILTERS, DEF_FILTERS);
 		 csstr.gcsf(FILTERS, DEF_FILTERS);
 
@@ -35,6 +37,7 @@ var mintSrch =  (function () {
 		 csd.gcsf(FILTERS, DEF_FILTERS);
 
 		 cscp.gcsf(FILTERS, DEF_FILTERS);
+
 
 		 if(!jsu.isMigContext()){
 		 		csFrNg.gcsf(FILTERS, DEF_FILTERS);
@@ -112,7 +115,7 @@ var mintSrch =  (function () {
 
               html: true, 
               open: function(event, ui) {
-              $(".ui-autocomplete").css("z-index", 1000);
+              $(".ui-autocomplete").css("z-index", 1100);
               }
 
         });
@@ -124,6 +127,21 @@ var mintSrch =  (function () {
 
 			myTsrScreener.showControl(item.tab);
 			var filtDef = item.filtDef;
+
+			if(mtgv.cs.ng){
+
+				var params = (filtDef == null) ? null :   filtDef.params.split(PARAM_DELIM);
+				let tab = jsu.getObjFrmArr(daily_tabs, item.tab);
+
+
+				if(isMobile()){
+						mcsh.sfb(item.mobFilter);
+				}else{
+						window[tab.tabObj].ngs(item, filtDef, params );					
+				}
+
+			}else{
+
 
                		if(jsu.isNull(filtDef.params) ){
                			window[filtDef.obj][filtDef.fnc]();
@@ -143,7 +161,7 @@ var mintSrch =  (function () {
                				window[filtDef.obj][filtDef.fnc](params[0] , params[1]  ,params[2] , params[3] );
                			}
                		}
-
+      }
 
 	}
 
