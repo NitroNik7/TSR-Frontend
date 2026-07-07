@@ -679,7 +679,9 @@ var dyadr = (function () {  // Advance Decline
 
 
 			// TEMP
-			let url = `http://127.0.0.1:5500/AdvanceDecline/v3/poc9/data/index/${activeIndex}.json`;
+			// let url = `http://127.0.0.1:5500/AdvanceDecline/v3/poc9/data/index/${activeIndex}.json`;
+						let url = `https://nitronik7.github.io/TSR-Frontend/AdvanceDecline/v3/poc10/data/index/${activeIndex}.json`;
+
 
 			getData(url).then((data) => {
 
@@ -714,7 +716,9 @@ var dyadr = (function () {  // Advance Decline
 			let adrFreq = htmlU.getInputVal('adrFreq');
 			// let adrFreq = htmlU.getInputVal('allAdrTick');  // tsrAdrSbTick
 			let indexType = htmlU.getRadioVal('tsrAdrIdxType');
-			let url = `http://127.0.0.1:5500/AdvanceDecline/v3/poc9/data/indexType/${indexType}Indices.json`;
+			// let url = `http://127.0.0.1:5500/AdvanceDecline/v3/poc9/data/indexType/${indexType}Indices.json`;
+						let url = `https://nitronik7.github.io/TSR-Frontend/AdvanceDecline/v3/poc10/data/indexType/${indexType}Indices.json`;
+
 
 			getData(url).then((data) => {
 				updateAdrRowCards(data.results);
