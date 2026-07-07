@@ -1501,120 +1501,108 @@
                                 var toolsCarousal = { loop: true, margin: 10, dots: false, autoplay: true, autoplayHoverPause: true, autoplayTimeout: 10000, autoplaySpeed: 3000, responsive: { 0: { items: 1 }, 576: { items: 2 }, 768: { items: 3 }, 1000: { items: 4 }, 1400: { items: 5 }, }, }; $('#hmHeadCarousal').owlCarousel(toolsCarousal); $('#hmHeadCarousalPrev').click(function () { $('#hmHeadCarousal').trigger('prev.owl.carousel', [300]); }); $('#hmHeadCarousalNext').click(function () { $('#hmHeadCarousal').trigger('next.owl.carousel', [300]); });
                             </script>
 
+                            <script src="https://www.topstockresearch.com/static/js/tp/d3.v7.min.js"></script>
+
                             <!-- Code starts here -->
 
                             <link rel="stylesheet" href="style.css">
 
-                            <!-- <div class="container-md sub-heading">
+                            <!-- <div class="container-lg sub-heading">
                                 <h1 style="font-weight: 700;">Advance Decline Ratio Dashboard</h1>
                             </div> -->
 
-                            <div class="container-md tsrAdrHeadingBlock ">
-    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-        <div class="tsrAdrTitleWrapper">
-            <h1 class="tsrAdrMainTitle">Advance Decline Ratio Dashboard</h1>
-            <p class="tsrAdrSubText">Real-time market breadth analytics across major stock segments</p>
-        </div>
-    </div>
-</div>
+                            <div class="container-lg tsrAdrHeadingBlock ">
+                                <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                    <div>
+                                        <h1 class="tsrAdrMainTitle">Advance Decline Ratio Dashboard</h1>
+                                        <p class="tsrAdrSubText">Real-time market breadth analytics across major stock
+                                            segments</p>
+                                    </div>
+                                </div>
+                            </div>
 
 
                             <div id="arFbDiv"></div>
 
-                            <div id="tsrAdrLdgDiv" style="display: none;">
+                            <div id="arLdgDiv" style="display: none;">
                                 <font color="#5BC0DE">Loading ...</font><img
                                     src="https://www.topstockresearch.com/static/img/LoadingMedium.gif" title="loading">
                                 <br>
                                 Loading
                             </div>
 
-                            <section id="tsrAdrChartSection" class="container-md tsrAdrChartMasterContainer">
-                                <div
-                                    class="tsrAdrChartHeaderRow px-3 py-3 d-flex flex-column flex-lg-row align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <h2 class="tsrAdrChartSectionTitle" style="font-size: 20px;">
-                                            F&amp;O Stocks ADR <span> on 15 mins tick </span>
-                                            <!-- <span>15 mins Tick</span> -->
-                                        </h2>
-                                    </div>
-                                    <div class="tsrAdrSelColor mt-2 mt-lg-0">
-                                        <p class="tsrAdrAdvanceLabel">Advances</p>
-                                        <p class="tsrAdrDeclineLabel">Declines</p>
-                                    </div>
-                                </div>
-
-                                <div class="tsrAdrChartContentRow">
-                                    <div id="arContentDiv" class="tsrAdrChartScrollContainer">
-                                    </div>
-
-                                    <div id="tsrAdrChartSectionSideBox" class="tsrAdrChartSidePanel">
-                                        
-                                    </div>
-                                </div>
+                            <section id="tsrAdrChartSection" class="container-lg tsrAdrChartMasterContainer">
                             </section>
 
                             <br>
 
-                            <!-- <div id="arCtrlDiv" class="container-md mb-4">
+                            <!-- <div id="arCtrlDiv" class="container-lg mb-4">
                             </div> -->
 
-<!-- ==================== Redesigned Filters / Controls Area ==================== -->
-<!-- ==================== Redesigned Filters / Controls Area ==================== -->
-<div id="arCtrlDiv" class="container-md mb-4">
-    <div id="miCtrl">	
-        <div class="tsrAdrLayeredControlsBlock p-3 p-md-4">
-            <div class="tsrAdrControlsGridEngine">
-                
-                <!-- Index Segment Field Framework -->
-                <div class="tsrAdrFieldLayoutGroup">
-                    <span class="tsrAdrSectionMicroLabel">
-                        <i class="fas fa-layer-group text-primary me-2"></i>Index Category
-                    </span>
-                    <div class="tsrAdrGlassTrack">
-                        <input type="radio" name="tsrAdrIdxType" value="BroadBased" id="tsrAdrIdxBroadBased" checked="" onclick="dyadr.ua('adrSbTick')">
-                        <label for="tsrAdrIdxBroadBased" class="tsrAdrTrackPill">Broad Based</label>
-                
-                        <input type="radio" name="tsrAdrIdxType" value="SecIdx" id="tsrAdrIdxSecIdx" onclick="dyadr.ua('adrSbTick')">
-                        <label for="tsrAdrIdxSecIdx" class="tsrAdrTrackPill">Sectorial</label>
-                
-                        <input type="radio" name="tsrAdrIdxType" value="ThemIdx" id="tsrAdrIdxThemIdx" onclick="dyadr.ua('adrSbTick')">
-                        <label for="tsrAdrIdxThemIdx" class="tsrAdrTrackPill">Thematic</label>
-                    </div>
-                </div>
+                            <!-- ==================== Redesigned Filters / Controls Area ==================== -->
+                            <div id="arCtrlDiv" class="container-lg mb-4">
+                                <div id="miCtrl">
+                                    <div class="tsrAdrLayeredControlsBlock p-3 p-md-4">
+                                        <div class="tsrAdrControlsGridEngine">
 
-                <!-- Interval Dropdown Field Framework -->
-                <div class="tsrAdrFieldLayoutGroup">
-                    <span class="tsrAdrSectionMicroLabel">
-                        <i class="far fa-clock text-primary me-2"></i>Time Interval
-                    </span>
-                    <div class="tsrAdrSelectInteractiveShell">
-                        <select id="adrFreq" class="tsrAdrInteractiveSelect" onchange="JavaScript:dyadr.ua('chart');">
-                            <option value="I_D">Daily Live</option>
-                            <option value="hh1">1 Hour</option>
-                            <option value="mm30">30 Minutes</option>
-                            <option value="mm15">15 Minutes</option>
-                            <option value="mm5">5 Minutes</option>
-                            <option value="mm2">2 Minutes</option>
-                            <option value="D">Daily (EOD)</option>
-                            <option value="W">Weekly</option>
-                            <option value="M">Monthly</option>
-                        </select>
-                        <i class="fas fa-chevron-down tsrAdrShellArrow"></i>
-                    </div>
-                </div>
+                                            <!-- Index Segment Field Framework -->
+                                            <div class="tsrAdrFieldLayoutGroup">
+                                                <span class="tsrAdrSectionMicroLabel">
+                                                    <i class="fas fa-layer-group text-primary me-2"></i>Index Category
+                                                </span>
+                                                <div class="tsrAdrGlassTrack">
+                                                    <input type="radio" name="tsrAdrIdxType" value="BroadBased"
+                                                        id="tsrAdrIdxBroadBased" checked=""
+                                                        onclick="dyadr.ua('adrSbTick')">
+                                                    <label for="tsrAdrIdxBroadBased" class="tsrAdrTrackPill">Broad
+                                                        Based</label>
 
-            </div>
-        </div>
-    </div>
-</div>
+                                                    <input type="radio" name="tsrAdrIdxType" value="SecIdx"
+                                                        id="tsrAdrIdxSecIdx" onclick="dyadr.ua('adrSbTick')">
+                                                    <label for="tsrAdrIdxSecIdx"
+                                                        class="tsrAdrTrackPill">Sectorial</label>
 
-                            <div class="container-md">
+                                                    <input type="radio" name="tsrAdrIdxType" value="ThemIdx"
+                                                        id="tsrAdrIdxThemIdx" onclick="dyadr.ua('adrSbTick')">
+                                                    <label for="tsrAdrIdxThemIdx"
+                                                        class="tsrAdrTrackPill">Thematic</label>
+                                                </div>
+                                            </div>
+
+                                            <!-- Interval Dropdown Field Framework -->
+                                            <div class="tsrAdrFieldLayoutGroup">
+                                                <span class="tsrAdrSectionMicroLabel">
+                                                    <i class="far fa-clock text-primary me-2"></i>Time Interval
+                                                </span>
+                                                <div class="tsrAdrSelectInteractiveShell">
+                                                    <select id="adrFreq" class="tsrAdrInteractiveSelect"
+                                                        onchange="JavaScript:dyadr.ua('chart');">
+                                                        <option value="I_D">Daily Live</option>
+                                                        <option value="hh1">1 Hour</option>
+                                                        <option value="mm30">30 Minutes</option>
+                                                        <option value="mm15">15 Minutes</option>
+                                                        <option value="mm5">5 Minutes</option>
+                                                        <option value="mm2">2 Minutes</option>
+                                                        <option value="D">Daily (EOD)</option>
+                                                        <option value="W">Weekly</option>
+                                                        <option value="M">Monthly</option>
+                                                    </select>
+                                                    <i class="fas fa-chevron-down tsrAdrShellArrow"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container-lg">
                                 <hr>
                             </div>
 
 
-                            <section id="arCountDiv" class="container-md mb-5 tsrAdrLowerMetricsContainer p-3 p-sm-4">
-                                
+                            <section id="arCountDiv" class="container-lg mb-5 tsrAdrLowerMetricsContainer p-3 p-sm-4">
+
                             </section>
 
 
@@ -1643,7 +1631,7 @@
 
                             <br><br>
 
-                            <div id="tsrToolsContainer" class="container-md my-3">
+                            <div id="tsrToolsContainer" class="container-lg my-3">
                                 <div id="tsrToolsMenuContainer" style="display: flex;"
                                     class="owl-nav align-items-center justify-content-center my-3"> <button
                                         id="hmHeadCarousalPrev" type="button" role="presentation" class="owl-prev btn">
@@ -1844,6 +1832,7 @@
                                                 class="fas fa-angle-right"></i> </span> </button>
                                 </div>
                             </div>
+
 
                             <script src="AdvDec.js"></script>
                             <script src="script.js"></script>
@@ -2206,7 +2195,7 @@
 			        </div>
 			    </div><div id="usrRegDiv"></div><div id="dialog" class="web_dialog"> </div>
 <div id="dialog" class="custDialog"> </div>
-<script src="https://www.topstockresearch.com/static/js/tp/d3.v7.min.js"></script>
+// <script src="https://www.topstockresearch.com/static/js/tp/d3.v7.min.js"></script>
             <link rel="stylesheet" href="https://www.topstockresearch.com/static/css/v1/tsrchartsNgV0.0.6.css">
             <script src="https://www.topstockresearch.com/static/js/chart/tsr_charts_minV0.9.2.214.js"></script>
             <script>var fineTune = false;</script>

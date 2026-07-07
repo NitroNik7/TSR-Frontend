@@ -1,0 +1,783 @@
+/* Premium Soft Light Styling Context Tokens */
+:root {
+    --tsrAdrColorPrimary: #2563eb;
+    --tsrAdrColorPrimaryHover: #1d4ed8;
+    --tsrAdrColorSuccess: #10b981;
+    --tsrAdrColorDanger: #ef4444;
+    --tsrAdrColorBgBody: #f8fafc;
+    /* Elegant off-white body background to soften layout contrast */
+    --tsrAdrColorBgMain: #ffffff;
+    --tsrAdrColorBorder: #e2e8f0;
+    --tsrAdrColorTextDark: #0f172a;
+    --tsrAdrColorTextMuted: #64748b;
+    --tsrAdrColorTextLabel: #475467;
+}
+
+body {
+    background-color: var(--tsrAdrColorBgBody) !important;
+}
+
+
+/* HEADING */
+
+.tsrAdrHeadingBlock {
+    /* border-left: none !important;  */
+    background: linear-gradient(90deg, #f8fafc 0%, #ffffff 100%);
+    padding: 16px 20px;
+    border-radius: 12px;
+    /* box-shadow: inset 3px 0 0 0 var(--tsrAdrColorPrimary); Modern subtle accent indicator strip */
+}
+
+.tsrAdrMainTitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    margin-bottom: 2px;
+}
+
+
+.tsrAdrSubText {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* ---------------------------------------- */
+
+
+/* CHART */
+
+.tsrAdrChartMasterContainer {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.02), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Container alignment and font setup */
+.tsrAdrChartHeaderRow {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    /* Glass-tinted Header Accent Group */
+    border-bottom: 1px solid #f1f5f9;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+/* Premium Dashboard Title Styling */
+.tsrAdrChartSectionTitle {
+    color: #0f172a;
+    /* Slate 900: Deep, readable dark text */
+    font-size: 1.15rem;
+    /* Balanced hierarchy */
+    font-weight: 700;
+    /* Crisp semi-bold */
+    letter-spacing: -0.025em;
+    /* Modern, tight tracking */
+    margin-bottom: 0;
+    /* Clear Bootstrap defaults */
+    display: flex;
+    align-items: baseline;
+}
+
+/* Sub-context decorator (optional addition for the text inside) */
+.tsrAdrChartSectionTitle span {
+    font-weight: 600;
+    color: #64748b;
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+/* Legend Indicator Labels Styling */
+.tsrAdrSelColor {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 0;
+}
+
+.tsrAdrSelColor p {
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #475569;
+}
+
+
+.tsrAdrSelColor p::before {
+    content: '';
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-radius: 3px;
+}
+
+.tsrAdrSelColor p.tsrAdrAdvanceLabel::before {
+    background-color: var(--tsrAdrColorSuccess);
+}
+
+.tsrAdrSelColor p.tsrAdrDeclineLabel::before {
+    background-color: var(--tsrAdrColorDanger);
+}
+
+.tsrAdrChartContentRow {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.tsrAdrChartScrollContainer {
+    flex-grow: 1;
+    overflow-x: auto;
+    /* padding: 24px 24px 20px 24px; */
+    background: #ffffff;
+}
+
+/* Institutional Terminal Styled Side Panel */
+.tsrAdrChartSidePanel {
+    width: 230px;
+    border-left: 1px solid #f1f5f9;
+    background: #fdfdfd;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 28px;
+    padding: 28px 20px;
+    flex-shrink: 0;
+}
+
+.tsrAdrChartSidePanel>* {
+    padding: 0 !important;
+}
+
+/* Premium Highlight Badge Matrix Container */
+.tsrAdrPrimaryMetricBadge {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+}
+
+.tsrAdrMetricLabel {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tsrAdrMetricValue {
+    font-size: 32px !important;
+    font-weight: 800;
+    line-height: 1;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+
+.tsrAdrTextGreen {
+    color: var(--tsrAdrColorSuccess);
+}
+
+.tsrAdrTextRed {
+    color: var(--tsrAdrColorDanger);
+}
+
+.tsrAdrSideBarTrack {
+    width: 100%;
+    height: 8px;
+    background-color: #f1f5f9;
+    border-radius: 99px;
+    display: flex;
+    overflow: hidden;
+}
+
+.tsrAdrSegmentAdvance {
+    background-color: #10b981;
+    border-radius: 99px 0 0 99px;
+}
+
+.tsrAdrSegmentDecline {
+    background-color: #ef4444;
+    border-radius: 0 99px 99px 0;
+}
+
+
+.tsrAdrSegmentAdvance {
+    background-color: var(--tsrAdrColorSuccess);
+    height: 100%;
+}
+
+.tsrAdrSegmentDecline {
+    background-color: var(--tsrAdrColorDanger);
+    height: 100%;
+}
+
+.tsrAdrSegmentAdvance {
+    background-color: #10b981;
+}
+
+.tsrAdrSegmentDecline {
+    background-color: #ef4444;
+}
+
+.tsrAdrSideRatioLabels {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+.tsrAdrSplitBlock {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.tsrAdrSplitBlock span {
+    font-size: 10px;
+    color: #94a3b8;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 2px;
+}
+
+.tsrAdrSplitBlock font {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+/* Institutional Lower Border Grid Segment Split */
+.tsrAdrGridBorderWrapper {
+    display: flex;
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 20px !important;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* --------------------------------------- */
+
+/* SETTINGS */
+
+.tsrAdrLayeredControlsBlock {
+    /* Rich mid-light metallic silver gradient — completely non-white */
+    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+    /* Stronger, crisp border framework for contrast */
+    border: 1px solid #94a3b8 !important;
+    border-radius: 12px !important;
+    /* Soft shadow framework to give it a solid base */
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08) !important;
+}
+
+.tsrAdrControlsGridEngine {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.tsrAdrFieldLayoutGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.tsrAdrSectionMicroLabel {
+    font-size: 11px;
+    font-weight: 700;
+    color: #1e293b !important;
+    /* Deep slate-black for high contrast on silver */
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Sharp, dark charcoal icons that hold ground on a colored background */
+.tsrAdrSectionMicroLabel i {
+    color: #0f172a !important;
+}
+
+/* --- Ambient Indented Selection Track Line --- */
+.tsrAdrGlassTrack {
+    display: flex;
+    background-color: #334155;
+    /* Solid deep charcoal track frame */
+    padding: 4px;
+    border-radius: 8px;
+    width: 100%;
+    overflow-x: auto;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.tsrAdrGlassTrack input[type="radio"] {
+    display: none !important;
+}
+
+/* Active Pill Element Styling - Stands out perfectly on the dark tray */
+.tsrAdrGlassTrack input[type="radio"]:checked+.tsrAdrTrackPill {
+    background-color: #f1f5f9 !important;
+    /* Premium light silver active block */
+    color: #0f172a !important;
+    /* Crisp dark font color */
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.tsrAdrTrackPill {
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #94a3b8 !important;
+    /* Muted contrast text inside dark track */
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 0 !important;
+    flex-grow: 1;
+    text-align: center;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+}
+
+.tsrAdrTrackPill:hover {
+    color: #f8fafc !important;
+}
+
+/* Active Pill Element Styling - Stands out perfectly on the dark tray */
+.tsrAdrGlassTrack input[type="radio"]:checked+.tsrAdrTrackPill {
+    background-color: #f1f5f9 !important;
+    /* Premium light silver active block */
+    color: #0f172a !important;
+    /* Crisp dark font color */
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+.tsrAdrFieldLayoutGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+/* --- Clean Inline Interactive Custom Selector --- */
+.tsrAdrSelectInteractiveShell {
+    position: relative;
+    width: 100%;
+}
+
+
+.tsrAdrInteractiveSelect {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #334155 !important;
+    /* Matching charcoal base for design uniformity */
+    color: #f8fafc !important;
+    /* Crisp white text inside selection choice */
+    border: 1px solid #1e293b !important;
+    border-radius: 8px !important;
+    height: 44px;
+    width: 100%;
+    padding: 0 40px 0 16px;
+    font-size: 13px;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.15s ease;
+}
+
+.tsrAdrInteractiveSelect:hover {
+    background-color: #1e293b !important;
+    border-color: #0f172a !important;
+}
+
+.tsrAdrInteractiveSelect:focus {
+    border-color: #64748b !important;
+    box-shadow: 0 0 0 3px rgba(51, 65, 85, 0.25) !important;
+}
+
+.tsrAdrShellArrow {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 11px;
+    pointer-events: none;
+}
+
+/* 3. Lower Metrics Matrix Base Layout */
+.tsrAdrLowerMetricsContainer {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+
+.tsrAdrLowerTitle {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.tsrAdrListContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Flexible Grid Card Engine */
+.tsrAdrRowCard {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    gap: 14px;
+    transition: all 0.2s ease;
+}
+
+.tsrAdrRowCard:hover {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+}
+
+.tsrAdrRowCard.tsrAdrRowActive {
+    border-color: #2563eb;
+    background-color: #f0f7ff;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.05);
+}
+
+.tsrAdrAssetMetaBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.tsrAdrAssetGroup .tsrAssetName {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.01em;
+}
+
+/* --- HIGH PROMINENCE Button Layout Component --- */
+.tsrAdrControlTab.tsrAdrBtnPrimary {
+    background-color: var(--tsrAdrColorPrimary) !important;
+    /* Solid vibrant brand blue color fill */
+    color: #ffffff !important;
+    border: 1px solid var(--tsrAdrColorPrimary) !important;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.08);
+    transition: all 0.15s ease-in-out;
+}
+
+.tsrAdrControlTab.tsrAdrBtnPrimary:hover {
+    background-color: var(--tsrAdrColorPrimaryHover) !important;
+    border-color: var(--tsrAdrColorPrimaryHover) !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.18);
+}
+
+/* Mute prominent analyze toggle completely when parent card row layer active */
+.tsrAdrRowCard.tsrAdrRowActive .tsrAdrControlTab.tsrAdrBtnPrimary {
+    background-color: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+    color: #94a3b8 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+    opacity: 0.65;
+}
+
+.tsrAdrMiniStatCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 6px 4px;
+}
+
+.tsrAdrStatLabel {
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tsrAdrStatValue {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* --- Progress Track Deck System --- */
+.tsrAdrVisualTrackDeck {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.tsrAdrCountLabel {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.tsrAdrCountLabel strong {
+    font-weight: 700;
+}
+
+.tsrAdrBarValueLabel {
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 32px;
+}
+
+
+.tsrAdrRowActionGrid {
+    display: flex;
+    width: 100%;
+}
+
+
+/* --- LESS PROMINENT Footer Button Controls --- */
+.tsrAdrRowActionGrid {
+    width: 100%;
+}
+
+.tsrAdrRowActionGrid {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+
+.tsrAdrActionBtn {
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    color: #475569 !important;
+    text-wrap: nowrap;
+}
+
+
+.tsrAdrActionBtn {
+    height: 38px;
+    padding: 0 16px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease !important;
+}
+
+
+.tsrAdrBtnSecondary {
+    width: 100%;
+    height: 36px;
+    background-color: #ffffff !important;
+    /* Flat subtle background framework palette outline button */
+    border: 1px solid #cbd5e1 !important;
+    color: #475569 !important;
+    /* Desaturated gray contrast text marker value */
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    transition: all 0.15s ease;
+}
+
+
+
+
+/* -------------------------------------- */
+
+
+/* MEDIA QUERIES */
+
+@media (min-width: 768px) {
+    .tsrAdrMainTitle {
+        font-size: 24px;
+    }
+
+    .tsrAdrChartSidePanel {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    .tsrAdrPrimaryMetricBadge,
+    .tsrAdrSideRatioBox {
+        max-width: 100%;
+        /* width: 100%; */
+    }
+
+    .tsrAdrGridBorderWrapper {
+        border-left: none;
+        padding-left: 0 !important;
+        border-top: 1px dashed #e2e8f0;
+        padding-top: 16px !important;
+    }
+
+        .tsrAdrAssetGroup .tsrAssetName {
+        font-size: 16px;
+    }
+
+        .tsrAdrMiniStatCard {
+        padding: 10px 8px;
+    }
+
+        .tsrAdrRowActionGrid {
+        justify-content: flex-end;
+    }
+
+    
+    .tsrAdrActionBtn {
+        width: auto;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .tsrAdrControlsGridEngine {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 32px;
+    }
+
+    .tsrAdrFieldLayoutGroup {
+        width: auto !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+
+    .tsrAdrFieldLayoutGroup .tsrAdrSectionMicroLabel {
+        white-space: nowrap;
+    }
+
+    .tsrAdrGlassTrack {
+        min-width: 380px;
+        width: auto !important;
+    }
+
+        .tsrAdrInteractiveSelect {
+        width: 180px !important;
+    }
+}
+
+@media (max-width: 1100px) {
+    .tsrAdrChartContentRow {
+        flex-direction: column;
+    }
+
+    .tsrAdrChartSidePanel {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid #f1f5f9;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 20px 24px;
+        gap: 24px;
+        max-width: 300px;
+    }
+
+    .tsrAdrChartSidePanel {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid var(--tsrAdrColorBorder);
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 20px; */
+        padding: 10px 0;
+    }
+
+    .tsrAdrPrimaryMetricBadge {
+        min-width: 120px;
+        /* padding: 10px 14px !important; */
+        padding: 10px 0px !important;
+    }
+
+
+    .tsrAdrMetricValue {
+        font-size: 24px !important;
+    }
+
+    .tsrAdrGridBorderWrapper {
+        border-top: none;
+        padding-top: 0 !important;
+        border-left: 1px dashed #e2e8f0;
+        padding-left: 24px !important;
+        width: auto;
+        gap: 24px;
+        min-width: 180px;
+    }
+
+        .tsrAdrRowActionGrid {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    
+    .tsrAdrBtnSecondary {
+        width: auto !important;
+        padding: 0 16px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .tsrAdrMainTitle {
+        font-size: 40px;
+    }
+}

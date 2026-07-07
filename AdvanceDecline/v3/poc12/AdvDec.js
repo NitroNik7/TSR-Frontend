@@ -1,6 +1,5 @@
 var dyadr = (function () {  // Advance Decline
 
-
 	let thisObj = 'dyadr';
 	let USER_ACTION = thisObj + '.ua';
 	var htmlU = mintHtmlUtil;
@@ -99,7 +98,7 @@ var dyadr = (function () {  // Advance Decline
 		{ id: 'NiftyRealtyIndex', label: 'Nifty Realty', type: "SecIdx" },
 	];
 
-	var activeIndex = null;
+	var activeIndexId = null;
 
 	/*
 		/======================/
@@ -186,19 +185,41 @@ var dyadr = (function () {  // Advance Decline
 
 	// -------------------------- ADD Controls Row ENDS -----------------------
 
+	// -------------------------- ADD ADR ROW SECTION Starts -----------------------
 	function addAdrRowSection() {
 		htmlU.addMsgToDiv(adrRowSectionId, true, getAdrRowSectionHtml());
 		userAction('adrSbTick');
 		// dyadr.uarc('BroadBased');
 	}
 
+	function getAdrRowSectionHtml() {
+		let html = "";
+
+		html += `
+					<div class="mb-3 mb-sm-4 d-flex align-items-center justify-content-between flex-wrap gap-2">
+						<h4 class="tsrAdrLowerTitle">
+							<i class="fas fa-database me-2 text-primary"></i>
+							Index Components Overview
+						</h4>
+						<span class="text-muted small font-monospace">
+							Rows auto-align to top when focused
+						</span>
+					</div>
+
+					<div id="${adrRowContainerId}" class="tsrAdrListContainer">
+					</div>
+		`
+
+		return html;
+	}
+
+	// -------------------------- ADD  ADR ROW SECTION Ends -----------------------
+
 	function addChart() {
 
-		getChartSectionHtml();
 
 
 		xAxisTickSpacing = 100;
-		$('#' + chartDivId).height(300);
 		userAction('chart');
 	}
 
@@ -522,184 +543,138 @@ var dyadr = (function () {  // Advance Decline
 
 	function updateAdrRowCards(indexList) {
 		// onclick="JavaScript:dyadr.ua('chart');"
-		// let indexList = getIndexListByType(idxType);
 		let html = "";
 
 		for (let i = 0; i < indexList.length; i++) {
-			const index = indexList[i];
-
-			let onclick = "";
-
-			// if (i == 0) {
-			onclick = `dyadr.har(this, '${index.id}'); dyadr.ua('chart', '${index.id}');`; //dyadr.vci('${index.id}', event);
-			// } else {
-			// 	onclick = `dyadr.ua('chart', '${index.id}'); `; // dyadr.vci('${index.id}', event);
-			// }
-
-			// TEMP:
-			// let max = 100, min = 0;
-			let advances = index.a;
-			let declines = index.d;
-
-			let advancesPc = Math.round((advances / (advances + declines)) * 100) + "%";
-			let declinesPc = Math.round((declines / (advances + declines)) * 100) + "%";
-
-			let adRatio = Math.round((advances / declines) * 100) / 100;
-
-			let ratioCls = adRatio > 0 ? "tsrAdrTextGreen" : "tsrAdrTextRed";
-
-			let indexObj = jsu.getObjFrmArr(INDEX_LIST, index.id);
-
-			/*
-			html += `
-					<div class="tsrAdrRowCard" data-index-id="${index.id}" onclick="${onclick}">
-						<div class="tsrAdrAssetIdentity">
-							<span class="tsrAssetName">${indexObj.label}</span>
-							<button type="button" class="tsrAdrInlineChartBtn" onclick="${onclick}">
-								<i class="fas fa-chart-line me-1"></i> View Chart
-							</button>
-						</div>
-						<div class="tsrAdrMetricGroup tsrAdrCenterMetric">
-							<div class="tsrAdrHighlightBadge">
-								<span>ADR Ratio</span>
-								<font class="${ratioCls}">${adRatio}</font>
-							</div>
-						</div>
-						<div class="tsrAdrMetricGroup tsrAdrSplitMetrics">
-							<div class="tsrAdrMetricBlock text-start">
-								<span>Advances</span>
-								<font class="tsrAdrTextGreen">${advances}</font>
-							</div>
-							<div class="tsrAdrMetricBlock text-end ms-auto">
-								<span>Declines</span>
-								<font class="tsrAdrTextRed">${declines}</font>
-							</div>
-						</div>
-						<div class="tsrAdrBarCentralFlex">
-							<div class="tsrAdrBarValueLabel tsrAdrTextGreen text-end"> ${advancesPc}</div>
-							<div class="tsrAdrBarVisualTrack">
-								<div class="tsrAdrSegmentAdvance" style="width: ${advancesPc}"></div>
-								<div class="tsrAdrSegmentDecline" style="width: ${declinesPc}"></div>
-							</div>
-							<div class="tsrAdrBarValueLabel tsrAdrTextRed"> ${declinesPc}</div>
-						</div>
-						<div class="tsrAdrRowActionGrid">
-							<a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-								class="tsrAdrActionBtn tsrAdrBtnSecondary">
-								<i class="fas fa-th me-1"></i> Heat Map
-							</a>
-						</div>
-					</div>
-				`
-				*/
-
-			html += `
-				<div class="tsrAdrRowCard" data-index-id="FuturesAndOptions" onclick="dyadr.har(this, 'FuturesAndOptions'); dyadr.ua('chart', 'FuturesAndOptions');">
-    <!-- 1. Primary Asset Deck -->
-    <div class="tsrAdrAssetMetaBlock">
-        <div class="tsrAdrAssetGroup">
-            <span class="tsrAssetName">${indexObj.label}</span>
-            
-        </div>
-        
-        <!-- 2. HIGH PROMINENCE: Integrated Inline Chart Toggle Panel -->
-        <div class="tsrAdrControlTab tsrAdrBtnPrimary" onclick="event.stopPropagation(); dyadr.har(this.closest('.tsrAdrRowCard'), 'FuturesAndOptions'); dyadr.ua('chart', 'FuturesAndOptions');">
-            <i class="fas fa-chart-line"></i>
-            <span STYLE="text-wrap: nowrap;">Analyze Chart</span>
-        </div>
-    </div>
-
-    <!-- 3. Metrics Analytics Dashboard Grid -->
-        <div class="tsrAdrMiniStatCard">
-            <span class="tsrAdrStatLabel">ADR Ratio</span>
-            <span class="tsrAdrStatValue tsrAdrTextGreen">0.75</span>
-        </div>
-
-    <!-- 4. Progress Matrix Track System -->
-    <div class="tsrAdrVisualTrackDeck">
-        <div class="tsrAdrVisualTrackHeader d-flex justify-content-between mb-1">
-            <span class="tsrAdrCountLabel tsrAdrTextGreen">Adv: <strong>90</strong></span>
-            <span class="tsrAdrCountLabel tsrAdrTextRed">Dec: <strong>120</strong></span>
-        </div>
-        <div class="d-flex align-items-center w-100 gap-2">
-            <div class="tsrAdrBarValueLabel tsrAdrTextGreen text-end">43%</div>
-            <div class="tsrAdrBarVisualTrack flex-grow-1">
-                <div class="tsrAdrSegmentAdvance" style="width: 43%"></div>
-                <div class="tsrAdrSegmentDecline" style="width: 57%"></div>
-            </div>
-            <div class="tsrAdrBarValueLabel tsrAdrTextRed">57%</div>
-        </div>
-    </div>
-
-    <!-- 5. LESS PROMINENT: Utility CTA Actions -->
-    <div class="tsrAdrRowActionGrid">
-        <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions" class="tsrAdrActionBtn tsrAdrBtnSecondary">
-            <i class="fas fa-th-large me-2"></i>Heat Map
-        </a>
-    </div>
-</div>
-			
-			`
+			let index = indexList[i];
+			html += getAdrRowCard(index);
 		}
 
 		let adrRowContainer = document.getElementById("advCntRow");
 		adrRowContainer.innerHTML = html;
-
 
 		let firstRow = document.querySelector(".tsrAdrRowCard");
 		let firstRowIndexId = firstRow.getAttribute("data-index-id");
 
 		dyadr.har(firstRow, firstRowIndexId);
 		dyadr.ua('chart');
+
+		// htmlU.focusToDiv(chartSectionDivId);
+		let chartSectionDiv = document.getElementById(chartSectionDivId);
+		chartSectionDiv.scrollIntoView({
+			behavior: "smooth",
+			block: "center"
+		});
 		// return html;
 	}
 
-	function getIndexListByType(idxType) {
+	function getAdrRowCard(index) {
+		let html = "";
 
-		let list = [];
-
-		for (let i = 0; i < INDEX_LIST.length; i++) {
-			let index = INDEX_LIST[i];
-			if (index.type == idxType) {
-				list.push(index);
-			}
+		if (jsu.isNull(index)) {
+			return html;
 		}
 
-		return list;
+		let onclick = `dyadr.har(this, '${index.id}'); dyadr.ua('chart', '${index.id}');`;
+
+		let advances = index.a;
+		let declines = index.d;
+		let advancesPc = Math.round((advances / (advances + declines)) * 100) + "%";
+		let declinesPc = Math.round((declines / (advances + declines)) * 100) + "%";
+		let adRatio = Math.round((advances / declines) * 100) / 100;
+		let ratioCls = adRatio > 0 ? "tsrAdrTextGreen" : "tsrAdrTextRed";
+		let indexObj = jsu.getObjFrmArr(INDEX_LIST, index.id);
+		let hmUrl = jsu.getRootUrl() + '/Screener/Markets/HeatMap/' + index.id;
+
+		html += `
+				<div class="tsrAdrRowCard" data-index-id="${index.id}" onclick="dyadr.har(this, '${index.id}'); dyadr.ua('chart', '${index.id}');">
+					<!-- 1. Primary Asset Deck -->
+					<div class="tsrAdrAssetMetaBlock">
+						<div class="tsrAdrAssetGroup">
+							<span class="tsrAssetName">${indexObj.label}</span>
+						</div>
+						
+						<!-- 2. HIGH PROMINENCE: Integrated Inline Chart Toggle Panel -->
+
+						<div class="tsrAdrControlTab tsrAdrBtnPrimary d-none d-lg-flex" onclick="event.stopPropagation(); dyadr.har(this.closest('.tsrAdrRowCard'), '${index.id}'); dyadr.ua('chart', '${index.id}');">
+							<i class="fas fa-chart-line"></i>
+							<span STYLE="text-wrap: nowrap;">Analyze Chart</span>
+						</div>
+
+
+						<a href="${hmUrl}" target="_blank" class="tsrAdrActionBtn tsrAdrBtnSecondary d-flex d-lg-none ">
+							<i class="fas fa-th-large me-2"></i>Heat Map
+						</a>
+					</div>
+
+					<!-- 3. Metrics Analytics Dashboard Grid -->
+					
+						<div class="tsrAdrMiniStatCard">
+							<span class="tsrAdrStatLabel">ADR Ratio</span>
+							<span class="tsrAdrStatValue tsrAdrTextGreen">${adRatio}</span>
+						</div>
+
+					<!-- 4. Progress Matrix Track System -->
+					<div class="tsrAdrVisualTrackDeck">
+						<div class="tsrAdrVisualTrackHeader d-flex justify-content-between mb-1">
+							<span class="tsrAdrCountLabel tsrAdrTextGreen">Adv: <strong>${advances}</strong></span>
+							<span class="tsrAdrCountLabel tsrAdrTextRed">Dec: <strong>${declines}</strong></span>
+						</div>
+						<div class="d-flex align-items-center w-100 gap-2">
+							<div class="tsrAdrBarValueLabel tsrAdrTextGreen text-end">${advancesPc}</div>
+							<div class="tsrAdrBarVisualTrack flex-grow-1">
+								<div class="tsrAdrSegmentAdvance" style="width: ${advancesPc}"></div>
+								<div class="tsrAdrSegmentDecline" style="width: ${declinesPc}"></div>
+							</div>
+							<div class="tsrAdrBarValueLabel tsrAdrTextRed">${declinesPc}</div>
+						</div>
+					</div>
+
+					<!-- 5. LESS PROMINENT: Utility CTA Actions -->
+					<div class="tsrAdrRowActionGrid">
+						
+						<div class="tsrAdrControlTab tsrAdrBtnPrimary d-flex d-lg-none" onclick="event.stopPropagation(); dyadr.har(this.closest('.tsrAdrRowCard'), '${index.id}'); dyadr.ua('chart', '${index.id}');">
+							<i class="fas fa-chart-line"></i>
+							<span STYLE="text-wrap: nowrap;">Analyze Chart</span>
+						</div>
+
+						<a href="${hmUrl}" target="_blank" class="tsrAdrActionBtn tsrAdrBtnSecondary d-none d-lg-flex ">
+							<i class="fas fa-th-large me-2"></i>Heat Map
+						</a>
+					</div>
+				</div>
+			`
+
+		return html;
 	}
+
 
 	function userAction(param1) {
 		if (param1 == 'chart') {
 
 			// let adrSb = "";
-
 			// 	adrSb = htmlU.getInputVal('adrSb');
-
-
-
-			// TEMP
+			// -----------------------------------------------------------
+			// TODO TEMP ---REMOVE
 			// let url = `http://127.0.0.1:5500/AdvanceDecline/v3/poc9/data/index/${activeIndex}.json`;
-						let url = `https://nitronik7.github.io/TSR-Frontend/AdvanceDecline/v3/poc10/data/index/${activeIndex}.json`;
-
+			let url = `https://nitronik7.github.io/TSR-Frontend/AdvanceDecline/v3/poc10/data/index/${activeIndexId}.json`;
 
 			getData(url).then((data) => {
-
 				let result = data.results;
-
 				let dataArr = [];
 				let row = null;
 				for (let i = 0; i < result.length; i++) {
-
 					row = result[i];
 					dataArr.push({ 'Date': jsu.parseDate(row.dt), 'Advances': Number(row.a), 'Declines': Number(row.d) });
-
 					// if(i==  1) break;
-
 				}
 				// drawChartFromData(dataArr);
 				updateChartSection(dataArr);
-
 			});
+			// -----------------------------------------------------------
+
+			// ------------------------------------------------------------
+			// TODO ADD
 			// let adrFreq = htmlU.getInputVal('adrFreq');
 
 			// let DJS_URL = '/rt/djs';
@@ -708,22 +683,27 @@ var dyadr = (function () {  // Advance Decline
 			// var remoteObject = new RC(DJS_URL, null, postData, LOAD_DIV, FB_DIV, thisObj, 'uar', 'chart');
 			// // URL  : // https://www.tsruat.com/rt//djs?cat=Markets&subCat=HeatMap&freq=mm5&index=Nifty50
 			// jsu.rc(remoteObject);
+			// -----------------------------------------------------------
 
 		} else if (param1 == 'adrSbTick') {
 
 
-			let adrFreq = htmlU.getInputVal('adrFreq');
 			// let adrFreq = htmlU.getInputVal('allAdrTick');  // tsrAdrSbTick
+			let adrFreq = htmlU.getInputVal('adrFreq');
 			let indexType = htmlU.getRadioVal('tsrAdrIdxType');
-			// let url = `http://127.0.0.1:5500/AdvanceDecline/v3/poc9/data/indexType/${indexType}Indices.json`;
-						let url = `https://nitronik7.github.io/TSR-Frontend/AdvanceDecline/v3/poc10/data/indexType/${indexType}Indices.json`;
 
+			// -----------------------------------------------------------
+			// TODO REMOVE
+			// let url = `http://127.0.0.1:5500/AdvanceDecline/v3/poc9/data/indexType/${indexType}Indices.json`;
+			let url = `https://nitronik7.github.io/TSR-Frontend/AdvanceDecline/v3/poc10/data/indexType/${indexType}Indices.json`;
 
 			getData(url).then((data) => {
 				updateAdrRowCards(data.results);
 			});
+			// -----------------------------------------------------------
 
-
+			// -----------------------------------------------------------
+			// TODO ADD
 			// // let classi = htmlU.getInputVal('idxType');
 			// let classi = htmlU.getRadioVal('tsrAdrIdxType');
 			// let DJS_URL = '/rt/djs';
@@ -733,6 +713,7 @@ var dyadr = (function () {  // Advance Decline
 			// remoteObject.param1 = param1;
 			// // URL  : // https://www.tsruat.com/rt//djs?cat=Markets&subCat=HeatMap&freq=mm5&index=Nifty50
 			// jsu.rc(remoteObject);
+			// -----------------------------------------------------------
 
 		} else if (param1 == 'adrSB') {
 
@@ -750,10 +731,6 @@ var dyadr = (function () {  // Advance Decline
 			jsu.rc(remoteObject);
 
 		}
-
-
-
-
 	}
 
 	function userActionResponse(data, type, remoteObject) {
@@ -781,52 +758,52 @@ var dyadr = (function () {  // Advance Decline
 				let rows = ''
 				let result = data.results;
 
+				// NEW CODE				
+				updateAdrRowCards(result);
 
 				/* Old code
-				let showIndex = remoteObject.param1 == 'adrSB' ? true : false;
+					let showIndex = remoteObject.param1 == 'adrSB' ? true : false;
 
-				for (let i = 0; i < result.length; i++) {
-					row = result[i];
+					for (let i = 0; i < result.length; i++) {
+						row = result[i];
 
 
-					if (row == null) {
+						if (row == null) {
 
-						if (showIndex) {
-							row({ a: 0, d: 0 })
-						} else {
-							if ((row.a == 0 && row.d == 0)) continue;
+							if (showIndex) {
+								row({ a: 0, d: 0 })
+							} else {
+								if ((row.a == 0 && row.d == 0)) continue;
+							}
+
 						}
 
+
+
+						let idxObj = jsu.getObjFrmArr(INDEX_LIST, row.id);
+
+						if (idxObj == null) continue;
+
+
+						let detailedUrl = jsu.getRootUrl() + '/Screener/Markets/AdvanceDecline'
+
+
+						let adrData = {
+							numAdvances: row.a, numDeclines: row.d, idSuffix: row.id,
+							stockBasket: idxObj.label, detailedUrl: detailedUrl
+						}
+
+
+						let cntHtml = createAdvancedDeclineRatioBar(adrData, showIndex, row.id);
+						rows += cntHtml;
+
+						if (showIndex) break;
+
+						rows += '<hr>';
+
 					}
-
-
-
-					let idxObj = jsu.getObjFrmArr(INDEX_LIST, row.id);
-
-					if (idxObj == null) continue;
-
-
-					let detailedUrl = jsu.getRootUrl() + '/Screener/Markets/AdvanceDecline'
-
-
-					let adrData = {
-						numAdvances: row.a, numDeclines: row.d, idSuffix: row.id,
-						stockBasket: idxObj.label, detailedUrl: detailedUrl
-					}
-
-
-					let cntHtml = createAdvancedDeclineRatioBar(adrData, showIndex, row.id);
-					rows += cntHtml;
-
-					if (showIndex) break;
-
-					rows += '<hr>';
-
-				}
-				htmlU.addMsgToDiv('advCntRow', true, rows);
+					htmlU.addMsgToDiv('advCntRow', true, rows);
 				*/
-
-				updateAdrRowCards(result);
 
 				// if(remoteObject.param1 == 'adrSbTick'){
 				// 	htmlU.addMsgToDiv('advCntRow', true,rows);
@@ -841,48 +818,52 @@ var dyadr = (function () {  // Advance Decline
 
 	function updateChartSection(dataArr) {
 		htmlU.addMsgToDiv(chartSectionDivId, true, getChartSectionHtml(dataArr));
-		// htmlU.addMsgToDiv(chartSectionSideBoxId, true,);
+
+		$('#' + chartDivId).height(300);
+
 		drawChartFromData(dataArr);
 
-
+		// htmlU.focusToDiv(chartSectionDivId);
+		let chartSectionDiv = document.getElementById(chartSectionDivId);
+		chartSectionDiv.scrollIntoView({
+			behavior: "smooth",
+			block: "center"
+		});
 	}
 
 	function getChartSectionHtml(dataArr) {
 
 		const latestData = dataArr[dataArr.length - 1];
+		let indexObj = jsu.getObjFrmArr(INDEX_LIST, activeIndexId);
+		let adrFreq = htmlU.getInputVal('adrFreq');
+		let freq = jsu.getObjFrmArr(FREQ_LIST, adrFreq);
 
 		let html = "";
-
 		html += `
-								<div
-                                    class="tsrAdrChartHeaderRow px-3 py-3 d-flex flex-column flex-lg-row align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <h2 class="tsrAdrChartSectionTitle" style="font-size: 20px;">
-                                            F&amp;O Stocks ADR <span> on 15 mins tick </span>
-                                            <!-- <span>15 mins Tick</span> -->
-                                        </h2>
-                                    </div>
-                                    <div class="tsrAdrSelColor mt-2 mt-lg-0">
-                                        <p class="tsrAdrAdvanceLabel">Advances</p>
-                                        <p class="tsrAdrDeclineLabel">Declines</p>
-                                    </div>
-                                </div>
+					<div class="tsrAdrChartHeaderRow px-3 py-3 d-flex flex-column flex-lg-row align-items-center justify-content-between">
+						<div class="d-flex align-items-center gap-2">
+							<h2 class="tsrAdrChartSectionTitle" style="font-size: 20px;">
+								${indexObj.label} ADR <span> on ${freq.label} Tick </span>
+							</h2>
+						</div>
+						<div class="tsrAdrSelColor mt-2 mt-lg-0">
+							<p class="tsrAdrAdvanceLabel">Advances</p>
+							<p class="tsrAdrDeclineLabel">Declines</p>
+						</div>
+					</div>
 
-                                <div class="tsrAdrChartContentRow">
-                                    <div id="arContentDiv" class="tsrAdrChartScrollContainer">
-                                    </div>
+					<div class="tsrAdrChartContentRow">
+						<div id="arContentDiv" class="tsrAdrChartScrollContainer">
+						</div>
 
-                                    <div id="tsrAdrChartSectionSideBox" class="tsrAdrChartSidePanel">`
+						<div id="tsrAdrChartSectionSideBox" class="tsrAdrChartSidePanel">`
 		html += getChartSectionSideBox(latestData);
-		html += `					</div>
-                                </div>
-		
+		html += `					
+						</div>
+                    </div>
 		`
 
-
 		return html;
-
-
 	}
 
 	function getChartSectionSideBox(latestData) {
@@ -892,29 +873,47 @@ var dyadr = (function () {  // Advance Decline
 		let declines = latestData.Declines;
 		let adRatio = (advances / declines).toFixed(2);
 
-		let advancesPc = ((advances / (advances + declines)) * 100).toFixed(2) + "%";
-		let declinesPc = ((declines / (advances + declines)) * 100).toFixed(2) + "%";
+		let advancesPc = Math.round((advances / (advances + declines)) * 100);
+		let declinesPc = 100 - advancesPc;
+
+		advancesPc += "%";
+		declinesPc += "%";
 
 		let ratioCls = adRatio > 0 ? "tsrAdrTextGreen" : "tsrAdrTextRed";
 
+		// <div class="tsrAdrSideRatioBox">
+		// 	<div class="tsrAdrSideRatioLabels">
+		// 		<span class="tsrAdrTextGreen">${advancesPc} Adv</span>
+		// 		<span class="tsrAdrTextRed">${declinesPc} Dec</span>
+		// 	</div>
+		// 	<div class="tsrAdrSideBarTrack">
+		// 		<div class="tsrAdrSegmentAdvance" style="width: ${advancesPc} "></div>
+		// 		<div class="tsrAdrSegmentDecline" style="width: ${declinesPc} "></div>
+		// 	</div>
+		// </div>
 		html += `
 			<div class="tsrAdrPrimaryMetricBadge">
 				<span class="tsrAdrMetricLabel">ADR Ratio</span>
 				<font class="tsrAdrMetricValue ${ratioCls}">${adRatio}</font>
 			</div>
 
-			<div class="tsrAdrSideRatioBox">
-				<div class="tsrAdrSideRatioLabels">
-					<span class="tsrAdrTextGreen">${advancesPc} Adv</span>
-					<span class="tsrAdrTextRed">${declinesPc} Dec</span>
+
+						<div class="tsrAdrVisualTrackDeck">
+				<div class="tsrAdrVisualTrackHeader justify-content-between mb-1">
+					<span class="tsrAdrCountLabel tsrAdrTextGreen">Adv: <strong>${advances}</strong></span>
+					<span class="tsrAdrCountLabel tsrAdrTextRed">Dec: <strong>${declines}</strong></span>
 				</div>
-				<div class="tsrAdrSideBarTrack">
-					<div class="tsrAdrSegmentAdvance" style="width: ${advancesPc} "></div>
-					<div class="tsrAdrSegmentDecline" style="width: ${declinesPc} "></div>
+				<div class="d-flex align-items-center w-100 gap-2">
+					<div class="tsrAdrBarValueLabel tsrAdrTextGreen text-end">${advancesPc}</div>
+					<div class="tsrAdrBarVisualTrack flex-grow-1">
+						<div class="tsrAdrSegmentAdvance" style="width: ${advancesPc}"></div>
+						<div class="tsrAdrSegmentDecline" style="width: ${declinesPc}"></div>
+					</div>
+					<div class="tsrAdrBarValueLabel tsrAdrTextRed">${declinesPc}</div>
 				</div>
 			</div>
 
-			<div class="tsrAdrGridBorderWrapper mt-auto">
+			<div class="tsrAdrGridBorderWrapper">
 				<div class="tsrAdrSplitBlock text-start">
 					<span>Advances</span>
 					<font class="tsrAdrTextGreen">${advances}</font>
@@ -978,144 +977,124 @@ var dyadr = (function () {  // Advance Decline
 
 	// }
 
-	function getAdrRowSectionHtml() {
-		let html = "";
 
-		html += `
-					<div class="tsrAdrLowerHeader mb-3 mb-sm-4 d-flex align-items-center justify-content-between flex-wrap gap-2">
-						<h4 class="tsrAdrLowerTitle">
-							<i class="fas fa-database me-2 text-primary"></i>
-							Index Components Overview
-						</h4>
-						<span class="text-muted small font-monospace">
-							Rows auto-align to top when focused
-						</span>
-					</div>
-
-					<div id="${adrRowContainerId}" class="tsrAdrListContainer">
-					</div>
-		`
-
-		return html;
-	}
-
-	function createAdvancedDeclineRatioBar(data, showIndexOpt, index) {
+	// function createAdvancedDeclineRatioBar(data, showIndexOpt, index) {
 
 
-		let totalStocks = data.numAdvances + data.numDeclines;
+	// 	let totalStocks = data.numAdvances + data.numDeclines;
 
-		let advancesPercent = (data.numAdvances == 0) ? 0 : (data.numAdvances / totalStocks) * 100;
-		let declinesPercent = (data.numDeclines == 0) ? 0 : (data.numDeclines / totalStocks) * 100;
+	// 	let advancesPercent = (data.numAdvances == 0) ? 0 : (data.numAdvances / totalStocks) * 100;
+	// 	let declinesPercent = (data.numDeclines == 0) ? 0 : (data.numDeclines / totalStocks) * 100;
 
 
 
 
-		let html = `
+	// 	let html = `
 
-                                        <div class="card-body">
-                                            <div class="row mb-10">`
+	//                                     <div class="card-body">
+	//                                         <div class="row mb-10">`
 
-		html += `<div class="mb-3 mb-md-0 col-sm-6 col-md-2 d-flex"
-                                                    style="text-align: center; align-items: center; justify-content: center;">`
-		if (showIndexOpt) {
-
-
-
-			//let params = 'adrSB' 
-
-			html += htmlU.getDropDown(INDEX_LIST, 'idxSbType', null, USER_ACTION, 'adrSB', index);
-
-		} else {
-			// Screener/Markets/HeatMap/NIFTY100
-			let hmUrl = jsu.getRootUrl() + '/Screener/Markets/IndexAnalysis/' + data.idSuffix.toUpperCase();
+	// 	html += `<div class="mb-3 mb-md-0 col-sm-6 col-md-2 d-flex"
+	//                                                 style="text-align: center; align-items: center; justify-content: center;">`
+	// 	if (showIndexOpt) {
 
 
 
-			html += `<span style="font-size: 24px;color:#0f92a3;">
-                                                    <a href='${hmUrl}'  >${data.stockBasket}</a>
-        											</span>
-                                                `
-		}
+	// 		//let params = 'adrSB' 
 
-		html += '</div>';
+	// 		html += htmlU.getDropDown(INDEX_LIST, 'idxSbType', null, USER_ACTION, 'adrSB', index);
 
-		html += `                                        <div class="mb-3 mb-md-0 col-sm-6 col-md-2" style="text-align: center;">
-                                                    <div class="d-flex flex-column">
-                                                        <span>Advances</span>
-                                                        <span style="font-size: 24;">
-                                                            <font color="green" id="tsrAdrAdvancesText${data.idSuffix}"> ${data.numAdvances}</font>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 mb-md-0 col-sm-6 col-md-2" style="text-align: center;">
-                                                    <div class="d-flex flex-column">
-                                                        <span>Declines</span>
-                                                        <span style="font-size: 24;">
-                                                            <font color="red" id="tsrAdrDeclinesText${data.idSuffix}"> ${data.numDeclines}</font>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 mb-md-0 col-sm-6 col-md-4" style="text-align: center;">
-                                                    <div class="d-flex flex-column h-100">
-                                                        <span style="font-size: 16px;">
-                                                            <b>
-                                                                Advance Decline Ratio
-                                                            </b>
-                                                        </span>
-                                                        <div class="d-flex flex-column" style="justify-content: center; align-content: center; flex-wrap: wrap; height: 100%;">
+	// 	} else {
+	// 		// Screener/Markets/HeatMap/NIFTY100
+	// 		let hmUrl = jsu.getRootUrl() + '/Screener/Markets/IndexAnalysis/' + data.idSuffix.toUpperCase();
 
-                                                            <div class="d-flex flex-row" style="height: 20px; justify-content: start;">
-                                                                <span id="tsrAdrAdvancesPercentText${data.idSuffix}" style="white-space: nowrap; font-weight: bold;color: #008080;">${advancesPercent.toFixed()}%</span>
-                                                            </div>
-                                                            <div class="d-flex" 
-                                                                style="height: 10px;  width: 60%;">
-                                                                    <div id="tsrAdrBarAdvancesDiv${data.idSuffix}" style="background-color: #008080; height: 100%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; width: ${advancesPercent}%;">
 
-                                                                    </div>
-                                                                    <div style="width: 2%;">
 
-                                                                    </div>
-                                                                    <div id="tsrAdrBarDeclinesDiv${data.idSuffix}" style="background-color: #fd4757; height: 100%; border-top-right-radius: 10px; border-bottom-right-radius: 10px; width: ${declinesPercent}%;">
+	// 		html += `<span style="font-size: 24px;color:#0f92a3;">
+	//                                                 <a href='${hmUrl}'  >${data.stockBasket}</a>
+	//     											</span>
+	//                                             `
+	// 	}
 
-                                                                    </div>
+	// 	html += '</div>';
 
-                                                            </div>
+	// 	html += `                                        <div class="mb-3 mb-md-0 col-sm-6 col-md-2" style="text-align: center;">
+	//                                                 <div class="d-flex flex-column">
+	//                                                     <span>Advances</span>
+	//                                                     <span style="font-size: 24;">
+	//                                                         <font color="green" id="tsrAdrAdvancesText${data.idSuffix}"> ${data.numAdvances}</font>
+	//                                                     </span>
+	//                                                 </div>
+	//                                             </div>
+	//                                             <div class="mb-3 mb-md-0 col-sm-6 col-md-2" style="text-align: center;">
+	//                                                 <div class="d-flex flex-column">
+	//                                                     <span>Declines</span>
+	//                                                     <span style="font-size: 24;">
+	//                                                         <font color="red" id="tsrAdrDeclinesText${data.idSuffix}"> ${data.numDeclines}</font>
+	//                                                     </span>
+	//                                                 </div>
+	//                                             </div>
+	//                                             <div class="mb-3 mb-md-0 col-sm-6 col-md-4" style="text-align: center;">
+	//                                                 <div class="d-flex flex-column h-100">
+	//                                                     <span style="font-size: 16px;">
+	//                                                         <b>
+	//                                                             Advance Decline Ratio
+	//                                                         </b>
+	//                                                     </span>
+	//                                                     <div class="d-flex flex-column" style="justify-content: center; align-content: center; flex-wrap: wrap; height: 100%;">
 
-                                                            <div class="d-flex flex-row" style="height: 20px; justify-content: end;">
-                                                                <span id="tsrAdrDeclinesPercentText${data.idSuffix}" style="white-space: nowrap; font-weight: bold; color: #fd4757;">${declinesPercent.toFixed()}%</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>`
-		if (showIndexOpt) {
-			html += `<div class="col-md-2 d-flex align-content-center  flex-wrap justify-content-center">
-                                                    <a href="${data.detailedUrl}"><button type="button"
-                                                            class="btn btn-custom primary btn-sm h-auto w-auto">Detailed
-                                                            View</button></a>
+	//                                                         <div class="d-flex flex-row" style="height: 20px; justify-content: start;">
+	//                                                             <span id="tsrAdrAdvancesPercentText${data.idSuffix}" style="white-space: nowrap; font-weight: bold;color: #008080;">${advancesPercent.toFixed()}%</span>
+	//                                                         </div>
+	//                                                         <div class="d-flex" 
+	//                                                             style="height: 10px;  width: 60%;">
+	//                                                                 <div id="tsrAdrBarAdvancesDiv${data.idSuffix}" style="background-color: #008080; height: 100%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; width: ${advancesPercent}%;">
 
-                                                </div>`
-		} else {
+	//                                                                 </div>
+	//                                                                 <div style="width: 2%;">
 
-			let hmUrl = jsu.getRootUrl() + '/Screener/Markets/HeatMap/' + data.idSuffix;
+	//                                                                 </div>
+	//                                                                 <div id="tsrAdrBarDeclinesDiv${data.idSuffix}" style="background-color: #fd4757; height: 100%; border-top-right-radius: 10px; border-bottom-right-radius: 10px; width: ${declinesPercent}%;">
+
+	//                                                                 </div>
+
+	//                                                         </div>
+
+	//                                                         <div class="d-flex flex-row" style="height: 20px; justify-content: end;">
+	//                                                             <span id="tsrAdrDeclinesPercentText${data.idSuffix}" style="white-space: nowrap; font-weight: bold; color: #fd4757;">${declinesPercent.toFixed()}%</span>
+	//                                                         </div>
+	//                                                     </div>
+	//                                                 </div>
+	//                                             </div>`
+	// 	if (showIndexOpt) {
+	// 		html += `<div class="col-md-2 d-flex align-content-center  flex-wrap justify-content-center">
+	//                                                 <a href="${data.detailedUrl}"><button type="button"
+	//                                                         class="btn btn-custom primary btn-sm h-auto w-auto">Detailed
+	//                                                         View</button></a>
+
+	//                                             </div>`
+	// 	} else {
+
+	// 		let hmUrl = jsu.getRootUrl() + '/Screener/Markets/HeatMap/' + data.idSuffix;
 
 
 
 
 
-			html += `<div class="col-md-2 d-flex align-content-center  flex-wrap justify-content-center">`
-			html += `<span style="font-size: 24px;color:#0f92a3;">
-                                                    <a href='${hmUrl}'  >Heat Map</a>
-        											</span>`
+	// 		html += `<div class="col-md-2 d-flex align-content-center  flex-wrap justify-content-center">`
+	// 		html += `<span style="font-size: 24px;color:#0f92a3;">
+	//                                                 <a href='${hmUrl}'  >Heat Map</a>
+	//     											</span>`
 
-			html += ` </div>`
-		}
+	// 		html += ` </div>`
+	// 	}
 
 
 
-		html += ` </div>
-                                        </div>`;
-		return html;
-	}
+	// 	html += ` </div>
+	//                                     </div>`;
+	// 	return html;
+	// }
 
 	function highLowReturnChange() {  //onchange="JavaScript:dyadr.hlr();"
 
@@ -1159,47 +1138,19 @@ var dyadr = (function () {  // Advance Decline
 		parentContainer.insertBefore(cardElement, parentContainer.firstChild);
 
 		// let index = mintJsUtil.getObjFrmArr(INDEX_LIST, indexId);
-		activeIndex = indexId;
+		activeIndexId = indexId;
 
 
 	}
-
-	// /**
-	//  * Handles action execution and forces parent list state reflow
-	//  * @param {string} indexCode - Unique asset signature identifier mapping parameters
-	//  * @param {Event} clickEvent - Native mouse listener interaction tracker
-	//  */
-	// function viewChartInline(indexCode, clickEvent) {
-	// 	if (clickEvent && clickEvent.stopPropagation) {
-	// 		clickEvent.stopPropagation();
-	// 	}
-
-	// 	const matchingCard = clickEvent.currentTarget.closest('.tsrAdrRowCard');
-	// 	if (matchingCard) {
-	// 		highlightAdrRow(matchingCard);
-	// 	}
-
-	// 	// Fire structural rendering routine mapping your chart elements here
-	// 	// e.g., dyadr.ua('chart', indexCode);
-	// 	console.log(`Active layout focus shifted. Graph loading scope parameter: ${indexCode}`);
-	// }
-
 
 	return {
 		init: init,
 		ua: userAction,
 		uar: userActionResponse,
-
 		ar: autoRefresh,
-
 		hlr: highLowReturnChange,
 		uarc: updateAdrRowCards,
 		har: highlightAdrRow,
-		// vci: viewChartInline,
-
-
-
-
 	}
 
 
