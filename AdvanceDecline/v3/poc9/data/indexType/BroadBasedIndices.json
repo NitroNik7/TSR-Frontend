@@ -1,0 +1,51 @@
+{
+    "statusCode": "success",
+    "statusMsg": "Has Records",
+    "results": [
+        {
+            "id": "FuturesAndOptions",
+            "a": 90,
+            "d": 120
+        },
+        {
+            "id": "Nifty50",
+            "a": 28,
+            "d": 22
+        },
+        {
+            "id": "Nifty100",
+            "a": 46,
+            "d": 54
+        },
+        {
+            "id": "Nifty200",
+            "a": 84,
+            "d": 116
+        },
+        {
+            "id": "Nifty500",
+            "a": 182,
+            "d": 318
+        },
+        {
+            "id": "NiftyMidCap100",
+            "a": 38,
+            "d": 62
+        },
+        {
+            "id": "NiftySmallCap100",
+            "a": 33,
+            "d": 67
+        },
+        {
+            "id": "NiftMicrocap250",
+            "a": 78,
+            "d": 171
+        },
+        {
+            "id": "NiftTotalMarket",
+            "a": 260,
+            "d": 489
+        }
+    ]
+}

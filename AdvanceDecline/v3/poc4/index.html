@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>POC 1</title>
+    <title>POC 4</title>
     <meta name="description" content="NSE Live Advance Decline Ratio">
     <meta name="keywords" content="NSE Live Advance Decline Ratio ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1517,13 +1517,62 @@
                                     width: 120px;
                                     height: 3px;
                                     content: "";
-                                    background-color: #090977;
+                                    background-color: #2563eb;
                                 }
                             </style>
 
-                            <div class="container-md sub-heading">
+                            <div class="container-md  "
+                                style="background: white; padding: 1rem; border: 1px solid var(--tsrAdrColorBorder); border-radius: 12px;">
 
-                                <h2 style="font-weight: 700;">NSE Live Advance Decline Ratio</h2>
+                                <h2 style="font-weight: 700;">Advance Decline Ratio</h2>
+
+
+
+                                <div id="arCtrlDiv" class="tsrAdrControlsSection">
+
+                                    <!-- <div class="mb-2 ps-3 tsrAdrChartSectionHeading">
+                                    <p style="margin-bottom: 0; font-weight: bold; font-size: 20px;">Settings</p>
+                                </div> -->
+
+                                    <div id="miCtrl" style="margin: 20px 0 0 0;">
+
+
+                                        <div class="tsrHmSettingsRowItem">
+                                            <span class="tsrHmSettingsRowLabel">Stock Basket</span>
+                                            <div class="tsrHmToggleGroup">
+                                                <input type="radio" name="hmtype" value="all" id="tsrHmTypeAll"
+                                                    checked="" onclick="JavaScript:dyhm.ua('hmtype');">
+                                                <label for="tsrHmTypeAll" class="tsrHmBtnLabel">Broad Based
+                                                    Index</label>
+
+                                                <input type="radio" name="hmtype" value="gainer" id="tsrHmTypeGainer"
+                                                    onclick="JavaScript:dyhm.ua('hmtype');">
+                                                <label for="tsrHmTypeGainer" class="tsrHmBtnLabel">Sectorial
+                                                    Index</label>
+
+                                                <input type="radio" name="hmtype" value="loser" id="tsrHmTypeLoser"
+                                                    onclick="JavaScript:dyhm.ua('hmtype');">
+                                                <label for="tsrHmTypeLoser" class="tsrHmBtnLabel">Thematic Index</label>
+                                            </div>
+                                        </div>
+                                        <div class="ms-5" style="display: inline;"></div>
+                                        <span class="tsrHmSettingsRowLabel">Tick</span>
+                                        &nbsp;&nbsp;
+                                        <select id="adrFreq" class="tsrSecRotDropbtnIdx"
+                                            onchange="JavaScript:dyadr.ua('chart');">
+                                            <option value="I_D">Daily Live</option>
+                                            <option value="hh1">1 Hour</option>
+                                            <option value="mm30">30 Minutes</option>
+                                            <option value="mm15">15 Minutes</option>
+                                            <option value="mm5">5 Minutes</option>
+                                            <option value="mm2">2 Minutes</option>
+                                            <option value="D">Daily (EOD)</option>
+                                            <option value="W">Weekly</option>
+                                            <option value="M">Monthly</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div id="tsrAdrDbDiv"></div>
@@ -1535,143 +1584,258 @@
                                 Loading
                             </div>
                             <br>
-                            <section id="tsrAdrChartSection" class="container-md tsrAdrSection">
-                                <div class="tsrAdrChartMasterContainer">
-                                    <div class="tsrAdrChartScrollContainer">
-                                        <div class="tsrAdrSelColor" style="justify-content: end;">
-                                            <p class="tsrAdrAdvanceLabel">Advances</p>
-                                            <p class="tsrAdrDeclineLabel">Declines</p>
+
+                            <section id="tsrAdrChartSection " class="container-md tsrAdrChartSection">
+
+                                <div class="mb-2 ps-3 tsrAdrChartSectionHeading">
+                                    <p style="margin-bottom: 0; font-weight: bold; font-size: 20px;">Broad Based Index
+                                    </p>
+                                </div>
+
+                                <div class="tsrAdrChartMasterContainer" style="display: block;">
+                                    <div class="tsrAdrRowCard">
+                                        <div class="tsrAdrAssetIdentity">
+                                            <p style="font-weight: bold; color: gray; margin-bottom: 0;">F&amp;O
+                                                Stocks</p>
+                                            <!-- <a href="#" class="tsrAdrLink tsrAssetName">F&amp;O Stocks
+                                                    <i class="fas fa-arrow-right ms-1"></i>
+
+                                                </a> -->
                                         </div>
-                                        <svg width="100%" preserveAspectRatio="xMidYMid meet" style="height: 230px;"
-                                            viewBox="0 0 1400 350" height="370" preserveAspectRatio="xMidYMid meet">
-                                            <g transform="translate(30, 340)" fill="none" font-size="10"
-                                                font-family="sans-serif" text-anchor="middle"
-                                                style="stroke-width: 1.5;">
-                                                <path class="domain" stroke="#475569" d="M0,6V0H1250V6"></path>
-                                                <g class="tick" opacity="1" transform="translate(41.5,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">11:45</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(145.3,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">12 PM</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(249.2,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">12:15</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(353.0,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">12:30</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(456.8,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">12:45</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(560.7,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">01 PM</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(664.5,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">01:15</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(768.3,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">01:30</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(872.2,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">01:45</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(976.0,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">02 PM</text>
-                                                </g>
-                                            </g>
-                                            <g transform="translate(30, 10)" fill="none" font-size="10"
-                                                font-family="sans-serif" text-anchor="end" style="stroke-width: 1.5;">
-                                                <path class="domain" stroke="#475569" d="M-6,330H0V0H-6"></path>
-                                                <g class="tick" opacity="1" transform="translate(0,330)">
-                                                    <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
-                                                        x="-9" dy="0.32em">60</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(0,250)">
-                                                    <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
-                                                        x="-9" dy="0.32em">80</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(0,170)">
-                                                    <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
-                                                        x="-9" dy="0.32em">100</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(0,90)">
-                                                    <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
-                                                        x="-9" dy="0.32em">120</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(0,10)">
-                                                    <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
-                                                        x="-9" dy="0.32em">140</text>
-                                                </g>
-                                            </g>
-                                            <path style="fill: none; stroke-width: 2; stroke: #10b981;"
-                                                d="M0,65L50,77L100,45L150,61L200,30L250,55L300,73L350,119L400,158L450,181L500,142L550,177L600,169L650,161L700,146L750,165L800,119L850,92L900,131L950,115L1000,138"
-                                                transform="translate(30, 10)"></path>
-                                            <path style="fill: none; stroke-width: 2; stroke: #ef4444;"
-                                                d="M0,300L50,323L100,280L150,310L200,339L250,316L300,327L350,265L400,242L450,219L500,254L550,219L600,250L650,231L700,250L750,235L800,277L850,308L900,269L950,285L1000,265"
-                                                transform="translate(30, 0)"></path>
-                                        </svg>
+
+
+                                        <div class="d-flex">
+
+                                            <div class="tsrPlanTableFeature" style="flex: none"> <a target="_blank"
+                                                    href="https://www.tsrbt1.com/rt/Stock/NIFTY/BirdsEyeView">Stock list
+                                                    <i class="fas fa-arrow-right"></i></a> </div>
+                                            <div class="tsrPlanTableFeature" style="flex: none"> <a target="_blank"
+                                                    href="https://www.tsrbt1.com/rt/Stock/NIFTY/BirdsEyeView">Heatmap
+                                                    <i class="fas fa-arrow-right"></i></a> </div>
+                                        </div>
+
+
                                     </div>
-
-                                    <div class="tsrAdrChartSidePanel">
-                                        <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                            class="tsrAdrSideAssetTitle">
-                                            F&amp;O Stocks <i class="fas fa-arrow-right sm-size"></i>
-                                        </a>
-
-                                        <div class="tsrAdrSideMetricItem">
-                                            <span>ADR</span>
-                                            <font class="tsrAdrTextGreen">1.21</font>
+                                    <div class="" style="display: flex; flex-direction: row;">
+                                        <div class="tsrAdrChartScrollContainer">
+                                            <div class="tsrAdrSelColor" style="justify-content: end;">
+                                                <p class="tsrAdrAdvanceLabel">Advances</p>
+                                                <p class="tsrAdrDeclineLabel">Declines</p>
+                                            </div>
+                                            <svg width="100%" preserveAspectRatio="xMidYMid meet" style="height: 230px;"
+                                                viewBox="0 0 1400 350" height="370" preserveAspectRatio="xMidYMid meet">
+                                                <g transform="translate(30, 340)" fill="none" font-size="10"
+                                                    font-family="sans-serif" text-anchor="middle"
+                                                    style="stroke-width: 1.5;">
+                                                    <path class="domain" stroke="#475569" d="M0,6V0H1250V6"></path>
+                                                    <g class="tick" opacity="1" transform="translate(41.5,0)">
+                                                        <line stroke="currentColor" y2="6"></line><text fill="#64748b"
+                                                            y="9" dy="0.71em">11:45</text>
+                                                    </g>
+                                                    <g class="tick" opacity="1" transform="translate(145.3,0)">
+                                                        <line stroke="currentColor" y2="6"></line><text fill="#64748b"
+                                                            y="9" dy="0.71em">12 PM</text>
+                                                    </g>
+                                                    <g class="tick" opacity="1" transform="translate(249.2,0)">
+                                                        <line stroke="currentColor" y2="6"></line><text fill="#64748b"
+                                                            y="9" dy="0.71em">12:15</text>
+                                                    </g>
+                                                    <g class="tick" opacity="1" transform="translate(353.0,0)">
+                                                        <line stroke="currentColor" y2="6"></line><text fill="#64748b"
+                                                            y="9" dy="0.71em">12:30</text>
+                                                    </g>
+                                                    <g class="tick" opacity="1" transform="translate(456.8,0)">
+                                                        <line stroke="currentColor" y2="6"></line><text fill="#64748b"
+                                                            y="9" dy="0.71em">12:45</text>
+                                                    </g>
+                                                    <g class="tick" opacity="1" transform="translate(560.7,0)">
+                                                        <line stroke="currentColor" y2="6"></line><text fill="#64748b"
+                                                            y="9" dy="0.71em">01 PM</text>
+                                                    </g>
+                                                    <g class="tick" opacity="1" transform="translate(664.5,0)">
+                                                        <line stroke="currentColor" y2="6"></line><text fill="#64748b"
+                                                            y="9" dy="0.71em">01:15</text>
+                                                    </g>
+                                                    <g class="tick" opacity="1" transform="translate(768.3,0)">
+                                                        <line stroke="currentColor" y2="6"></line><text fill="#64748b"
+                                                            y="9" dy="0.71em">01:30</text>
+                                                    </g>
+                                                    <g class="tick" opacity="1" transform="translate(872.2,0)">
+                                                        <line stroke="currentColor" y2="6"></line><text fill="#64748b"
+                                                            y="9" dy="0.71em">01:45</text>
+                                                    </g>
+                                                    <g class="tick" opacity="1" transform="translate(976.0,0)">
+                                                        <line stroke="currentColor" y2="6"></line><text fill="#64748b"
+                                                            y="9" dy="0.71em">02 PM</text>
+                                                    </g>
+                                                </g>
+                                                <g transform="translate(30, 10)" fill="none" font-size="10"
+                                                    font-family="sans-serif" text-anchor="end"
+                                                    style="stroke-width: 1.5;">
+                                                    <path class="domain" stroke="#475569" d="M-6,330H0V0H-6"></path>
+                                                    <g class="tick" opacity="1" transform="translate(0,330)">
+                                                        <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
+                                                            x="-9" dy="0.32em">60</text>
+                                                    </g>
+                                                    <g class="tick" opacity="1" transform="translate(0,250)">
+                                                        <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
+                                                            x="-9" dy="0.32em">80</text>
+                                                    </g>
+                                                    <g class="tick" opacity="1" transform="translate(0,170)">
+                                                        <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
+                                                            x="-9" dy="0.32em">100</text>
+                                                    </g>
+                                                    <g class="tick" opacity="1" transform="translate(0,90)">
+                                                        <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
+                                                            x="-9" dy="0.32em">120</text>
+                                                    </g>
+                                                    <g class="tick" opacity="1" transform="translate(0,10)">
+                                                        <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
+                                                            x="-9" dy="0.32em">140</text>
+                                                    </g>
+                                                </g>
+                                                <path style="fill: none; stroke-width: 2; stroke: #10b981;"
+                                                    d="M0,65L50,77L100,45L150,61L200,30L250,55L300,73L350,119L400,158L450,181L500,142L550,177L600,169L650,161L700,146L750,165L800,119L850,92L900,131L950,115L1000,138"
+                                                    transform="translate(30, 10)"></path>
+                                                <path style="fill: none; stroke-width: 2; stroke: #ef4444;"
+                                                    d="M0,300L50,323L100,280L150,310L200,339L250,316L300,327L350,265L400,242L450,219L500,254L550,219L600,250L650,231L700,250L750,235L800,277L850,308L900,269L950,285L1000,265"
+                                                    transform="translate(30, 0)"></path>
+                                            </svg>
                                         </div>
 
-                                        <div class="tsrAdrSideRatioBox">
-                                            <div class="tsrAdrSideRatioLabels">
-                                                <span class="tsrAdrTextGreen">55%</span>
-                                                <span class="tsrAdrTextRed">45%</span>
-                                            </div>
-                                            <div class="tsrAdrSideBarTrack">
-                                                <div class="tsrAdrSegmentAdvance" style="width: 55%"></div>
-                                                <div class="tsrAdrSegmentDecline" style="width: 45%"></div>
-                                            </div>
-                                            <span class="tsrAdrSideBarLabelSub">AD Ratio</span>
-                                        </div>
+                                        <div class="tsrAdrChartSidePanel">
+                                            <!-- <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
+                                                class="tsrAdrSideAssetTitle">
+                                                F&amp;O Stocks <i class="fas fa-arrow-right sm-size"></i>
+                                            </a> -->
 
-                                        <div class="tsrAdrSideMetricsGrid">
-                                            <div class="tsrAdrSideMetricLabelsRow">
-                                                <div class="tsrAdrSideMetricItem">
+                                            <div class="tsrAdrSelColor" style="justify-content: end; padding: 16px;">
+                                                <p>Tick: Daily Live</p>
+
+                                            </div>
+
+                                            <div class="tsrAdrSideMetricItem">
+                                                <span>ADR</span>
+                                                <font class="tsrAdrTextGreen">1.21</font>
+                                            </div>
+
+                                            <div class="tsrAdrSideRatioBox">
+                                                <div class="tsrAdrSideRatioLabels">
+                                                    <span class="tsrAdrTextGreen">55%</span>
+                                                    <span class="tsrAdrTextRed">45%</span>
+                                                </div>
+                                                <div class="tsrAdrSideBarTrack">
+                                                    <div class="tsrAdrSegmentAdvance" style="width: 55%"></div>
+                                                    <div class="tsrAdrSegmentDecline" style="width: 45%"></div>
+                                                </div>
+                                                <span class="tsrAdrSideBarLabelSub">AD Ratio</span>
+                                            </div>
+
+                                            <div class="tsrAdrSideMetricsGrid">
+                                                <div class="tsrAdrSideMetricLabelsRow">
+                                                    <div class="tsrAdrSideMetricItem">
+                                                        <span>Advances</span>
+                                                        <font class="tsrAdrTextGreen">114</font>
+                                                    </div>
+                                                    <div class="tsrAdrSideMetricItem text-end">
+                                                        <span>Declines</span>
+                                                        <font class="tsrAdrTextRed">93</font>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="tsrAdrListContainer">
+
+
+
+                                        <div class="tsrAdrRowCard">
+                                            <div class="tsrAdrAssetIdentity">
+                                                <a href="#" class="tsrAdrLink tsrAssetName">NIFTY 50 </a>
+                                            </div>
+                                            <div class="tsrPlanTableFeature" style="flex: none"> <a target="_blank"
+                                                    href="https://www.tsrbt1.com/rt/Stock/NIFTY/BirdsEyeView">View Chart
+                                                    <i class="fas fa-arrow-right"></i></a> </div>
+                                            <div class="tsrAdrMetricGroup">
+                                                <div class="tsrAdrMetricBlock">
+                                                    <span>ADR</span>
+                                                    <font class="tsrAdrTextGreen">1.21</font>
+                                                </div>
+                                            </div>
+                                            <div class="tsrAdrMetricGroup">
+                                                <div class="tsrAdrMetricBlock">
                                                     <span>Advances</span>
                                                     <font class="tsrAdrTextGreen">114</font>
                                                 </div>
-                                                <div class="tsrAdrSideMetricItem text-end">
+                                                <div class="tsrAdrMetricBlock text-end ms-auto">
                                                     <span>Declines</span>
                                                     <font class="tsrAdrTextRed">93</font>
                                                 </div>
                                             </div>
+                                            <div class="tsrAdrBarCentralFlex">
+                                                <div class="tsrAdrBarValueLabel tsrAdrTextGreen text-end">55%</div>
+                                                <div class="tsrAdrBarVisualTrack">
+                                                    <div class="tsrAdrSegmentAdvance" style="width: 55%"></div>
+                                                    <div class="tsrAdrSegmentDecline" style="width: 45%"></div>
+                                                </div>
+                                                <div class="tsrAdrBarValueLabel tsrAdrTextRed">45%</div>
+                                            </div>
+
+
+                                            <div class="d-flex">
+
+                                                <div class="tsrPlanTableFeature" style="flex: none"> <a target="_blank"
+                                                        href="https://www.tsrbt1.com/rt/Stock/NIFTY/BirdsEyeView">Stock
+                                                        list
+                                                        <i class="fas fa-arrow-right"></i></a> </div>
+                                                <div class="tsrPlanTableFeature" style="flex: none"> <a target="_blank"
+                                                        href="https://www.tsrbt1.com/rt/Stock/NIFTY/BirdsEyeView">Heatmap
+                                                        <i class="fas fa-arrow-right"></i></a> </div>
+                                            </div>
                                         </div>
 
-                                        <!-- TODO -->
-                                        <div class="tsrAdrSideMetricsGrid"
-                                            style="color: gray; background-color: lightgray;">
+                                        <div class="tsrAdrRowCard">
+                                            <div class="tsrAdrAssetIdentity">
+                                                <a href="#" class="tsrAdrLink tsrAssetName">NIFTY 500 </a>
+                                            </div>
+                                            <div class="tsrAdrMetricGroup">
+                                                <div class="tsrAdrMetricBlock">
+                                                    <span>ADR</span>
+                                                    <font class="tsrAdrTextGreen">1.21</font>
+                                                </div>
+                                            </div>
+                                            <div class="tsrAdrMetricGroup">
+                                                <div class="tsrAdrMetricBlock">
+                                                    <span>Advances</span>
+                                                    <font class="tsrAdrTextGreen">114</font>
+                                                </div>
+                                                <div class="tsrAdrMetricBlock text-end ms-auto">
+                                                    <span>Declines</span>
+                                                    <font class="tsrAdrTextRed">93</font>
+                                                </div>
+                                            </div>
+                                            <div class="tsrAdrBarCentralFlex">
+                                                <div class="tsrAdrBarValueLabel tsrAdrTextGreen text-end">55%</div>
+                                                <div class="tsrAdrBarVisualTrack">
+                                                    <div class="tsrAdrSegmentAdvance" style="width: 55%"></div>
+                                                    <div class="tsrAdrSegmentDecline" style="width: 45%"></div>
+                                                </div>
+                                                <div class="tsrAdrBarValueLabel tsrAdrTextRed">45%</div>
+                                            </div>
 
-                                            <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                                class="tsrAdrLink" style="text-wrap: nowrap; height: 40px;color: gray;">
-                                                <i class="fas fa-th me-1"></i>
-                                                Heat Map
-                                            </a>
-                                            <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                                class="tsrAdrLink" style="text-wrap: nowrap; height: 40px;color: gray;">
-                                                <i class="fas fa-th me-1"></i>
-                                                Stock list
-                                            </a>
+
+                                            <div class="d-flex">
+
+                                                <div class="tsrPlanTableFeature" style="flex: none"> <a target="_blank"
+                                                        href="https://www.tsrbt1.com/rt/Stock/NIFTY/BirdsEyeView">Stock
+                                                        list
+                                                        <i class="fas fa-arrow-right"></i></a> </div>
+                                                <div class="tsrPlanTableFeature" style="flex: none"> <a target="_blank"
+                                                        href="https://www.tsrbt1.com/rt/Stock/NIFTY/BirdsEyeView">Heatmap
+                                                        <i class="fas fa-arrow-right"></i></a> </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1680,94 +1844,6 @@
 
                             <br>
 
-                            <div id="arCtrlDiv" class="container-md">
-                                <div id="miCtrl">
-                                    <!-- <div style="margin: 5px 8px;">
-                                        <div class="tsrHmSettingsRowItem">
-                                            <span class="tsrHmSettingsRowLabel">Show</span>
-                                            <div class="tsrHmToggleGroup">
-                                                <input type="radio" name="hmtype" value="all" id="tsrHmTypeAll"
-                                                    checked="" onclick="JavaScript:dyhm.ua('hmtype');">
-                                                <label for="tsrHmTypeAll" class="tsrHmBtnLabel">All</label>
-
-                                                <input type="radio" name="hmtype" value="gainer" id="tsrHmTypeGainer"
-                                                    onclick="JavaScript:dyhm.ua('hmtype');">
-                                                <label for="tsrHmTypeGainer" class="tsrHmBtnLabel">Gainer</label>
-
-                                                <input type="radio" name="hmtype" value="loser" id="tsrHmTypeLoser"
-                                                    onclick="JavaScript:dyhm.ua('hmtype');">
-                                                <label for="tsrHmTypeLoser" class="tsrHmBtnLabel">Loser</label>
-                                            </div>
-                                        </div>
-                                    </div> -->
-
-                                    <div class="tsrHmSettingsRowItem">
-                                        <span class="tsrHmSettingsRowLabel">Stock Basket</span>
-                                        <div class="tsrHmToggleGroup">
-                                            <input type="radio" name="hmtype" value="all" id="tsrHmTypeAll" checked=""
-                                                onclick="JavaScript:dyhm.ua('hmtype');">
-                                            <label for="tsrHmTypeAll" class="tsrHmBtnLabel">Broad Based Index</label>
-
-                                            <input type="radio" name="hmtype" value="gainer" id="tsrHmTypeGainer"
-                                                onclick="JavaScript:dyhm.ua('hmtype');">
-                                            <label for="tsrHmTypeGainer" class="tsrHmBtnLabel">Sectorial Index</label>
-
-                                            <input type="radio" name="hmtype" value="loser" id="tsrHmTypeLoser"
-                                                onclick="JavaScript:dyhm.ua('hmtype');">
-                                            <label for="tsrHmTypeLoser" class="tsrHmBtnLabel">Thematic Index</label>
-                                        </div>
-                                    </div>
-                                    <!-- <b>Stock Basket</b>&nbsp;&nbsp;
-                                    <select id="adrSb" 
-                                        onchange="JavaScript:dyadr.ua('chart');">
-                                        <option value="FuturesAndOptions">F&amp;O Stocks</option>
-                                        <option value="Nifty50">Nifty 50 </option>
-                                        <option value="Nifty100">Nifty 100</option>
-                                        <option value="Nifty200">Nifty 200 </option>
-                                        <option value="Nifty500">Nifty 500 </option>
-                                        <option value="NiftyMidCap100">Nifty Midcap 100</option>
-                                        <option value="NiftySmallCap100">Nifty Smallcap 100</option>
-                                        <option value="NiftMicrocap250">Nifty Microcap 250</option>
-                                        <option value="NiftTotalMarket">Nifty Total Market</option>
-                                        <option value="NiftyAutoIndex">Nifty Auto</option>
-                                        <option value="NiftyBankIndex">Nifty Bank</option>
-                                        <option value="NiftyConsumerDurablesIndex">Nifty Consumer Durable</option>
-                                        <option value="NiftyFinancialServiceIndex">Nifty Fin Services</option>
-                                        <option value="NiftyHealthCareIndex">Nifty Healthcare</option>
-                                        <option value="NiftyFmcgIndex">Nifty FMCG</option>
-                                        <option value="NiftyITIndex">Nifty IT</option>
-                                        <option value="NiftyMediaIndex">Nifty Media</option>
-                                        <option value="NiftyMetalIndex">Nifty Metals</option>
-                                        <option value="NiftyOilAndGasIndex">Nifty Oil/ Gas</option>
-                                        <option value="NiftyPharmaIndex">Nifty Pharma</option>
-                                        <option value="NiftyPrivateBankIndex">Nifty Private Bank</option>
-                                        <option value="NiftyPSUBankIndex">Nifty PSU Bank</option>
-                                        <option value="NiftyRealtyIndex">Nifty Realty</option>
-                                    </select>
-                                    &nbsp;&nbsp; -->
-                                    <div class="ms-5" style="display: inline;"></div>
-                                    <span class="tsrHmSettingsRowLabel">Tick</span>
-                                    &nbsp;&nbsp;
-                                    <select id="adrFreq" class="tsrSecRotDropbtnIdx"
-                                        onchange="JavaScript:dyadr.ua('chart');">
-                                        <option value="I_D">Daily Live</option>
-                                        <option value="hh1">1 Hour</option>
-                                        <option value="mm30">30 Minutes</option>
-                                        <option value="mm15">15 Minutes</option>
-                                        <option value="mm5">5 Minutes</option>
-                                        <option value="mm2">2 Minutes</option>
-                                        <option value="D">Daily (EOD)</option>
-                                        <option value="W">Weekly</option>
-                                        <option value="M">Monthly</option>
-                                    </select>
-                                </div>
-                            </div>
-
-
-                            <div class="container-md">
-
-                                <hr>
-                            </div>
 
                             <section class="container tsrAdrSection">
                                 <div id="tsrAdrLowerMetricsContainer">
@@ -1775,155 +1851,8 @@
 
 
 
-                                    <h4>Index ADR</h4>
-                                    <div class="tsrAdrListContainer">
 
-                                        <div class="tsrAdrRowCard">
-                                            <div class="tsrAdrAssetIdentity">
-                                                <a href="#" class="tsrAdrLink tsrAssetName">F&amp;O Stocks
-                                                    <i class="fas fa-arrow-right ms-1"></i>
 
-                                                </a>
-                                            </div>
-                                            <div class="tsrAdrMetricGroup">
-                                                <div class="tsrAdrMetricBlock">
-                                                    <span>ADR</span>
-                                                    <font class="tsrAdrTextGreen">1.21</font>
-                                                </div>
-                                            </div>
-                                            <div class="tsrAdrMetricGroup">
-                                                <div class="tsrAdrMetricBlock">
-                                                    <span>Advances</span>
-                                                    <font class="tsrAdrTextGreen">114</font>
-                                                </div>
-                                                <div class="tsrAdrMetricBlock text-end ms-auto">
-                                                    <span>Declines</span>
-                                                    <font class="tsrAdrTextRed">93</font>
-                                                </div>
-                                            </div>
-                                            <div class="tsrAdrBarCentralFlex">
-                                                <div class="tsrAdrBarValueLabel tsrAdrTextGreen text-end">55%</div>
-                                                <div class="tsrAdrBarVisualTrack">
-                                                    <div class="tsrAdrSegmentAdvance" style="width: 55%"></div>
-                                                    <div class="tsrAdrSegmentDecline" style="width: 45%"></div>
-                                                </div>
-                                                <div class="tsrAdrBarValueLabel tsrAdrTextRed">45%</div>
-                                            </div>
-                                            <div class="tsrAdrSideMetricsGrid"
-                                                style="background-color: grey; display: flex; padding: 0; margin-top: 0;">
-
-                                                <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                                    class="tsrAdrLink"
-                                                    style="text-wrap: nowrap; height: 50px; color: gray; background-color: lightgray;">
-                                                    <i class="fas fa-th me-1"></i>
-                                                    Heat Map
-                                                </a>
-
-                                                <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                                    class="tsrAdrLink"
-                                                    style="text-wrap: nowrap; height: 50px; color: white; background-color: #0044aa;">
-                                                    <i class="fas fa-chart-line"></i>
-                                                    View Chart
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="tsrAdrRowCard">
-                                            <div class="tsrAdrAssetIdentity">
-                                                <a href="#" class="tsrAdrLink tsrAssetName">NIFTY 50 <i
-                                                        class="fas fa-arrow-right ms-1"></i></a>
-                                            </div>
-                                            <div class="tsrAdrMetricGroup">
-                                                <div class="tsrAdrMetricBlock">
-                                                    <span>ADR</span>
-                                                    <font class="tsrAdrTextGreen">1.21</font>
-                                                </div>
-                                            </div>
-                                            <div class="tsrAdrMetricGroup">
-                                                <div class="tsrAdrMetricBlock">
-                                                    <span>Advances</span>
-                                                    <font class="tsrAdrTextGreen">114</font>
-                                                </div>
-                                                <div class="tsrAdrMetricBlock text-end ms-auto">
-                                                    <span>Declines</span>
-                                                    <font class="tsrAdrTextRed">93</font>
-                                                </div>
-                                            </div>
-                                            <div class="tsrAdrBarCentralFlex">
-                                                <div class="tsrAdrBarValueLabel tsrAdrTextGreen text-end">55%</div>
-                                                <div class="tsrAdrBarVisualTrack">
-                                                    <div class="tsrAdrSegmentAdvance" style="width: 55%"></div>
-                                                    <div class="tsrAdrSegmentDecline" style="width: 45%"></div>
-                                                </div>
-                                                <div class="tsrAdrBarValueLabel tsrAdrTextRed">45%</div>
-                                            </div>
-                                            <div class="tsrAdrSideMetricsGrid"
-                                                style="background-color: grey; display: flex; padding: 0; margin-top: 0;">
-
-                                                <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                                    class="tsrAdrLink"
-                                                    style="text-wrap: nowrap;  height: 50px;  color: gray; background-color: lightgray;">
-                                                    <i class="fas fa-th me-1"></i>
-                                                    Heat Map
-                                                </a>
-
-                                                <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                                    class="tsrAdrLink"
-                                                    style="text-wrap: nowrap;  height: 50px;  color: white; background-color: #0044aa;">
-                                                    <i class="fas fa-chart-line"></i>
-                                                    View Chart
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="tsrAdrRowCard">
-                                            <div class="tsrAdrAssetIdentity">
-                                                <a href="#" class="tsrAdrLink tsrAssetName">NIFTY 500 <i
-                                                        class="fas fa-arrow-right ms-1"></i></a>
-                                            </div>
-                                            <div class="tsrAdrMetricGroup">
-                                                <div class="tsrAdrMetricBlock">
-                                                    <span>ADR</span>
-                                                    <font class="tsrAdrTextGreen">1.21</font>
-                                                </div>
-                                            </div>
-                                            <div class="tsrAdrMetricGroup">
-                                                <div class="tsrAdrMetricBlock">
-                                                    <span>Advances</span>
-                                                    <font class="tsrAdrTextGreen">114</font>
-                                                </div>
-                                                <div class="tsrAdrMetricBlock text-end ms-auto">
-                                                    <span>Declines</span>
-                                                    <font class="tsrAdrTextRed">93</font>
-                                                </div>
-                                            </div>
-                                            <div class="tsrAdrBarCentralFlex">
-                                                <div class="tsrAdrBarValueLabel tsrAdrTextGreen text-end">55%</div>
-                                                <div class="tsrAdrBarVisualTrack">
-                                                    <div class="tsrAdrSegmentAdvance" style="width: 55%"></div>
-                                                    <div class="tsrAdrSegmentDecline" style="width: 45%"></div>
-                                                </div>
-                                                <div class="tsrAdrBarValueLabel tsrAdrTextRed">45%</div>
-                                            </div>
-                                            <div class="tsrAdrSideMetricsGrid"
-                                                style="background-color: grey; display: flex; padding: 0; margin-top: 0;">
-
-                                                <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                                    class="tsrAdrLink"
-                                                    style="text-wrap: nowrap;  height: 50px; color: gray; background-color: lightgray;">
-                                                    <i class="fas fa-th me-1"></i>
-                                                    Heat Map
-                                                </a>
-
-                                                <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                                    class="tsrAdrLink"
-                                                    style="text-wrap: nowrap;  height: 50px;  color: white; background-color: #0044aa;">
-                                                    <i class="fas fa-chart-line"></i>
-                                                    View Chart
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
 
 

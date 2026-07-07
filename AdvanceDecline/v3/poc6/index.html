@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>POC 1</title>
+    <title>POC 6</title>
     <meta name="description" content="NSE Live Advance Decline Ratio">
     <meta name="keywords" content="NSE Live Advance Decline Ratio ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1523,7 +1523,7 @@
 
                             <div class="container-md sub-heading">
 
-                                <h2 style="font-weight: 700;">NSE Live Advance Decline Ratio</h2>
+                                <h2 style="font-weight: 700;">Advance Decline Ratio Dashboard</h2>
                             </div>
 
                             <div id="tsrAdrDbDiv"></div>
@@ -1535,147 +1535,86 @@
                                 Loading
                             </div>
                             <br>
-                            <section id="tsrAdrChartSection" class="container-md tsrAdrSection">
-                                <div class="tsrAdrChartMasterContainer">
-                                    <div class="tsrAdrChartScrollContainer">
-                                        <div class="tsrAdrSelColor" style="justify-content: end;">
-                                            <p class="tsrAdrAdvanceLabel">Advances</p>
-                                            <p class="tsrAdrDeclineLabel">Declines</p>
-                                        </div>
-                                        <svg width="100%" preserveAspectRatio="xMidYMid meet" style="height: 230px;"
-                                            viewBox="0 0 1400 350" height="370" preserveAspectRatio="xMidYMid meet">
-                                            <g transform="translate(30, 340)" fill="none" font-size="10"
-                                                font-family="sans-serif" text-anchor="middle"
-                                                style="stroke-width: 1.5;">
-                                                <path class="domain" stroke="#475569" d="M0,6V0H1250V6"></path>
-                                                <g class="tick" opacity="1" transform="translate(41.5,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">11:45</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(145.3,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">12 PM</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(249.2,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">12:15</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(353.0,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">12:30</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(456.8,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">12:45</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(560.7,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">01 PM</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(664.5,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">01:15</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(768.3,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">01:30</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(872.2,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">01:45</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(976.0,0)">
-                                                    <line stroke="currentColor" y2="6"></line><text fill="#64748b" y="9"
-                                                        dy="0.71em">02 PM</text>
-                                                </g>
-                                            </g>
-                                            <g transform="translate(30, 10)" fill="none" font-size="10"
-                                                font-family="sans-serif" text-anchor="end" style="stroke-width: 1.5;">
-                                                <path class="domain" stroke="#475569" d="M-6,330H0V0H-6"></path>
-                                                <g class="tick" opacity="1" transform="translate(0,330)">
-                                                    <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
-                                                        x="-9" dy="0.32em">60</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(0,250)">
-                                                    <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
-                                                        x="-9" dy="0.32em">80</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(0,170)">
-                                                    <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
-                                                        x="-9" dy="0.32em">100</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(0,90)">
-                                                    <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
-                                                        x="-9" dy="0.32em">120</text>
-                                                </g>
-                                                <g class="tick" opacity="1" transform="translate(0,10)">
-                                                    <line stroke="currentColor" x2="-6"></line><text fill="#64748b"
-                                                        x="-9" dy="0.32em">140</text>
-                                                </g>
-                                            </g>
-                                            <path style="fill: none; stroke-width: 2; stroke: #10b981;"
-                                                d="M0,65L50,77L100,45L150,61L200,30L250,55L300,73L350,119L400,158L450,181L500,142L550,177L600,169L650,161L700,146L750,165L800,119L850,92L900,131L950,115L1000,138"
-                                                transform="translate(30, 10)"></path>
-                                            <path style="fill: none; stroke-width: 2; stroke: #ef4444;"
-                                                d="M0,300L50,323L100,280L150,310L200,339L250,316L300,327L350,265L400,242L450,219L500,254L550,219L600,250L650,231L700,250L750,235L800,277L850,308L900,269L950,285L1000,265"
-                                                transform="translate(30, 0)"></path>
-                                        </svg>
-                                    </div>
 
-                                    <div class="tsrAdrChartSidePanel">
-                                        <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                            class="tsrAdrSideAssetTitle">
-                                            F&amp;O Stocks <i class="fas fa-arrow-right sm-size"></i>
-                                        </a>
+                            <section id="tsrAdrChartSection" class="container-md tsrTerminalContainer">
+    <div class="tsrTerminalHeader px-4 py-3">
+        <div class="tsrTerminalHeaderMain">
+            <!-- <div class="tsrLiveIndicator">
+                <span class="tsrPulseDot"></span>
+                <span class="tsrLiveText">LIVE</span>
+            </div> -->
+                        <!-- <p class="tsrAdrLivePulse" style="margin-bottom: 0;"></p> -->
 
-                                        <div class="tsrAdrSideMetricItem">
-                                            <span>ADR</span>
-                                            <font class="tsrAdrTextGreen">1.21</font>
+                        <div class="tsrScopeTracker">
+                                            <span class="tsrScopePulse"></span>
+                                            <!-- <span class="tsrScopeLabel">Index:</span> -->
+                                            <strong id="tsrActiveScopeView">Broad Based Index</strong>
                                         </div>
 
-                                        <div class="tsrAdrSideRatioBox">
-                                            <div class="tsrAdrSideRatioLabels">
-                                                <span class="tsrAdrTextGreen">55%</span>
-                                                <span class="tsrAdrTextRed">45%</span>
-                                            </div>
-                                            <div class="tsrAdrSideBarTrack">
-                                                <div class="tsrAdrSegmentAdvance" style="width: 55%"></div>
-                                                <div class="tsrAdrSegmentDecline" style="width: 45%"></div>
-                                            </div>
-                                            <span class="tsrAdrSideBarLabelSub">AD Ratio</span>
-                                        </div>
-
-                                        <div class="tsrAdrSideMetricsGrid">
-                                            <div class="tsrAdrSideMetricLabelsRow">
-                                                <div class="tsrAdrSideMetricItem">
-                                                    <span>Advances</span>
-                                                    <font class="tsrAdrTextGreen">114</font>
-                                                </div>
-                                                <div class="tsrAdrSideMetricItem text-end">
-                                                    <span>Declines</span>
-                                                    <font class="tsrAdrTextRed">93</font>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- TODO -->
-                                        <div class="tsrAdrSideMetricsGrid"
-                                            style="color: gray; background-color: lightgray;">
-
-                                            <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                                class="tsrAdrLink" style="text-wrap: nowrap; height: 40px;color: gray;">
-                                                <i class="fas fa-th me-1"></i>
-                                                Heat Map
-                                            </a>
-                                            <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                                class="tsrAdrLink" style="text-wrap: nowrap; height: 40px;color: gray;">
-                                                <i class="fas fa-th me-1"></i>
-                                                Stock list
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
+            <h3 class="tsrTerminalTitle">F&amp;O Stocks</h3>
+            <!-- <div class="tsrTerminalBadge">Broad Based Index</div> -->
+        </div>
+        
+        <div class="tsrTerminalLegend">
+            <div class="tsrLegendItem adv"><span class="tsrLegendDot"></span>Advances</div>
+            <div class="tsrLegendItem dec"><span class="tsrLegendDot"></span>Declines</div>
+        </div>
+    </div>
+    
+    <div class="tsrTerminalWorkspace">
+        
+        <div class="tsrTerminalCanvas">
+            <svg width="100%" preserveAspectRatio="xMidYMid meet" style="height: 250px;" viewBox="0 0 1400 350">
+                <g transform="translate(30, 10)" fill="none" font-size="11" font-family="Segoe UI, -apple-system, sans-serif" text-anchor="end" style="stroke-width: 1;">
+                    <g class="tick" opacity="1" transform="translate(0,330)"><line stroke="#f8fafc" x2="1250"></line><text fill="#94a3b8" x="-15" dy="0.32em">60</text></g>
+                    <g class="tick" opacity="1" transform="translate(0,250)"><line stroke="#f8fafc" x2="1250"></line><text fill="#94a3b8" x="-15" dy="0.32em">80</text></g>
+                    <g class="tick" opacity="1" transform="translate(0,170)"><line stroke="#f1f5f9" x2="1250" stroke-dasharray="4 4"></line><text fill="#64748b" font-weight="600" x="-15" dy="0.32em">100</text></g>
+                    <g class="tick" opacity="1" transform="translate(0,90)"><line stroke="#f8fafc" x2="1250"></line><text fill="#94a3b8" x="-15" dy="0.32em">120</text></g>
+                    <g class="tick" opacity="1" transform="translate(0,10)"><line stroke="#f8fafc" x2="1250"></line><text fill="#94a3b8" x="-15" dy="0.32em">140</text></g>
+                </g>
+                <g transform="translate(30, 340)" fill="none" font-size="11" font-family="Segoe UI, -apple-system, sans-serif" text-anchor="middle">
+                    <path class="domain" stroke="#cbd5e1" d="M0,0H1250"></path>
+                    <g class="tick" transform="translate(41.5,0)"><text fill="#94a3b8" y="14">11:45</text></g>
+                    <g class="tick" transform="translate(145.3,0)"><text fill="#94a3b8" y="14">12 PM</text></g>
+                    <g class="tick" transform="translate(249.2,0)"><text fill="#94a3b8" y="14">12:15</text></g>
+                    <g class="tick" transform="translate(353.0,0)"><text fill="#94a3b8" y="14">12:30</text></g>
+                    <g class="tick" transform="translate(456.8,0)"><text fill="#94a3b8" y="14">12:45</text></g>
+                    <g class="tick" transform="translate(560.7,0)"><text fill="#94a3b8" y="14">01 PM</text></g>
+                    <g class="tick" transform="translate(664.5,0)"><text fill="#94a3b8" y="14">01:15</text></g>
+                    <g class="tick" transform="translate(768.3,0)"><text fill="#94a3b8" y="14">01:30</text></g>
+                    <g class="tick" transform="translate(872.2,0)"><text fill="#94a3b8" y="14">01:45</text></g>
+                    <g class="tick" transform="translate(976.0,0)"><text fill="#94a3b8" y="14">02 PM</text></g>
+                </g>
+                <path style="fill: none; stroke-width: 3; stroke: #10b981; stroke-linecap: round; stroke-linejoin: round;" d="M0,65L50,77L100,45L150,61L200,30L250,55L300,73L350,119L400,158L450,181L500,142L550,177L600,169L650,161L700,146L750,165L800,119L850,92L900,131L950,115L1000,138" transform="translate(30, 10)"></path>
+                <path style="fill: none; stroke-width: 3; stroke: #ef4444; stroke-linecap: round; stroke-linejoin: round;" d="M0,300L50,323L100,280L150,310L200,339L250,316L300,327L350,265L400,242L450,219L500,254L550,219L600,250L650,231L700,250L750,235L800,277L850,308L900,269L950,285L1000,265" transform="translate(30, 0)"></path>
+            </svg>
+        </div>
+        
+        <div class="tsrTerminalSidebar">
+            <div class="tsrCoreValueBlock">
+                <span class="tsrCoreLabel">ADR VALUE</span>
+                <h1 class="tsrCoreNumber text-success">1.21</h1>
+            </div>
+            
+            <div class="tsrProRatioContainer">
+                <div class="tsrProRatioMeta">
+                    <span class="text-success fw-bold">114 <small>ADV</small></span>
+                    <span class="text-muted font-monospace small">vs</span>
+                    <span class="text-danger fw-bold">93 <small>DEC</small></span>
+                </div>
+                <div class="tsrProTrack">
+                    <div class="tsrProTrackFill advFill" style="width: 55%"></div>
+                    <div class="tsrProTrackFill decFill" style="width: 45%"></div>
+                </div>
+                <div class="tsrProTrackPercentages">
+                    <span>55.3%</span>
+                    <span>44.7%</span>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
 
 
                             <br>

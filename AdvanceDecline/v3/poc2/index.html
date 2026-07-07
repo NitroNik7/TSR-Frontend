@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>POC 1</title>
+    <title>POC 2</title>
     <meta name="description" content="NSE Live Advance Decline Ratio">
     <meta name="keywords" content="NSE Live Advance Decline Ratio ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1517,7 +1517,7 @@
                                     width: 120px;
                                     height: 3px;
                                     content: "";
-                                    background-color: #090977;
+                                    background-color: #2563eb;
                                 }
                             </style>
 
@@ -1535,7 +1535,13 @@
                                 Loading
                             </div>
                             <br>
-                            <section id="tsrAdrChartSection" class="container-md tsrAdrSection">
+
+                            <section id="tsrAdrChartSection" class="container-md tsrAdrChartSection">
+
+                                <div class="mb-2 ps-3 tsrAdrChartSectionHeading">
+                                    <p style="margin-bottom: 0; font-weight: bold; font-size: 20px;">F&O Stocks</p>
+                                </div>
+
                                 <div class="tsrAdrChartMasterContainer">
                                     <div class="tsrAdrChartScrollContainer">
                                         <div class="tsrAdrSelColor" style="justify-content: end;">
@@ -1623,10 +1629,15 @@
                                     </div>
 
                                     <div class="tsrAdrChartSidePanel">
-                                        <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
+                                        <!-- <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
                                             class="tsrAdrSideAssetTitle">
                                             F&amp;O Stocks <i class="fas fa-arrow-right sm-size"></i>
-                                        </a>
+                                        </a> -->
+
+                                        <div class="tsrAdrSelColor" style="justify-content: end; padding: 16px;">
+                                            <p>Tick: Daily Live</p>
+
+                                        </div>
 
                                         <div class="tsrAdrSideMetricItem">
                                             <span>ADR</span>
@@ -1658,21 +1669,7 @@
                                             </div>
                                         </div>
 
-                                        <!-- TODO -->
-                                        <div class="tsrAdrSideMetricsGrid"
-                                            style="color: gray; background-color: lightgray;">
-
-                                            <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                                class="tsrAdrLink" style="text-wrap: nowrap; height: 40px;color: gray;">
-                                                <i class="fas fa-th me-1"></i>
-                                                Heat Map
-                                            </a>
-                                            <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
-                                                class="tsrAdrLink" style="text-wrap: nowrap; height: 40px;color: gray;">
-                                                <i class="fas fa-th me-1"></i>
-                                                Stock list
-                                            </a>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </section>
@@ -1680,8 +1677,14 @@
 
                             <br>
 
-                            <div id="arCtrlDiv" class="container-md">
-                                <div id="miCtrl">
+                            <div id="arCtrlDiv" class="container-md tsrAdrControlsSection">
+
+                                <div class="mb-2 ps-3 tsrAdrChartSectionHeading">
+                                    <p style="margin-bottom: 0; font-weight: bold; font-size: 20px;">Settings</p>
+                                </div>
+
+                                <div id="miCtrl"
+                                    style="background: white; padding: 1rem; border: 1px solid var(--tsrAdrColorBorder); border-radius: 12px;">
                                     <!-- <div style="margin: 5px 8px;">
                                         <div class="tsrHmSettingsRowItem">
                                             <span class="tsrHmSettingsRowLabel">Show</span>
@@ -1764,10 +1767,6 @@
                             </div>
 
 
-                            <div class="container-md">
-
-                                <hr>
-                            </div>
 
                             <section class="container tsrAdrSection">
                                 <div id="tsrAdrLowerMetricsContainer">
@@ -1775,7 +1774,7 @@
 
 
 
-                                    <h4>Index ADR</h4>
+
                                     <div class="tsrAdrListContainer">
 
                                         <div class="tsrAdrRowCard">

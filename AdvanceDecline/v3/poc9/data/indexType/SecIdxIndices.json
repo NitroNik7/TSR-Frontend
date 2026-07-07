@@ -1,0 +1,76 @@
+{
+    "statusCode": "success",
+    "statusMsg": "Has Records",
+    "results": [
+        {
+            "id": "NiftyAutoIndex",
+            "a": 13,
+            "d": 2
+        },
+        {
+            "id": "NiftyBankIndex",
+            "a": 6,
+            "d": 8
+        },
+        {
+            "id": "NiftyConsumerDurablesIndex",
+            "a": 10,
+            "d": 3
+        },
+        {
+            "id": "NiftyFinancialServiceIndex",
+            "a": 6,
+            "d": 14
+        },
+        {
+            "id": "NiftyHealthCareIndex",
+            "a": 13,
+            "d": 7
+        },
+        {
+            "id": "NiftyFmcgIndex",
+            "a": 11,
+            "d": 4
+        },
+        {
+            "id": "NiftyITIndex",
+            "a": 3,
+            "d": 7
+        },
+        {
+            "id": "NiftyMediaIndex",
+            "a": 4,
+            "d": 6
+        },
+        {
+            "id": "NiftyMetalIndex",
+            "a": 10,
+            "d": 5
+        },
+        {
+            "id": "NiftyOilAndGasIndex",
+            "a": 9,
+            "d": 5
+        },
+        {
+            "id": "NiftyPharmaIndex",
+            "a": 15,
+            "d": 5
+        },
+        {
+            "id": "NiftyPrivateBankIndex",
+            "a": 7,
+            "d": 3
+        },
+        {
+            "id": "NiftyPSUBankIndex",
+            "a": 1,
+            "d": 11
+        },
+        {
+            "id": "NiftyRealtyIndex",
+            "a": 8,
+            "d": 2
+        }
+    ]
+}

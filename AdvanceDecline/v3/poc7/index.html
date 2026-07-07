@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>POC 1</title>
+    <title>POC 5</title>
     <meta name="description" content="NSE Live Advance Decline Ratio">
     <meta name="keywords" content="NSE Live Advance Decline Ratio ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1535,8 +1535,128 @@
                                 Loading
                             </div>
                             <br>
-                            <section id="tsrAdrChartSection" class="container-md tsrAdrSection">
-                                <div class="tsrAdrChartMasterContainer">
+                            <section id="tsrAdrChartSection"
+                                class="container-md tsrAdrSection tsrAdrChartMasterContainer" style="display: block;">
+                                
+    <div class="tsrAdrChartCard">
+
+        <!-- Header -->
+        <div class="tsrAdrChartHeader">
+
+            <div>
+                <div class="tsrAdrChartTitle">
+                    <i class="fas fa-chart-line"></i>
+                    Live Market Breadth
+                </div>
+
+                <div class="tsrAdrChartSubTitle">
+                    F&O Stocks Advance & Decline
+                </div>
+            </div>
+
+            <div class="tsrAdrLiveStatus">
+                <span class="tsrAdrLiveDot"></span>
+                LIVE
+            </div>
+
+        </div>
+
+        <!-- Summary Row -->
+        <div class="tsrAdrSummaryBar">
+
+            <div class="tsrAdrSummaryItem">
+                <span>ADR</span>
+                <strong>1.21</strong>
+            </div>
+
+            <div class="tsrAdrSummaryItem">
+                <span>Advances</span>
+                <strong class="text-success">114</strong>
+            </div>
+
+            <div class="tsrAdrSummaryItem">
+                <span>Declines</span>
+                <strong class="text-danger">94</strong>
+            </div>
+
+            <div class="tsrAdrSummaryItem">
+                <span>Market Status</span>
+                <strong class="text-success">
+                    Bullish
+                </strong>
+            </div>
+
+        </div>
+
+        <!-- Floating ADR Card -->
+        <div class="tsrAdrFloatingCard">
+
+            <div class="tsrAdrFloatingLabel">
+                ADR
+            </div>
+
+            <div class="tsrAdrFloatingValue">
+                1.21
+            </div>
+
+            <div class="tsrAdrFloatingTrend">
+                Bullish
+            </div>
+
+        </div>
+
+        <!-- Toolbar -->
+        <div class="tsrAdrToolbar">
+
+            <button class="btn btn-sm tsrAdrToolbarBtn active">
+                Live
+            </button>
+
+            <button class="btn btn-sm tsrAdrToolbarBtn">
+                5m
+            </button>
+
+            <button class="btn btn-sm tsrAdrToolbarBtn">
+                15m
+            </button>
+
+            <button class="btn btn-sm tsrAdrToolbarBtn">
+                1H
+            </button>
+
+            <button class="btn btn-sm tsrAdrToolbarBtn">
+                Daily
+            </button>
+
+        </div>
+
+        <!-- Existing Chart -->
+        <div class="tsrAdrChartBody">
+
+            <!-- KEEP YOUR EXISTING CHART DIV HERE -->
+            <div id="tsrAdrChartContainer"></div>
+
+        </div>
+
+        <!-- Insight Strip -->
+        <div class="tsrAdrInsightBar">
+
+            <div class="tsrAdrInsightTitle">
+                <i class="fas fa-lightbulb"></i>
+                Today's Insight
+            </div>
+
+            <div class="tsrAdrInsightText">
+                Market breadth remains positive with ADR above 1.0 and a majority of stocks advancing.
+            </div>
+
+        </div>
+
+    </div>
+
+                                
+                                <div style="display: flex;">
+
                                     <div class="tsrAdrChartScrollContainer">
                                         <div class="tsrAdrSelColor" style="justify-content: end;">
                                             <p class="tsrAdrAdvanceLabel">Advances</p>
@@ -1622,11 +1742,11 @@
                                         </svg>
                                     </div>
 
-                                    <div class="tsrAdrChartSidePanel">
-                                        <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
+                                    <div class="tsrAdrChartSidePanel" style="justify-content: center;">
+                                        <!-- <a href="https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/FuturesAndOptions"
                                             class="tsrAdrSideAssetTitle">
                                             F&amp;O Stocks <i class="fas fa-arrow-right sm-size"></i>
-                                        </a>
+                                        </a> -->
 
                                         <div class="tsrAdrSideMetricItem">
                                             <span>ADR</span>
@@ -1658,7 +1778,7 @@
                                             </div>
                                         </div>
 
-                                        <!-- TODO -->
+                                        <!-- TODO
                                         <div class="tsrAdrSideMetricsGrid"
                                             style="color: gray; background-color: lightgray;">
 
@@ -1672,7 +1792,7 @@
                                                 <i class="fas fa-th me-1"></i>
                                                 Stock list
                                             </a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </section>
