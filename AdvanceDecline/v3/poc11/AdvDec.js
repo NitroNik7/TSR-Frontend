@@ -194,7 +194,7 @@ var dyadr = (function () {  // Advance Decline
 
 	function addChart() {
 
-		getChartSectionHtml();
+		// getChartSectionHtml();
 
 
 		xAxisTickSpacing = 100;
