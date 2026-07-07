@@ -605,7 +605,7 @@ var dyadr = (function () {  // Advance Decline
         <!-- 2. HIGH PROMINENCE: Integrated Inline Chart Toggle Panel -->
         <div class="tsrAdrControlTab tsrAdrBtnPrimary" onclick="event.stopPropagation(); dyadr.har(this.closest('.tsrAdrRowCard'), 'FuturesAndOptions'); dyadr.ua('chart', 'FuturesAndOptions');">
             <i class="fas fa-chart-line"></i>
-            <span>Analyze Chart</span>
+            <span STYLE="text-wrap: nowrap;">Analyze Chart</span>
         </div>
     </div>
 
