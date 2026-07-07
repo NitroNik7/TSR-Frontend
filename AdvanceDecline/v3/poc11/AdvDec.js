@@ -611,7 +611,7 @@ var dyadr = (function () {  // Advance Decline
     <!-- 3. Central Breadth Matrix Dock -->
     <div class="tsrAdrBreadthCoreGroup">
         <div class="tsrAdrHighlightBadge font-monospace">
-            <span>Ratio</span>
+            <span>ADR Ratio</span>
             <font class="tsrAdrTextGreen">0.75</font>
         </div>
         

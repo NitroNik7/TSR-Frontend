@@ -611,7 +611,7 @@ var dyadr = (function () {  // Advance Decline
 
     <!-- 3. Metrics Analytics Dashboard Grid -->
         <div class="tsrAdrMiniStatCard">
-            <span class="tsrAdrStatLabel">Ratio</span>
+            <span class="tsrAdrStatLabel">ADR Ratio</span>
             <span class="tsrAdrStatValue tsrAdrTextGreen">0.75</span>
         </div>
 

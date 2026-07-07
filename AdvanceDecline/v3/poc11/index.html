@@ -1559,53 +1559,42 @@
                             </div> -->
 
 <!-- ==================== Redesigned Filters / Controls Area ==================== -->
-<!-- ==================== Redesigned Filters / Controls Area ==================== -->
-<div id="arCtrlDiv" class="container-md mb-4">
-    <div id="miCtrl">	
-        <div class="tsrAdrDockWrapper p-3 p-md-4">
-            <div class="tsrAdrDockFlex">
-                
-                <!-- Index Selector Context Segment -->
-                <div class="tsrAdrDockItem flex-grow-1">
-                    <div class="tsrAdrControlGroup">
-                        <span class="tsrAdrDockLabel">
-                            <i class="fas fa-layer-group text-primary me-2"></i>Index Scope
-                        </span>
-                        <div class="tsrAdrPillGroup">
-                            <input type="radio" name="tsrAdrIdxType" value="BroadBased" id="tsrAdrIdxBroadBased" checked="" onclick="dyadr.ua('adrSbTick')">
-                            <label for="tsrAdrIdxBroadBased" class="tsrAdrPillBtn">Broad Based</label>
-                
-                            <input type="radio" name="tsrAdrIdxType" value="SecIdx" id="tsrAdrIdxSecIdx" onclick="dyadr.ua('adrSbTick')">
-                            <label for="tsrAdrIdxSecIdx" class="tsrAdrPillBtn">Sectorial</label>
-                
-                            <input type="radio" name="tsrAdrIdxType" value="ThemIdx" id="tsrAdrIdxThemIdx" onclick="dyadr.ua('adrSbTick')">
-                            <label for="tsrAdrIdxThemIdx" class="tsrAdrPillBtn">Thematic</label>
-                        </div>
-                    </div>
-                </div>
+<div id="arCtrlDiv">
+    <div class="ctrl-row row g-3">
+        <div class="col-12 col-md-6 ctrl-group">
+            <label class="ctrl-label">
+                <i class="fas fa-layer-group text-primary"></i> Index Scope
+            </label>
+            <div class="btn-group-toggle-custom" role="group" aria-label="Index Scope selection">
+                <input type="radio" class="btn-check" name="indexScope" id="scopeBroad" checked>
+                <label class="btn" for="scopeBroad">Broad Based</label>
 
-                <!-- Frequency Dropdown Segment with Floating Input Framework -->
-                <div class="tsrAdrDockItem">
-                    <div class="tsrAdrFieldGroup">
-                        <span class="tsrAdrDockLabel">
-                            <i class="far fa-clock text-primary me-2"></i>Refresh Interval
-                        </span>
-                        <div class="tsrAdrSelectWrapper">
-                            <select id="adrFreq" class="tsrAdrDockSelect" onchange="JavaScript:dyadr.ua('chart');">
-                                <option value="I_D">Daily Live</option>
-                                <option value="hh1">1 Hour</option>
-                                <option value="mm30">30 Minutes</option>
-                                <option value="mm15">15 Minutes</option>
-                                <option value="mm5">5 Minutes</option>
-                                <option value="mm2">2 Minutes</option>
-                                <option value="D">Daily (EOD)</option>
-                                <option value="W">Weekly</option>
-                                <option value="M">Monthly</option>
-                            </select>
-                            <i class="fas fa-chevron-down tsrAdrSelectArrow"></i>
-                        </div>
-                    </div>
-                </div>
+                <input type="radio" class="btn-check" name="indexScope" id="scopeSectorial">
+                <label class="btn" for="scopeSectorial">Sectorial</label>
+
+                <input type="radio" class="btn-check" name="indexScope" id="scopeThematic">
+                <label class="btn" for="scopeThematic">Thematic</label>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 ctrl-group">
+            <label class="ctrl-label">
+                <i class="fas fa-sync-alt text-primary"></i> Refresh Interval
+            </label>
+            <select class="form-select form-select-custom" aria-label="Refresh Interval selection">
+                <option value="dailyLive" selected>Daily Live</option>
+                <option value="1h">1 Hour</option>
+                <option value="30m">30 Minutes</option>
+                <option value="15m">15 Minutes</option>
+                <option value="5m">5 Minutes</option>
+                <option value="2m">2 Minutes</option>
+                <option value="eod">Daily (EOD)</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+            </select>
+        </div>
+    </div>
+</div>
 
             </div>
         </div>

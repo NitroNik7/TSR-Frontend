@@ -2683,161 +2683,98 @@ body {
 /* ==========================================================================
    2. Prominent Filter & Control Dashboard Wrapper Updates
    ========================================================================== */
-/* ==========================================================================
-   Design Strategy: Floating Metric Control Dock
-   ========================================================================== */
-.tsrAdrDockWrapper {
-    /* Gradient depth pairing tones to replace plain white backgrounds */
-    background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%) !important;
-    border: 1px solid #cbd5e1 !important;
-    border-radius: 16px !important;
-    box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.04), inset 0 1px 2px #ffffff !important;
-}
-
-.tsrAdrDockFlex {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Generous internal element clearance spacing */
-    width: 100%;
-}
-
-.tsrAdrDockItem {
-    width: 100%;
-}
-
-.tsrAdrControlGroup, 
-.tsrAdrFieldGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Enhanced margin offset spacing under inner labels */
-    width: 100%;
-}
-
-.tsrAdrDockLabel {
-    font-size: 11px;
-    font-weight: 700;
-    color: #475569 !important;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    display: inline-flex;
-    align-items: center;
-}
-
-/* --- Inline Compact Pill System --- */
-.tsrAdrPillGroup {
-    display: flex;
-    background-color: #cbd5e1; /* Indented look contrast shadow deck wrapper track */
-    padding: 4px;
+/* Premium Light Theme for Control Panel */
+#arCtrlDiv {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
     border-radius: 10px;
-    width: 100%;
-    overflow-x: auto;
-    box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
 }
 
-.tsrAdrPillGroup input[type="radio"] {
-    display: none !important;
+/* Section Grouping Inside Controls */
+#arCtrlDiv .ctrl-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.tsrAdrPillBtn {
-    padding: 10px 16px; /* Enhanced horizontal and vertical button padding profile */
-    font-size: 12px;
-    font-weight: 600;
-    color: #475569 !important;
-    background: transparent;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-bottom: 0 !important;
-    flex-grow: 1;
-    text-align: center;
-    white-space: nowrap;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.tsrAdrPillBtn:hover {
-    color: #0f172a !important;
-}
-
-.tsrAdrPillGroup input[type="radio"]:checked + .tsrAdrPillBtn {
-    background-color: #ffffff !important;
-    color: var(--tsrAdrColorPrimary) !important;
+/* Compact & Sharp Labels */
+#arCtrlDiv .ctrl-label {
+    font-size: 0.75rem;
     font-weight: 700;
-    box-shadow: 0 4px 10px -1px rgba(15, 23, 42, 0.08);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #64748b;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
 }
 
-/* --- Minimal Selector Shell --- */
-.tsrAdrSelectWrapper {
-    position: relative;
-    width: 100%;
+/* Clean Custom Form Selects & Buttons */
+#arCtrlDiv .form-select-custom {
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    color: #1e293b;
+    padding: 0.4375rem 2rem 0.4375rem 0.75rem;
+    background-color: #f8fafc;
+    font-weight: 500;
+    transition: border-color 0.2s, background-color 0.2s;
 }
 
-.tsrAdrDockSelect {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-color: #ffffff !important;
-    color: #0f172a !important;
-    border: 1px solid #cbd5e1 !important;
-    border-radius: 10px !important;
-    height: 44px; /* Slightly taller selection box frame symmetry layout footprint */
-    width: 100%;
-    padding: 0 40px 0 16px;
-    font-size: 13px;
-    font-weight: 600;
+#arCtrlDiv .form-select-custom:focus {
+    border-color: #3b82f6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
     outline: none;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.02);
+}
+
+/* Modern Segmented Button Groups for Scope Selection */
+#arCtrlDiv .btn-group-toggle-custom {
+    display: flex;
+    width: 100%;
+    background-color: #f1f5f9;
+    padding: 0.25rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+#arCtrlDiv .btn-group-toggle-custom .btn-check + .btn {
+    flex: 1;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #64748b;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    padding: 0.375rem 0.75rem;
     transition: all 0.2s ease;
+    text-align: center;
 }
 
-.tsrAdrDockSelect:hover {
-    border-color: #94a3b8 !important;
-    box-shadow: 0 4px 8px rgba(15, 23, 42, 0.04);
+#arCtrlDiv .btn-group-toggle-custom .btn-check:checked + .btn {
+    background-color: #ffffff;
+    color: #0f172a;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.tsrAdrDockSelect:focus {
-    border-color: var(--tsrAdrColorPrimary) !important;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+#arCtrlDiv .btn-group-toggle-custom .btn:hover:not(.active) {
+    color: #334155;
 }
 
-.tsrAdrSelectArrow {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #475569;
-    font-size: 11px;
-    pointer-events: none;
-}
-
-/* ==========================================================================
-   Responsive Control Realignment Mappings (Tablet & Larger Layouts)
-   ========================================================================== */
+/* Responsive Grid Adjustments */
 @media (min-width: 768px) {
-    .tsrAdrDockFlex {
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        gap: 32px; /* Large column gap spacing layout boundaries */
+    #arCtrlDiv .ctrl-row {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
     }
-
-    .tsrAdrDockItem {
-        width: auto !important;
-    }
-
-    .tsrAdrControlGroup, 
-    .tsrAdrFieldGroup {
-        flex-direction: row !important;
-        align-items: center !important;
-        gap: 20px !important; /* Enhanced landscape grid text tracking spaces */
-    }
-
-    .tsrAdrPillGroup {
-        width: auto !important;
-        min-width: 360px;
-    }
-
-    .tsrAdrDockSelect {
-        width: 170px !important;
+    #arCtrlDiv .ctrl-group {
+        flex: 1;
     }
 }
 /* ==========================================================================
