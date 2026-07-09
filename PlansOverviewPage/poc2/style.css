@@ -54,7 +54,7 @@
 }
 
 /* Comparison Framework Component Setup */
-.tsrPlansPlanTableCompareTitle {
+.tsrPlanTableCompareTitle {
     font-size: 28px;
     font-weight: 600;
     color: #0f172a;
@@ -63,7 +63,7 @@
     white-space: nowrap;
 }
 
-.tsrPlansPlanTableContainer {
+.tsrPlanTableContainer {
     border: 1px solid #f1f5f9;
     border-radius: 20px;
     overflow: visible; /* Required to let sticky components float properly */
@@ -71,14 +71,14 @@
 }
 
 /* Row Formats */
-.tsrPlansPlanTableRow {
+.tsrPlanTableRow {
     display: flex;
     background: #fff;
     border-bottom: 1px solid #f1f5f9;
 }
 
 /* Sticky Header Columns */
-.tsrPlansPlanTableRowHeader {
+.tsrPlanTableRowHeader {
     display: flex;
     background: #f8fafc;
     position: sticky;
@@ -88,7 +88,7 @@
 }
 
 /* Cross Section Node Dividers */
-.tsrPlansPlanTableSectionHeader {
+.tsrPlanTableSectionHeader {
     position: sticky;
     z-index: 90;
     background: #f1f5f9;
@@ -101,7 +101,7 @@
 }
 
 /* Left Descriptor Columns */
-.tsrPlansPlanTableFeature {
+.tsrPlanTableFeature {
     flex: 1;
     padding: 16px;
     font-size: 12px;
@@ -111,27 +111,27 @@
     border-right: 1px solid #f1f5f9;
 }
 
-.tsrPlansPlanTableSectionHeader a,
-.tsrPlansPlanTableFeature a {
+.tsrPlanTableSectionHeader a,
+.tsrPlanTableFeature a {
     color: #64748b;
     text-decoration: underline;
     text-decoration-style: dotted;
     text-underline-offset: 5px;
 }
 
-.tsrPlansPlanTableSectionHeader a i,
-.tsrPlansPlanTableFeature a i {
+.tsrPlanTableSectionHeader a i,
+.tsrPlanTableFeature a i {
     font-size: 13px;
     transform: rotate(-35deg);
 }
 
-.tsrPlansPlanTableSectionHeader a:hover,
-.tsrPlansPlanTableFeature a:hover {
+.tsrPlanTableSectionHeader a:hover,
+.tsrPlanTableFeature a:hover {
     color: #0f172a;
 }
 
 /* Comparative Grid Block Data Cells */
-.tsrPlansPlanTableCell {
+.tsrPlanTableCell {
     flex: 1;
     padding: 16px;
     font-size: 12px;
@@ -140,7 +140,7 @@
     justify-content: center;
 }
 
-.tsrPlansPlanTableRowHeader .tsrPlansPlanTableCell {
+.tsrPlanTableRowHeader .tsrPlanTableCell {
     font-weight: 700;
     border-right: 1px solid #f1f5f9;
     text-align: center;
@@ -149,26 +149,26 @@
     letter-spacing: 0.2px;
 }
 
-.tsrPlansPlanTableCellBottom {
+.tsrPlanTableCellBottom {
     display: flex;
     flex: 5;
     padding: 0;
 }
 
-.tsrPlansPlanTableCellBottom .tsrPlansPlanTableCell {
+.tsrPlanTableCellBottom .tsrPlanTableCell {
     border-right: 1px solid #f1f5f9;
 }
 
-.tsrPlansPlanTableCellBottom .tsrPlansPlanTableCell:last-child {
+.tsrPlanTableCellBottom .tsrPlanTableCell:last-child {
     border-right: none;
 }
 
 /* Icon Elements Styling Rules */
-.tsrPlansPlanTableCellBottom .fa-times-circle {
+.tsrPlanTableCellBottom .fa-times-circle {
     color: #dc2626;
 }
 
-.tsrPlansPlanTableCellBottom .fa-check-circle {
+.tsrPlanTableCellBottom .fa-check-circle {
     color: #16a34a;
 }
 
@@ -205,15 +205,15 @@
 /* --- DEVICE LAYER MEDIA QUERIES --- */
 @media (max-width: 768px) {
     /* Transforms multi-column tables cleanly onto stacked layout ribbons on Tablets/Mobile */
-    .tsrPlansPlanTableRow {
+    .tsrPlanTableRow {
         flex-direction: column;
     }
 
-    .tsrPlansPlanTableRowHeader .tsrPlansPlanTableFeature {
+    .tsrPlanTableRowHeader .tsrPlanTableFeature {
         display: none;  
     }
 
-    .tsrPlansPlanTableRow:not(.tsrPlansPlanTableRowHeader) .tsrPlansPlanTableFeature {
+    .tsrPlanTableRow:not(.tsrPlanTableRowHeader) .tsrPlanTableFeature {
         border-right: none;
         border-bottom: 1px solid #f1f5f9;
         background: #f1f5f9;
@@ -222,7 +222,7 @@
         text-align: center;
     }
 
-    .tsrPlansPlanTableCell {
+    .tsrPlanTableCell {
         padding: 12px 4px;
         font-size: 11px;
     }
