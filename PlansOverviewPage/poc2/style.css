@@ -40,6 +40,57 @@
     border-top: 1px solid #f1f5f9;
 }
 
+                                   /* --- Fine Spacing & Typography Utilities --- */
+.tsrPlansCompareTitle {
+    font-size: 28px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 24px 0;
+    font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    white-space: nowrap;
+}
+.tsrPlansFw600 {
+    font-weight: 600 !important;
+}
+.tsrPlansTrackingWider {
+    letter-spacing: 0.06em !important;
+}
+.tsrPlansLhLg {
+    line-height: 1.8 !important;
+}
+.tsrPlansBgLightCard {
+    background-color: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+}
+
+/* --- Premium Accordion Overrides --- */
+.tsrPlansAccordionBtn:focus {
+    box-shadow: none !important;
+    border-color: rgba(37, 99, 235, 0.15) !important;
+}
+
+/* Clear active link layout parameters without forced underscores */
+.accordion-item .tsrPlansSubTitle {
+    text-decoration: none !important;
+}
+
+.tsrPlansAccordionBtn:not(.collapsed) {
+    background-color: rgba(37, 99, 235, 0.04) !important;
+    color: #2563eb !important;
+    font-weight: 700 !important;
+}
+
+.tsrPlansAccordionBtn::after {
+    transition: transform 0.22s ease-in-out !important;
+}
+
+/* Column boundaries alignment layout on standard screens */
+@media (min-width: 768px) {
+    .tsrPlansBorderEndMd {
+        border-right: 1px solid #edf2f7 !important;
+    }
+}
+
 .tsrPlansSubTitle {
     color: #0f172a;
     font-weight: bold;
@@ -290,3 +341,4 @@
         font-size: 11px;
     }
 }
+
