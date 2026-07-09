@@ -20,7 +20,7 @@
     background-color: white;
 }
  
-.tsrPlansAccordionBtn:not(.collapsed){
+.tsrPlansAccordionBtn:not(.collapsed){ 
     color: black !important;
 }
 
