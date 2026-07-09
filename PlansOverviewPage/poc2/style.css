@@ -210,7 +210,7 @@
     }
 
     .tsrPlansPlanTableRowHeader .tsrPlansPlanTableFeature {
-        display: none;
+        display: none;  
     }
 
     .tsrPlansPlanTableRow:not(.tsrPlansPlanTableRowHeader) .tsrPlansPlanTableFeature {
