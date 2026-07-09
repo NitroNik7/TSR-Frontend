@@ -19,7 +19,7 @@
 .tsrPlansAccordionContainer .accordion-item:nth-child(even) .tsrPlansAccordionBtn{
     background-color: white;
 }
-
+ 
 .tsrPlansAccordionBtn:not(.collapsed){
     color: black !important;
 }
