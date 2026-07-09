@@ -573,37 +573,6 @@
     text-wrap: nowrap;
 }
 
-.tsrPlansTableCompareDetailedCompBtn {
-    display: inline-flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 6px;
-    background-color: rgba(108, 117, 125, 0.05) !important; /* Extremely soft gray background */
-    /* color: #64748b !important; Neutral slate text color */
-        color: #0f172a !important; /* Text sharpens to near black */
-
-    border: 1px solid #e2e8f0 !important; /* Subtle border */
-    padding: 5px 12px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
-
-/* Arrow baseline rotation */
-.tsrPlansTableCompareIcon {
-    font-size: 11px;
-    transform: rotate(-35deg);
-    transition: transform 0.2s ease;
-}
-
-/* Subtle, elegant hover state */
-.tsrPlansTableCompareDetailedCompBtn:hover {
-    background-color: rgba(108, 117, 125, 0.12) !important; /* Sightly darker gray tint */
-    color: #0f172a !important; /* Text sharpens to near black */
-    border-color: #cbd5e1 !important;
-}
 
 /* Micro-interaction to push the arrow up and right on hover */
 /* .tsrPlansTableCompareDetailedCompBtn:hover .tsrPlansTableCompareIcon {
