@@ -1,0 +1,367 @@
+:root {
+    --tsrPlansPageNavHeight: 65px;
+}
+
+/* Base App Wrapper Container */
+.tsrPlansWrapper {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.tsrPlansMainHeading {
+    font-weight: bold;
+    border-bottom: 1px solid #212529;
+}
+
+.tsrPlansAccordionContainer .accordion-item:nth-child(odd) .tsrPlansAccordionBtn {
+    background-color: rgb(246, 246, 246);
+}
+
+.tsrPlansAccordionContainer .accordion-item:nth-child(even) .tsrPlansAccordionBtn {
+    background-color: white;
+}
+
+.tsrPlansAccordionBtn:not(.collapsed) {
+    color: black !important;
+}
+
+.tsrPlansAccordionBtn {
+
+    border: none;
+    box-shadow: none !important;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.tsrPlansAccordionBody {
+    padding: 18px;
+    border-top: 1px solid #f1f5f9;
+}
+
+/* --- Fine Spacing & Typography Utilities --- */
+.tsrPlansCompareTitle {
+    font-size: 28px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 24px 0;
+    font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    white-space: nowrap;
+}
+
+.tsrPlansTrackingWider {
+    letter-spacing: 0.06em !important;
+}
+
+.tsrPlansLhLg {
+    line-height: 1.8 !important;
+}
+
+.tsrPlansBgLightCard {
+    background-color: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+}
+
+/* --- Premium Accordion Overrides --- */
+.tsrPlansAccordionBtn:focus {
+    box-shadow: none !important;
+    border-color: rgba(37, 99, 235, 0.15) !important;
+}
+
+/* Clear active link layout parameters without forced underscores */
+.accordion-item .tsrPlansSubTitle {
+    text-decoration: none !important;
+}
+
+.tsrPlansAccordionBtn:not(.collapsed) {
+    background-color: rgba(37, 99, 235, 0.04) !important;
+    color: #2563eb !important;
+    font-weight: 600 !important;
+}
+
+/* .tsrPlansAccordionBtn::after {
+    transition: transform 0.22s ease-in-out !important;
+} */
+
+/* Column boundaries alignment layout on standard screens */
+@media (min-width: 768px) {
+    .tsrPlansBorderEndMd {
+        border-right: 1px solid #edf2f7 !important;
+    }
+}
+
+.tsrPlansSubTitle {
+    color: #0f172a;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+/* Tables Organized Inside Tabs */
+.tsrPlansTable th {
+    background: #f8fafc;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+/* Comparison Framework Component Setup */
+.tsrPlanTableCompareTitle {
+    font-size: 28px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 24px 0;
+    font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    white-space: nowrap;
+}
+
+@media (max-width: 576px) {
+    .tsrPlanTableCompareTitle {
+        font-size: 22px;
+    }
+}
+
+.tsrPlanTableContainer {
+    border: 1px solid #f1f5f9;
+    border-radius: 20px;
+    overflow: visible;
+    /* Required to let sticky components float properly */
+    font-family: 'Inter', sans-serif;
+}
+
+/* Row Formats */
+.tsrPlanTableRow {
+    display: flex;
+    background: #fff;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Sticky Header Columns */
+.tsrPlanTableRowHeader {
+    display: flex;
+    background: #f8fafc;
+    position: sticky;
+    top: var(--tsrPlansPageNavHeight);
+    z-index: 100;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Cross Section Node Dividers */
+.tsrPlanTableSectionHeader {
+    position: sticky;
+    z-index: 90;
+    background: #f1f5f9;
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #6a7687;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+/* Left Descriptor Columns */
+.tsrPlanTableFeature {
+    flex: 1;
+    padding: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+    background: #f8fafc;
+    border-right: 1px solid #f1f5f9;
+}
+
+.tsrPlanTableSectionHeader a,
+.tsrPlanTableFeature a {
+    color: #64748b;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 5px;
+}
+
+.tsrPlanTableSectionHeader a i,
+.tsrPlanTableFeature a i {
+    font-size: 13px;
+    transform: rotate(-35deg);
+}
+
+.tsrPlanTableSectionHeader a:hover,
+.tsrPlanTableFeature a:hover {
+    color: #0f172a;
+}
+
+/* Comparative Grid Block Data Cells */
+.tsrPlanTableCell {
+    flex: 1;
+    padding: 16px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tsrPlanTableRowHeader .tsrPlanTableCell {
+    font-weight: 700;
+    border-right: 1px solid #f1f5f9;
+    text-align: center;
+    font-size: 15px;
+    color: #0f172a;
+    letter-spacing: 0.2px;
+}
+
+.tsrPlanTableCellBottom {
+    display: flex;
+    flex: 5;
+    padding: 0;
+}
+
+.tsrPlanTableCellBottom .tsrPlanTableCell {
+    border-right: 1px solid #f1f5f9;
+}
+
+.tsrPlanTableCellBottom .tsrPlanTableCell:last-child {
+    border-right: none;
+}
+
+/* Icon Elements Styling Rules */
+.tsrPlanTableCellBottom .fa-times-circle {
+    color: #dc2626;
+}
+
+.tsrPlanTableCellBottom .fa-check-circle {
+    color: #16a34a;
+}
+
+/* Requirements Box UI */
+.tsrPlansRequirementCard {
+    border-radius: 12px;
+    border: none;
+}
+
+.tsrPlansRequirementTitle {
+    color: #2563eb;
+    font-weight: bold;
+}
+
+.tsrPlansFeatureList li {
+    font-size: 13px;
+    color: #475569;
+    margin-bottom: 6px;
+}
+
+.tsrPlansFeatureList li i {
+    color: #2563eb;
+}
+
+/* Navigation Side Pillar UI Container */
+.tsrPlansStickyNav {
+    position: fixed;
+    width: 200px;
+    /* Adjusted to sit comfortably inside a col-md-2 framework */
+    top: calc(var(--tsrPlansPageNavHeight) + 20px);
+    border-left: 2px solid #e2e8f0;
+    background: transparent;
+    background: white;
+    z-index: 1;
+
+}
+
+.tsrPlansNavBrand {
+    font-size: 14px;
+    color: #0f172a !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+}
+
+/* In-page Scrollspy Anchor Links */
+.tsrPlansNavLink {
+    color: #475569 !important;
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 6px 12px !important;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    background: transparent !important;
+}
+
+/* Hover and Bootstrap Active states managed cleanly */
+.tsrPlansNavLink:hover {
+    color: #0284c7 !important;
+    /* Highlights using light-blue theme theme color */
+    background-color: rgba(2, 132, 199, 0.08) !important;
+    font-weight: 600;
+}
+
+.tsrPlansNavLink.active {
+    color: #0284c7 !important;
+    /* Highlights using light-blue theme theme color */
+    background-color: rgba(2, 132, 199, 0.08) !important;
+    font-weight: 600;
+}
+
+/* Bottom Boundary Action Item Area */
+.tsrPlansNavDivider {
+    border-top: 1px solid #c8ced6;
+    padding-top: 12px;
+    margin-top: 4px;
+}
+
+.tsrPlansActionLink {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 10px;
+    color: #0f172a !important;
+    font-size: 13.5px;
+    font-weight: 700;
+    padding: 6px 12px !important;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.tsrPlansActionLinkIcon {
+    font-size: 11px;
+    transform: rotate(-35deg);
+    transition: transform 0.2s ease, color 0.2s ease;
+    color: #64748b;
+}
+
+/* Custom interactive hover state for external link */
+.tsrPlansActionLink:hover {
+    color: #0284c7 !important;
+}
+
+.tsrPlansActionLink:hover .tsrPlansActionLinkIcon {
+    color: #0284c7;
+    transform: rotate(-35deg) translate(2px, -2px);
+}
+
+/* --- DEVICE LAYER MEDIA QUERIES --- */
+@media (max-width: 768px) {
+
+    /* Transforms multi-column tables cleanly onto stacked layout ribbons on Tablets/Mobile */
+    .tsrPlanTableRow {
+        flex-direction: column;
+    }
+
+    .tsrPlanTableRowHeader .tsrPlanTableFeature {
+        display: none;
+    }
+
+    .tsrPlanTableRow:not(.tsrPlanTableRowHeader) .tsrPlanTableFeature {
+        border-right: none;
+        border-bottom: 1px solid #f1f5f9;
+        background: #f1f5f9;
+        padding: 10px 16px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .tsrPlanTableCell {
+        padding: 12px 4px;
+        font-size: 11px;
+    }
+}
