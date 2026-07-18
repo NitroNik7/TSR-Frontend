@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const containerRect = chartContainer.getBoundingClientRect();
         const width = containerRect.width || 600;
         const height = width; 
-        const padding = 45;
+        const padding = 55; 
 
         chartContainer.innerHTML = "";
 
@@ -130,23 +130,80 @@ document.addEventListener("DOMContentLoaded", function () {
         const midX = xScale(100);
         const midY = yScale(100);
 
+        // 1. Quadrant Fills
         svg.append("rect").attr("x", midX).attr("y", padding).attr("width", width - padding - midX).attr("height", midY - padding).attr("class", "rrg-quadrant").attr("fill", "#198754");
         svg.append("rect").attr("x", padding).attr("y", padding).attr("width", midX - padding).attr("height", midY - padding).attr("class", "rrg-quadrant").attr("fill", "#0dcaf0");
         svg.append("rect").attr("x", padding).attr("y", midY).attr("width", midX - padding).attr("height", height - padding - midY).attr("class", "rrg-quadrant").attr("fill", "#dc3545");
         svg.append("rect").attr("x", midX).attr("y", midY).attr("width", width - padding - midX).attr("height", height - padding - midY).attr("class", "rrg-quadrant").attr("fill", "#ffc107");
 
-        svg.append("line").attr("x1", padding).attr("y1", midY).attr("x2", width - padding).attr("y2", midY).attr("stroke", "#cbd5e1").attr("stroke-width", 1.5);
-        svg.append("line").attr("x1", midX).attr("y1", padding).attr("x2", midX).attr("y2", height - padding).attr("stroke", "#cbd5e1").attr("stroke-width", 1.5);
+        // 2. Main Center Quad Intersection Grid Lines (Left as faint subtle indicators)
+        svg.append("line").attr("x1", padding).attr("y1", midY).attr("x2", width - padding).attr("y2", midY).attr("stroke", "#cbd5e1").attr("stroke-width", 1.5).attr("stroke-dasharray", "4,4");
+        svg.append("line").attr("x1", midX).attr("y1", padding).attr("x2", midX).attr("y2", height - padding).attr("stroke", "#cbd5e1").attr("stroke-width", 1.5).attr("stroke-dasharray", "4,4");
 
+        // 3. Dynamic Outer Edge Border Value Ticks
+        // X-Axis Ticks (Aligned cleanly to the absolute BOTTOM boundary edge frame line)
+        const xAxis = d3.axisBottom(xScale)
+            .ticks(7)
+            .tickFormat(d3.format(".1f"));
+
+        svg.append("g")
+            .attr("transform", `translate(0, ${height - padding})`)
+            .call(xAxis)
+            .call(g => g.select(".domain").attr("stroke", "#64748b").attr("stroke-width", 1.5)) 
+            .call(g => g.selectAll(".tick line").attr("stroke", "#64748b"))
+            .call(g => g.selectAll(".tick text")
+                .attr("fill", "#475569")
+                .style("font-size", "10px")
+                .style("font-weight", "600"));
+
+        // Y-Axis Ticks (Aligned cleanly to the absolute LEFT boundary edge frame line)
+        const yAxis = d3.axisLeft(yScale)
+            .ticks(7)
+            .tickFormat(d3.format(".1f"));
+
+        svg.append("g")
+            .attr("transform", `translate(${padding}, 0)`)
+            .call(yAxis)
+            .call(g => g.select(".domain").attr("stroke", "#64748b").attr("stroke-width", 1.5)) 
+            .call(g => g.selectAll(".tick line").attr("stroke", "#64748b"))
+            .call(g => g.selectAll(".tick text")
+                .attr("fill", "#475569")
+                .style("font-size", "10px")
+                .style("font-weight", "600"));
+
+        // 4. Quadrant Descriptive Labels
         svg.append("text").attr("x", width - padding - 12).attr("y", padding + 20).attr("text-anchor", "end").attr("class", "rrg-quadrant-text").attr("fill", "#198754").text("LEADING");
         svg.append("text").attr("x", padding + 12).attr("y", padding + 20).attr("text-anchor", "start").attr("class", "rrg-quadrant-text").attr("fill", "#0dcaf0").text("IMPROVING");
         svg.append("text").attr("x", padding + 12).attr("y", height - padding - 15).attr("text-anchor", "start").attr("class", "rrg-quadrant-text").attr("fill", "#dc3545").text("LAGGING");
         svg.append("text").attr("x", width - padding - 12).attr("y", height - padding - 15).attr("text-anchor", "end").attr("class", "rrg-quadrant-text").attr("fill", "#ffc107").text("WEAKENING");
 
+        // 5. Outer Title Labels
+        svg.append("text")
+            .attr("x", width / 2)
+            .attr("y", height - 10)
+            .attr("text-anchor", "middle")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", "12px")
+            .attr("font-weight", "bold")
+            .attr("fill", "#64748b")
+            .text("JdK RS-Ratio");
+
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("x", -(height / 2))
+            .attr("y", 15)
+            .attr("text-anchor", "middle")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", "12px")
+            .attr("font-weight", "bold")
+            .attr("fill", "#64748b")
+            .text("JdK RS-Momentum");
+
         const lineGenerator = d3.line()
             .x(d => xScale(d.ratio))
             .y(d => yScale(d.momentum));
 
+        // 6. Connecting Trails & Interactive Points
         Object.keys(activePointsBySector).forEach(name => {
             const points = activePointsBySector[name];
             const color = sectorColors[name] || "#000000";
@@ -174,8 +231,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     tooltip.innerHTML = `
                         <div class="fw-bold text-center border-bottom pb-1 mb-1 small text-info">${d.sectorName}</div>
                         <div class="x-small">Date: <b>${d.date}</b></div>
-                        <div class="x-small">Ratio: <b>${d.ratio.toFixed(2)}</b></div>
-                        <div class="x-small">Mmtm: <b>${d.momentum.toFixed(2)}</b></div>
+                        <div class="x-small">Rs-Ratio: <b>${d.ratio.toFixed(2)}</b></div>
+                        <div class="x-small">Rs-Momentum: <b>${d.momentum.toFixed(2)}</b></div>
                     `;
                 })
                 .on("mousemove", function (event) {
