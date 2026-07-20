@@ -5,19 +5,6 @@ let masterTimeline = [];
 let playInterval = null;
 
 document.addEventListener("DOMContentLoaded", function () {
-    const csvUrls = {
-        "NIFTY IT": "https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/sectorData/rrg/NIFTY_IT.csv",
-        "NIFTY METALS": "https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/sectorData/rrg/NIFTY_METALS.csv",
-        "NIFTY PHARMA": "https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/sectorData/rrg/NIFTY_PHARMA.csv",
-        "NIFTY OIL GAS": "https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/sectorData/rrg/NIFTY_OIL_GAS.csv"
-    };
-
-    const sectorColors = {
-        "NIFTY IT": "#3b82f6",
-        "NIFTY METALS": "#8b5cf6",
-        "NIFTY PHARMA": "#ec4899",
-        "NIFTY OIL GAS": "#f59e0b"
-    };
 
     const tailSelect = document.getElementById("rrgTailLength");
     const controlsContainer = document.getElementById("rrgSectorControls");
@@ -27,6 +14,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const tooltip = document.getElementById("rrgTooltip");
     const chartContainer = document.getElementById("rrgChartContainer");
     const periodSelect = document.getElementById("rrgPeriodSelect");
+
+    let period = "";
+    if(periodSelect.value == "3m"){
+        period = "3 Months"
+    } else if(periodSelect.value == "1y"){
+        period = "1 Year"
+    } 
+    // else{
+    //     period = "5 Years"
+    // }
+    
+
+    const csvUrls = {
+        "NIFTY IT": `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/sectorData/rrg/${period}/NIFTY IT.csv`,
+        "NIFTY METALS": `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/sectorData/rrg/${period}/NIFTY METALS.csv`,
+        "NIFTY PHARMA": `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/sectorData/rrg/${period}/NIFTY PHARMA.csv`,
+        "NIFTY OIL GAS": `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/sectorData/rrg/${period}/NIFTY OIL GAS.csv`
+    };
+
+    const sectorColors = {
+        "NIFTY IT": "#8eb9ff",   //#3b82f6
+        "NIFTY METALS": "#c1a6ff", //#8b5cf6
+        "NIFTY PHARMA": "#d376a4", //#ec4899
+        "NIFTY OIL GAS": "#ffc767" //#f59e0b
+    };
+
 
     async function fetchCSV(url) {
         const response = await fetch(url);
@@ -199,7 +212,9 @@ document.addEventListener("DOMContentLoaded", function () {
             .attr("fill", "#64748b")
             .text("JdK RS-Momentum");
 
-        const lineGenerator = d3.line()
+            		// let advances = d3.line().curve(d3.curveMonotoneX).x(d => x(d.Date)).y(d => y(d.Advances));
+
+        const lineGenerator = d3.line().curve(d3.curveNatural)
             .x(d => xScale(d.ratio))
             .y(d => yScale(d.momentum));
 
