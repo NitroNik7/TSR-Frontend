@@ -27,10 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
     
 
     const csvUrls = {
-        "NIFTY IT": `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/sectorData/rrg/${period}/NIFTY IT.csv`,
-        "NIFTY METALS": `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/sectorData/rrg/${period}/NIFTY METALS.csv`,
-        "NIFTY PHARMA": `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/sectorData/rrg/${period}/NIFTY PHARMA.csv`,
-        "NIFTY OIL GAS": `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/sectorData/rrg/${period}/NIFTY OIL GAS.csv`
+        "NIFTY IT": `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/rrg/${period}/NIFTY IT.csv`,
+        "NIFTY METALS": `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/rrg/${period}/NIFTY METALS.csv`,
+        "NIFTY PHARMA": `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/rrg/${period}/NIFTY PHARMA.csv`,
+        "NIFTY OIL GAS": `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/poc1/rrg/${period}/NIFTY OIL GAS.csv`
     };
 
     const sectorColors = {
