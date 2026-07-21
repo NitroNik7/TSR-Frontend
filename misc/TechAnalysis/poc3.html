@@ -2906,6 +2906,7 @@
 
                                             }
 
+                                            /* Custom caret in accordion */
                                             #tsrKeyTechnicalsAccordion .accordion-header button {
                                                 background-color: blue;
                                                 color: white;
@@ -2916,6 +2917,10 @@
 
                                             #tsrKeyTechnicalsAccordion .accordion-header button::after {
                                                 all: unset;
+                                            }
+
+                                            #tsrKeyTechnicalsAccordion .accordion-header button:focus {
+                                                box-shadow: unset;
                                             }
 
                                             #tsrKeyTechnicalsAccordion .accordion-header button:not(.collapsed) i {
@@ -2937,6 +2942,7 @@
                                             <div class="accordion accordion-flush" id="tsrKeyTechnicalsAccordion">
                                                 <div class="accordion-item">
                                                     <h2 class="accordion-header" id="tsrKeyTechnicalsAccordionHeading1">
+                                                        <!-- Custom caret in accordion -->
                                                         <button class="accordion-button collapsed" type="button"
                                                             data-bs-toggle="collapse"
                                                             data-bs-target="#tsrKeyTechnicalsAccordionItem1"
