@@ -1,5 +1,5 @@
 <html>
- 
+
 <head>
     <title>RRG</title>
     <meta name="description"
@@ -57,23 +57,6 @@
 </script>
 
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-10KWGPV9XG"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-10KWGPV9XG');
-</script><!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10926652708"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'AW-10926652708');
-</script>
 <style>
     .dummyCss {
         position: relative;
@@ -487,77 +470,147 @@
 
                             <link rel="stylesheet" href="style.css">
 
+                            <section>
+                                <h1>Sector Rotation Graph</h1>
+                            </section>
+
                             <section id="tsrRrgChartSection">
                                 <div class="container-fluid my-4">
-    <div class="card shadow-sm border-0 rounded-3">
-        <div class="card-header bg-white py-3 border-bottom-0 d-flex justify-content-between align-items-center flex-wrap gap-3">
-            <div>
-                <h5 class="mb-1 text-dark fw-bold"><i class="fas fa-sync-alt text-primary me-2"></i>Relative Rotation Graph (RRG)</h5>
-                <!-- <p class="text-muted small mb-0">Sector performance analysis using relative strength and momentum tracking over a 1-year timeline.</p> -->
-            </div>
-            <div class="d-flex align-items-center gap-3 flex-wrap">
-                <!-- Tail Length Control -->
-                <div class="d-flex align-items-center gap-2">
-                    <label for="rrgTailLength" class="form-label mb-0 small text-secondary fw-bold text-nowrap">Tail Length:</label>
-                    <select id="rrgTailLength" class="form-select form-select-sm" style="width: 80px;">
-                        <option value="5" selected>5</option>
-                        <option value="10" >10</option>
-                        <option value="15">15</option>
-                        <option value="20">20</option>
-                    </select>
-                </div>
-            </div>
-            <!-- Rolling Window Timeline Controls -->
-<div class="px-3 py-2 bg-light rounded-3 border">
-    <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
-        <div class="d-flex align-items-center gap-2">
-            <span class="small text-secondary fw-bold"><i class="far fa-calendar-alt me-1"></i> Timeline Window:</span>
-            <select id="rrgPeriodSelect" class="form-select form-select-sm" style="width: 110px;">
-                <option value="3m">3 Months</option>
-                <option value="1y" selected>1 Year</option>
-            </select>
-        </div>
-        <span id="rrgCurrentDateDisplay" class="badge bg-primary fw-bold px-2 py-1.5">Loading Dates...</span>
-    </div>
-    <div class="d-flex align-items-center gap-3">
-        <button id="rrgPlayBtn" class="btn btn-sm btn-outline-primary" type="button" title="Animate timeline">
-            <i class="fas fa-play"></i>
-        </button>
-        <input type="range" id="rrgTimelineSlider" class="form-range" min="0" max="0" value="0" step="1" disabled>
-    </div>
-</div>
-        </div>
-        <div class="card-body position-relative py-4">
-            <div class="row">
-                <!-- RRG D3 SVG & Timeline Slider Container -->
-                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                    <div class="d-flex justify-content-center mb-4 position-relative">
-                        <div id="rrgChartContainer" class="w-100" style="max-width: 650px; aspect-ratio: 1 / 1; border: 2px solid #e2e8f0; border-radius: 8px; background-color: #ffffff;">
-                            <!-- D3 SVG injected here dynamically -->
-                        </div>
-                        
-                        <!-- Interactive Data Tooltip -->
-                        <div id="rrgTooltip" class="position-absolute bg-dark text-white p-2 rounded small shadow" style="display: none; pointer-events: none; z-index: 10; font-family: sans-serif; min-width: 140px;"></div>
-                    </div>
-                     
-                </div>
- 
-                <!-- Legend & Sector Checkboxes Controls -->
-                <div class="col-12 col-xl-4">
-                    <div class="border rounded-3 p-3 bg-light h-100">
-                        <h6 class="fw-bold mb-3 small text-uppercase text-secondary" style="letter-spacing: 0.5px;">Sectors Covered</h6>
-                        <div id="rrgSectorControls" class="d-grid gap-2">
-                            <div class="d-flex align-items-center justify-content-center py-4 text-muted">
-                                <div class="spinner-border spinner-border-sm me-2" role="status"></div>
-                                <span class="small">Loading sector datasets...</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                                    <div class="card  border-0 rounded-3">
+                                        <div
+                                            class="card-header bg-white border-bottom-0 d-flex justify-content-between align-items-center flex-wrap gap-3">
+                                            <!-- Rolling Window Timeline Controls -->
+                                            <div class="px-3 py-2 bg-light rounded-3 border w-100">
+                                                <div
+                                                    class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <span class="small text-secondary fw-bold"><i
+                                                                class="far fa-calendar-alt me-1"></i> Period:</span>
+                                                        <select id="rrgPeriodSelect" class="form-select form-select-sm"
+                                                            style="width: 110px;">
+                                                            <option value="3m">3 Months</option>
+                                                            <option value="1y" selected>1 Year</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <span class="small text-secondary fw-bold"><i
+                                                                class="far fa-calendar-alt me-1"></i> Time frame:</span>
+                                                        <select id="rrgPeriodSelect" class="form-select form-select-sm"
+                                                            style="width: 110px;">
+                                                            <option value="3m">Daily</option>
+                                                            <option value="1y" selected>Weekly</option>
+                                                            <option value="1y" selected>Monthly</option>
+                                                        </select>
+                                                    </div>
+                                                    <!-- <span id="rrgCurrentDateDisplay"
+                                                        class="badge bg-primary fw-bold px-2 py-1.5">Loading
+                                                        Dates...</span> -->
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <label for="rrgTailLength"
+                                                            class="form-label mb-0 small text-secondary fw-bold text-nowrap">Tail
+                                                            Length:</label>
+                                                        <select id="rrgTailLength" class="form-select form-select-sm"
+                                                            style="width: 80px;">
+                                                            <option value="5" selected>5</option>
+                                                            <option value="10">10</option>
+                                                            <option value="15">15</option>
+                                                            <option value="20">20</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <button id="rrgPlayBtn" class="btn btn-sm btn-outline-primary"
+                                                        type="button" title="Animate timeline">
+                                                        <i class="fas fa-play"></i>
+                                                    </button>
+                                                    <input type="range" id="rrgTimelineSlider" class="form-range"
+                                                        min="0" max="0" value="0" step="1" disabled>
+                                                    <span id="rrgCurrentDateDisplay"
+                                                        class="badge bg-primary fw-bold px-2 py-1.5">Loading
+                                                        Dates...</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body position-relative">
+                                            <div class="row">
+
+                                                <!-- RRG D3 SVG & Timeline Slider Container -->
+                                                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                                                    <div class="d-flex justify-content-center mb-4 position-relative">
+                                                        <div id="rrgChartContainer" class="w-100"
+                                                            style=" border: 2px solid #e2e8f0; border-radius: 8px; background-color: #ffffff; height: 70vh;">
+                                                            <!-- D3 SVG injected here dynamically -->
+                                                        </div>
+
+                                                        <!-- Interactive Data Tooltip -->
+                                                        <div id="rrgTooltip"
+                                                            class="position-absolute bg-dark text-white p-2 rounded small shadow"
+                                                            style="display: none; pointer-events: none; z-index: 10; font-family: sans-serif; min-width: 140px;">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+                                                <style>
+                                                    input[type="radio"]{
+                                                        -webkit-appearance: auto;
+                                                        -moz-appearance: auto;
+                                                    }
+                                                    label {
+                                                        font-size: 12px;
+                                                    }
+                                                </style>
+                                                <!-- Legend & Sector Checkboxes Controls -->
+                                                <div class="col-12 col-xl-4">
+                                                    <div class="border rounded-3 p-3 bg-light" style="height: 70vh;">
+                                                        <h6 class="fw-bold mb-3 small text-uppercase text-secondary"
+                                                            style="letter-spacing: 0.5px;">Sectors Covered</h6>
+                                                        <div class="mb-3">
+                                                            <input type="text" class="form-control" id=""
+                                                                placeholder="Search sectors">
+                                                        </div>
+                                                        <div class="mb-3 d-flex gap-2" style="flex-wrap: wrap;">
+                                                            <div class="d-flex align-items-center gap-2">
+                                                                <input type="radio" name="sectorRadioMenu" id="showAll">
+                                                                <label for="showAll">Show all</label>
+                                                            </div>
+                                                            <div class="d-flex align-items-center gap-2">
+                                                                <input type="radio" name="sectorRadioMenu" id="hideAll">
+                                                                <label for="hideAll">Hide all</label>
+                                                            </div>
+                                                            <div class="d-flex align-items-center gap-2">
+                                                                <input type="radio" name="sectorRadioMenu" id="showLeading">
+                                                                <label for="showLeading">Leading</label>
+                                                            </div>
+                                                            <div class="d-flex align-items-center gap-2">
+                                                                <input type="radio" name="sectorRadioMenu" id="showLagging">
+                                                                <label for="showLagging">Lagging</label>
+                                                            </div>
+                                                            <div class="d-flex align-items-center gap-2">
+                                                                <input type="radio" name="sectorRadioMenu" id="showImproving">
+                                                                <label for="showImproving">Improving</label>
+                                                            </div>
+                                                            <div class="d-flex align-items-center gap-2">
+                                                                <input type="radio" name="sectorRadioMenu" id="showWeakening">
+                                                                <label for="showWeakening">Weakening</label>
+                                                            </div>
+                                                        </div>
+                                                        <div id="rrgSectorControls" class="d-flex gap-2"
+                                                            style="flex-wrap: wrap;">
+                                                            <div
+                                                                class="d-flex align-items-center justify-content-center py-4 text-muted">
+                                                                <div class="spinner-border spinner-border-sm me-2"
+                                                                    role="status"></div>
+                                                                <span class="small">Loading sector datasets...</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </section>
 
                             <script src="script.js"></script>

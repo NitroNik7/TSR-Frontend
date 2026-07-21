@@ -82,8 +82,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const containerRect = chartContainer.getBoundingClientRect();
         const width = containerRect.width || 600;
-        const height = width; 
-        const padding = 55; 
+        const height = containerRect.height || 400; 
+        const padding = 40; 
 
         chartContainer.innerHTML = "";
 
@@ -397,7 +397,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             <span class="d-inline-block rounded-circle me-2" style="width: 10px; height: 10px; background-color: ${sectorColors[key]};"></span>${key}
                         </label>
                     </div>
-                    <span class="badge bg-light text-secondary border x-small">0 Days</span>
                 `;
                 controlsContainer.appendChild(item);
                 document.getElementById(`chk_${safeId}`).addEventListener("change", renderChart);
