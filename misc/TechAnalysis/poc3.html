@@ -3255,8 +3255,640 @@
                                         </div>
 
                                         <br>
+
+                                        <div class="row g-5">
+                                            <div class="accordion accordion-flush" id="tsrKeyTechnicalsAccordion">
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="tsrKeyTechnicalsAccordionHeading1">
+                                                        <!-- Custom caret in accordion -->
+                                                        <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#tsrKeyTechnicalsAccordionItem1"
+                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                            <span>Key Overbrought/Sold Oscillators</span>
+                                                            <span class="" style="color: white;">
+                                                                <i class="fas fa-angle-down"></i>
+                                                            </span>
+                                                        </button>
+                                                    </h2>
+                                                    <div id="tsrKeyTechnicalsAccordionItem1"
+                                                        class="accordion-collapse collapse"
+                                                        aria-labelledby="tsrKeyTechnicalsAccordionHeading1"
+                                                        data-bs-parent="#tsrKeyTechnicalsAccordion">
+                                                        <div class="accordion-body">
+                                                            <div id="tatiatab1">
+                                                                <div class="dt-buttons btn-group flex-wrap">
+                                                                    <button
+                                                                        class="btn btn-secondary buttons-copy buttons-html5 ms-2 mt-1"
+                                                                        tabindex="0" aria-controls="tahisttable"
+                                                                        type="button"><span>
+                                                                            Copy</span></button>
+                                                                    <button
+                                                                        class="btn btn-secondary buttons-csv buttons-html5 ms-2 mt-1"
+                                                                        tabindex="0" aria-controls="tahisttable"
+                                                                        type="button"><span>
+                                                                            CSV</span></button>
+                                                                    <button
+                                                                        class="btn btn-secondary buttons-excel buttons-html5 ms-2 mt-1"
+                                                                        tabindex="0" aria-controls="tahisttable"
+                                                                        type="button"><span>
+                                                                            Excel</span></button>
+                                                                    <button
+                                                                        class="btn btn-secondary buttons-print ms-1 mt-1"
+                                                                        tabindex="0" aria-controls="tahisttable"
+                                                                        type="button"><span>
+                                                                            Print</span></button>
+                                                                </div>
+
+                                                                <br>
+                                                                <br>
+                                                                <table
+                                                                    class="table table-striped table-hover table-responsive-lg">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Indicator</th>
+                                                                            <th>Value</th>
+                                                                            <th>Signal</th>
+                                                                            <th>Description</th>
+                                                                            <th>Chart</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td><b>ADX</b><br> <span
+                                                                                    style="color:grey;font-size:8pt;">
+                                                                                    adx ( pdi, mdi)</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="adx1Val"><span
+                                                                                        style="color:#96C8A2;font-size:16pt;">
+                                                                                        9.84</span><span
+                                                                                        style="color:grey;font-size:11pt;">
+                                                                                        ( 23.33, 21)</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="adx1Signal"><span
+                                                                                        style="color:#96C8A2;">
+                                                                                        Mild Bullish</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="adx1Desc"> Per ADX
+                                                                                    Stock is non trending
+                                                                                    for <b>24 period </b>,
+                                                                                    since 2026-06-17</div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="adx1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/adx/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>MACD</b><br> <span
+                                                                                    style="color:grey;font-size:8pt;">
+                                                                                    macd ( signal)</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="mac1Val"><span
+                                                                                        style="color:#ff9999;font-size:16pt;">
+                                                                                        95.52</span><span
+                                                                                        style="color:grey;font-size:11pt;">
+                                                                                        ( 100.62)</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="mac1Signal"><span
+                                                                                        style="color:#ff9999;">
+                                                                                        Mild Bearish</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="mac1Desc">Macd
+                                                                                    Bearish Crossover for
+                                                                                    atleast period 6 but
+                                                                                    tread with caution .<br>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="mac1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/MACD/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>CMF</b></td>
+                                                                            <td>
+                                                                                <div id="cmf1Val"><span
+                                                                                        style="color:#ff9999;font-size:16pt;">
+                                                                                        -0.16</span></div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="cmf1Signal"><span
+                                                                                        style="color:#ff9999;">
+                                                                                        Mild Bearish</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="cmf1Desc">Selling
+                                                                                    pressure.</div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="cmf1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/cmf/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>Super Trend</b></td>
+                                                                            <td>
+                                                                                <div id="st1Val"><span
+                                                                                        style="color:#96C8A2;font-size:16pt;">
+                                                                                        23762.08</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="st1Signal"><span
+                                                                                        style="color:#96C8A2;">
+                                                                                        Mild Bullish</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="st1Desc">Close
+                                                                                    Price is Above
+                                                                                    SuperTrend </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="st1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/Supertrend/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>Parabolic SAR</b></td>
+                                                                            <td>
+                                                                                <div id="psar1Val"><span
+                                                                                        style="color:#ff9999;font-size:16pt;">
+                                                                                        24422.6</span></div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="psar1Signal"><span
+                                                                                        style="color:#ff9999;">
+                                                                                        Mild Bearish</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="psar1Desc">Close
+                                                                                    Price is below PSAR'
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="psar1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/psar/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>Aroon Ind</b></td>
+                                                                            <td>
+                                                                                <div id="aroon1Val">-7.14
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="aroon1Signal">-
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="aroon1Desc"> Per
+                                                                                    Aroon Oscillator stock
+                                                                                    is in downtrend for 4
+                                                                                    period, since 2026-07-16
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="aroon1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/aroon/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>ROC</b></td>
+                                                                            <td>
+                                                                                <div id="roc1Val">-1.05
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="roc1Signal">-</div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="roc1Desc"> Per ROC
+                                                                                    stock is in downtrend
+                                                                                    for 2 period, since
+                                                                                    2026-07-20</div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="roc1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/roc/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>PVO</b><br> <span
+                                                                                    style="color:grey;font-size:8pt;">
+                                                                                    pvo ( signal)</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="pvo1Val"><span
+                                                                                        style="color:#C0C0C0;font-size:16pt;">
+                                                                                        -13.57</span><span
+                                                                                        style="color:grey;font-size:11pt;">
+                                                                                        ( -6.73)</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="pvo1Signal"><span
+                                                                                        style="color:#C0C0C0;">
+                                                                                        Whipsaw</span></div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="pvo1Desc">Too many
+                                                                                    PVO /signal Crossover.
+                                                                                    Wait for trend to emerge
+                                                                                    .<br></div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="pvo1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/PriceVolumeOscillator/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>PPO</b><br> <span
+                                                                                    style="color:grey;font-size:8pt;">
+                                                                                    ppo ( signal)</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="ppo1Val"><span
+                                                                                        style="color:#ff9999;font-size:16pt;">
+                                                                                        0.4</span><span
+                                                                                        style="color:grey;font-size:11pt;">
+                                                                                        ( 0.42)</span></div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="ppo1Signal"><span
+                                                                                        style="color:#ff9999;">
+                                                                                        Mild Bearish</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="ppo1Desc">PPO
+                                                                                    Bearish Crossover for
+                                                                                    atleast period 6 but
+                                                                                    tread with caution .<br>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="ppo1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/PercentagePriceOscillator/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <br>
 
+                                        <div class="row g-5">
+                                            <div class="accordion accordion-flush" id="tsrKeyTechnicalsAccordion">
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="tsrKeyTechnicalsAccordionHeading1">
+                                                        <!-- Custom caret in accordion -->
+                                                        <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#tsrKeyTechnicalsAccordionItem1"
+                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                            <span>Key Technical Overlays</span>
+                                                            <span class="" style="color: white;">
+                                                                <i class="fas fa-angle-down"></i>
+                                                            </span>
+                                                        </button>
+                                                    </h2>
+                                                    <div id="tsrKeyTechnicalsAccordionItem1"
+                                                        class="accordion-collapse collapse"
+                                                        aria-labelledby="tsrKeyTechnicalsAccordionHeading1"
+                                                        data-bs-parent="#tsrKeyTechnicalsAccordion">
+                                                        <div class="accordion-body">
+                                                            <div id="tatiatab1">
+                                                                <div class="dt-buttons btn-group flex-wrap">
+                                                                    <button
+                                                                        class="btn btn-secondary buttons-copy buttons-html5 ms-2 mt-1"
+                                                                        tabindex="0" aria-controls="tahisttable"
+                                                                        type="button"><span>
+                                                                            Copy</span></button>
+                                                                    <button
+                                                                        class="btn btn-secondary buttons-csv buttons-html5 ms-2 mt-1"
+                                                                        tabindex="0" aria-controls="tahisttable"
+                                                                        type="button"><span>
+                                                                            CSV</span></button>
+                                                                    <button
+                                                                        class="btn btn-secondary buttons-excel buttons-html5 ms-2 mt-1"
+                                                                        tabindex="0" aria-controls="tahisttable"
+                                                                        type="button"><span>
+                                                                            Excel</span></button>
+                                                                    <button
+                                                                        class="btn btn-secondary buttons-print ms-1 mt-1"
+                                                                        tabindex="0" aria-controls="tahisttable"
+                                                                        type="button"><span>
+                                                                            Print</span></button>
+                                                                </div>
+
+                                                                <br>
+                                                                <br>
+                                                                <table
+                                                                    class="table table-striped table-hover table-responsive-lg">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Indicator</th>
+                                                                            <th>Value</th>
+                                                                            <th>Signal</th>
+                                                                            <th>Description</th>
+                                                                            <th>Chart</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td><b>ADX</b><br> <span
+                                                                                    style="color:grey;font-size:8pt;">
+                                                                                    adx ( pdi, mdi)</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="adx1Val"><span
+                                                                                        style="color:#96C8A2;font-size:16pt;">
+                                                                                        9.84</span><span
+                                                                                        style="color:grey;font-size:11pt;">
+                                                                                        ( 23.33, 21)</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="adx1Signal"><span
+                                                                                        style="color:#96C8A2;">
+                                                                                        Mild Bullish</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="adx1Desc"> Per ADX
+                                                                                    Stock is non trending
+                                                                                    for <b>24 period </b>,
+                                                                                    since 2026-06-17</div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="adx1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/adx/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>MACD</b><br> <span
+                                                                                    style="color:grey;font-size:8pt;">
+                                                                                    macd ( signal)</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="mac1Val"><span
+                                                                                        style="color:#ff9999;font-size:16pt;">
+                                                                                        95.52</span><span
+                                                                                        style="color:grey;font-size:11pt;">
+                                                                                        ( 100.62)</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="mac1Signal"><span
+                                                                                        style="color:#ff9999;">
+                                                                                        Mild Bearish</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="mac1Desc">Macd
+                                                                                    Bearish Crossover for
+                                                                                    atleast period 6 but
+                                                                                    tread with caution .<br>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="mac1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/MACD/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>CMF</b></td>
+                                                                            <td>
+                                                                                <div id="cmf1Val"><span
+                                                                                        style="color:#ff9999;font-size:16pt;">
+                                                                                        -0.16</span></div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="cmf1Signal"><span
+                                                                                        style="color:#ff9999;">
+                                                                                        Mild Bearish</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="cmf1Desc">Selling
+                                                                                    pressure.</div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="cmf1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/cmf/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>Super Trend</b></td>
+                                                                            <td>
+                                                                                <div id="st1Val"><span
+                                                                                        style="color:#96C8A2;font-size:16pt;">
+                                                                                        23762.08</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="st1Signal"><span
+                                                                                        style="color:#96C8A2;">
+                                                                                        Mild Bullish</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="st1Desc">Close
+                                                                                    Price is Above
+                                                                                    SuperTrend </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="st1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/Supertrend/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>Parabolic SAR</b></td>
+                                                                            <td>
+                                                                                <div id="psar1Val"><span
+                                                                                        style="color:#ff9999;font-size:16pt;">
+                                                                                        24422.6</span></div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="psar1Signal"><span
+                                                                                        style="color:#ff9999;">
+                                                                                        Mild Bearish</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="psar1Desc">Close
+                                                                                    Price is below PSAR'
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="psar1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/psar/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>Aroon Ind</b></td>
+                                                                            <td>
+                                                                                <div id="aroon1Val">-7.14
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="aroon1Signal">-
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="aroon1Desc"> Per
+                                                                                    Aroon Oscillator stock
+                                                                                    is in downtrend for 4
+                                                                                    period, since 2026-07-16
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="aroon1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/aroon/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>ROC</b></td>
+                                                                            <td>
+                                                                                <div id="roc1Val">-1.05
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="roc1Signal">-</div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="roc1Desc"> Per ROC
+                                                                                    stock is in downtrend
+                                                                                    for 2 period, since
+                                                                                    2026-07-20</div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="roc1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/roc/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>PVO</b><br> <span
+                                                                                    style="color:grey;font-size:8pt;">
+                                                                                    pvo ( signal)</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="pvo1Val"><span
+                                                                                        style="color:#C0C0C0;font-size:16pt;">
+                                                                                        -13.57</span><span
+                                                                                        style="color:grey;font-size:11pt;">
+                                                                                        ( -6.73)</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="pvo1Signal"><span
+                                                                                        style="color:#C0C0C0;">
+                                                                                        Whipsaw</span></div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="pvo1Desc">Too many
+                                                                                    PVO /signal Crossover.
+                                                                                    Wait for trend to emerge
+                                                                                    .<br></div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="pvo1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/PriceVolumeOscillator/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>PPO</b><br> <span
+                                                                                    style="color:grey;font-size:8pt;">
+                                                                                    ppo ( signal)</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="ppo1Val"><span
+                                                                                        style="color:#ff9999;font-size:16pt;">
+                                                                                        0.4</span><span
+                                                                                        style="color:grey;font-size:11pt;">
+                                                                                        ( 0.42)</span></div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="ppo1Signal"><span
+                                                                                        style="color:#ff9999;">
+                                                                                        Mild Bearish</span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="ppo1Desc">PPO
+                                                                                    Bearish Crossover for
+                                                                                    atleast period 6 but
+                                                                                    tread with caution .<br>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div id="ppo1Chart"><a
+                                                                                        href="https://www.topstockresearch.com/rt/ViewInChart/NIFTY/PercentagePriceOscillator/Intraday"><span
+                                                                                            class="fas fa-chart-line"></span></a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <script>
                                             function showKeyTechnicals(option) {
