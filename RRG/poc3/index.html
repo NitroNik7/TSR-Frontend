@@ -496,6 +496,17 @@
                                                 <hr>
                                                 <div class="d-flex justify-content-center mb-4 position-relative">
 
+                                                    <div class="position-absolute top-0 end-0 m-3 d-flex flex-column gap-1" style="z-index: 5;">
+    <button id="rrgZoomInBtn" class="btn btn-sm btn-light border shadow-sm" type="button" title="Zoom In">
+        <i class="fas fa-plus"></i>
+    </button>
+    <button id="rrgZoomOutBtn" class="btn btn-sm btn-light border shadow-sm" type="button" title="Zoom Out">
+        <i class="fas fa-minus"></i>
+    </button>
+    <button id="rrgZoomResetBtn" class="btn btn-sm btn-light border shadow-sm" type="button" title="Reset View">
+        <i class="fas fa-sync-alt"></i>
+    </button>
+</div>
                                                     <div id="rrgChartContainer" class="w-100" style="height: 70vh;">
                                                         <!-- D3 SVG injected here dynamically -->
                                                     </div>
@@ -531,8 +542,8 @@
                                                                 <select id="tsrRrgTickSelect"
                                                                     class="form-select form-select-sm"
                                                                     style="width: 110px;">
-                                                                    <option value="D">Daily</option>
-                                                                    <option value="W" selected>Weekly</option>
+                                                                    <option value="D" selected>Daily</option>
+                                                                    <option value="W" >Weekly</option>
                                                                     <option value="Y">Monthly</option>
                                                                 </select>
                                                             </div>
@@ -556,35 +567,43 @@
 
                                                         <hr>
 
+                                                        <style>
+                                                            input[name='tsrRrgIndexCategoryMenu'] {
+                                                                -webkit-appearance: auto;
+                                                                -moz-appearance: auto;
+                                                            }
+                                                        </style>
                                                         <h6 class="fw-bold mb-3 small text-uppercase text-secondary"
                                                             style="letter-spacing: 0.5px;">Indices</h6>
 
                                                         <div class="mb-3 d-flex gap-2" style="flex-wrap: wrap;">
                                                             <div class="d-flex align-items-center gap-2">
-                                                                <input type="radio" name="sectorRadioMenu" id="showAll">
+                                                                <input type="radio" name="tsrRrgIndexCategoryMenu"
+                                                                    id="showAll">
                                                                 <label for="showAll">Show all</label>
                                                             </div>
                                                             <div class="d-flex align-items-center gap-2">
-                                                                <input type="radio" name="sectorRadioMenu" id="hideAll">
+                                                                <input type="radio" name="tsrRrgIndexCategoryMenu"
+                                                                    id="hideAll">
                                                                 <label for="hideAll">Hide all</label>
                                                             </div>
                                                             <div class="d-flex align-items-center gap-2">
-                                                                <input type="radio" name="sectorRadioMenu"
+                                                                <input type="radio" name="tsrRrgIndexCategoryMenu"
                                                                     id="showLeading">
                                                                 <label for="showLeading">Leading</label>
                                                             </div>
                                                             <div class="d-flex align-items-center gap-2">
-                                                                <input type="radio" name="sectorRadioMenu"
+                                                                <input type="radio" name="tsrRrgIndexCategoryMenu"
                                                                     id="showLagging">
                                                                 <label for="showLagging">Lagging</label>
                                                             </div>
                                                             <div class="d-flex align-items-center gap-2">
-                                                                <input type="radio" name="sectorRadioMenu"
+                                                                <input type="radio" name="tsrRrgIndexCategoryMenu"
                                                                     id="showImproving">
                                                                 <label for="showImproving">Improving</label>
                                                             </div>
                                                             <div class="d-flex align-items-center gap-2">
-                                                                <input type="radio" name="sectorRadioMenu"
+                                                                <input type="radio" name="tsrRrgIndexCategoryMenu"
                                                                     id="showWeakening">
                                                                 <label for="showWeakening">Weakening</label>
                                                             </div>
@@ -595,8 +614,8 @@
                                                         </div>
                                                     </div>
 
-                                                    <div id="rrgSectorControls" class="d-flex gap-2"
-                                                        style="flex-wrap: wrap; overflow-y: auto; height: 300px;">
+                                                    <div id="tsrRrgIndicesContainer" class="d-flex gap-2"
+                                                        style="flex-wrap: wrap; overflow-y: auto; max-height: 300px;">
                                                         <div
                                                             class="d-flex align-items-center justify-content-center py-4 text-muted">
                                                             <div class="spinner-border spinner-border-sm me-2"
