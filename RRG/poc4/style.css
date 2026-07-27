@@ -52,3 +52,172 @@
     -webkit-appearance: auto;
     -moz-appearance: auto;
 }
+
+
+
+.tsrRrgPlaybackSpeedDiv {
+    display: inline-flex;
+    background-color: #f2f4f7;
+    padding: 4px;
+    border-radius: 8px;
+    position: relative;
+    height: 38px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.tsrRrgPlaybackSpeedDiv input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.tsrRrgPlaybackSpeedDiv label {
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #fff0;
+    color: #667085;
+    transition: all 0.2s ease;
+    display: inline-block;
+    text-align: center;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.tsrRrgPlaybackSpeedDiv input[type="radio"]:checked+.tsrHmBtnLabel {
+    background-color: #fff;
+    color: #101828;
+    box-shadow: 0 1px 3px rgb(16 24 40 / .1);
+}
+
+.tsr-rrg-sector-card {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tsr-rrg-sector-card:hover {
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+}
+
+.tsr-rrg-color-dot {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.tsr-rrg-sector-title {
+    letter-spacing: -0.01em;
+    font-size: 0.85rem;
+}
+
+/* Minimalist Quick Action Links */
+.tsr-rrg-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    color: #64748b;
+    font-size: 0.75rem;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
+    background-color: transparent;
+}
+
+.tsr-rrg-action-btn:hover {
+    color: #2563eb;
+    background-color: #eff6ff;
+}
+
+.tsr-speed-btn-group .btn-check + .btn-outline-primary {
+    color: #475569;
+    border-color: #cbd5e1;
+    background-color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: all 0.15s ease-in-out;
+}
+
+.tsr-speed-btn-group .btn-check:checked + .btn-outline-primary {
+    color: #ffffff;
+    background-color: #2563eb;
+    border-color: #2563eb;
+    box-shadow: 0 1px 2px rgba(37, 99, 235, 0.2);
+}
+
+.tsr-speed-btn-group .btn-check + .btn-outline-primary:hover:not(:checked) {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    border-color: #cbd5e1;
+}
+
+/* Utility typography */
+.x-small {
+    font-size: 0.7rem;
+}
+
+/* Quadrant indicator dots */
+.tsr-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Custom Range Input Styling */
+.tsr-custom-range::-webkit-slider-thumb {
+    background-color: #2563eb;
+}
+.tsr-custom-range::-moz-range-thumb {
+    background-color: #2563eb;
+}
+
+/* Filter Pill Controls */
+.tsr-filter-pills-container .btn {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-color: #e2e8f0;
+    color: #475569;
+    background-color: #f8fafc;
+    transition: all 0.15s ease-in-out;
+}
+
+/* Hover & Active States */
+.tsr-filter-pills-container .btn-check:checked + .btn-outline-secondary {
+    background-color: #475569;
+    border-color: #475569;
+    color: #fff;
+}
+.tsr-filter-pills-container .btn-check:checked + .btn-outline-success {
+    background-color: #198754;
+    border-color: #198754;
+    color: #fff;
+}
+.tsr-filter-pills-container .btn-check:checked + .btn-outline-info {
+    background-color: #0dcaf0;
+    border-color: #0dcaf0;
+    color: #000;
+}
+.tsr-filter-pills-container .btn-check:checked + .btn-outline-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #000;
+}
+.tsr-filter-pills-container .btn-check:checked + .btn-outline-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+
+/* Search Focus Effect */
+#tsrRrgIndexSearchInput:focus {
+    background-color: #ffffff !important;
+    box-shadow: inset 0 0 0 1px #2563eb !important;
+}

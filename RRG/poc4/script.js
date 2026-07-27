@@ -22,33 +22,35 @@ var miSrg = (function () {
     const tooltip = document.getElementById("tsrRrgChartTooltip");
     const indicesContainer = document.getElementById("tsrRrgIndicesContainer");
 
+    let playbackSpeed = 500; // in ms
+
 
     let masterTimeline = new Set();
 
     const tickPeriodDef = [
         {
-            id: "5m", label: "5 mins", periods: [
+            id: "5m", label: "5 mins", pr: true, periods: [
                 { id: "100", label: "Last 100 records" },
                 { id: "200", label: "Last 200 records" },
                 { id: "500", label: "Last 500 records" }
             ]
         },
         {
-            id: "D", label: "Daily", periods: [
+            id: "D", label: "Daily", pr: false, periods: [
                 { id: "1m", label: "1 Month" },
                 { id: "3m", label: "3 Months" },
                 { id: "1y", label: "1 Year" },
             ]
         },
         {
-            id: "W", label: "Weekly", periods: [
+            id: "W", label: "Weekly", pr: true, periods: [
                 { id: "3m", label: "3 Months" },
                 { id: "1y", label: "1 Year" },
                 { id: "2y", label: "2 Years" }
             ]
         },
         {
-            id: "M", label: "Monthly", periods: [
+            id: "M", label: "Monthly", pr: true, periods: [
                 { id: "1y", label: "1 Year" },
                 { id: "2y", label: "2 Years" },
                 { id: "3y", label: "3 Years" },
@@ -60,16 +62,31 @@ var miSrg = (function () {
 
     // color: "#462c00"
     const indexData = {
-        "NIFTY 50": { id: "NIFTY 50", label: "NIFTY 50", pr: false, eqId: 10000, color: "#3b82f6" },
-        "NIFTY IT": { id: "NIFTY IT", label: "NIFTY IT", pr: true, eqId: 9700, color: "#8b5cf6" },
-        "NIFTY AUTO": { id: "NIFTY AUTO", label: "NIFTY AUTO", pr: true, eqId: 8200, color: "#ec4899" },
+        "NIFTY 50": {
+            id: "NIFTY 50", label: "NIFTY 50", pr: false, eqId: 10000, color: "#3b82f6", "code": "NIFTY",
+            "scId": "200000", "ecId": "10000", "ccId": "in"
+        },
+        "NIFTY AUTO": { id: "NIFTY AUTO", label: "NIFTY AUTO", pr: false, eqId: 8200, color: "#ec4899" },
+        "NIFTY BANK": { id: "NIFTY BANK", label: "NIFTY BANK", pr: false, eqId: 10100, color: "#2eff51" },
+        "NIFTY CONSUMER DURABLES": { id: "NIFTY CONSUMER DURABLES", label: "NIFTY CONSUMER DURABLES", pr: true, eqId: 3700, color: "#857c4c" },
+        "NIFTY FINANCIAL SERVICES": { id: "NIFTY FINANCIAL SERVICES", label: "NIFTY FINANCIAL SERVICES", pr: true, eqId: 3400, color: "#ffcb11" },
+        "NIFTY FMCG": { id: "NIFTY FMCG", label: "NIFTY FMCG", pr: true, eqId: 9000, color: "#854c4e" },
+        "NIFTY HEALTHCARE": { id: "NIFTY HEALTHCARE", label: "NIFTY HEALTHCARE", pr: true, eqId: 3800, color: "#854c4e" },
+        "NIFTY IT": { id: "NIFTY IT", label: "NIFTY IT", pr: false, eqId: 9700, color: "#8b5cf6" },
+        "NIFTY MEDIA": { id: "NIFTY MEDIA", label: "NIFTY MEDIA", pr: true, eqId: 8100, color: "#260bf5" },
+        "NIFTY METALS": { id: "NIFTY METALS", label: "NIFTY METALS", pr: true, eqId: 8000, color: "#724800" },
+        "NIFTY OIL GAS": { id: "NIFTY OIL GAS", label: "NIFTY OIL GAS", pr: true, eqId: 4700, color: "#49dc95" },
         "NIFTY PHARMA": { id: "NIFTY PHARMA", label: "NIFTY PHARMA", pr: true, eqId: 8800, color: "#f59e0b" },
-        "NIFTY METALS": { id: "NIFTY METALS", label: "NIFTY METALS", pr: false, eqId: 8000, color: "#724800" },
-        "NIFTY OIL GAS": { id: "NIFTY OIL GAS", label: "NIFTY OIL GAS", pr: false, eqId: 4700, color: "#49dc95" },
-        "NIFTY MEDIA": { id: "NIFTY MEDIA", label: "NIFTY MEDIA", pr: false, eqId: 8100, color: "#260bf5" },
-        "NIFTY MIDCAP 50": { id: "NIFTY MIDCAP 50", label: "NIFTY MIDCAP 50", pr: false, eqId: 9400, color: "#ff00f7" },
-        "NIFTY RURAL": { id: "NIFTY RURAL", label: "NIFTY RURAL", pr: false, eqId: 48500, color: "#854c4e" },
+        "NIFTY PRIVATE BANK": { id: "NIFTY PRIVATE BANK", label: "NIFTY PRIVATE BANK", pr: true, eqId: 6600, color: "#f59e0b" },
+        "NIFTY PSU BANK": { id: "NIFTY PSU BANK", label: "NIFTY PSU BANK", pr: true, eqId: 8600, color: "#0b80f575" },
+        "NIFTY REALTY": { id: "NIFTY REALTY", label: "NIFTY REALTY", pr: true, eqId: 9300, color: "#f600d541" },
+        "NIFTY MIDCAP 50": { id: "NIFTY MIDCAP 50", label: "NIFTY MIDCAP 50", pr: true, eqId: 9400, color: "#ff00f7" },
+        "NIFTY RURAL": { id: "NIFTY RURAL", label: "NIFTY RURAL", pr: true, eqId: 48500, color: "#5af7ff" },
+        "NIFTY FMCG": { id: "NIFTY FMCG", label: "NIFTY FMCG", pr: true, eqId: 9000, color: "#4e854c" },
     };
+
+    // TODO
+    //         defStk = { name: NIFTY["id"], code: NIFTY["code"], scId: NIFTY["scId"], ecId: NIFTY["ecId"] };
 
 
     // NIFTY IT
@@ -124,14 +141,29 @@ var miSrg = (function () {
                 updateIndices(radio.id);
             });
         });
+
+        let playbackSpeedRadios = document.querySelectorAll("input[name='tsrRrgPlaybackSpeed']");
+        playbackSpeedRadios.forEach(radio => {
+            radio.addEventListener("click", () => {
+                updatePlaybackSpeed(radio.id);
+            });
+        });
         playBtn.addEventListener("click", togglePlayback);
     }
 
     function populateTickSelect() {
 
+        let premiumUser = isPrUser();
         let html = "";
         for (let i = 0; i < tickPeriodDef.length; i++) {
-            html += `<option value="${tickPeriodDef[i].id}">${tickPeriodDef[i].label}</option>`
+
+            let disabled = '';
+            if (tickPeriodDef[i].pr) {
+                disabled = premiumUser ? '' : "disabled";
+            }
+
+            html += `<option value="${tickPeriodDef[i].id}" ${disabled}>${tickPeriodDef[i].label}</option>`
+
         }
 
         tickSelect.innerHTML = html;
@@ -220,9 +252,30 @@ var miSrg = (function () {
                 }
                 slider.value = curr;
                 updateTimelineDateLabel();
-            }, 140);
+            }, playbackSpeed);
         }
 
+    }
+
+    function updatePlaybackSpeed(radioId) {
+        // let indexRadios = document.querySelectorAll("input[name='tsrRrgIndexCategoryMenu']");
+
+        let radioVal = document.getElementById(radioId).value;
+        console.log(playInterval);
+        if (radioVal == "0.5") {
+            playbackSpeed = 2 * 500;
+        } else if (radioVal == "1") {
+            playbackSpeed = 1 * 500;
+        } else if (radioVal == "2") {
+            playbackSpeed = 0.5 * 500;
+        }
+
+
+        clearInterval(playInterval);
+        playInterval = null;
+        playBtn.innerHTML = '<i class="fas fa-play"></i>';
+
+        togglePlayback();
     }
 
     function userAction(param1) {
@@ -249,7 +302,7 @@ var miSrg = (function () {
 
                 let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/${tick}/${indexName}.csv`;
                 // let url = `https://www.tsrbt1.com/charts/csv/200000/${index.eqId}${tick}.csv?var=39`;
-                if (index.pr && isPremUser) {
+                if (index.pr && !isPremUser) {
                     return;
                 }
 
@@ -304,16 +357,26 @@ var miSrg = (function () {
         //     }
         // }
 
-        while (jsu.isNotNull(mtgv) && jsu.isNotNull(mtgv.mtpp)) {
-            if (jsu.isNotNull(mtgv.mtpp.pr)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+        // if (jsu.isNotNull(mtgv) && jsu.isNotNull(mtgv.mtpp)) {
+        //     if (jsu.isNotNull(mtgv.mtpp.pr)) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // } else
+        //     setTimeout(() => { isPrUser() }, 200);
+        // TODO 
+        // while (jsu.isNotNull(mtgv) && jsu.isNotNull(mtgv.mtpp)) {
+        //     console.log("in while", mtgv.mtpp.pr);
+        //     if (jsu.isNotNull(mtgv.mtpp.pr)) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
 
 
-        return false;
+        return true;
     }
 
     function parseCSV(text) {
@@ -356,7 +419,7 @@ var miSrg = (function () {
             let index = indexData[indexName];
 
             if (jsu.isNotNull(index.data)) {
-                console.log(indexName);
+                // console.log(indexName);
                 index.data = parseCSV(index.data);
                 sortObjByDateStr(index.data);
             }
@@ -521,11 +584,11 @@ var miSrg = (function () {
         new Date()
         switch (period) {
             case "100":
-                return new Date((latestDateObj.getTime() / (1000 * 60)) - 100);
+                return new Date(latestDateObj.getTime() - (100 * 5 * 60 * 1000));
             case "200":
-                return new Date((latestDateObj.getTime() / (1000 * 60)) - 200);
+                return new Date(latestDateObj.getTime() - (200 * 5 * 60 * 1000));
             case "500":
-                return new Date((latestDateObj.getTime() / (1000 * 60)) - 500);
+                return new Date(latestDateObj.getTime() - (500 * 5 * 60 * 1000));
             case "1m":
                 return startDateObj.setMonth(latestDateObj.getMonth() - 1);
             case "3m":
@@ -1155,20 +1218,35 @@ var miSrg = (function () {
             const safeId = idxData.id.replace(/\s+/g, ''); // removes whitespaces
             const item = document.createElement("div");
             item.className = "w-100 d-flex align-items-center justify-content-between p-2 rounded rrg-sector-item border bg-white";
-            if (!idxData.pr || (idxData.pr && isPrUser())) {
+            if (!idxData.pr || (idxData.pr && isPrUser())) { // enabled index
+
+                let heatmapUrl = `https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/${idxName}Index`;
+                let idxAnalysisUrl = `https://www.topstockresearch.com/rt/Screener/Markets/IndexAnalysis/${idxName}`;
+                // let chartUrl = ""
+                // let stockList = ""; // TODO
 
                 item.innerHTML = `
     
-                        <div class="form-check mb-0">
-                            <input class="form-check-input" type="checkbox" id="tsrRrgIdxChk${safeId}" ${showIndices} style="cursor: pointer;">
-                            <label class="form-check-label small fw-bold text-dark" for="tsrRrgIdxChk${safeId}" style="cursor: pointer;">
-                                <span class="d-inline-block rounded-circle me-2" style="width: 10px; height: 10px; background-color: ${idxData.color};"></span>
-                                ${idxData.label}
-                            </label>
+                        <div class="form-check mb-0 w-100 d-flex justify-content-between">
+                            <div>
+                                <input class="form-check-input" type="checkbox" id="tsrRrgIdxChk${safeId}" ${showIndices} style="cursor: pointer;">
+                                <label class="form-check-label small fw-bold text-dark" for="tsrRrgIdxChk${safeId}" style="cursor: pointer;">
+                                    <span class="d-inline-block rounded-circle me-2" style="width: 10px; height: 10px; background-color: ${idxData.color};"></span>
+                                    ${idxData.label}
+                                </label>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a href="" target="_blank" type="button" class="tsr-rrg-action-btn" title="Heatmap" ><i class="fas fa-th"></i></a>
+                                <a href="" target="_blank" type="button" class="tsr-rrg-action-btn" title="Index Analysis" ><i class="fas fa-chart-pie"></i></a>
+                                <a type="button" class="tsr-rrg-action-btn" onclick="${drawInlineChart(idxName)}" ><i class="fas fa-chart-line" title="Chart"></i></a>
+                            </div>
+                                
                         </div>
-    
-                    `;
-            } else {
+                                
+                                `;
+                // TODO
+                // <a href="" target="_blank"  type="button" class="tsr-rrg-action-btn" ><i class="fas fa-list" title="Stock list" ></i></a> 
+            } else { // disabled index
                 item.innerHTML = `
                     <div class="form-check mb-0">
                             <input class="form-check-input" type="checkbox" id="tsrRrgIdxChk${safeId}" style="cursor: pointer;" disabled>
@@ -1185,7 +1263,37 @@ var miSrg = (function () {
             cb.addEventListener("click", renderChart);
         });
 
+        //         const tooltipTriggerList = indicesContainer.querySelectorAll('[data-bs-toggle="tooltip"]');
+        // tooltipTriggerList.forEach(tooltipTriggerEl => {
+        //     new bootstrap.Tooltip(tooltipTriggerEl);
+        // });
+
         renderChart();
+    }
+
+    // TODO
+    function drawInlineChart(idxName) {
+        NIFTY = benchmarkIdx;
+        defStk = { name: NIFTY["id"], code: NIFTY["code"], scId: NIFTY["scId"], ecId: NIFTY["ecId"] };
+
+        myTsrChartInit.init(defStk, json, chartType);
+        jPlist = [{ id: 'tp' }];
+        // if (jsu.isNotNull(currSector["secIdx"]) && currSector["secIdx"]) {
+        //     jPlist.push(currSector);
+        // }
+
+        let currIdx = indexData[idxName];
+
+        // for (let i = 0; i < stockList.length; i++) {
+        //     if (i > 5) {
+        //         break;
+        //     }
+        //     jPlist.push(stockList[i]);
+        // }
+
+
+
+        javascript: ptia.ca(chartType, 'ignore');
     }
 
 
