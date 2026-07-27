@@ -514,8 +514,9 @@
                                                         <i class="fas fa-play"></i>
                                                     </button>
                                                     <input type="range" id="tsrRrgTimelineSlider" class="form-range"
-                                                        min="0" value="0" step="1">
-                                                    <span id="rrgCurrentDateDisplay" class="badge bg-dark fw-bold px-2"
+                                                        min="0" max="0" value="0" step="1">
+                                                    <span id="tsrRrgCurrentDateDisplay"
+                                                        class="badge bg-dark fw-bold px-2"
                                                         style="font-weight: 600;">Loading
                                                         Dates...</span>
                                                 </div>
@@ -540,12 +541,12 @@
                                                             <i class="fas fa-sync-alt"></i>
                                                         </button>
                                                     </div>
-                                                    <div id="rrgChartContainer" class="w-100" style="height: 70vh;">
+                                                    <div id="tsrRrgChartContainer" class="w-100" style="height: 70vh;">
                                                         <!-- D3 SVG injected here dynamically -->
                                                     </div>
 
                                                     <!-- Interactive Data Tooltip -->
-                                                    <div id="rrgTooltip"
+                                                    <div id="tsrRrgChartTooltip"
                                                         class="position-absolute bg-dark text-white p-2 rounded small shadow"
                                                         style="display: none; pointer-events: none; z-index: 10; font-family: sans-serif; min-width: 140px;">
                                                     </div>
@@ -560,27 +561,28 @@
                                                     <div class="tsrRrgSettingsContainer">
                                                         <div
                                                             class="d-flex justify-content-lg-start justify-content-lg-between align-items-center mb-2 flex-wrap gap-2">
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center gap-2 w-100">
-                                                                <span> Period:</span>
-                                                                <select id="tsrRrgPeriodSelect"
-                                                                    class="form-select form-select-sm"
-                                                                    style="width: 110px;">
-                                                                    <option value="3m" selected>3 Months</option>
-                                                                    <option value="1y" >1 Year</option>
-                                                                </select>
-                                                            </div>
+
                                                             <div
                                                                 class="d-flex justify-content-lg-start justify-content-lg-between align-items-center gap-2 w-100">
                                                                 <span> Time frame:</span>
                                                                 <select id="tsrRrgTickSelect"
                                                                     class="form-select form-select-sm"
-                                                                    style="width: 110px;">
-                                                                    <option value="D" selected>Daily</option>
-                                                                    <option value="W">Weekly</option>
-                                                                    <option value="Y">Monthly</option>
+                                                                    style="width: max-content;">
+                                                                    
                                                                 </select>
                                                             </div>
+
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center gap-2 w-100">
+                                                                <span> Period:</span>
+                                                                <select id="tsrRrgPeriodSelect"
+                                                                    class="form-select form-select-sm"
+                                                                    style="width: max-content;">
+                                                                    <option value="3m" selected>3 Months</option>
+                                                                    <option value="1y">1 Year</option>
+                                                                </select>
+                                                            </div>
+
 
                                                             <div
                                                                 class="d-flex justify-content-lg-start justify-content-lg-between align-items-center gap-2 w-100">
@@ -607,7 +609,7 @@
                                                         <div class="mb-3 d-flex gap-2" style="flex-wrap: wrap;">
                                                             <div class="d-flex align-items-center gap-2">
                                                                 <input type="radio" name="tsrRrgIndexCategoryMenu"
-                                                                    id="showAll">
+                                                                    id="showAll" checked>
                                                                 <label for="showAll">Show all</label>
                                                             </div>
                                                             <div class="d-flex align-items-center gap-2">
@@ -617,23 +619,23 @@
                                                             </div>
                                                             <div class="d-flex align-items-center gap-2">
                                                                 <input type="radio" name="tsrRrgIndexCategoryMenu"
-                                                                    id="showLeading">
-                                                                <label for="showLeading">Leading</label>
+                                                                    id="leading">
+                                                                <label for="leading">Leading</label>
                                                             </div>
                                                             <div class="d-flex align-items-center gap-2">
                                                                 <input type="radio" name="tsrRrgIndexCategoryMenu"
-                                                                    id="showLagging">
-                                                                <label for="showLagging">Lagging</label>
+                                                                    id="lagging">
+                                                                <label for="lagging">Lagging</label>
                                                             </div>
                                                             <div class="d-flex align-items-center gap-2">
                                                                 <input type="radio" name="tsrRrgIndexCategoryMenu"
-                                                                    id="showImproving">
-                                                                <label for="showImproving">Improving</label>
+                                                                    id="improving">
+                                                                <label for="improving">Improving</label>
                                                             </div>
                                                             <div class="d-flex align-items-center gap-2">
                                                                 <input type="radio" name="tsrRrgIndexCategoryMenu"
-                                                                    id="showWeakening">
-                                                                <label for="showWeakening">Weakening</label>
+                                                                    id="weakening">
+                                                                <label for="weakening">Weakening</label>
                                                             </div>
                                                         </div>
                                                         <div class="mb-3">
