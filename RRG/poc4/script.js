@@ -9,7 +9,7 @@ var miSrg = (function () {
 
     const periodSelect = document.getElementById("tsrRrgPeriodSelect");
     const tickSelect = document.getElementById("tsrRrgTickSelect");
-    const tailSelect = document.getElementById("tsrRrgTailLengthSlider");
+    const tailSlider = document.getElementById("tsrRrgTailLengthSlider");
     const tailInputSlider = document.getElementById("tsrRrgTailLengthSlider");
     const dateDisplay = document.getElementById("tsrRrgCurrentDateDisplay");
     const indexRadioMenuId = "tsrRrgIndexCategoryMenu";
@@ -117,7 +117,7 @@ var miSrg = (function () {
         }, 2000);
 
         slider.addEventListener("input", () => { updateTimelineDateLabel(); renderChart(); });
-        tailSelect.addEventListener("input", () => { updateTailLabel(); renderChart(); });
+        tailSlider.addEventListener("input", () => { updateTailLabel(); renderChart(); });
         let indexRadios = document.querySelectorAll("input[name='tsrRrgIndexCategoryMenu']");
         indexRadios.forEach(radio => {
             radio.addEventListener("click", () => {
@@ -236,7 +236,7 @@ var miSrg = (function () {
             Object.keys(indexData).forEach(indexName => {
                 let index = indexData[indexName];
                 let tick = tickSelect.value;
-                let period = periodSelect.value;
+                // let tick = tickSelect.value;
                 // let tickSym = "D";
                 // if (tick == "D") {
                 //     tickSym = "D";
@@ -247,7 +247,7 @@ var miSrg = (function () {
                 // }
 
 
-                let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/${period}/${indexName}.csv`;
+                let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/${tick}/${indexName}.csv`;
                 // let url = `https://www.tsrbt1.com/charts/csv/200000/${index.eqId}${tick}.csv?var=39`;
                 if (index.pr && isPremUser) {
                     return;
@@ -433,13 +433,13 @@ var miSrg = (function () {
                 return new Date(`${year}-${month}-${day}`);
             }
         } else if (dateStr.includes("_")) { // dates with time part 04_05_2026_09_15
-            const parts = dateStr.split("-").map(p => p.trim());
+            const parts = dateStr.split("_").map(p => p.trim());
 
             let day = parts[0];
-            let monthKey = parts[1].toLowerCase();
-            let month = monthMap[monthKey];
+            // let monthKey = parts[1].toLowerCase();
+            let month = parts[1];
             let year = parts[2];
-            let hour = parts[3];
+            let hours = parts[3];
             let minutes = parts[4];
             return new Date(`${year}-${month}-${day}T${hours}:${minutes}:00`);
         }
@@ -495,7 +495,7 @@ var miSrg = (function () {
             let indices = Object.keys(indexData);
 
             indices.forEach(index => {
-                if (jsu.isNotNull(index.data)) {
+                if (jsu.isNotNull(indexData[index].data)) {
 
                     let data = indexData[index].data;
 
@@ -518,13 +518,14 @@ var miSrg = (function () {
 
         let masterTimelineArr = Array.from(masterTimeline);
 
+        new Date()
         switch (period) {
             case "100":
-                return parseDateString(masterTimelineArr[masterTimelineArr.length - 100]);
+                return new Date((latestDateObj.getTime() / (1000 * 60)) - 100);
             case "200":
-                return parseDateString(masterTimelineArr[masterTimelineArr.length - 200]);
+                return new Date((latestDateObj.getTime() / (1000 * 60)) - 200);
             case "500":
-                return parseDateString(masterTimelineArr[masterTimelineArr.length - 500]);
+                return new Date((latestDateObj.getTime() / (1000 * 60)) - 500);
             case "1m":
                 return startDateObj.setMonth(latestDateObj.getMonth() - 1);
             case "3m":
@@ -614,7 +615,27 @@ var miSrg = (function () {
     function updateTimelineDateLabel() {
         let dateKeys = Array.from(masterTimeline);
         const currentIndex = parseInt(slider.value, 10);
-        const targetDateStr = dateKeys[currentIndex];
+        let targetDateStr = dateKeys[currentIndex];
+
+        if (targetDateStr.includes("-")) {
+            targetDateStr = targetDateStr.replaceAll("-", " ");
+            let substrings = targetDateStr.split("-");
+            if (substrings.length == 3) {
+                substrings[0] = substrings[0] + "/";
+                substrings[1] = substrings[1] + "/";
+            }
+            let str = "";
+            let arr = str.split("");
+
+            targetDateStr = substrings.join();
+        } else if (targetDateStr.includes("_")) {
+            let substrings = targetDateStr.split("_");
+            substrings[0] = substrings[0] + "/";
+            substrings[1] = substrings[1] + "/";
+            substrings[2] = substrings[2] + " ";
+            substrings[3] = substrings[3] + ":";
+            targetDateStr = substrings.join("");
+        }
 
         if (dateDisplay) {
             dateDisplay.textContent = targetDateStr || "No Data Selected";
@@ -626,7 +647,12 @@ var miSrg = (function () {
         let tailLabelId = "tsrRrgTailLengthSliderLabel";
         let tailLabel = document.getElementById(tailLabelId);
 
-        tailLabel.innerHTML = tailSelect.value + " " + tickSelect.value;
+        let tick = tickSelect.value;
+        tailLabel.innerHTML = tailSlider.value;
+        // if (tick == "5m") {
+        //     tailLabel.innerHTML = (Number(tailSlider.value) * 5) + "mins"
+        // } else
+        //     tailLabel.innerHTML = tailSlider.value + " " + tick;
     }
 
 
@@ -761,7 +787,7 @@ var miSrg = (function () {
 
 
         const currentIndex = parseInt(slider.value, 10);
-        const tailLength = parseInt(tailSelect.value, 10);
+        const tailLength = parseInt(tailSlider.value, 10);
         const targetDateStr = dateKeys[currentIndex];
 
         // if (dateDisplay) {
@@ -772,6 +798,8 @@ var miSrg = (function () {
         let maxDev = 1.0;
 
         Object.keys(indexData).forEach(name => {
+
+
             // const checkbox = document.getElementById(`chk_${name.replace(/\s+/g, '')}`);
             // if (mintJsUtil.isNull(checkbox) || !checkbox.checked) return;
 
@@ -793,6 +821,10 @@ var miSrg = (function () {
 
                     let date = dateKeys[i];
                     let data = sectorMap[date];
+
+                    if (jsu.isNull(data) || jsu.isNull(data.rsRatio) || jsu.isNull(data.rsMomentum)) {
+                        console.error(name, date, data);
+                    }
                     sectorPoints.push({
                         sectorName: name,
                         date: date,
