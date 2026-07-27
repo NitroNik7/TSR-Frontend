@@ -1273,27 +1273,15 @@ var miSrg = (function () {
 
     // TODO
     function drawInlineChart(idxName) {
-        NIFTY = benchmarkIdx;
-        defStk = { name: NIFTY["id"], code: NIFTY["code"], scId: NIFTY["scId"], ecId: NIFTY["ecId"] };
+        // NIFTY = benchmarkIdx;
+        // defStk = { name: NIFTY["id"], code: NIFTY["code"], scId: NIFTY["scId"], ecId: NIFTY["ecId"] };
 
-        myTsrChartInit.init(defStk, json, chartType);
-        jPlist = [{ id: 'tp' }];
-        // if (jsu.isNotNull(currSector["secIdx"]) && currSector["secIdx"]) {
-        //     jPlist.push(currSector);
-        // }
-
-        let currIdx = indexData[idxName];
-
-        // for (let i = 0; i < stockList.length; i++) {
-        //     if (i > 5) {
-        //         break;
-        //     }
-        //     jPlist.push(stockList[i]);
-        // }
+        // myTsrChartInit.init(defStk, json, chartType);
+        // jPlist = [{ id: 'tp' }];
+        // let currIdx = indexData[idxName];
 
 
-
-        javascript: ptia.ca(chartType, 'ignore');
+        // javascript: ptia.ca(chartType, 'ignore');
     }
 
 
