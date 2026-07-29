@@ -31,3 +31,23 @@
 // fix isPrUser()
 // Article
 
+// Algo for putting date, close data into resp. indices:
+
+// ParseCsv()
+
+// for 1st line
+// 	Find dateIndex, and set colIdx for all indices in header
+		
+
+// foreach line after 1st
+// 	split line
+// 	parse date
+// 	for each idx
+// 		get colIdx. 
+// 		line[colIdx] - Get close value
+// 		push {date, close} in idx.data
+		
+	
+
+
+// IF

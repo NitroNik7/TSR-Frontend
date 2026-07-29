@@ -135,9 +135,9 @@ var miSrg = (function () {
         userAction('init');
 
         // TODO fix
-        setTimeout(() => {
-            process();
-        }, 2000);
+        // setTimeout(() => {
+        //     process();
+        // }, 2000);
 
         slider.addEventListener("input", () => { updateTimelineDateLabel(); renderChart(); });
         tailSlider.addEventListener("input", () => { updateTailLabel(); renderChart(); });
@@ -182,9 +182,9 @@ var miSrg = (function () {
             })
 
             userAction('init');
-            setTimeout(() => {
-                process();
-            }, 2000);
+            // setTimeout(() => {
+            //     process();
+            // }, 2000);
         });
     }
 
@@ -291,46 +291,65 @@ var miSrg = (function () {
             // isPrUser();
 
             let isPremUser = isPrUser();
+            let tick = tickSelect.value;
+            let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/all/${tick}/.csv`;
 
-            Object.keys(indexDataDef).forEach(indexName => {
-                let index = indexDataDef[indexName];
-                let tick = tickSelect.value;
+            $.ajax({
+                url: url,
+                success: function (results) {
 
-
-                let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/${tick}/${indexName}.csv`;
-                let randomVar = Math.round(Math.random() * 100);
-                // let url = `https://www.tsrbt1.com/charts/csv/200000/${index.eqId}${tick}.csv?var=${randomVar}`;
-                if (index.pr && !isPremUser) {
-                    return;
-                }
-
-                // ----------------- bt1 -----------------------
-                // let DJS_URL = '/rt/djs';
-                // let postData = { cat: 'Markets', subCat: 'AdvanceDecline', freq: adrFreq, classi: adrSb, type: 'chart' }
-                // let postData = {};
-
-                // var remoteObject = new RC(url, null, postData, LOAD_DIV, FB_DIV, thisObj, 'uar', 'init');
-                // remoteObject.param1 = index.id;
-                // jsu.rc(remoteObject);
-                // -------------------------------------------
-
-                $.ajax({
-                    url: url,
-                    success: function (results) {
-
-                        let data = {
-                            "statusCode": "success",
-                            results: results
-                        }
-                        var remoteObject = new Object();
-                        remoteObject.param1 = index.label;
-                        userActionResponse(data, 'init', remoteObject)
-
-                    }, error: function (error) {
-                        htmlU.addMsgToDiv(FB_DIV, "Error: " + error);
+                    let data = {
+                        "statusCode": "success",
+                        results: results
                     }
-                });
-            })
+                    var remoteObject = new Object();
+                    remoteObject.param1 = index.label;
+                    userActionResponse(data, 'init', remoteObject)
+
+                }, error: function (error) {
+                    htmlU.addMsgToDiv(FB_DIV, "Error: " + error);
+                }
+            });
+
+            // Object.keys(indexDataDef).forEach(indexName => {
+            //     let index = indexDataDef[indexName];
+            //     let tick = tickSelect.value;
+
+
+            //     let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/${tick}/${indexName}.csv`;
+            //     let randomVar = Math.round(Math.random() * 100);
+            //     // let url = `https://www.tsrbt1.com/charts/csv/200000/${index.eqId}${tick}.csv?var=${randomVar}`;
+            //     if (index.pr && !isPremUser) {
+            //         return;
+            //     }
+
+            //     // ----------------- bt1 -----------------------
+            //     // let DJS_URL = '/rt/djs';
+            //     // let postData = { cat: 'Markets', subCat: 'AdvanceDecline', freq: adrFreq, classi: adrSb, type: 'chart' }
+            //     // let postData = {};
+
+            //     // var remoteObject = new RC(url, null, postData, LOAD_DIV, FB_DIV, thisObj, 'uar', 'init');
+            //     // remoteObject.param1 = index.id;
+            //     // jsu.rc(remoteObject);
+            //     // -------------------------------------------
+
+            //     $.ajax({
+            //         url: url,
+            //         success: function (results) {
+
+            //             let data = {
+            //                 "statusCode": "success",
+            //                 results: results
+            //             }
+            //             var remoteObject = new Object();
+            //             remoteObject.param1 = index.label;
+            //             userActionResponse(data, 'init', remoteObject)
+
+            //         }, error: function (error) {
+            //             htmlU.addMsgToDiv(FB_DIV, "Error: " + error);
+            //         }
+            //     });
+            // })
         }
     }
 
@@ -341,7 +360,8 @@ var miSrg = (function () {
             // ----------------- bt1 ---------------------
             // indexData[remoteObject.param1].data = data;
             // -------------------------------------------
-            indexDataDef[remoteObject.param1].data = data.results;
+            // indexDataDef[remoteObject.param1].data = data.results;
+            process(data);
         }
         // }
     }
@@ -387,45 +407,88 @@ var miSrg = (function () {
 
         const headers = lines[0].split(",").map(h => h.trim().toLowerCase());
 
-        let dateIndex = headers.findIndex(h => h.includes("date"));
-        // let ratioIndex = headers.findIndex(h => h.includes("ratio") || h.includes("rsratio") || h.includes("jdkrs"));
-        // let momentumIndex = headers.findIndex(h => h.includes("momentum") || h.includes("rsmom") || h.includes("jdkmom"));
-        let closeIndex = headers.findIndex(h => h.includes("close"));
+        let dateIndex = headers.findIndex("Date");
+        Object.keys(indexDataDef).forEach((index) => {
+            let colIdx = -1;
+            colIdx = headers.findIndex(index);
+            let indexData = indexDataDef[index];
+            indexData.colIdx = colIdx;
+        });
 
-        if (dateIndex === -1) dateIndex = 0;
-        if (closeIndex === -1) closeIndex = 1;
-        // if (ratioIndex === -1) ratioIndex = 1;
-        // if (momentumIndex === -1) momentumIndex = 2;
+        if (dateIndex == -1) {
+            console.error("Invalid data");
+            return;
+        }
 
-        const dateMap = {};
         for (let i = 1; i < lines.length; i++) {
             const cols = lines[i].split(",");
-            if (cols.length > closeIndex) {
-                // const rawRatio = parseFloat(cols[ratioIndex]);
-                // const rawMomentum = parseFloat(cols[momentumIndex]);
-                const dateKey = cols[dateIndex] ? cols[dateIndex].trim() : "";
-                const close = parseFloat(cols[closeIndex]);
-
-                if (dateKey && !isNaN(close)) {
-                    dateMap[dateKey] = { close: close };
+            let date = parseDateString(cols[0]); // TODO
+            Object.keys(indexDataDef).forEach((index) => {
+                let dataObj = new Object();
+                let indexData = indexDataDef[index];
+                let colIdx = indexData.colIdx;
+                let close = cols[colIdx];
+                if (jsu.isNotNull(indexData.data)) {
+                    indexData.data[date] = { close: close };
+                } else {
+                    indexData.data.push({ date: {} });
                 }
-            }
+            })
         }
-        return dateMap;
+
+        console.log();
+
+
     }
 
+    // function parseCSV(text) {
+    //     const lines = text.split(/\r?\n/).map(line => line.trim()).filter(line => line !== "");
+    //     if (lines.length <= 1) return {};
 
-    function processData() {
+    //     const headers = lines[0].split(",").map(h => h.trim().toLowerCase());
+
+    //     let dateIndex = headers.findIndex(h => h.includes("date"));
+    //     // let ratioIndex = headers.findIndex(h => h.includes("ratio") || h.includes("rsratio") || h.includes("jdkrs"));
+    //     // let momentumIndex = headers.findIndex(h => h.includes("momentum") || h.includes("rsmom") || h.includes("jdkmom"));
+    //     let closeIndex = headers.findIndex(h => h.includes("close"));
+
+    //     if (dateIndex === -1) dateIndex = 0;
+    //     if (closeIndex === -1) closeIndex = 1;
+    //     // if (ratioIndex === -1) ratioIndex = 1;
+    //     // if (momentumIndex === -1) momentumIndex = 2;
+
+    //     const dateMap = {};
+    //     for (let i = 1; i < lines.length; i++) {
+    //         const cols = lines[i].split(",");
+    //         if (cols.length > closeIndex) {
+    //             // const rawRatio = parseFloat(cols[ratioIndex]);
+    //             // const rawMomentum = parseFloat(cols[momentumIndex]);
+    //             const dateKey = cols[dateIndex] ? cols[dateIndex].trim() : "";
+    //             const close = parseFloat(cols[closeIndex]);
+
+    //             if (dateKey && !isNaN(close)) {
+    //                 dateMap[dateKey] = { close: close };
+    //             }
+    //         }
+    //     }
+    //     return dateMap;
+    // }
+
+
+    function processData(data) {
+
+        parseCSV(data);
+
         // For each index, parseCSV and sort by date
-        Object.keys(indexDataDef).forEach((indexName) => {
-            let index = indexDataDef[indexName];
+        // Object.keys(indexDataDef).forEach((indexName) => {
+        //     let index = indexDataDef[indexName];
 
-            if (jsu.isNotNull(index.data)) {
-                // console.log(indexName);
-                index.data = parseCSV(index.data);
-                sortObjByDateStr(index.data); // TODO remove if not needed
-            }
-        });
+        //     if (jsu.isNotNull(index.data)) {
+        //         // console.log(indexName);
+        //         index.data = parseCSV(index.data);
+        //         sortObjByDateStr(index.data); // TODO remove if not needed
+        //     }
+        // });
 
 
         updateMasterTimeline();

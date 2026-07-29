@@ -291,39 +291,39 @@ var miSrg = (function () {
                 let tick = tickSelect.value;
 
 
-                // let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/${tick}/${indexName}.csv`;
+                let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/${tick}/${indexName}.csv`;
                 let randomVar = Math.round(Math.random() * 100);
-                let url = `https://www.tsrbt1.com/charts/csv/200000/${index.eqId}${tick}.csv?var=${randomVar}`;
+                // let url = `https://www.tsrbt1.com/charts/csv/200000/${index.eqId}${tick}.csv?var=${randomVar}`;
                 if (index.pr && !isPremUser) {
                     return;
                 }
 
                 // ----------------- bt1 -----------------------
-                let DJS_URL = '/rt/djs';
-                // let postData = { cat: 'Markets', subCat: 'AdvanceDecline', freq: adrFreq, classi: adrSb, type: 'chart' }
-                let postData = {};
+                // let DJS_URL = '/rt/djs';
+                // // let postData = { cat: 'Markets', subCat: 'AdvanceDecline', freq: adrFreq, classi: adrSb, type: 'chart' }
+                // let postData = {};
 
-                var remoteObject = new RC(url, null, postData, LOAD_DIV, FB_DIV, thisObj, 'uar', 'init');
-                remoteObject.param1 = index.id;
-                jsu.rc(remoteObject);
+                // var remoteObject = new RC(url, null, postData, LOAD_DIV, FB_DIV, thisObj, 'uar', 'init');
+                // remoteObject.param1 = index.id;
+                // jsu.rc(remoteObject);
                 // -------------------------------------------
 
-                // $.ajax({
-                //     url: url,
-                //     success: function (results) {
+                $.ajax({
+                    url: url,
+                    success: function (results) {
 
-                //         let data = {
-                //             "statusCode": "success",
-                //             results: results
-                //         }
-                //         var remoteObject = new Object();
-                //         remoteObject.param1 = index.id;
-                //         userActionResponse(data, 'init', remoteObject)
+                        let data = {
+                            "statusCode": "success",
+                            results: results
+                        }
+                        var remoteObject = new Object();
+                        remoteObject.param1 = index.id;
+                        userActionResponse(data, 'init', remoteObject)
 
-                //     }, error: function (error) {
-                //         htmlU.addMsgToDiv(FB_DIV, "Error: " + error);
-                //     }
-                // });
+                    }, error: function (error) {
+                        htmlU.addMsgToDiv(FB_DIV, "Error: " + error);
+                    }
+                });
             })
         }
     }
@@ -333,9 +333,9 @@ var miSrg = (function () {
 
         if (type == 'init') {
             // ----------------- bt1 ---------------------
-            indexData[remoteObject.param1].data = data;
+            // indexData[remoteObject.param1].data = data;
             // -------------------------------------------
-            // indexData[remoteObject.param1].data = data.results;
+            indexData[remoteObject.param1].data = data.results;
         }
         // }
     }
