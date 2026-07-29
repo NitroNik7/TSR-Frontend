@@ -26,10 +26,12 @@
 // TODO
 // update init() and userAction('init'), userActionResponse()
 // modify parseCSV()
+// parse date - parse toLocaleString()
 // modify indexDataDef
-// fix togglePlayback()
+// // fix togglePlayback()
 // fix isPrUser()
 // Article
+// Arrange !pr sectors before premium sectors...if user is !premium
 
 // Algo for putting date, close data into resp. indices:
 
@@ -50,4 +52,4 @@
 	
 
 
-// IF
+// TODO

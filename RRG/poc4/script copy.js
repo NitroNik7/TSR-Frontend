@@ -15,15 +15,19 @@ var miSrg = (function () {
     const indexRadioMenuId = "tsrRrgIndexCategoryMenu";
     const slider = document.getElementById("tsrRrgTimelineSlider");
     const playBtn = document.getElementById("tsrRrgPlayChartBtn");
+
+    let playInterval = null;
+
     const rrgChartContainer = document.getElementById("tsrRrgChartContainer");
     const sectorChartContainer = document.getElementById("tsrRrgSectorChartContainer")
     const tooltip = document.getElementById("tsrRrgChartTooltip");
     const indicesContainer = document.getElementById("tsrRrgIndicesContainer");
-    let toastContainer = document.getElementById("tsrRrgToastContainer");
 
     let playbackSpeed = 500; // in ms
-    let playInterval = null;
+
+
     let masterTimeline = new Set();
+
 
     // * NOTE: when tick period is modified, getStartDate() must be modified
     const tickPeriodDef = [
@@ -59,44 +63,81 @@ var miSrg = (function () {
         },
     ];
 
+    // color: "#462c00"
+
     // TODO FIND code(from Rohit Sir's message / Birds Eye View), scId, ecId & ccId (from Charts)
     // TODO use unique colors for each index
     const indexDataDef = {
-        "NIFTY": {
+        "NIFTY 50": {
             id: "NIFTY 50", label: "NIFTY 50", pr: false, eqId: 10000, color: "#3b82f6",
             "code": "NIFTY", "scId": "200000", "ecId": "10000", "ccId": "in"
         },
-        "BANKNIFTY": { id: "NIFTY BANK", label: "NIFTY BANK", pr: false, eqId: 10100, color: "#2eff51" },
-        "NIFTY_AUTO": { id: "NIFTY_AUTO", name: "NIFTY AUTO", label: "NIFTY AUTO", pr: false, eqId: 8200, color: "#ec4899", "code": "NIFTY_AUTO", "scId": "200000", "ecId": "8200", "ccId": "in" },
-
-        "NIFTY_CONSUMER_DURABLE": { id: "NIFTY CONSUMER DURABLES", label: "NIFTY CONSUMER DURABLES", pr: true, eqId: 3700, color: "#857c4c" },
-        "NIFTY_FIN_SERVICES": { id: "NIFTY FINANCIAL SERVICES", label: "NIFTY FINANCIAL SERVICES", pr: true, eqId: 3400, color: "#ffcb11" },
-        "NIFTY_FMCG": { id: "NIFTY FMCG", label: "NIFTY FMCG", pr: true, eqId: 9000, color: "#854c4e" },
-        "NIFTYIT": { id: "NIFTY IT", label: "NIFTY IT", pr: false, eqId: 9700, color: "#8b5cf6" },
-        "NIFTY_MEDIA": { id: "NIFTY MEDIA", label: "NIFTY MEDIA", pr: true, eqId: 8100, color: "#260bf5" },
-        "NIFTY_METALS": { id: "NIFTY METALS", label: "NIFTY METALS", pr: true, eqId: 8000, color: "#684200" },
-        "NIFTY_OIL_GAS": { id: "NIFTY OIL GAS", label: "NIFTY OIL GAS", pr: true, eqId: 4700, color: "#49dc95" },
-        "NIFTY_PHARMA": { id: "NIFTY PHARMA", label: "NIFTY PHARMA", pr: true, eqId: 8800, color: "#f59e0b" },
-        "NIFTY_PSU_BANK": { id: "NIFTY PSU BANK", label: "NIFTY PSU BANK", pr: true, eqId: 8600, color: "#0b80f575" },
-        "NIFTY_PVT_BANK": { id: "NIFTY PRIVATE BANK", label: "NIFTY PRIVATE BANK", pr: true, eqId: 6600, color: "#f59e0b" },
-        "NIFTY500_HEALTHCARE": { id: "NIFTY HEALTHCARE", label: "NIFTY HEALTHCARE", pr: true, eqId: 3800, color: "#ff00f7" },
-        "NIFTY_REALTY": { id: "NIFTY REALTY", label: "NIFTY REALTY", pr: true, eqId: 9300, color: "#f600d541" },
-        "NIFTY_CONSUM": { id: "NIFTY REALTY", label: "NIFTY REALTY", pr: true, eqId: 9300, color: "#f600d541" },
-        "NIFTY_INDIA_DIGITAL": { id: "NIFTY REALTY", label: "NIFTY REALTY", pr: true, eqId: 9300, color: "#f600d541" },
-        // "NIFTY RURAL": { id: "NIFTY RURAL", label: "NIFTY RURAL", pr: true, eqId: 48500, color: "#5af7ff" },
-        // "NIFTY FMCG": { id: "NIFTY FMCG", label: "NIFTY FMCG", pr: true, eqId: 9000, color: "#4e854c" },
+        "NIFTY AUTO": { id: "NIFTY_AUTO", name: "NIFTY AUTO", label: "NIFTY AUTO", pr: false, eqId: 8200, color: "#ec4899", "code": "NIFTY_AUTO", "scId": "200000", "ecId": "8200", "ccId": "in" },
+        "NIFTY BANK": { id: "NIFTY BANK", label: "NIFTY BANK", pr: false, eqId: 10100, color: "#2eff51" },
+        "NIFTY CONSUMER DURABLES": { id: "NIFTY CONSUMER DURABLES", label: "NIFTY CONSUMER DURABLES", pr: true, eqId: 3700, color: "#857c4c" },
+        "NIFTY FINANCIAL SERVICES": { id: "NIFTY FINANCIAL SERVICES", label: "NIFTY FINANCIAL SERVICES", pr: true, eqId: 3400, color: "#ffcb11" },
+        "NIFTY FMCG": { id: "NIFTY FMCG", label: "NIFTY FMCG", pr: true, eqId: 9000, color: "#854c4e" },
+        "NIFTY HEALTHCARE": { id: "NIFTY HEALTHCARE", label: "NIFTY HEALTHCARE", pr: true, eqId: 3800, color: "#ff00f7" },
+        "NIFTY IT": { id: "NIFTY IT", label: "NIFTY IT", pr: false, eqId: 9700, color: "#8b5cf6" },
+        "NIFTY MEDIA": { id: "NIFTY MEDIA", label: "NIFTY MEDIA", pr: true, eqId: 8100, color: "#260bf5" },
+        "NIFTY METALS": { id: "NIFTY METALS", label: "NIFTY METALS", pr: true, eqId: 8000, color: "#684200" },
+        "NIFTY OIL GAS": { id: "NIFTY OIL GAS", label: "NIFTY OIL GAS", pr: true, eqId: 4700, color: "#49dc95" },
+        "NIFTY PHARMA": { id: "NIFTY PHARMA", label: "NIFTY PHARMA", pr: true, eqId: 8800, color: "#f59e0b" },
+        "NIFTY PRIVATE BANK": { id: "NIFTY PRIVATE BANK", label: "NIFTY PRIVATE BANK", pr: true, eqId: 6600, color: "#f59e0b" },
+        "NIFTY PSU BANK": { id: "NIFTY PSU BANK", label: "NIFTY PSU BANK", pr: true, eqId: 8600, color: "#0b80f575" },
+        "NIFTY REALTY": { id: "NIFTY REALTY", label: "NIFTY REALTY", pr: true, eqId: 9300, color: "#f600d541" },
+        // "NIFTY MIDCAP 50": { id: "NIFTY MIDCAP 50", label: "NIFTY MIDCAP 50", pr: true, eqId: 9400, color: "#ff00f7" },
+        "NIFTY RURAL": { id: "NIFTY RURAL", label: "NIFTY RURAL", pr: true, eqId: 48500, color: "#5af7ff" },
+        "NIFTY FMCG": { id: "NIFTY FMCG", label: "NIFTY FMCG", pr: true, eqId: 9000, color: "#4e854c" },
     };
 
     let benchmarkIdx = indexDataDef["NIFTY 50"];
+
     let gifUrl = mintJsUtil.getBaseUrl() + "/static/img/LoadingMedium.gif";
+
+
+    // NIFTY IT
+    // https://www.topstockresearch.com/charts/csv/200000/9700M.csv?var=39    
+
+    // NIFTY AUTO
+    // https://www.topstockresearch.com/charts/csv/200000/8200M.csv?var=26
+
+
+    // NIFTY PHARMA
+    // https://www.topstockresearch.com/charts/csv/200000/8800M.csv?var=45
+
+    // NIFTY METALS
+    // https://www.topstockresearch.com/charts/csv/200000/8000M.csv?var=12
+
+
+
+    // NIFTY Oil Gas
+    // https://www.topstockresearch.com/charts/csv/200000/4700M.csv?var=68
+
+
+    // NIFTY MEDIA
+    //  https://www.topstockresearch.com/charts/csv/200000/8100M.csv?var=74
+
+    // NIFTY MIDCAP 50
+    // https://www.topstockresearch.com/charts/csv/200000/9400M.csv?var=8
+
+    // NIFTY RURAL
+    // https://www.topstockresearch.com/charts/csv/200000/48500M.csv?var=8
+
+
 
     function init() {
 
+        // populateTickAndPeriodSelect("5m");
         populateTickSelect();
         populatePeriodSelect();
         // get data
         userAction('init');
 
+        // TODO fix
+        setTimeout(() => {
+            process();
+        }, 2000);
 
         slider.addEventListener("input", () => { updateTimelineDateLabel(); renderChart(); });
         tailSlider.addEventListener("input", () => { updateTailLabel(); renderChart(); });
@@ -122,36 +163,33 @@ var miSrg = (function () {
         let html = "";
         for (let i = 0; i < tickPeriodDef.length; i++) {
 
-            let selected = tickPeriodDef[i].id == "D" ? "selected" : "";
-            html += `<option value="${tickPeriodDef[i].id}" ${selected}>${tickPeriodDef[i].label}</option>`
+            let disabled = '';
+            if (tickPeriodDef[i].pr) {
+                disabled = premiumUser ? '' : "disabled";
+            }
+
+            html += `<option value="${tickPeriodDef[i].id}" ${disabled}>${tickPeriodDef[i].label}</option>`
 
         }
 
         tickSelect.innerHTML = html;
         tickSelect.addEventListener("change", () => {
-
-            let tick = tickSelect.value;
-            let tickPeriod = jsu.getObjFrmArr(tickPeriodDef, tick);
-            if (tickPeriod.pr && !premiumUser) {
-                showLoginToast(true);
-                tickSelect.value = 'D';
-                return;
-            } else {
-                showLoginToast(false);
-            }
-
             populatePeriodSelect();
 
+            // update data and UI
             Object.keys(indexDataDef).forEach((idxName) => {
                 indexDataDef[idxName].data = null;
             })
 
             userAction('init');
+            setTimeout(() => {
+                process();
+            }, 2000);
         });
     }
 
-    function process(data) {
-        processData(data);
+    function process() {
+        processData();
         updateTimelineFilter();
         updateTimelineDateLabel();
         updateTailLabel();
@@ -181,7 +219,20 @@ var miSrg = (function () {
 
     }
 
+    // function populateTickAndPeriodSelect(tick) {
+    //     let tickObj = jsu.getObjFrmArr(tickPeriodDef, tick);
+
+    //     let periods = tickObj.periods;
+
+    //     let html = "";
+    //     for (let i = 0; i < periods.length; i++) {
+    //         html += `<option value="">${periods[i].label}</option>`
+    //     }
+    // }
+
+    // TODO understand
     function togglePlayback() {
+
 
         if (playInterval) {
 
@@ -192,24 +243,15 @@ var miSrg = (function () {
         } else {
             playBtn.innerHTML = '<i class="fas fa-pause"></i>';
 
-            let masterTimelineArr = Array.from(masterTimeline);
-            let curr = parseInt(slider.value, 10);
-            let playFromStart = false;
-            if (curr >= masterTimelineArr.length - 1) { // if slider is at end already, then play from start
-                playFromStart = true;
-            }
-
-            playInterval = setInterval(() => { // slider animation
-                curr = parseInt(slider.value, 10);
+            // animate slider
+            playInterval = setInterval(() => {
+                let curr = parseInt(slider.value, 10);
+                let masterTimelineArr = Array.from(masterTimeline);
                 if (curr >= masterTimelineArr.length - 1) {
-                    if (playFromStart) {
-                        curr = 0;
-                        playFromStart = false;
-                    } else {
-                        clearInterval(playInterval);
-                        playInterval = null;
-                        playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                    }
+                    curr = 0;
+                    clearInterval(playInterval);
+                    playInterval = null;
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
                 } else {
                     curr++;
                     renderChart();
@@ -234,19 +276,14 @@ var miSrg = (function () {
             playbackSpeed = 0.5 * 500;
         }
 
-        if (playInterval) {
 
-            clearInterval(playInterval);
-            playInterval = null;
-            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        clearInterval(playInterval);
+        playInterval = null;
+        playBtn.innerHTML = '<i class="fas fa-play"></i>';
 
-            togglePlayback();
-        }
-
+        togglePlayback();
     }
 
-    // TODO
-    // Ask Rohit Sir for API URL
     function userAction(param1) {
 
         if (param1 == 'init') {
@@ -254,65 +291,65 @@ var miSrg = (function () {
             // isPrUser();
 
             let isPremUser = isPrUser();
-            let tick = tickSelect.value;
-            let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/all/${tick}.csv`;
+            // let tick = tickSelect.value;
+            // let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/all/${tick}.csv`;
 
-            $.ajax({
-                url: url,
-                success: function (results) {
+            // $.ajax({
+            //     url: url,
+            //     success: function (results) {
 
-                    let data = {
-                        "statusCode": "success",
-                        results: results
-                    }
-                    // var remoteObject = new Object();
-                    // remoteObject.param1 = index.label;
-                    userActionResponse(data, 'init', null)
+            //         let data = {
+            //             "statusCode": "success",
+            //             results: results
+            //         }
+            //         // var remoteObject = new Object();
+            //         // remoteObject.param1 = index.label;
+            //         userActionResponse(data, 'init', null)
 
-                }, error: function (error) {
-                    htmlU.addMsgToDiv(FB_DIV, "Error: " + error);
-                }
-            });
+            //     }, error: function (error) {
+            //         htmlU.addMsgToDiv(FB_DIV, "Error: " + error);
+            //     }
+            // });
 
-            // Object.keys(indexDataDef).forEach(indexName => {
-            //     let index = indexDataDef[indexName];
-            //     let tick = tickSelect.value;
+            Object.keys(indexDataDef).forEach(indexName => {
+                let index = indexDataDef[indexName];
+                let tick = tickSelect.value;
 
 
-            //     let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/${tick}/${indexName}.csv`;
+                let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/${tick}/${indexName}.csv`;
             //     let randomVar = Math.round(Math.random() * 100);
             //     // let url = `https://www.tsrbt1.com/charts/csv/200000/${index.eqId}${tick}.csv?var=${randomVar}`;
-            //     if (index.pr && !isPremUser) {
-            //         return;
-            //     }
+                if (index.pr && !isPremUser) {
+                    return;
+                }
 
             //     // ----------------- bt1 -----------------------
             //     // let DJS_URL = '/rt/djs';
             //     // let postData = { cat: 'Markets', subCat: 'AdvanceDecline', freq: adrFreq, classi: adrSb, type: 'chart' }
-            // // let postData = { tick: tick, pr: isPremUser };
+            //     // let postData = {};
 
             //     // var remoteObject = new RC(url, null, postData, LOAD_DIV, FB_DIV, thisObj, 'uar', 'init');
             //     // remoteObject.param1 = index.id;
             //     // jsu.rc(remoteObject);
             //     // -------------------------------------------
 
-            //     $.ajax({
-            //         url: url,
-            //         success: function (results) {
+                $.ajax({
+                    url: url,
+                    success: function (results) {
 
-            //             let data = {
-            //                 "statusCode": "success",
-            //                 results: results
-            //             }
-            //             var remoteObject = new Object();
-            //             remoteObject.param1 = index.label;
-            //             userActionResponse(data, 'init', remoteObject)
+                        let data = {
+                            "statusCode": "success",
+                            results: results
+                        }
+                        var remoteObject = new Object();
+                        remoteObject.param1 = index.label;
+                        userActionResponse(data, 'init', remoteObject)
 
-            //         }, error: function (error) {
-            //             htmlU.addMsgToDiv(FB_DIV, "Error: " + error);
-            //         }
-            //     });
-            // })
+                    }, error: function (error) {
+                        htmlU.addMsgToDiv(FB_DIV, "Error: " + error);
+                    }
+                });
+            })
         }
     }
 
@@ -323,11 +360,9 @@ var miSrg = (function () {
                 // ----------------- bt1 ---------------------
                 // indexData[remoteObject.param1].data = data;
                 // -------------------------------------------
-                // indexDataDef[remoteObject.param1].data = data.results;
-                process(data.results);
+                indexDataDef[remoteObject.param1].data = data.results;
+                // process(data.results);
             }
-        } else {
-            htmlU.addMsgToDiv(FB_DIV, ERROR_MSG);
         }
     }
 
@@ -363,71 +398,105 @@ var miSrg = (function () {
         // }
 
 
-        // return true;
-        return false;
+        return true;
     }
+
+    // function parseCSV(text) {
+    //     const lines = text.split(/\r?\n/).map(line => line.trim()).filter(line => line !== "");
+    //     if (lines.length <= 1) return {};
+
+    //     const headers = lines[0].split(",").map(h => h.trim());
+
+    //     let arr = [];
+
+    //     let dateIndex = headers.findIndex(h => h.includes("Date"));
+    //     Object.keys(indexDataDef).forEach((index) => {
+    //         let colIdx = headers.findIndex(h => h.includes(index));
+    //         let indexData = indexDataDef[index];
+    //         indexData.colIdx = colIdx;
+    //     });
+
+    //     if (dateIndex == -1) {
+    //         console.error("Invalid data");
+    //         return;
+    //     }
+
+    //     for (let i = 1; i < lines.length; i++) {
+    //         const cols = lines[i].split(",");
+    //         // let date = parseDateString(cols[0]); // TODO
+    //         let dateStr = cols[0];
+    //         Object.keys(indexDataDef).forEach((index) => {
+    //             let dataObj = new Object();
+    //             let indexData = indexDataDef[index];
+    //             let colIdx = indexData.colIdx;
+    //             if (colIdx < 1) {
+    //                 return;
+    //             }
+    //             let close = cols[colIdx];
+    //             if (jsu.isNotNull(indexData.data)) {
+    //                 indexData.data[dateStr] = { close: close };
+    //             } else {
+    //                 indexData.data = {};
+    //                 indexData.data[dateStr] = {
+    //                     close: close
+    //                 };
+    //             }
+    //         })
+    //     }
+
+    //     console.log();
+
+
+    // }
 
     function parseCSV(text) {
         const lines = text.split(/\r?\n/).map(line => line.trim()).filter(line => line !== "");
         if (lines.length <= 1) return {};
 
-        const headers = lines[0].split(",").map(h => h.trim());
+        const headers = lines[0].split(",").map(h => h.trim().toLowerCase());
 
-        let arr = [];
+        let dateIndex = headers.findIndex(h => h.includes("date"));
+        // let ratioIndex = headers.findIndex(h => h.includes("ratio") || h.includes("rsratio") || h.includes("jdkrs"));
+        // let momentumIndex = headers.findIndex(h => h.includes("momentum") || h.includes("rsmom") || h.includes("jdkmom"));
+        let closeIndex = headers.findIndex(h => h.includes("close"));
 
-        let dateIndex = headers.findIndex(h => h.includes("Date"));
-        Object.keys(indexDataDef).forEach((index) => {
-            let colIdx = headers.findIndex(h => h.includes(index));
-            let indexData = indexDataDef[index];
-            indexData.colIdx = colIdx;
-        });
+        if (dateIndex === -1) dateIndex = 0;
+        if (closeIndex === -1) closeIndex = 1;
+        // if (ratioIndex === -1) ratioIndex = 1;
+        // if (momentumIndex === -1) momentumIndex = 2;
 
-        if (dateIndex == -1) {
-            console.error("Invalid data");
-            return;
-        }
-
+        const dateMap = {};
         for (let i = 1; i < lines.length; i++) {
             const cols = lines[i].split(",");
-            // let date = parseDateString(cols[0]); // TODO
-            let dateStr = new Date(Number(cols[0])).toString();
-            Object.keys(indexDataDef).forEach((index) => {
-                let indexData = indexDataDef[index];
-                let colIdx = indexData.colIdx;
-                if (colIdx < 1) {
-                    return;
-                }
-                let close = cols[colIdx];
-                if (jsu.isNotNull(indexData.data)) {
-                    indexData.data[dateStr] = { close: close };
-                } else {
-                    indexData.data = {};
-                    indexData.data[dateStr] = {
-                        close: close
-                    };
-                }
-            })
-        }
+            if (cols.length > closeIndex) {
+                // const rawRatio = parseFloat(cols[ratioIndex]);
+                // const rawMomentum = parseFloat(cols[momentumIndex]);
+                const dateKey = cols[dateIndex] ? cols[dateIndex].trim() : "";
+                const close = parseFloat(cols[closeIndex]);
 
-        // console.log();
+                if (dateKey && !isNaN(close)) {
+                    dateMap[dateKey] = { close: close };
+                }
+            }
+        }
+        return dateMap;
     }
 
 
+    function processData() {
 
-    function processData(data) {
-
-        parseCSV(data);
+        // parseCSV(data);
 
         // For each index, parseCSV and sort by date
-        // Object.keys(indexDataDef).forEach((indexName) => {
-        //     let index = indexDataDef[indexName];
+        Object.keys(indexDataDef).forEach((indexName) => {
+            let index = indexDataDef[indexName];
 
-        //     if (jsu.isNotNull(index.data)) {
-        //         // console.log(indexName);
-        //         index.data = parseCSV(index.data);
-        //         sortObjByDateStr(index.data); // TODO remove if not needed
-        //     }
-        // });
+            if (jsu.isNotNull(index.data)) {
+                // console.log(indexName);
+                index.data = parseCSV(index.data);
+                sortObjByDateStr(index.data); // TODO remove if not needed
+            }
+        });
 
 
         updateMasterTimeline();
@@ -528,16 +597,21 @@ var miSrg = (function () {
                 let dateKeys = Object.keys(index.data);
 
                 let latestDateStr = dateKeys[dateKeys.length - 1];
-                // let latestDateObj = parseDateString(latestDateStr);
-                let latestDateObj = new Date(latestDateStr);
+                let latestDateObj = parseDateString(latestDateStr);
 
+                // let startDateObj = parseDateString(latestDateStr);
+                // if (period == "3m") {
+                //     startDateObj.setMonth(latestDateObj.getMonth() - 3);
+                // } else if (period == "1y") {
+                //     startDateObj.setFullYear(latestDateObj.getFullYear() - 1);
+                // }
 
                 let startDateObj = getStartDate(latestDateStr);
+                // console.log(indexName, startDateObj, latestDateObj);
 
                 let dataWithinPeriod = {};
                 Object.keys(index.data).forEach((dateStr) => {
-                    // let date = parseDateString(dateStr);
-                    let date = new Date(dateStr);
+                    let date = parseDateString(dateStr);
                     if (date >= startDateObj) {
                         dataWithinPeriod[dateStr] = index.data[dateStr];
 
@@ -575,12 +649,12 @@ var miSrg = (function () {
     function getStartDate(latestDateStr) {
         let period = periodSelect.value;
 
-        // let latestDateObj = parseDateString(latestDateStr);
-        let latestDateObj = new Date(latestDateStr);
+        let latestDateObj = parseDateString(latestDateStr);
         let startDateObj = latestDateObj;
 
         let masterTimelineArr = Array.from(masterTimeline);
 
+        new Date()
         switch (period) {
             case "100":
                 return new Date(latestDateObj.getTime() - (100 * 5 * 60 * 1000));
@@ -620,16 +694,58 @@ var miSrg = (function () {
         }
 
         const latestDateStr = masterTimelineArr[masterTimelineArr.length - 1];
-        // const latestDateObj = parseDateString(latestDateStr); // FIX: Use the custom parsing logic instead of native constructor
-        const latestDateObj = new Date(latestDateStr);
+        const latestDateObj = parseDateString(latestDateStr); // FIX: Use the custom parsing logic instead of native constructor
 
         if (isNaN(latestDateObj.getTime())) {
             console.error("Failed to parse latest date:", latestDateStr);
             return;
         }
 
+        // const boundaryDate = new Date(latestDateObj);
+
+
+        // if (period === "3m") {
+        //     boundaryDate.setMonth(boundaryDate.getMonth() - 3);
+        // } else {
+        //     boundaryDate.setFullYear(boundaryDate.getFullYear() - 1);
+
+        // }
+
+        // masterTimeline = fullTimeline.filter(dateStr => parseDateString(dateStr) >= boundaryDate); // FIX: Use the custom parsing logic here as well for timeline evaluation
+
+        // if (masterTimeline.length === 0) {
+        //     masterTimeline = fullTimeline;
+        // }
+
         slider.max = masterTimelineArr.length - 1;
         slider.value = masterTimelineArr.length - 1;
+
+        // leadingIndices = [];
+        // laggingIndices = [];
+        // improvingIndices = [];
+        // weakeningIndices = [];
+        // Object.keys(indexData).forEach(name => {
+        //     // const checkbox = document.getElementById(`chk_${name.replace(/\s+/g, '')}`);
+        //     // datasets[name].findIndex()
+        //     let indexRrgVal = indexData[name].data[latestDateStr];
+
+        //     if (mintJsUtil.isNotNull(indexRrgVal)) {
+
+        //         if (indexRrgVal.ratio >= 100 && indexRrgVal.momentum >= 100) {
+        //             leadingIndices.push(name);
+        //         } else if (indexRrgVal.ratio >= 100 && indexRrgVal.momentum < 100) {
+        //             weakeningIndices.push(name);
+        //         } else if (indexRrgVal.ratio < 100 && indexRrgVal.momentum < 100) {
+        //             laggingIndices.push(name);
+        //         } else {
+        //             improvingIndices.push(name);
+        //         }
+
+        //         allIndices.push(name);
+        //     }
+        // });
+
+        // renderChart();
     }
 
     function updateTimelineDateLabel() {
@@ -792,6 +908,9 @@ var miSrg = (function () {
     }
 
     function renderChart() {
+        // if (!masterTimeline || masterTimeline.length === 0) return;
+
+
         const containerRect = rrgChartContainer.getBoundingClientRect();
         const width = containerRect.width || 600;
         const height = containerRect.height || 400;
@@ -801,10 +920,10 @@ var miSrg = (function () {
 
         let dateKeys = Array.from(masterTimeline);
 
+
         const currentIndex = parseInt(slider.value, 10);
         const tailLength = parseInt(tailSlider.value, 10);
         const targetDateStr = dateKeys[currentIndex];
-        let targetDateObj = new Date(targetDateStr);
 
         // if (dateDisplay) {
         //     dateDisplay.textContent = targetDateStr || "No Data Selected";
@@ -814,6 +933,11 @@ var miSrg = (function () {
         let maxDev = 1.0;
 
         Object.keys(indexDataDef).forEach(name => {
+
+
+            // const checkbox = document.getElementById(`chk_${name.replace(/\s+/g, '')}`);
+            // if (mintJsUtil.isNull(checkbox) || !checkbox.checked) return;
+
             let cb = document.getElementById(`tsrRrgIdxChk${name.replace(/\s+/g, '')}`); // .replace removes whitespaces
             if (mintJsUtil.isNull(cb) || !cb.checked) return;
 
@@ -828,8 +952,7 @@ var miSrg = (function () {
             const sectorPoints = [];
 
             for (let i = currentIndex - tailLength + 1; i <= currentIndex; i++) {
-                let dateObj = new Date(dateKeys[i]);
-                if (dateObj <= targetDateObj) {
+                if (parseDateString(dateKeys[i]) <= parseDateString(targetDateStr)) {
 
                     let date = dateKeys[i];
                     let data = sectorMap[date];
@@ -845,6 +968,20 @@ var miSrg = (function () {
                     })
                 }
             }
+
+            // for (let i = currentIndex - tailLength + 1; i <= currentIndex; i++) {
+            //     if (i >= 0 && i < masterTimeline.length) {
+            //         const dKey = masterTimeline[i];
+            //         if (sectorMap[dKey]) {
+            //             sectorPoints.push({
+            //                 date: dKey,
+            //                 ratio: sectorMap[dKey].ratio,
+            //                 momentum: sectorMap[dKey].momentum,
+            //                 sectorName: name
+            //             });
+            //         }
+            //     }
+            // }
 
             if (sectorPoints.length > 0) {
                 activePointsBySector[name] = sectorPoints;
@@ -1087,8 +1224,12 @@ var miSrg = (function () {
     }
 
     function updateIndices(type) {
-
-        let isPremUser = isPrUser();
+        // tsrRrgIndexCategoryMenu
+        // tsrRrgIndicesContainer
+        // leadingIndices = [];
+        // laggingIndices = [];
+        // improvingIndices = [];
+        // weakeningIndices = [];
 
         let activeIndices = [];
         let masterTimelineArr = Array.from(masterTimeline);
@@ -1144,18 +1285,21 @@ var miSrg = (function () {
 
         indicesContainer.innerHTML = "";
         let showIndices = type == "hideAll" ? "" : "checked";
-        let enabledIndices = [], disabledIndices = [];
         Object.keys(activeIndices).forEach(idxName => {
             let idxData = indexDataDef[idxName];
             const safeId = idxData.id.replace(/\s+/g, ''); // removes whitespaces
             const item = document.createElement("div");
             item.className = "w-100 d-flex align-items-center justify-content-between p-2 rounded rrg-sector-item border bg-white";
-            if (!idxData.pr || (idxData.pr && isPremUser)) { // enabled index
+            if (!idxData.pr || (idxData.pr && isPrUser())) { // enabled index
+
+
+
                 let heatmapUrl = jsu.getBaseUrl() + `/Screener/Markets/HeatMap/${idxName}Index`;
                 let idxAnalysisUrl = jsu.getBaseUrl() + `/Screener/Markets/IndexAnalysis/${idxName}`;
                 // let chartUrl = ""
 
                 item.innerHTML = `
+    
                         <div class="form-check mb-0 w-100 d-flex justify-content-between">
                             <div>
                                 <input class="form-check-input" type="checkbox" id="tsrRrgIdxChk${safeId}" ${showIndices} style="cursor: pointer;">
@@ -1169,55 +1313,32 @@ var miSrg = (function () {
                                 <a href="${idxAnalysisUrl}" target="_blank" type="button" class="tsr-rrg-action-btn" title="Index Analysis" ><i class="fas fa-chart-pie"></i></a>
                                 <a type="button" class="tsr-rrg-action-btn" onclick="miSrg.pc('${idxName}')" ><i class="fas fa-chart-line" title="Chart"></i></a>
                             </div>
+                                
                         </div>
-                    `;
-
-                enabledIndices.push(item);
+                                
+                                `;
 
             } else { // disabled index
-                let plansUrl = jsu.getBaseUrl() + `/my/Plans`;
-
                 item.innerHTML = `
-                    <div class="w-100 d-flex justify-content-between">
-                        <div class="form-check mb-0">
+                    <div class="form-check mb-0">
                             <input class="form-check-input" type="checkbox" id="tsrRrgIdxChk${safeId}" style="cursor: pointer;" disabled>
                             <label class="form-check-label small fw-bold text-dark" for="tsrRrgIdxChk${safeId}" style="cursor: pointer;">
                                 <span class="d-inline-block rounded-circle me-2" style="width: 10px; height: 10px; background-color: ${idxData.color};"></span>
                                 ${idxData.label}
                             </label>
                         </div>
-                        <div>
-                            <span class="badge btn-primary">PRO</span>
-                        </div>
-                    </div>
                 `
-
-                disabledIndices.push(item);
-
-                // <a href="${plansUrl}" target="_blank" type="button" class="badge btn btn-sm btn-secondary" title="Index Analysis" >View Plans</a>
             }
-            // indicesContainer.appendChild(item);
-
-        });
-
-        for (let i = 0; i < enabledIndices.length; i++) {
-            let item = enabledIndices[i];
             indicesContainer.appendChild(item);
-        }
-        for (let i = 0; i < disabledIndices.length; i++) {
-            let item = disabledIndices[i];
-            indicesContainer.appendChild(item);
-        }
-
-        Object.keys(activeIndices).forEach(idxName => {
-            let idxData = indexDataDef[idxName];
-            const safeId = idxData.id.replace(/\s+/g, '');
 
             let cb = document.getElementById(`tsrRrgIdxChk${safeId}`);
             cb.addEventListener("click", renderChart);
-
         });
 
+        //         const tooltipTriggerList = indicesContainer.querySelectorAll('[data-bs-toggle="tooltip"]');
+        // tooltipTriggerList.forEach(tooltipTriggerEl => {
+        //     new bootstrap.Tooltip(tooltipTriggerEl);
+        // });
 
         renderChart();
     }
@@ -1304,33 +1425,466 @@ var miSrg = (function () {
         javascript: ptia.ca(chartType, 'ignore');
     }
 
-    function showLoginToast(show) {
 
-        if (jsu.isNotNull(mtgv) && jsu.isNotNull(mtgv.mtpp) && jsu.isNotNull(mtgv.mtpp)) {
-            premInit = true;
-        } else {
-            setTimeout(() => {
-                showLoginToast(show);
-            }, 500);
-        }
 
-        if (premInit && !mtgv.mtpp.pr && show) {
-            let loginUrl = mintJsUtil.getBaseUrl() + `/my/UserManagement/?act=login`;
-            let subscribeUrl = mintJsUtil.getBaseUrl() + `/my/TsrPlans/`;
 
-            let html = ""
-            html += `<h5 style="color: red;">This is a premium feature. Please `
-            html += `   <a href="${loginUrl}">Login</a>`
-            html += `   &nbsp;OR&nbsp;`
-            html += `   <a href="${subscribeUrl}">Subscribe</a>`
-            html += `</h5>`;
-            toastContainer.innerHTML = html;
 
-            htmlU.focusToDiv('tsrRrgToastContainer');
-        } else {
-            toastContainer.innerHTML = '';
-        }
-    }
+
+
+    // var width, height;
+    // var margin = { top: 10, right: 70, bottom: 20, left: 60 }
+
+    // var sectorSelect = document.getElementById("tsrRrgSectorSelect");
+    // function test() {
+
+    //     populateSectorSelect();
+
+    //     drawPriceChart();
+    //     drawRsChart();
+    //     drawRrgValChart();
+    //     // draw price chart
+    //     // draw rs chart
+    //     // draw rs ratio and rs momentum chart
+    // }
+
+    // function populateSectorSelect() {
+
+    //     let html = "";
+    //     Object.keys(indexDataDef).forEach((idxName) => {
+    //         if (benchmarkIdx.id == idxName) {
+    //             return;
+    //         }
+    //         let idxData = indexDataDef[idxName];
+    //         html += `<option val="${idxData.id}">${idxName}</option>`
+    //     })
+
+    //     sectorSelect.innerHTML = html;
+    //     sectorSelect.addEventListener("change", function () {
+    //         drawPriceChart();
+    //         drawRsChart();
+    //         drawRrgValChart();
+    //     })
+    // }
+
+
+    // function setDimentions(params, div) {
+    //     // width =  mintJsUtil.isNull(params.width) ? 300 : params.width ;
+    //     // height = mintJsUtil.isNull(params.height) ? 300 : params.height ;
+
+    //     width = div.width() - 100;
+    //     smallDimention = width < 500 ? true : false;
+
+    //     if (smallDimention) {
+    //         margin.left = 5;
+    //         margin.right = 5;
+    //         margin.top = 5;
+    //         margin.bottom = 35;
+    //     }
+
+    //     width = div.width() - margin.left - margin.right;
+
+
+    //     if (window.innerHeight < div.height()) {
+    //         height = window.innerHeight - margin.top - margin.bottom - 50;;
+    //     } else {
+    //         height = div.height() - margin.top - margin.bottom;
+    //     }
+    // }
+
+
+    // // Shared Helper Function to Create Chart Tooltip Container
+    // function getOrCreateChartTooltip() {
+    //     let tooltip = d3.select("#tsrChartTooltip");
+    //     if (tooltip.empty()) {
+    //         tooltip = d3.select("body").append("div")
+    //             .attr("id", "tsrChartTooltip")
+    //             .attr("class", "position-absolute bg-dark text-white p-2 rounded shadow-sm")
+    //             .style("display", "none")
+    //             .style("pointer-events", "none")
+    //             .style("z-index", "1000")
+    //             .style("font-size", "11px")
+    //             .style("font-family", "Segoe UI, sans-serif");
+    //     }
+    //     return tooltip;
+    // }
+
+    // function drawPriceChart() {
+    //     var testChartId = "testRrgPriceChartContainer";
+    //     var div = $('#' + testChartId);
+    //     div.empty();
+
+    //     setDimentions(null, div);
+
+    //     let selIdx = sectorSelect.value;
+    //     let data = [];
+
+    //     let idxData = indexDataDef[selIdx].data;
+    //     Object.keys(idxData).forEach((date) => {
+    //         let dateKeys = Array.from(masterTimeline);
+    //         if (dateKeys.includes(date)) {
+    //             let valObj = idxData[date];
+    //             if (valObj && valObj.close !== undefined) {
+    //                 data.push({ Date: parseDateString(date), close: valObj.close, dateStr: date });
+    //             }
+    //         }
+    //     });
+
+    //     if (data.length === 0) return;
+
+    //     // Ranges & Scales
+    //     var x = d3.scaleTime().range([0, width]).domain(d3.extent(data, d => d.Date));
+    //     var yMin = d3.min(data, d => d.close);
+    //     var yMax = d3.max(data, d => d.close);
+    //     var yPadding = (yMax - yMin) * 0.05;
+    //     var y = d3.scaleLinear().range([height, 0]).domain([yMin - yPadding, yMax + yPadding]);
+
+    //     var svg = d3.select("#" + testChartId).append("svg")
+    //         .attr("width", width + margin.left + margin.right)
+    //         .attr("height", height + margin.top + margin.bottom)
+    //         .append("g")
+    //         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    //     // Title
+    //     svg.append("text")
+    //         .attr("x", 0)
+    //         .attr("y", -10)
+    //         .attr("font-weight", "700")
+    //         .attr("font-size", "13px")
+    //         .attr("fill", "#1e293b")
+    //         .text("Price Chart (" + selIdx + ")");
+
+    //     // Background Grid
+    //     svg.append("g")
+    //         .attr("class", "grid-lines")
+    //         .call(d3.axisLeft(y).ticks(5).tickSize(-width).tickFormat(""))
+    //         .call(g => g.selectAll(".tick line").attr("stroke", "#f1f5f9"))
+    //         .call(g => g.select(".domain").remove());
+
+    //     // Gradient Fill
+    //     var gradient = svg.append("defs")
+    //         .append("linearGradient")
+    //         .attr("id", "price-gradient")
+    //         .attr("x1", "0%").attr("y1", "0%")
+    //         .attr("x2", "0%").attr("y2", "100%");
+    //     gradient.append("stop").attr("offset", "0%").attr("stop-color", "#2563eb").attr("stop-opacity", 0.2);
+    //     gradient.append("stop").attr("offset", "100%").attr("stop-color", "#2563eb").attr("stop-opacity", 0);
+
+    //     var area = d3.area()
+    //         .x(d => x(d.Date))
+    //         .y0(height)
+    //         .y1(d => y(d.close))
+    //         .curve(d3.curveMonotoneX);
+
+    //     svg.append("path").datum(data).attr("fill", "url(#price-gradient)").attr("d", area);
+
+    //     // Price Line
+    //     var valueline = d3.line()
+    //         .x(d => x(d.Date))
+    //         .y(d => y(d.close))
+    //         .curve(d3.curveMonotoneX);
+
+    //     svg.append("path").datum(data)
+    //         .attr("fill", "none")
+    //         .attr("stroke", "#2563eb")
+    //         .attr("stroke-width", 2)
+    //         .attr("d", valueline);
+
+    //     // Axes
+    //     var xAxis = d3.axisBottom(x).ticks(6).tickFormat(d3.timeFormat("%b %Y"));
+    //     var yAxis = d3.axisLeft(y).ticks(5).tickFormat(d3.format(",.1f"));
+
+    //     svg.append("g")
+    //         .attr("transform", "translate(0," + height + ")")
+    //         .call(xAxis)
+    //         .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
+    //         .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
+
+    //     svg.append("g")
+    //         .call(yAxis)
+    //         .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
+    //         .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
+
+    //     // Hover Interaction
+    //     addHoverInteraction(svg, data, x, y, width, height, margin, [
+    //         { key: "close", label: "Close", color: "#2563eb" }
+    //     ]);
+    // }
+
+    // function drawRsChart() {
+    //     var testChartId = "testRrgRsChartContainer";
+    //     var div = $('#' + testChartId);
+    //     div.empty();
+
+    //     setDimentions(null, div);
+
+    //     let selIdx = sectorSelect.value;
+    //     let data = [];
+    //     let dateKeys = Array.from(masterTimeline);
+
+    //     let idxData = indexDataDef[selIdx].data;
+    //     Object.keys(idxData).forEach((date) => {
+    //         if (dateKeys.includes(date)) {
+    //             let valObj = idxData[date];
+    //             if (valObj && valObj.rs !== undefined) {
+    //                 data.push({ Date: parseDateString(date), rs: valObj.rs, dateStr: date });
+    //             }
+    //         }
+    //     });
+
+    //     if (data.length === 0) return;
+
+    //     var x = d3.scaleTime().range([0, width]).domain(d3.extent(data, d => d.Date));
+    //     var yMin = d3.min(data, d => d.rs);
+    //     var yMax = d3.max(data, d => d.rs);
+    //     var yPadding = (yMax - yMin) * 0.05;
+    //     var y = d3.scaleLinear().range([height, 0]).domain([yMin - yPadding, yMax + yPadding]);
+
+    //     var svg = d3.select("#" + testChartId).append("svg")
+    //         .attr("width", width + margin.left + margin.right)
+    //         .attr("height", height + margin.top + margin.bottom)
+    //         .append("g")
+    //         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    //     // Title
+    //     svg.append("text")
+    //         .attr("x", 0)
+    //         .attr("y", -10)
+    //         .attr("font-weight", "700")
+    //         .attr("font-size", "13px")
+    //         .attr("fill", "#1e293b")
+    //         .text("Relative Strength vs Benchmark (" + selIdx + ")");
+
+    //     // Background Grid
+    //     svg.append("g")
+    //         .attr("class", "grid-lines")
+    //         .call(d3.axisLeft(y).ticks(5).tickSize(-width).tickFormat(""))
+    //         .call(g => g.selectAll(".tick line").attr("stroke", "#f1f5f9"))
+    //         .call(g => g.select(".domain").remove());
+
+    //     // Gradient Fill
+    //     var gradient = svg.append("defs")
+    //         .append("linearGradient")
+    //         .attr("id", "rs-gradient")
+    //         .attr("x1", "0%").attr("y1", "0%")
+    //         .attr("x2", "0%").attr("y2", "100%");
+    //     gradient.append("stop").attr("offset", "0%").attr("stop-color", "#8b5cf6").attr("stop-opacity", 0.2);
+    //     gradient.append("stop").attr("offset", "100%").attr("stop-color", "#8b5cf6").attr("stop-opacity", 0);
+
+    //     var area = d3.area()
+    //         .x(d => x(d.Date))
+    //         .y0(height)
+    //         .y1(d => y(d.rs))
+    //         .curve(d3.curveMonotoneX);
+
+    //     svg.append("path").datum(data).attr("fill", "url(#rs-gradient)").attr("d", area);
+
+    //     // RS Line
+    //     var valueline = d3.line()
+    //         .x(d => x(d.Date))
+    //         .y(d => y(d.rs))
+    //         .curve(d3.curveMonotoneX);
+
+    //     svg.append("path").datum(data)
+    //         .attr("fill", "none")
+    //         .attr("stroke", "#8b5cf6")
+    //         .attr("stroke-width", 2)
+    //         .attr("d", valueline);
+
+    //     // Axes
+    //     var xAxis = d3.axisBottom(x).ticks(6).tickFormat(d3.timeFormat("%b %Y"));
+    //     var yAxis = d3.axisLeft(y).ticks(5).tickFormat(d3.format(".3f"));
+
+    //     svg.append("g")
+    //         .attr("transform", "translate(0," + height + ")")
+    //         .call(xAxis)
+    //         .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
+    //         .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
+
+    //     svg.append("g")
+    //         .call(yAxis)
+    //         .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
+    //         .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
+
+    //     addHoverInteraction(svg, data, x, y, width, height, margin, [
+    //         { key: "rs", label: "RS", color: "#8b5cf6" }
+    //     ]);
+    // }
+
+    // function drawRrgValChart() {
+    //     var testChartId = "testRrgRRGValMomChartContainer";
+    //     var div = $('#' + testChartId);
+    //     div.empty();
+
+    //     setDimentions(null, div);
+
+    //     let selIdx = sectorSelect.value;
+    //     let data = [];
+
+    //     let dateKeys = Array.from(masterTimeline);
+
+    //     let idxData = indexDataDef[selIdx].data;
+    //     Object.keys(idxData).forEach((date) => {
+    //         if (dateKeys.includes(date)) {
+    //             let valObj = idxData[date];
+    //             if (valObj && valObj.rsRatio !== undefined && valObj.rsMomentum !== undefined) {
+    //                 data.push({
+    //                     Date: parseDateString(date),
+    //                     rsRatio: valObj.rsRatio,
+    //                     rsMomentum: valObj.rsMomentum,
+    //                     dateStr: date
+    //                 });
+    //             }
+    //         }
+    //     });
+
+    //     if (data.length === 0) return;
+
+    //     var x = d3.scaleTime().range([0, width]).domain(d3.extent(data, d => d.Date));
+
+    //     // Combine min and max of both metrics to scale Y properly
+    //     var allVals = data.map(d => d.rsRatio).concat(data.map(d => d.rsMomentum));
+    //     var yMin = d3.min(allVals);
+    //     var yMax = d3.max(allVals);
+    //     var yPadding = (yMax - yMin) * 0.08;
+    //     var y = d3.scaleLinear().range([height, 0]).domain([yMin - yPadding, yMax + yPadding]);
+
+    //     var svg = d3.select("#" + testChartId).append("svg")
+    //         .attr("width", width + margin.left + margin.right)
+    //         .attr("height", height + margin.top + margin.bottom)
+    //         .append("g")
+    //         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    //     // Title
+    //     svg.append("text")
+    //         .attr("x", 0)
+    //         .attr("y", -10)
+    //         .attr("font-weight", "700")
+    //         .attr("font-size", "13px")
+    //         .attr("fill", "#1e293b")
+    //         .text("JdK RS-Ratio & RS-Momentum (" + selIdx + ")");
+
+    //     // Background Grid
+    //     svg.append("g")
+    //         .attr("class", "grid-lines")
+    //         .call(d3.axisLeft(y).ticks(5).tickSize(-width).tickFormat(""))
+    //         .call(g => g.selectAll(".tick line").attr("stroke", "#f1f5f9"))
+    //         .call(g => g.select(".domain").remove());
+
+    //     // Center Reference Line at 100 Baseline
+    //     if (yMin <= 100 && yMax >= 100) {
+    //         svg.append("line")
+    //             .attr("x1", 0)
+    //             .attr("x2", width)
+    //             .attr("y1", y(100))
+    //             .attr("y2", y(100))
+    //             .attr("stroke", "#94a3b8")
+    //             .attr("stroke-dasharray", "4,4")
+    //             .attr("stroke-width", 1.2);
+    //     }
+
+    //     // Lines Generator
+    //     var lineRatio = d3.line()
+    //         .x(d => x(d.Date))
+    //         .y(d => y(d.rsRatio))
+    //         .curve(d3.curveMonotoneX);
+
+    //     var lineMomentum = d3.line()
+    //         .x(d => x(d.Date))
+    //         .y(d => y(d.rsMomentum))
+    //         .curve(d3.curveMonotoneX);
+
+    //     // Draw Lines
+    //     svg.append("path").datum(data)
+    //         .attr("fill", "none")
+    //         .attr("stroke", "#16a34a") // Green for RS-Ratio
+    //         .attr("stroke-width", 2)
+    //         .attr("d", lineRatio);
+
+    //     svg.append("path").datum(data)
+    //         .attr("fill", "none")
+    //         .attr("stroke", "#dc2626") // Red for RS-Momentum
+    //         .attr("stroke-width", 2)
+    //         .attr("d", lineMomentum);
+
+    //     // Legend
+    //     var legend = svg.append("g").attr("transform", `translate(${width - 160}, -12)`);
+    //     legend.append("rect").attr("x", 0).attr("y", 0).attr("width", 10).attr("height", 10).attr("fill", "#16a34a").attr("rx", 2);
+    //     legend.append("text").attr("x", 15).attr("y", 9).attr("font-size", "10px").attr("fill", "#475569").attr("font-weight", "600").text("RS-Ratio");
+
+    //     legend.append("rect").attr("x", 80).attr("y", 0).attr("width", 10).attr("height", 10).attr("fill", "#dc2626").attr("rx", 2);
+    //     legend.append("text").attr("x", 95).attr("y", 9).attr("font-size", "10px").attr("fill", "#475569").attr("font-weight", "600").text("RS-Momentum");
+
+    //     // Axes
+    //     var xAxis = d3.axisBottom(x).ticks(6).tickFormat(d3.timeFormat("%b %Y"));
+    //     var yAxis = d3.axisLeft(y).ticks(5).tickFormat(d3.format(".1f"));
+
+    //     svg.append("g")
+    //         .attr("transform", "translate(0," + height + ")")
+    //         .call(xAxis)
+    //         .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
+    //         .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
+
+    //     svg.append("g")
+    //         .call(yAxis)
+    //         .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
+    //         .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
+
+    //     addHoverInteraction(svg, data, x, y, width, height, margin, [
+    //         { key: "rsRatio", label: "RS-Ratio", color: "#16a34a" },
+    //         { key: "rsMomentum", label: "RS-Momentum", color: "#dc2626" }
+    //     ]);
+    // }
+
+    // // Universal Mouse Hover & Tooltip Handler
+    // function addHoverInteraction(svg, data, xScale, yScale, width, height, margin, metrics) {
+    //     const tooltip = getOrCreateChartTooltip();
+
+    //     const focusLine = svg.append("line")
+    //         .attr("y1", 0)
+    //         .attr("y2", height)
+    //         .attr("stroke", "#94a3b8")
+    //         .attr("stroke-dasharray", "3,3")
+    //         .style("display", "none");
+
+    //     const overlay = svg.append("rect")
+    //         .attr("width", width)
+    //         .attr("height", height)
+    //         .attr("fill", "transparent")
+    //         .style("cursor", "crosshair");
+
+    //     overlay
+    //         .on("mousemove", function (event) {
+    //             const mouseX = d3.pointer(event, this)[0];
+    //             const xDate = xScale.invert(mouseX);
+    //             const bisect = d3.bisector(d => d.Date).left;
+    //             const i = bisect(data, xDate, 1);
+    //             const d0 = data[i - 1];
+    //             const d1 = data[i];
+    //             const d = (d1 && (xDate - d0.Date > d1.Date - xDate)) ? d1 : d0;
+
+    //             if (d) {
+    //                 focusLine.style("display", "block").attr("x1", xScale(d.Date)).attr("x2", xScale(d.Date));
+
+    //                 let tooltipHtml = `<div class="fw-bold border-bottom pb-1 mb-1 text-info">${d.dateStr}</div>`;
+    //                 metrics.forEach(m => {
+    //                     let val = d[m.key] !== undefined ? d[m.key].toFixed(2) : "N/A";
+    //                     tooltipHtml += `<div><span style="color:${m.color};"></span> ${m.label}: <b>${val}</b></div>`;
+    //                 });
+
+    //                 tooltip.style("display", "block")
+    //                     .html(tooltipHtml)
+    //                     .style("left", (event.pageX + 15) + "px")
+    //                     .style("top", (event.pageY - 28) + "px");
+    //             }
+    //         })
+    //         .on("mouseout", function () {
+    //             focusLine.style("display", "none");
+    //             tooltip.style("display", "none");
+    //         });
+    // }
+
+
+
 
     return {
         init: init,

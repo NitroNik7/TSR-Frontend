@@ -492,10 +492,18 @@
                                     </div>
                                     <div>
                                         <span class="badge bg-light text-secondary border px-3 py-2 fw-medium">
-                                            <span style="font-weight: 500;">Benchmark: </span> NIFTY 50 </span>
+                                            <span style="font-weight: 500;">Benchmark: </span> NIFTY 50 
+                                        </span>
+                                        <span class="badge bg-light text-secondary border px-3 py-2 fw-normal">
+                                            Data:
+                                            <span style="font-weight: 700;">EOD</span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
+
+                            <div id="tsrRrgToastContainer" class="text-center my-3"></div>
+
 
                             <div id="tsrRrgFbDiv">
 
@@ -590,12 +598,16 @@
                                                 <div class="border rounded-3 p-3 bg-light">
                                                     <!-- Settings Container -->
                                                     <div class="tsrRrgSettingsContainer">
+
                                                         <div
                                                             class="d-flex justify-content-lg-start justify-content-lg-between align-items-center mb-2 flex-wrap gap-2">
 
                                                             <div
                                                                 class="d-flex justify-content-lg-start justify-content-lg-between align-items-center gap-2 w-100">
-                                                                <span> Time frame:</span>
+                                                                <!-- <span> Time frame:</span> -->
+                                                                <span class="tsrRrgControlLabel">
+                                                                    TIME FRAME
+                                                                </span>
                                                                 <select id="tsrRrgTickSelect"
                                                                     class="form-select form-select-sm"
                                                                     style="width: max-content;">
@@ -605,7 +617,9 @@
 
                                                             <div
                                                                 class="d-flex justify-content-between align-items-center gap-2 w-100">
-                                                                <span> Period:</span>
+                                                                <span class="tsrRrgControlLabel">
+                                                                    PERIOD
+                                                                </span>
                                                                 <select id="tsrRrgPeriodSelect"
                                                                     class="form-select form-select-sm"
                                                                     style="width: max-content;">
@@ -618,7 +632,11 @@
                                                             <div
                                                                 class="d-flex justify-content-lg-start justify-content-lg-between align-items-center gap-2 w-100">
                                                                 <label for="tsrRrgTailLengthSlider"
-                                                                    class="form-label mb-0 text-nowrap">Tail:</label>
+                                                                    class="tsrRrgControlLabel">
+                                                                    TAIL
+                                                                </label>
+                                                                <!-- <label for="tsrRrgTailLengthSlider"
+                                                                    class="form-label mb-0 text-nowrap">Tail:</label> -->
 
                                                                 <div class="d-flex gap-2">
 
@@ -755,6 +773,7 @@
                             <!-- TODO ARTICLE -->
 
                             <script src="script.js"></script>
+                            <!-- <script src="script copy.js"></script> -->
                             <script>
                                 miSrg.init();
                             </script>
