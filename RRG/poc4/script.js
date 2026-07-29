@@ -411,8 +411,7 @@ var miSrg = (function () {
 
         let dateIndex = headers.findIndex(h => h.includes("Date"));
         Object.keys(indexDataDef).forEach((index) => {
-            let colIdx = -1;
-            colIdx = headers.findIndex(h => h.includes(index));
+            let colIdx = headers.findIndex(h => h.includes(index));
             let indexData = indexDataDef[index];
             indexData.colIdx = colIdx;
         });
@@ -424,16 +423,23 @@ var miSrg = (function () {
 
         for (let i = 1; i < lines.length; i++) {
             const cols = lines[i].split(",");
-            let date = parseDateString(cols[0]); // TODO
+            // let date = parseDateString(cols[0]); // TODO
+            let dateStr = cols[0];
             Object.keys(indexDataDef).forEach((index) => {
                 let dataObj = new Object();
                 let indexData = indexDataDef[index];
                 let colIdx = indexData.colIdx;
+                if (colIdx < 1) {
+                    return;
+                }
                 let close = cols[colIdx];
                 if (jsu.isNotNull(indexData.data)) {
-                    indexData.data[date] = { close: close };
+                    indexData.data[dateStr] = { close: close };
                 } else {
-                    indexData.data.push({ date: {} });
+                    indexData.data = {};
+                    indexData.data[dateStr] = {
+                        close: close
+                    };
                 }
             })
         }
