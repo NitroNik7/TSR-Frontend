@@ -18,8 +18,7 @@ var miSrg = (function () {
 
     let playInterval = null;
 
-    const rrgChartContainer = document.getElementById("tsrRrgChartContainer");
-    const sectorChartContainer = document.getElementById("tsrRrgSectorChartContainer")
+    const chartContainer = document.getElementById("tsrRrgChartContainer");
     const tooltip = document.getElementById("tsrRrgChartTooltip");
     const indicesContainer = document.getElementById("tsrRrgIndicesContainer");
 
@@ -28,16 +27,14 @@ var miSrg = (function () {
 
     let masterTimeline = new Set();
 
-
-    // * NOTE: when tick period is modified, getStartDate() must be modified
     const tickPeriodDef = [
-        {
-            id: "mm5", label: "5 mins", pr: true, periods: [
-                { id: "100", label: "Last 100 records" },
-                { id: "200", label: "Last 200 records" },
-                { id: "500", label: "Last 500 records" }
-            ]
-        },
+        // {
+        //     id: "mm5", label: "5 mins", pr: true, periods: [
+        //         { id: "100", label: "Last 100 records" },
+        //         { id: "200", label: "Last 200 records" },
+        //         { id: "500", label: "Last 500 records" }
+        //     ]
+        // },
         {
             id: "D", label: "Daily", pr: false, periods: [
                 { id: "1m", label: "1 Month" },
@@ -64,15 +61,12 @@ var miSrg = (function () {
     ];
 
     // color: "#462c00"
-
-    // TODO FIND code(from Rohit Sir's message / Birds Eye View), scId, ecId & ccId (from Charts)
-    // TODO use unique colors for each index
-    const indexDataDef = {
+    const indexData = {
         "NIFTY 50": {
-            id: "NIFTY 50", label: "NIFTY 50", pr: false, eqId: 10000, color: "#3b82f6",
-            "code": "NIFTY", "scId": "200000", "ecId": "10000", "ccId": "in"
+            id: "NIFTY 50", label: "NIFTY 50", pr: false, eqId: 10000, color: "#3b82f6", "code": "NIFTY",
+            "scId": "200000", "ecId": "10000", "ccId": "in"
         },
-        "NIFTY AUTO": { id: "NIFTY_AUTO", name: "NIFTY AUTO", label: "NIFTY AUTO", pr: false, eqId: 8200, color: "#ec4899", "code": "NIFTY_AUTO", "scId": "200000", "ecId": "8200", "ccId": "in" },
+        "NIFTY AUTO": { id: "NIFTY AUTO", label: "NIFTY AUTO", pr: false, eqId: 8200, color: "#ec4899" },
         "NIFTY BANK": { id: "NIFTY BANK", label: "NIFTY BANK", pr: false, eqId: 10100, color: "#2eff51" },
         "NIFTY CONSUMER DURABLES": { id: "NIFTY CONSUMER DURABLES", label: "NIFTY CONSUMER DURABLES", pr: true, eqId: 3700, color: "#857c4c" },
         "NIFTY FINANCIAL SERVICES": { id: "NIFTY FINANCIAL SERVICES", label: "NIFTY FINANCIAL SERVICES", pr: true, eqId: 3400, color: "#ffcb11" },
@@ -91,9 +85,8 @@ var miSrg = (function () {
         "NIFTY FMCG": { id: "NIFTY FMCG", label: "NIFTY FMCG", pr: true, eqId: 9000, color: "#4e854c" },
     };
 
-    let benchmarkIdx = indexDataDef["NIFTY 50"];
-
-    let gifUrl = mintJsUtil.getBaseUrl() + "/static/img/LoadingMedium.gif";
+    // TODO
+    //         defStk = { name: NIFTY["id"], code: NIFTY["code"], scId: NIFTY["scId"], ecId: NIFTY["ecId"] };
 
 
     // NIFTY IT
@@ -125,6 +118,7 @@ var miSrg = (function () {
     // https://www.topstockresearch.com/charts/csv/200000/48500M.csv?var=8
 
 
+    let benchmarkIdx = indexData["NIFTY 50"];
 
     function init() {
 
@@ -177,8 +171,8 @@ var miSrg = (function () {
             populatePeriodSelect();
 
             // update data and UI
-            Object.keys(indexDataDef).forEach((idxName) => {
-                indexDataDef[idxName].data = null;
+            Object.keys(indexData).forEach((idxName) => {
+                indexData[idxName].data = null;
             })
 
             userAction('init');
@@ -292,44 +286,44 @@ var miSrg = (function () {
 
             let isPremUser = isPrUser();
 
-            Object.keys(indexDataDef).forEach(indexName => {
-                let index = indexDataDef[indexName];
+            Object.keys(indexData).forEach(indexName => {
+                let index = indexData[indexName];
                 let tick = tickSelect.value;
 
 
-                let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/${tick}/${indexName}.csv`;
+                // let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/${tick}/${indexName}.csv`;
                 let randomVar = Math.round(Math.random() * 100);
-                // let url = `https://www.tsrbt1.com/charts/csv/200000/${index.eqId}${tick}.csv?var=${randomVar}`;
+                let url = `https://www.tsrbt1.com/charts/csv/200000/${index.eqId}${tick}.csv?var=${randomVar}`;
                 if (index.pr && !isPremUser) {
                     return;
                 }
 
                 // ----------------- bt1 -----------------------
-                // let DJS_URL = '/rt/djs';
+                let DJS_URL = '/rt/djs';
                 // let postData = { cat: 'Markets', subCat: 'AdvanceDecline', freq: adrFreq, classi: adrSb, type: 'chart' }
-                // let postData = {};
+                let postData = {};
 
-                // var remoteObject = new RC(url, null, postData, LOAD_DIV, FB_DIV, thisObj, 'uar', 'init');
-                // remoteObject.param1 = index.id;
-                // jsu.rc(remoteObject);
+                var remoteObject = new RC(url, null, postData, LOAD_DIV, FB_DIV, thisObj, 'uar', 'init');
+                remoteObject.param1 = index.id;
+                jsu.rc(remoteObject);
                 // -------------------------------------------
 
-                $.ajax({
-                    url: url,
-                    success: function (results) {
+                // $.ajax({
+                //     url: url,
+                //     success: function (results) {
 
-                        let data = {
-                            "statusCode": "success",
-                            results: results
-                        }
-                        var remoteObject = new Object();
-                        remoteObject.param1 = index.label;
-                        userActionResponse(data, 'init', remoteObject)
+                //         let data = {
+                //             "statusCode": "success",
+                //             results: results
+                //         }
+                //         var remoteObject = new Object();
+                //         remoteObject.param1 = index.id;
+                //         userActionResponse(data, 'init', remoteObject)
 
-                    }, error: function (error) {
-                        htmlU.addMsgToDiv(FB_DIV, "Error: " + error);
-                    }
-                });
+                //     }, error: function (error) {
+                //         htmlU.addMsgToDiv(FB_DIV, "Error: " + error);
+                //     }
+                // });
             })
         }
     }
@@ -339,9 +333,9 @@ var miSrg = (function () {
 
         if (type == 'init') {
             // ----------------- bt1 ---------------------
-            // indexData[remoteObject.param1].data = data;
+            indexData[remoteObject.param1].data = data;
             // -------------------------------------------
-            indexDataDef[remoteObject.param1].data = data.results;
+            // indexData[remoteObject.param1].data = data.results;
         }
         // }
     }
@@ -417,22 +411,23 @@ var miSrg = (function () {
 
     function processData() {
         // For each index, parseCSV and sort by date
-        Object.keys(indexDataDef).forEach((indexName) => {
-            let index = indexDataDef[indexName];
+        Object.keys(indexData).forEach((indexName) => {
+            let index = indexData[indexName];
 
             if (jsu.isNotNull(index.data)) {
                 // console.log(indexName);
                 index.data = parseCSV(index.data);
-                sortObjByDateStr(index.data); // TODO remove if not needed
+                sortObjByDateStr(index.data);
             }
         });
 
 
         updateMasterTimeline();
 
+        // TODO make seperate fn
         // For each index, calc RRG
-        Object.keys(indexDataDef).forEach((indexName) => {
-            let index = indexDataDef[indexName];
+        Object.keys(indexData).forEach((indexName) => {
+            let index = indexData[indexName];
 
             if (indexName == benchmarkIdx.id) {
                 return;
@@ -519,8 +514,8 @@ var miSrg = (function () {
 
         // update data & masterTimeline wrt period
         masterTimeline.clear();
-        Object.keys(indexDataDef).forEach((indexName) => {
-            let index = indexDataDef[indexName];
+        Object.keys(indexData).forEach((indexName) => {
+            let index = indexData[indexName];
 
             if (jsu.isNotNull(index.data)) {
                 let dateKeys = Object.keys(index.data);
@@ -556,21 +551,21 @@ var miSrg = (function () {
         // if date is common across indices, then keep else remove
         masterTimeline.forEach((dateStr) => {
 
-            let removeDate = false; // remove date
-            let indices = Object.keys(indexDataDef);
+            let rmDate = false; // remove date
+            let indices = Object.keys(indexData);
 
             indices.forEach(index => {
-                if (jsu.isNotNull(indexDataDef[index].data)) {
+                if (jsu.isNotNull(indexData[index].data)) {
 
-                    let data = indexDataDef[index].data;
+                    let data = indexData[index].data;
 
                     if (!Object.keys(data).includes(dateStr)) {
-                        removeDate = true;
+                        rmDate = true;
                     }
                 }
             })
 
-            if (removeDate)
+            if (rmDate)
                 masterTimeline.delete(dateStr);
         })
     }
@@ -585,12 +580,12 @@ var miSrg = (function () {
 
         new Date()
         switch (period) {
-            case "100":
-                return new Date(latestDateObj.getTime() - (100 * 5 * 60 * 1000));
-            case "200":
-                return new Date(latestDateObj.getTime() - (200 * 5 * 60 * 1000));
-            case "500":
-                return new Date(latestDateObj.getTime() - (500 * 5 * 60 * 1000));
+            // case "100":
+            //     return new Date(latestDateObj.getTime() - (100 * 5 * 60 * 1000));
+            // case "200":
+            //     return new Date(latestDateObj.getTime() - (200 * 5 * 60 * 1000));
+            // case "500":
+            //     return new Date(latestDateObj.getTime() - (500 * 5 * 60 * 1000));
             case "1m":
                 return startDateObj.setMonth(latestDateObj.getMonth() - 1);
             case "3m":
@@ -720,91 +715,98 @@ var miSrg = (function () {
         //     tailLabel.innerHTML = tailSlider.value + " " + tick;
     }
 
+function calcRrg(idxData) {
+    // 1. Ensure benchmark data is sorted and available
+    let benchmarkIdxData = benchmarkIdx.data;
+    if (!jsu.isNotNull(benchmarkIdxData)) return idxData;
 
-    function calcRrg(idxData) {
+    let dateKeys = Object.keys(idxData);
+    if (dateKeys.length === 0) return idxData;
 
-        // calc rs
-        let benchmarkIdxData = benchmarkIdx.data;
-        benchmarkIdxData = sortObjByDateStr(benchmarkIdxData);
-        // idxData = sortObjByDateStr(idxData);
+    const window = 14; // Default rolling calculation window (14 periods)
 
-        let rsArr = [];
+    // 2. Step 1: Calculate Relative Strength (RS) vs Benchmark
+    let rsArr = [];
+    for (let i = 0; i < dateKeys.length; i++) {
+        let date = dateKeys[i];
+        let benchmarkData = benchmarkIdxData[date];
 
-        let dateKeys = Object.keys(idxData);
-        for (let i = 0; i < dateKeys.length; i++) {
-            let date = dateKeys[i];
-            let benchmarkData = benchmarkIdxData[date];
-
-            let rs = 1.0;
-            if (jsu.isNotNull(benchmarkData) && benchmarkData.close > 0) {
-                rs = idxData[date].close / benchmarkData.close;
-            }
-
-            rsArr[i] = rs;
-            idxData[date].rs = rs;
+        let rs = 100.0;
+        if (jsu.isNotNull(benchmarkData) && benchmarkData.close > 0 && idxData[date].close > 0) {
+            rs = (idxData[date].close / benchmarkData.close) * 100.0;
         }
 
-        let m = 14;
-        let sf = 2;
-        let alpha = (1.0 * sf) / (1 + m);
-        let emaRsArr = [];
-        emaRsArr[0] = rsArr[0];
-        for (let i = 1; i < rsArr.length; i++) {
-            emaRsArr[i] = rsArr[i] * alpha + emaRsArr[i - 1] * (1 - alpha);
-        }
-
-        // calc rs ratio
-        let rsRatioArr = [];
-        for (let i = 0; i < dateKeys.length; i++) {
-            // calc sma(emaRs(i))
-            let startIndex = Math.max(0, i - m + 1);
-            let count = i - startIndex + 1; // no. of elements
-
-            let sum = 0.0;
-            for (let j = startIndex; j <= i; j++) {
-                sum += emaRsArr[j];
-            }
-            let rollingMeanEmaRs = sum / count;
-
-            if (rollingMeanEmaRs != 0) {
-                rsRatioArr[i] = 100.0 * (emaRsArr[i] / rollingMeanEmaRs);
-            } else {
-                rsRatioArr[i] = 100.0;
-            }
-
-            idxData[dateKeys[i]].rsRatio = rsRatioArr[i];
-        }
-
-
-        let rocArr = [];
-        let emaRocArr = [];
-        let k = 10; // lookback period
-
-        // ------------------- 4. Calculate ROC ---------------------------
-        for (let i = 0; i < dateKeys.length; i++) {
-            let lookbackIdx = Math.max(0, i - k);
-            let prevRsRatio = rsRatioArr[lookbackIdx];
-
-            if (prevRsRatio != 0)
-                rocArr[i] = (rsRatioArr[i] - prevRsRatio) / prevRsRatio;
-            else
-                rocArr[i] = 0.0;
-        }
-
-        // Calc. EMA ROC
-        emaRocArr[0] = rocArr[0];
-        for (let i = 1; i < dateKeys.length; i++) {
-            emaRocArr[i] = (alpha * rocArr[i]) + ((1 - alpha) * emaRocArr[i - 1]);
-        }
-
-        for (let i = 0; i < dateKeys.length; i++) {
-            let rsMom = 100 + (100 * emaRocArr[i]);
-            idxData[dateKeys[i]].rsMomentum = rsMom;
-        }
-
-        // console.log(idxData);
-        return idxData;
+        rsArr[i] = rs;
+        idxData[date].rs = rs;
     }
+
+    // Helper functions for rolling statistics
+    function calculateMean(arr, startIdx, count) {
+        let sum = 0.0;
+        for (let j = startIdx; j < startIdx + count; j++) {
+            sum += arr[j];
+        }
+        return sum / count;
+    }
+
+    function calculateStdDev(arr, startIdx, count, mean) {
+        if (count <= 1) return 0;
+        let sumSqDiff = 0.0;
+        for (let j = startIdx; j < startIdx + count; j++) {
+            let diff = arr[j] - mean;
+            sumSqDiff += diff * diff;
+        }
+        return Math.sqrt(sumSqDiff / (count - 1)); // Sample StdDev (ddof=1)
+    }
+
+    // 3. Step 2: Calculate RS-Ratio using Rolling Z-Score Normalization
+    let rsRatioArr = [];
+    for (let i = 0; i < dateKeys.length; i++) {
+        let startIndex = Math.max(0, i - window + 1);
+        let count = i - startIndex + 1;
+
+        let meanRS = calculateMean(rsArr, startIndex, count);
+        let stdDevRS = calculateStdDev(rsArr, startIndex, count, meanRS);
+
+        if (stdDevRS > 0) {
+            rsRatioArr[i] = 100.0 + ((rsArr[i] - meanRS) / stdDevRS);
+        } else {
+            rsRatioArr[i] = 100.0;
+        }
+
+        idxData[dateKeys[i]].rsRatio = rsRatioArr[i];
+    }
+
+    // 4. Step 3: Calculate Rate of Change (ROC) of RS-Ratio
+    let rocArr = [];
+    rocArr[0] = 0.0;
+    for (let i = 1; i < dateKeys.length; i++) {
+        let prevRatio = rsRatioArr[i - 1];
+        if (prevRatio !== 0) {
+            rocArr[i] = ((rsRatioArr[i] - prevRatio) / prevRatio) * 100.0;
+        } else {
+            rocArr[i] = 0.0;
+        }
+    }
+
+    // 5. Step 4: Calculate RS-Momentum using Rolling Z-Score Normalization on ROC
+    for (let i = 0; i < dateKeys.length; i++) {
+        let startIndex = Math.max(0, i - window + 1);
+        let count = i - startIndex + 1;
+
+        let meanROC = calculateMean(rocArr, startIndex, count);
+        let stdDevROC = calculateStdDev(rocArr, startIndex, count, meanROC);
+
+        let rsMom = 100.0;
+        if (stdDevROC > 0) {
+            rsMom = 100.0 + ((rocArr[i] - meanROC) / stdDevROC);
+        }
+
+        idxData[dateKeys[i]].rsMomentum = rsMom;
+    }
+
+    return idxData;
+}
 
 
     function sortObjByDateStr(obj) {
@@ -840,12 +842,12 @@ var miSrg = (function () {
         // if (!masterTimeline || masterTimeline.length === 0) return;
 
 
-        const containerRect = rrgChartContainer.getBoundingClientRect();
+        const containerRect = chartContainer.getBoundingClientRect();
         const width = containerRect.width || 600;
         const height = containerRect.height || 400;
         const padding = 55;
 
-        rrgChartContainer.innerHTML = "";
+        chartContainer.innerHTML = "";
 
         let dateKeys = Array.from(masterTimeline);
 
@@ -861,7 +863,7 @@ var miSrg = (function () {
         const activePointsBySector = {};
         let maxDev = 1.0;
 
-        Object.keys(indexDataDef).forEach(name => {
+        Object.keys(indexData).forEach(name => {
 
 
             // const checkbox = document.getElementById(`chk_${name.replace(/\s+/g, '')}`);
@@ -873,11 +875,11 @@ var miSrg = (function () {
             if (name == benchmarkIdx.id)
                 return;
 
-            if (jsu.isNull(indexDataDef[name].data)) {
+            if (jsu.isNull(indexData[name].data)) {
                 return;
             }
 
-            const sectorMap = indexDataDef[name].data;
+            const sectorMap = indexData[name].data;
             const sectorPoints = [];
 
             for (let i = currentIndex - tailLength + 1; i <= currentIndex; i++) {
@@ -1060,7 +1062,7 @@ var miSrg = (function () {
 
             Object.keys(activePointsBySector).forEach(name => {
                 const points = activePointsBySector[name];
-                const color = indexDataDef[name]["color"];
+                const color = indexData[name]["color"];
 
                 // Tail Path
                 dataGroup.append("path")
@@ -1093,7 +1095,7 @@ var miSrg = (function () {
                     `;
                     })
                     .on("mousemove", function (event) {
-                        const containerRect = rrgChartContainer.getBoundingClientRect();
+                        const containerRect = chartContainer.getBoundingClientRect();
                         const mouseX = event.clientX - containerRect.left;
                         const mouseY = event.clientY - containerRect.top;
                         tooltip.style.left = (mouseX + 15) + "px";
@@ -1165,21 +1167,21 @@ var miSrg = (function () {
         const latestDateStr = masterTimelineArr[masterTimelineArr.length - 1];
 
         let allIndices = {};
-        Object.keys(indexDataDef).forEach(name => {
+        Object.keys(indexData).forEach(name => {
             if (name == benchmarkIdx.id)
                 return;
 
-            allIndices[name] = indexDataDef[name];
+            allIndices[name] = indexData[name];
         });
 
-        Object.keys(indexDataDef).forEach(name => {
+        Object.keys(indexData).forEach(name => {
             // const checkbox = document.getElementById(`chk_${name.replace(/\s+/g, '')}`);
             // datasets[name].findIndex()
             if (name == benchmarkIdx.id)
                 return;
 
-            if (jsu.isNotNull(indexDataDef[name].data)) {
-                let idxData = indexDataDef[name].data[latestDateStr];
+            if (jsu.isNotNull(indexData[name].data)) {
+                let idxData = indexData[name].data[latestDateStr];
 
                 if (jsu.isNotNull(idxData)) {
 
@@ -1200,7 +1202,7 @@ var miSrg = (function () {
             if (benchmarkIdx.id == idxName)
                 return;
 
-            let idxData = indexDataDef[idxName];
+            let idxData = indexData[idxName];
             const safeId = idxData.id.replace(/\s+/g, ''); // removes whitespaces
             let cb = document.getElementById(`tsrRrgIdxChk${safeId}`);
             if (jsu.isNotNull(cb)) {
@@ -1215,17 +1217,16 @@ var miSrg = (function () {
         indicesContainer.innerHTML = "";
         let showIndices = type == "hideAll" ? "" : "checked";
         Object.keys(activeIndices).forEach(idxName => {
-            let idxData = indexDataDef[idxName];
+            let idxData = indexData[idxName];
             const safeId = idxData.id.replace(/\s+/g, ''); // removes whitespaces
             const item = document.createElement("div");
             item.className = "w-100 d-flex align-items-center justify-content-between p-2 rounded rrg-sector-item border bg-white";
             if (!idxData.pr || (idxData.pr && isPrUser())) { // enabled index
 
-
-
-                let heatmapUrl = jsu.getBaseUrl() + `/Screener/Markets/HeatMap/${idxName}Index`;
-                let idxAnalysisUrl = jsu.getBaseUrl() + `/Screener/Markets/IndexAnalysis/${idxName}`;
+                let heatmapUrl = `https://www.topstockresearch.com/rt/Screener/Markets/HeatMap/${idxName}Index`;
+                let idxAnalysisUrl = `https://www.topstockresearch.com/rt/Screener/Markets/IndexAnalysis/${idxName}`;
                 // let chartUrl = ""
+                // let stockList = ""; // TODO
 
                 item.innerHTML = `
     
@@ -1238,15 +1239,16 @@ var miSrg = (function () {
                                 </label>
                             </div>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="${heatmapUrl}" target="_blank" type="button" class="tsr-rrg-action-btn" title="Heatmap" ><i class="fas fa-th"></i></a>
-                                <a href="${idxAnalysisUrl}" target="_blank" type="button" class="tsr-rrg-action-btn" title="Index Analysis" ><i class="fas fa-chart-pie"></i></a>
-                                <a type="button" class="tsr-rrg-action-btn" onclick="miSrg.pc('${idxName}')" ><i class="fas fa-chart-line" title="Chart"></i></a>
+                                <a href="" target="_blank" type="button" class="tsr-rrg-action-btn" title="Heatmap" ><i class="fas fa-th"></i></a>
+                                <a href="" target="_blank" type="button" class="tsr-rrg-action-btn" title="Index Analysis" ><i class="fas fa-chart-pie"></i></a>
+                                <a type="button" class="tsr-rrg-action-btn" onclick="${drawInlineChart(idxName)}" ><i class="fas fa-chart-line" title="Chart"></i></a>
                             </div>
                                 
                         </div>
                                 
                                 `;
-
+                // TODO
+                // <a href="" target="_blank"  type="button" class="tsr-rrg-action-btn" ><i class="fas fa-list" title="Stock list" ></i></a> 
             } else { // disabled index
                 item.innerHTML = `
                     <div class="form-check mb-0">
@@ -1272,86 +1274,17 @@ var miSrg = (function () {
         renderChart();
     }
 
-    // TODO fix chart
-    function paintChart(idxName) {
+    // TODO
+    function drawInlineChart(idxName) {
+        // NIFTY = benchmarkIdx;
+        // defStk = { name: NIFTY["id"], code: NIFTY["code"], scId: NIFTY["scId"], ecId: NIFTY["ecId"] };
 
-        let tick = tickSelect.value;
-        let period = periodSelect.value;
-        json = { freq: tick, cf: tick, period: period };
-
-        let html = "";
-        html += `<div class="card p-3">`
-        html += `
+        // myTsrChartInit.init(defStk, json, chartType);
+        // jPlist = [{ id: 'tp' }];
+        // let currIdx = indexData[idxName];
 
 
-            <div id='Html5'>
-
-                <div id='chartPanel' class="chartPanel">
-
-                    <div id="chartFocus" style="margin:1px ; padding:1px; height:1px;width:1px" tabindex='1'></div>
-
-                    <div id='NewChartSettingDiv' class='ch_root_sel_indi miCtrl'></div>
-
-                    <div id='chSettingsPopup' class='ch_settings_popup miCtrl'></div>
-
-
-                    <div id='chartControls'></div>
-
-                    <div id='chartLoading'></div>
-
-                    <div id='chartFeedBack' style='text-align:center'></div>
-
-                    <div id='panel' align='center'>
-
-                    </div>
-
-                    <div id='selectedValues' align='center'
-                        style='padding:0px;margin:3px; font-size: 8pt;height:12px; white-space:nowrap '> </div>
-
-                    <div id='settingsDiv' style='padding:0px;margin:0px;'> </div>
-
-                    <div id='chartWrap'>
-
-                        <div id='tsrchart' style="font-size:10px;width:100%">
-                            <div style="height: 50px; width: 50px;">
-                                <img src="${gifUrl}" title="loading"></img>
-                            </div>    
-                        </div>
-
-                    </div>
-
-
-                    <div id="chart_dialog" class="cc_dialog miCtrl">
-
-
-                    </div>
-
-                    <div id='imgDiv'> </div>
-
-                </div>
-
-            </div>
-        `;
-
-        html += ` </div>`
-
-        sectorChartContainer.innerHTML = html;
-
-        if (scrollTo) {
-            htmlU.focusToDiv('tsrRrgSectorChartContainer');
-        }
-
-        NIFTY = benchmarkIdx;
-        defStk = { name: NIFTY["id"], code: NIFTY["code"], scId: NIFTY["scId"], ecId: NIFTY["ecId"] };
-
-        let chartType = 'inline';
-        myTsrChartInit.init(defStk, json, chartType);
-        // var jPlist = [{ id: 'tp' }, { id: stock["id"], name: stock["name"], code: stock["code"], scId: stock["scId"], ecId: stock["ecId"] }];
-        jPlist = [{ id: 'tp' }];
-
-        let currIdx = indexDataDef[idxName];
-        jPlist.push(currIdx);
-        javascript: ptia.ca(chartType, 'ignore');
+        // javascript: ptia.ca(chartType, 'ignore');
     }
 
 
@@ -1360,466 +1293,477 @@ var miSrg = (function () {
 
 
 
-    // var width, height;
-    // var margin = { top: 10, right: 70, bottom: 20, left: 60 }
+    var width, height;
+    var margin = { top: 10, right: 70, bottom: 20, left: 60 }
 
-    // var sectorSelect = document.getElementById("tsrRrgSectorSelect");
-    // function test() {
+    var sectorSelect = document.getElementById("tsrRrgSectorSelect");
+    function test() {
 
-    //     populateSectorSelect();
+        populateSectorSelect();
 
-    //     drawPriceChart();
-    //     drawRsChart();
-    //     drawRrgValChart();
-    //     // draw price chart
-    //     // draw rs chart
-    //     // draw rs ratio and rs momentum chart
+        drawPriceChart();
+        drawRsChart();
+        drawRrgValChart();
+        // draw price chart
+        // draw rs chart
+        // draw rs ratio and rs momentum chart
+    }
+
+    function populateSectorSelect() {
+
+        let html = "";
+        Object.keys(indexData).forEach((idxName) => {
+            if (benchmarkIdx.id == idxName) {
+                return;
+            }
+            let idxData = indexData[idxName];
+            html += `<option val="${idxData.id}">${idxName}</option>`
+        })
+
+        sectorSelect.innerHTML = html;
+        sectorSelect.addEventListener("change", function () {
+            drawPriceChart();
+            drawRsChart();
+            drawRrgValChart();
+        })
+    }
+
+
+    function setDimentions(params, div) {
+        // width =  mintJsUtil.isNull(params.width) ? 300 : params.width ;
+        // height = mintJsUtil.isNull(params.height) ? 300 : params.height ;
+
+        width = div.width() - 100;
+        smallDimention = width < 500 ? true : false;
+
+        if (smallDimention) {
+            margin.left = 5;
+            margin.right = 5;
+            margin.top = 5;
+            margin.bottom = 35;
+        }
+
+        width = div.width() - margin.left - margin.right;
+
+
+        if (window.innerHeight < div.height()) {
+            height = window.innerHeight - margin.top - margin.bottom - 50;;
+        } else {
+            height = div.height() - margin.top - margin.bottom;
+        }
+    }
+
+
+    // Shared Helper Function to Create Chart Tooltip Container
+    function getOrCreateChartTooltip() {
+        let tooltip = d3.select("#tsrChartTooltip");
+        if (tooltip.empty()) {
+            tooltip = d3.select("body").append("div")
+                .attr("id", "tsrChartTooltip")
+                .attr("class", "position-absolute bg-dark text-white p-2 rounded shadow-sm")
+                .style("display", "none")
+                .style("pointer-events", "none")
+                .style("z-index", "1000")
+                .style("font-size", "11px")
+                .style("font-family", "Segoe UI, sans-serif");
+        }
+        return tooltip;
+    }
+
+    function drawPriceChart() {
+        var testChartId = "testRrgPriceChartContainer";
+        var div = $('#' + testChartId);
+        div.empty();
+
+        setDimentions(null, div);
+
+        let selIdx = sectorSelect.value;
+        let data = [];
+
+        let idxData = indexData[selIdx].data;
+        Object.keys(idxData).forEach((date) => {
+            let dateKeys = Array.from(masterTimeline);
+            if (dateKeys.includes(date)) {
+                let valObj = idxData[date];
+                if (valObj && valObj.close !== undefined) {
+                    data.push({ Date: parseDateString(date), close: valObj.close, dateStr: date });
+                }
+            }
+        });
+
+        if (data.length === 0) return;
+
+        // Ranges & Scales
+        var x = d3.scaleTime().range([0, width]).domain(d3.extent(data, d => d.Date));
+        var yMin = d3.min(data, d => d.close);
+        var yMax = d3.max(data, d => d.close);
+        var yPadding = (yMax - yMin) * 0.05;
+        var y = d3.scaleLinear().range([height, 0]).domain([yMin - yPadding, yMax + yPadding]);
+
+        var svg = d3.select("#" + testChartId).append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        // Title
+        svg.append("text")
+            .attr("x", 0)
+            .attr("y", -10)
+            .attr("font-weight", "700")
+            .attr("font-size", "13px")
+            .attr("fill", "#1e293b")
+            .text("Price Chart (" + selIdx + ")");
+
+        // Background Grid
+        svg.append("g")
+            .attr("class", "grid-lines")
+            .call(d3.axisLeft(y).ticks(5).tickSize(-width).tickFormat(""))
+            .call(g => g.selectAll(".tick line").attr("stroke", "#f1f5f9"))
+            .call(g => g.select(".domain").remove());
+
+        // Gradient Fill
+        var gradient = svg.append("defs")
+            .append("linearGradient")
+            .attr("id", "price-gradient")
+            .attr("x1", "0%").attr("y1", "0%")
+            .attr("x2", "0%").attr("y2", "100%");
+        gradient.append("stop").attr("offset", "0%").attr("stop-color", "#2563eb").attr("stop-opacity", 0.2);
+        gradient.append("stop").attr("offset", "100%").attr("stop-color", "#2563eb").attr("stop-opacity", 0);
+
+        var area = d3.area()
+            .x(d => x(d.Date))
+            .y0(height)
+            .y1(d => y(d.close))
+            .curve(d3.curveMonotoneX);
+
+        svg.append("path").datum(data).attr("fill", "url(#price-gradient)").attr("d", area);
+
+        // Price Line
+        var valueline = d3.line()
+            .x(d => x(d.Date))
+            .y(d => y(d.close))
+            .curve(d3.curveMonotoneX);
+
+        svg.append("path").datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "#2563eb")
+            .attr("stroke-width", 2)
+            .attr("d", valueline);
+
+        // Axes
+        var xAxis = d3.axisBottom(x).ticks(6).tickFormat(d3.timeFormat("%b %Y"));
+        var yAxis = d3.axisLeft(y).ticks(5).tickFormat(d3.format(",.1f"));
+
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
+            .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
+
+        svg.append("g")
+            .call(yAxis)
+            .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
+            .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
+
+        // Hover Interaction
+        addHoverInteraction(svg, data, x, y, width, height, margin, [
+            { key: "close", label: "Close", color: "#2563eb" }
+        ]);
+    }
+
+    function drawRsChart() {
+        var testChartId = "testRrgRsChartContainer";
+        var div = $('#' + testChartId);
+        div.empty();
+
+        setDimentions(null, div);
+
+        let selIdx = sectorSelect.value;
+        let data = [];
+        let dateKeys = Array.from(masterTimeline);
+
+        let idxData = indexData[selIdx].data;
+        Object.keys(idxData).forEach((date) => {
+            if (dateKeys.includes(date)) {
+                let valObj = idxData[date];
+                if (valObj && valObj.rs !== undefined) {
+                    data.push({ Date: parseDateString(date), rs: valObj.rs, dateStr: date });
+                }
+            }
+        });
+
+        if (data.length === 0) return;
+
+        var x = d3.scaleTime().range([0, width]).domain(d3.extent(data, d => d.Date));
+        var yMin = d3.min(data, d => d.rs);
+        var yMax = d3.max(data, d => d.rs);
+        var yPadding = (yMax - yMin) * 0.05;
+        var y = d3.scaleLinear().range([height, 0]).domain([yMin - yPadding, yMax + yPadding]);
+
+        var svg = d3.select("#" + testChartId).append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        // Title
+        svg.append("text")
+            .attr("x", 0)
+            .attr("y", -10)
+            .attr("font-weight", "700")
+            .attr("font-size", "13px")
+            .attr("fill", "#1e293b")
+            .text("Relative Strength vs Benchmark (" + selIdx + ")");
+
+        // Background Grid
+        svg.append("g")
+            .attr("class", "grid-lines")
+            .call(d3.axisLeft(y).ticks(5).tickSize(-width).tickFormat(""))
+            .call(g => g.selectAll(".tick line").attr("stroke", "#f1f5f9"))
+            .call(g => g.select(".domain").remove());
+
+        // Gradient Fill
+        var gradient = svg.append("defs")
+            .append("linearGradient")
+            .attr("id", "rs-gradient")
+            .attr("x1", "0%").attr("y1", "0%")
+            .attr("x2", "0%").attr("y2", "100%");
+        gradient.append("stop").attr("offset", "0%").attr("stop-color", "#8b5cf6").attr("stop-opacity", 0.2);
+        gradient.append("stop").attr("offset", "100%").attr("stop-color", "#8b5cf6").attr("stop-opacity", 0);
+
+        var area = d3.area()
+            .x(d => x(d.Date))
+            .y0(height)
+            .y1(d => y(d.rs))
+            .curve(d3.curveMonotoneX);
+
+        svg.append("path").datum(data).attr("fill", "url(#rs-gradient)").attr("d", area);
+
+        // RS Line
+        var valueline = d3.line()
+            .x(d => x(d.Date))
+            .y(d => y(d.rs))
+            .curve(d3.curveMonotoneX);
+
+        svg.append("path").datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "#8b5cf6")
+            .attr("stroke-width", 2)
+            .attr("d", valueline);
+
+        // Axes
+        var xAxis = d3.axisBottom(x).ticks(6).tickFormat(d3.timeFormat("%b %Y"));
+        var yAxis = d3.axisLeft(y).ticks(5).tickFormat(d3.format(".3f"));
+
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
+            .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
+
+        svg.append("g")
+            .call(yAxis)
+            .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
+            .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
+
+        addHoverInteraction(svg, data, x, y, width, height, margin, [
+            { key: "rs", label: "RS", color: "#8b5cf6" }
+        ]);
+    }
+
+    function drawRrgValChart() {
+        var testChartId = "testRrgRRGValMomChartContainer";
+        var div = $('#' + testChartId);
+        div.empty();
+
+        setDimentions(null, div);
+
+        let selIdx = sectorSelect.value;
+        let data = [];
+
+        let dateKeys = Array.from(masterTimeline);
+
+        let idxData = indexData[selIdx].data;
+        Object.keys(idxData).forEach((date) => {
+            if (dateKeys.includes(date)) {
+                let valObj = idxData[date];
+                if (valObj && valObj.rsRatio !== undefined && valObj.rsMomentum !== undefined) {
+                    data.push({
+                        Date: parseDateString(date),
+                        rsRatio: valObj.rsRatio,
+                        rsMomentum: valObj.rsMomentum,
+                        dateStr: date
+                    });
+                }
+            }
+        });
+
+        if (data.length === 0) return;
+
+        var x = d3.scaleTime().range([0, width]).domain(d3.extent(data, d => d.Date));
+
+        // Combine min and max of both metrics to scale Y properly
+        var allVals = data.map(d => d.rsRatio).concat(data.map(d => d.rsMomentum));
+        var yMin = d3.min(allVals);
+        var yMax = d3.max(allVals);
+        var yPadding = (yMax - yMin) * 0.08;
+        var y = d3.scaleLinear().range([height, 0]).domain([yMin - yPadding, yMax + yPadding]);
+
+        var svg = d3.select("#" + testChartId).append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        // Title
+        svg.append("text")
+            .attr("x", 0)
+            .attr("y", -10)
+            .attr("font-weight", "700")
+            .attr("font-size", "13px")
+            .attr("fill", "#1e293b")
+            .text("JdK RS-Ratio & RS-Momentum (" + selIdx + ")");
+
+        // Background Grid
+        svg.append("g")
+            .attr("class", "grid-lines")
+            .call(d3.axisLeft(y).ticks(5).tickSize(-width).tickFormat(""))
+            .call(g => g.selectAll(".tick line").attr("stroke", "#f1f5f9"))
+            .call(g => g.select(".domain").remove());
+
+        // Center Reference Line at 100 Baseline
+        if (yMin <= 100 && yMax >= 100) {
+            svg.append("line")
+                .attr("x1", 0)
+                .attr("x2", width)
+                .attr("y1", y(100))
+                .attr("y2", y(100))
+                .attr("stroke", "#94a3b8")
+                .attr("stroke-dasharray", "4,4")
+                .attr("stroke-width", 1.2);
+        }
+
+        // Lines Generator
+        var lineRatio = d3.line()
+            .x(d => x(d.Date))
+            .y(d => y(d.rsRatio))
+            .curve(d3.curveMonotoneX);
+
+        var lineMomentum = d3.line()
+            .x(d => x(d.Date))
+            .y(d => y(d.rsMomentum))
+            .curve(d3.curveMonotoneX);
+
+        // Draw Lines
+        svg.append("path").datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "#16a34a") // Green for RS-Ratio
+            .attr("stroke-width", 2)
+            .attr("d", lineRatio);
+
+        svg.append("path").datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "#dc2626") // Red for RS-Momentum
+            .attr("stroke-width", 2)
+            .attr("d", lineMomentum);
+
+        // Legend
+        var legend = svg.append("g").attr("transform", `translate(${width - 160}, -12)`);
+        legend.append("rect").attr("x", 0).attr("y", 0).attr("width", 10).attr("height", 10).attr("fill", "#16a34a").attr("rx", 2);
+        legend.append("text").attr("x", 15).attr("y", 9).attr("font-size", "10px").attr("fill", "#475569").attr("font-weight", "600").text("RS-Ratio");
+
+        legend.append("rect").attr("x", 80).attr("y", 0).attr("width", 10).attr("height", 10).attr("fill", "#dc2626").attr("rx", 2);
+        legend.append("text").attr("x", 95).attr("y", 9).attr("font-size", "10px").attr("fill", "#475569").attr("font-weight", "600").text("RS-Momentum");
+
+        // Axes
+        var xAxis = d3.axisBottom(x).ticks(6).tickFormat(d3.timeFormat("%b %Y"));
+        var yAxis = d3.axisLeft(y).ticks(5).tickFormat(d3.format(".1f"));
+
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
+            .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
+
+        svg.append("g")
+            .call(yAxis)
+            .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
+            .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
+
+        addHoverInteraction(svg, data, x, y, width, height, margin, [
+            { key: "rsRatio", label: "RS-Ratio", color: "#16a34a" },
+            { key: "rsMomentum", label: "RS-Momentum", color: "#dc2626" }
+        ]);
+    }
+
+    // Universal Mouse Hover & Tooltip Handler
+    function addHoverInteraction(svg, data, xScale, yScale, width, height, margin, metrics) {
+        const tooltip = getOrCreateChartTooltip();
+
+        const focusLine = svg.append("line")
+            .attr("y1", 0)
+            .attr("y2", height)
+            .attr("stroke", "#94a3b8")
+            .attr("stroke-dasharray", "3,3")
+            .style("display", "none");
+
+        const overlay = svg.append("rect")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("fill", "transparent")
+            .style("cursor", "crosshair");
+
+        overlay
+            .on("mousemove", function (event) {
+                const mouseX = d3.pointer(event, this)[0];
+                const xDate = xScale.invert(mouseX);
+                const bisect = d3.bisector(d => d.Date).left;
+                const i = bisect(data, xDate, 1);
+                const d0 = data[i - 1];
+                const d1 = data[i];
+                const d = (d1 && (xDate - d0.Date > d1.Date - xDate)) ? d1 : d0;
+
+                if (d) {
+                    focusLine.style("display", "block").attr("x1", xScale(d.Date)).attr("x2", xScale(d.Date));
+
+                    let tooltipHtml = `<div class="fw-bold border-bottom pb-1 mb-1 text-info">${d.dateStr}</div>`;
+                    metrics.forEach(m => {
+                        let val = d[m.key] !== undefined ? d[m.key].toFixed(2) : "N/A";
+                        tooltipHtml += `<div><span style="color:${m.color};"></span> ${m.label}: <b>${val}</b></div>`;
+                    });
+
+                    tooltip.style("display", "block")
+                        .html(tooltipHtml)
+                        .style("left", (event.pageX + 15) + "px")
+                        .style("top", (event.pageY - 28) + "px");
+                }
+            })
+            .on("mouseout", function () {
+                focusLine.style("display", "none");
+                tooltip.style("display", "none");
+            });
+    }
+
+
+    // TODO remove before release
+    // function getIndexData(tick, period) {
+    //     // tickSelect.value = tick;
+    //     // periodSelect.value = period;
+
+    //     // userAction('init');
+    //     // setTimeout(() => {
+    //     //     processData();
+    //     // }, 2000);
+
+    //     return indexData;
+    //     // init();
     // }
-
-    // function populateSectorSelect() {
-
-    //     let html = "";
-    //     Object.keys(indexDataDef).forEach((idxName) => {
-    //         if (benchmarkIdx.id == idxName) {
-    //             return;
-    //         }
-    //         let idxData = indexDataDef[idxName];
-    //         html += `<option val="${idxData.id}">${idxName}</option>`
-    //     })
-
-    //     sectorSelect.innerHTML = html;
-    //     sectorSelect.addEventListener("change", function () {
-    //         drawPriceChart();
-    //         drawRsChart();
-    //         drawRrgValChart();
-    //     })
-    // }
-
-
-    // function setDimentions(params, div) {
-    //     // width =  mintJsUtil.isNull(params.width) ? 300 : params.width ;
-    //     // height = mintJsUtil.isNull(params.height) ? 300 : params.height ;
-
-    //     width = div.width() - 100;
-    //     smallDimention = width < 500 ? true : false;
-
-    //     if (smallDimention) {
-    //         margin.left = 5;
-    //         margin.right = 5;
-    //         margin.top = 5;
-    //         margin.bottom = 35;
-    //     }
-
-    //     width = div.width() - margin.left - margin.right;
-
-
-    //     if (window.innerHeight < div.height()) {
-    //         height = window.innerHeight - margin.top - margin.bottom - 50;;
-    //     } else {
-    //         height = div.height() - margin.top - margin.bottom;
-    //     }
-    // }
-
-
-    // // Shared Helper Function to Create Chart Tooltip Container
-    // function getOrCreateChartTooltip() {
-    //     let tooltip = d3.select("#tsrChartTooltip");
-    //     if (tooltip.empty()) {
-    //         tooltip = d3.select("body").append("div")
-    //             .attr("id", "tsrChartTooltip")
-    //             .attr("class", "position-absolute bg-dark text-white p-2 rounded shadow-sm")
-    //             .style("display", "none")
-    //             .style("pointer-events", "none")
-    //             .style("z-index", "1000")
-    //             .style("font-size", "11px")
-    //             .style("font-family", "Segoe UI, sans-serif");
-    //     }
-    //     return tooltip;
-    // }
-
-    // function drawPriceChart() {
-    //     var testChartId = "testRrgPriceChartContainer";
-    //     var div = $('#' + testChartId);
-    //     div.empty();
-
-    //     setDimentions(null, div);
-
-    //     let selIdx = sectorSelect.value;
-    //     let data = [];
-
-    //     let idxData = indexDataDef[selIdx].data;
-    //     Object.keys(idxData).forEach((date) => {
-    //         let dateKeys = Array.from(masterTimeline);
-    //         if (dateKeys.includes(date)) {
-    //             let valObj = idxData[date];
-    //             if (valObj && valObj.close !== undefined) {
-    //                 data.push({ Date: parseDateString(date), close: valObj.close, dateStr: date });
-    //             }
-    //         }
-    //     });
-
-    //     if (data.length === 0) return;
-
-    //     // Ranges & Scales
-    //     var x = d3.scaleTime().range([0, width]).domain(d3.extent(data, d => d.Date));
-    //     var yMin = d3.min(data, d => d.close);
-    //     var yMax = d3.max(data, d => d.close);
-    //     var yPadding = (yMax - yMin) * 0.05;
-    //     var y = d3.scaleLinear().range([height, 0]).domain([yMin - yPadding, yMax + yPadding]);
-
-    //     var svg = d3.select("#" + testChartId).append("svg")
-    //         .attr("width", width + margin.left + margin.right)
-    //         .attr("height", height + margin.top + margin.bottom)
-    //         .append("g")
-    //         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    //     // Title
-    //     svg.append("text")
-    //         .attr("x", 0)
-    //         .attr("y", -10)
-    //         .attr("font-weight", "700")
-    //         .attr("font-size", "13px")
-    //         .attr("fill", "#1e293b")
-    //         .text("Price Chart (" + selIdx + ")");
-
-    //     // Background Grid
-    //     svg.append("g")
-    //         .attr("class", "grid-lines")
-    //         .call(d3.axisLeft(y).ticks(5).tickSize(-width).tickFormat(""))
-    //         .call(g => g.selectAll(".tick line").attr("stroke", "#f1f5f9"))
-    //         .call(g => g.select(".domain").remove());
-
-    //     // Gradient Fill
-    //     var gradient = svg.append("defs")
-    //         .append("linearGradient")
-    //         .attr("id", "price-gradient")
-    //         .attr("x1", "0%").attr("y1", "0%")
-    //         .attr("x2", "0%").attr("y2", "100%");
-    //     gradient.append("stop").attr("offset", "0%").attr("stop-color", "#2563eb").attr("stop-opacity", 0.2);
-    //     gradient.append("stop").attr("offset", "100%").attr("stop-color", "#2563eb").attr("stop-opacity", 0);
-
-    //     var area = d3.area()
-    //         .x(d => x(d.Date))
-    //         .y0(height)
-    //         .y1(d => y(d.close))
-    //         .curve(d3.curveMonotoneX);
-
-    //     svg.append("path").datum(data).attr("fill", "url(#price-gradient)").attr("d", area);
-
-    //     // Price Line
-    //     var valueline = d3.line()
-    //         .x(d => x(d.Date))
-    //         .y(d => y(d.close))
-    //         .curve(d3.curveMonotoneX);
-
-    //     svg.append("path").datum(data)
-    //         .attr("fill", "none")
-    //         .attr("stroke", "#2563eb")
-    //         .attr("stroke-width", 2)
-    //         .attr("d", valueline);
-
-    //     // Axes
-    //     var xAxis = d3.axisBottom(x).ticks(6).tickFormat(d3.timeFormat("%b %Y"));
-    //     var yAxis = d3.axisLeft(y).ticks(5).tickFormat(d3.format(",.1f"));
-
-    //     svg.append("g")
-    //         .attr("transform", "translate(0," + height + ")")
-    //         .call(xAxis)
-    //         .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
-    //         .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
-
-    //     svg.append("g")
-    //         .call(yAxis)
-    //         .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
-    //         .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
-
-    //     // Hover Interaction
-    //     addHoverInteraction(svg, data, x, y, width, height, margin, [
-    //         { key: "close", label: "Close", color: "#2563eb" }
-    //     ]);
-    // }
-
-    // function drawRsChart() {
-    //     var testChartId = "testRrgRsChartContainer";
-    //     var div = $('#' + testChartId);
-    //     div.empty();
-
-    //     setDimentions(null, div);
-
-    //     let selIdx = sectorSelect.value;
-    //     let data = [];
-    //     let dateKeys = Array.from(masterTimeline);
-
-    //     let idxData = indexDataDef[selIdx].data;
-    //     Object.keys(idxData).forEach((date) => {
-    //         if (dateKeys.includes(date)) {
-    //             let valObj = idxData[date];
-    //             if (valObj && valObj.rs !== undefined) {
-    //                 data.push({ Date: parseDateString(date), rs: valObj.rs, dateStr: date });
-    //             }
-    //         }
-    //     });
-
-    //     if (data.length === 0) return;
-
-    //     var x = d3.scaleTime().range([0, width]).domain(d3.extent(data, d => d.Date));
-    //     var yMin = d3.min(data, d => d.rs);
-    //     var yMax = d3.max(data, d => d.rs);
-    //     var yPadding = (yMax - yMin) * 0.05;
-    //     var y = d3.scaleLinear().range([height, 0]).domain([yMin - yPadding, yMax + yPadding]);
-
-    //     var svg = d3.select("#" + testChartId).append("svg")
-    //         .attr("width", width + margin.left + margin.right)
-    //         .attr("height", height + margin.top + margin.bottom)
-    //         .append("g")
-    //         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    //     // Title
-    //     svg.append("text")
-    //         .attr("x", 0)
-    //         .attr("y", -10)
-    //         .attr("font-weight", "700")
-    //         .attr("font-size", "13px")
-    //         .attr("fill", "#1e293b")
-    //         .text("Relative Strength vs Benchmark (" + selIdx + ")");
-
-    //     // Background Grid
-    //     svg.append("g")
-    //         .attr("class", "grid-lines")
-    //         .call(d3.axisLeft(y).ticks(5).tickSize(-width).tickFormat(""))
-    //         .call(g => g.selectAll(".tick line").attr("stroke", "#f1f5f9"))
-    //         .call(g => g.select(".domain").remove());
-
-    //     // Gradient Fill
-    //     var gradient = svg.append("defs")
-    //         .append("linearGradient")
-    //         .attr("id", "rs-gradient")
-    //         .attr("x1", "0%").attr("y1", "0%")
-    //         .attr("x2", "0%").attr("y2", "100%");
-    //     gradient.append("stop").attr("offset", "0%").attr("stop-color", "#8b5cf6").attr("stop-opacity", 0.2);
-    //     gradient.append("stop").attr("offset", "100%").attr("stop-color", "#8b5cf6").attr("stop-opacity", 0);
-
-    //     var area = d3.area()
-    //         .x(d => x(d.Date))
-    //         .y0(height)
-    //         .y1(d => y(d.rs))
-    //         .curve(d3.curveMonotoneX);
-
-    //     svg.append("path").datum(data).attr("fill", "url(#rs-gradient)").attr("d", area);
-
-    //     // RS Line
-    //     var valueline = d3.line()
-    //         .x(d => x(d.Date))
-    //         .y(d => y(d.rs))
-    //         .curve(d3.curveMonotoneX);
-
-    //     svg.append("path").datum(data)
-    //         .attr("fill", "none")
-    //         .attr("stroke", "#8b5cf6")
-    //         .attr("stroke-width", 2)
-    //         .attr("d", valueline);
-
-    //     // Axes
-    //     var xAxis = d3.axisBottom(x).ticks(6).tickFormat(d3.timeFormat("%b %Y"));
-    //     var yAxis = d3.axisLeft(y).ticks(5).tickFormat(d3.format(".3f"));
-
-    //     svg.append("g")
-    //         .attr("transform", "translate(0," + height + ")")
-    //         .call(xAxis)
-    //         .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
-    //         .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
-
-    //     svg.append("g")
-    //         .call(yAxis)
-    //         .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
-    //         .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
-
-    //     addHoverInteraction(svg, data, x, y, width, height, margin, [
-    //         { key: "rs", label: "RS", color: "#8b5cf6" }
-    //     ]);
-    // }
-
-    // function drawRrgValChart() {
-    //     var testChartId = "testRrgRRGValMomChartContainer";
-    //     var div = $('#' + testChartId);
-    //     div.empty();
-
-    //     setDimentions(null, div);
-
-    //     let selIdx = sectorSelect.value;
-    //     let data = [];
-
-    //     let dateKeys = Array.from(masterTimeline);
-
-    //     let idxData = indexDataDef[selIdx].data;
-    //     Object.keys(idxData).forEach((date) => {
-    //         if (dateKeys.includes(date)) {
-    //             let valObj = idxData[date];
-    //             if (valObj && valObj.rsRatio !== undefined && valObj.rsMomentum !== undefined) {
-    //                 data.push({
-    //                     Date: parseDateString(date),
-    //                     rsRatio: valObj.rsRatio,
-    //                     rsMomentum: valObj.rsMomentum,
-    //                     dateStr: date
-    //                 });
-    //             }
-    //         }
-    //     });
-
-    //     if (data.length === 0) return;
-
-    //     var x = d3.scaleTime().range([0, width]).domain(d3.extent(data, d => d.Date));
-
-    //     // Combine min and max of both metrics to scale Y properly
-    //     var allVals = data.map(d => d.rsRatio).concat(data.map(d => d.rsMomentum));
-    //     var yMin = d3.min(allVals);
-    //     var yMax = d3.max(allVals);
-    //     var yPadding = (yMax - yMin) * 0.08;
-    //     var y = d3.scaleLinear().range([height, 0]).domain([yMin - yPadding, yMax + yPadding]);
-
-    //     var svg = d3.select("#" + testChartId).append("svg")
-    //         .attr("width", width + margin.left + margin.right)
-    //         .attr("height", height + margin.top + margin.bottom)
-    //         .append("g")
-    //         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    //     // Title
-    //     svg.append("text")
-    //         .attr("x", 0)
-    //         .attr("y", -10)
-    //         .attr("font-weight", "700")
-    //         .attr("font-size", "13px")
-    //         .attr("fill", "#1e293b")
-    //         .text("JdK RS-Ratio & RS-Momentum (" + selIdx + ")");
-
-    //     // Background Grid
-    //     svg.append("g")
-    //         .attr("class", "grid-lines")
-    //         .call(d3.axisLeft(y).ticks(5).tickSize(-width).tickFormat(""))
-    //         .call(g => g.selectAll(".tick line").attr("stroke", "#f1f5f9"))
-    //         .call(g => g.select(".domain").remove());
-
-    //     // Center Reference Line at 100 Baseline
-    //     if (yMin <= 100 && yMax >= 100) {
-    //         svg.append("line")
-    //             .attr("x1", 0)
-    //             .attr("x2", width)
-    //             .attr("y1", y(100))
-    //             .attr("y2", y(100))
-    //             .attr("stroke", "#94a3b8")
-    //             .attr("stroke-dasharray", "4,4")
-    //             .attr("stroke-width", 1.2);
-    //     }
-
-    //     // Lines Generator
-    //     var lineRatio = d3.line()
-    //         .x(d => x(d.Date))
-    //         .y(d => y(d.rsRatio))
-    //         .curve(d3.curveMonotoneX);
-
-    //     var lineMomentum = d3.line()
-    //         .x(d => x(d.Date))
-    //         .y(d => y(d.rsMomentum))
-    //         .curve(d3.curveMonotoneX);
-
-    //     // Draw Lines
-    //     svg.append("path").datum(data)
-    //         .attr("fill", "none")
-    //         .attr("stroke", "#16a34a") // Green for RS-Ratio
-    //         .attr("stroke-width", 2)
-    //         .attr("d", lineRatio);
-
-    //     svg.append("path").datum(data)
-    //         .attr("fill", "none")
-    //         .attr("stroke", "#dc2626") // Red for RS-Momentum
-    //         .attr("stroke-width", 2)
-    //         .attr("d", lineMomentum);
-
-    //     // Legend
-    //     var legend = svg.append("g").attr("transform", `translate(${width - 160}, -12)`);
-    //     legend.append("rect").attr("x", 0).attr("y", 0).attr("width", 10).attr("height", 10).attr("fill", "#16a34a").attr("rx", 2);
-    //     legend.append("text").attr("x", 15).attr("y", 9).attr("font-size", "10px").attr("fill", "#475569").attr("font-weight", "600").text("RS-Ratio");
-
-    //     legend.append("rect").attr("x", 80).attr("y", 0).attr("width", 10).attr("height", 10).attr("fill", "#dc2626").attr("rx", 2);
-    //     legend.append("text").attr("x", 95).attr("y", 9).attr("font-size", "10px").attr("fill", "#475569").attr("font-weight", "600").text("RS-Momentum");
-
-    //     // Axes
-    //     var xAxis = d3.axisBottom(x).ticks(6).tickFormat(d3.timeFormat("%b %Y"));
-    //     var yAxis = d3.axisLeft(y).ticks(5).tickFormat(d3.format(".1f"));
-
-    //     svg.append("g")
-    //         .attr("transform", "translate(0," + height + ")")
-    //         .call(xAxis)
-    //         .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
-    //         .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
-
-    //     svg.append("g")
-    //         .call(yAxis)
-    //         .call(g => g.select(".domain").attr("stroke", "#cbd5e1"))
-    //         .call(g => g.selectAll(".tick text").attr("fill", "#64748b").style("font-size", "10px"));
-
-    //     addHoverInteraction(svg, data, x, y, width, height, margin, [
-    //         { key: "rsRatio", label: "RS-Ratio", color: "#16a34a" },
-    //         { key: "rsMomentum", label: "RS-Momentum", color: "#dc2626" }
-    //     ]);
-    // }
-
-    // // Universal Mouse Hover & Tooltip Handler
-    // function addHoverInteraction(svg, data, xScale, yScale, width, height, margin, metrics) {
-    //     const tooltip = getOrCreateChartTooltip();
-
-    //     const focusLine = svg.append("line")
-    //         .attr("y1", 0)
-    //         .attr("y2", height)
-    //         .attr("stroke", "#94a3b8")
-    //         .attr("stroke-dasharray", "3,3")
-    //         .style("display", "none");
-
-    //     const overlay = svg.append("rect")
-    //         .attr("width", width)
-    //         .attr("height", height)
-    //         .attr("fill", "transparent")
-    //         .style("cursor", "crosshair");
-
-    //     overlay
-    //         .on("mousemove", function (event) {
-    //             const mouseX = d3.pointer(event, this)[0];
-    //             const xDate = xScale.invert(mouseX);
-    //             const bisect = d3.bisector(d => d.Date).left;
-    //             const i = bisect(data, xDate, 1);
-    //             const d0 = data[i - 1];
-    //             const d1 = data[i];
-    //             const d = (d1 && (xDate - d0.Date > d1.Date - xDate)) ? d1 : d0;
-
-    //             if (d) {
-    //                 focusLine.style("display", "block").attr("x1", xScale(d.Date)).attr("x2", xScale(d.Date));
-
-    //                 let tooltipHtml = `<div class="fw-bold border-bottom pb-1 mb-1 text-info">${d.dateStr}</div>`;
-    //                 metrics.forEach(m => {
-    //                     let val = d[m.key] !== undefined ? d[m.key].toFixed(2) : "N/A";
-    //                     tooltipHtml += `<div><span style="color:${m.color};"></span> ${m.label}: <b>${val}</b></div>`;
-    //                 });
-
-    //                 tooltip.style("display", "block")
-    //                     .html(tooltipHtml)
-    //                     .style("left", (event.pageX + 15) + "px")
-    //                     .style("top", (event.pageY - 28) + "px");
-    //             }
-    //         })
-    //         .on("mouseout", function () {
-    //             focusLine.style("display", "none");
-    //             tooltip.style("display", "none");
-    //         });
-    // }
-
-
-
 
     return {
         init: init,
         uar: userActionResponse,
-        // test: test,
-        pc: paintChart,
+        test: test,
         // gid: getIndexData,
 
     };

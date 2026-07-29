@@ -1,0 +1,2 @@
+###    Formula:
+    Used Standard jdK formula given in [Benny Thadikaran's RRG project](https://github.com/BennyThadikaran/RRG-Lite/wiki/RS-ratio-and-Momentum-calculations) for calc. Rs-Ratio and Rs-Momentum

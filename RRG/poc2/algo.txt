@@ -1,0 +1,59 @@
+=================================================
+ALGORITHM V1:
+=================================================
+
+START
+
+STEP 1: DEFINE SECTOR[] =
+            SECTOR_OBJ = {
+                "name": "",
+                "dataFileName": "",
+            }[]
+STEP 2: DEFINE BENCHMARK
+STEP 4: DEFINE dateCloseVoMap;
+STEP 3: READ and parse data files of all sectors one by one and store in resp. sectorDateClose MAP. 
+STEP 4: For each sectorDateClose Map, for each date: // Used Map<Sector, Close> instead of closeVo to make it scalable
+            if date exists in dateCloseVoMap 
+                then put sectorClose in resp. closeVo 
+            else
+                then create new closeVo and put <Date, closeVo> in dateCloseVoMap
+STEP 5: For each sector: Calc. R.S.
+
+
+
+Data structure:
+
+[
+    {
+        "date": {
+            "NIFTY": "25000",
+            "NIFTY_IT": "26000",
+            "NIFTY_OIL_GAS": "23000",
+            "NIFTY_PHARMA": "22000",
+            "NIFTY_METALS": "23000",
+            "NIFTY_AUTO": "24000",
+        }
+    }
+]
+
+
+
+
+
+
+=================================================
+ALGORITHM V1 Continued:
+=================================================
+
+STEP 5: For each sector: Calc. RS for each date and store it in a SECTOR_RS[]
+        SECTOR_RS[] =  [
+            "sector": 
+               [
+                    "date": {
+                        rs: "",
+                    },...,
+               ]
+            ]
+        
+STEP 6: For each sector in SECTOR_RS[], for each date calc. ROC and put in SECTOR_RS["sector"]["date].ROC
+STEP 7: For each sector in SECTOR_RS[], for each date calc. RS-Ratio and RS-Momentum and put in SECTOR_RS["sector"]["date].RS-Ratio, SECTOR_RS["sector"]["date].RS-Momentum
