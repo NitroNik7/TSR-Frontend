@@ -188,8 +188,8 @@ var miSrg = (function () {
         });
     }
 
-    function process() {
-        processData();
+    function process(data) {
+        processData(data);
         updateTimelineFilter();
         updateTimelineDateLabel();
         updateTailLabel();
@@ -292,7 +292,7 @@ var miSrg = (function () {
 
             let isPremUser = isPrUser();
             let tick = tickSelect.value;
-            let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/all/${tick}/.csv`;
+            let url = `https://raw.githubusercontent.com/NitroNik7/TSR-Frontend/refs/heads/nitro/RRG/sectorData/all/${tick}.csv`;
 
             $.ajax({
                 url: url,
@@ -302,9 +302,9 @@ var miSrg = (function () {
                         "statusCode": "success",
                         results: results
                     }
-                    var remoteObject = new Object();
-                    remoteObject.param1 = index.label;
-                    userActionResponse(data, 'init', remoteObject)
+                    // var remoteObject = new Object();
+                    // remoteObject.param1 = index.label;
+                    userActionResponse(data, 'init', null)
 
                 }, error: function (error) {
                     htmlU.addMsgToDiv(FB_DIV, "Error: " + error);
@@ -354,16 +354,16 @@ var miSrg = (function () {
     }
 
     function userActionResponse(data, type, remoteObject) {
-        // if (data.statusCode == MSG_STATUS_GOOD) {
+        if (data.statusCode == MSG_STATUS_GOOD) {
 
-        if (type == 'init') {
-            // ----------------- bt1 ---------------------
-            // indexData[remoteObject.param1].data = data;
-            // -------------------------------------------
-            // indexDataDef[remoteObject.param1].data = data.results;
-            process(data);
+            if (type == 'init') {
+                // ----------------- bt1 ---------------------
+                // indexData[remoteObject.param1].data = data;
+                // -------------------------------------------
+                // indexDataDef[remoteObject.param1].data = data.results;
+                process(data.results);
+            }
         }
-        // }
     }
 
     // TODO 
@@ -405,12 +405,14 @@ var miSrg = (function () {
         const lines = text.split(/\r?\n/).map(line => line.trim()).filter(line => line !== "");
         if (lines.length <= 1) return {};
 
-        const headers = lines[0].split(",").map(h => h.trim().toLowerCase());
+        const headers = lines[0].split(",").map(h => h.trim());
 
-        let dateIndex = headers.findIndex("Date");
+        let arr = [];
+
+        let dateIndex = headers.findIndex(h => h.includes("Date"));
         Object.keys(indexDataDef).forEach((index) => {
             let colIdx = -1;
-            colIdx = headers.findIndex(index);
+            colIdx = headers.findIndex(h => h.includes(index));
             let indexData = indexDataDef[index];
             indexData.colIdx = colIdx;
         });
