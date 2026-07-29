@@ -25,29 +25,26 @@
 
 // TODO
 // update init() and userAction('init'), userActionResponse()
-// modify parseCSV()
-// parse date - parse toLocaleString()
+// // modify parseCSV()
+// TEST parse date - parse toLocaleString()
 // modify indexDataDef
 // // fix togglePlayback()
 // fix isPrUser()
 // Article
-// Arrange !pr sectors before premium sectors...if user is !premium
+// // Arrange !pr sectors before premium sectors...if user is !premium
+// TSR Watermark
 
-// Algo for putting date, close data into resp. indices:
-
-// ParseCsv()
-
-// for 1st line
-// 	Find dateIndex, and set colIdx for all indices in header
-		
-
-// foreach line after 1st
-// 	split line
-// 	parse date
-// 	for each idx
-// 		get colIdx. 
-// 		line[colIdx] - Get close value
-// 		push {date, close} in idx.data
+// // Algo for putting date, close data into resp. indices:
+// // ParseCsv()
+// // for 1st line
+// // 	Find dateIndex, and set colIdx for all indices in header
+// // foreach line after 1st
+// // 	split line
+// // 	parse date
+// // 	for each idx
+// // 		get colIdx. 
+// // 		line[colIdx] - Get close value
+// // 		push {date, close} in idx.data
 		
 	
 

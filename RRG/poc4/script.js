@@ -63,7 +63,7 @@ var miSrg = (function () {
     // TODO use unique colors for each index
     const indexDataDef = {
         "NIFTY": {
-            id: "NIFTY 50", label: "NIFTY 50", pr: false, eqId: 10000, color: "#3b82f6",
+            id: "NIFTY", label: "NIFTY 50", pr: false, eqId: 10000, color: "#3b82f6",
             "code": "NIFTY", "scId": "200000", "ecId": "10000", "ccId": "in"
         },
         "BANKNIFTY": { id: "NIFTY BANK", label: "NIFTY BANK", pr: false, eqId: 10100, color: "#2eff51" },
@@ -87,7 +87,7 @@ var miSrg = (function () {
         // "NIFTY FMCG": { id: "NIFTY FMCG", label: "NIFTY FMCG", pr: true, eqId: 9000, color: "#4e854c" },
     };
 
-    let benchmarkIdx = indexDataDef["NIFTY 50"];
+    let benchmarkIdx = indexDataDef["NIFTY"];
     let gifUrl = mintJsUtil.getBaseUrl() + "/static/img/LoadingMedium.gif";
 
     function init() {
@@ -386,11 +386,19 @@ var miSrg = (function () {
             console.error("Invalid data");
             return;
         }
-
+        let tick = tickSelect.value;
         for (let i = 1; i < lines.length; i++) {
             const cols = lines[i].split(",");
             // let date = parseDateString(cols[0]); // TODO
-            let dateStr = new Date(Number(cols[0])).toString();
+            let dateStr = "";
+            if (tick == 'mm5') {
+                dateStr = Number(cols[0]).toDateString();
+                let timeStr = Number(cols[0]).toTimeString();
+                timeStr = timeStr.substring(timeStr.lastIndexOf(":"));
+                dateStr = dateStr + timeStr;
+            } else {
+                dateStr = new Date(Number(cols[0])).toDateString();
+            }
             Object.keys(indexDataDef).forEach((index) => {
                 let indexData = indexDataDef[index];
                 let colIdx = indexData.colIdx;
@@ -419,15 +427,15 @@ var miSrg = (function () {
         parseCSV(data);
 
         // For each index, parseCSV and sort by date
-        // Object.keys(indexDataDef).forEach((indexName) => {
-        //     let index = indexDataDef[indexName];
+        Object.keys(indexDataDef).forEach((indexName) => {
+            let index = indexDataDef[indexName];
 
-        //     if (jsu.isNotNull(index.data)) {
-        //         // console.log(indexName);
-        //         index.data = parseCSV(index.data);
-        //         sortObjByDateStr(index.data); // TODO remove if not needed
-        //     }
-        // });
+            if (jsu.isNotNull(index.data)) {
+                // console.log(indexName);
+                // index.data = parseCSV(index.data);
+                index.data = sortObjByDateStr(index.data); // TODO remove if not needed
+            }
+        });
 
 
         updateMasterTimeline();
@@ -637,25 +645,29 @@ var miSrg = (function () {
         const currentIndex = parseInt(slider.value, 10);
         let targetDateStr = dateKeys[currentIndex];
 
-        if (targetDateStr.includes("-")) {
-            targetDateStr = targetDateStr.replaceAll("-", " ");
-            let substrings = targetDateStr.split("-");
-            if (substrings.length == 3) {
-                substrings[0] = substrings[0] + "/";
-                substrings[1] = substrings[1] + "/";
-            }
-            let str = "";
-            let arr = str.split("");
 
-            targetDateStr = substrings.join();
-        } else if (targetDateStr.includes("_")) {
-            let substrings = targetDateStr.split("_");
-            substrings[0] = substrings[0] + "/";
-            substrings[1] = substrings[1] + "/";
-            substrings[2] = substrings[2] + " ";
-            substrings[3] = substrings[3] + ":";
-            targetDateStr = substrings.join("");
-        }
+        // if (targetDateStr.includes("-")) {
+        //     targetDateStr = targetDateStr.replaceAll("-", " ");
+        //     let substrings = targetDateStr.split("-");
+        //     if (substrings.length == 3) {
+        //         substrings[0] = substrings[0] + "/";
+        //         substrings[1] = substrings[1] + "/";
+        //     }
+        //     let str = "";
+        //     let arr = str.split("");
+
+        //     targetDateStr = substrings.join();
+        // } else if (targetDateStr.includes("_")) {
+        //     let substrings = targetDateStr.split("_");
+        //     substrings[0] = substrings[0] + "/";
+        //     substrings[1] = substrings[1] + "/";
+        //     substrings[2] = substrings[2] + " ";
+        //     substrings[3] = substrings[3] + ":";
+        //     targetDateStr = substrings.join("");
+        // }
+
+        let targetDateObj = new Date(targetDateStr);
+        targetDateObj.toT
 
         if (dateDisplay) {
             dateDisplay.textContent = targetDateStr || "No Data Selected";
@@ -766,7 +778,7 @@ var miSrg = (function () {
         // Get the sorted keys
         let keys = Object.keys(obj).sort((a, b) => {
             let dateA = new Date(a);
-            let dateB = new Date(a);
+            let dateB = new Date(b);
 
             if (dateA > dateB) return 1;
             if (dateA < dateB) return -1;
