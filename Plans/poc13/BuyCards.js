@@ -229,7 +229,7 @@ var miSupc = (function () { // Mi Subscription plan cards ...
             <div class="tsrPlansFitCardContainer p-2 p-sm-3 rounded-3 bg-white border shadow-sm my-2">
                 <p class="tsrPlanCardFitDescription m-0 d-flex align-items-center">
                     <i class="fas fa-user-check me-2 tsrPlansFitIcon"></i>
-                    <span>Suitable for <span style="color: #2563eb; font-weight: 600;">EOD pros, Investors &amp; Part Timers</span></span>
+                    <span>Suitable for <span style="color: #2563eb; font-weight: 600;">${details.fit}</span></span>
                 </p>
             </div>
         `
