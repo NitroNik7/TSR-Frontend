@@ -2436,11 +2436,39 @@
 
                                 </section>
 
+
+                                <!-- TSR Plans Global Ribbon -->
+                                <div class="tsrPlansGlobalRibbon">
+                                    <div class="tsrPlansRibbonContent">
+                                        <div class="tsrPlansTextSection">
+                                            <span class="tsrPlansExclusiveTag">
+                                                <i class="fas fa-crown me-1"></i> Exclusive Offer for TSR Premium
+                                                Subscribers
+                                            </span>
+                                            <div class="tsrPlansMainText">
+                                                <strong class="tsrPlansPriceHighlight">
+                                                    Global Markets @ <i class="fas fa-rupee-sign"></i> 999/year
+                                                </strong>
+                                                <span class="tsrPlansSubText">
+                                                    Access US, UK, Canada & Australia markets on StockAio.com
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="tsrPlansBuyBtn" data-bs-toggle="modal"
+                                            data-bs-target="#tsrPlansModal">
+                                            Buy Now <i class="fas fa-arrow-right ms-2 tsrPlansBtnIcon"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
                                 <!-- ----------------------------------PLAN CARDS SECTION------------------------------------- -->
                                 <section>
                                     <div class="p-3"
                                         style="background: radial-gradient(circle at 70%, #09124f 0, #090979 30%, #006fbf 100%); border-radius: 20px; padding: 40px;">
                                         <div class="container tsrPlanWrapper">
+
 
                                             <div class="tsrPlanHeader">
                                                 <h2>TSR Premium Plans</h2>
@@ -2454,13 +2482,14 @@
 
                                                     <button onclick="miSuPl.pc(this, '1M', 0)">Monthly</button>
                                                     <button onclick="miSuPl.pc(this, '1Y', 1)" class="active">
+
                                                         <p style="margin: 0; position: absolute; top: -10px; left: 85px; border-radius: 10px;"
                                                             class="badge btn-warning">
                                                             <i class="fas fa-crown"></i> Popular
                                                         </p>
                                                         1 Year
                                                     </button>
-                                                    <button id="tsrPlanDefSelPeriodBtn" 
+                                                    <button id="tsrPlanDefSelPeriodBtn"
                                                         onclick="miSuPl.pc(this, '2Y', 2)">
                                                         2 Years
                                                     </button>
@@ -4644,7 +4673,7 @@
                 <script> 
                     let planDetails = [
                         {
-                            "id": "EOD_COMBO", "name": "EOD Combo", "fit": "Suitable for  EOD pros, Investors & Part Timers", entitlements: ["Daily, Weekly and Monthly tick", "EOD Updates"], "gst": 18.0, "renew": 5.0, "upgrade": 5.0, period: [
+                            "id": "EOD_COMBO", "name": "EOD Combo", "fit": "EOD pros, Investors & Part Timers", entitlements: ["Daily, Weekly and Monthly tick", "EOD Updates"], "gst": 18.0, "renew": 5.0, "upgrade": 5.0, period: [
                                 { "period": "1 Mth", "id": "1M", "orig": 196.66666666666666, "buyPrice": 196.66666666666666, "perMth": 196.66666666666666 },
                                 { "period": "1 Year", "id": "1Y", "orig": 2360.0, "off": 20.0, "buyPrice": 1888.0, "perMth": 157.33333333333334 },
                                 { "period": "2 Years", "id": "2Y", "orig": 4720.0, "off": 35.0, "buyPrice": 3068.0, "perMth": 127.83333333333333 },
@@ -4652,7 +4681,7 @@
                             ]
                         },
                         {
-                            "id": "TRADER_VALUE", "name": "Trader Value", "fit": "Suitable for Beginers with Investor & Basic Trading options", entitlements: ["Daily, Weekly and Monthly tick", "Live Updates"], "gst": 18.0, "renew": 5.0, "upgrade": 5.0, period: [
+                            "id": "TRADER_VALUE", "name": "Trader Value", "fit": "Beginers with Investor & Basic Trading options", entitlements: ["Daily, Weekly and Monthly tick", "Live Updates"], "gst": 18.0, "renew": 5.0, "upgrade": 5.0, period: [
                                 { "period": "1 Mth", "id": "1M", "orig": 196.66666666666666, "buyPrice": 196.66666666666666, "perMth": 196.66666666666666 },
                                 { "period": "1 Year", "id": "1Y", "orig": 2360.0, "off": 20.0, "buyPrice": 1888.0, "perMth": 157.33333333333334 },
                                 { "period": "2 Years", "id": "2Y", "orig": 4720.0, "off": 35.0, "buyPrice": 3068.0, "perMth": 127.83333333333333 },
@@ -4660,7 +4689,7 @@
                             ]
                         },
                         {
-                            "id": "TRADER", "name": "Trader", "fit": "Suitable for - Traders with more Intraday Options", entitlements: ["5 min to Monthly ticks", "Live Updates"], "gst": 18.0, "renew": 5.0, "upgrade": 5.0, period: [
+                            "id": "TRADER", "name": "Trader", "fit": "Traders with more Intraday Options", entitlements: ["5 min to Monthly ticks", "Live Updates"], "gst": 18.0, "renew": 5.0, "upgrade": 5.0, period: [
                                 { "period": "1 Mth", "id": "1M", "orig": 324.5, "buyPrice": 324.5, "perMth": 324.5 },
                                 { "period": "1 Year", "id": "1Y", "orig": 3894.0, "off": 20.0, "buyPrice": 3115.2000000000003, "perMth": 259.6 },
                                 { "period": "2 Years", "id": "2Y", "orig": 7788.0, "off": 30.0, "buyPrice": 5451.599999999999, "perMth": 227.14999999999998 },

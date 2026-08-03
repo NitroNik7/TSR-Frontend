@@ -222,11 +222,58 @@ var miSupc = (function () { // Mi Subscription plan cards ...
             html += `</div>`
         }
 
+        html += ` <hr style="border-top: 1px dashed #dee2e6; margin: 20px 0;">`
 
-        html += ` <p class="tsrPlanCardFitDescription" style="font-size: 14px; color: grey;"> ${details.fit}</p>`
+        // html += ` <p class="tsrPlanCardFitDescription"> Suitable for <span style="color: #2563eb; font-weight: 600;">${details.fit}</span></p>`
+        html+=`
+            <div class="tsrPlansFitCardContainer p-2 p-sm-3 rounded-3 bg-white border shadow-sm my-2">
+                <p class="tsrPlanCardFitDescription m-0 d-flex align-items-center">
+                    <i class="fas fa-user-check me-2 tsrPlansFitIcon"></i>
+                    <span>Suitable for <span style="color: #2563eb; font-weight: 600;">EOD pros, Investors &amp; Part Timers</span></span>
+                </p>
+            </div>
+        `
+        // html += `
+        //             <div class="tsrPlanAlertPackCount mb-3">
+        //                 <div style="font-size: 18px;color: #6c757d;">
+
+        //                     <span class="d-none d-md-block">
+        //                         EOD Pros
+        //                     </span>
+        //                     <span class="d-block d-md-none">
+        //                         400 <span style="font-size: 12px;">Emails</span>
+        //                     </span>
+
+        //                 </div>
+        //                 <div style="font-size: 18px; color: #6c757d;">
+        //                     <span class="d-none d-md-block">
+        //                         Investors
+        //                     </span>
+        //                     <span class="d-block d-md-none">
+        //                         100 <span style="font-size: 12px;">SMS</span>
+        //                     </span>
+
+        //                 </div>
+        //                 <div style="font-size: 18px;  color: #6c757d; ">
+        //                     <span class="d-none d-md-block">
+        //                         Part Timers
+        //                     </span>
+        //                     <span class="d-block d-md-none">
+        //                         200
+        //                         <span style="font-size: 12px;">Whatsapp</span>
+        //                     </span>
+        //                 </div>
+        //             </div>
+        // `
+
+        html += ``
+
         html += `<ul class="mb-3">`
         for (let i = 0; i < details.entitlements.length; i++) {
-            html += `<li class="d-flex align-items-baseline gap-3"><i class="fas fa-check" style="color: green;"></i> <span style="text-align: left;">${details.entitlements[i]}</span></li>`
+            html += `<li class="d-flex align-items-baseline gap-3">
+                        <i class="fas fa-check" style="color: green;"></i> 
+                        <span style="text-align: left;">${details.entitlements[i]}</span>
+                    </li>`
         }
         html += `</ul>`
 
@@ -246,13 +293,6 @@ var miSupc = (function () { // Mi Subscription plan cards ...
                 } else {
                     html += `<button onclick="miSupc.pa('upgrade', '${details.id}', '${period}');">Upgrade</button>`;
                 }
-
-
-
-
-
-
-
             }
         }
 
