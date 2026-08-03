@@ -1,5 +1,6 @@
 // TODOs:
 // Put Trader Pro plan card in 2nd position
+// reduce font-size for screens below laptop width
 // * Check
 // TODO
 // !
@@ -25,7 +26,7 @@ var miSupc = (function () { // Mi Subscription plan cards ...
     let curPlan = null;
     let curPlanCost = null;
 
-    let DEF_PERIOD = '1Y';
+    let DEF_PERIOD = '2Y';
 
     let SU_PA_FB_DIV = "tsrPlanActionModalFbDiv"; // SUBS. PLAN ACTION FB DIV
 
