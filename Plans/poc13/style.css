@@ -752,9 +752,10 @@
 
 /* Container Card Base Styling */
 #tsrPlansXyzDiv.tsrPlansTrustBadgeCard {
-  border: 1px solid #e2e8f0;
-  background-color: #ffffff;
+  /* border: 1px solid #e2e8f0;
+  background-color: #ffffff; */
   transition: all 0.3s ease;
+  border-radius: 20px;
 }
 
 /* Feature Item Hover & Box */
