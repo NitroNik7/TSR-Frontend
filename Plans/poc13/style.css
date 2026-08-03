@@ -749,3 +749,95 @@
         font-size: 11px;
     }
 }
+
+/* Container Card Base Styling */
+#tsrPlansXyzDiv.tsrPlansTrustBadgeCard {
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+/* Feature Item Hover & Box */
+.tsrPlansFeatureBox {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.tsrPlansFeatureBox:hover {
+  background-color: #f8fafc;
+}
+
+/* Icon Wrapper Styling */
+.tsrPlansIconWrapper {
+  width: 44px;
+  height: 44px;
+  font-size: 1.1rem;
+}
+
+/* Color Themes for Icons */
+.tsrPlansLockIcon {
+  color: #64748b;
+  background-color: #f1f5f9 !important;
+}
+
+.tsrPlansCardIcon {
+  color: #1e3a8a;
+  background-color: #eff6ff !important;
+}
+
+.tsrPlansSupportIcon {
+  color: #2563eb;
+  background-color: #eff6ff !important;
+}
+
+.tsrPlansFeatureIcon {
+  color: #16a34a;
+  background-color: #f0fdf4 !important;
+}
+
+/* Typography Adjustments */
+.tsrPlansFeatureTitle {
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.tsrPlansFeatureSubtext {
+  font-size: 0.78rem;
+  line-height: 1.2;
+  color: #64748b !important;
+}
+
+/* Media Queries for Mobile, Tablet, Laptop, Desktop */
+
+/* Mobile (Up to 575.98px) */
+@media (max-width: 575.98px) {
+  .tsrPlansFeatureBox {
+    padding: 0.5rem 0;
+  }
+  .tsrPlansIconWrapper {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+  .tsrPlansFeatureTitle {
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablet (576px to 991.98px) */
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .tsrPlansFeatureBox {
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* Laptop & Desktop (992px and above) */
+@media (min-width: 992px) {
+  #tsrPlansXyzDiv.tsrPlansTrustBadgeCard {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+  
+  .tsrPlansFeatureBox:hover {
+    transform: translateY(-2px);
+  }
+}
