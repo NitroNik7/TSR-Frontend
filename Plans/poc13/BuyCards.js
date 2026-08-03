@@ -26,7 +26,17 @@ var miSupc = (function () { // Mi Subscription plan cards ...
     let curPlan = null;
     let curPlanCost = null;
 
-    let DEF_PERIOD = '2Y';
+    let DEF_PERIOD = '1Y'; // * When changing this:
+    /* Change translateX property of '.tsrToggleSlider'
+        Add popular badge to resp. .tsrBillingToggle <button>:
+        <button onclick="miSuPl.pc(this, '1Y', 1)" class="active">
+            <p style="margin: 0; position: absolute; top: -10px; left: 85px; border-radius: 10px;"
+                class="badge btn-warning">
+                <i class="fas fa-crown"></i> Popular
+            </p>
+            1 Year
+        </button>
+    */
 
     let SU_PA_FB_DIV = "tsrPlanActionModalFbDiv"; // SUBS. PLAN ACTION FB DIV
 
@@ -48,6 +58,7 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
 
         // ! TEMP REMOVE LATER
+        // TODO fix
         html += getCard(jsu.getObjFrmArr(planDetails, "EOD_COMBO"), period);
         let popPlanDetails = jsu.getObjFrmArrByField(planDetails, "pop", true);
         html += getCard(popPlanDetails, period, period);
@@ -123,9 +134,9 @@ var miSupc = (function () { // Mi Subscription plan cards ...
         savings = Math.round(savings);
         buyPrice = Math.round(buyPrice);
 
-        // if(buyPrice < 0){
-        //    return ''  // case of Upgrade to smaller period Higher plan
-        // }
+        if (buyPrice < 0) {
+            return ''  // case of Upgrade to smaller period Higher plan
+        }
 
         // let html = `
         //             <div class="tsrPlanCard  ${popular}" style="display: flex; flex-direction: column; justify-content: space-between" data-plan-id="${details.id}">
@@ -212,7 +223,7 @@ var miSupc = (function () { // Mi Subscription plan cards ...
         }
 
 
-        html += ` <p style="font-size: 14px; color: grey;"> ${details.fit}</p>`
+        html += ` <p class="tsrPlanCardFitDescription" style="font-size: 14px; color: grey;"> ${details.fit}</p>`
         html += `<ul class="mb-3">`
         for (let i = 0; i < details.entitlements.length; i++) {
             html += `<li class="d-flex align-items-baseline gap-3"><i class="fas fa-check" style="color: green;"></i> <span style="text-align: left;">${details.entitlements[i]}</span></li>`
