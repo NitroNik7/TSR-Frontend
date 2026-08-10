@@ -2417,12 +2417,99 @@
 
 
                                 <!-- ----------------------------------PLAN CARDS SECTION------------------------------------- -->
+
+                                <style>
+                                    /* --- TSR Plans Page Heading & Sub-heading Styles --- */
+.tsrPlansMainTitle {
+    color: #000080; /* Primary Navy Brand Accent */
+    font-size: 1.8rem;
+    letter-spacing: -0.3px;
+}
+
+.tsrPlansOfferWrapper {
+    background: #ffffff;
+    border: 1px solid #ffcc99;
+    border-left: 4px solid #ff9933;  /* Saffron Left Accent */
+    border-right: 4px solid #138808; /* Green Right Accent */
+    padding: 6px 16px;
+    border-radius: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.tsrPlansOfferHeader {
+    color: #ff9933;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+}
+
+.tsrPlansOfferBadge {
+    color: #1e293b;
+    font-size: 1rem;
+}
+
+.tsrPlansOfferDiscountPercent {
+    color: #000080;
+    background-color: #fff3e6;
+    padding: 2px 8px;
+    border-radius: 6px;
+    border: 1px solid #ffcc99;
+    font-size: 1.05rem;
+}
+
+/* Responsive Scaling for Smaller Viewports */
+@media (max-width: 575.98px) {
+    .tsrPlansMainTitle {
+        font-size: 1.4rem;
+    }
+
+    .tsrPlansOfferWrapper {
+        padding: 6px 12px;
+        border-radius: 12px;
+    }
+
+    .tsrPlansOfferHeader {
+        font-size: 0.92rem;
+    }
+
+    .tsrPlansOfferBadge {
+        font-size: 0.88rem;
+    }
+
+    .tsrPlansOfferDiscountPercent {
+        font-size: 0.92rem;
+    }
+}
+                                </style>
+
                                 <section>
 
                                     <div class="container p-3">
                                         <div class="tsrPlanWrapper">
                                             <div class="tsrPlanHeader">
                                                 <h2>TSR Premium Plans</h2>
+                                                <!-- Independence Day Offer Sub-Heading -->
+<div id="tsrPlansOfferSubheading" class="tsrPlansOfferWrapper d-inline-flex align-items-center flex-wrap gap-2 my-2">
+    
+    <!-- Flag / Festive Label -->
+    <span class="tsrPlansOfferHeader text-uppercase fw-bold d-inline-flex align-items-center">
+        <span class="tsrBannerFlagBadge me-1">
+                                        <svg viewBox="-45 -30 90 60" class="tsrBannerFlagSvg">
+                                            <path fill="#FFF" d="m-45-30h90v60h-90z" />
+                                            <path fill="#FF6820" d="m-45-30h90v20h-90z" />
+                                            <path fill="#046A38" d="m-45 10h90v20h-90z" />
+                                            <circle r="9.25" fill="#07038D" />
+                                            <circle fill="#FFF" r="8" />
+                                            <circle r="1.6" fill="#07038D" />
+                                        </svg>
+                                    </span> Independence Offer:
+    </span>
+
+    <!-- Discount Highlight Badge -->
+    <span class="tsrPlansOfferBadge fw-bold">
+        Save up to <span class="tsrPlansOfferDiscountPercent">50% OFF</span>
+    </span>
+
+</div>
                                                 <p>Choose your plan</p>
                                             </div>
                                             <!--    
