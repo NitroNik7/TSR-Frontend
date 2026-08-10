@@ -695,226 +695,228 @@
 
                         </script> -->
 
-                        <!-- BANNER 1 -->
-
-                        <div class="tsr-top-offer-bar">
-                            <div class="container-fluid d-flex justify-content-center align-items-center">
-                                <span class="festive-icon">🪔</span>
-                                <p class="mb-0 mx-3">
-                                    <strong>Diwali Special:</strong> Get <span class="highlight-text">50% OFF</span> on
-                                    all Premium Plans!
-                                </p>
-                                <a href="/plans" class="btn btn-light btn-sm fw-bold">Claim Offer</a>
-                                <button type="button" class="close-bar"
-                                    onclick="this.parentElement.parentElement.remove()">
-                                    &times;
-                                </button>
-                            </div>
-                        </div>
+                        <!-- Independence Day banner code starts here -->
 
                         <style>
-                            .tsr-top-offer-bar {
-                                background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
-                                color: white;
-                                padding: 8px 0;
+                            /* High-Visibility Light TSR Banner */
+                            .tsrBannerTopOfferBar {
+                                background: linear-gradient(90deg, #fffaf5 0%, #ffffff 50%, #f4fbf4 100%);
+                                border-top: 3px solid #ff9933;
+                                border-bottom: 3px solid #138808;
+                                color: #1a1a1a;
                                 font-size: 0.95rem;
-                                border-bottom: 2px solid #fbbf24;
-                                /* Gold accent for Diwali */
                                 position: relative;
-                                /* z-index: 1050; */
-                                text-align: center;
+                                z-index: 1050;
+                                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+                                margin-top: 20px;
                             }
 
-                            .tsr-top-offer-bar .highlight-text {
-                                color: #fbbf24;
-                                /* Gold color for the percentage */
-                                font-weight: 800;
-                            }
-
-                            .tsr-top-offer-bar .btn-light {
-                                color: #1e3a8a;
-                                border-radius: 20px;
-                                padding: 2px 15px;
-                                font-size: 0.85rem;
-                                transition: transform 0.2s;
-                            }
-
-                            .tsr-top-offer-bar .btn-light:hover {
-                                transform: scale(1.05);
-                                background-color: #ffffff;
-                            }
-
-                            .tsr-top-offer-bar .close-bar {
-                                position: absolute;
-                                right: 20px;
-                                top: 50%;
-                                transform: translateY(-50%);
-                                background: none;
-                                border: none;
-                                color: rgba(255, 255, 255, 0.7);
-                                font-size: 1.5rem;
-                                cursor: pointer;
-                                line-height: 1;
-                            }
-
-                            .tsr-top-offer-bar .close-bar:hover {
-                                color: white;
-                            }
-
-                            /* Ensure your navbar doesn't overlap */
-                            body {
-                                padding-top: 0 !important;
-                                /* Adjust if your navbar is fixed */
-                            }
-                        </style>
-
-
-                        <!-- BANNER 2 -->
-                        <div id="tsr-promo-banner" class="tsr-promo-container">
-                            <div class="tsr-promo-content">
-                                <div class="tsr-promo-icon">
-                                    <i class="fas fa-bullhorn"></i>
-                                </div>
-                                <div class="tsr-promo-text">
-                                    <strong>Special Offer:</strong> Get 20% off on TSR Pro Annual Plans!
-                                    <span class="d-none d-lg-inline">Enhance your technical analysis today.</span>
-                                </div>
-                                <div class="tsr-promo-actions">
-                                    <a href="/premium" class="btn btn-primary btn-sm tsr-promo-btn">View Plans</a>
-                                    <button type="button" class="tsr-promo-close" onclick="dismissBanner()">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <style>
-                            /* --- Floating Promo Banner --- */
-                            .tsr-promo-container {
-                                position: fixed;
-                                bottom: 25px;
-                                left: 50%;
-                                transform: translateX(-50%);
-                                width: 90%;
-                                max-width: 800px;
-                                /* z-index: 9999; */
-                                z-index: 1000;
-                                background: rgba(255, 255, 255, 0.9);
-                                backdrop-filter: blur(10px);
-                                /* Glass effect */
-                                border: 1px solid #bfdbfe;
-                                /* Matching your Hero blue border */
-                                border-radius: 16px;
-                                padding: 12px 20px;
-                                box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15);
-                                display: block;
-                                /* Hidden via JS if dismissed */
-                                animation: slideUp 0.5s ease-out;
-                            }
-
-                            .tsr-promo-content {
-                                display: flex;
+                            .tsrBannerFlagBadge {
+                                /* background: #000080;
+                                color: #ffffff; */
+                                width: 32px;
+                                height: 32px;
+                                border-radius: 50%;
+                                display: inline-flex;
                                 align-items: center;
-                                justify-content: space-between;
-                                gap: 15px;
+                                justify-content: center;
+                                font-size: 0.9rem;
+                                /* box-shadow: 0 2px 5px rgba(0, 0, 128, 0.25); */
                             }
 
-                            .tsr-promo-icon {
-                                color: #2563eb;
-                                font-size: 1.2rem;
-                                background: rgba(37, 99, 235, 0.1);
-                                padding: 8px;
-                                border-radius: 10px;
-                                display: flex;
-                                align-items: center;
-                            }
-
-                            .tsr-promo-text {
-                                flex-grow: 1;
-                                color: #1e293b;
+                            .tsrBannerHeading {
+                                color: #000080;
+                                letter-spacing: 0.6px;
                                 font-size: 0.95rem;
-                            }
-
-                            .tsr-promo-actions {
-                                display: flex;
-                                align-items: center;
-                                gap: 12px;
-                            }
-
-                            .tsr-promo-btn {
-                                border-radius: 8px;
-                                font-weight: 600;
-                                padding: 6px 16px;
                                 white-space: nowrap;
                             }
 
-                            .tsr-promo-close {
-                                background: none;
+                            .tsrBannerTextContent {
+                                font-size: 0.95rem;
+                                line-height: 1.4;
+                                color: #2b2b2b;
+                            }
+
+                            .tsrBannerTagline {
+                                color: #333333;
+                            }
+
+                            .tsrBannerDiscountBadge {
+                                color: #ffffff;
+                                background-color: #d9381e;
+                                padding: 2px 10px;
+                                border-radius: 6px;
+                                font-size: 0.9rem;
+                                letter-spacing: 0.3px;
+                                box-shadow: 0 2px 6px rgba(217, 56, 30, 0.3);
+                                animation: tsrBannerPulse 2s infinite;
+                            }
+
+                            .tsrBannerBtnOffer {
+                                background: linear-gradient(135deg, #138808 0%, #0b5d05 100%);
+                                color: #ffffff !important;
                                 border: none;
-                                color: #94a3b8;
-                                cursor: pointer;
+                                border-radius: 25px;
+                                padding: 6px 20px;
+                                font-size: 0.88rem;
+                                white-space: nowrap;
+                                transition: all 0.25s ease-in-out;
+                                box-shadow: 0 4px 10px rgba(19, 136, 8, 0.35);
+                            }
+
+                            .tsrBannerBtnOffer:hover {
+                                background: linear-gradient(135deg, #0f6e06 0%, #073c03 100%);
+                                transform: translateY(-2px);
+                                box-shadow: 0 6px 14px rgba(19, 136, 8, 0.45);
+                            }
+
+                            .tsrBannerCloseBarBtn {
+                                background: transparent;
+                                border: none;
+                                color: #888888;
                                 font-size: 1.1rem;
-                                transition: color 0.2s;
-                                padding: 4px;
+                                cursor: pointer;
+                                padding: 2px 8px;
+                                line-height: 1;
+                                transition: color 0.2s ease-in-out;
                             }
 
-                            .tsr-promo-close:hover {
-                                color: #ef4444;
+                            .tsrBannerCloseBarBtn:hover {
+                                color: #000000;
                             }
 
-                            /* Entrance Animation */
-                            @keyframes slideUp {
-                                from {
-                                    bottom: -100px;
-                                    opacity: 0;
+                            /* Attention Grabber Pulse */
+                            @keyframes tsrBannerPulse {
+                                0% {
+                                    transform: scale(1);
                                 }
 
-                                to {
-                                    bottom: 25px;
-                                    opacity: 1;
+                                50% {
+                                    transform: scale(1.04);
+                                }
+
+                                100% {
+                                    transform: scale(1);
                                 }
                             }
 
-                            /* Mobile Adjustments */
-                            @media (max-width: 576px) {
-                                .tsr-promo-text {
+                            /* Responsive Adjustments */
+                            @media (max-width: 991.98px) {
+                                .tsrBannerHeading {
+                                    font-size: 0.9rem;
+                                }
+
+                                .tsrBannerTextContent {
+                                    font-size: 0.88rem;
+                                }
+                            }
+
+                            @media (max-width: 767.98px) {
+                                .tsrBannerTopOfferBar {
+                                    padding: 8px 0;
+                                }
+
+                                .tsrBannerHeading {
                                     font-size: 0.85rem;
                                 }
 
-                                .tsr-promo-container {
-                                    width: 95%;
-                                    bottom: 15px;
+                                .tsrBannerTextContent {
+                                    font-size: 0.85rem;
+                                    margin-bottom: 4px;
+                                }
+
+                                .tsrBannerDiscountBadge {
+                                    font-size: 0.82rem;
+                                    padding: 1px 7px;
+                                }
+
+                                .tsrBannerBtnOffer {
+                                    padding: 4px 15px;
+                                    font-size: 0.82rem;
                                 }
                             }
                         </style>
 
-                        <script>
-                            function dismissBanner() {
-                                const banner = document.getElementById('tsr-promo-banner');
-                                banner.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                                banner.style.opacity = '0';
-                                banner.style.transform = 'translateX(-50%) translateY(20px)';
+                        <!-- TSR 79th Independence Day Banner (High Visibility Light Theme) -->
+                        <div id="tsrBannerContainer" class="tsrBannerTopOfferBar">
+                            <div class="container-fluid px-3 py-2">
+                                <div class="row align-items-center justify-content-between g-2">
 
-                                // Optional: Save preference in localStorage so it stays hidden for 24 hours
-                                // localStorage.setItem('tsrPromoDismissed', new Date().getTime());
+                                    <!-- Left Tricolor Accent Pillar (Desktop/Tablet) -->
+                                    <div class="col-12 col-md-9 col-lg-10">
+                                        <div
+                                            class="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start text-center text-md-start">
 
-                                setTimeout(() => {
-                                    banner.remove();
-                                }, 300);
-                            }
+                                            <!-- Title & Flag Badge -->
+                                            <div class="d-flex align-items-center mb-1 mb-md-0 me-md-3">
+                                                <span class="tsrBannerFlagBadge me-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="900"
+                                                        height="600" viewBox="-45 -30 90 60" fill="#07038D">
+                                                        <title>Flag of India</title>
+                                                        <path fill="#FFF" d="m-45-30h90v60h-90z" />
+                                                        <path fill="#FF6820" d="m-45-30h90v20h-90z" />
+                                                        <path fill="#046A38" d="m-45 10h90v20h-90z" />
+                                                        <circle r="9.25" />
+                                                        <circle fill="#FFF" r="8" />
+                                                        <circle r="1.6" />
+                                                        <g id="d">
+                                                            <g id="c">
+                                                                <g id="b">
+                                                                    <g id="a">
+                                                                        <path
+                                                                            d="m0-8 .3 4.81409L0-.80235-.3-3.18591z" />
+                                                                        <circle transform="rotate(7.5)" r="0.35"
+                                                                            cy="-8" />
+                                                                    </g>
+                                                                    <use xlink:href="#a" transform="scale(-1)" />
+                                                                </g>
+                                                                <use xlink:href="#b" transform="rotate(15)" />
+                                                            </g>
+                                                            <use xlink:href="#c" transform="rotate(30)" />
+                                                        </g>
+                                                        <use xlink:href="#d" transform="rotate(60)" />
+                                                        <use xlink:href="#d" transform="rotate(120)" />
+                                                    </svg>
+                                                </span>
+                                                <span class="tsrBannerHeading text-uppercase fw-bold">
+                                                    79th Independence Day
+                                                </span>
+                                            </div>
 
-                            // Optional: Check on page load if it should be shown
-                            window.onload = function () {
-                                // const lastDismissed = localStorage.getItem('tsrPromoDismissed');
-                                // const now = new Date().getTime();
+                                            <!-- Main Offer & Tagline -->
+                                            <div class="tsrBannerTextContent">
+                                                <span class="tsrBannerTagline fw-semibold">
+                                                    Happy Independence Day! Proud to be part of India's growth story.
+                                                </span>
+                                                <span class="tsrBannerOfferHighlight ms-md-2 d-inline-block fw-bold">
+                                                    Save up to <span class="tsrBannerDiscountBadge">50% OFF</span> on
+                                                    Premium Plans!
+                                                </span>
+                                            </div>
 
-                                // // Hide if dismissed in the last 24 hours (86400000 ms)
-                                // if (lastDismissed && (now - lastDismissed < 86400000)) {
-                                //     const banner = document.getElementById('tsr-promo-banner');
-                                //     if(banner) banner.remove();
-                                // }
-                            };
-                        </script>
+                                        </div>
+                                    </div>
+
+                                    <!-- Action Area -->
+                                    <div
+                                        class="col-12 col-md-3 col-lg-2 d-flex align-items-center justify-content-center justify-content-md-end">
+                                        <a href="/plans" id="tsrBannerCtaBtn"
+                                            class="btn tsrBannerBtnOffer fw-bold me-2">
+                                            Claim Offer <i class="fas fa-arrow-right ms-1"></i>
+                                        </a>
+
+                                        <button type="button" id="tsrBannerCloseBtn" class="tsrBannerCloseBarBtn"
+                                            aria-label="Close Banner">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Independence Day banner code ends here -->
 
                         <!-- -------------------------- INDICES SECTION ---------------------------------  -->
 
