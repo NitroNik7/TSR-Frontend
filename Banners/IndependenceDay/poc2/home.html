@@ -695,10 +695,13 @@
 
                         </script> -->
 
+                        
                         <!-- Independence Day banner code starts here -->
 
+                        <!-- TSR 79th Independence Day Banner Container -->
+
                         <style>
-                            /* --- TSR Floating Banner --- */
+                            /* --- TSR Floating Banner Shared Container --- */
                             .tsrBannerPromoContainer {
                                 position: fixed;
                                 bottom: 25px;
@@ -716,23 +719,10 @@
                                 border-radius: 14px;
                                 padding: 12px 20px;
                                 box-shadow: 0 10px 25px rgba(0, 0, 128, 0.12);
-                                display: block;
                                 animation: tsrBannerSlideUp 0.5s ease-out;
                             }
 
-                            .tsrBannerPromoContent {
-                                display: flex;
-                                flex-direction: row;
-                                align-items: center;
-                                justify-content: space-between;
-                                gap: 15px;
-                            }
-
-                            .tsrBannerPromoText {
-                                flex-grow: 1;
-                                color: #1e293b;
-                            }
-
+                            /* Typography & Visual Elements */
                             .tsrBannerBrandTag {
                                 color: #000080;
                                 font-size: 0.92rem;
@@ -746,11 +736,10 @@
                             .tsrBannerFlagBadge {
                                 display: inline-flex;
                                 align-items: center;
-                                justify-content: center;
                             }
 
                             .tsrBannerFlagSvg {
-                                height: 20px;
+                                height: 18px;
                                 width: auto;
                                 border-radius: 2px;
                                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
@@ -776,15 +765,14 @@
                             .tsrBannerTagline {
                                 font-size: 0.88rem;
                                 color: #334155;
-                                margin-top: 3px;
                                 line-height: 1.35;
                             }
 
+                            /* Buttons */
                             .tsrBannerPromoActions {
                                 display: flex;
                                 align-items: center;
-                                gap: 10px;
-                                flex-shrink: 0;
+                                gap: 12px;
                             }
 
                             .tsrBannerBtnOffer {
@@ -813,7 +801,7 @@
                                 cursor: pointer;
                                 font-size: 1.1rem;
                                 transition: color 0.2s ease-in-out;
-                                padding: 6px;
+                                padding: 2px 6px;
                                 line-height: 1;
                             }
 
@@ -821,7 +809,14 @@
                                 color: #ef4444;
                             }
 
-                            /* Slide Up Entrance Animation */
+                            /* Layout Specific Utility Styles */
+                            .tsrBannerPromoContent {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                gap: 15px;
+                            }
+
                             @keyframes tsrBannerSlideUp {
                                 from {
                                     bottom: -100px;
@@ -834,15 +829,9 @@
                                 }
                             }
 
-                            /* --- Responsive Adjustments --- */
-                            @media (max-width: 991.98px) {
-                                .tsrBannerPromoContainer {
-                                    width: 94%;
-                                    max-width: 720px;
-                                }
-                            }
-
-                            @media (max-width: 767.98px) {
+                            /* --- Breakpoint Custom Tweaks --- */
+                            /* Mobile (up to sm) */
+                            @media (max-width: 575.98px) {
                                 .tsrBannerPromoContainer {
                                     width: 95%;
                                     bottom: 12px;
@@ -850,129 +839,164 @@
                                     border-radius: 12px;
                                 }
 
-                                .tsrBannerPromoContent {
-                                    flex-direction: column;
-                                    align-items: stretch;
-                                    gap: 8px;
-                                }
-
-                                .tsrBannerPromoActions {
-                                    justify-content: justify-content;
-                                    width: 100%;
-                                    margin-top: 2px;
-                                }
-
-                                .tsrBannerBtnOffer {
-                                    flex-grow: 1;
-                                    text-align: center;
-                                    padding: 6px 14px;
+                                .tsrBannerTagline {
                                     font-size: 0.8rem;
                                 }
 
                                 .tsrBannerHeading {
                                     font-size: 0.8rem;
                                 }
+                            }
 
-                                .tsrBannerFlagSvg {
-                                    height: 17px;
+                            /* Tablet (sm to lg) */
+                            @media (min-width: 576px) and (max-width: 991.98px) {
+                                .tsrBannerPromoContainer {
+                                    width: 92%;
+                                    max-width: 720px;
+                                    padding: 12px 18px;
                                 }
 
                                 .tsrBannerTagline {
-                                    font-size: 0.82rem;
-                                }
-
-                                .tsrBannerDiscountBadge {
-                                    font-size: 0.75rem;
+                                    font-size: 0.85rem;
                                 }
                             }
                         </style>
 
-                        <!-- TSR 79th Independence Day Floating Banner -->
                         <div id="tsrBannerContainer" class="tsrBannerPromoContainer">
-                            <div class="tsrBannerPromoContent">
 
-                                <!-- Banner Text Content -->
-                                <div class="tsrBannerPromoText">
-                                    <div class="d-flex flex-wrap align-items-center gap-1 gap-md-2 mb-1 mb-md-0">
-                                        <!-- Brand Badge -->
-                                        <span
-                                            class="tsrBannerBrandTag d-none d-md-inline-block fw-bold">TopStockResearch</span>
-                                        <span class="tsrBannerBrandTag d-inline-block d-md-none fw-bold">TSR</span>
-                                        <span class="tsrBannerDivider d-none d-md-inline-block">|</span>
-
-                                        <!-- Flag & Heading -->
-                                        <span
-                                            class="tsrBannerHeading d-inline-flex align-items-center text-uppercase fw-bold ms-1 me-1">
-                                            <span class="tsrBannerFlagBadge me-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-45 -30 90 60"
-                                                    fill="#07038D" class="tsrBannerFlagSvg">
-                                                    <title>Flag of India</title>
-                                                    <path fill="#FFF" d="m-45-30h90v60h-90z" />
-                                                    <path fill="#FF6820" d="m-45-30h90v20h-90z" />
-                                                    <path fill="#046A38" d="m-45 10h90v20h-90z" />
-                                                    <circle r="9.25" />
-                                                    <circle fill="#FFF" r="8" />
-                                                    <circle r="1.6" />
-                                                    <g id="tsrFlagSpokes">
-                                                        <g id="c">
-                                                            <g id="b">
-                                                                <g id="a">
-                                                                    <path d="m0-8 .3 4.81409L0-.80235-.3-3.18591z" />
-                                                                    <circle transform="rotate(7.5)" r="0.35" cy="-8" />
-                                                                </g>
-                                                                <use xlink:href="#a" transform="scale(-1)" />
-                                                            </g>
-                                                            <use xlink:href="#b" transform="rotate(15)" />
-                                                        </g>
-                                                        <use xlink:href="#c" transform="rotate(30)" />
-                                                    </g>
-                                                    <use xlink:href="#tsrFlagSpokes" transform="rotate(60)" />
-                                                    <use xlink:href="#tsrFlagSpokes" transform="rotate(120)" />
-                                                </svg>
-                                            </span>
-                                            79th Independence Day Offer
-                                        </span>
-
-                                        <!-- Discount Pill -->
-                                        <span class="tsrBannerDiscountBadge mx-auto mx-md-0">Save up to 50% OFF</span>
-                                    </div>
-
-                                    <!-- Tagline -->
-                                    <div class="tsrBannerTagline">
-                                        Happy Independence Day! <strong>TSR</strong> - Helping Traders become
-                                        Financially Independent & Atma Nirbhar
-                                    </div>
-                                </div>
-
-                                <!-- Actions -->
-                                <div class="tsrBannerPromoActions">
-                                    <a href="/plans" id="tsrBannerCtaBtn" class="btn tsrBannerBtnOffer btn-sm fw-bold">
-                                        Claim Offer <i class="fas fa-arrow-right ms-1"></i>
-                                    </a>
-                                    <button type="button" id="tsrBannerCloseBtn" class="tsrBannerCloseBarBtn"
+                            <!-- 1. MOBILE BANNER (Up to sm / < 576px) -->
+                            <div id="tsrBannerMobile" class="d-block d-sm-none">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="tsrBannerDiscountBadge">Save upto 50% OFF</span>
+                                    <button type="button" class="tsrBannerCloseBarBtn tsrBannerCloseAction"
                                         aria-label="Close Banner">
                                         <i class="fas fa-times"></i>
                                     </button>
                                 </div>
+                                <div class="tsrBannerHeading text-uppercase fw-bold mb-1 d-flex align-items-center">
+                                    <span class="tsrBannerBrandTag fw-bold me-2">TSR</span>
 
+                                    <span class="tsrBannerFlagBadge me-1">
+                                        <svg viewBox="-45 -30 90 60" class="tsrBannerFlagSvg">
+                                            <path fill="#FFF" d="m-45-30h90v60h-90z" />
+                                            <path fill="#FF6820" d="m-45-30h90v20h-90z" />
+                                            <path fill="#046A38" d="m-45 10h90v20h-90z" />
+                                            <circle r="9.25" fill="#07038D" />
+                                            <circle fill="#FFF" r="8" />
+                                            <circle r="1.6" fill="#07038D" />
+                                        </svg>
+                                    </span>
+                                    79th Independence Day Offer
+                                </div>
+                                <div class="tsrBannerTagline mb-2">
+                                    Helping Traders become Financially Independent & Atma Nirbhar.
+                                </div>
+                                <a href="https://www.topstockresearch.com/my/TsrPlans/" id="tsrBannerCtaMobile"
+                                    class="btn tsrBannerBtnOffer btn-sm w-100 fw-bold">
+                                    Claim Offer <i class="fas fa-arrow-right ms-1"></i>
+                                </a>
                             </div>
+
+                            <!-- 2. TABLET / MEDIUM BANNER (sm to lg / 576px - 991px) -->
+                            <div id="tsrBannerTablet" class="d-none d-sm-block d-lg-none">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="tsrBannerBrandTag fw-bold">TopStockResearch</span>
+                                        <span class="tsrBannerDivider">|</span>
+                                        <span class="tsrBannerHeading text-uppercase fw-bold d-flex align-items-center">
+                                            <span class="tsrBannerFlagBadge me-1">
+                                                <svg viewBox="-45 -30 90 60" class="tsrBannerFlagSvg">
+                                                    <path fill="#FFF" d="m-45-30h90v60h-90z" />
+                                                    <path fill="#FF6820" d="m-45-30h90v20h-90z" />
+                                                    <path fill="#046A38" d="m-45 10h90v20h-90z" />
+                                                    <circle r="9.25" fill="#07038D" />
+                                                    <circle fill="#FFF" r="8" />
+                                                    <circle r="1.6" fill="#07038D" />
+                                                </svg>
+                                            </span>
+                                            79th Independence Day Offer
+                                        </span>
+                                    </div>
+                                    <span class="tsrBannerDiscountBadge">Save up to 50% OFF</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between gap-2 mt-2">
+                                    <div class="tsrBannerTagline">
+                                        Happy Independence Day! <strong>TSR</strong> - Helping Traders become
+                                        Financially Independent & Atma Nirbhar.
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <a href="https://www.topstockresearch.com/my/TsrPlans/" id="tsrBannerCtaTablet"
+                                            class="btn tsrBannerBtnOffer btn-sm fw-bold">
+                                            Claim Offer <i class="fas fa-arrow-right ms-1"></i>
+                                        </a>
+                                        <button type="button" class="tsrBannerCloseBarBtn tsrBannerCloseAction"
+                                            aria-label="Close Banner">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. DESKTOP BANNER (Above lg / > 991px) -->
+                            <div id="tsrBannerDesktop" class="d-none d-lg-block">
+                                <div class="tsrBannerPromoContent">
+                                    <div class="tsrBannerPromoText">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <span class="tsrBannerBrandTag fw-bold">TopStockResearch</span>
+                                            <span class="tsrBannerDivider">|</span>
+                                            <span
+                                                class="tsrBannerHeading text-uppercase fw-bold d-flex align-items-center">
+                                                <span class="tsrBannerFlagBadge me-2">
+                                                    <svg viewBox="-45 -30 90 60" class="tsrBannerFlagSvg">
+                                                        <path fill="#FFF" d="m-45-30h90v60h-90z" />
+                                                        <path fill="#FF6820" d="m-45-30h90v20h-90z" />
+                                                        <path fill="#046A38" d="m-45 10h90v20h-90z" />
+                                                        <circle r="9.25" fill="#07038D" />
+                                                        <circle fill="#FFF" r="8" />
+                                                        <circle r="1.6" fill="#07038D" />
+                                                    </svg>
+                                                </span>
+                                                79th Independence Day Offer
+                                            </span>
+                                            <span class="tsrBannerDiscountBadge ms-2">Save up to 50% OFF</span>
+                                        </div>
+                                        <div class="tsrBannerTagline">
+                                            Happy Independence Day! <strong>TSR</strong> - Helping Traders become
+                                            Financially Independent & Atma Nirbhar.
+                                        </div>
+                                    </div>
+
+                                    <div class="tsrBannerPromoActions">
+                                        <a href="https://www.topstockresearch.com/my/TsrPlans/" id="tsrBannerCtaDesktop"
+                                            class="btn tsrBannerBtnOffer btn-sm fw-bold">
+                                            Claim Offer <i class="fas fa-arrow-right ms-1"></i>
+                                        </a>
+                                        <button type="button" class="tsrBannerCloseBarBtn tsrBannerCloseAction"
+                                            aria-label="Close Banner">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         <script>
                             document.addEventListener('DOMContentLoaded', function () {
-                                const tsrBannerCloseBtn = document.getElementById('tsrBannerCloseBtn');
+                                const tsrBannerCloseBtns = document.querySelectorAll('.tsrBannerCloseAction');
                                 const tsrBannerContainer = document.getElementById('tsrBannerContainer');
 
-                                if (tsrBannerCloseBtn && tsrBannerContainer) {
-                                    tsrBannerCloseBtn.addEventListener('click', function () {
-                                        tsrBannerContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                                        tsrBannerContainer.style.opacity = '0';
-                                        tsrBannerContainer.style.transform = 'translateX(-50%) translateY(20px)';
+                                if (tsrBannerCloseBtns.length > 0 && tsrBannerContainer) {
+                                    tsrBannerCloseBtns.forEach(function (btn) {
+                                        btn.addEventListener('click', function () {
+                                            tsrBannerContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                                            tsrBannerContainer.style.opacity = '0';
+                                            tsrBannerContainer.style.transform = 'translateX(-50%) translateY(20px)';
 
-                                        setTimeout(function () {
-                                            tsrBannerContainer.remove();
-                                        }, 300);
+                                            setTimeout(function () {
+                                                tsrBannerContainer.remove();
+                                            }, 300);
+                                        });
                                     });
                                 }
                             });
