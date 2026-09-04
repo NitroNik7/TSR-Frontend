@@ -26,7 +26,6 @@
         "list": [
                 { 
                     "id": "adx", 
-                    "label": "ADX 5 Minutes", 
                     "indi": "adx", 
                     "indiLabel": "ADX (Average Directional Index)", 
                     "tick": "mm5", 
