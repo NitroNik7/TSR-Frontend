@@ -172,7 +172,44 @@
         "columns": ["Period", "Beta", "Mean", "SD"]
     ``` 
 
-5. **Relative Price Strength**
+
+4. **Price Range**
+
+    **Request**
+    ```json
+        "stockCode": "NATIONALUM",
+        "portletCode": "PriceRange",
+        "settings": {
+            "userPref": [
+                { 
+                    "id": "D_5", 
+                    "label": "Period: 5, Tick: Daily (EOD)", 
+                    "tick": "D", 
+                    "period": "5" },
+                { "id": "W_10", "label": "Period: 10, Tick: Weekly", "tick": "W", "period": "10" },
+            ],
+            "available":[]
+        }
+    ``` 
+
+    **Response**
+    ```json
+        "statusCode": "success",
+	    "list": [
+		    { 
+                "id": "D_5",
+                "tick": "Daily (EOD)",
+                "period": "5",
+                "range": 4697.61,
+                "high": 4244.26,
+                "low": 4878.72},
+		    { "id": "W_10","tick": "Weekly","period": "10","range": 4765.56,"high": 2958.62,"low": 4095.2 },
+        ]
+        "columns":  ["Period", "Tick", "Range", "High", "Low"]
+    ``` 
+
+
+6. **Relative Price Strength**
 
     **Request**
     ```json
