@@ -13,7 +13,7 @@ var miSupc = (function () { // Mi Subscription plan cards ...
     // let CSS_DISCOUNT = `background: #e6f4ea;color: #2f9e44;padding: 3px 8px; border-radius: 999px;font-size: 11px;font-weight: 600;`
     let CSS_DISCOUNT = `background: #ededed;color: #9aa2aa; padding: 3px 8px; border-radius: 999px;font-size: 11px;font-weight: 600;`
 
-    let CSS_SAVINGS = `background: #e6f4ea; color: #2f9e44; padding: 5px 8px; border-radius: 999px; font-size: 12px; font-weight: bold; width: max-content; margin-bottom: 0;`
+    let CSS_SAVINGS = `background: #e6f4ea; color: #2f9e44; padding: 5px 8px; border-radius: 999px; font-size: 12px; font-weight: bold; width: max-content; margin-bottom: 0; text-wrap: nowrap;`
     let CSS_SAVINGS_INFO = `color: grey; padding: 5px 8px; border-radius: 999px; font-size: 12px; font-weight: bold; width: max-content; margin-bottom: 0;`
 
     // let CSS_PRICE = `font-size: 34px;font-weight: 600;margin-bottom: 6px;`

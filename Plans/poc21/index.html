@@ -2504,138 +2504,129 @@
                                                     Prices are
                                                     Incl. of all taxes</p> -->
 
-                                                <div class="tsrPlanCards" id="tsrPlanCards">
-                                                    <!-- <div class="tsrPlanCard" data-plan-id="EOD_COMBO">
+                                                <style>
+                                                    .tsrPlanCards {
+                                                        display: flex;
+                                                        gap: 24px;
+                                                        justify-content: center;
+                                                        /* transition: all 1s; */
+                                                        scrollbar-width: none;
+                                                        width: 100%;
+                                                        scroll-snap-type: x proximity;
+                                                        scroll-behavior: smooth;
+                                                        /* overflow: scroll; */
+                                                    }
 
-                                                        <h3>EOD Combo</h3>
-                                                        <div class="tsrPriceMeta align-items-center"> <span
-                                                                style="text-decoration: line-through; color: #adb5bd;font-size: 14px; text-wrap: nowrap;"><i
-                                                                    class="fas fa-rupee-sign"></i>2360</span></div>
-                                                        <div class="mb-2"> <span
-                                                                style="background: #e6f4ea;color: #2f9e44;padding: 3px 8px; border-radius: 999px;font-size: 11px; text-wrap: nowrap;">20%
-                                                                OFF</span> <span
-                                                                style="color: #adb5bd;font-size: 16px; ">+</span> <span
-                                                                style="background: #e6f4ea;color: #2f9e44;padding: 3px 8px; border-radius: 999px;font-size: 11px;"
-                                                                class="">Renew 5% OFF</span></div>
-                                                        <h2
-                                                            style="font-size: 34px;font-weight: 600;margin-bottom: 6px;;display: block;">
-                                                            <i class="fas fa-rupee-sign"></i> 1770 <span
-                                                                style="font-size: 14px;color: #6c757d;">/ year</span>
-                                                        </h2>
-                                                        <div
-                                                            style="font-size: 12px; color: #6c757d; margin-bottom: 16px;;display: block;">
-                                                            Incl. of all taxes
-                                                        </div>
-                                                        <div
-                                                            style="font-size: 12px; color: #6c757d; margin-bottom: 16px;;display: block;">
-                                                            Effective
-                                                            <strong><i class="fas fa-rupee-sign"></i> 157/month</strong>
-                                                        </div>
-                                                        <p style="font-size: 14px; color: grey;"> Suitable for EOD pros,
-                                                            Investors &amp; Part Timers</p><button
-                                                            onclick="miSupc.pa('renew', 'EOD_COMBO', '1Y');">Renew</button>
+                                                    .tsrPlanCard {
+                                                        max-width: 360px;
+                                                        /* max-width: unset; */
+                                                        min-width: unset;
+                                                    }
+
+                                                    .tsrPlansContainer {
+                                                        display: flex;
+                                                        justify-content: center;
+                                                        flex-wrap: nowrap;
+                                                        align-items: center;
+                                                        position: relative;
+                                                        position: relative;
+                                                        width: 100%;
+                                                        max-width: 1320px;
+                                                        margin: 0 auto;
+                                                        padding: 10px 0;
+
+                                                    }
+
+
+                                                    .tsrCarouselControl {
+                                                        display: none;
+                                                        height: 50px;
+                                                        width: 50px;
+                                                        border-radius: 999px;
+                                                        background-color: white;
+                                                        position: absolute;
+                                                        top: 50%;
+                                                        z-index: 1;
+                                                        border: 1px solid lightgray;
+                                                    }
+
+                                                    .tsrCarouselControl.tsrCarouselPrev {
+                                                        left: 0%;
+                                                    }
+
+                                                    .tsrCarouselControl.tsrCarouselNext {
+                                                        right: 0%;
+                                                    }
+
+                                                    @media screen and (max-width: 992px) {
+                                                        .tsrCarouselControl {
+                                                            display: block;
+                                                        }
+
+                                                        .tsrPlanCards {
+                                                            flex-direction: row !important;
+                                                            flex-wrap: nowrap;
+                                                            /* width: 400px; */
+                                                            overflow-x: scroll;
+                                                            padding: 20px 35px;
+                                                            scroll-behavior: smooth;
+                                                            justify-content: unset;
+                                                        }
+
+                                                        .tsrPlanCard {
+                                                            /* flex: 0 0 88%; */
+                                                            flex: 1 1 0;
+                                                            max-width: 360px;
+                                                            min-width: 300px;
+                                                            scroll-snap-align: center;
+                                                            scroll-snap-stop: always;
+                                                        }
+
+                                                    }
+                                                </style>
+
+                                                <!-- Wrapper for Plans -->
+                                                <div class="tsrPlansContainer">
+                                                    <!-- Carousel Navigation Buttons (Visible only below 992px) -->
+                                                    <button type="button" class="tsrCarouselControl tsrCarouselPrev"
+                                                        id="tsrPlanPrevBtn" aria-label="Previous Plan"
+                                                        onclick="navigateTsrPlanCard('prev')">
+                                                        <i class="fas fa-chevron-left"></i>
+                                                    </button>
+
+                                                    <!-- Main Cards Container -->
+                                                    <div id="tsrPlanCards" class="tsrPlanCards">
+
                                                     </div>
-                                                    <div class="tsrPlanCard  " data-plan-id="TRADER_VALUE">
 
-                                                        <h3>Trader Value</h3>
-                                                        <div class="tsrPriceMeta align-items-center"> <span
-                                                                style="text-decoration: line-through; color: #adb5bd;font-size: 14px; text-wrap: nowrap;"><i
-                                                                    class="fas fa-rupee-sign"></i>2360</span></div>
-                                                        <div class="mb-2"> <span
-                                                                style="background: #e6f4ea;color: #2f9e44;padding: 3px 8px; border-radius: 999px;font-size: 11px; text-wrap: nowrap;">20%
-                                                                OFF</span> <span
-                                                                style="color: #adb5bd;font-size: 16px; ">+</span> <span
-                                                                style="background: #e6f4ea;color: #2f9e44;padding: 3px 8px; border-radius: 999px;font-size: 11px;"
-                                                                class="">Renew 5% OFF</span></div>
-                                                        <h2
-                                                            style="font-size: 34px;font-weight: 600;margin-bottom: 6px;;display: block;">
-                                                            <i class="fas fa-rupee-sign"></i> 1770 <span
-                                                                style="font-size: 14px;color: #6c757d;">/ year</span>
-                                                        </h2>
-                                                        <div
-                                                            style="font-size: 12px; color: #6c757d; margin-bottom: 16px;;display: block;">
-                                                            Incl. of all taxes
-                                                        </div>
-                                                        <div
-                                                            style="font-size: 12px; color: #6c757d; margin-bottom: 16px;;display: block;">
-                                                            Effective
-                                                            <strong><i class="fas fa-rupee-sign"></i> 157/month</strong>
-                                                        </div>
-                                                        <p style="font-size: 14px; color: grey;"> Suitable for Beginers
-                                                            with Investor &amp; Basic Trading options</p><button
-                                                            onclick="miSupc.pa('renew', 'TRADER_VALUE', '1Y');">Renew</button>
-                                                    </div>
-                                                    <div class="tsrPlanCard  " data-plan-id="TRADER">
-
-                                                        <h3>Trader</h3>
-                                                        <div class="tsrPriceMeta align-items-center"> <span
-                                                                style="text-decoration: line-through; color: #adb5bd;font-size: 14px; text-wrap: nowrap;"><i
-                                                                    class="fas fa-rupee-sign"></i>3894</span></div>
-                                                        <div class="mb-2"> <span
-                                                                style="background: #e6f4ea;color: #2f9e44;padding: 3px 8px; border-radius: 999px;font-size: 11px; text-wrap: nowrap;">20%
-                                                                OFF</span> <span
-                                                                style="color: #adb5bd;font-size: 16px; ">+</span> <span
-                                                                style="background: #e6f4ea;color: #2f9e44;padding: 3px 8px; border-radius: 999px;font-size: 11px;"
-                                                                class="">Upgrade 5% OFF</span> <span
-                                                                style="color: #adb5bd;font-size: 16px; ">+</span><br
-                                                                class="my-3"> <span
-                                                                style="background: #e6f4ea;color: #2f9e44;padding: 3px 8px; border-radius: 999px;font-size: 11px; min-width: 90px;"
-                                                                class=""> Active Plan Discount <i
-                                                                    class="fas fa-rupee-sign"></i> 42 </span></div>
-                                                        <h2
-                                                            style="font-size: 34px;font-weight: 600;margin-bottom: 6px;;display: block;">
-                                                            <i class="fas fa-rupee-sign"></i> 2879 <span
-                                                                style="font-size: 14px;color: #6c757d;">/ year</span>
-                                                        </h2>
-                                                        <div
-                                                            style="font-size: 12px; color: #6c757d; margin-bottom: 16px;;display: block;">
-                                                            Incl. of all taxes
-                                                        </div>
-                                                        <div
-                                                            style="font-size: 12px; color: #6c757d; margin-bottom: 16px;;display: block;">
-                                                            Effective
-                                                            <strong><i class="fas fa-rupee-sign"></i> 260/month</strong>
-                                                        </div>
-                                                        <p style="font-size: 14px; color: grey;"> Suitable for - Traders
-                                                            with more Intraday Options</p><button
-                                                            onclick="miSupc.pa('upgrade', 'TRADER', '1Y');">Upgrade</button>
-                                                    </div>
-                                                    <div class="tsrPlanCard  featured " data-plan-id="TRADER_PRO">
-
-                                                        <h3>Trader Pro</h3>
-                                                        <div class="tsrPriceMeta align-items-center"> <span
-                                                                style="text-decoration: line-through; color: #adb5bd;font-size: 14px; text-wrap: nowrap;"><i
-                                                                    class="fas fa-rupee-sign"></i>7080</span></div>
-                                                        <div class="mb-2"> <span
-                                                                style="background: #e6f4ea;color: #2f9e44;padding: 3px 8px; border-radius: 999px;font-size: 11px; text-wrap: nowrap;">30%
-                                                                OFF</span> <span
-                                                                style="color: #adb5bd;font-size: 16px; ">+</span> <span
-                                                                style="background: #e6f4ea;color: #2f9e44;padding: 3px 8px; border-radius: 999px;font-size: 11px;"
-                                                                class="">Upgrade 5% OFF</span> <span
-                                                                style="color: #adb5bd;font-size: 16px; ">+</span><br
-                                                                class="my-3"> <span
-                                                                style="background: #e6f4ea;color: #2f9e44;padding: 3px 8px; border-radius: 999px;font-size: 11px; min-width: 90px;"
-                                                                class=""> Active Plan Discount <i
-                                                                    class="fas fa-rupee-sign"></i> 42 </span></div>
-                                                        <h2
-                                                            style="font-size: 34px;font-weight: 600;margin-bottom: 6px;;display: block;">
-                                                            <i class="fas fa-rupee-sign"></i> 4560 <span
-                                                                style="font-size: 14px;color: #6c757d;">/ year</span>
-                                                        </h2>
-                                                        <div
-                                                            style="font-size: 12px; color: #6c757d; margin-bottom: 16px;;display: block;">
-                                                            Incl. of all taxes
-                                                        </div>
-                                                        <div
-                                                            style="font-size: 12px; color: #6c757d; margin-bottom: 16px;;display: block;">
-                                                            Effective
-                                                            <strong><i class="fas fa-rupee-sign"></i> 413/month</strong>
-                                                        </div>
-                                                        <p style="font-size: 14px; color: grey;"> For Pros - Utlimate
-                                                            flexibiliy and pre build strategies</p><button
-                                                            onclick="miSupc.pa('upgrade', 'TRADER_PRO', '1Y');">Upgrade</button>
-                                                    </div> -->
+                                                    <button type="button" class="tsrCarouselControl tsrCarouselNext"
+                                                        id="tsrPlanNextBtn" aria-label="Next Plan"
+                                                        onclick="navigateTsrPlanCard('next')">
+                                                        <i class="fas fa-chevron-right"></i>
+                                                    </button>
                                                 </div>
+
+                                                <script>
+                                                    function navigateTsrPlanCard(action) {
+                                                        const cardsContainer = document.getElementById('tsrPlanCards');
+                                                        const cards = cardsContainer.querySelectorAll('.tsrPlanCard');
+
+                                                        if (cards.length == 0 || !cardsContainer) {
+                                                            return;
+                                                        }
+
+                                                        let scrollX = cards[0].offsetWidth + 20;
+                                                        if (action == 'prev') {
+                                                            cardsContainer.scrollBy({ left: -scrollX, behaviour: "smooth" })
+                                                        } else {
+                                                            cardsContainer.scrollBy({ left: scrollX, behaviour: "smooth" })
+                                                        }
+                                                    }
+                                                </script>
+
+                                                <!-- <div class="tsrPlanCards" id="tsrPlanCards">
+                                                    
+                                                </div> -->
                                             </div>
 
                                             <div id="tsrPlansXyzDiv" style="display: none;"
