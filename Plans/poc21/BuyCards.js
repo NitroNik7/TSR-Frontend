@@ -753,7 +753,9 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
         html += getPersonalDetailsHtml();
 
-        html += getGstDetailsHtml();
+        if(planData.gstInv){
+            html += getGstDetailsHtml();
+        }
         html += ``
         html += '<div id="refCodeDiv"></div>';
         // html += `    <button type="submit" class="btn btn-primary w-100">PROCEED TO PAYMENT</button>`
@@ -845,7 +847,7 @@ var miSupc = (function () { // Mi Subscription plan cards ...
                                                 <li>StockAIO is managed separately from TSR</li>                                                        
                                                 <li>Password of Stock AIO is maintained independently.
                                                 </li>
-                                                <li>Stock AIO currently serves EOD US/UK prices.</li>
+                                                <li>Stock AIO currently serves EODAU/CA/UK/US prices.</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -1155,8 +1157,8 @@ var miSupc = (function () { // Mi Subscription plan cards ...
         html += `            </span>`
 
         html += ``
-        if (jsu.isNotNull(curSub) && jsu.isNotNull(curSub.gst)) {
-            html += `            <input type="text" class="form-control" id="${gstNumberInputId}" value="${curSub.mob}">`
+        if (jsu.isNotNull(curSub) && jsu.isNotNull(curSub.gstNo)) {
+            html += `            <input type="text" class="form-control" id="${gstNumberInputId}" value="${curSub.gstNo}">`
         } else {
             html += `            <input type="text" class="form-control" id="${gstNumberInputId}" placeholder="(Optional)">`
         }
