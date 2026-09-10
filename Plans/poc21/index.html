@@ -66,6 +66,7 @@
     <script src="https://www.topstockresearch.com/static/mig/js/Marquee.js"></script>
     <script src="https://www.topstockresearch.com/static/mig/js/aio_cmnV0.0.0.56.js"></script>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-10926652708"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/fc-4.0.2/fh-3.2.2/datatables.min.js"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -2590,7 +2591,7 @@
                                                     <!-- Carousel Navigation Buttons (Visible only below 992px) -->
                                                     <button type="button" class="tsrCarouselControl tsrCarouselPrev"
                                                         id="tsrPlanPrevBtn" aria-label="Previous Plan"
-                                                        onclick="navigateTsrPlanCard('prev')">
+                                                        onclick="miSuPl.ntpc('prev')">
                                                         <i class="fas fa-chevron-left"></i>
                                                     </button>
 
@@ -2601,28 +2602,10 @@
 
                                                     <button type="button" class="tsrCarouselControl tsrCarouselNext"
                                                         id="tsrPlanNextBtn" aria-label="Next Plan"
-                                                        onclick="navigateTsrPlanCard('next')">
+                                                        onclick="miSuPl.ntpc('next')">
                                                         <i class="fas fa-chevron-right"></i>
                                                     </button>
                                                 </div>
-
-                                                <script>
-                                                    function navigateTsrPlanCard(action) {
-                                                        const cardsContainer = document.getElementById('tsrPlanCards');
-                                                        const cards = cardsContainer.querySelectorAll('.tsrPlanCard');
-
-                                                        if (cards.length == 0 || !cardsContainer) {
-                                                            return;
-                                                        }
-
-                                                        let scrollX = cards[0].offsetWidth + 20;
-                                                        if (action == 'prev') {
-                                                            cardsContainer.scrollBy({ left: -scrollX, behaviour: "smooth" })
-                                                        } else {
-                                                            cardsContainer.scrollBy({ left: scrollX, behaviour: "smooth" })
-                                                        }
-                                                    }
-                                                </script>
 
                                                 <!-- <div class="tsrPlanCards" id="tsrPlanCards">
                                                     
@@ -4856,9 +4839,7 @@
             miSuPl.init();
             //    mysp.sa();
 
-
-
-
+            
         </script>
 
 

@@ -865,7 +865,7 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
         html += `    <!-- 5: Payment Gateway -->`
         html += `    <div class="d-flex mb-2">`
-        html += `        <p class="fw-bold mb-2">Payment Gateway</p>`
+        html += `        <p class="mb-2">Payment Gateway</p>`
         html += `        <div class="d-flex justify-content-center ms-3 gap-4">`
         html += `            <div class="form-check">`
         html += `                <input class="form-check-input" type="radio" name="payGate" id="payU" value="payU">`

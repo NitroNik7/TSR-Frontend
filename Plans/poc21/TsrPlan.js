@@ -22,12 +22,14 @@ var miSuPl = (function () { // Mi Subscription plan cards ...
             htmlU.divHide('nonLoggedInDiv');
         }
 
-
         setSubsDetails();
 
         let cards = miSupc.gc();
 
         htmlU.addMsgToDiv('tsrPlanCards', true, cards);
+
+        const featuredCard = document.querySelector('.tsrPlanCard.featured');
+        featuredCard.scrollIntoView(); // focusing featured plan on page load
 
         window.addEventListener('load', adjustPlanTableStickyHeaders);
         window.addEventListener('resize', adjustPlanTableStickyHeaders);
@@ -521,76 +523,115 @@ var miSuPl = (function () { // Mi Subscription plan cards ...
 
         let html = "";
         html += `
-                                        <!-- Past Transactions code -->
+                <!-- Past Transactions code -->
 
-                                        <div class="accordion tsrAccordion" id="tsrPlansPastTxnAccordion">
-                                            <div class="accordion-item tsrAccordionItem">
-                                                <h2 class="accordion-header"> <button
-                                                        class="accordion-button tsrPlansBuyAlertAccordionBtn  collapsed"
-                                                        type="button" data-bs-toggle="collapse"
-                                                        data-bs-target="#tsrPlansPastTxn"
-                                                        aria-expanded="false" >
-                                                            <span
-                                                                    class="d-flex align-items-center">
-                                                                    <span class="icon-badge me-3">
-                                                                        <i class="fas fa-receipt"></i>
-                                                                    </span>
-                                                                    <span class="text-start" style="font-weight: 600; ">
-                                                                        View past transactions
-                                                                    </span>
-                                                                </span>
+                <div class="accordion tsrAccordion" id="tsrPlansPastTxnAccordion">
+                    <div class="accordion-item tsrAccordionItem">
+                        <h2 class="accordion-header"> <button
+                                class="accordion-button tsrPlansBuyAlertAccordionBtn  collapsed"
+                                type="button" data-bs-toggle="collapse"
+                                data-bs-target="#tsrPlansPastTxn"
+                                aria-expanded="false" >
+                                    <span
+                                            class="d-flex align-items-center">
+                                            <span class="icon-badge me-3">
+                                                <i class="fas fa-receipt"></i>
+                                            </span>
+                                            <span class="text-start" style="font-weight: 600; ">
+                                                View past transactions
+                                            </span>
+                                        </span>
 
-                                                        </button>
-                                                </h2>
-                                            </div>
-                                            <div id="tsrPlansPastTxn"
-                                                class="accordion-collapse collapse"
-                                                data-bs-parent="#tsrPlansPastTxnAccordion">
-                                                <div
-                                                    class="container-fluid py-4 px-0">
-                                                    <div class="row gy-4 justify-content-center">
-        `
+                                </button>
+                        </h2>
+                    </div>
+                    <div id="tsrPlansPastTxn"
+                        class="accordion-collapse collapse"
+                        data-bs-parent="#tsrPlansPastTxnAccordion">
+                        <div
+                            class="container-fluid py-4 px-0">
+                            <div class="row gy-4 justify-content-center">`
 
-        html += `<table class="table table-sm table-striped">`
-        html += `   <tr>`
-        html += `       <th>Plan</th>`
-        html += `       <th>Amount</th>`
-        html += `       <th>TSR Txn ID</th>`
-        html += `       <th>Payment Gateway Txn ID</th>`
-        html += `       <th>Status</th>`
-        html += `       <th>Term</th>`
-        html += `       <th>Invoice</th>`
-        html += `   </tr>`
+        html += `               <table id="tsrPlansPastTxnTable" class="table table-sm table-striped">`
+        html += `                  <tr>`
+        html += `                      <th>Plan</th>`
+        html += `                      <th>Amount</th>`
+        html += `                      <th>TSR Txn ID</th>`
+        html += `                      <th>Payment Gateway Txn ID</th>`
+        html += `                      <th>Status</th>`
+        html += `                      <th>Term</th>`
+        html += `                      <th>Invoice</th>`
+        html += `                  </tr>`
         for (let i = 0; i < txnList.length; i++) {
             let txn = txnList[i];
-            html += `   <tr>`
-            html += `       <td>${txn.sub}</td>`
-            html += `       <td>${txn.amt}</td>`
-            html += `       <td>${txn.txnId}</td>`
-            html += `       <td>${txn.pgId}</td>`
-            html += `       <td>${txn.status}</td>`
-            html += `       <td>${txn.term}</td>`
+            html += `              <tr>`
+            html += `                  <td>${txn.sub}</td>`
+            html += `                  <td>${txn.amt}</td>`
+            html += `                  <td>${txn.txnId}</td>`
+            html += `                  <td>${txn.pgId}</td>`
+            html += `                  <td>${txn.status}</td>`
+            html += `                  <td>${txn.term}</td>`
             if (txn.status == "success" && txn.term != "1Y" && txn.sub == "TRADER_PRO") {
-                html += `   <td><i class="fas fa-file-pdf"></i></td>`
-            }else{
-                html += `   <td>-</td>`
+                html += `               <td><i class="fas fa-file-pdf"></i></td>`
+            } else {
+                html += `               <td>-</td>`
             }
-            // html += `       <td>${txn.term}</td>`
-            html += `   </tr>`
-
+            html += `               </tr>`
         }
-        html += `</table>`
+        html += `           </table>`
         html += ``
         html += `
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-        `
+                        </div>
+                    </div>
+                </div>
+            </div>`
 
         htmlU.addMsgToDiv(pastTxnDivId, true, html);
 
+        // TODO
+        if (typeof DataTable != "undefined") {
+            let mdtOptions = {
+                paging: false,
+                responsive: true,
+                scrollY: 250,
+                scrollX: true,
+                scrollCollapse: true,
+                dom: 'Bfrtip',
+                buttons: [
+                    { extend: "copy", className: "btn btn-sm  btn-secondary ms-2    mt-1", text: " Copy" },
+                    { extend: "csv", className: "btn  btn-sm btn-secondary ms-2    mt-1", text: " CSV" },
+                    { extend: "excel", className: "btn  btn-sm btn-secondary ms-2     mt-1", text: " Excel" },
+                    { extend: "print", className: "btn  btn-sm btn-secondary ms-1    mt-1", text: " Print" }
+                ],
+                fixedColumns: {
+                    leftColumns: 1
+                }
+            }
+            setTimeout(() => {
+
+                $('#' + "tsrPlansPastTxnTable").DataTable(mdtOptions);
+
+            }, 100);
+        }
+
     }
+
+    function navigateTsrPlanCard(action) {
+        const cardsContainer = document.getElementById('tsrPlanCards');
+        const cards = cardsContainer.querySelectorAll('.tsrPlanCard');
+
+        if (cards.length == 0 || !cardsContainer) {
+            return;
+        }
+
+        let scrollX = cards[0].offsetWidth + 20;
+        if (action == 'prev') {
+            cardsContainer.scrollBy({ left: -scrollX, behaviour: "smooth" })
+        } else {
+            cardsContainer.scrollBy({ left: scrollX, behaviour: "smooth" })
+        }
+    }
+
 
 
     /*
@@ -679,10 +720,13 @@ var miSuPl = (function () { // Mi Subscription plan cards ...
     ]
 
 
+
+
     return {
         init: init,
 
         pc: periodChange,
-        ppt: printPastTxn
+        ppt: printPastTxn,
+        ntpc: navigateTsrPlanCard,
     }
 })();
