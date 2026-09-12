@@ -399,7 +399,8 @@
     }
 
     .tsrPlanCard {
-        flex: 0 0 88%;
+        /* flex: 0 0 88%; */
+        flex: 0 0 1;
         max-width: 360px;
         scroll-snap-align: center;
         scroll-snap-stop: always;
