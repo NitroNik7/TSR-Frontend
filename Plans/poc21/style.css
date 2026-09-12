@@ -396,6 +396,7 @@
         /* -webkit-overflow-scrolling: touch; */
         padding: 16px 12px;
         gap: 20px;
+        width: 100%;
         scrollbar-width: none;
     }
 
