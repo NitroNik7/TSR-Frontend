@@ -1,0 +1,36 @@
+<div class="tsrPlanSection">
+    <!-- TOGGLE -->
+    <div class="tsrBillingToggle">
+
+        <button onclick="miSuPl.pc(this, '1M', 0)">Monthly</button>
+        <button onclick="miSuPl.pc(this, '1Y', 1)" class="active">
+            1 Year
+        </button>
+        <button id="tsrPlanDefSelPeriodBtn" onclick="miSuPl.pc(this, '2Y', 2)">
+            2 Years
+        </button>
+        <button data-type="5_year" onclick="miSuPl.pc(this, '5Y', 3)">5
+            Years</button>
+        <div class="tsrToggleSlider" style="transform: translateX(100%)">
+        </div>
+    </div>
+
+    <!-- Wrapper for Plans -->
+    <div class="tsrPlansContainer">
+        <!-- Carousel Navigation Buttons (Visible only below 992px) -->
+        <button type="button" class="tsrCarouselControl tsrCarouselPrev" id="tsrPlanPrevBtn" aria-label="Previous Plan"
+            onclick="miSuPl.ntpc('prev')">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <!-- Main Cards Container -->
+        <div id="tsrPlanCards" class="tsrPlanCards">
+
+        </div>
+
+        <button type="button" class="tsrCarouselControl tsrCarouselNext" id="tsrPlanNextBtn" aria-label="Next Plan"
+            onclick="miSuPl.ntpc('next')">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</div>

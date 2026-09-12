@@ -17,6 +17,7 @@ var miSuPl = (function () { // Mi Subscription plan cards ...
         // let plansSection = document.querySelector("." + plansSectionId); 
         // plansSection.innerHTML += tsrPlanActionCss();
 
+        updatePlanDetails();
 
         if (curSub != null && jsu.isNotNull(curSub.plan)) {
             htmlU.divHide('nonLoggedInDiv');
@@ -29,11 +30,61 @@ var miSuPl = (function () { // Mi Subscription plan cards ...
         htmlU.addMsgToDiv('tsrPlanCards', true, cards);
 
         const featuredCard = document.querySelector('.tsrPlanCard.featured');
-        featuredCard.scrollIntoView(); // focusing featured plan on page load
+        if (window.innerWidth < 992) {
+            featuredCard.scrollIntoView(); // focusing featured plan on page load
+        }
 
         window.addEventListener('load', adjustPlanTableStickyHeaders);
         window.addEventListener('resize', adjustPlanTableStickyHeaders);
 
+    }
+
+    function updatePlanDetails() {
+
+        let EOD_COMBO_PLAN = mintJsUtil.getObjFrmArr(planDetails, "EOD_COMBO");
+        // EOD_COMBO_PLAN.subHeading = "Pro Analysis for EOD Users";
+        // EOD_COMBO_PLAN.subHeading = "Everything EOD in One Plan";
+        EOD_COMBO_PLAN.subHeading = "Everything Traders Need for EOD";
+        EOD_COMBO_PLAN.fit = ["Positional Trader", "Part Time Trader", "Investors", "EOD Professionals"];
+        for (let i = 0; i < EOD_COMBO_PLAN.period.length; i++) {
+            let period = EOD_COMBO_PLAN.period[i];
+            period.entitlements = ["Daily, Weekly and Monthly tick", "EOD Updates"];
+            period.gstInv = false;
+        }
+
+        let TRADER_VALUE_PLAN = mintJsUtil.getObjFrmArr(planDetails, "TRADER_VALUE");
+        TRADER_VALUE_PLAN.subHeading = "Market Essentials at Exceptional Value"; 
+        TRADER_VALUE_PLAN.fit = ["Swing Trader", "Positional Trader", "Beginner"];
+        for (let i = 0; i < TRADER_VALUE_PLAN.period.length; i++) {
+            let period = TRADER_VALUE_PLAN.period[i];
+            period.entitlements = ["Daily, Weekly and Monthly tick", "Live Updates"];
+            period.gstInv = false;
+        }
+
+        let TRADER_PRO_PLAN = mintJsUtil.getObjFrmArr(planDetails, "TRADER_PRO");
+        // TRADER_PRO_PLAN.subHeading = "Ultimate flexibility for Pro's"; 
+        TRADER_PRO_PLAN.subHeading = "Ultimate Plan for Serious Traders"; 
+        TRADER_PRO_PLAN.fit = ["Professional Trader", "Intraday Trader", "Swing Trader", "Scalpers", "BTST Traders"];
+        for (let i = 0; i < TRADER_PRO_PLAN.period.length; i++) {
+            let planPeriod = TRADER_PRO_PLAN.period[i];
+            planPeriod.entitlements = ["Daily, Weekly and Monthly tick", "Live Updates"];
+            planPeriod.gstInv = false;
+
+            if (planPeriod.period != "1 Mth") {
+                planPeriod.entitlements = [
+                    "1, 2 min to Quarterly tick",
+                    "Live Updates",
+                    "Handholding for 2 strategies"
+                ];
+                planPeriod.gstInv = true;
+            } else {
+                planPeriod.entitlements = [
+                    "1, 2 min to Quarterly tick",
+                    "Live Updates"
+                ];
+                planPeriod.gstInv = false;
+            }
+        }
     }
 
     function periodChange(btn, period, btnIdx) {
@@ -99,7 +150,7 @@ var miSuPl = (function () { // Mi Subscription plan cards ...
 
         if (jsu.isNull(curPlan)) {
             return;
-        } else if (curPlan == "EXPIRED") {
+        } else if (curPlan == "EXPIRED" || curPlan == "BASIC") {
             planName = "-"
             daysRemaining = "-";
             endDate = "-";
@@ -138,23 +189,23 @@ var miSuPl = (function () { // Mi Subscription plan cards ...
         html += `           <button class="accordion-button tsrAccordionBtn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#subsDetails">`
         html += `               <div class="tsrAccordionHeader">`
         html += `                   <div>`
-        html += `                       <p class="tsrPlansLabelText">Plan</p>`
-        html += `                       <p class="tsrPlanValue">${planName}</p>`
+        html += `                       <p class="tsrPlansCurSubLabelText">Plan</p>`
+        html += `                       <p class="tsrPlansCurSubValue">${planName}</p>`
         html += `                   </div>`
 
         html += `                   <div>`
-        html += `                       <p class="tsrPlansLabelText">Status</p>`
-        html += `                       <p class="tsrStatus active">${status}</p>`
+        html += `                       <p class="tsrPlansCurSubLabelText">Status</p>`
+        html += `                       <p class="tsrPlansCurSubStatus active">${status}</p>`
         html += `                   </div>`
 
         html += `                   <div>`
-        html += `                       <p class="tsrPlansLabelText">Valid Till</p>`
-        html += `                       <p class="tsrPlanValue">${endDate}</p>`
+        html += `                       <p class="tsrPlansCurSubLabelText">Valid Till</p>`
+        html += `                       <p class="tsrPlansCurSubValue">${endDate}</p>`
         html += `                   </div>`
 
         html += `                   <div>`
-        html += `                       <p class="tsrPlansLabelText">Days remaining</p>`
-        html += `                       <p class="tsrPlanValue">${daysRemaining}</p>`
+        html += `                       <p class="tsrPlansCurSubLabelText">Days remaining</p>`
+        html += `                       <p class="tsrPlansCurSubValue">${daysRemaining}</p>`
         html += `                   </div>`
         html += `               </div>`
 
@@ -250,10 +301,11 @@ var miSuPl = (function () { // Mi Subscription plan cards ...
             html += `            <br>`
 
 
-            html += `<div id="tsrPlanPastTxnDiv" class="mt-3">`
+            html += `<div id="tsrPlanPastTxnDiv" class="mt-2">`
             html += `</div>`
 
 
+            html += `<div id='${subsSectionId + "FbDiv"}'></div>`
 
         }
         html += `            </div>`
@@ -362,156 +414,10 @@ var miSuPl = (function () { // Mi Subscription plan cards ...
 
     function getPastTransactions() {
 
-
-
-        // TODO later
-        // let reqUrl = "https://www.topstockresearch.com/my/MyTsrData/SubPackage.tsr";
-        // let pd = { reqType: "spStatus" }
-        // let remoteObject = new RC(reqUrl, null, pd, LD_DIV, CONTENTS_FB_DIV, 'miSuPl', 'ppt', null);
-        // jsu.rc(remoteObject);
-
-        let subPackage = {
-            "statusCode": "success",
-            "statusMsg": "Has Records",
-            "plan": "TRADER_PRO",
-            "endDate": "17_Sep_2026",
-            "trigEmailAlert": 0,
-            "balEmailAlert": 10,
-            "trigSmsAlert": 10,
-            "balSmsAlert": 0,
-            "trigWhatsAppAlert": 9,
-            "balWhatsAppAlert": 1,
-            "count": 14,
-            "results": [
-                {
-                    "txnId": "HBYEZ8CGbG_10_09_25_11_09",
-                    "pgId": "null",
-                    "sub": "TRADER_PRO",
-                    "amt": 5310.0,
-                    "term": "1Y",
-                    "subType": "NEW",
-                    "status": "Initiated"
-                },
-                {
-                    "txnId": "0oBxNED7Z1_10_09_25_11_17",
-                    "pgId": "null",
-                    "sub": "TRADER_PRO",
-                    "amt": 0.0,
-                    "term": "12M",
-                    "subType": "EXTN",
-                    "status": "success"
-                },
-                {
-                    "txnId": "YfbikWYL4I_08_05_26_05_35",
-                    "pgId": "114495260913",
-                    "sub": "TRADER_PRO",
-                    "amt": 4602.0,
-                    "term": "1Y",
-                    "subType": "RENEW",
-                    "status": "Aborted"
-                },
-                {
-                    "txnId": "iPAVaDDpYY_13_05_26_07_00",
-                    "pgId": "28580513615",
-                    "sub": "ALERT_PACK",
-                    "amt": 236.0,
-                    "term": "1X",
-                    "subType": "ALERT_PACK",
-                    "status": "failure"
-                },
-                {
-                    "txnId": "wclUa3O9rV_13_05_26_07_23",
-                    "pgId": "null",
-                    "sub": "TRADER_PRO",
-                    "amt": 561.0,
-                    "term": "1M",
-                    "subType": "RENEW",
-                    "status": "Initiated"
-                },
-                {
-                    "txnId": "Lwghwhe6Bw_13_05_26_07_35",
-                    "pgId": "null",
-                    "sub": "ALERT_PACK",
-                    "amt": 236.0,
-                    "term": "1X",
-                    "subType": "ALERT_PACK",
-                    "status": "Initiated"
-                },
-                {
-                    "txnId": "vlPqx9fAir_13_05_26_07_35",
-                    "pgId": "null",
-                    "sub": "ALERT_PACK",
-                    "amt": 236.0,
-                    "term": "1X",
-                    "subType": "ALERT_PACK",
-                    "status": "Initiated"
-                },
-                {
-                    "txnId": "gYvKD0lILK_13_05_26_07_41",
-                    "pgId": "null",
-                    "sub": "ALERT_PACK",
-                    "amt": 236.0,
-                    "term": "1X",
-                    "subType": "ALERT_PACK",
-                    "status": "Initiated"
-                },
-                {
-                    "txnId": "nDlHtT8HZH_13_05_26_07_46",
-                    "pgId": "null",
-                    "sub": "ALERT_PACK",
-                    "amt": 236.0,
-                    "term": "1X",
-                    "subType": "ALERT_PACK",
-                    "status": "Initiated"
-                },
-                {
-                    "txnId": "dnBwQyJQkh_13_05_26_07_46",
-                    "pgId": "null",
-                    "sub": "ALERT_PACK",
-                    "amt": 236.0,
-                    "term": "1X",
-                    "subType": "ALERT_PACK",
-                    "status": "Initiated"
-                },
-                {
-                    "txnId": "1ImAcD3JYe_13_05_26_07_47",
-                    "pgId": "null",
-                    "sub": "ALERT_PACK",
-                    "amt": 590.0,
-                    "term": "2X",
-                    "subType": "ALERT_PACK",
-                    "status": "Initiated"
-                },
-                {
-                    "txnId": "U7RzgKmlaA_13_05_26_07_48",
-                    "pgId": "28581326493",
-                    "sub": "ALERT_PACK",
-                    "amt": 1180.0,
-                    "term": "3X",
-                    "subType": "ALERT_PACK",
-                    "status": "failure"
-                },
-                {
-                    "txnId": "I51kHufb7G_13_05_26_07_48",
-                    "pgId": "null",
-                    "sub": "AIO_PRO",
-                    "amt": 999.0,
-                    "term": "1Y",
-                    "subType": "BUY_AIO",
-                    "status": "Initiated"
-                },
-                {
-                    "txnId": "Y6p0DWifmr_13_05_26_07_49",
-                    "pgId": "null",
-                    "sub": "ALERT_PACK",
-                    "amt": 1180.0,
-                    "term": "3X",
-                    "subType": "ALERT_PACK",
-                    "status": "Initiated"
-                }
-            ]
-        }
-        printPastTxn(subPackage);
+        let reqUrl = jsu.getBaseUrl() + "/my/MyTsrData/SubPackage.tsr";
+        let pd = { reqType: "spStatus" }
+        let remoteObject = new RC(reqUrl, null, pd, null, subsSectionId + "FbDiv", 'miSuPl', 'ppt', null);
+        jsu.rc(remoteObject);
 
     }
 
@@ -527,11 +433,10 @@ var miSuPl = (function () { // Mi Subscription plan cards ...
 
                 <div class="accordion tsrAccordion" id="tsrPlansPastTxnAccordion">
                     <div class="accordion-item tsrAccordionItem">
-                        <h2 class="accordion-header"> <button
-                                class="accordion-button tsrPlansBuyAlertAccordionBtn  collapsed"
-                                type="button" data-bs-toggle="collapse"
-                                data-bs-target="#tsrPlansPastTxn"
-                                aria-expanded="false" >
+                        <h2 class="accordion-header"> 
+                        <button class="accordion-button tsrPlansBuyAlertAccordionBtn  collapsed" 
+                        type="button" data-bs-toggle="collapse" data-bs-target="#tsrPlansPastTxn" 
+                        aria-expanded="false">
                                     <span
                                             class="d-flex align-items-center">
                                             <span class="icon-badge me-3">
@@ -541,7 +446,6 @@ var miSuPl = (function () { // Mi Subscription plan cards ...
                                                 View past transactions
                                             </span>
                                         </span>
-
                                 </button>
                         </h2>
                     </div>
@@ -564,18 +468,23 @@ var miSuPl = (function () { // Mi Subscription plan cards ...
         html += `                  </tr>`
         for (let i = 0; i < txnList.length; i++) {
             let txn = txnList[i];
+
+            let txnId = jsu.isNotNull(txn.txnId) ? txn.txnId : "-";
+            let pgId = jsu.isNotNull(txn.pgId) ? txn.pgId : "-";
+            let term = jsu.isNotNull(txn.term) ? txn.term : "-";
             html += `              <tr>`
             html += `                  <td>${txn.sub}</td>`
             html += `                  <td>${txn.amt}</td>`
-            html += `                  <td>${txn.txnId}</td>`
-            html += `                  <td>${txn.pgId}</td>`
+            html += `                  <td>${txnId}</td>`
+            html += `                  <td>${pgId}</td>`
             html += `                  <td>${txn.status}</td>`
-            html += `                  <td>${txn.term}</td>`
-            if (txn.status == "success" && txn.term != "1Y" && txn.sub == "TRADER_PRO") {
-                html += `               <td><i class="fas fa-file-pdf"></i></td>`
-            } else {
-                html += `               <td>-</td>`
-            }
+            html += `                  <td>${term}</td>`
+            // TODO GST INVOICE
+            // if (txn.status == "success" && txn.term != "1Y" && txn.sub == "TRADER_PRO") {
+            //     html += `               <td><i class="fas fa-file-pdf"></i></td>`
+            // } else {
+            html += `               <td>-</td>`
+            // }
             html += `               </tr>`
         }
         html += `           </table>`

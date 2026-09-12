@@ -37,8 +37,11 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
 
 
-    let origBuyPrice = null;
+    let origBuyPrice = null; // needed to apply ref. disc.
+    let origAioPrice = null; // needed to apply ref. disc.
     let finalBuyPrice = null;
+
+    let refDisc = 0;
 
     let selPeriod = null;
 
@@ -60,7 +63,7 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
 
         html += getCard(jsu.getObjFrmArr(planDetails, "EOD_COMBO"), period);
-        html += getCard(jsu.getObjFrmArr(planDetails, "TRADER_PRO"), period, period);
+        html += getCard(jsu.getObjFrmArr(planDetails, "TRADER_PRO"), period);
         html += getCard(jsu.getObjFrmArr(planDetails, "TRADER_VALUE"), period);
 
         // for (let i = 0; i < planDetails.length; i++) {
@@ -118,10 +121,13 @@ var miSupc = (function () { // Mi Subscription plan cards ...
             buyPrice = planData.orig - savings;
         } else if (state == `upgrade` && jsu.isNotNull(upgradeDiscount)) {
             savings = (((planData.off + upgradeDiscount) / 100) * planData.orig) + curSub.valueRemain;
-            buyPrice = planData.orig - savings; // TODO 1a check with Sir 
+            buyPrice = planData.orig - savings;
         }
         else {
-            buyPrice = planData.buyPrice;
+            savings = (planData.off / 100) * planData.orig;
+            buyPrice = planData.orig - savings;
+            // OR
+            // buyPrice = planData.buyPrice; // as planData.buyPrice = planData.orig - planData.off % 
         }
         savings = Math.round(savings);
         buyPrice = Math.round(buyPrice);
@@ -131,52 +137,36 @@ var miSupc = (function () { // Mi Subscription plan cards ...
         //    return ''  // case of Upgrade to smaller period Higher plan
         // }
 
-        // TODO remove later
-        /*
-            let html = `
-                <div class="tsrPlanCard  ${popular}"   data-plan-id="${details.id}">
-
-                    <h3>${details.name}</h3>
-            `
-        */
         let html = `
                 <div class="tsrPlanCard ${popular}" style="display: flex; flex-direction: column; justify-content: space-between" data-plan-id="${details.id}">`
 
         if (jsu.isNotNull(popular)) {
-            html += `<span class="badge btn-primary" style="position: absolute; top: -12px; left: 36%;  border-radius: 10px"><i class="fas fa-crown"></i> POPULAR</span>`
+            html += `<span class="badge btn-success" style="position: absolute; top: -12px; left: 36%;  border-radius: 10px"><i class="fas fa-crown"></i> POPULAR</span>`
         }
         html += `<div class="d-flex flex-column">`
 
-        html += `<h3 style="font-size: 22px; margin-bottom: 12px; font-weight: 600;">${details.name}</h3>`
+        html += `   <h3 style="font-size: 22px; margin-bottom: 12px; font-weight: 600;">${details.name}</h3>`
 
         if (jsu.isNotNull(details.subHeading)) {
-            html += `   <h6 style="font-size: 13px; font-weight: 600; color: grey; margin-top: 4px; margin-bottom: 16px;">${details.subHeading}</h6>`
+            html += `   <h6 style="font-size: 13px; font-weight: 600; color: grey; margin-top: 4px; margin-bottom: 16px; text-wrap: nowrap;">${details.subHeading}</h6>`
         }
-        // if (jsu.isNotNull(planData.off)) {
 
-        // TODO remove later
-        /* 
-            html += `<div class="tsrPriceMeta align-items-center">`
-            html += `   <span style="${CSS_OLD_PRICE}"><i class="fas fa-rupee-sign"></i>${Math.round(planData.orig)}</span>`
-            html += `</div>`
-        */
-
-        // Original price
-        if (jsu.isNotNull(planData.off) || jsu.isNotNull(renewDiscount) || jsu.isNotNull(upgradeDiscount) || curSub.valueRemain) {
-
+        // Original price row - Original price + Savings + Disc %
+        // if (jsu.isNotNull(planData.off) || (state == "renew" && jsu.isNotNull(renewDiscount)) || (state=="upgrade" && jsu.isNotNull(upgradeDiscount)) || (state=="upgrade" && curSub.valueRemain)) {
+        if (jsu.isNotNull(savings) && buyPrice > 0) {
             html += `<div class="tsrPriceMeta">`
-            html += `   <span style="${CSS_OLD_PRICE}"><i class="fas fa-rupee-sign"></i>${origCost}</span>`
-            if (jsu.isNotNull(savings)) {
-                // html += `<div class="mb-2">`
-                html += `   <p style="${CSS_SAVINGS};"> Save <i class="fas fa-rupee-sign"></i> `
-                html += `       <span style="font-size: 15px;">${savings}</span>`
-                html += `   </p>`
-                // html += `</div>`
-            }
+            html += `       <span style="${CSS_OLD_PRICE}"><i class="fas fa-rupee-sign"></i>${origCost}</span>`
+            // if (jsu.isNotNull(savings)) {
+            // html += `<div class="mb-2">`
+            html += `       <p style="${CSS_SAVINGS};"> Save <i class="fas fa-rupee-sign"></i> `
+            html += `           <span style="font-size: 15px;">${savings}</span>`
+            html += `       </p>`
+            // html += `</div>`
+            // }
 
             if (jsu.isNotNull(planData.off)) {
                 html += `   <span style="${CSS_DISCOUNT} text-wrap: nowrap;">`
-                html += `       ${planData.off}% OFF`
+                html += `        ${planData.off}% OFF`
                 html += `   </span>`
             }
 
@@ -184,186 +174,133 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
         }
 
-        // TODO remove later
-        /*
-            html += `<div class="mb-2">`
-            if (jsu.isNotNull(planData.off)) {
-                html += `   <span style="${CSS_DISCOUNT} text-wrap: nowrap;">${planData.off}% OFF</span>`
-            }
-            if (state == 'renew' && jsu.isNotNull(renewDiscount)) {
-                if (jsu.isNotNull(planData.off)) {
-                    html += `   <span style="color: #adb5bd;font-size: 16px; ">+</span>`
-                }
-                if (renewDiscount != 0) {
-                    html += `   <span style="${CSS_DISCOUNT}" class="">Renew ${renewDiscount}% OFF</span>`
-                }
-            } else if (state == `upgrade` && jsu.isNotNull(upgradeDiscount) && curSub.valueRemain != 0) { // TODO 1A
-                if (jsu.isNotNull(planData.off)) {
-                    html += `   <span style="color: #adb5bd;font-size: 16px; ">+</span>`
-                }
-                if (upgradeDiscount != 0) {
-                    html += `   <span style="${CSS_DISCOUNT}" class="">Upgrade ${upgradeDiscount}% OFF</span>`
-                    html += `   <span style="color: #adb5bd;font-size: 16px; ">+</span>`
-                }
-                html += `<br class="my-3">`
-                html += `   <span style="${CSS_DISCOUNT} min-width: 90px;" class="">`
-                html += `       Active Plan Discount <i class="fas fa-rupee-sign"></i> ${Math.round(curSub.valueRemain)}`
-                html += `   </span>`
-            }
-            html += `</div>`
-            // }
-        */
-
-        // Discount section
-        html += `<div class="mt-2 mb-3" style="text-align: center;">`
+        // Discount row - Upgrade / Renew Disc. % + Active Plan Discount
+        html += `   <div class="mt-2 mb-3" style="text-align: center;">`
         if (state == 'renew' && jsu.isNotNull(renewDiscount)) {
             html += `   <span style="${CSS_DISCOUNT} text-wrap: nowrap;">`
             if (jsu.isNotNull(planData.off)) {
                 html += `   + `
             }
-            // if (renewDiscount != 0) {
-            html += `   Renew ${renewDiscount}% OFF `
-            // }
+            html += `       Renew ${renewDiscount}% OFF `
             html += `   </span>`
-        } else if (state == `upgrade` && jsu.isNotNull(upgradeDiscount) && curSub.valueRemain != 0) { // TODO 1A
+        } else if (state == `upgrade` && jsu.isNotNull(upgradeDiscount) && buyPrice > 0) {
             html += `   <span style="${CSS_DISCOUNT} text-wrap: nowrap;">`
             if (jsu.isNotNull(planData.off)) {
                 html += `   + `
             }
-            // if (upgradeDiscount != 0) {
-            html += `   Upgrade ${upgradeDiscount}% OFF`
-            html += `    + `
-            // }
-            html += `       <i class="fas fa-rupee-sign" style="font-size: 8px;"></i> ${Math.round(curSub.valueRemain)} OFF
-            <i class="fas fa-info-circle" title='Active Plan Discount'></i>`
+            html += `       Upgrade ${upgradeDiscount}% OFF`
+            if (curSub.valueRemain != 0) {
+                html += `       + `
+                html += `       <i class="fas fa-rupee-sign" style="font-size: 8px;"></i> ${Math.round(curSub.valueRemain)} OFF <i class="fas fa-info-circle" title='Active Plan Discount'></i>`
+            }
             html += `   </span>`
         }
 
-        html += `</div>`
+        html += `   </div>`
 
 
+        // if (buyPrice < 0) {
+
+        // } else {
+        html += `<h2  style="${CSS_PRICE};display: block;">`
         if (buyPrice < 0) {
 
+            html += `   <i class="fas fa-rupee-sign" style="font-size: 1.25rem; font-weight: 600; color: #0f172a; "></i>  ${origCost}`
         } else {
-            html += `<h2  style="${CSS_PRICE};display: block;">`
             html += `   <i class="fas fa-rupee-sign" style="font-size: 1.25rem; font-weight: 600; color: #0f172a; "></i>  ${buyPrice}`
-            if (period == "1M") {
-                html += `   <span style='${CSS_PRICE_SPAN}'>/ month</span>`
-            } else {
-                let planPeriod = "year";
-                if (planData.period != "1 Year") {
-                    planPeriod = planData.period;
-                }
-                html += `   <span style='${CSS_PRICE_SPAN}'>/ ${planPeriod}</span>`
-            }
-
-            html += `</h2>`
         }
-
-        // TODO remove later
-        /*
-            if (jsu.isNotNull(planData.off)) {
-                html += ` <div  style="${CSS_EFF_PRICE};display: block;">Effective 
-                    <strong><i class="fas fa-rupee-sign"></i> ${Math.round(planData.perMth)}/month</strong></div>`
-            }
-        */
-
-        html += ` 
-                <div style="${CSS_EFF_PRICE};display: block;">
-                    
-                    `
-
-        let perMth = buyPrice; // TODO
-        if (period != "1M") {
-            if(period )
-            // perMth = perMth / 12;
-            html += `<span>
-                            <i class="fas fa-rupee-sign"></i> ${Math.round(planData.perMth)}/month
-                        </span>`
-            html += `<span style="font-weight: 300;">•</span>`
-        }
-        html += ` 
-                    <span>
-                        <i class="fas fa-rupee-sign"></i> ${Math.round(planData.perMth / 30)}/day
-                    </span>
-                </div>`
-
-        if (planData.gstInv) {
-            html += `<p style="margin-bottom: 0px; font-size: 12px; color: grey;">
-                            <span>Incl. of all taxes</span>
-                        </p>`
-            html += `<p style="margin:4px 0px 8px 0; font-size: 12px; color: grey;">
-                        <span>GST invoice available</span>
-                    </p>`
+        if (period == "1M") {
+            html += `   <span style='${CSS_PRICE_SPAN}'>/ month</span>`
         } else {
-            html += `<p style="margin:8px 0px; font-size: 12px; color: grey;">
+            let planPeriod = "year";
+            if (planData.period != "1 Year") {
+                planPeriod = planData.period;
+            }
+            html += `   <span style='${CSS_PRICE_SPAN}'>/ ${planPeriod}</span>`
+        }
+
+        html += `</h2>`
+        // }
+
+
+
+        let perMth = buyPrice;
+        if (buyPrice < 0) {
+            perMth = origCost;
+        }
+        // else {
+        html += ` <div style="${CSS_EFF_PRICE};display: block;"> `
+        if (period != "1M") {
+            // if (period)
+            if (period == "1Y") {
+                perMth = buyPrice / 12;
+            } else if (period == "2Y") {
+                perMth = buyPrice / 24;
+            } else if (period == "5Y") {
+                perMth = buyPrice / 60;
+            }
+            html += `   <span>
+                            <i class="fas fa-rupee-sign"></i> ${Math.round(perMth)}/month
+                        </span>`
+            html += `   <span style="font-weight: 300;">&#x2022;</span>`
+        }
+        html += ` 
+                        <span>
+                            <i class="fas fa-rupee-sign"></i> ${Math.round(perMth / 30)}/day
+                        </span>
+                    </div>`
+        // }
+
+
+        let margin = planData.gstInv ? "0" : "8px 0";
+        html += `   <p style="margin: ${margin}; font-size: 12px; color: grey;">
                         <span>Incl. of all taxes</span>
                     </p>`
 
+        if (planData.gstInv) {
+            html += `<p style="margin:4px 0px 8px 0; font-size: 12px; color: grey;">
+                        <span>GST invoice available</span>
+                    </p>`
         }
-
-
-        // Todo remove later
-        /*
-        html += ` <p style="font-size: 14px; color: grey;"> ${details.fit}</p>`
-        */
-
-        // TODO remove later
-        /*
-            if (jsu.isNull(curPlan) || curPlan == 'EXPIRED' || curPlan == 'BASIC') {
-
-                if (state == 'login') {
-                    // do nothing
-                    html += `<button onClick='migUi.urm()'  data-bs-toggle='modal' data-bs-target='#tsrUserRegModal'>Buy</button> `
-
-                } else {
-                    html += `<button onclick="miSupc.pa('buy','${details.id}', '${period}');">Buy</button>`;
-                }
-
-
-            } else {
-
-                if (state == 'disable') {
-                    html += '<hr>'
-                    html += htmlU.getSpan('You already have higher plan', 'grey', 12);
-
-                } else if (state == 'renew') {
-                    html += `<button onclick="miSupc.pa('renew', '${details.id}', '${period}');">Renew</button>`;
-                } else {
-
-                    if (buyPrice < 0) {
-                        html += '<hr>'
-
-                        html += htmlU.getSpan('Current value more than Plan price. Select Higher period', 'darkseagreen', 12);
-                    } else {
-                        html += `<button onclick="miSupc.pa('upgrade', '${details.id}', '${period}');">Upgrade</button>`;
-                    }
-
-
-
-
-
-
-
-                }
-            }
-        */
         html += `</div>`
 
 
-        if (jsu.isNull(curPlan) || curPlan == 'EXPIRED') {
-            html += `<button onclick="miSupc.pa('buy','${details.id}', '${period}');">Buy</button>`;
+        if (jsu.isNull(curPlan) || curPlan == 'EXPIRED' || curPlan == 'BASIC') {
+            if (state == 'login') {
+                // do nothing
+                html += `<button onClick='migUi.urm()'  data-bs-toggle='modal' data-bs-target='#tsrUserRegModal'>Buy</button> `
+
+            } else {
+                html += `<button onclick="miSupc.pa('buy','${details.id}', '${period}');">Buy</button>`;
+            }
         } else {
             if (state == 'disable') {
                 // do nothing
-                html += htmlU.getSpan('You already have higher plan', 'cornflowerblue', 12);
-
+                // html += htmlU.getSpan('You already have higher plan', 'cornflowerblue', 12);
+                html += `
+                        <div class="tsrPlansAlertNotice tsrPlansAlertMuted">
+                            <i class="fas fa-info-circle tsrPlansAlertIcon"></i>
+                            <div class="tsrPlansAlertContent">
+                                <span class="tsrPlansAlertTitle">Higher Plan Active</span>
+                                <span class="tsrPlansAlertSubtitle">You already have a higher plan</span>
+                            </div>
+                        </div>
+                
+                `
             } else if (state == 'renew') {
                 html += `<button onclick="miSupc.pa('renew', '${details.id}', '${period}');">Renew</button>`;
             } else {
-
                 if (buyPrice < 0) {
-                    html += htmlU.getSpan('Current value more than Plan price. Select Higher period', 'orange', 12);
+                    // html += htmlU.getSpan('Current value more than Plan price. Select Higher period', 'orange', 12);
+                    html += `
+                            <div class="tsrPlansAlertNotice tsrPlansAlertWarning">
+                                <i class="fas fa-exclamation-circle tsrPlansAlertIcon"></i>
+                                <div class="tsrPlansAlertContent">
+                                    <span class="tsrPlansAlertTitle">Current Value Exceeds Price</span>
+                                    <span class="tsrPlansAlertSubtitle">Select a higher billing period</span>
+                                </div>
+                            </div>
+                    `
                 } else {
                     html += `<button onclick="miSupc.pa('upgrade', '${details.id}', '${period}');">Upgrade</button>`;
                 }
@@ -371,20 +308,17 @@ var miSupc = (function () { // Mi Subscription plan cards ...
         }
 
         html += ` <hr style="border-top: 1px dashed #dee2e6; margin: 20px 0;">`
-
-
-
         html += ``
-        html += `<div>`
-        html += `   <ul class="mb-3">`
+        html += `   <div>`
+        html += `       <ul class="mb-3">`
         let entitlements = planData.entitlements;
         for (let j = 0; j < entitlements.length; j++) {
-            html += `   <li class="d-flex align-items-baseline gap-3">
+            html += `       <li class="d-flex align-items-baseline gap-3">
                                <i class="fas fa-check" style="color: green;"></i> 
                                <span style="text-align: left;">${entitlements[j]}</span>
                            </li>`
         }
-        html += `   </ul>`
+        html += `       </ul>`
 
         html += `       <div class="tsrPlansSuitabilityBox p-2 rounded-2">`
         html += `           <div class="tsrPlansSuitabilityHeader d-flex align-items-center mb-2">`
@@ -464,36 +398,18 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
         selPeriod = period;
 
+        if (jsu.isNull(planData.off)) planData.off = 0;
 
-        let buyPrice = Math.round(planData.buyPrice);
-        // let buyPrice = Math.round(planData.buyPrice * 100) / 100;
+        // let buyPrice = Math.round(planData.buyPrice);
+        let savings = planData.off / 100 * planData.orig;
+        let buyPrice = Math.round(planData.orig - savings);
 
         origBuyPrice = buyPrice;
+        origAioPrice = aioPrice;
 
         let html = "";
 
         html += ``
-
-        // TODO remove later
-        // html += `<form id="${FORM_ID}">`
-        // html += ``
-        // html += `    <div class="row g-3">`
-        // html += `        <div class="col-4">`
-        // html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Plan</p>`
-        // html += `            <p style="margin-bottom: 0;">${details.name}</p>`
-        // html += `        </div>`
-        // html += `        <div class="col-4">`
-        // html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Duration</p>`
-        // html += `            <p style="margin-bottom: 0;">${planData.period}</p>`
-        // html += `        </div>`
-        // html += `        <div class="col-4">`
-        // html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Price</p>`
-        // html += `            <p style="margin-bottom: 0;" id='buyPriceDiv' ><i class="fas fa-rupee-sign"></i> ${buyPrice}</p>`
-        // html += `        </div>`
-        // html += `    </div>`
-        // html += ``
-        // html += `   <hr>`
-
 
         html += getPlanDetailsHtml(detailsId, period, buyPrice, aioPrice);
         html += `   <hr style="margin: 8px 0 16px 0">`
@@ -516,7 +432,7 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
 
         //   userAction(action, id, period, country, telPrefix, tel)
-        html += `    <button  onsubmit="return false;" onclick="miSupc.hs('NEW' ,'${detailsId}', '${period}')" class="btn btn-primary w-100">PROCEED TO PAYMENT</button>`
+        html += `    <button  onsubmit="return false;" onclick="miSupc.hs('NEW' ,'${detailsId}', '${period}')" class="btn btn-success w-100">PROCEED TO PAYMENT</button>`
         // html += `</form>`
         html += getFbDiv();
 
@@ -531,46 +447,31 @@ var miSupc = (function () { // Mi Subscription plan cards ...
         let details = jsu.getObjFrmArr(planDetails, detailsId);
         let planData = jsu.getObjFrmArr(details.period, period);
 
+        if (jsu.isNull(planData.off)) planData.off = 0;
+        if (jsu.isNull(details.upgrade)) details.upgrade = 0;
+
         selPeriod = period;
         let buyPrice = null;
 
         let upgradeDiscount = details.upgrade;
         if (jsu.isNotNull(upgradeDiscount)) {
             let savings = (((planData.off + upgradeDiscount) / 100) * planData.orig) + curSub.valueRemain
-            buyPrice = planData.orig - savings; // TODO 1a check with Sir 
+            buyPrice = planData.orig - savings;
         } else {
-            buyPrice = planData.buyPrice;
+            let savings = (planData.off / 100) * planData.orig;
+            buyPrice = planData.orig - savings;
+            // buyPrice = planData.buyPrice;
         }
         buyPrice = Math.round(buyPrice);
 
         origBuyPrice = buyPrice;
+        origAioPrice = aioPrice;
 
         let html = "";
 
         html += ``
 
 
-        // TODO remove later
-        /*
-            // html += `<form id="${FORM_ID}">`
-            html += ``
-            // html += getFbDiv();
-            html += `    <div class="row g-3">`
-            html += `        <div class="col-4">`
-            html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Plan</p>`
-            html += `            <p style="margin-bottom: 0;">${details.name}</p>`
-            html += `        </div>`
-            html += `        <div class="col-4">`
-            html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Duration</p>`
-            html += `            <p style="margin-bottom: 0;">${planData.period}</p>`
-            html += `        </div>`
-            html += `        <div class="col-4">`
-            html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Price</p>`
-            html += `            <p style="margin-bottom: 0;"><i class="fas fa-rupee-sign"></i> ${buyPrice}</p>`
-            html += `        </div>`
-            html += `    </div>`
-            html += ``
-        */
         html += getPlanDetailsHtml(detailsId, period, buyPrice, aioPrice);
         html += `   <hr style="margin: 8px 0 16px 0">`
 
@@ -590,111 +491,12 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
         html += '<div id="refCodeDiv"></div>';
         //   userAction(action, id, period, country, telPrefix, tel)
-        html += `    <button  onsubmit="return false;" onclick="miSupc.hs('UPGRADE' ,'${detailsId}', '${period}')" class="btn btn-primary w-100">PROCEED TO PAYMENT</button>`
+        html += `    <button  onsubmit="return false;" onclick="miSupc.hs('UPGRADE' ,'${detailsId}', '${period}')" class="btn btn-success w-100">PROCEED TO PAYMENT</button>`
         // html += `</form>`
         html += getFbDiv();
 
 
 
-
-        return html;
-    }
-
-    function getPlanDetailsHtml(detailsId, period, buyPrice, aioPrice) {
-
-        let details = jsu.getObjFrmArr(planDetails, detailsId);
-        let planData = jsu.getObjFrmArr(details.period, period);
-        // let buyPrice = Math.round(planData.buyPrice);
-        // html += `<form id="${FORM_ID}">`
-
-        // html += getFbDiv();
-        // let aioPrice = 999;
-        let tsrPlanDetailsDivId = "tsrPlanDetailsDiv";
-
-        let html = "";
-        html += `<div id="${tsrPlanDetailsDivId}">`;
-
-        // tsr plan row
-        html += `    <div class="row g-3">`
-        html += `        <div class="col-4">`
-        html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Plan</p>`
-        html += `            <p style="margin-bottom: 0;">${details.name}</p>`
-        html += `        </div>`
-        html += `        <div class="col-4">`
-        html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Duration</p>`
-        html += `            <p style="margin-bottom: 0;">${planData.period}</p>`
-        html += `        </div>`
-        html += `        <div class="col-4">`
-        html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Price</p>`
-        html += `            <p style="margin-bottom: 0;" id='buyPriceDiv'><i class="fas fa-rupee-sign"></i> ${buyPrice}</p>`
-        html += `        </div>`
-        html += `       <hr style="margin: 8px 0">`
-
-        // total row
-        html += `       <div class="row" style="display: flex">`
-        html += `           <div class="col-8">`
-        html += `               <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Total</p>`
-        // html += `               <p style="margin-bottom: 0;">AIO Pro</p>`
-        html += `           </div>`
-        html += `           <div class="col-4">`
-        // html += `               <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Duration</p>`
-        html += `               <p style="margin-bottom: 0;"><i class="fas fa-rupee-sign"></i> ${buyPrice}</p>`
-        html += `           </div>`
-        html += `       </div>`
-        html += `    </div>`
-
-        html += `</div>`;
-
-        let tsrPlanAllPlanDetailsDivId = "tsrPlanAllPlanDetailsDiv";
-        html += `<div id="${tsrPlanAllPlanDetailsDivId}" style="display: none;">`;
-        // tsr plan row
-        html += `    <div class="row g-3">`
-        html += `        <div class="col-4">`
-        html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Plan</p>`
-        html += `            <p style="margin-bottom: 0;">${details.name}</p>`
-        html += `        </div>`
-        html += `        <div class="col-4">`
-        html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Duration</p>`
-        html += `            <p style="margin-bottom: 0;">${planData.period}</p>`
-        html += `        </div>`
-        html += `        <div class="col-4">`
-        html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Price</p>`
-        html += `            <p style="margin-bottom: 0;" id='buyPriceDiv'><i class="fas fa-rupee-sign"></i> ${buyPrice}</p>`
-        html += `        </div>`
-        html += `    </div>`
-
-        // aio plan row
-        html += `       <div class="row g-3" style="display: flex">`
-        html += `           <div class="col-4">`
-        // html += `               <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Plan</p>`
-        html += `               <p style="margin-bottom: 0;">AIO Pro</p>`
-        html += `           </div>`
-        html += `           <div class="col-4">`
-        // html += `               <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Duration</p>`
-        html += `               <p style="margin-bottom: 0;">1 Year</p>`
-        html += `           </div>`
-        html += `           <div class="col-4">`
-        // html += `               <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Price</p>`
-        html += `               <p style="margin-bottom: 0;"><i class="fas fa-rupee-sign"></i> ${aioPrice}</p>`
-        html += `           </div>`
-        html += `       </div>`
-        html += `       <hr style="margin: 8px 0">`
-
-        // total row
-        html += `       <div class="row g-3" style="display: flex">`
-        html += `           <div class="col-8">`
-        html += `               <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Total</p>`
-        // html += `               <p style="margin-bottom: 0;">AIO Pro</p>`
-        html += `           </div>`
-        html += `           <div class="col-4">`
-        // html += `               <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Duration</p>`
-        html += `               <p style="margin-bottom: 0;"><i class="fas fa-rupee-sign"></i> ${buyPrice + aioPrice}</p>`
-        html += `           </div>`
-        html += `       </div>`
-        html += ` </div>`
-
-
-        html += ``
 
         return html;
     }
@@ -706,6 +508,9 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
         selPeriod = period;
 
+        if (jsu.isNull(planData.off)) planData.off = 0;
+        if (jsu.isNull(details.renew)) details.renew = 0;
+
         let renewDiscount = details.renew;
 
 
@@ -715,29 +520,15 @@ var miSupc = (function () { // Mi Subscription plan cards ...
         // html += getFbDiv();
 
 
-        let offPc = planData.off == null ? renewDiscount : renewDiscount + planData.off;
-        let buyPrice = planData.orig - ((offPc / 100.0) * planData.orig);
+        // let offPc = planData.off == null ? renewDiscount : renewDiscount + planData.off;
+        let savings = ((planData.off + renewDiscount) / 100) * planData.orig;
+        let buyPrice = planData.orig - savings;
         buyPrice = Math.round(buyPrice);
 
         origBuyPrice = buyPrice;
+        origAioPrice = aioPrice;
 
         html += ``
-        // TODO remove later
-        // html += getFbDiv();
-        // html += `    <div class="row g-3">`
-        // html += `        <div class="col-4">`
-        // html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Plan</p>`
-        // html += `            <p style="margin-bottom: 0;">${details.name}</p>`
-        // html += `        </div>`
-        // html += `        <div class="col-4">`
-        // html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Duration</p>`
-        // html += `            <p style="margin-bottom: 0;">${planData.period}</p>`
-        // html += `        </div>`
-        // html += `        <div class="col-4">`
-        // html += `            <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Price</p>`
-        // html += `            <p style="margin-bottom: 0;" id='buyPriceDiv'><i class="fas fa-rupee-sign"></i> ${buyPrice}</p>`
-        // html += `        </div>`
-        // html += `    </div>`
         html += ``
         html += getPlanDetailsHtml(detailsId, period, buyPrice, aioPrice);
         html += `   <hr style="margin: 8px 0 16px 0">`
@@ -753,13 +544,13 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
         html += getPersonalDetailsHtml();
 
-        if(planData.gstInv){
+        if (planData.gstInv) {
             html += getGstDetailsHtml();
         }
         html += ``
         html += '<div id="refCodeDiv"></div>';
         // html += `    <button type="submit" class="btn btn-primary w-100">PROCEED TO PAYMENT</button>`
-        html += `    <button  onsubmit="return;" onclick="miSupc.hs('RENEW' ,'${detailsId}', '${period}')" class="btn btn-primary w-100">PROCEED TO PAYMENT</button>`
+        html += `    <button  onsubmit="return;" onclick="miSupc.hs('RENEW' ,'${detailsId}', '${period}')" class="btn btn-success w-100">PROCEED TO PAYMENT</button>`
         // html += `</form>`
         html += getFbDiv();
 
@@ -794,6 +585,8 @@ var miSupc = (function () { // Mi Subscription plan cards ...
             return;
         }
 
+
+
         miSuPgi.ua(action, detailsId, period, country, telPrefix, tel);
 
         // }
@@ -811,51 +604,112 @@ var miSupc = (function () { // Mi Subscription plan cards ...
         return html;
     }
 
-    function getBuyAioHtml() {
 
-        // let details = jsu.getObjFrmArr(planDetails, detailsId);
-        // let planData = jsu.getObjFrmArr(details.period, period);
 
-        // let aioPrice = 999;
+    function getPlanDetailsHtml(detailsId, period, buyPrice, aioPrice) {
 
-        let aioCheckId = "tsrPlanStockAioCheck";
+        let details = jsu.getObjFrmArr(planDetails, detailsId);
+        let planData = jsu.getObjFrmArr(details.period, period);
+
+        buyPrice = Math.round(buyPrice);
+
+        // let tsrPlanDetailsDivId = "tsrPlanDetailsDiv";
+        let aioPlanDetailsDivId = "tsrPlansAioPlanDetailsDiv";
+
         let html = "";
-        html += ``;
-        html += `        <div class="d-flex mb-3">`
-        html += `            <div class="form-check">`
-        html += `                <input class="form-check-input" type="checkbox" id="${aioCheckId}" onchange="miSupc.sapd();">`
-        html += `                <label class="form-check-label" for="${aioCheckId}" style="text-wrap: nowrap;">
-            <p style="margin-bottom: 0;">Get StockAIO Premium 1 Year plan @ <i class="fas fa-rupee-sign"></i> ${aioPrice}</p>
-            <p style="margin-bottom: 0; font-size: 12px">Access Global Markets: AU, CA, UK and US</p>
-        </label>`
-        html += `            </div>`
+        // html += `   <div id="${tsrPlanDetailsDivId}">`;
+        html += `   <div>`;
+
+        html += `       <div id="refDiscDiv" class="mb-2"></div>`
+
+        // tsr plan row
+        html += `       <div class="row g-3">`
+        html += `           <div class="col-4">`
+        html += `               <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Plan</p>`
+        html += `               <p style="margin-bottom: 0;">${details.name}</p>`
+        html += `           </div>`
+        html += `           <div class="col-4">`
+        html += `               <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Duration</p>`
+        html += `               <p style="margin-bottom: 0;">${planData.period}</p>`
+        html += `           </div>`
+        html += `           <div class="col-4">`
+        html += `               <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Price</p>`
+        html += `               <p id='buyPriceDiv' style="margin-bottom: 0;"><i class="fas fa-rupee-sign"></i> ${buyPrice}</p>`
+        html += `           </div>`
         html += `        </div>`
+        html += `       <div id="${aioPlanDetailsDivId}" class="row g-3"  style="display: none;">`
+        html += `           <div class="col-4">`
+        html += `               <p style="margin-bottom: 0;">AIO Pro</p>`
+        html += `           </div>`
+        html += `           <div class="col-4">`
+        html += `               <p style="margin-bottom: 0;">1 Year</p>`
+        html += `           </div>`
+        html += `           <div class="col-4">`
+        html += `               <p  id='buyAioPriceDiv' style="margin-bottom: 0;"><i class="fas fa-rupee-sign"></i> ${aioPrice}</p>`
+        html += `           </div>`
+        html += `       </div>`
+        html += `          <hr style="margin: 8px 0">`
 
-        let aioPlanImpNotesDivId = "tsrPlanAioImpNotesDiv";
-        html += `    <div id="${aioPlanImpNotesDivId}" style="display: none;">`
-        html += `        <div class="accordion w-100" id="tsrPlanAioNote">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed p-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            <strong style="color: #212529;">Note:</strong>
-                                        </button>
-                                    </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#tsrPlanAioNote">
-                                        <div class="accordion-body p-2">
-                                            <ul class="mt-2 mb-0 ps-3" style="font-size: 14px;">
-                                                <li>New Stock AIO Account created automatically if not registered.</li>                                                        
-                                                <li>StockAIO is managed separately from TSR</li>                                                        
-                                                <li>Password of Stock AIO is maintained independently.
-                                                </li>
-                                                <li>Stock AIO currently serves EODAU/CA/UK/US prices.</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>`
+        // total row
+        html += `           <div class="row">`
+        html += `               <div class="col-8">`
+        html += `                   <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Total</p>`
+        // html += `               <p style="margin-bottom: 0;">AIO Pro</p>`
+        html += `               </div>`
+        html += `               <div class="col-4">`
+        // html += `               <p class="fw-bold" style="text-transform: uppercase; font-size: 14px; margin-bottom: 0;">Duration</p>`
+        html += `                  <p id="buyTotalPriceDiv" style="margin-bottom: 0;"><i class="fas fa-rupee-sign"></i> ${buyPrice}</p>`
+        html += `              </div>`
+        html += `          </div>`
+        html += `       </div>`
 
-        html += `   </div>`
+        html += `   </div>`;
 
+
+        html += ``
+
+        return html;
+    }
+
+    function getBuyAioHtml() {
+        const tsrPlansStockAioCheck = "tsrPlansStockAioCheck";
+        const tsrPlansAioImpNotesDivId = "tsrPlansAioImpNotesDiv";
+
+        let html = "";
+
+        html += `<div class="tsrPlansAioCard mb-3">`;
+        html += `  <div class="form-check">`;
+        html += `    <input class="form-check-input" type="checkbox" id="${tsrPlansStockAioCheck}" onchange="miSupc.sapd();">`;
+        html += `    <label class="form-check-label" for="${tsrPlansStockAioCheck}">`;
+        html += `      <p class="tsrPlansAioHeadline">`;
+        html += `        Get Access to global market @ <span class="tsrPlansAioBadge"><i class="fas fa-rupee-sign"></i> ${aioPrice}</span> with <a href="https://www.stockaio.com/US/ai/Home" target="_blank" rel="noopener noreferrer" class="text-decoration-underline">StockAIO</a>`;
+        html += `      </p>`;
+        html += `      <p class="tsrPlansAioSubtitle">Markets covered: AU, CA, UK and US</p>`;
+        html += `    </label>`;
+        html += `  </div>`;
+
+        html += `  <div id="${tsrPlansAioImpNotesDivId}" style="display: none;">`;
+        html += `    <div class="accordion w-100" id="tsrPlansAioNoteAccordion">`;
+        html += `      <div class="accordion-item">`;
+        html += `        <h2 class="accordion-header" id="tsrPlansAioNoteHeading">`;
+        html += `          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tsrPlansAioNoteCollapse" aria-expanded="false" aria-controls="tsrPlansAioNoteCollapse">`;
+        html += `            Important Notes`;
+        html += `          </button>`;
+        html += `        </h2>`;
+        html += `        <div id="tsrPlansAioNoteCollapse" class="accordion-collapse collapse" aria-labelledby="tsrPlansAioNoteHeading" data-bs-parent="#tsrPlansAioNoteAccordion">`;
+        html += `          <div class="accordion-body">`;
+        html += `            <ul class="tsrPlansAioNotesList">`;
+        html += `              <li>New Stock AIO Account created automatically if not registered.</li>`;
+        html += `              <li>StockAIO is managed separately from TSR.</li>`;
+        html += `              <li>Password of Stock AIO is maintained independently.</li>`;
+        html += `              <li>Stock AIO currently serves EOD AU/CA/UK/US prices.</li>`;
+        html += `            </ul>`;
+        html += `          </div>`;
+        html += `        </div>`;
+        html += `      </div>`;
+        html += `    </div>`;
+        html += `  </div>`;
+        html += `</div>`;
 
         return html;
     }
@@ -921,12 +775,12 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
 
     function triggerReferrer() {
+
         let referral = htmlU.getInputVal('referral');
 
         if (referral == null) return;
 
-
-        var REF_URL = '/my/GetRefInfo'; // Get Chart Initial Settings....
+        var REF_URL = '/my/GetRefInfo';
 
         var pd = { code: referral, period: selPeriod }
         var rc = new RC(REF_URL, null, pd, '', '', thisObject, 'trr', '');
@@ -937,6 +791,8 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
     function triggerReferrerResponse(data, type, remoteObject) { // apply Save Setting
 
+
+        refDisc = 0;
 
         if (data.statusCode == NOT_SIGNED_IN) {
             return;
@@ -962,21 +818,36 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
             if (jsu.isNotNull(data.discount)) {
 
-                msg += BR_2 + htmlU.getSpan("Additional Discount of   " + htmlU.doBold(data.discount) + "% will be offered", null, null);
+                refDisc = data.discount;
 
-                msg += BR_2 + htmlU.getSpan("Old Price was    <i class='fas fa-rupee-sign'></i> " + origBuyPrice + "", null, null);
+                msg += BREAK_LINE + htmlU.getSpan("Additional Discount of   " + htmlU.doBold(data.discount) + "% will be offered", null, null);
 
-                let newPrice = origBuyPrice * (100 - data.discount) / 100;
+                // msg += BR_2 + htmlU.getSpan("Old Price was    <i class='fas fa-rupee-sign'></i> " + origBuyPrice + "", null, null);
 
-                msg += BR_2 + htmlU.getSpan("New Price with Referral Discount is   <i class='fas fa-rupee-sign'></i>  " + newPrice + "", 'green', null);
 
+
+                let totalPrice, oldPrice;
+
+                let aioChecked = htmlU.isChecked("tsrPlansStockAioCheck");
+                oldPrice = aioChecked ? origBuyPrice + origAioPrice : origBuyPrice;
+
+                let newBuyPrice = Math.round(origBuyPrice * (100 - refDisc) / 100);
+                let newAioPrice = Math.round(origAioPrice * (100 - refDisc) / 100);
+                totalPrice = aioChecked ? newBuyPrice + newAioPrice : newBuyPrice;
+
+                // msg += BREAK_LINE + htmlU.getSpan("Old Price was    <i class='fas fa-rupee-sign'></i> " + oldPrice + "", null, null);
+                msg += BREAK_LINE + `<p id="refOldPriceDiv" style="margin-bottom: 0; color: green;">Old Price was   <i class='fas fa-rupee-sign'></i>${oldPrice}</p>`
+                msg += BREAK_LINE + `<p id="refTotalPriceDiv" style="margin-bottom: 0; color: green;">New Price with Referral Discount is   <i class='fas fa-rupee-sign'></i>${totalPrice}</p>`
+                // msg += BR_2 + htmlU.getSpan("New Price with Referral Discount is   <i class='fas fa-rupee-sign'></i>  " + totalPrice + "", 'green', null);
 
 
                 // id='buyPriceDiv'><i class="fas fa-rupee-sign"></i> ${buyPrice}</p>
 
-                htmlU.addMsgToDiv('buyPriceDiv', true, "<i class='fas fa-rupee-sign'></i>" + newPrice)
+                htmlU.addMsgToDiv('buyPriceDiv', true, "<i class='fas fa-rupee-sign'></i>" + newBuyPrice)
+                htmlU.addMsgToDiv('buyAioPriceDiv', true, "<i class='fas fa-rupee-sign'></i>" + newAioPrice)
+                htmlU.addMsgToDiv('buyTotalPriceDiv', true, "<i class='fas fa-rupee-sign'></i>" + totalPrice);
+                htmlU.addMsgToDiv("refDiscDiv", true, `<strong style="color: green;">${refDisc} % Referral Discount Applied</strong>`);
             }
-
 
         }
         htmlU.addMsgToDiv('refCodeDiv', true, msg);
@@ -1169,36 +1040,44 @@ var miSupc = (function () { // Mi Subscription plan cards ...
 
     }
 
-
     function showAioPlanDetails() {
-        let aioCheckId = "tsrPlanStockAioCheck";
-        let aioCheck = document.getElementById(aioCheckId);
-        let checked = aioCheck.checked ? true : false;
 
-        // let aioPlanDetailsDivId = "tsrPlanAioPlanDetails";
-        // let aioPlanDetailsDiv = document.getElementById(aioPlanDetailsDivId);
-        // let tsrPlanDetailsDivId = "tsrPlanDetailsDiv";
-        // let planDetailsDiv = document.getElementById(tsrPlanDetailsDivId);
-        let aioPlanImpNotesDivId = "tsrPlanAioImpNotesDiv";
+        let aioChecked = htmlU.isChecked("tsrPlansStockAioCheck");
+        let aioPlanImpNotesDivId = "tsrPlansAioImpNotesDiv";
         let aioPlanImpNotesDiv = document.getElementById(aioPlanImpNotesDivId);
 
-        let tsrPlanDetailsDivId = "tsrPlanDetailsDiv";
-        let tsrPlanAllPlanDetailsDivId = "tsrPlanAllPlanDetailsDiv";
-        let trsPlanDetailsDiv = document.getElementById(tsrPlanDetailsDivId);
-        let tsrPlanAllPlanDetailsDiv = document.getElementById(tsrPlanAllPlanDetailsDivId);
-        if (checked) {
-            // aioPlanDetailsDiv.style.display = "block";
-            trsPlanDetailsDiv.style.display = "none";
-            tsrPlanAllPlanDetailsDiv.style.display = "block";
-            aioPlanImpNotesDiv.style.display = "flex";
+        let aioPlanDetailsDivId = "tsrPlansAioPlanDetailsDiv";
+        let aioPlanDetailsDiv = document.getElementById(aioPlanDetailsDivId);
+
+        if (aioChecked) {
+            aioPlanImpNotesDiv.style.display = "block";
+            aioPlanDetailsDiv.style.display = "flex";
             // planDetailsDiv.style.display = "none"
         } else {
-            // aioPlanDetailsDiv.style.display = "none";
-            tsrPlanDetailsDiv.style.display = "block";
-            tsrPlanAllPlanDetailsDiv.style.display = "none";
             aioPlanImpNotesDiv.style.display = "none";
+            aioPlanDetailsDiv.style.display = "none";
             // planDetailsDiv.style.display = "flex";
         }
+
+        let oldPrice = 0;
+        let totalPrice = 0;
+
+        if (aioChecked) {
+            oldPrice = origBuyPrice + origAioPrice;
+            totalPrice = (origBuyPrice + origAioPrice) * ((100 - refDisc) / 100);
+        } else {
+            oldPrice = origBuyPrice;
+            totalPrice = origBuyPrice * ((100 - refDisc) / 100);
+        }
+
+        oldPrice = Math.round(oldPrice);
+        totalPrice = Math.round(totalPrice);
+        if (jsu.isNotNull(refDisc) && refDisc > 0) {
+            htmlU.addMsgToDiv("refDiscDiv", true, `<strong style="color: green;">${refDisc} % Referral Discount Applied</strong>`);
+        }
+        htmlU.addMsgToDiv("buyTotalPriceDiv", true, "<i class='fas fa-rupee-sign'></i>" + totalPrice);
+        htmlU.addMsgToDiv("refOldPriceDiv", true, "Old Price was   <i class='fas fa-rupee-sign'></i>" + oldPrice);
+        htmlU.addMsgToDiv("refTotalPriceDiv", true, "New Price with Referral Discount is   <i class='fas fa-rupee-sign'></i>" + totalPrice);
 
     }
 
