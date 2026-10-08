@@ -1,0 +1,1 @@
+var CS_USR_TAB_TRADER = "trader", CS_USR_TAB_INV = "inv", CS_USR_TAB_PRO = "pro", CS_USR_TAB_BEGIN = "begin";

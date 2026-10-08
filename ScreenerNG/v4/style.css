@@ -68,3 +68,48 @@
     border-top: 1px solid #ccc;
     width: 100%;
 }
+
+/* NEW CSS starts here */
+.tsrCsNgSelect:hover {
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.tsrCsNgMenu.btn {
+    color: black;
+}
+
+.tsrCsNgMenu.btn:hover {
+    background-color: #91989e;
+    color: white;
+    font-weight: 600;
+    transition: 0.1s;
+}
+
+.tsrCsNgMenu.btn:focus {
+    background-color: #91989e;
+    color: white;
+    font-weight: 600;
+}
+
+/* Overriding bootstrap CSS */
+.dropend .dropdown-toggle::after {
+    content: unset !important;
+}
+.dropdown .dropdown-toggle::after {
+    content: unset !important;
+}
+
+
+.tsrCsNgTabSubMenu .tsrCsNgFilterBtn {
+    color: black;
+    cursor: pointer;
+    transition: unset;
+}
+
+.tsrCsNgTabSubMenu .tsrCsNgFilterBtn:hover {
+    /* background-color: #6c757d; */
+    background-color: #91989e;
+    font-weight: 600;
+    color: white;
+}
