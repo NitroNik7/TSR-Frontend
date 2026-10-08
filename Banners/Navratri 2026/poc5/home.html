@@ -697,103 +697,341 @@
 
                         <!-- code starts here -->
 
+                        <!-- ========================================== -->
+                        <!-- 1. MAIN PAGE BANNER (Floating Bottom Bar) -->
+                        <!-- ========================================== -->
+                        <!-- ========================================== -->
+<!-- 1. MAIN PAGE BANNER (Floating Bottom Bar) -->
+<!-- ========================================== -->
+<div id="tsrBannerMainContainer" class="tsrBannerMainContainer">
+    <!-- Desktop & Laptop View (>= 992px) -->
+    <div id="tsrBannerMainDesktop" class="d-none d-lg-block">
+        <div class="d-flex align-items-center justify-content-between position-relative pe-4">
+            <button type="button" class="tsrBannerCloseBtn tsrBannerCloseAction" aria-label="Close Banner">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Brand & Festivity Identifier -->
+            <div class="tsrBannerBrandGroup d-flex align-items-center gap-3">
+                <div class="tsrBannerImageWrapper">
+                    <img src="./Navratri.jpg" alt="Navratri Celebrations" class="tsrBannerImage">
+                </div>
+                <div class="d-flex flex-column text-start">
+                    <span class="tsrBannerBrandLabel">TopStockResearch</span>
+                    <span class="tsrBannerHeadline">Navratri Special Offer</span>
+                </div>
+            </div>
+
+            <!-- Discount & Highlight Core -->
+            <div class="tsrBannerDiscountCenter d-flex flex-column align-items-center justify-content-center">
+                <div class="tsrBannerDiscountBadge" style="padding: 10px 30px;">
+                    <span class="tsrBannerDiscountPrefix">Upto</span>
+                    <span class="tsrBannerDiscountValue" style="font-size: 22px; margin: 5px 0 0 0;">60% Off</span>
+                    <span class="tsrBannerHighlightTag">
+                        <i class="fas fa-sparkles text-warning me-1"></i> Save more, invest more
+                    </span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="tsrBannerActionGroup d-flex flex-column gap-2">
+                <a href="https://www.topstockresearch.com/my/TsrPlans/" id="tsrBannerMainCtaDesktop" class="btn tsrBannerBtnPrimary">
+                    Claim offer <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+                <a href="https://www.topstockresearch.com" id="tsrBannerMainDemoDesktop" class="btn tsrBannerBtnSecondary">
+                    Book a demo
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tablet View (576px - 991.98px) -->
+    <div id="tsrBannerMainTablet" class="d-none d-sm-block d-lg-none">
+        <div class="d-flex align-items-center justify-content-between position-relative pe-4">
+            <button type="button" class="tsrBannerCloseBtn tsrBannerCloseAction" aria-label="Close Banner">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="tsrBannerBrandGroup d-flex align-items-center gap-2">
+                <div class="tsrBannerImageWrapper tsrBannerImageWrapperSm">
+                    <img src="./Navratri.jpg" alt="Navratri" class="tsrBannerImage">
+                </div>
+                <div class="d-flex flex-column text-start">
+                    <span class="tsrBannerBrandLabel">TopStockResearch</span>
+                    <span class="tsrBannerHeadline" style="font-size: 1.05rem;">Navratri Offer</span>
+                    
+                </div>
+            </div>
+
+            <div class="tsrBannerDiscountCenter d-flex flex-column align-items-center justify-content-center px-2">
+                <div class="tsrBannerDiscountBadge" style="padding: 10px 30px;">
+                    <span class="tsrBannerDiscountPrefix" style="font-size: 10px;">Upto</span>
+                    <span class="tsrBannerDiscountValue" style="font-size: 22px; margin: 5px 0 0 0; white-space: nowrap;">60% Off</span>
+                    <!-- <span class="tsrBannerHighlightTag" style="font-weight: 700; font-size: 12px;">
+                        <i class="fas fa-sparkles text-warning"></i> Save more, invest more
+                    </span> -->
+                </div>
+            </div>
+
+            <div class="tsrBannerActionGroup d-flex flex-column gap-2">
+                <a href="https://www.topstockresearch.com/my/TsrPlans/" id="tsrBannerMainCtaTablet" class="btn tsrBannerBtnPrimary">
+                    Claim offer <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+                <a href="https://www.topstockresearch.com" id="tsrBannerMainDemoTablet" class="btn tsrBannerBtnSecondary">
+                    Book a demo
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile View (< 576px) -->
+    <div id="tsrBannerMainMobile" class="d-block d-sm-none">
+        <div class="position-relative text-center">
+            <button type="button" class="tsrBannerCloseBtn tsrBannerCloseAction" aria-label="Close Banner">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+                <div class="tsrBannerImageWrapper tsrBannerImageWrapperSm">
+                    <img src="./Navratri.jpg" alt="Navratri" class="tsrBannerImage">
+                </div>
+                <div class="d-flex flex-column text-start">
+                    <span class="tsrBannerBrandLabel" style="font-size: 10px;">TopStockResearch</span>
+                    <span class="tsrBannerHeadline" style="font-size: 1rem;">TSR Navratri Offer</span>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+                <div class="tsrBannerDiscountBadge py-1 px-3">
+                    <span class="tsrBannerDiscountPrefix" style="font-size: 9px;">Upto</span>
+                    <span class="tsrBannerDiscountValue" style="font-size: 1.2rem; white-space: nowrap;">60% Off</span>
+                </div>
+                <span class="tsrBannerHighlightTag py-1 px-2">
+                    <i class="fas fa-sparkles text-warning me-1"></i> Save more, invest more
+                </span>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center gap-2">
+                <a href="https://www.topstockresearch.com/my/TsrPlans/" id="tsrBannerMainCtaMobile" class="btn tsrBannerBtnPrimary flex-fill">
+                    Claim offer <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+                <a href="https://www.topstockresearch.com" id="tsrBannerMainDemoMobile" class="btn tsrBannerBtnSecondary flex-fill">
+                    Book demo
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
                         <style>
-                            /* --- Base Variables (Updated Dynamically via JS) --- */
-                            :root {
-                                --tsrBannerPaletteBg: #faf5e9;
-                                --tsrBannerPaletteBorder: #e8d9b5;
-                                --tsrBannerShadow: 0 24px 56px rgba(156, 73, 45, 0.17);
+                            /* ====================================================== */
+                            /* TSR NAVRATRI THEME ARCHITECTURE & STYLING               */
+                            /* ====================================================== */
 
-                                /* Dynamic Theme Colors */
-                                --tsrBannerThemePrimary: #ff7700;
-                                --tsrBannerThemeHover: #e06600;
+                            :root {
+                                /* Palette 2 Foundations & Ambient Glow */
+                                --tsrBannerPaletteBg: #fffbf5;
+                                --tsrBannerPaletteBorder: #edd9b5;
+                                --tsrBannerShadow: 0 16px 38px rgba(92, 53, 20, 0.12), 0 2px 10px rgba(0, 0, 0, 0.04);
+
+                                /* Dynamic Daily Navratri Defaults (Overwritten by JS) */
+                                --tsrBannerThemePrimary: #e65c00;
+                                --tsrBannerThemeHover: #cc5200;
                                 --tsrBannerThemeBtnText: #ffffff;
-                                --tsrBannerThemeSoftBg: rgba(255, 119, 0, 0.1);
-                                --tsrBannerThemeBorder: rgba(255, 119, 0, 0.35);
-                                --tsrBannerThemeTitleText: #ff7700;
-                                --tsrBannerThemeAccentText: #cc5f00;
+                                --tsrBannerThemeSoftBg: rgba(230, 92, 0, 0.07);
+                                --tsrBannerThemeBorder: rgba(230, 92, 0, 0.32);
+                                --tsrBannerThemeTitleText: #b84500;
+                                --tsrBannerThemeAccentText: #8f3200;
+                                --tsrBannerThemeGlow: rgba(230, 92, 0, 0.22);
                             }
 
-                            /* --- Containers --- */
-                            .tsrBannerMainContainer {
-                                position: fixed;
-                                bottom: 25px;
-                                left: 50%;
-                                transform: translateX(-50%);
-                                width: 90%;
-                                max-width: 900px;
-                                z-index: 1050;
+                            /* --- Container Framework --- */
+                            .tsrBannerMainContainer,
+                            .tsrBannerPlanContainer {
+                                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
                                 background: var(--tsrBannerPaletteBg);
                                 border: 1px solid var(--tsrBannerPaletteBorder);
+                                border-top: 4px solid var(--tsrBannerThemePrimary);
                                 border-left: 6px solid var(--tsrBannerThemePrimary);
-                                border-radius: 14px;
-                                padding: 14px 20px;
+                                border-bottom: 2px solid var(--tsrBannerPaletteBorder);
+                                border-right: 1px solid var(--tsrBannerPaletteBorder);
+                                border-radius: 16px;
                                 box-shadow: var(--tsrBannerShadow);
-                                animation: tsrBannerSlideUp 0.4s ease-out;
-                                transition: border-color 0.3s ease;
+                                position: relative;
+                                backdrop-filter: blur(10px);
+                                transition: all 0.35s ease;
+                            }
+
+                            .tsrBannerMainContainer {
+                                position: fixed;
+                                bottom: 22px;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                width: 92%;
+                                max-width: 950px;
+                                z-index: 1050;
+                                padding: 12px 24px;
+                                animation: tsrBannerSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1);
                             }
 
                             .tsrBannerPlanContainer {
                                 width: 100%;
                                 max-width: 1140px;
-                                margin: 15px auto;
-                                background: var(--tsrBannerPaletteBg);
-                                border: 1px solid var(--tsrBannerPaletteBorder);
-                                border-left: 6px solid var(--tsrBannerThemePrimary);
-                                border-radius: 14px;
-                                padding: 12px 24px;
-                                box-shadow: var(--tsrBannerShadow);
-                                transition: border-color 0.3s ease;
+                                margin: 18px auto;
+                                padding: 14px 26px;
                             }
 
                             /* --- Close Button --- */
                             .tsrBannerCloseBtn {
                                 position: absolute;
-                                top: -6px;
-                                right: -10px;
-                                background: transparent;
-                                border: none;
+                                top: -4px;
+                                right: -6px;
+                                background: #ffffff;
+                                border: 1px solid var(--tsrBannerPaletteBorder);
+                                border-radius: 50%;
+                                width: 26px;
+                                height: 26px;
+                                display: inline-flex;
+                                align-items: center;
+                                justify-content: center;
                                 color: var(--tsrBannerThemeAccentText);
-                                opacity: 0.7;
-                                font-size: 1.1rem;
+                                opacity: 0.8;
+                                font-size: 0.75rem;
                                 cursor: pointer;
-                                line-height: 1;
-                                padding: 4px;
+                                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
                                 transition: all 0.2s ease;
                             }
 
                             .tsrBannerCloseBtn:hover {
                                 opacity: 1;
+                                transform: scale(1.1);
+                                background: var(--tsrBannerThemeSoftBg);
+                                border-color: var(--tsrBannerThemePrimary);
                                 color: var(--tsrBannerThemePrimary);
                             }
 
-                            /* --- Typography & Badges --- */
-                            .tsrBannerTitle {
+                            /* --- Image Medallion --- */
+                            .tsrBannerImageWrapper {
+                                width: 66px;
+                                height: 66px;
+                                border-radius: 50%;
+                                padding: 2px;
+                                background: linear-gradient(135deg, var(--tsrBannerThemePrimary), #f59e0b, #10b981);
+                                box-shadow: 0 4px 12px var(--tsrBannerThemeGlow);
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                flex-shrink: 0;
+                                transition: transform 0.3s ease;
+                            }
+
+                            .tsrBannerImageWrapper:hover {
+                                transform: rotate(5deg) scale(1.05);
+                            }
+
+                            .tsrBannerImageWrapperSm {
+                                width: 48px;
+                                height: 48px;
+                            }
+
+                            .tsrBannerImage {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                border-radius: 50%;
+                                border: 2px solid #ffffff;
+                            }
+
+                            /* --- Typography & Branding Hierarchy --- */
+                            .tsrBannerBrandLabel {
+                                color: #000080;
+                                font-size: 0.82rem;
+                                font-weight: 700;
+                                letter-spacing: 0.8px;
+                                text-transform: uppercase;
+                                display: inline-block;
+                            }
+
+                            .tsrBannerHeadline {
                                 color: var(--tsrBannerThemeTitleText);
-                                font-size: 1.05rem;
-                                line-height: 1.3;
+                                font-size: 1.25rem;
+                                font-weight: 700;
+                                letter-spacing: -0.2px;
+                                line-height: 1.2;
                             }
 
-                            .tsrBannerSubtitle {
-                                color: #4a3e36;
-                                font-size: 0.9rem;
-                                font-weight: 500;
+                            .tsrBannerSubtleNotice {
+                                font-size: 0.75rem;
+                                font-weight: 600;
+                                color: #786452;
                             }
 
-                            .tsrBannerHighlightText {
+                            /* --- Discount Medallion Box --- */
+                            .tsrBannerDiscountBadge {
+                                background: linear-gradient(135deg, #ffffff 0%, var(--tsrBannerPaletteBg) 100%);
+                                border: 1.5px solid var(--tsrBannerThemeBorder);
+                                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                                border-radius: 12px;
+                                padding: 4px 16px;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                position: relative;
+                                overflow: hidden;
+                            }
+
+                            /* .tsrBannerDiscountBadge::before {
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 3px;
+                                background: var(--tsrBannerThemePrimary);
+                            } */
+
+                            .tsrBannerDiscountPrefix {
+                                font-size: 0.72rem;
+                                font-weight: 800;
+                                letter-spacing: 1px;
                                 color: var(--tsrBannerThemeAccentText);
-                                font-size: 0.95rem;
+                                line-height: 1;
                             }
 
-                            /* --- Dynamic Urgency Tag --- */
-                            .tsrBannerUrgencyTag {
+                            .tsrBannerDiscountValue {
+                                font-size: 1.45rem;
+                                font-weight: 700;
+                                letter-spacing: -0.5px;
+                                line-height: 1.1;
+                                color: var(--tsrBannerThemePrimary);
+                                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+                            }
+
+                            /* --- Highlight Tag: 'Save more, invest more' --- */
+                            .tsrBannerHighlightTag {
+                                display: inline-flex;
+                                align-items: center;
+                                background: #ffffff;
+                                color: var(--tsrBannerThemeAccentText);
+                                /* border: 1px solid var(--tsrBannerThemeBorder); */
+                                padding: 3px 10px;
+                                /* border-radius: 20px; */
+                                font-size: 0.80rem;
+                                font-weight: 700;
+                                letter-spacing: 0.1px;
+                                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+                                white-space: nowrap;
+                            }
+
+                            /* --- Urgency Tag --- */
+                            /* .tsrBannerUrgencyTag {
                                 background: var(--tsrBannerThemeSoftBg);
                                 color: var(--tsrBannerThemeAccentText);
                                 border: 1px solid var(--tsrBannerThemeBorder);
-                                border-radius: 20px;
+                                border-radius: 18px;
                                 padding: 2px 9px;
-                                font-size: 0.76rem;
+                                font-size: 0.74rem;
                                 font-weight: 600;
                                 display: inline-flex;
                                 align-items: center;
@@ -802,141 +1040,110 @@
                             }
 
                             .tsrBannerUrgencyTag strong {
-                                color: var(--tsrBannerThemeAccentText);
+                                color: var(--tsrBannerThemePrimary);
                                 font-weight: 800;
-                            }
+                            } */
 
-                            .tsrBannerUrgencyDot {
+                            /* .tsrBannerUrgencyDot {
                                 width: 6px;
                                 height: 6px;
                                 background-color: var(--tsrBannerThemePrimary);
                                 border-radius: 50%;
                                 display: inline-block;
-                                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+                                box-shadow: 0 0 0 0 var(--tsrBannerThemeGlow);
                                 animation: tsrDotPulse 1.8s infinite ease-in-out;
-                            }
+                            } */
 
-                            /* --- Discount Styles --- */
-                            .tsrBannerDiscountBox {
-                                line-height: 1.1;
-                                padding: 0 16px;
-                            }
-
-                            .tsrBannerDiscountPrefix {
-                                font-size: 0.82rem;
-                                font-weight: 700;
-                                color: var(--tsrBannerThemeAccentText);
-                                text-transform: uppercase;
-                                letter-spacing: 0.5px;
-                            }
-
-                            .tsrBannerDiscountValue {
-                                font-size: 1.8rem;
-                                font-weight: 800;
-                                line-height: 1;
-                                color: var(--tsrBannerThemePrimary);
-                            }
-
-                            .tsrBannerDiscountInline {
-                                font-size: 1.15rem;
-                                color: var(--tsrBannerThemePrimary);
-                            }
-
-                            /* --- Buttons --- */
+                            /* --- Interactive Action Buttons --- */
                             .tsrBannerBtnPrimary {
-                                background-color: var(--tsrBannerThemePrimary);
+                                background: linear-gradient(135deg, var(--tsrBannerThemePrimary), var(--tsrBannerThemeHover));
                                 color: var(--tsrBannerThemeBtnText) !important;
-                                border: 1px solid var(--tsrBannerThemePrimary);
-                                font-size: 0.82rem;
+                                border: none;
+                                font-size: 0.84rem;
                                 font-weight: 700;
-                                padding: 5px 16px;
-                                border-radius: 20px;
+                                padding: 7px 18px;
+                                border-radius: 25px;
                                 white-space: nowrap;
                                 text-decoration: none;
-                                transition: all 0.25s ease-in-out;
-                                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+                                box-shadow: 0 4px 14px var(--tsrBannerThemeGlow);
+                                transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
                             }
 
                             .tsrBannerBtnPrimary:hover {
-                                background-color: var(--tsrBannerThemeHover);
-                                border-color: var(--tsrBannerThemeHover);
-                                color: var(--tsrBannerThemeBtnText) !important;
-                                transform: translateY(-1px);
-                                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+                                transform: translateY(-2px) scale(1.02);
+                                box-shadow: 0 6px 18px var(--tsrBannerThemeGlow);
+                                opacity: 0.96;
                             }
 
                             .tsrBannerBtnSecondary {
-                                background: transparent;
-                                border: 1px solid var(--tsrBannerThemePrimary);
+                                background: #ffffff;
+                                border: 1.5px solid var(--tsrBannerPaletteBorder);
                                 color: var(--tsrBannerThemeAccentText);
-                                font-size: 0.78rem;
-                                font-weight: 600;
-                                padding: 4px 14px;
-                                border-radius: 20px;
+                                font-size: 0.80rem;
+                                font-weight: 700;
+                                padding: 5px 16px;
+                                border-radius: 25px;
                                 white-space: nowrap;
                                 text-decoration: none;
                                 transition: all 0.2s ease;
                             }
 
                             .tsrBannerBtnSecondary:hover {
-                                background-color: var(--tsrBannerThemeSoftBg);
-                                color: var(--tsrBannerThemeAccentText);
+                                border-color: var(--tsrBannerThemePrimary);
+                                background: var(--tsrBannerThemeSoftBg);
+                                color: var(--tsrBannerThemePrimary);
+                                transform: translateY(-1px);
                             }
 
-                            /* --- Animations --- */
+                            /* --- Keyframe Animations --- */
                             @keyframes tsrBannerSlideUp {
                                 from {
-                                    bottom: -100px;
+                                    bottom: -80px;
                                     opacity: 0;
+                                    transform: translateX(-50%) scale(0.96);
                                 }
 
                                 to {
-                                    bottom: 25px;
+                                    bottom: 22px;
                                     opacity: 1;
+                                    transform: translateX(-50%) scale(1);
                                 }
                             }
 
                             @keyframes tsrDotPulse {
                                 0% {
                                     transform: scale(0.95);
-                                    opacity: 1;
+                                    box-shadow: 0 0 0 0 var(--tsrBannerThemeGlow);
                                 }
 
                                 70% {
-                                    transform: scale(1.3);
-                                    opacity: 0.4;
+                                    transform: scale(1.2);
+                                    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0);
                                 }
 
                                 100% {
                                     transform: scale(0.95);
-                                    opacity: 1;
+                                    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
                                 }
                             }
 
-                            /* --- Responsive Breakpoints --- */
+                            /* --- Responsive Viewport Tweaks --- */
                             @media (max-width: 575.98px) {
                                 .tsrBannerMainContainer {
                                     width: 95%;
-                                    bottom: 12px;
-                                    padding: 10px 14px;
+                                    bottom: 10px;
+                                    padding: 12px 14px;
+                                    border-radius: 14px;
                                 }
 
-                                .tsrBannerTitle {
-                                    font-size: 0.95rem;
-                                }
-
-                                .tsrBannerSubtitle {
-                                    font-size: 0.82rem;
-                                }
-
-                                .tsrBannerDiscountInline {
-                                    font-size: 1.05rem;
+                                .tsrBannerHeadline {
+                                    font-size: 1rem;
                                 }
 
                                 .tsrBannerBtnPrimary,
                                 .tsrBannerBtnSecondary {
                                     padding: 6px 10px;
-                                    font-size: 0.75rem;
+                                    font-size: 0.76rem;
                                 }
                             }
 
@@ -946,246 +1153,155 @@
                                     padding: 12px 18px;
                                 }
 
-                                .tsrBannerTitle {
-                                    font-size: 0.92rem;
-                                }
-
-                                .tsrBannerSubtitle {
-                                    font-size: 0.8rem;
-                                }
-
-                                .tsrBannerDiscountInline {
-                                    font-size: 0.95rem;
+                                .tsrBannerHeadline {
+                                    font-size: 1.05rem;
                                 }
                             }
 
                             @media (min-width: 992px) {
-                                .tsrBannerMainContainer {
-                                    width: 90%;
-                                    max-width: 880px;
-                                }
-
                                 .tsrBannerActionGroup {
-                                    min-width: 140px;
+                                    min-width: 145px;
                                 }
                             }
                         </style>
 
-                        <!-- ========================================== -->
-                        <!-- 1. MAIN PAGE BANNER (Floating Bottom Bar) -->
-                        <!-- ========================================== -->
-                        <div id="tsrBannerMainContainer" class="tsrBannerMainContainer">
-                            <!-- Desktop & Laptop View (>= 992px) -->
-                            <div id="tsrBannerMainDesktop" class="d-none d-lg-block">
-                                <div class="d-flex align-items-center justify-content-between position-relative pe-4">
-                                    <button type="button" class="tsrBannerCloseBtn tsrBannerCloseAction"
-                                        aria-label="Close Banner">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                    <div class="tsrBannerTextGroup d-flex flex-column text-start">
-                                        <span class="tsrBannerTitle fw-bold">Enjoy festive discounts this
-                                            Navratri</span>
-                                        <span class="tsrBannerSubtitle">Save more, invest more</span>
-                                        <div class="tsrBannerUrgencyTag mt-1">
-                                            <span class="tsrBannerUrgencyDot"></span>
-                                            <span>Offer ends <strong>19th Oct 8 PM</strong></span>
-                                        </div>
-                                    </div>
 
-                                    <div
-                                        class="tsrBannerDiscountBox d-flex flex-column align-items-center justify-content-center">
-                                        <span class="tsrBannerDiscountPrefix">Upto</span>
-                                        <span class="tsrBannerDiscountValue">60% Off</span>
-                                    </div>
-
-                                    <div class="tsrBannerActionGroup d-flex flex-column gap-2">
-                                        <a href="https://www.topstockresearch.com/my/TsrPlans/"
-                                            id="tsrBannerMainCtaDesktop" class="btn tsrBannerBtnPrimary">
-                                            Claim offer <i class="fas fa-arrow-right ms-1"></i>
-                                        </a>
-                                        <a href="https://www.topstockresearch.com" id="tsrBannerMainDemoDesktop"
-                                            class="btn tsrBannerBtnSecondary">
-                                            Book a demo
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tablet View (576px - 991.98px) -->
-                            <div id="tsrBannerMainTablet" class="d-none d-sm-block d-lg-none">
-                                <div class="d-flex align-items-center justify-content-between position-relative pe-4">
-                                    <button type="button" class="tsrBannerCloseBtn tsrBannerCloseAction"
-                                        aria-label="Close Banner">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                    <div class="tsrBannerTextGroup d-flex flex-column text-start">
-                                        <span class="tsrBannerTitle fw-bold">Enjoy festive discounts this
-                                            Navratri</span>
-                                        <span class="tsrBannerSubtitle">Save more, invest more</span>
-                                        <span class="tsrBannerDiscountInline fw-bold">Upto 60% off</span>
-                                        <div class="tsrBannerUrgencyTag mt-1">
-                                            <span class="tsrBannerUrgencyDot"></span>
-                                            <span>Ends <strong>19th Oct 8 PM</strong></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="tsrBannerActionGroup d-flex flex-column gap-2">
-                                        <a href="https://www.topstockresearch.com/my/TsrPlans/"
-                                            id="tsrBannerMainCtaTablet" class="btn tsrBannerBtnPrimary">
-                                            Claim offer <i class="fas fa-arrow-right ms-1"></i>
-                                        </a>
-                                        <a href="https://www.topstockresearch.com" id="tsrBannerMainDemoTablet"
-                                            class="btn tsrBannerBtnSecondary">
-                                            Book a demo
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Mobile View (< 576px) -->
-                            <div id="tsrBannerMainMobile" class="d-block d-sm-none">
-                                <div class="position-relative text-center">
-                                    <button type="button" class="tsrBannerCloseBtn tsrBannerCloseAction"
-                                        aria-label="Close Banner">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                    <div class="tsrBannerTextGroup d-flex flex-column align-items-center mb-1">
-                                        <span class="tsrBannerTitle fw-bold">TSR Navratri Offer</span>
-                                        <span class="tsrBannerSubtitle">Save more, invest more</span>
-                                        <div class="tsrBannerUrgencyTag mt-1">
-                                            <span class="tsrBannerUrgencyDot"></span>
-                                            <span>Ends <strong>19th Oct 8 PM</strong></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="tsrBannerDiscountBox my-2">
-                                        <span class="tsrBannerDiscountInline fw-bold">Upto 60% off</span>
-                                    </div>
-
-                                    <div class="d-flex align-items-center justify-content-center gap-2">
-                                        <a href="https://www.topstockresearch.com/my/TsrPlans/"
-                                            id="tsrBannerMainCtaMobile" class="btn tsrBannerBtnPrimary flex-fill">
-                                            Claim offer
-                                        </a>
-                                        <a href="https://www.topstockresearch.com" id="tsrBannerMainDemoMobile"
-                                            class="btn tsrBannerBtnSecondary flex-fill">
-                                            Book a demo
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
+                        <!-- code ends here -->
+                        <!-- 
                         <script>
-                            document.addEventListener('DOMContentLoaded', navratriColorLogic);
+                            document.addEventListener('DOMContentLoaded', function () {
+                                navratriColorLogic();
+                            });
 
                             function navratriColorLogic(tsrBannerCurrentKey) {
-                                // Navratri Daily Cohesive Theme Configuration[cite: 3]
+                                // Navratri Daily Complete Theme Configuration (Accent + Coordinated Background)[cite: 3]
                                 const tsrBannerNavratriThemes = {
                                     // 11th Oct - Orange[cite: 3]
                                     '10-11': {
-                                        primary: '#e65c00',
-                                        hover: '#cc5200',
+                                        bg: '#fffaf5',
+                                        paletteBorder: '#fed7aa',
+                                        primary: '#ea580c',
+                                        hover: '#c2410c',
                                         btnText: '#ffffff',
-                                        softBg: 'rgba(230, 92, 0, 0.08)',
-                                        border: 'rgba(230, 92, 0, 0.3)',
-                                        titleText: '#c74d00',
-                                        accentText: '#993d00'
+                                        softBg: '#ffedd5',
+                                        border: '#fdba74',
+                                        titleText: '#c2410c',
+                                        accentText: '#9a3412'
                                     },
-                                    // 12th Oct - White[cite: 3] (Engineered for contrast over #faf5e9)
+                                    // 12th Oct - White[cite: 3] (Subtle warm alabaster base with clean borders)
                                     '10-12': {
-                                        primary: '#ffffff',
-                                        hover: '#f0f0f0',
-                                        btnText: '#2b2d42',
-                                        softBg: '#ffffff',
-                                        border: '#d6cfbe',
-                                        titleText: '#3d342a',
-                                        accentText: '#524638'
+                                        bg: '#fafafa',
+                                        paletteBorder: '#e4e4e7',
+                                        primary: '#3f3f46',
+                                        hover: '#27272a',
+                                        btnText: '#ffffff',
+                                        softBg: '#f4f4f5',
+                                        border: '#d4d4d8',
+                                        titleText: '#27272a',
+                                        accentText: '#52525b'
                                     },
                                     // 13th Oct - Red[cite: 3]
                                     '10-13': {
-                                        primary: '#d90429',
-                                        hover: '#b50322',
+                                        bg: '#fff5f5',
+                                        paletteBorder: '#fecdd3',
+                                        primary: '#e11d48',
+                                        hover: '#be123c',
                                         btnText: '#ffffff',
-                                        softBg: 'rgba(217, 4, 41, 0.08)',
-                                        border: 'rgba(217, 4, 41, 0.3)',
-                                        titleText: '#ba0323',
-                                        accentText: '#8d021b'
+                                        softBg: '#ffe4e6',
+                                        border: '#fda4af',
+                                        titleText: '#be123c',
+                                        accentText: '#9f1239'
                                     },
                                     // 14th Oct - Royal Blue[cite: 3]
                                     '10-14': {
+                                        bg: '#f8fafc',
+                                        paletteBorder: '#cbd5e1',
                                         primary: '#1d4ed8',
                                         hover: '#1e40af',
                                         btnText: '#ffffff',
-                                        softBg: 'rgba(29, 78, 216, 0.08)',
-                                        border: 'rgba(29, 78, 216, 0.3)',
+                                        softBg: '#eff6ff',
+                                        border: '#bfdbfe',
                                         titleText: '#1e40af',
-                                        accentText: '#172554'
+                                        accentText: '#1e3a8a'
                                     },
-                                    // 15th Oct - Yellow[cite: 3] (Dark text for button and deep amber title contrast)
+                                    // 15th Oct - Yellow[cite: 3] (Deep saffron & golden highlights for strong contrast)
                                     '10-15': {
-                                        primary: '#f59e0b',
-                                        hover: '#d97706',
-                                        btnText: '#261b0d',
-                                        softBg: 'rgba(245, 158, 11, 0.1)',
-                                        border: 'rgba(245, 158, 11, 0.35)',
+                                        bg: '#fefce8',
+                                        paletteBorder: '#fef08a',
+                                        primary: '#d97706',
+                                        hover: '#b45309',
+                                        btnText: '#ffffff',
+                                        softBg: '#fef3c7',
+                                        border: '#fde68a',
                                         titleText: '#b45309',
                                         accentText: '#92400e'
                                     },
                                     // 16th Oct - Green[cite: 3]
                                     '10-16': {
-                                        primary: '#15803d',
-                                        hover: '#166534',
+                                        bg: '#f6fdf8',
+                                        paletteBorder: '#bbf7d0',
+                                        primary: '#16a34a',
+                                        hover: '#15803d',
                                         btnText: '#ffffff',
-                                        softBg: 'rgba(21, 128, 61, 0.08)',
-                                        border: 'rgba(21, 128, 61, 0.3)',
-                                        titleText: '#166534',
+                                        softBg: '#dcfce7',
+                                        border: '#86efac',
+                                        titleText: '#15803d',
                                         accentText: '#14532d'
                                     },
                                     // 17th Oct - Grey[cite: 3]
                                     '10-17': {
-                                        primary: '#4b5563',
-                                        hover: '#374151',
+                                        bg: '#f8fafc',
+                                        paletteBorder: '#e2e8f0',
+                                        primary: '#475569',
+                                        hover: '#334155',
                                         btnText: '#ffffff',
-                                        softBg: 'rgba(75, 85, 99, 0.08)',
-                                        border: 'rgba(75, 85, 99, 0.3)',
-                                        titleText: '#374151',
-                                        accentText: '#1f2937'
+                                        softBg: '#f1f5f9',
+                                        border: '#cbd5e1',
+                                        titleText: '#334155',
+                                        accentText: '#1e293b'
                                     },
                                     // 18th Oct - Purple[cite: 3]
                                     '10-18': {
+                                        bg: '#faf5ff',
+                                        paletteBorder: '#e9d5ff',
                                         primary: '#7e22ce',
                                         hover: '#6b21a8',
                                         btnText: '#ffffff',
-                                        softBg: 'rgba(126, 34, 206, 0.08)',
-                                        border: 'rgba(126, 34, 206, 0.3)',
+                                        softBg: '#f3e8ff',
+                                        border: '#d8b4fe',
                                         titleText: '#6b21a8',
                                         accentText: '#581c87'
                                     },
                                     // 19th Oct - Peacock Green[cite: 3]
                                     '10-19': {
-                                        primary: '#0e7490',
-                                        hover: '#155e75',
+                                        bg: '#f0fdfa',
+                                        paletteBorder: '#99f6e4',
+                                        primary: '#0d9488',
+                                        hover: '#0f766e',
                                         btnText: '#ffffff',
-                                        softBg: 'rgba(14, 116, 144, 0.08)',
-                                        border: 'rgba(14, 116, 144, 0.3)',
-                                        titleText: '#155e75',
-                                        accentText: '#164e63'
+                                        softBg: '#ccfbf1',
+                                        border: '#5eead4',
+                                        titleText: '#0f766e',
+                                        accentText: '#115e59'
                                     }
                                 };
 
-                                // Determine current month and date
-                                // const tsrBannerNow = new Date();
-                                // const tsrBannerMonth = String(tsrBannerNow.getMonth() + 1).padStart(2, '0');
-                                // const tsrBannerDay = String(tsrBannerNow.getDate()).padStart(2, '0');
-                                // const tsrBannerCurrentKey = `${tsrBannerMonth}-${tsrBannerDay}`;
+                                // Auto-detect current date if no override string is provided
+                                let activeKey = tsrBannerCurrentKey;
+                                if (typeof activeKey !== 'string') {
+                                    const tsrBannerNow = new Date();
+                                    const tsrBannerMonth = String(tsrBannerNow.getMonth() + 1).padStart(2, '0');
+                                    const tsrBannerDay = String(tsrBannerNow.getDate()).padStart(2, '0');
+                                    activeKey = `${tsrBannerMonth}-${tsrBannerDay}`;
+                                }
 
-                                // Select theme or fallback to 11th Oct (Orange)[cite: 3]
-                                const tsrBannerTheme = tsrBannerNavratriThemes[tsrBannerCurrentKey] || tsrBannerNavratriThemes['10-11'];
+                                // Fallback to 11th Oct (Orange)[cite: 3]
+                                const tsrBannerTheme = tsrBannerNavratriThemes[activeKey] || tsrBannerNavratriThemes['10-11'];
 
                                 // Dynamically apply properties to CSS variables
                                 const tsrBannerRoot = document.documentElement;
+                                tsrBannerRoot.style.setProperty('--tsrBannerPaletteBg', tsrBannerTheme.bg);
+                                tsrBannerRoot.style.setProperty('--tsrBannerPaletteBorder', tsrBannerTheme.paletteBorder);
                                 tsrBannerRoot.style.setProperty('--tsrBannerThemePrimary', tsrBannerTheme.primary);
                                 tsrBannerRoot.style.setProperty('--tsrBannerThemeHover', tsrBannerTheme.hover);
                                 tsrBannerRoot.style.setProperty('--tsrBannerThemeBtnText', tsrBannerTheme.btnText);
@@ -1211,12 +1327,8 @@
                                         });
                                     });
                                 }
-
                             }
-                        </script>
-
-
-                        <!-- code ends here -->
+                        </script> -->
 
                         <!-- -------------------------- INDICES SECTION ---------------------------------  -->
 
