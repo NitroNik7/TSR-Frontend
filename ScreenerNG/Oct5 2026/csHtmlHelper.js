@@ -33,8 +33,11 @@ var csh = (function () {
 					items: 2
 				},
 				1000: {
-					items: 2
-				}
+					items: 3
+				},
+				1400: {
+					items: 4
+				},
 			},
 		};
 
@@ -65,96 +68,175 @@ var csh = (function () {
 		}
 	}
 
-	function getToggleNgView() {
+	// USING GEMINI
+	// function getToggleNgView() {
+	// 	if (inMyTsr) return '';
 
-		// if(isMobile()) return '';
+	// 	var userTypes = [
+	// 		{ id: CS_USR_TAB_BEGIN, label: 'Beginner' },
+	// 		{ id: CS_USR_TAB_TRADER, label: 'Trader' },
+	// 		{ id: CS_USR_TAB_INV, label: 'Investor' },
+	// 		{ id: CS_USR_TAB_PRO, label: 'Pro' }
+	// 	];
 
-		if (inMyTsr) return ''
+	// 	var viewTypes = [
+	// 		{ id: 'ng', label: 'Modern View', icon: 'fa-layer-group' },
+	// 		{ id: 'default', label: 'Classic View', icon: 'fa-th-list' }
+	// 	];
 
-		// let ngScr = localStorage.getItem( "csngscr" );
+	// 	var userTab = localStorage.getItem('csusrtabs');
+	// 	if (userTab == null) userTab = CS_USR_TAB_PRO;
 
-		// if(ngScr == null || ngScr == 'false'){
-		// 	mtgv.cs.ng =    false;
-		// }else{
-		// 	mtgv.cs.ng =    true;	
-		// }
+	// 	var selVal = mtgv.cs.ng ? 'ng' : 'default';
 
-		let USER_TYPE = [
-			{ id: CS_USR_TAB_BEGIN, label: "Beginner" },
-			{ id: CS_USR_TAB_TRADER, label: "Trader" },
-			{ id: CS_USR_TAB_INV, label: "Investor" },
-			{ id: CS_USR_TAB_PRO, label: "Pro" }
+	// 	var html = '';
+	// 	html += '<div class="tsrCsNgContainer">';
 
-		]
+	// 	// 1. User Type Segmented Control (Left)
+	// 	html += '  <div class="tsrCsNgUserTypeWrapper">';
+	// 	html += '    <span class="tsrCsNgUserTypeLabel">I am -</span>';
+	// 	html += '    <div class="tsrCsNgPillGroup">';
+	// 	for (var i = 0; i < userTypes.length; i++) {
+	// 		var u = userTypes[i];
+	// 		var isChecked = (u.id === userTab) ? 'checked' : '';
+	// 		var inputId = 'tsrCsNgUserTab_' + u.id;
 
+	// 		html += '      <input type="radio" class="btn-check tsrCsNgPillCheck" ';
+	// 		html += '             name="csUsrTabRadioBtn" id="' + inputId + '" ';
+	// 		html += '             value="' + u.id + '" autocomplete="off" ' + isChecked + ' ';
+	// 		html += '             onclick="myTsrScreener.tut(this.value)">';
+	// 		html += '      <label class="tsrCsNgPillBtn" for="' + inputId + '">' + u.label + '</label>';
+	// 	}
+	// 	html += '    </div>';
+	// 	html += '  </div>';
 
+	// 	// 2. View Switcher Segmented Control (Right)
+	// 	html += '  <div class="tsrCsNgViewSwitcherWrapper" id="chooseCsView">';
+	// 	html += '    <div class="tsrCsNgViewSwitcherGroup">';
+	// 	for (var j = 0; j < viewTypes.length; j++) {
+	// 		var v = viewTypes[j];
+	// 		var isViewChecked = (v.id === selVal) ? 'checked' : '';
+	// 		var viewInputId = 'tsrCsNgView_' + v.id;
 
-		let VIEW_TYPE = [
-			{ id: 'ng', label: "Modern View" },
-			{ id: 'default', label: "Classic View" }
+	// 		html += '      <input type="radio" class="btn-check tsrCsNgViewCheck" ';
+	// 		html += '             name="csNgRadioBtn" id="' + viewInputId + '" ';
+	// 		html += '             value="' + v.id + '" autocomplete="off" ' + isViewChecked + ' ';
+	// 		html += '             onchange="myTsrScreener.tcsn()">';
+	// 		html += '      <label class="tsrCsNgViewBtn" for="' + viewInputId + '">';
+	// 		html += '        <i class="fas ' + v.icon + '"></i> ' + v.label;
+	// 		html += '      </label>';
+	// 	}
+	// 	html += '    </div>';
+	// 	html += '  </div>';
 
-		]
+	// 	html += '</div>';
 
-		let userTab = localStorage.getItem("csusrtabs");
+	// 	if (mtgv.cs.ng) {
+	// 		html += '<hr class="tsrCsNgDivider">';
+	// 	}
 
-		if (userTab == null) userTab = CS_USR_TAB_PRO;
+	// 	return html;
+	// }
 
+	// function getToggleNgView() {
 
-		let href = window.location.href;
+	// 	// if(isMobile()) return '';
 
-		let html = "";
-		// if (mtgv.cs.ng && (href.indexOf('CustomStockScreener.tsr') != -1 || href.indexOf('ai/AIOScreener') != -1)) { // TODO uncomment later
-		if (true) { // TODO remove later
-			html += `<div class="d-flex justify-content-between">`
+	// 	if (inMyTsr) return ''
 
-			html += `<div class='d-none d-md-flex align-items-end miCtrl  ' style ='color: dimgray; text-wrap:nowrap'> I am - ` + SP_2
+	// 	// let ngScr = localStorage.getItem( "csngscr" );
 
-			html += htmlU.crg('csUsrTabRadioBtn', 'myTsrScreener.tut', USER_TYPE, userTab);
+	// 	// if(ngScr == null || ngScr == 'false'){
+	// 	// 	mtgv.cs.ng =    false;
+	// 	// }else{
+	// 	// 	mtgv.cs.ng =    true;	
+	// 	// }
 
-			html += `</div>`
+	// 	let USER_TYPE = [
+	// 		{ id: CS_USR_TAB_BEGIN, label: "Beginner" },
+	// 		{ id: CS_USR_TAB_TRADER, label: "Trader" },
+	// 		{ id: CS_USR_TAB_INV, label: "Investor" },
+	// 		{ id: CS_USR_TAB_PRO, label: "Pro" }
 
-			// html += `<div class='d-none d-md-block'> | </div>`
-
-		} else {
-			html += `<div class="d-flex justify-content-end">`
-		}
-
-		html += `<div id="chooseCsView" class="d-flex miCtrl animate-charcter" align='right' 
-			style ='color: limegreen;font-size: larger; text-wrap:nowrap'>`
-		// html+= '<img src="'+ jsu.getStaticUrl()+'/img/newIcon.jpg">'
-		html += SP_2;
-		let selVal = mtgv.cs.ng ? 'ng' : 'default';
-
-		html += htmlU.crg('csNgRadioBtn', 'myTsrScreener.tcsn', VIEW_TYPE, selVal,);
-		html += SP_3
-
-		// html += '<b>Stock Basket </b> : ' + htmlU.crg('stkType', scrAlias + '.cbc', mtgv.mtpp.CLASSI, mtgv.mtpp.DEF_CLASSI);
-
-
-		// html += `	<p class="me-3" style="margin: 0;">Choose View</p>`
-		// html += `	<div class="mx-3">`
-		// html += `		<input class="form-check-input" type="radio" id="csNgRadioBtn" name="csNgRadioBtn" 
-		// value="ng" ${mtgv.cs.ng ? 'Checked' : ''}  onChange='myTsrScreener.tcsn()' >`
-		// html += `		<label for="csNgRadioBtn" style="font-weight: bold; color: cornflowerblue">Modern View</label>`
-		// html += `	</div>`
-		// html += `	<div class="mx-3">`
-		// html += `		<input class="form-check-input" type="radio" id="csDefaultRadioBtn" name="csNgRadioBtn" 
-		// value="default" ${!mtgv.cs.ng ? 'Checked' : ''}  onChange='myTsrScreener.tcsn()' >`
-		// html += `		<label for="csDefaultRadioBtn">Classic View</label>`
-		// html += `	</div>`
-
-
-		html += `</div>`
-		html += `</div>`
-		if (mtgv.cs.ng) {
-			html += `<hr style="margin:10px 0;" >`
-		}
+	// 	]
 
 
 
-		return html;
+	// 	let VIEW_TYPE = [
+	// 		{ id: 'ng', label: "Modern View" },
+	// 		{ id: 'default', label: "Classic View" }
 
-	}
+	// 	]
+
+	// 	let userTab = localStorage.getItem("csusrtabs");
+
+	// 	if (userTab == null) userTab = CS_USR_TAB_PRO;
+
+
+	// 	let href = window.location.href;
+
+	// 	let html = "";
+	// 	// if (mtgv.cs.ng && (href.indexOf('CustomStockScreener.tsr') != -1 || href.indexOf('ai/AIOScreener') != -1)) { // TODO uncomment later
+	// 	if (true) { // TODO remove later
+	// 		html += `<div class="d-flex justify-content-between p-2">` // ! modified
+
+	// 		// GEMINI: Add USER_TYPE toggle html here
+	// 		// html += `<div class='d-none d-md-flex align-items-end miCtrl  ' style ='color: dimgray; text-wrap:nowrap'> I am - ` + SP_2
+
+	// 		// for(let i=0; i<USER_TYPE.length; i++){
+	// 		// 	html += `<input type="radio" class="btn-check" name="csUsrTabRadioBtn" value="${USER_TYPE[i].id}" autocomplete="off" onclick="myTsrScreener.tut()">`
+	// 		// 	html += `<label class="btn btn-sm btn-light rounded-pill" for="option1">${USER_TYPE[i].label}</label>`
+
+	// 		// }
+	// 		// // html += htmlU.crg('csUsrTabRadioBtn', 'myTsrScreener.tut', USER_TYPE, userTab);
+
+	// 		// html += `</div>`
+
+	// 		html += `</div>`
+
+	// 		// html += `<div class='d-none d-md-block'> | </div>`
+
+	// 	} else {
+	// 		html += `<div class="d-flex justify-content-end">`
+	// 	}
+
+	// 	html += `<div id="chooseCsView" class="d-flex miCtrl animate-charcter" align='right' 
+	// 		style ='color: limegreen;font-size: larger; text-wrap:nowrap'>`
+	// 	// html+= '<img src="'+ jsu.getStaticUrl()+'/img/newIcon.jpg">'
+	// 	html += SP_2;
+	// 	let selVal = mtgv.cs.ng ? 'ng' : 'default';
+
+	// 	// GEMINI: Add VIEW_TYPE toggle html here
+	// 	// html += htmlU.crg('csNgRadioBtn', 'myTsrScreener.tcsn', VIEW_TYPE, selVal,);
+	// 	html += SP_3
+
+	// 	// html += '<b>Stock Basket </b> : ' + htmlU.crg('stkType', scrAlias + '.cbc', mtgv.mtpp.CLASSI, mtgv.mtpp.DEF_CLASSI);
+
+
+	// 	// html += `	<p class="me-3" style="margin: 0;">Choose View</p>`
+	// 	// html += `	<div class="mx-3">`
+	// 	// html += `		<input class="form-check-input" type="radio" id="csNgRadioBtn" name="csNgRadioBtn" 
+	// 	// value="ng" ${mtgv.cs.ng ? 'Checked' : ''}  onChange='myTsrScreener.tcsn()' >`
+	// 	// html += `		<label for="csNgRadioBtn" style="font-weight: bold; color: cornflowerblue">Modern View</label>`
+	// 	// html += `	</div>`
+	// 	// html += `	<div class="mx-3">`
+	// 	// html += `		<input class="form-check-input" type="radio" id="csDefaultRadioBtn" name="csNgRadioBtn" 
+	// 	// value="default" ${!mtgv.cs.ng ? 'Checked' : ''}  onChange='myTsrScreener.tcsn()' >`
+	// 	// html += `		<label for="csDefaultRadioBtn">Classic View</label>`
+	// 	// html += `	</div>`
+
+
+	// 	html += `</div>`
+	// 	html += `</div>`
+	// 	if (mtgv.cs.ng) {
+	// 		html += `<hr style="margin:10px 0;" >`
+	// 	}
+
+
+
+	// 	return html;
+
+	// }
 
 
 	// modified
@@ -637,15 +719,17 @@ var csh = (function () {
 		let csDiv = document.getElementById("csDiv");
 		csDiv.setAttribute("style", "max-height: 70vh; overflow: hidden; min-height: 600px;");
 
-		csDiv.classList.add("d-flex", "flex-column", "border", "p-2");
+		csDiv.classList.add("d-flex", "flex-column", "border", "rounded-3"); // ! modified
 
 		let html = "";
 
 		// html += `	<div class="d-flex flex-column border p-2"  style="max-height: 475px;">` //  style="min-height: 500px; height: 70vh;"
 		html += getTopRowNg();
-		html += `		<hr style="margin: 10px 0;">`
+		html += TSR_HR;
+		// html += `		<hr style="margin: 10px 0;">`
 		html += getMiddleRowNg();
-		html += `		<hr>`
+		html += TSR_HR
+		// html += `		<hr>`
 		html += getFilterControlNg();
 		// html += `	</div>`
 
@@ -664,7 +748,7 @@ var csh = (function () {
 		var html = "";
 
 		// html += `			<div>`
-		html += `				<div class="d-flex" style="height: 40px;">`
+		html += `				<div class="d-flex pb-2" style="height: 45px;">` // ! modified
 		// html += `					<div class="d-flex align-items-center me-3" style="width: 20%;">`
 		// html += mintSrch.gs('height: 40px;');
 
@@ -842,118 +926,222 @@ var csh = (function () {
 
 
 
-	function getMiddleRowNg() {
-		var html = ``;
+	// function  getMiddleRowNg() {
+	// 	var html = ``;
 
-		let dropdownIdSuffix = "DropdownMenu";
+	// 	let dropdownIdSuffix = "DropdownMenu";
 
-		html += `			<div id="tsrCsMiddleRow" class="d-flex" style="overflow-x: hidden; min-height: 350px;">`;
-		html += `				<div class="d-flex flex-column">`;
+	// 	html += `			<div id="tsrCsMiddleRow" class="d-flex" style="overflow-x: hidden; min-height: 350px;">`;
+
+	// 	// GEMINI: update lhs menu
+	// 	// code for left hand side menu
+	// 	html += `				<div class="d-flex flex-column">`;
 
 
 
-		// style ='background-color: #487bd6;    color: aliceblue;' rounded-pill
+	// 	// style ='background-color: #487bd6;    color: aliceblue;' rounded-pill
 
-		let DROPDOWN_MENU_STYLE = "";
-		for (let i = 0; i < mtgv.cs.tabs.length; i++) { // for each cat.
-			let tabId = mtgv.cs.tabs[i]["tab"];
-			// html += `<div class="btn-group dropdown">`
-			html += `<div class="btn-group dropend">`
-			html += `	<button type="button" class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3  d-flex justify-content-between  align-items-end gap-3" data-bs-toggle="dropdown" aria-expanded="false"  data-bs-auto-close="outside" 
-				onclick="csh.smh(this); myTsrScreener.showControl('${mtgv.cs.tabs[i]["id"]}'); csh.cd('${infoBoxId}')"
+	// 	let DROPDOWN_MENU_STYLE = "";
+	// 	for (let i = 0; i < mtgv.cs.tabs.length; i++) { // for each cat.
+	// 		let tabId = mtgv.cs.tabs[i]["tab"];
+	// 		// html += `<div class="btn-group dropdown">`
+	// 		html += `<div class="btn-group dropend">`
+	// 		html += `	<button type="button" class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3  d-flex justify-content-between  align-items-end gap-3" data-bs-toggle="dropdown" aria-expanded="false"  data-bs-auto-close="outside" 
+	// 			onclick="csh.smh(this); myTsrScreener.showControl('${mtgv.cs.tabs[i]["id"]}'); csh.cd('${infoBoxId}')"
 					
-				 >` // ! modified
-			html += `		<span>${mtgv.cs.tabs[i]["label"]}</span>`;
-			html += `		<i class="fas fa-caret-right"></i>`// ! modified
-			html += `	</button>`
-			let subMenu = mtgv.cs.tabs[i]["subMenu"]; // can be an arr of filters or an arr of nested filters
-			html += `	<ul id="${mtgv.cs.tabs[i]["id"] + dropdownIdSuffix}" class="dropdown-menu tsrCsNgTabSubMenu" style="DROPDOWN_MENU_STYLE" >` // ! modified
-			// "overflow-y: auto; overflow-x: hidden;" - removing these two conditions made the 3rd submenu visible. "overflow-y: unset;  overflow-x: unset;"" also works
-			if (jsu.isNotNull(subMenu)) {
-				let listHtml = "";
+	// 			 >` // ! modified
+	// 		html += `		<span>${mtgv.cs.tabs[i]["label"]}</span>`;
+	// 		html += `		<i class="fas fa-caret-right"></i>`// ! modified
+	// 		html += `	</button>`
+	// 		let subMenu = mtgv.cs.tabs[i]["subMenu"]; // can be an arr of filters or an arr of nested filters
+	// 		html += `	<ul id="${mtgv.cs.tabs[i]["id"] + dropdownIdSuffix}" class="dropdown-menu tsrCsNgTabSubMenu" style="DROPDOWN_MENU_STYLE" >` // ! modified
+	// 		// "overflow-y: auto; overflow-x: hidden;" - removing these two conditions made the 3rd submenu visible. "overflow-y: unset;  overflow-x: unset;"" also works
+	// 		if (jsu.isNotNull(subMenu)) {
+	// 			let listHtml = "";
 
-				for (let j = 0; j < subMenu.length; j++) { // for each sub cat.
-					let item = subMenu[j];
-					let nestedMenu = item["subMenu"];
-					if (jsu.isNull(nestedMenu)) { // if nestedMenu does not exist, i.e. item is a single filter
-						DROPDOWN_MENU_STYLE = "overflow-y: auto;"; // max-height: 500px;  adds overflow property to list if there are no dropdowns(subMenu's) in it
-						let idStr = mtgv.cs.tabs[i]["id"] + "_" + item["id"];
-						html += getFilterBtnHtml(item, idStr);
-					} else { // nestedMenu exists
-						DROPDOWN_MENU_STYLE = ""; // "overflow-y: auto; overflow-x: hidden;" - removing these two conditions makes the 3rd submenu visible. "overflow-y: unset; overflow-x: unset;"" also works
+	// 			for (let j = 0; j < subMenu.length; j++) { // for each sub cat.
+	// 				let item = subMenu[j];
+	// 				let nestedMenu = item["subMenu"];
+	// 				if (jsu.isNull(nestedMenu)) { // if nestedMenu does not exist, i.e. item is a single filter
+	// 					DROPDOWN_MENU_STYLE = "overflow-y: auto;"; // max-height: 500px;  adds overflow property to list if there are no dropdowns(subMenu's) in it
+	// 					let idStr = mtgv.cs.tabs[i]["id"] + "_" + item["id"];
+	// 					html += getFilterBtnHtml(item, idStr);
+	// 				} else { // nestedMenu exists
+	// 					DROPDOWN_MENU_STYLE = ""; // "overflow-y: auto; overflow-x: hidden;" - removing these two conditions makes the 3rd submenu visible. "overflow-y: unset; overflow-x: unset;"" also works
 
-						// For dropdowns
-						html += `<li>`
-						html += `<div class="btn-group dropend w-100">`
-						// html += `<div class="btn-group dropdown w-100">`
-						// html += `	<button type="button" class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" onclick="csh.smh(this)">`
-						html += `	<button type="button" class="btn dropdown-toggle dropdown-item tsrCsNgMenu m-0 d-flex justify-content-between  align-items-end gap-3" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" onclick="csh.smh(this)">` // ! modified
-						html += `		<span>${item["label"]}</span>`;
-						html += `		<i class="fas fa-caret-right"></i>`// ! modified
-						html += `	</button>`
-						html += `	<ul class="dropdown-menu" style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">` // max-height: 500px; 
-						for (let k = 0; k < nestedMenu.length; k++) { // for innermost nested filters
+	// 					// For dropdowns
+	// 					html += `<li>`
+	// 					html += `<div class="btn-group dropend w-100">`
+	// 					// html += `<div class="btn-group dropdown w-100">`
+	// 					// html += `	<button type="button" class="btn dropdown-toggle dropdown-item text-black tsrCsNgMenu m-0" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" onclick="csh.smh(this)">`
+	// 					html += `	<button type="button" class="btn dropdown-toggle dropdown-item tsrCsNgMenu m-0 d-flex justify-content-between  align-items-end gap-3" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" onclick="csh.smh(this)">` // ! modified
+	// 					html += `		<span>${item["label"]}</span>`;
+	// 					html += `		<i class="fas fa-caret-right"></i>`// ! modified
+	// 					html += `	</button>`
+	// 					html += `	<ul class="dropdown-menu" style="overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; ">` // max-height: 500px; 
+	// 					for (let k = 0; k < nestedMenu.length; k++) { // for innermost nested filters
 
-							let nestedItem = nestedMenu[k];
-							let idStr = mtgv.cs.tabs[i]["id"] + "_" + item["id"] + "_" + nestedItem["id"];
-							html += getFilterBtnHtml(nestedItem, idStr);
+	// 						let nestedItem = nestedMenu[k];
+	// 						let idStr = mtgv.cs.tabs[i]["id"] + "_" + item["id"] + "_" + nestedItem["id"];
+	// 						html += getFilterBtnHtml(nestedItem, idStr);
 
-						}
-						html += `</ul>`
-						html += `</li>`
+	// 					}
+	// 					html += `</ul>`
+	// 					html += `</li>`
 
-						// dropdowns end
-					}
-				}
+	// 					// dropdowns end
+	// 				}
+	// 			}
 
-				html += listHtml;
-			}
+	// 			html += listHtml;
+	// 		}
 
-			html += `	</ul>`
-			html += `</div>`
+	// 		html += `	</ul>`
+	// 		html += `</div>`
 
-			html = html.replaceAll("DROPDOWN_MENU_STYLE", DROPDOWN_MENU_STYLE);
-		}
-		html += `				</div>`;
-		html += `				<div class="d-flex flex-column w-100" style="position: sticky; top: 0px;">`
-		// html += `					<div id="tsrCsSelFieldsCheckRow" style="display: none;">`
+	// 		html = html.replaceAll("DROPDOWN_MENU_STYLE", DROPDOWN_MENU_STYLE);
+	// 	}
+	// 	html += `				</div>`;
+	// 	html += `				<div class="d-flex flex-column w-100" style="position: sticky; top: 0px;">`
+	// 	// html += `					<div id="tsrCsSelFieldsCheckRow" style="display: none;">`
 
-		// html += getSelFieldsCheckRowHtml();
-		// html += `					</div>`
+	// 	// html += getSelFieldsCheckRowHtml();
+	// 	// html += `					</div>`
 
-		// ! Modified
+	// 	// ! Modified
 
-		html += `					<div class="d-flex mt-1 gap-3">
-										<div class="d-flex py-1 ms-2" style="/*! width: max-content; */ color: white; /*! background: linear-gradient(0deg, #09124f 0, #090979 30%, #006fbf 100%); */background: lightblue;font-size: 12px;background: #91989e; width: 200px;">		
-											<div class="tsrCsNgArrowEle" style="background-color: #071e88;background-color: #91989e;"></div>		
-											<h6 class="mx-3 mb-0 d-flex align-items-center" style="font-weight: 600;font-size: 16px; text-wrap: nowrap;">Add a filter</h6>	
-										</div>`
-		html += mintSrch.gs('width: calc(100% - 200px); max-width: 300px;');
-		html += `					</div>`
+	// 	html += `					<div class="d-flex mt-1 gap-3">
+	// 									<div class="d-flex py-1 ms-2" style="/*! width: max-content; */ color: white; /*! background: linear-gradient(0deg, #09124f 0, #090979 30%, #006fbf 100%); */background: lightblue;font-size: 12px;background: #91989e; width: 200px;">		
+	// 										<div class="tsrCsNgArrowEle" style="background-color: #071e88;background-color: #91989e;"></div>		
+	// 										<h6 class="mx-3 mb-0 d-flex align-items-center" style="font-weight: 600;font-size: 16px; text-wrap: nowrap;">Add a filter</h6>	
+	// 									</div>`
+	// 	html += mintSrch.gs('width: calc(100% - 200px); max-width: 300px;');
+	// 	html += `					</div>`
 
-
-
-		html += `					<div id="tsrCsInstrBox" class="tsrCsNgInstrBox flex-column justify-content-evenly" style="display: flex; height: 100%;">`
-		html += csngaf.gibh();
+	// 	// Code for left hand side menu
+	// 	// ---------------------------------------------------
 
 
-		html += `					</div>`
-		html += `					<div id="csControlsDiv" class="d-flex me-2 w-100 miCtrl">`
-		html += `						<table id="${CS_FILTERS_TABLE}" class="table table-bordered table-striped  " style=" margin: 20px; border-color:cadetblue" width="100%; ">`  // white-space: nowrap;
-		html += `						</table>`
-		html += `					</div>`
-		// html += `					<div id="csSelFieldsDivWrap" class="ms-2 w-100">`
-		// html += `						<div id="csSelFieldsDiv" style="margin:5px;" class="d-flex flex-column">`
-		// html += `							<span style="font-size: 12px; color: gray;">All filters that you select will appear here</span>`
-		// html += `						</div>`
-		// html += `					</div>`
-		html += `				</div>`
-		html += `			</div>`
+	// 	html += `					<div id="tsrCsInstrBox" class="tsrCsNgInstrBox flex-column justify-content-evenly" style="display: flex; height: 100%;">`
+	// 	html += csngaf.gibh();
+
+
+	// 	html += `					</div>`
+	// 	html += `					<div id="csControlsDiv" class="d-flex me-2 w-100 miCtrl">`
+	// 	html += `						<table id="${CS_FILTERS_TABLE}" class="table table-bordered table-striped  " style=" margin: 20px; border-color:cadetblue" width="100%; ">`  // white-space: nowrap;
+	// 	html += `						</table>`
+	// 	html += `					</div>`
+	// 	// html += `					<div id="csSelFieldsDivWrap" class="ms-2 w-100">`
+	// 	// html += `						<div id="csSelFieldsDiv" style="margin:5px;" class="d-flex flex-column">`
+	// 	// html += `							<span style="font-size: 12px; color: gray;">All filters that you select will appear here</span>`
+	// 	// html += `						</div>`
+	// 	// html += `					</div>`
+	// 	html += `				</div>`
+	// 	html += `			</div>`
 
 
 
-		return html;
-	}
+	// 	return html;
+	// }
+
+	function getMiddleRowNg() {
+  var html = "";
+  var dropdownIdSuffix = "DropdownMenu";
+
+  html += '<div id="tsrCsNgMiddleRow" class="d-flex">';
+
+  // 1. Left-Hand Side Filter Categories Nav
+  html += '  <div class="d-flex flex-column tsrCsNgMenuNavWrapper">';
+
+  for (var i = 0; i < mtgv.cs.tabs.length; i++) {
+    var tab = mtgv.cs.tabs[i];
+    var subMenu = tab["subMenu"];
+    var hasNested = false;
+
+    if (jsu.isNotNull(subMenu)) {
+      for (var s = 0; s < subMenu.length; s++) {
+        if (jsu.isNotNull(subMenu[s]["subMenu"])) {
+          hasNested = true;
+          break;
+        }
+      }
+    }
+
+    var menuScrollStyle = hasNested ? "" : "overflow-y: auto; max-height: 480px;";
+
+    html += '    <div class="btn-group dropend w-100">';
+    html += '      <button type="button" class="btn btn-light dropdown-toggle text-start tsrCsNgMenuBtn w-100 d-flex justify-content-between align-items-center" ';
+    html += '              data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" ';
+    html += '              onclick="csh.smh(this); myTsrScreener.showControl(\'' + tab["id"] + '\'); csh.cd(\'' + infoBoxId + '\')">';
+    html += '        <span>' + tab["label"] + '</span>';
+    html += '        <i class="fas fa-chevron-right"></i>';
+    html += '      </button>';
+
+    html += '      <ul id="' + tab["id"] + dropdownIdSuffix + '" class="dropdown-menu tsrCsNgTabSubMenu" style="' + menuScrollStyle + '">';
+
+    if (jsu.isNotNull(subMenu)) {
+      for (var j = 0; j < subMenu.length; j++) {
+        var item = subMenu[j];
+        var nestedMenu = item["subMenu"];
+
+        if (jsu.isNull(nestedMenu)) {
+          var idStr = tab["id"] + "_" + item["id"];
+          html += getFilterBtnHtml(item, idStr);
+        } else {
+          html += '        <li>';
+          html += '          <div class="btn-group dropend w-100">';
+          html += '            <button type="button" class="btn dropdown-toggle dropdown-item tsrCsNgMenuBtn d-flex justify-content-between align-items-center" ';
+          html += '                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" onclick="csh.smh(this)">';
+          html += '              <span>' + item["label"] + '</span>';
+          html += '              <i class="fas fa-chevron-right"></i>';
+          html += '            </button>';
+          html += '            <ul class="dropdown-menu tsrCsNgTabSubMenu" style="overflow-y: auto; overflow-x: hidden; max-height: 400px;">';
+          for (var k = 0; k < nestedMenu.length; k++) {
+            var nestedItem = nestedMenu[k];
+            var nestedIdStr = tab["id"] + "_" + item["id"] + "_" + nestedItem["id"];
+            html += getFilterBtnHtml(nestedItem, nestedIdStr);
+          }
+          html += '            </ul>';
+          html += '          </div>';
+          html += '        </li>';
+        }
+      }
+    }
+
+    html += '      </ul>';
+    html += '    </div>';
+  }
+
+  html += '  </div>';
+
+  // 2. Right-Hand Side Content & Filter Bar
+  html += '  <div class="d-flex flex-column flex-grow-1 p-2" style="position: sticky; top: 0px;">';
+
+  // Filter Guide Banner + Search Input
+  html += '    <div class="d-flex flex-wrap align-items-center gap-2 mb-3 ms-2">';
+  html += '      <div class="tsrCsNgFilterGuideBanner">';
+  html += '        <i class="fas fa-arrow-left"></i>';
+  html += '        <span>Choose a filter from the menu</span>';
+  html += '      </div>';
+  html += mintSrch.gs('width: calc(100% - 250px); max-width: 320px;');
+  html += '    </div>';
+
+  // Instructions & Pre-Created Screeners Area
+  html += '    <div id="tsrCsInstrBox" class="tsrCsNgInstrBox flex-column justify-content-evenly" style="display: flex; height: 100%;">';
+  html += csngaf.gibh();
+  html += '    </div>';
+
+  // Active Filters Table
+  html += '    <div id="csControlsDiv" class="d-flex me-2 w-100 miCtrl">';
+  html += '      <table id="' + CS_FILTERS_TABLE + '" class="table table-bordered table-striped" style="margin: 20px; border-color: cadetblue;" width="100%">';
+  html += '      </table>';
+  html += '    </div>';
+
+  html += '  </div>';
+  html += '</div>';
+
+  return html;
+}
 
 	// ! NOT USED ANYWHERE
 	function getSelFieldsCheckRowHtml() {
@@ -1028,127 +1216,183 @@ var csh = (function () {
 	}
 
 	function getFilterBtnHtml(filterItem, idStr) {
+  if (jsu.isMigContext()) {
+    if (!filterItem.aio) return "";
+  }
 
-		// let id = "" + filterItem["id"];
+  var subsUser = false;
+  var prUser = false;
+  if (mtgv.mtpp.pr) {
+    if (mtgv.mtpp.crossFreq) {
+      prUser = true;
+    } else {
+      subsUser = true;
+    }
+  }
 
-		if (jsu.isMigContext()) {
-			if (!filterItem.aio) {
-				return "";
-			}
-		} else {
-			// TODO uncomment later
-			// if (!filterItem.tsr) {
-			// 	return "";
-			// }
-		}
+  var prFilter = !!filterItem["premium"];
+  var addOnce = !!filterItem["addOnce"];
+  var func = filterItem["func"];
+
+  var params = "";
+  for (var l = 0; l < filterItem["params"].length; l++) {
+    params += "'" + filterItem["params"][l] + "'";
+    if (l < filterItem["params"].length - 1) params += ",";
+  }
+
+  var plansUrl = jsu.getMyTsrUrl() + '/TsrPlans';
+  var html = "";
+  var onclickFunc = "";
+
+  if (prFilter && !prUser) {
+    var badgeLabel = subsUser ? "UPGRADE" : "PRO";
+    html += '<li>';
+    html += '  <a id="' + idStr + '" class="dropdown-item tsrCsNgFilterBtn d-flex justify-content-between align-items-center" href="' + plansUrl + '">';
+    html += '    <span>' + filterItem["label"] + '</span>';
+    html += '    <span class="badge text-white tsrCsNgBadgeUpgrade">' + badgeLabel + '</span>';
+    html += '  </a>';
+    html += '</li>';
+    return html;
+  }
+
+  var extraAction = addOnce ? " csh.df('" + idStr + "');" : "";
+  if (jsu.isNotNull(filterItem.url)) {
+    onclickFunc = "csngutil.ttcm('" + CS_NG_DD_SEl + "'); csh.uht('" + idStr + "'); " + func + "(" + params + ");" + extraAction;
+  } else {
+    onclickFunc = "csngutil.ttcm('" + CS_NG_DD_SEl + "'); " + func + "(" + params + ");" + extraAction;
+  }
+
+  html += '<li>';
+  html += '  <a id="' + idStr + '" class="dropdown-item tsrCsNgFilterBtn" onclick="' + onclickFunc + '">';
+  html += filterItem["label"];
+  html += '  </a>';
+  html += '</li>';
+
+  return html;
+}
+
+	// function getFilterBtnHtml(filterItem, idStr) {
+
+	// 	// let id = "" + filterItem["id"];
+
+	// 	if (jsu.isMigContext()) {
+	// 		if (!filterItem.aio) {
+	// 			return "";
+	// 		}
+	// 	} else {
+	// 		// TODO uncomment later
+	// 		// if (!filterItem.tsr) {
+	// 		// 	return "";
+	// 		// }
+	// 	}
 
 
 
-		// Which filters are available for premium / other plan users ? 
-		// VWAP and others -  a few only
-		let subsUser = false; // is user subscribed
-		let prUser = false; // is premium plan user
-		if (mtgv.mtpp.pr) {
-			if (mtgv.mtpp.crossFreq) {
-				prUser = true;
-			} else {
-				subsUser = true;
-			}
-		}
+	// 	// Which filters are available for premium / other plan users ? 
+	// 	// VWAP and others -  a few only
+	// 	let subsUser = false; // is user subscribed
+	// 	let prUser = false; // is premium plan user
+	// 	if (mtgv.mtpp.pr) {
+	// 		if (mtgv.mtpp.crossFreq) {
+	// 			prUser = true;
+	// 		} else {
+	// 			subsUser = true;
+	// 		}
+	// 	}
 
-		// What are the upgradeFilters ?
-		let prFilter = false;
-		if (filterItem["premium"]) {
-			prFilter = true;
-		}
+	// 	// What are the upgradeFilters ?
+	// 	let prFilter = false;
+	// 	if (filterItem["premium"]) {
+	// 		prFilter = true;
+	// 	}
 
-		let addOnce = false;
-		if (filterItem["addOnce"]) {
-			addOnce = true;
-		}
+	// 	let addOnce = false;
+	// 	if (filterItem["addOnce"]) {
+	// 		addOnce = true;
+	// 	}
 
-		let func = filterItem["func"];
+	// 	let func = filterItem["func"];
 
-		let params = "";
-		for (let l = 0; l < filterItem["params"].length; l++) {
-			params += "'" + filterItem["params"][l] + "'";
-			if (l < filterItem["params"].length - 1) {
-				params += ",";
-			}
-		}
+	// 	let params = "";
+	// 	for (let l = 0; l < filterItem["params"].length; l++) {
+	// 		params += "'" + filterItem["params"][l] + "'";
+	// 		if (l < filterItem["params"].length - 1) {
+	// 			params += ",";
+	// 		}
+	// 	}
 
-		let plansUrl = jsu.getMyTsrUrl() + '/TsrPlans';
-		// -----------------HTML SECTION-----------------
+	// 	let plansUrl = jsu.getMyTsrUrl() + '/TsrPlans';
+	// 	// -----------------HTML SECTION-----------------
 
-		let html = "";
-		var onclickFunc = "";
-		if (prFilter) {
-			if (prUser) {
-				if (addOnce) {
-					if (jsu.isNotNull(filterItem.url)) {
-						onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); csh.uht('${idStr}'); ${func}(${params}); csh.df('${idStr}');`;
-					} else {
-						onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); ${func}(${params}); csh.df('${idStr}');`;
-					}
-					html += `<li>`
-					// html += `	<a id="${idStr}" class="dropdown-item" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px; color: black;">`
-					html += `	<a id="${idStr}" class="dropdown-item tsrCsNgFilterBtn" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px;">`
-					html += filterItem["label"]
-					html += `	</a>`
-					html += `</li>`
-				} else {
-					if (jsu.isNotNull(filterItem.url)) {
-						onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); csh.uht('${idStr}'); ${func}(${params});`;
-					} else {
-						onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); ${func}(${params});`;
-					}
-					html += `<li>`
-					// html += `	<a  id="${idStr}" class="dropdown-item" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px; color: black;">`
-					html += `	<a  id="${idStr}" class="dropdown-item tsrCsNgFilterBtn" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px;">`
-					html += filterItem["label"]
-					html += `	</a>`
-					html += `</li>`
-				}
-			} else {
-				html += `<a id="${idStr}" class="dropdown-item d-flex justify-content-between align-items-baseline" href="${plansUrl}" style="text-wrap: nowrap; font-weight: 300; font-size: 16px; color: black;">`
-				html += filterItem["label"]
-				if (subsUser) {
-					html += `	<span class="badge ms-2" style="background-color: #0254ad;">UPGRADE</span>`
-				} else {
-					html += `	<span class="badge ms-2" style="background-color: #0254ad;">PRO</span>`
-				}
-				html += `</a>`
-			}
-		} else {
-			if (addOnce) {
-				if (jsu.isNotNull(filterItem.url)) {
-					onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); csh.uht('${idStr}'); ${func}(${params}); csh.df('${idStr}');`;
-				} else {
-					onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); ${func}(${params}); csh.df('${idStr}');`;
-				}
-				html += `<li>`
-				// html += `	<a id="${idStr}" class="dropdown-item" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px; color: black;">`
-				html += `	<a id="${idStr}" class="dropdown-item tsrCsNgFilterBtn" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px;">`
-				html += filterItem["label"]
-				html += `	</a>`
-				html += `</li>`
-			} else {
-				if (jsu.isNotNull(filterItem.url)) {
-					onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); csh.uht('${idStr}'); ${func}(${params});`;
-				} else {
-					onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); ${func}(${params});`;
-				}
-				html += `<li>`
-				// html += `	<a id="${idStr}"class="dropdown-item" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px; color: black;">`
-				html += `	<a id="${idStr}"class="dropdown-item tsrCsNgFilterBtn" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px;">`
-				html += filterItem["label"]
-				html += `	</a>`
-				html += `</li>`
-			}
-		}
+	// 	let html = "";
+	// 	var onclickFunc = "";
+	// 	if (prFilter) {
+	// 		if (prUser) {
+	// 			if (addOnce) {
+	// 				if (jsu.isNotNull(filterItem.url)) {
+	// 					onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); csh.uht('${idStr}'); ${func}(${params}); csh.df('${idStr}');`;
+	// 				} else {
+	// 					onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); ${func}(${params}); csh.df('${idStr}');`;
+	// 				}
+	// 				html += `<li>`
+	// 				// html += `	<a id="${idStr}" class="dropdown-item" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px; color: black;">`
+	// 				html += `	<a id="${idStr}" class="dropdown-item tsrCsNgFilterBtn" onclick="${onclickFunc}">`
+	// 				html += filterItem["label"]
+	// 				html += `	</a>`
+	// 				html += `</li>`
+	// 			} else {
+	// 				if (jsu.isNotNull(filterItem.url)) {
+	// 					onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); csh.uht('${idStr}'); ${func}(${params});`;
+	// 				} else {
+	// 					onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); ${func}(${params});`;
+	// 				}
+	// 				html += `<li>`
+	// 				// html += `	<a  id="${idStr}" class="dropdown-item" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px; color: black;">`
+	// 				html += `	<a  id="${idStr}" class="dropdown-item tsrCsNgFilterBtn" onclick="${onclickFunc}">` // ! modified
+	// 				html += filterItem["label"]
+	// 				html += `	</a>`
+	// 				html += `</li>`
+	// 			}
+	// 		} else {
+	// 			html += `<a id="${idStr}" class="dropdown-item d-flex justify-content-between align-items-baseline" href="${plansUrl}">`
+	// 			html += filterItem["label"]
+	// 			if (subsUser) {
+	// 				html += `	<span class="badge ms-2" style="background-color: #0254ad;">UPGRADE</span>`
+	// 			} else {
+	// 				html += `	<span class="badge ms-2" style="background-color: #0254ad;">PRO</span>`
+	// 			}
+	// 			html += `</a>`
+	// 		}
+	// 	} else {
+	// 		if (addOnce) {
+	// 			if (jsu.isNotNull(filterItem.url)) {
+	// 				onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); csh.uht('${idStr}'); ${func}(${params}); csh.df('${idStr}');`;
+	// 			} else {
+	// 				onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); ${func}(${params}); csh.df('${idStr}');`;
+	// 			}
+	// 			html += `<li>`
+	// 			// html += `	<a id="${idStr}" class="dropdown-item" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px; color: black;">`
+	// 			html += `	<a id="${idStr}" class="dropdown-item tsrCsNgFilterBtn" onclick="${onclickFunc}">`
+	// 			html += filterItem["label"]
+	// 			html += `	</a>`
+	// 			html += `</li>`
+	// 		} else {
+	// 			if (jsu.isNotNull(filterItem.url)) {
+	// 				onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); csh.uht('${idStr}'); ${func}(${params});`;
+	// 			} else {
+	// 				onclickFunc = `csngutil.ttcm('${CS_NG_DD_SEl}'); ${func}(${params});`;
+	// 			}
+	// 			html += `<li>`
+	// 			// html += `	<a id="${idStr}"class="dropdown-item" onclick="${onclickFunc}" style="text-wrap: nowrap; font-size: 16px; color: black;">`
+	// 			html += `	<a id="${idStr}"class="dropdown-item tsrCsNgFilterBtn" onclick="${onclickFunc}">`
+	// 			html += filterItem["label"]
+	// 			html += `	</a>`
+	// 			html += `</li>`
+	// 		}
+	// 	}
 
-		return html;
-	}
+	// 	return html;
+	// }
 
 
 	function clearDiv(id) {
@@ -1291,76 +1535,187 @@ var csh = (function () {
 
 
 	// TODO
-	function getFilterControlNg() {
 
-		var custBtnClass = 'btn btn-outline-dark border-0';
+function getFilterControlNg() {
+  var html = '';
+  var func = scrAlias + '.screenNow';
+  var tabindex = 1;
 
-		var html = '';
+  // Specific button class variants based on semantic weight
+  var runBtnClass = 'btn tsrCsNgActionBtn tsrCsNgBtnRun';
+  var resetBtnClass = 'btn tsrCsNgActionBtn tsrCsNgBtnReset';
+  var secBtnClass = 'btn tsrCsNgActionBtn tsrCsNgBtnSecondary';
 
-		var func = scrAlias + '.' + 'screenNow';
-		let tabindex = 1;
+  html += '<div class="tsrCsNgBottomBar">';
 
-		html += '<div class="d-flex justify-content-evenly">'
+  // Left Section: Action Buttons
+  html += '  <div class="tsrCsNgActionGroup">';
+  html += htmlU.getCusBtn('Run', func, 'run', 'Run Screener', runBtnClass, 'fas fa-play', tabindex);
+  html += htmlU.getCusBtn('Reset', func, 'reset', 'Reset Screener', resetBtnClass, 'fas fa-undo', tabindex);
+  html += htmlU.getCusBtn('Save', func, 'save', 'Save Screener', secBtnClass, 'fas fa-save', tabindex);
 
-		html += htmlU.getCusBtn('Run ', func, 'run', 'Run Screener', custBtnClass, 'fas fa-play', tabindex);
+  if (!jsu.isMigContext()) {
+    html += htmlU.getCusBtn('Alert', func, 'alertNew', 'Add Alert', secBtnClass, 'fas fa-bell', tabindex);
+  }
+  html += '  </div>';
+
+  // Right Section: Utility Controls
+  html += '  <div class="tsrCsNgUtilityGroup">';
+  if (!jsu.isMigContext()) {
+    html += '    <div class="form-check tsrCsNgCheckToggle">';
+    html += '      <input type="checkbox" id="csAutoRefCB" class="form-check-input" onchange="csngaf.ua(\'autoRefresh\')">';
+    html += '      <label class="form-check-label" for="csAutoRefCB">Auto Refresh</label>';
+    html += '    </div>';
+    html += csngaf.sm();
+  }
+  html += '  </div>';
+
+  html += '</div>';
+
+  html += htmlU.createEmptyDiv(CS_SCR_CTRL_FB_DIV, true);
+
+  return html;
+}
+
+function getToggleNgView() {
+  if (inMyTsr) return '';
+
+  var userTypes = [
+    { id: CS_USR_TAB_BEGIN, label: 'Beginner' },
+    { id: CS_USR_TAB_TRADER, label: 'Trader' },
+    { id: CS_USR_TAB_INV, label: 'Investor' },
+    { id: CS_USR_TAB_PRO, label: 'Pro' }
+  ];
+
+  var viewTypes = [
+    { id: 'ng', label: 'Modern View', icon: 'fa-layer-group' },
+    { id: 'default', label: 'Classic View', icon: 'fa-th-list' }
+  ];
+
+  var userTab = localStorage.getItem('csusrtabs');
+  if (userTab == null) userTab = CS_USR_TAB_PRO;
+
+  var selVal = mtgv.cs.ng ? 'ng' : 'default';
+
+  var html = '';
+  html += '<div class="tsrCsNgContainer">';
+
+  // 1. User Type Segmented Control (Left)
+  html += '  <div class="tsrCsNgUserTypeWrapper">';
+  html += '    <span class="tsrCsNgUserTypeLabel">I am -</span>';
+  html += '    <div class="tsrCsNgPillGroup">';
+  for (var i = 0; i < userTypes.length; i++) {
+    var u = userTypes[i];
+    var isChecked = (u.id === userTab) ? 'checked' : '';
+    var inputId = 'tsrCsNgUserTab_' + u.id;
+
+    html += '      <input type="radio" class="btn-check tsrCsNgPillCheck" ';
+    html += '             name="csUsrTabRadioBtn" id="' + inputId + '" ';
+    html += '             value="' + u.id + '" autocomplete="off" ' + isChecked + ' ';
+    html += '             onclick="myTsrScreener.tut(this.value)">';
+    html += '      <label class="tsrCsNgPillBtn" for="' + inputId + '">' + u.label + '</label>';
+  }
+  html += '    </div>';
+  html += '  </div>';
+
+  // 2. View Switcher Segmented Control (Right)
+  html += '  <div class="tsrCsNgViewSwitcherWrapper" id="chooseCsView">';
+  html += '    <div class="tsrCsNgViewSwitcherGroup">';
+  for (var j = 0; j < viewTypes.length; j++) {
+    var v = viewTypes[j];
+    var isViewChecked = (v.id === selVal) ? 'checked' : '';
+    var viewInputId = 'tsrCsNgView_' + v.id;
+
+    html += '      <input type="radio" class="btn-check tsrCsNgViewCheck" ';
+    html += '             name="csNgRadioBtn" id="' + viewInputId + '" ';
+    html += '             value="' + v.id + '" autocomplete="off" ' + isViewChecked + ' ';
+    html += '             onchange="myTsrScreener.tcsn()">';
+    html += '      <label class="tsrCsNgViewBtn" for="' + viewInputId + '">';
+    html += '        <i class="fas ' + v.icon + '"></i> ' + v.label;
+    html += '      </label>';
+  }
+  html += '    </div>';
+  html += '  </div>';
+
+  html += '</div>';
+
+  if (mtgv.cs.ng) {
+    html += '<hr class="tsrCsNgDivider">';
+  }
+
+  return html;
+}
+	
+	// function getFilterControlNg() {
+
+	// 	var custBtnClass = 'btn btn-outline-dark border-0';
+
+	// 	var html = '';
+
+	// 	var func = scrAlias + '.' + 'screenNow';
+	// 	let tabindex = 1;
+
+	// 	html += '<div class="d-flex justify-content-evenly p-2">'
+
+	// 	html += htmlU.getCusBtn('Run ', func, 'run', 'Run Screener', custBtnClass, 'fas fa-play', tabindex);
 
 
-		html += htmlU.getCusBtn('Reset', func, 'reset', 'Reset Screener', custBtnClass, 'fas fa-undo', tabindex);
+	// 	html += htmlU.getCusBtn('Reset', func, 'reset', 'Reset Screener', custBtnClass, 'fas fa-undo', tabindex);
 
 
-		html += htmlU.getCusBtn('Save ', func, 'save', 'Save Screener', custBtnClass, 'fas fa-save', tabindex);
+	// 	html += htmlU.getCusBtn('Save ', func, 'save', 'Save Screener', custBtnClass, 'fas fa-save', tabindex);
 
-		if (jsu.isMigContext()) {
-			/*
-						html += `					
-													<div class="d-flex justify-content-between align-items-center p-0">
-														<label class="form-check-label" style="text-wrap: nowrap;"
-															for="csBt">
-															Backtest
-														</label>
-														<input type="checkbox" id="csBt" class="form-check-input dropup ms-2" onchange="csngaf.ua('backtest')"
-														>
+	// 	if (jsu.isMigContext()) {
+	// 		/*
+	// 					html += `					
+	// 												<div class="d-flex justify-content-between align-items-center p-0">
+	// 													<label class="form-check-label" style="text-wrap: nowrap;"
+	// 														for="csBt">
+	// 														Backtest
+	// 													</label>
+	// 													<input type="checkbox" id="csBt" class="form-check-input dropup ms-2" onchange="csngaf.ua('backtest')"
+	// 													>
 														
-													</div>
-												`
-			*/
-		} else {
-			html += htmlU.getCusBtn('Alert ', func, 'alertNew', 'Add Alert', custBtnClass, 'fas fa-bell', tabindex);
+	// 												</div>
+	// 											`
+	// 		*/
+	// 	} else {
+	// 		html += htmlU.getCusBtn('Alert ', func, 'alertNew', 'Add Alert', custBtnClass, 'fas fa-bell', tabindex);
 
-			html += `
-										<div class="d-flex justify-content-between align-items-center p-0">
-											<label class="form-check-label" style="text-wrap: nowrap;" for="csAutoRefCB">
-												Auto Refresh
-											</label>
-											<input type="checkbox"  id="csAutoRefCB" class="form-check-input dropup ms-2"
-												onchange="csngaf.ua('autoRefresh')">
-										</div>
-			`
+	// 		html += `
+	// 									<div class="d-flex justify-content-between align-items-center p-0">
+	// 										<label class="form-check-label" style="text-wrap: nowrap;" for="csAutoRefCB">
+	// 											Auto Refresh
+	// 										</label>
+	// 										<input type="checkbox"  id="csAutoRefCB" class="form-check-input dropup ms-2"
+	// 											onchange="csngaf.ua('autoRefresh')">
+	// 									</div>
+	// 		`
 
-			html += csngaf.sm();
+	// 		html += csngaf.sm();
 
-		}
+	// 	}
 
-		// html += `	<div class="vr"></div>`;
-
-
-
-		// html += `	</div>`
-		html += `</div>`
-
-		// if (jsu.isMigContext()) {
-
-		// 	html += `
-		// 								<div id="backtestDiv" style="" class="mx-auto ">
-		// 								</div>
-		// 			`
-		// }
-
-		html += htmlU.createEmptyDiv(CS_SCR_CTRL_FB_DIV, true);   //CS_SCR_SB_FB_DIV	 // modified
+	// 	// html += `	<div class="vr"></div>`;
 
 
-		return html;
-	}
+
+	// 	// html += `	</div>`
+	// 	html += `</div>`
+
+	// 	// if (jsu.isMigContext()) {
+
+	// 	// 	html += `
+	// 	// 								<div id="backtestDiv" style="" class="mx-auto ">
+	// 	// 								</div>
+	// 	// 			`
+	// 	// }
+
+	// 	html += htmlU.createEmptyDiv(CS_SCR_CTRL_FB_DIV, true);   //CS_SCR_SB_FB_DIV	 // modified
+
+
+	// 	return html;
+	// }
 
 	// HTML Creation Starts
 	function opsCompTd(obj, def) {

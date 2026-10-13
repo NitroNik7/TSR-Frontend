@@ -375,88 +375,138 @@ var csngaf = (function () {
 	];
 
 
-	function getInstrBoxHtml() {
-		let html = "";
+	// function getInstrBoxHtml() {
+	// 	let html = "";
 
-		let breakpoints = ["d-flex", "d-none d-md-flex", "d-none d-lg-flex"];
+	// 	let breakpoints = ["d-flex", "d-none d-md-flex", "d-none d-lg-flex"];
 
-		// ! Modified
-		// html += `	<div class="d-flex py-1 bg-info ms-4" style="width: max-content; color: white; background: linear-gradient(0deg, #09124f 0, #090979 30%, #006fbf 100%);">`
-		// html += `		<div class="tsrCsNgArrowEle" style="background-color: #071e88;">`
-		// html += `		</div>`
-		// html += `		<h3 class="mx-3 mb-0">`
-		// html += `			Add a Filter`
-		// html += `		</h3>`
-		// html += `	</div>`
+	// 	// ! Modified
+	// 	// html += `	<div class="d-flex py-1 bg-info ms-4" style="width: max-content; color: white; background: linear-gradient(0deg, #09124f 0, #090979 30%, #006fbf 100%);">`
+	// 	// html += `		<div class="tsrCsNgArrowEle" style="background-color: #071e88;">`
+	// 	// html += `		</div>`
+	// 	// html += `		<h3 class="mx-3 mb-0">`
+	// 	// html += `			Add a Filter`
+	// 	// html += `		</h3>`
+	// 	// html += `	</div>`
 
-		// html += `<hr class="ms-5">`
-		// html += `	<div class="miVertDivider d-flex w-100 ms-5 my-1">
-		// 				<div class="miVertLine"></div>
-		// 				<div class="fw-bold fs-16 mx-3" style="color: gray;font-size:28px;">OR</div>
-		// 				<div class="miVertLine"></div>
-		// 			</div>`
-		// html += `	<p class="ms-5 my-3 text-center">OR</p>`
+	// 	// html += `<hr class="ms-5">`
+	// 	// html += `	<div class="miVertDivider d-flex w-100 ms-5 my-1">
+	// 	// 				<div class="miVertLine"></div>
+	// 	// 				<div class="fw-bold fs-16 mx-3" style="color: gray;font-size:28px;">OR</div>
+	// 	// 				<div class="miVertLine"></div>
+	// 	// 			</div>`
+	// 	// html += `	<p class="ms-5 my-3 text-center">OR</p>`
 
-		let containerId = "tsrCsPreCrScrCarousalContainer";
+	// 	let containerId = "tsrCsPreCrScrCarousalContainer";
 
-		// html += `	<div class="align-items-center d-flex flex-column ms-5 bg-light py-1" style="overflow-y: auto; min-height: 200px;">`
-		html += `		<h4 class="text-secondary text-start">Run Pre-created Screener</h4>`
-		// html += `		<div id="${containerId}" class="d-flex justify-content-around my-2 w-100">`
-		html += `		<div id="${containerId}" class="d-flex justify-content-around my-2" style="width: 100%;">`
-		html += ` 
-            				<button type="button" role="presentation" class="tsrHomeOwlPrev btn d-none d-md-block" style="box-shadow: none;">
-            				    <span aria-label="Previous">
-            				        <i class="fas fa-angle-left"></i>
-            				    </span>
-            				</button>
-            `
+	// 	// html += `	<div class="align-items-center d-flex flex-column ms-5 bg-light py-1" style="overflow-y: auto; min-height: 200px;">`
+	// 	html += `		<div class="d-flex justify-content-around">`
+	// 	html += `			<h5 class="text-secondary text-start">Run Pre-created Screener</h5>`
+	// 	html += `		</div>`
+	// 	// html += `		<div id="${containerId}" class="d-flex justify-content-around my-2 w-100">`
+	// 	html += `		<div id="${containerId}" class="d-flex justify-content-center my-1 mx-5" style="width: 80%;">`
+	// 	html += ` 
+    //         				<button type="button" role="presentation" class="tsrHomeOwlPrev btn d-none d-md-block" style="box-shadow: none;">
+    //         				    <span aria-label="Previous">
+    //         				        <i class="fas fa-angle-left"></i>
+    //         				    </span>
+    //         				</button>
+    //         `
 
-		html += `			<div class="owl-carousel owl-theme">`
-		html += `					`
-		for (let i = 0; i < preCreatedScr.length; i++) {
-			html += `				<!-- Card 1 -->
-									<div class="item">`
-			html += `					<div class="${breakpoints[i]} card flex-column mx-3">`
-			html += `						<div class="card-header bg-secondary bg-opacity-75">`
-			html += `							<h5 class="text-white m-0 p-0">${preCreatedScr[i].label}</h5>`
-			html += `						</div>`
-			html += `						<div class="card-body d-flex flex-column">`
-			let screeners = preCreatedScr[i].screeners;
-			for (let j = 0; j < screeners.length; j++) {
-				if (jsu.isMigContext()) {
-					if (screeners[j].id == 'priceActionScr3') {
-						continue;   // VWAP is not supported in AIO	
-					}
-				}
-				let func = screeners[j].func;
-				html += `								<a onclick="${func}" class=" link-secondary my-2" style="font-weight: 300; padding: 0px 5px;">`
-				html += `									<i class="fas fa-play"></i>`
-				html += `									<span class="ms-1">${screeners[j].label}</span>`
-				html += `								</a>`
-			}
-			// html += `							</tbody>`
-			// html += `						</table>`
-			html += `						</div>`
-			html += `					</div>`
-			html += `				</div>`
-		}
-		html += `			</div>`
+	// 	html += `			<div class="owl-carousel owl-theme">`
+	// 	html += `					`
+	// 	for (let i = 0; i < preCreatedScr.length; i++) {
+	// 		html += `				<!-- Card 1 -->
+	// 								<div class="item">`
+	// 		html += `					<div class="${breakpoints[i]} card flex-column mx-3">`
+	// 		html += `						<div class="card-header bg-secondary bg-opacity-75">`
+	// 		html += `							<h6 class="text-white m-0 p-0">${preCreatedScr[i].label}</h6>`
+	// 		html += `						</div>`
+	// 		html += `						<div class="card-body d-flex flex-column">`
+	// 		let screeners = preCreatedScr[i].screeners;
+	// 		for (let j = 0; j < screeners.length; j++) {
+	// 			if (jsu.isMigContext()) {
+	// 				if (screeners[j].id == 'priceActionScr3') {
+	// 					continue;   // VWAP is not supported in AIO	
+	// 				}
+	// 			}
+	// 			let func = screeners[j].func;
+	// 			// html += `								<a onclick="${func}" class=" link-secondary my-2" style="font-weight: 300; padding: 0px 5px;">` // ! modifed
+	// 			html += `								<a onclick="${func}" class="link-secondary">`
+	// 			html += `									<i class="fas fa-play"></i>`
+	// 			html += `									<span class="ms-1">${screeners[j].label}</span>`
+	// 			html += `								</a>`
+	// 		}
+	// 		// html += `							</tbody>`
+	// 		// html += `						</table>`
+	// 		html += `						</div>`
+	// 		html += `					</div>`
+	// 		html += `				</div>`
+	// 	}
+	// 	html += `			</div>`
 
-		html += `
-							<button type="button" role="presentation" class="tsrHomeOwlNext btn d-none d-md-block"
-								style="box-shadow: none;">
-								<span aria-label="Next">
-									<i class="fas fa-angle-right"></i>
-								</span>
-							</button>
-		    `
-		html += `		</div>`
-		// html += `	</div>`
+	// 	html += `
+	// 						<button type="button" role="presentation" class="tsrHomeOwlNext btn d-none d-md-block"
+	// 							style="box-shadow: none;">
+	// 							<span aria-label="Next">
+	// 								<i class="fas fa-angle-right"></i>
+	// 							</span>
+	// 						</button>
+	// 	    `
+	// 	html += `		</div>`
+	// 	// html += `	</div>`
 
-		return html;
-	}
+	// 	return html;
+	// }
 
+function getInstrBoxHtml() {
+  var html = "";
+  var breakpoints = ["d-flex", "d-none d-md-flex", "d-none d-lg-flex"];
+  var containerId = "tsrCsPreCrScrCarousalContainer";
 
+  html += '<div class="d-flex justify-content-center my-2">';
+  html += '  <h5 class="text-secondary fw-bold" style="font-size: 15px;">Run Pre-created Screener</h5>';
+  html += '</div>';
+
+  html += '<div id="' + containerId + '" class="d-flex justify-content-center align-items-center my-1 mx-auto" style="width: 90%;">';
+  html += '  <button type="button" role="presentation" class="tsrHomeOwlPrev btn d-none d-md-block border-0 bg-transparent">';
+  html += '    <span aria-label="Previous"><i class="fas fa-chevron-left text-muted"></i></span>';
+  html += '  </button>';
+
+  html += '  <div class="owl-carousel owl-theme">';
+  for (var i = 0; i < preCreatedScr.length; i++) {
+    html += '    <div class="item">';
+    html += '      <div class="' + breakpoints[i] + ' card tsrCsNgCard flex-column mx-2">';
+    html += '        <div class="card-header tsrCsNgCardHeader">';
+    html += '          <h6>' + preCreatedScr[i].label + '</h6>';
+    html += '        </div>';
+    html += '        <div class="card-body tsrCsNgCardBody">';
+
+    var screeners = preCreatedScr[i].screeners;
+    for (var j = 0; j < screeners.length; j++) {
+      if (jsu.isMigContext() && screeners[j].id === 'priceActionScr3') {
+        continue;
+      }
+      var func = screeners[j].func;
+      html += '          <a onclick="' + func + '" class="tsrCsNgCardLink">';
+      html += '            <i class="fas fa-play"></i>';
+      html += '            <span>' + screeners[j].label + '</span>';
+      html += '          </a>';
+    }
+
+    html += '        </div>';
+    html += '      </div>';
+    html += '    </div>';
+  }
+  html += '  </div>';
+
+  html += '  <button type="button" role="presentation" class="tsrHomeOwlNext btn d-none d-md-block border-0 bg-transparent">';
+  html += '    <span aria-label="Next"><i class="fas fa-chevron-right text-muted"></i></span>';
+  html += '  </button>';
+  html += '</div>';
+
+  return html;
+}
 
 	return {
 
