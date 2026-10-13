@@ -376,7 +376,7 @@ var mintSrch =  (function () {
 		gf : getFilter
 		
 
-	}
+	} 
 
 
 })(); // module 	

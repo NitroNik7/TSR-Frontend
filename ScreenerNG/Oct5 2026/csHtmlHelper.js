@@ -948,7 +948,7 @@ var csh = (function () {
 	// 		html += `<div class="btn-group dropend">`
 	// 		html += `	<button type="button" class="btn btn-light dropdown-toggle text-start tsrCsNgMenu m-0 border-bottom border-3  d-flex justify-content-between  align-items-end gap-3" data-bs-toggle="dropdown" aria-expanded="false"  data-bs-auto-close="outside" 
 	// 			onclick="csh.smh(this); myTsrScreener.showControl('${mtgv.cs.tabs[i]["id"]}'); csh.cd('${infoBoxId}')"
-					
+
 	// 			 >` // ! modified
 	// 		html += `		<span>${mtgv.cs.tabs[i]["label"]}</span>`;
 	// 		html += `		<i class="fas fa-caret-right"></i>`// ! modified
@@ -1044,104 +1044,375 @@ var csh = (function () {
 	// 	return html;
 	// }
 
+	// function getMiddleRowNg() {
+	// 	var html = "";
+	// 	var dropdownIdSuffix = "DropdownMenu";
+
+	// 	html += '<div id="tsrCsNgMiddleRow" class="d-flex">';
+
+	// 	// 1. Left-Hand Side Filter Categories Nav
+	// 	html += '  <div class="d-flex flex-column tsrCsNgMenuNavWrapper">';
+
+	// 	for (var i = 0; i < mtgv.cs.tabs.length; i++) {
+	// 		var tab = mtgv.cs.tabs[i];
+	// 		var subMenu = tab["subMenu"];
+	// 		var hasNested = false;
+
+	// 		if (jsu.isNotNull(subMenu)) {
+	// 			for (var s = 0; s < subMenu.length; s++) {
+	// 				if (jsu.isNotNull(subMenu[s]["subMenu"])) {
+	// 					hasNested = true;
+	// 					break;
+	// 				}
+	// 			}
+	// 		}
+
+	// 		var menuScrollStyle = hasNested ? "" : "overflow-y: auto; max-height: 480px;";
+
+	// 		html += '    <div class="btn-group dropend w-100">';
+	// 		html += '      <button type="button" class="btn btn-light dropdown-toggle text-start tsrCsNgMenuBtn w-100 d-flex justify-content-between align-items-center" ';
+	// 		html += '              data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" ';
+	// 		html += '              onclick="csh.smh(this); myTsrScreener.showControl(\'' + tab["id"] + '\'); csh.cd(\'' + infoBoxId + '\')">';
+	// 		html += '        <span>' + tab["label"] + '</span>';
+	// 		html += '        <i class="fas fa-chevron-right"></i>';
+	// 		html += '      </button>';
+
+	// 		html += '      <ul id="' + tab["id"] + dropdownIdSuffix + '" class="dropdown-menu tsrCsNgTabSubMenu" style="' + menuScrollStyle + '">';
+
+	// 		if (jsu.isNotNull(subMenu)) {
+	// 			for (var j = 0; j < subMenu.length; j++) {
+	// 				var item = subMenu[j];
+	// 				var nestedMenu = item["subMenu"];
+
+	// 				if (jsu.isNull(nestedMenu)) {
+	// 					var idStr = tab["id"] + "_" + item["id"];
+	// 					html += getFilterBtnHtml(item, idStr);
+	// 				} else {
+	// 					html += '        <li>';
+	// 					html += '          <div class="btn-group dropend w-100">';
+	// 					html += '            <button type="button" class="btn dropdown-toggle dropdown-item tsrCsNgMenuBtn d-flex justify-content-between align-items-center" ';
+	// 					html += '                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" onclick="csh.smh(this)">';
+	// 					html += '              <span>' + item["label"] + '</span>';
+	// 					html += '              <i class="fas fa-chevron-right"></i>';
+	// 					html += '            </button>';
+	// 					html += '            <ul class="dropdown-menu tsrCsNgTabSubMenu" style="overflow-y: auto; overflow-x: hidden; max-height: 400px;">';
+	// 					for (var k = 0; k < nestedMenu.length; k++) {
+	// 						var nestedItem = nestedMenu[k];
+	// 						var nestedIdStr = tab["id"] + "_" + item["id"] + "_" + nestedItem["id"];
+	// 						html += getFilterBtnHtml(nestedItem, nestedIdStr);
+	// 					}
+	// 					html += '            </ul>';
+	// 					html += '          </div>';
+	// 					html += '        </li>';
+	// 				}
+	// 			}
+	// 		}
+
+	// 		html += '      </ul>';
+	// 		html += '    </div>';
+	// 	}
+
+	// 	html += '  </div>';
+
+	// 	// 2. Right-Hand Side Content & Filter Bar
+	// 	html += '  <div class="d-flex flex-column flex-grow-1 p-2" style="position: sticky; top: 0px;">';
+
+	// 	// Filter Guide Banner + Search Input
+	// 	html += '    <div class="d-flex flex-wrap align-items-center gap-2 mb-3 ms-2">';
+	// 	html += '      <div class="tsrCsNgFilterGuideBanner">';
+	// 	html += '        <i class="fas fa-arrow-left"></i>';
+	// 	html += '        <span>Choose a filter from the menu</span>';
+	// 	html += '      </div>';
+	// 	html += mintSrch.gs('width: calc(100% - 250px); max-width: 320px;');
+	// 	html += '    </div>';
+
+	// 	// Instructions & Pre-Created Screeners Area
+	// 	html += '    <div id="tsrCsInstrBox" class="tsrCsNgInstrBox flex-column justify-content-evenly" style="display: flex; height: 100%;">';
+	// 	html += csngaf.gibh();
+	// 	html += '    </div>';
+
+	// 	// Active Filters Table
+	// 	html += '    <div id="csControlsDiv" class="d-flex me-2 w-100 miCtrl">';
+	// 	html += '      <table id="' + CS_FILTERS_TABLE + '" class="table table-bordered table-striped" style="margin: 20px; border-color: cadetblue;" width="100%">';
+	// 	html += '      </table>';
+	// 	html += '    </div>';
+
+	// 	html += '  </div>';
+	// 	html += '</div>';
+
+	// 	return html;
+	// }
+
+	// fav option 1
+	// function getMiddleRowNg() {
+	// 	var html = "";
+	// 	var dropdownIdSuffix = "DropdownMenu";
+
+	// 	html += '<div id="tsrCsNgMiddleRow" class="d-flex">';
+
+	// 	// 1. Left-Hand Side Filter Categories Nav
+	// 	html += '  <div class="d-flex flex-column tsrCsNgMenuNavWrapper">';
+
+	// 	for (var i = 0; i < mtgv.cs.tabs.length; i++) {
+	// 		var tab = mtgv.cs.tabs[i];
+	// 		var subMenu = tab["subMenu"];
+	// 		var hasNested = false;
+
+	// 		if (jsu.isNotNull(subMenu)) {
+	// 			for (var s = 0; s < subMenu.length; s++) {
+	// 				if (jsu.isNotNull(subMenu[s]["subMenu"])) {
+	// 					hasNested = true;
+	// 					break;
+	// 				}
+	// 			}
+	// 		}
+
+	// 		var menuScrollStyle = hasNested ? "" : "overflow-y: auto; max-height: 480px;";
+
+	// 		html += '    <div class="btn-group dropend w-100">';
+	// 		html += '      <button type="button" class="btn btn-light dropdown-toggle text-start tsrCsNgMenuBtn w-100 d-flex justify-content-between align-items-center" ';
+	// 		html += '              data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" ';
+	// 		html += '              onmouseenter="myTsrScreener.showControl(\'' + tab["id"] + '\'); csh.cd(\'' + infoBoxId + '\')" ';
+	// 		html += '              onclick="csh.smh(this); myTsrScreener.showControl(\'' + tab["id"] + '\'); csh.cd(\'' + infoBoxId + '\')">';
+	// 		html += '        <span>' + tab["label"] + '</span>';
+	// 		html += '        <i class="fas fa-chevron-right"></i>';
+	// 		html += '      </button>';
+
+	// 		html += '      <ul id="' + tab["id"] + dropdownIdSuffix + '" class="dropdown-menu tsrCsNgTabSubMenu" style="' + menuScrollStyle + '">';
+
+	// 		if (jsu.isNotNull(subMenu)) {
+	// 			for (var j = 0; j < subMenu.length; j++) {
+	// 				var item = subMenu[j];
+	// 				var nestedMenu = item["subMenu"];
+
+	// 				if (jsu.isNull(nestedMenu)) {
+	// 					var idStr = tab["id"] + "_" + item["id"];
+	// 					html += getFilterBtnHtml(item, idStr);
+	// 				} else {
+	// 					html += '        <li>';
+	// 					html += '          <div class="btn-group dropend w-100">';
+	// 					html += '            <button type="button" class="btn dropdown-toggle dropdown-item tsrCsNgMenuBtn d-flex justify-content-between align-items-center" ';
+	// 					html += '                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" onclick="csh.smh(this)">';
+	// 					html += '              <span>' + item["label"] + '</span>';
+	// 					html += '              <i class="fas fa-chevron-right"></i>';
+	// 					html += '            </button>';
+	// 					html += '            <ul class="dropdown-menu tsrCsNgTabSubMenu" style="overflow-y: auto; overflow-x: hidden; max-height: 400px;">';
+	// 					for (var k = 0; k < nestedMenu.length; k++) {
+	// 						var nestedItem = nestedMenu[k];
+	// 						var nestedIdStr = tab["id"] + "_" + item["id"] + "_" + nestedItem["id"];
+	// 						html += getFilterBtnHtml(nestedItem, nestedIdStr);
+	// 					}
+	// 					html += '            </ul>';
+	// 					html += '          </div>';
+	// 					html += '        </li>';
+	// 				}
+	// 			}
+	// 		}
+
+	// 		html += '      </ul>';
+	// 		html += '    </div>';
+	// 	}
+
+	// 	html += '  </div>';
+
+	// 	// 2. Right-Hand Side Content Area
+	// 	html += '  <div class="d-flex flex-column flex-grow-1 p-2" style="position: sticky; top: 0px;">';
+	// 	html += '    <div class="d-flex flex-wrap align-items-center gap-2 mb-3 ms-2">';
+	// 	html += '      <div class="tsrCsNgFilterGuideBanner">';
+	// 	html += '        <i class="fas fa-arrow-left"></i>';
+	// 	html += '        <span>Choose a filter from the menu</span>';
+	// 	html += '      </div>';
+	// 	html += mintSrch.gs('width: calc(100% - 250px); max-width: 320px;');
+	// 	html += '    </div>';
+
+	// 	html += '    <div id="tsrCsInstrBox" class="tsrCsNgInstrBox flex-column justify-content-evenly" style="display: flex; height: 100%;">';
+	// 	html += csngaf.gibh();
+	// 	html += '    </div>';
+
+	// 	html += '    <div id="csControlsDiv" class="d-flex me-2 w-100 miCtrl">';
+	// 	html += '      <table id="' + CS_FILTERS_TABLE + '" class="table table-bordered table-striped" style="margin: 20px; border-color: cadetblue;" width="100%">';
+	// 	html += '      </table>';
+	// 	html += '    </div>';
+
+	// 	html += '  </div>';
+	// 	html += '</div>';
+
+	// 	return html;
+	// }
+
 	function getMiddleRowNg() {
-  var html = "";
-  var dropdownIdSuffix = "DropdownMenu";
+		var html = '';
+		var dropdownIdSuffix = "DropdownMenu";
+		var portalHtml = ''; // All floating submenus are collected here OUTSIDE the scroll container
 
-  html += '<div id="tsrCsNgMiddleRow" class="d-flex">';
+		html += '<div id="tsrCsNgMiddleRow" class="d-flex">';
 
-  // 1. Left-Hand Side Filter Categories Nav
-  html += '  <div class="d-flex flex-column tsrCsNgMenuNavWrapper">';
+		// 1. Left-Hand Side Nav (Scrollable)
+		html += '  <div class="d-flex flex-column tsrCsNgMenuNavWrapper">';
 
-  for (var i = 0; i < mtgv.cs.tabs.length; i++) {
-    var tab = mtgv.cs.tabs[i];
-    var subMenu = tab["subMenu"];
-    var hasNested = false;
+		for (var i = 0; i < mtgv.cs.tabs.length; i++) {
+			var tab = mtgv.cs.tabs[i];
+			var subMenu = tab["subMenu"];
+			var menuId = tab["id"] + dropdownIdSuffix;
 
-    if (jsu.isNotNull(subMenu)) {
-      for (var s = 0; s < subMenu.length; s++) {
-        if (jsu.isNotNull(subMenu[s]["subMenu"])) {
-          hasNested = true;
-          break;
-        }
-      }
-    }
+			html += '    <button type="button" class="btn text-start tsrCsNgMenuBtn" ';
+			html += '            id="tsrCsNgBtn_' + tab["id"] + '" ';
+			html += '            onmouseenter="csh.tsrCsNgHandleOpen(this, \'' + menuId + '\', false); myTsrScreener.showControl(\'' + tab["id"] + '\'); csh.cd(\'' + infoBoxId + '\')" ';
+			html += '            onmouseleave="csh.tsrCsNgHandleClose(\'' + menuId + '\')" ';
+			html += '            onclick="csh.smh(this); myTsrScreener.showControl(\'' + tab["id"] + '\'); csh.cd(\'' + infoBoxId + '\')">';
+			html += '      <span>' + tab["label"] + '</span>';
+			html += '      <i class="fas fa-chevron-right"></i>';
+			html += '    </button>';
 
-    var menuScrollStyle = hasNested ? "" : "overflow-y: auto; max-height: 480px;";
+			// Build the Floating Submenu to be rendered in the Portal outside
+			portalHtml += '  <ul id="' + menuId + '" class="tsrCsNgTabSubMenu" ';
+			portalHtml += '      onmouseenter="csh.tsrCsNgKeepOpen(\'' + menuId + '\')" ';
+			portalHtml += '      onmouseleave="csh.tsrCsNgHandleClose(\'' + menuId + '\')">';
 
-    html += '    <div class="btn-group dropend w-100">';
-    html += '      <button type="button" class="btn btn-light dropdown-toggle text-start tsrCsNgMenuBtn w-100 d-flex justify-content-between align-items-center" ';
-    html += '              data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" ';
-    html += '              onclick="csh.smh(this); myTsrScreener.showControl(\'' + tab["id"] + '\'); csh.cd(\'' + infoBoxId + '\')">';
-    html += '        <span>' + tab["label"] + '</span>';
-    html += '        <i class="fas fa-chevron-right"></i>';
-    html += '      </button>';
+			if (jsu.isNotNull(subMenu)) {
+				for (var j = 0; j < subMenu.length; j++) {
+					var item = subMenu[j];
+					var nestedMenu = item["subMenu"];
 
-    html += '      <ul id="' + tab["id"] + dropdownIdSuffix + '" class="dropdown-menu tsrCsNgTabSubMenu" style="' + menuScrollStyle + '">';
+					if (jsu.isNull(nestedMenu)) {
+						var idStr = tab["id"] + "_" + item["id"];
+						portalHtml += getFilterBtnHtml(item, idStr);
+					} else {
+						var nestedMenuId = tab["id"] + "_" + item["id"] + dropdownIdSuffix;
 
-    if (jsu.isNotNull(subMenu)) {
-      for (var j = 0; j < subMenu.length; j++) {
-        var item = subMenu[j];
-        var nestedMenu = item["subMenu"];
+						portalHtml += '    <li>';
+						portalHtml += '      <button type="button" class="tsrCsNgFilterBtn" ';
+						portalHtml += '              id="tsrCsNgNestedBtn_' + item["id"] + '" ';
+						portalHtml += '              onmouseenter="csh.tsrCsNgHandleOpen(this, \'' + nestedMenuId + '\', true)" ';
+						portalHtml += '              onmouseleave="csh.tsrCsNgHandleClose(\'' + nestedMenuId + '\')" ';
+						portalHtml += '              onclick="csh.smh(this)">';
+						portalHtml += '        <span>' + item["label"] + '</span>';
+						portalHtml += '        <i class="fas fa-chevron-right text-muted"></i>';
+						portalHtml += '      </button>';
+						portalHtml += '    </li>';
 
-        if (jsu.isNull(nestedMenu)) {
-          var idStr = tab["id"] + "_" + item["id"];
-          html += getFilterBtnHtml(item, idStr);
-        } else {
-          html += '        <li>';
-          html += '          <div class="btn-group dropend w-100">';
-          html += '            <button type="button" class="btn dropdown-toggle dropdown-item tsrCsNgMenuBtn d-flex justify-content-between align-items-center" ';
-          html += '                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" onclick="csh.smh(this)">';
-          html += '              <span>' + item["label"] + '</span>';
-          html += '              <i class="fas fa-chevron-right"></i>';
-          html += '            </button>';
-          html += '            <ul class="dropdown-menu tsrCsNgTabSubMenu" style="overflow-y: auto; overflow-x: hidden; max-height: 400px;">';
-          for (var k = 0; k < nestedMenu.length; k++) {
-            var nestedItem = nestedMenu[k];
-            var nestedIdStr = tab["id"] + "_" + item["id"] + "_" + nestedItem["id"];
-            html += getFilterBtnHtml(nestedItem, nestedIdStr);
-          }
-          html += '            </ul>';
-          html += '          </div>';
-          html += '        </li>';
-        }
-      }
-    }
+						// Nested Portal Menu
+						portalHtml += '    <ul id="' + nestedMenuId + '" class="tsrCsNgTabSubMenu" ';
+						portalHtml += '        onmouseenter="csh.tsrCsNgKeepOpen(\'' + nestedMenuId + '\', \'' + menuId + '\')" ';
+						portalHtml += '        onmouseleave="csh.tsrCsNgHandleClose(\'' + nestedMenuId + '\')">';
 
-    html += '      </ul>';
-    html += '    </div>';
-  }
+						for (var k = 0; k < nestedMenu.length; k++) {
+							var nestedItem = nestedMenu[k];
+							var nestedIdStr = tab["id"] + "_" + item["id"] + "_" + nestedItem["id"];
+							portalHtml += getFilterBtnHtml(nestedItem, nestedIdStr);
+						}
 
-  html += '  </div>';
+						portalHtml += '    </ul>';
+					}
+				}
+			}
 
-  // 2. Right-Hand Side Content & Filter Bar
-  html += '  <div class="d-flex flex-column flex-grow-1 p-2" style="position: sticky; top: 0px;">';
+			portalHtml += '  </ul>';
+		}
 
-  // Filter Guide Banner + Search Input
-  html += '    <div class="d-flex flex-wrap align-items-center gap-2 mb-3 ms-2">';
-  html += '      <div class="tsrCsNgFilterGuideBanner">';
-  html += '        <i class="fas fa-arrow-left"></i>';
-  html += '        <span>Choose a filter from the menu</span>';
-  html += '      </div>';
-  html += mintSrch.gs('width: calc(100% - 250px); max-width: 320px;');
-  html += '    </div>';
+		html += '  </div>';
 
-  // Instructions & Pre-Created Screeners Area
-  html += '    <div id="tsrCsInstrBox" class="tsrCsNgInstrBox flex-column justify-content-evenly" style="display: flex; height: 100%;">';
-  html += csngaf.gibh();
-  html += '    </div>';
+		// 2. Portal Container Placed OUTSIDE the scrollable nav
+		html += '  <div id="tsrCsNgSubMenuPortal">';
+		html += portalHtml;
+		html += '  </div>';
 
-  // Active Filters Table
-  html += '    <div id="csControlsDiv" class="d-flex me-2 w-100 miCtrl">';
-  html += '      <table id="' + CS_FILTERS_TABLE + '" class="table table-bordered table-striped" style="margin: 20px; border-color: cadetblue;" width="100%">';
-  html += '      </table>';
-  html += '    </div>';
+		// 3. Right-Hand Content
+		html += '  <div class="d-flex flex-column flex-grow-1 p-2" style="position: sticky; top: 0px;">';
+		html += '    <div class="d-flex flex-wrap align-items-center gap-2 mb-3 ms-2">';
+		html += '      <div class="tsrCsNgFilterGuideBanner">';
+		html += '        <i class="fas fa-arrow-left"></i>';
+		html += '        <span>Choose a filter from the menu</span>';
+		html += '      </div>';
+		html += mintSrch.gs('width: calc(100% - 250px); max-width: 320px;');
+		html += mintSrch.gpcss('width: calc(100% - 250px); max-width: 320px;');
+		html += '    </div>';
 
-  html += '  </div>';
-  html += '</div>';
+		// html += '    <div id="tsrCsInstrBox" class="tsrCsNgInstrBox flex-column justify-content-evenly" style="display: flex; height: 100%;">';
+		// html += csngaf.gibh();
+		// html += '    </div>';
 
-  return html;
-}
+		html += '    <div id="csControlsDiv" class="d-flex me-2 w-100 miCtrl">';
+		html += '      <table id="' + CS_FILTERS_TABLE + '" class="table table-bordered table-striped" style="margin: 20px; border-color: cadetblue;" width="100%">';
+		html += '      </table>';
+		html += '    </div>';
+
+		html += '  </div>';
+		html += '</div>';
+
+		return html;
+	}
+
+	// Controller logic for positioned floating popovers
+	var tsrCsNgCloseTimers = {};
+
+	function tsrCsNgHandleOpen(triggerEl, targetMenuId, isNested) {
+		// Clear any existing closing timer for this menu
+		if (tsrCsNgCloseTimers[targetMenuId]) {
+			clearTimeout(tsrCsNgCloseTimers[targetMenuId]);
+			delete tsrCsNgCloseTimers[targetMenuId];
+		}
+
+		// If this is a top-level category change, hide other open top-level menus
+		if (!isNested) {
+			var openMenus = document.querySelectorAll('.tsrCsNgTabSubMenu.tsrCsNgShow');
+			for (var m = 0; m < openMenus.length; m++) {
+				if (openMenus[m].id !== targetMenuId) {
+					openMenus[m].classList.remove('tsrCsNgShow');
+				}
+			}
+			var activeBtns = document.querySelectorAll('.tsrCsNgMenuBtn.tsrCsNgHovered');
+			for (var b = 0; b < activeBtns.length; b++) {
+				activeBtns[b].classList.remove('tsrCsNgHovered');
+			}
+			triggerEl.classList.add('tsrCsNgHovered');
+		}
+
+		var menu = document.getElementById(targetMenuId);
+		if (!menu) return;
+
+		var rect = triggerEl.getBoundingClientRect();
+		menu.classList.add('tsrCsNgShow');
+
+		// Place immediately to the right of the button
+		var leftPos = rect.right + 2;
+		var topPos = rect.top;
+
+		var menuHeight = menu.offsetHeight;
+		var windowHeight = window.innerHeight;
+
+		// Prevent clipping off screen bottom
+		if (topPos + menuHeight > windowHeight - 10) {
+			topPos = Math.max(10, rect.bottom - menuHeight);
+		}
+
+		menu.style.top = topPos + 'px';
+		menu.style.left = leftPos + 'px';
+	}
+
+	function tsrCsNgHandleClose(targetMenuId) {
+		tsrCsNgCloseTimers[targetMenuId] = setTimeout(function () {
+			var menu = document.getElementById(targetMenuId);
+			if (menu) {
+				menu.classList.remove('tsrCsNgShow');
+			}
+			var activeBtns = document.querySelectorAll('.tsrCsNgMenuBtn.tsrCsNgHovered');
+			for (var b = 0; b < activeBtns.length; b++) {
+				activeBtns[b].classList.remove('tsrCsNgHovered');
+			}
+		}, 100);
+	}
+
+	function tsrCsNgKeepOpen(targetMenuId, parentMenuId) {
+		if (tsrCsNgCloseTimers[targetMenuId]) {
+			clearTimeout(tsrCsNgCloseTimers[targetMenuId]);
+			delete tsrCsNgCloseTimers[targetMenuId];
+		}
+		if (parentMenuId && tsrCsNgCloseTimers[parentMenuId]) {
+			clearTimeout(tsrCsNgCloseTimers[parentMenuId]);
+			delete tsrCsNgCloseTimers[parentMenuId];
+		}
+	}
 
 	// ! NOT USED ANYWHERE
 	function getSelFieldsCheckRowHtml() {
@@ -1216,60 +1487,60 @@ var csh = (function () {
 	}
 
 	function getFilterBtnHtml(filterItem, idStr) {
-  if (jsu.isMigContext()) {
-    if (!filterItem.aio) return "";
-  }
+		if (jsu.isMigContext()) {
+			if (!filterItem.aio) return "";
+		}
 
-  var subsUser = false;
-  var prUser = false;
-  if (mtgv.mtpp.pr) {
-    if (mtgv.mtpp.crossFreq) {
-      prUser = true;
-    } else {
-      subsUser = true;
-    }
-  }
+		var subsUser = false;
+		var prUser = false;
+		if (mtgv.mtpp.pr) {
+			if (mtgv.mtpp.crossFreq) {
+				prUser = true;
+			} else {
+				subsUser = true;
+			}
+		}
 
-  var prFilter = !!filterItem["premium"];
-  var addOnce = !!filterItem["addOnce"];
-  var func = filterItem["func"];
+		var prFilter = !!filterItem["premium"];
+		var addOnce = !!filterItem["addOnce"];
+		var func = filterItem["func"];
 
-  var params = "";
-  for (var l = 0; l < filterItem["params"].length; l++) {
-    params += "'" + filterItem["params"][l] + "'";
-    if (l < filterItem["params"].length - 1) params += ",";
-  }
+		var params = "";
+		for (var l = 0; l < filterItem["params"].length; l++) {
+			params += "'" + filterItem["params"][l] + "'";
+			if (l < filterItem["params"].length - 1) params += ",";
+		}
 
-  var plansUrl = jsu.getMyTsrUrl() + '/TsrPlans';
-  var html = "";
-  var onclickFunc = "";
+		var plansUrl = jsu.getMyTsrUrl() + '/TsrPlans';
+		var html = "";
+		var onclickFunc = "";
 
-  if (prFilter && !prUser) {
-    var badgeLabel = subsUser ? "UPGRADE" : "PRO";
-    html += '<li>';
-    html += '  <a id="' + idStr + '" class="dropdown-item tsrCsNgFilterBtn d-flex justify-content-between align-items-center" href="' + plansUrl + '">';
-    html += '    <span>' + filterItem["label"] + '</span>';
-    html += '    <span class="badge text-white tsrCsNgBadgeUpgrade">' + badgeLabel + '</span>';
-    html += '  </a>';
-    html += '</li>';
-    return html;
-  }
+		if (prFilter && !prUser) {
+			var badgeLabel = subsUser ? "UPGRADE" : "PRO";
+			html += '<li>';
+			html += '  <a id="' + idStr + '" class="dropdown-item tsrCsNgFilterBtn d-flex justify-content-between align-items-center" href="' + plansUrl + '">';
+			html += '    <span>' + filterItem["label"] + '</span>';
+			html += '    <span class="badge text-white tsrCsNgBadgeUpgrade">' + badgeLabel + '</span>';
+			html += '  </a>';
+			html += '</li>';
+			return html;
+		}
 
-  var extraAction = addOnce ? " csh.df('" + idStr + "');" : "";
-  if (jsu.isNotNull(filterItem.url)) {
-    onclickFunc = "csngutil.ttcm('" + CS_NG_DD_SEl + "'); csh.uht('" + idStr + "'); " + func + "(" + params + ");" + extraAction;
-  } else {
-    onclickFunc = "csngutil.ttcm('" + CS_NG_DD_SEl + "'); " + func + "(" + params + ");" + extraAction;
-  }
+		var extraAction = addOnce ? " csh.df('" + idStr + "');" : "";
+		if (jsu.isNotNull(filterItem.url)) {
+			onclickFunc = "csngutil.ttcm('" + CS_NG_DD_SEl + "'); csh.uht('" + idStr + "'); " + func + "(" + params + ");" + extraAction;
+		} else {
+			onclickFunc = "csngutil.ttcm('" + CS_NG_DD_SEl + "'); " + func + "(" + params + ");" + extraAction;
+		}
 
-  html += '<li>';
-  html += '  <a id="' + idStr + '" class="dropdown-item tsrCsNgFilterBtn" onclick="' + onclickFunc + '">';
-  html += filterItem["label"];
-  html += '  </a>';
-  html += '</li>';
+		html += '<li>';
+		html += '  <a id="' + idStr + '" class="dropdown-item tsrCsNgFilterBtn" onclick="' + onclickFunc + '">';
+		html += filterItem["label"];
+		html += '  </a>';
+		html += '</li>';
 
-  return html;
-}
+		return html;
+	}
 
 	// function getFilterBtnHtml(filterItem, idStr) {
 
@@ -1536,116 +1807,116 @@ var csh = (function () {
 
 	// TODO
 
-function getFilterControlNg() {
-  var html = '';
-  var func = scrAlias + '.screenNow';
-  var tabindex = 1;
+	function getFilterControlNg() {
+		var html = '';
+		var func = scrAlias + '.screenNow';
+		var tabindex = 1;
 
-  // Specific button class variants based on semantic weight
-  var runBtnClass = 'btn tsrCsNgActionBtn tsrCsNgBtnRun';
-  var resetBtnClass = 'btn tsrCsNgActionBtn tsrCsNgBtnReset';
-  var secBtnClass = 'btn tsrCsNgActionBtn tsrCsNgBtnSecondary';
+		// Specific button class variants based on semantic weight
+		var runBtnClass = 'btn tsrCsNgActionBtn tsrCsNgBtnRun';
+		var resetBtnClass = 'btn tsrCsNgActionBtn tsrCsNgBtnReset';
+		var secBtnClass = 'btn tsrCsNgActionBtn tsrCsNgBtnSecondary';
 
-  html += '<div class="tsrCsNgBottomBar">';
+		html += '<div class="tsrCsNgBottomBar">';
 
-  // Left Section: Action Buttons
-  html += '  <div class="tsrCsNgActionGroup">';
-  html += htmlU.getCusBtn('Run', func, 'run', 'Run Screener', runBtnClass, 'fas fa-play', tabindex);
-  html += htmlU.getCusBtn('Reset', func, 'reset', 'Reset Screener', resetBtnClass, 'fas fa-undo', tabindex);
-  html += htmlU.getCusBtn('Save', func, 'save', 'Save Screener', secBtnClass, 'fas fa-save', tabindex);
+		// Left Section: Action Buttons
+		html += '  <div class="tsrCsNgActionGroup">';
+		html += htmlU.getCusBtn('Run', func, 'run', 'Run Screener', runBtnClass, 'fas fa-play', tabindex);
+		html += htmlU.getCusBtn('Reset', func, 'reset', 'Reset Screener', resetBtnClass, 'fas fa-undo', tabindex);
+		html += htmlU.getCusBtn('Save', func, 'save', 'Save Screener', secBtnClass, 'fas fa-save', tabindex);
 
-  if (!jsu.isMigContext()) {
-    html += htmlU.getCusBtn('Alert', func, 'alertNew', 'Add Alert', secBtnClass, 'fas fa-bell', tabindex);
-  }
-  html += '  </div>';
+		if (!jsu.isMigContext()) {
+			html += htmlU.getCusBtn('Alert', func, 'alertNew', 'Add Alert', secBtnClass, 'fas fa-bell', tabindex);
+		}
+		html += '  </div>';
 
-  // Right Section: Utility Controls
-  html += '  <div class="tsrCsNgUtilityGroup">';
-  if (!jsu.isMigContext()) {
-    html += '    <div class="form-check tsrCsNgCheckToggle">';
-    html += '      <input type="checkbox" id="csAutoRefCB" class="form-check-input" onchange="csngaf.ua(\'autoRefresh\')">';
-    html += '      <label class="form-check-label" for="csAutoRefCB">Auto Refresh</label>';
-    html += '    </div>';
-    html += csngaf.sm();
-  }
-  html += '  </div>';
+		// Right Section: Utility Controls
+		html += '  <div class="tsrCsNgUtilityGroup">';
+		if (!jsu.isMigContext()) {
+			html += '    <div class="form-check tsrCsNgCheckToggle">';
+			html += '      <input type="checkbox" id="csAutoRefCB" class="form-check-input" onchange="csngaf.ua(\'autoRefresh\')">';
+			html += '      <label class="form-check-label" for="csAutoRefCB">Auto Refresh</label>';
+			html += '    </div>';
+			html += csngaf.sm();
+		}
+		html += '  </div>';
 
-  html += '</div>';
+		html += '</div>';
 
-  html += htmlU.createEmptyDiv(CS_SCR_CTRL_FB_DIV, true);
+		html += htmlU.createEmptyDiv(CS_SCR_CTRL_FB_DIV, true);
 
-  return html;
-}
+		return html;
+	}
 
-function getToggleNgView() {
-  if (inMyTsr) return '';
+	function getToggleNgView() {
+		if (inMyTsr) return '';
 
-  var userTypes = [
-    { id: CS_USR_TAB_BEGIN, label: 'Beginner' },
-    { id: CS_USR_TAB_TRADER, label: 'Trader' },
-    { id: CS_USR_TAB_INV, label: 'Investor' },
-    { id: CS_USR_TAB_PRO, label: 'Pro' }
-  ];
+		var userTypes = [
+			{ id: CS_USR_TAB_BEGIN, label: 'Beginner' },
+			{ id: CS_USR_TAB_TRADER, label: 'Trader' },
+			{ id: CS_USR_TAB_INV, label: 'Investor' },
+			{ id: CS_USR_TAB_PRO, label: 'Pro' }
+		];
 
-  var viewTypes = [
-    { id: 'ng', label: 'Modern View', icon: 'fa-layer-group' },
-    { id: 'default', label: 'Classic View', icon: 'fa-th-list' }
-  ];
+		var viewTypes = [
+			{ id: 'ng', label: 'Modern View', icon: 'fa-layer-group' },
+			{ id: 'default', label: 'Classic View', icon: 'fa-th-list' }
+		];
 
-  var userTab = localStorage.getItem('csusrtabs');
-  if (userTab == null) userTab = CS_USR_TAB_PRO;
+		var userTab = localStorage.getItem('csusrtabs');
+		if (userTab == null) userTab = CS_USR_TAB_PRO;
 
-  var selVal = mtgv.cs.ng ? 'ng' : 'default';
+		var selVal = mtgv.cs.ng ? 'ng' : 'default';
 
-  var html = '';
-  html += '<div class="tsrCsNgContainer">';
+		var html = '';
+		html += '<div class="tsrCsNgContainer">';
 
-  // 1. User Type Segmented Control (Left)
-  html += '  <div class="tsrCsNgUserTypeWrapper">';
-  html += '    <span class="tsrCsNgUserTypeLabel">I am -</span>';
-  html += '    <div class="tsrCsNgPillGroup">';
-  for (var i = 0; i < userTypes.length; i++) {
-    var u = userTypes[i];
-    var isChecked = (u.id === userTab) ? 'checked' : '';
-    var inputId = 'tsrCsNgUserTab_' + u.id;
+		// 1. User Type Segmented Control (Left)
+		html += '  <div class="tsrCsNgUserTypeWrapper">';
+		html += '    <span class="tsrCsNgUserTypeLabel">I am -</span>';
+		html += '    <div class="tsrCsNgPillGroup">';
+		for (var i = 0; i < userTypes.length; i++) {
+			var u = userTypes[i];
+			var isChecked = (u.id === userTab) ? 'checked' : '';
+			var inputId = 'tsrCsNgUserTab_' + u.id;
 
-    html += '      <input type="radio" class="btn-check tsrCsNgPillCheck" ';
-    html += '             name="csUsrTabRadioBtn" id="' + inputId + '" ';
-    html += '             value="' + u.id + '" autocomplete="off" ' + isChecked + ' ';
-    html += '             onclick="myTsrScreener.tut(this.value)">';
-    html += '      <label class="tsrCsNgPillBtn" for="' + inputId + '">' + u.label + '</label>';
-  }
-  html += '    </div>';
-  html += '  </div>';
+			html += '      <input type="radio" class="btn-check tsrCsNgPillCheck" ';
+			html += '             name="csUsrTabRadioBtn" id="' + inputId + '" ';
+			html += '             value="' + u.id + '" autocomplete="off" ' + isChecked + ' ';
+			html += '             onclick="myTsrScreener.tut(this.value)">';
+			html += '      <label class="tsrCsNgPillBtn" for="' + inputId + '">' + u.label + '</label>';
+		}
+		html += '    </div>';
+		html += '  </div>';
 
-  // 2. View Switcher Segmented Control (Right)
-  html += '  <div class="tsrCsNgViewSwitcherWrapper" id="chooseCsView">';
-  html += '    <div class="tsrCsNgViewSwitcherGroup">';
-  for (var j = 0; j < viewTypes.length; j++) {
-    var v = viewTypes[j];
-    var isViewChecked = (v.id === selVal) ? 'checked' : '';
-    var viewInputId = 'tsrCsNgView_' + v.id;
+		// 2. View Switcher Segmented Control (Right)
+		html += '  <div class="tsrCsNgViewSwitcherWrapper" id="chooseCsView">';
+		html += '    <div class="tsrCsNgViewSwitcherGroup">';
+		for (var j = 0; j < viewTypes.length; j++) {
+			var v = viewTypes[j];
+			var isViewChecked = (v.id === selVal) ? 'checked' : '';
+			var viewInputId = 'tsrCsNgView_' + v.id;
 
-    html += '      <input type="radio" class="btn-check tsrCsNgViewCheck" ';
-    html += '             name="csNgRadioBtn" id="' + viewInputId + '" ';
-    html += '             value="' + v.id + '" autocomplete="off" ' + isViewChecked + ' ';
-    html += '             onchange="myTsrScreener.tcsn()">';
-    html += '      <label class="tsrCsNgViewBtn" for="' + viewInputId + '">';
-    html += '        <i class="fas ' + v.icon + '"></i> ' + v.label;
-    html += '      </label>';
-  }
-  html += '    </div>';
-  html += '  </div>';
+			html += '      <input type="radio" class="btn-check tsrCsNgViewCheck" ';
+			html += '             name="csNgRadioBtn" id="' + viewInputId + '" ';
+			html += '             value="' + v.id + '" autocomplete="off" ' + isViewChecked + ' ';
+			html += '             onchange="myTsrScreener.tcsn()">';
+			html += '      <label class="tsrCsNgViewBtn" for="' + viewInputId + '">';
+			html += '        <i class="fas ' + v.icon + '"></i> ' + v.label;
+			html += '      </label>';
+		}
+		html += '    </div>';
+		html += '  </div>';
 
-  html += '</div>';
+		html += '</div>';
 
-  if (mtgv.cs.ng) {
-    html += '<hr class="tsrCsNgDivider">';
-  }
+		if (mtgv.cs.ng) {
+			html += '<hr class="tsrCsNgDivider">';
+		}
 
-  return html;
-}
-	
+		return html;
+	}
+
 	// function getFilterControlNg() {
 
 	// 	var custBtnClass = 'btn btn-outline-dark border-0';
@@ -1675,7 +1946,7 @@ function getToggleNgView() {
 	// 													</label>
 	// 													<input type="checkbox" id="csBt" class="form-check-input dropup ms-2" onchange="csngaf.ua('backtest')"
 	// 													>
-														
+
 	// 												</div>
 	// 											`
 	// 		*/
@@ -2530,8 +2801,12 @@ function getToggleNgView() {
 
 		src: stockRelChanged,
 
-		bt: getBackTestDiv
+		bt: getBackTestDiv,
+		tsrCsNgHandleOpen: tsrCsNgHandleOpen,
+		tsrCsNgHandleClose: tsrCsNgHandleClose,
+		tsrCsNgKeepOpen: tsrCsNgKeepOpen,
 
+ 
 
 	}
 

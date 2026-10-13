@@ -510,7 +510,7 @@ function getInstrBoxHtml() {
 
 	return {
 
-
+ 
 		gibh: getInstrBoxHtml,
 		sm: showMore,
 		spm: postShowMore,
