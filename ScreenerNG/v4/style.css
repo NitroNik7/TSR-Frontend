@@ -710,3 +710,179 @@
     border-top: 1px dashed #dee2e6;
   }
 }
+
+/* ==========================================================================
+   TSR Middle Row - Floating Viewport Portaled Menus (tsrCsNg)
+   ========================================================================== */
+
+/* Main Container Layout */
+#tsrCsNgMiddleRow {
+  display: flex;
+  min-height: 400px;
+  position: relative;
+  overflow: visible !important;
+}
+
+/* Category Sidebar: Pure vertical scroll container */
+.tsrCsNgMenuNavWrapper {
+  width: 230px;
+  max-height: 520px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-shrink: 0;
+  border-right: 1px solid #e9ecef;
+  padding-right: 2px;
+}
+
+/* Slim scrollbar */
+.tsrCsNgMenuNavWrapper::-webkit-scrollbar {
+  width: 5px;
+}
+.tsrCsNgMenuNavWrapper::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+.tsrCsNgMenuNavWrapper::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.tsrCsNgMenuNavWrapper::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Main Category Buttons */
+.tsrCsNgMenuBtn {
+  color: #2d3748 !important;
+  font-size: 14px !important;
+  font-weight: 500;
+  padding: 10px 14px !important;
+  border: none !important;
+  border-bottom: 1px solid #f1f3f5 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tsrCsNgMenuBtn i {
+  color: #adb5bd;
+  font-size: 12px;
+  transition: transform 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.tsrCsNgMenuBtn:hover,
+.tsrCsNgMenuBtn.tsrCsNgHovered {
+  background-color: #f8fafc !important;
+  color: #0d6efd !important;
+  font-weight: 600;
+}
+
+.tsrCsNgMenuBtn:hover i,
+.tsrCsNgMenuBtn.tsrCsNgHovered i {
+  color: #0d6efd;
+  transform: translateX(2px);
+}
+
+/* Portal Container for All Floating Submenus */
+#tsrCsNgSubMenuPortal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* Let clicks pass through empty space */
+  z-index: 1050;
+}
+
+/* Floating Submenus */
+.tsrCsNgTabSubMenu {
+  display: none;
+  position: fixed;
+  pointer-events: auto; /* Re-enable pointer events for menu interactions */
+  z-index: 1060;
+  min-width: 240px;
+  max-width: 300px;
+  max-height: 420px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 6px 0;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+  list-style: none;
+  margin: 0;
+}
+
+.tsrCsNgTabSubMenu.tsrCsNgShow {
+  display: block !important;
+}
+
+/* Individual Filter Links */
+.tsrCsNgFilterBtn {
+  font-size: 13.5px !important;
+  padding: 8px 16px !important;
+  color: #334155 !important;
+  transition: all 0.15s ease-in-out;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  width: 100%;
+  border: none;
+  background: transparent;
+}
+
+.tsrCsNgFilterBtn:hover {
+  background-color: #f1f5f9 !important;
+  color: #0d6efd !important;
+  font-weight: 600;
+  padding-left: 20px !important;
+}
+
+.tsrCsNgBadgeUpgrade {
+  background-color: #0d6efd;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+/* Mobile & Tablet Adaptations */
+@media (max-width: 767.98px) {
+  #tsrCsNgMiddleRow {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .tsrCsNgMenuNavWrapper {
+    width: 100%;
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
+  .tsrCsNgMenuBtn {
+    border-bottom: none !important;
+    border-right: 1px solid #f1f3f5 !important;
+    width: auto;
+  }
+
+  .tsrCsNgTabSubMenu {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    max-width: 320px;
+  }
+}
