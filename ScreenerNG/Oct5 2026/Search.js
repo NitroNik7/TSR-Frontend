@@ -361,6 +361,23 @@ var mintSrch =  (function () {
               // + ' </div>'
 	}
 
+	function getPreCreatedScrSearch( style ){
+
+		if(style == null) style ='width:95%;'
+
+		// ! Modified
+		var search = '<input id="csAcFilter" type="text" class="form-control ui-autocomplete-input " onblur="if (this.value == \'\') '
+              + ' this.value = this.defaultValue;'
+              + ' onfocus=" if="" (this.value="=" this.defaultvalue)="" this.value="" ;";="" name="term" placeholder="&#x1F50E;&#xFE0E; Search a Pre-created Screener" onclick="this.select();" style="'+style+'" autocomplete="off">         ';
+              
+
+			return  search;
+			// '<div class="card-header border-bottom">'
+               
+              
+              // + ' </div>'
+	}
+
 
 
 	// function 
@@ -373,7 +390,8 @@ var mintSrch =  (function () {
 		gs : getSearch,
 		ras : registerAutoSelect,
 		ef : executeFilter,
-		gf : getFilter
+		gf : getFilter, 
+		gpcss: getPreCreatedScrSearch
 		
 
 	} 
