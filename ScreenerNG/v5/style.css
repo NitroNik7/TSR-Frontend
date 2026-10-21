@@ -1,0 +1,888 @@
+.tsrCsFilter {
+    text-wrap: nowrap;
+    font-size: 16px;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    cursor: pointer;
+}
+
+.tsrCsFilter:hover {
+    background: none !important;
+    cursor: default;
+}
+
+.tsrCsNgArrowEle {
+    position: relative;
+    top: 14px;
+    height: 3px;
+    width: 50px;
+    background-color: rgb(13 110 253);
+    background-color: #91989e;
+    background-color: rgb(108 117 125);
+}
+
+.tsrCsNgArrowEle::after,
+.tsrCsNgArrowEle::before {
+    content: "";
+    position: absolute;
+    height: 50px;
+    width: 25px;
+    background-color: rgb(13 110 253);
+    background-color: rgb(108 117 125);
+    background-color: white;
+}
+
+.tsrCsNgArrowEle::after {
+    transform: rotate(45deg);
+    top: -38px;
+}
+
+.tsrCsNgArrowEle::before {
+    transform: rotate(-45deg);
+    top: -11px;
+    left: -5px;
+}
+
+.tsrCsNgInstrBox a{
+    font-size: 14px;
+    /* white-space: nowrap; */
+    margin: 5px 0;
+    /* width: max-content; */
+}
+
+.tsrCsNgInstrBox a:hover {
+    /* modified*/
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: white;
+    color: rgb(13 110 253);
+    /* box-shadow: 0px 0.1rem 0.1rem 0px rgba(0, 0, 0, .075); */
+}
+
+.tsrMoCsCatButton.active {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    font-weight: bold;
+}
+
+.miVertDivider {
+    align-items: center;
+}
+
+.miVertLine {
+    border-top: 1px solid #ccc;
+    width: 100%;
+}
+
+/* NEW CSS starts here */
+/* for tick, sb, my settings select dropdowns */
+.tsrCsNgSelect:hover { 
+    border: 1px solid;
+    cursor: pointer;
+}
+
+/* main menu buttons */
+.tsrCsNgMenu.btn {
+    color: black;
+    font-size: 15px;
+}
+
+.tsrCsNgMenu.btn:hover {
+    background-color: #91989e;
+    color: white;
+    font-weight: 600;
+    transition: 0.1s;
+}
+
+.tsrCsNgMenu.btn:focus {
+    background-color: #91989e;
+    color: white;
+    font-weight: 600;
+}
+
+/* Overriding bootstrap CSS */
+.dropend .dropdown-toggle::after {
+    content: unset !important;
+}
+.dropdown .dropdown-toggle::after {
+    content: unset !important;
+}
+
+
+.tsrCsNgMenu.btn i {
+    /* display: none; */
+    color: grey;
+}
+
+.tsrCsNgMenu.btn:hover i,
+.tsrCsNgMenu.btn:focus i {
+    /* display: block; */
+    color: white;
+}
+
+.tsrCsNgTabSubMenu .tsrCsNgFilterBtn {
+    color: black;
+    cursor: pointer;
+    transition: unset;
+    font-size: 15px !important; /*TODO - change in Cs html helper code*/
+    padding: 5px;
+ }
+
+ /* .tsrCsNgTabSubMenu     .tsrCsNgFilterBtn:nth-child(odd){
+    background-color: grey;
+ } */
+
+.tsrCsNgTabSubMenu .tsrCsNgFilterBtn:hover {
+    /* background-color: #6c757d; */
+    background-color: #91989e;
+    font-weight: 600;
+    color: white;
+}
+
+
+/* ==========================================================================
+   TSR Custom Screener - Middle Row & Flyout Navigation (tsrCsNg)
+   ========================================================================== */
+
+/* Main Container Layout */
+#tsrCsNgMiddleRow {
+  overflow-x: hidden;
+  min-height: 380px;
+  position: relative;
+}
+
+/* Category Sidebar on the Left */
+.tsrCsNgMenuNavWrapper {
+  width: 220px;
+  flex-shrink: 0;
+  border-right: 1px solid #e9ecef;
+}
+
+/* Category Menu Toggle Button */
+.tsrCsNgMenuBtn {
+  color: #2d3748 !important;
+  font-size: 14px !important;
+  font-weight: 500;
+  padding: 10px 14px !important;
+  border: none !important;
+  border-bottom: 1px solid #f1f3f5 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.tsrCsNgMenuBtn i {
+  color: #adb5bd;
+  font-size: 12px;
+  transition: transform 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.tsrCsNgMenuBtn:hover,
+.tsrCsNgMenuBtn:focus,
+.tsrCsNgMenuBtn.show {
+  background-color: #f8fafc !important;
+  color: #0d6efd !important;
+  font-weight: 600;
+}
+
+.tsrCsNgMenuBtn:hover i,
+.tsrCsNgMenuBtn:focus i,
+.tsrCsNgMenuBtn.show i {
+  color: #0d6efd;
+  transform: translateX(2px);
+}
+
+/* Submenu Dropdown Container */
+.tsrCsNgTabSubMenu {
+  min-width: 240px;
+  max-width: 280px;
+  padding: 6px 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+.tsrCsNgFilterBtn {
+  font-size: 13.5px !important;
+  padding: 8px 16px !important;
+  color: #334155 !important;
+  transition: all 0.15s ease-in-out;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.tsrCsNgFilterBtn:hover {
+  background-color: #f1f5f9 !important;
+  color: #0d6efd !important;
+  font-weight: 600;
+  padding-left: 20px !important;
+}
+
+/* Plan Badges */
+.tsrCsNgBadgeUpgrade {
+  background-color: #0d6efd;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+/* Directional Visual Hint ("Add a filter" pointer cue) */
+.tsrCsNgFilterGuideBanner {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 6px 14px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+  user-select: none;
+}
+
+.tsrCsNgFilterGuideBanner i {
+  color: #0d6efd;
+  font-size: 14px;
+}
+
+/* Pre-Created Screeners Carousel Cards */
+.tsrCsNgCard {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: #ffffff;
+}
+
+.tsrCsNgCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.tsrCsNgCardHeader {
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 10px 14px;
+}
+
+.tsrCsNgCardHeader h6 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.tsrCsNgCardBody {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tsrCsNgCardLink {
+  color: #475569;
+  font-size: 13px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.tsrCsNgCardLink i {
+  font-size: 10px;
+  color: #94a3b8;
+  transition: color 0.15s ease;
+}
+
+.tsrCsNgCardLink:hover {
+  background-color: #f1f5f9;
+  color: #0d6efd;
+}
+
+.tsrCsNgCardLink:hover i {
+  color: #0d6efd;
+}
+
+/* Override dropdown caret defaults */
+.dropend .dropdown-toggle::after,
+.dropdown .dropdown-toggle::after {
+  content: unset !important;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 767.98px) {
+  #tsrCsNgMiddleRow {
+    flex-direction: column;
+  }
+
+  .tsrCsNgMenuNavWrapper {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .tsrCsNgMenuNavWrapper .btn-group {
+    display: inline-block;
+  }
+
+  .tsrCsNgMenuBtn {
+    border-bottom: none !important;
+    border-right: 1px solid #f1f3f5 !important;
+  }
+
+  .tsrCsNgFilterGuideBanner {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+
+/* ==================================== */
+/* FILTER CONTROL ROW NG */
+/* ==================================== */
+/* ==========================================================================
+   TSR Custom Screener - Toggle View & User Persona Bar (tsrCsNg)
+   ========================================================================== */
+
+/* Outer Bar Container */
+.tsrCsNgContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 8px 12px;
+  background-color: #ffffff;
+}
+
+/* User Type / Persona Wrapper (Left) */
+.tsrCsNgUserTypeWrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tsrCsNgUserTypeLabel {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #6c757d;
+  white-space: nowrap;
+}
+
+/* User Type Pill Group */
+.tsrCsNgPillGroup {
+  background-color: #f1f3f5;
+  border: 1px solid #e9ecef;
+  border-radius: 50rem;
+  padding: 3px;
+  display: inline-flex;
+  gap: 3px;
+}
+
+.tsrCsNgPillBtn {
+  border: none;
+  background: transparent;
+  color: #495057;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 14px;
+  border-radius: 50rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* User Type Selected State */
+.tsrCsNgPillCheck:checked + .tsrCsNgPillBtn {
+  /* background-color: #198754; */
+  background-color: #0d6efd;
+  color: #ffffff;
+  box-shadow: 0 2px 5px rgba(25, 135, 84, 0.25);
+  font-weight: 600;
+}
+
+/* View Switcher Wrapper (Right) */
+.tsrCsNgViewSwitcherWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* View Switcher Segmented Group */
+.tsrCsNgViewSwitcherGroup {
+  background-color: #eef2f6;
+  border: 1px solid #dfe3e8;
+  border-radius: 50rem;
+  padding: 3px;
+  display: inline-flex;
+  gap: 3px;
+}
+
+.tsrCsNgViewBtn {
+  border: none;
+  background: transparent;
+  color: #637381;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 50rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+
+.tsrCsNgViewBtn i {
+  font-size: 12px;
+}
+
+/* View Switcher Selected State */
+.tsrCsNgViewCheck:checked + .tsrCsNgViewBtn {
+  background-color: #ffffff;
+  /* color: #198754; */
+  color: #0d6efd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Bottom Divider */
+.tsrCsNgDivider {
+  margin: 8px 0;
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+/* Mobile Phones (up to 575.98px) */
+@media (max-width: 575.98px) {
+  .tsrCsNgContainer {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 6px 8px;
+    gap: 8px;
+  }
+
+  .tsrCsNgUserTypeWrapper,
+  .tsrCsNgViewSwitcherWrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .tsrCsNgPillGroup,
+  .tsrCsNgViewSwitcherGroup {
+    flex: 1;
+    display: flex;
+  }
+
+  .tsrCsNgPillBtn,
+  .tsrCsNgViewBtn {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    padding: 5px 6px;
+    font-size: 11.5px;
+  }
+}
+
+/* Tablets (576px to 767.98px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .tsrCsNgContainer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .tsrCsNgUserTypeWrapper,
+  .tsrCsNgViewSwitcherWrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .tsrCsNgPillGroup,
+  .tsrCsNgViewSwitcherGroup {
+    flex: 1;
+  }
+
+  .tsrCsNgPillBtn,
+  .tsrCsNgViewBtn {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    padding: 5px 10px;
+    font-size: 12.5px;
+  }
+}
+
+/* Laptops & Desktops (992px and up) */
+@media (min-width: 992px) {
+  .tsrCsNgPillBtn:hover:not(.tsrCsNgPillCheck:checked + .tsrCsNgPillBtn) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .tsrCsNgViewBtn:hover:not(.tsrCsNgViewCheck:checked + .tsrCsNgViewBtn) {
+    color: #212529;
+  }
+}
+
+/* ================================ */
+/* BOTTOM ROW */
+/* ================================ */
+
+/* ==========================================================================
+   TSR Bottom Control Action Bar (tsrCsNg)
+   ========================================================================== */
+
+/* Main Footer Container */
+.tsrCsNgBottomBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: #ffffff;
+  border-top: 1px solid #e9ecef;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Left/Primary & Secondary Actions Group */
+.tsrCsNgActionGroup {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Base styling for generated custom buttons */
+.tsrCsNgActionBtn {
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  padding: 7px 16px !important;
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.15s ease-in-out !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.tsrCsNgActionBtn i {
+  font-size: 13px;
+}
+
+/* Run Screener: Prominent Primary Action */
+.tsrCsNgBtnRun {
+  background-color: #0d6efd !important;
+  border-color: #0d6efd !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 4px rgba(13, 110, 253, 0.2) !important;
+}
+
+.tsrCsNgBtnRun:hover,
+.tsrCsNgBtnRun:focus {
+  background-color: #0b5ed7 !important;
+  border-color: #0a58ca !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3) !important;
+}
+
+/* Secondary Actions: Save & Alert */
+.tsrCsNgBtnSecondary {
+  background-color: #ffffff !important;
+  border: 1px solid #ced4da !important;
+  color: #495057 !important;
+}
+
+.tsrCsNgBtnSecondary:hover,
+.tsrCsNgBtnSecondary:focus {
+  background-color: #f8f9fa !important;
+  border-color: #adb5bd !important;
+  color: #212529 !important;
+}
+
+/* Reset Screener: Subtle Ghost Action */
+.tsrCsNgBtnReset {
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  color: #6c757d !important;
+}
+
+.tsrCsNgBtnReset:hover,
+.tsrCsNgBtnReset:focus {
+  background-color: #e9ecef !important;
+  color: #dc3545 !important;
+}
+
+/* Right Side Utilities (Auto-Refresh & More Options) */
+.tsrCsNgUtilityGroup {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Toggle Switch / Checkbox Row */
+.tsrCsNgCheckToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin: 0;
+  user-select: none;
+}
+
+.tsrCsNgCheckToggle .form-check-input {
+  cursor: pointer;
+  margin-top: 0;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+.tsrCsNgCheckToggle .form-check-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #495057;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Responsive Layout */
+@media (max-width: 767.98px) {
+  .tsrCsNgBottomBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .tsrCsNgActionGroup {
+    width: 100%;
+    justify-content: stretch;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .tsrCsNgBtnRun {
+    grid-column: span 2;
+  }
+
+  .tsrCsNgActionBtn {
+    justify-content: center;
+    width: 100%;
+    padding: 8px !important;
+  }
+
+  .tsrCsNgUtilityGroup {
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 6px;
+    border-top: 1px dashed #dee2e6;
+  }
+}
+
+/* ==========================================================================
+   TSR Middle Row - Floating Viewport Portaled Menus (tsrCsNg)
+   ========================================================================== */
+
+/* Main Container Layout */
+#tsrCsNgMiddleRow {
+  display: flex;
+  min-height: 400px;
+  position: relative;
+  overflow: visible !important;
+}
+
+/* Category Sidebar: Pure vertical scroll container */
+.tsrCsNgMenuNavWrapper {
+  width: 230px;
+  max-height: 520px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-shrink: 0;
+  border-right: 1px solid #e9ecef;
+  padding-right: 2px;
+}
+
+/* Slim scrollbar */
+.tsrCsNgMenuNavWrapper::-webkit-scrollbar {
+  width: 5px;
+}
+.tsrCsNgMenuNavWrapper::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+.tsrCsNgMenuNavWrapper::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.tsrCsNgMenuNavWrapper::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Main Category Buttons */
+.tsrCsNgMenuBtn {
+  color: #2d3748 !important;
+  font-size: 14px !important;
+  font-weight: 500;
+  padding: 10px 14px !important;
+  border: none !important;
+  border-bottom: 1px solid #f1f3f5 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tsrCsNgMenuBtn i {
+  color: #adb5bd;
+  font-size: 12px;
+  transition: transform 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.tsrCsNgMenuBtn:hover,
+.tsrCsNgMenuBtn.tsrCsNgHovered {
+  background-color: #f8fafc !important;
+  color: #0d6efd !important;
+  font-weight: 600;
+}
+
+.tsrCsNgMenuBtn:hover i,
+.tsrCsNgMenuBtn.tsrCsNgHovered i {
+  color: #0d6efd;
+  transform: translateX(2px);
+}
+
+/* Portal Container for All Floating Submenus */
+#tsrCsNgSubMenuPortal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* Let clicks pass through empty space */
+  z-index: 1050;
+}
+
+/* Floating Submenus */
+.tsrCsNgTabSubMenu {
+  display: none;
+  position: fixed;
+  pointer-events: auto; /* Re-enable pointer events for menu interactions */
+  z-index: 1060;
+  min-width: 240px;
+  max-width: 300px;
+  max-height: 420px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 6px 0;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+  list-style: none;
+  margin: 0;
+}
+
+.tsrCsNgTabSubMenu.tsrCsNgShow {
+  display: block !important;
+}
+
+/* Individual Filter Links */
+.tsrCsNgFilterBtn {
+  font-size: 13.5px !important;
+  padding: 8px 16px !important;
+  color: #334155 !important;
+  transition: all 0.15s ease-in-out;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  width: 100%;
+  border: none;
+  background: transparent;
+}
+
+.tsrCsNgFilterBtn:hover {
+  background-color: #f1f5f9 !important;
+  color: #0d6efd !important;
+  font-weight: 600;
+  padding-left: 20px !important;
+}
+
+.tsrCsNgBadgeUpgrade {
+  background-color: #0d6efd;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+/* Mobile & Tablet Adaptations */
+@media (max-width: 767.98px) {
+  #tsrCsNgMiddleRow {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .tsrCsNgMenuNavWrapper {
+    width: 100%;
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
+  .tsrCsNgMenuBtn {
+    border-bottom: none !important;
+    border-right: 1px solid #f1f3f5 !important;
+    width: auto;
+  }
+
+  .tsrCsNgTabSubMenu {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    max-width: 320px;
+  }
+}
