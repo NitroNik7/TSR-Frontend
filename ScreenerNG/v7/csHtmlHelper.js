@@ -652,12 +652,14 @@ var csh = (function () {
 
 		// html += getDropDown(mtgv.mtpp.FREQ_SCR_MAP, 'scrFreq', 'width:70%;', tickFunc, null, scrFreq); 
 		html += `						<div class="w-100">`
-		html += '						<select id ="myScrSetting" onmousedown ="csmng.so();" class="form-select ms-3 rounded-pill" onkeypress="csmng.soc();">'
+		html += '							<select id ="myScrSetting" onmousedown ="csmng.so();" class="form-select ms-3 rounded-pill" onkeypress="csmng.soc();">'
 			+ '									<option value="none" selected="">My Settings</option>'
-			+ '								</select>';
+			+ '									</select>';
 		html += `						</div>`
 
-
+		html += `						<div class="w-100">
+											<a href="https://www.topstockresearch.com/rt/TsrHighlights/CustomScreenerHelp" target="_blank" class="ms-5 btn btn-outline-primary border-0" title="Custom Screener Help" tabindex="1" style="white-space: nowrap;"><span class="fas fa-info-circle"></span> Help </a>
+										</div>` // TODO see latest csHtmlHelper file
 
 
 		html += `					</div>`
@@ -769,15 +771,15 @@ var csh = (function () {
 			html += `<select id="scrFreq" onchange="${tickFunc}" class="form-select ms-1" style="">` // modified
 		} else {
 			// ----
-			 html += `<div class="ms-3 w-100">` // ! modified
+			html += `<div class="ms-3 w-100">` // ! modified
 			html += `	<label for="scrFreq" style="font-size: 11px; position: relative; top: 10px; left: 12px; 
 			background: white; padding: 0 5px; color: grey;">Time Frame</label>`
 			html += `<select id="scrFreq" onchange="${tickFunc}" class="form-select rounded-pill">` // ! modified	 
 			// ---
 
 			// html += `<div class="input-group ms-3 w-100">
-  			// 			<label class="input-group-text" for="scrFreq">Options</label>
-  			// 				<select class="form-select" id="scrFreq" onchange="${tickFunc}" class="form-select rounded-pill">`
+			// 			<label class="input-group-text" for="scrFreq">Options</label>
+			// 				<select class="form-select" id="scrFreq" onchange="${tickFunc}" class="form-select rounded-pill">`
 
 
 		}
@@ -1001,7 +1003,7 @@ var csh = (function () {
 		html += `	 </div>`
 
 		// html += `					<div id="tsrCsInstrBox" class="tsrCsNgInstrBox flex-column justify-content-evenly" style="display: flex; height: 100%;">` 
-		html += `					<div id="tsrCsInstrBox" class="tsrCsNgInstrBox flex-column justify-content-center align-items-center gap-4" style="display: flex; height: 100%;">` 
+		html += `					<div id="tsrCsInstrBox" class="tsrCsNgInstrBox flex-column justify-content-center align-items-center gap-4" style="display: flex; height: 100%;">`
 		html += csngaf.gibh();
 
 		html += `					</div>`
