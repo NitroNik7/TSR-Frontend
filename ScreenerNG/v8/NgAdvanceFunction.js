@@ -321,7 +321,7 @@ var csngaf = (function () {
 			// 		</div>`
 			// html += `	<p class="ms-5 my-3 text-center">OR</p>`
 			html += `	<div class="align-items-center d-flex flex-column ms-5 bg-light py-1" style="overflow-y: auto; min-height: 200px;">`
-			html += `		<h4 class="text-secondary text-start">Run Pre-created Screener</h4>`
+			html += `		<h5 class="text-secondary text-start">Run Pre-created Screener</h5>`
 			html += `		<div class="d-flex justify-content-around w-100 my-2">`
 
 			for (let i = 0; i < preCreatedScr.length; i++) {
