@@ -254,7 +254,7 @@
 
 /* Category Sidebar Navigation Wrapper - Independent vertical scrolling */
 .tsrCsNgMenuNavWrapper {
-  width: 220px;
+  width: 200px;
   max-height: 480px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -322,8 +322,8 @@
   display: none;
   position: fixed !important;
   z-index: 9999 !important;
-  min-width: 240px;
-  max-width: 280px;
+  min-width: 200px;
+  max-width: 250px;
   max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;

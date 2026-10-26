@@ -598,6 +598,7 @@ var myTsrScreener = (function () {
 				// csu.dsf();
 				// $('#'+CS_FILTERS_TABLE+' > tbody > tr').remove();
 				$('#' + CS_FILTERS_TABLE).empty();
+				csh.uib(true); // ! modified
 				csh.sib(true);
 
 			}
