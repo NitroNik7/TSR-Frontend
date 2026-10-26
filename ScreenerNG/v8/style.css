@@ -284,6 +284,18 @@
   background: #94a3b8;
 }
 
+
+.tsrCsNgMenuNavWrapper>div:nth-child(2n+1)>button {
+
+  /* background: rgb(255, 235, 235) !important; */
+  /* background-color: rgb(234 242 253) !important; */
+  background-color: rgb(243 247 252) !important;
+}
+
+/* .tsrCsNgMenuNavWrapper>div>ul>li:nth-child(2n+1)>a {
+  background-color: rgb(243 247 252) !important;
+} */
+
 /* Category Menu Toggle Button */
 .tsrCsNgMenu.btn {
   color: #2d3748 !important;
@@ -490,12 +502,6 @@
   }
 }
 
-.tsrCsNgMenuNavWrapper div:nth-child(2n+1) button {
-
-  /* background: rgb(255, 235, 235) !important; */
-  /* background-color: rgb(234 242 253) !important; */
-  background-color: rgb(243 247 252) !important;
-}
 
 /* "OR" Text Divider */
 .tsrCsNgDividerOr {
@@ -616,7 +622,7 @@
 
 .tsrCsNgCardLink {
   color: #475569;
-  font-size: 15px; 
+  font-size: 15px;
   text-decoration: none;
   display: flex;
   align-items: center;
