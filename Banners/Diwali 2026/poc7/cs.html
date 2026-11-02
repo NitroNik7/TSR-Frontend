@@ -1537,7 +1537,8 @@
                                                         <div style="margin: 20px"> Plan Details : <br> Plan :
                                                             <b>TRADER_PRO</b><br> Valid till 05_Nov_2027 <br> <a
                                                                 href="https://www.topstockresearch.com/my/TsrPlans/"
-                                                                title="View Subscription Plans">View Plan</a> </div>
+                                                                title="View Subscription Plans">View Plan</a>
+                                                        </div>
                                                     </li>
                                                     <li role="separator" class="divider"></li>
                                                     <li> <a href="https://www.topstockresearch.com/my/usr/Logoff.tsr">
@@ -2114,7 +2115,8 @@
                                                                         style="color:#04a1f4">Technical View</a> <a
                                                                         href="https://www.topstockresearch.com/rt/PatternView"
                                                                         class="list-group-item list-group-item-action"
-                                                                        style="color:#04a1f4">Pattern View</a> </div>
+                                                                        style="color:#04a1f4">Pattern View</a>
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -3946,7 +3948,8 @@
                                                 onclick="csh.uib(true);">
                                                 <i class="fas fa-layer-group me-2"></i>
                                                 <span>Try Pre-created Screener</span>
-                                            </button> </div>
+                                            </button>
+                                        </div>
                                         <div id="tsrCsInstrBox"
                                             class="tsrCsNgInstrBox flex-column justify-content-center align-items-center gap-4"
                                             style="display: flex; height: 100%;">
@@ -4750,7 +4753,9 @@
             :root {
                 /* Vibrant Dhamaka Sale Extracted Colors */
                 /* --tsrBannerBgGradient: linear-gradient(135deg, #8a0b1b 0%, #e3242b 100%); */
-                --tsrBannerBgGradient: linear-gradient(135deg, #000000 0%, #b8161c 100%);
+                /* --tsrBannerBgGradient: linear-gradient(135deg, #000000 0%, #b8161c 100%); */
+                --tsrBannerBgGradient: linear-gradient(135deg, #000000 0%, #b8161c 60%, #680306 90%);
+
                 /* Deep maroon to bright festive red[cite: 7] */
                 --tsrBannerBorderColor: #f2d06b;
                 /* Warm gold from the button[cite: 7] */
@@ -5099,13 +5104,13 @@
             }
 
 
-            
-                            @media (min-width: 575.98px) and (max-width:768px) {
-                                .tsrBannerTabletCenterDiv{
-                                    transform: scale(0.9);
-                                }
 
-                            }
+            @media (min-width: 575.98px) and (max-width:768px) {
+                .tsrBannerTabletCenterDiv {
+                    transform: scale(0.9);
+                }
+
+            }
 
             /* Responsive Overrides */
             @media (max-width: 575.98px) {
@@ -5146,10 +5151,10 @@
                     });
                 }
 
-                let delay = 30000; // in ms
+                let delay = 5000; // in ms
                 setTimeout(() => {
-                    let isPr = mtgv.mtpp.pr;
-                    // let isPr = false;
+                    // let isPr = mtgv.mtpp.pr;
+                    let isPr = false;
                     if (!isPr) {
                         tsrBannerContainer.style.display = "block";
                         tsrBannerContainer.style.animation = "tsrBannerSlideUp 0.6s ease-out";
