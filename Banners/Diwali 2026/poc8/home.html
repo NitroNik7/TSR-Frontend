@@ -695,6 +695,7 @@
 
                         </script> -->
 
+                        
                         <!-- code starts here -->
 
                         <!-- ========================================== -->
@@ -702,6 +703,10 @@
                         <!-- ========================================== -->
                         <div id="tsrBannerContainer" class="tsrBannerMainContainer">
 
+                            <!-- FLOATING URGENCY STICKER -->
+                            <div class="tsrBannerUrgencySticker">
+                                <i class="fas fa-bolt me-1"></i> Ends 12th Nov
+                            </div>
                             <!-- Festive Light Mala (Garland) -->
                             <svg class="tsrBannerMala" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 24"
                                 preserveAspectRatio="none">
@@ -1332,6 +1337,54 @@
                                     padding: 7px 14px;
                                 }
                             }
+
+                            /* ========================================== */
+                            /* FLOATING URGENCY STICKER (Zero Height)     */
+                            /* ========================================== */
+                            .tsrBannerUrgencySticker {
+                                position: absolute;
+                                top: -12px;
+                                left: 20px;
+                                background: linear-gradient(135deg, #fff5d1, #f2d06b);
+                                color: #8a0b1b;
+                                font-size: 0.85rem;
+                                font-weight: 900;
+                                padding: 4px 18px;
+                                border-radius: 6px;
+                                z-index: 20;
+                                text-transform: uppercase;
+                                letter-spacing: 0.5px;
+                                transform: rotate(-4deg);
+                                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 15px rgba(242, 208, 107, 0.5);
+                                border: 2px solid #ffffff;
+                                animation: tsrBannerStickerPulse 1.2s infinite alternate;
+                            }
+
+                            .tsrBannerUrgencySticker i {
+                                color: #e3242b;
+                            }
+
+                            @keyframes tsrBannerStickerPulse {
+                                from {
+                                    transform: rotate(-4deg) scale(1);
+                                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 8px rgba(242, 208, 107, 0.4);
+                                }
+
+                                to {
+                                    transform: rotate(-6deg) scale(1.05);
+                                    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5), 0 0 22px rgba(255, 245, 209, 1);
+                                }
+                            }
+
+                            @media (max-width: 575.98px) {
+                                .tsrBannerUrgencySticker {
+                                    top: -12px;
+                                    left: 10px;
+                                    font-size: 0.75rem;
+                                    padding: 3px 14px;
+                                    transform: rotate(-3deg);
+                                }
+                            }
                         </style>
 
                         <script>
@@ -1356,6 +1409,7 @@
                             });
                         </script>
                         <!-- code ends here -->
+
                         <!-- -------------------------- INDICES SECTION ---------------------------------  -->
 
                         <style>
