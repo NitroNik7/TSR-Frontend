@@ -1,0 +1,673 @@
+/* ---------------------------------HOME COMMON------------------------------- */
+
+.tsrLinkWithHover:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* modified */
+.tsrHomeSection {
+    margin: 30px 20px;
+    border-radius: 20px;
+}
+
+.tsrHomeSection .tsrHomeSectionTitle {
+    font-size: 30px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.tsrHomeSection .tsrHomeSectionSubtitle {
+    color: #6c757d;
+    font-size: 15px;
+}
+
+.tsrHomeToolCta {
+    color: #0d6efd !important;
+    text-decoration: none !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+}
+
+.tsrHomeToolCta:hover {
+    text-decoration: underline !important;
+}
+
+.tsrHomeToolCatSelector .tsrHomeOwlPrev,
+.tsrHomeToolCatSelector .tsrHomeOwlNext {
+    color: black;
+}
+
+.tsrHomeToolCatContainer .tsrHomeOwlPrev,
+.tsrHomeToolCatContainer .tsrHomeOwlNext {
+    color: white;
+    font-size: 20px;
+    /* height: 50px; */
+    /* border-radius: 20px; */
+    /* transition: all 0.3s; */
+}
+
+.tsrHomeToolCatContainer .tsrHomeOwlPrev:hover,
+.tsrHomeToolCatContainer .tsrHomeOwlNext:hover {
+    /* scale: 1.2; */
+    background-color: white;
+    color: black;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    /* modified */
+    .tsrHomeSection {
+        margin: 10px 0;
+    }
+
+    .tsrHomeSection h2 {
+        font-size: 24px;
+    }
+
+}
+
+
+
+
+/* ----------------------------------MARQUEE------------------------------ */
+
+/* Ticker Container */
+.tsrTickerMarquee {
+    width: 100%;
+    overflow: hidden;
+    /* background: lightyellow; */
+
+
+    /* OG */
+    background-color: #fff8dc;
+
+
+    /* COMBO 1 */
+    /* background-color: #fffdf5; */
+
+    /* COMBO 2 */
+    /* background-color: #ffffff; */
+
+    /* COMBO 3 */
+    /* background: linear-gradient(90deg, #FDFBF7, #F7F3ED, #FDFBF7);
+    border-top: 1px solid #E8E1D9;
+    border-bottom: 1px solid #E8E1D9; */
+
+    /* COMBO 4 */
+    /* background: #EAF2FF;
+    /* soft blue strip */
+    /* border-top: 1px solid #D4E2FF;
+    border-bottom: 1px solid #D4E2FF;  */
+
+    /* Clean white */
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+}
+
+/* Gradient fade on edges to look more professional */
+.tsrTickerMarquee::before,
+.tsrTickerMarquee::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.tsrTickerMarquee::before {
+    left: 0;
+    /* background: linear-gradient(to right, #fdfdfd, transparent); */
+}
+
+.tsrTickerMarquee::after {
+    right: 0;
+    /* background: linear-gradient(to left, #fdfdfd, transparent); */
+}
+
+.tsrTickerWrapper {
+    /* background-color: lightblue; */
+    display: flex;
+    width: fit-content;
+    animation: marquee 30s linear infinite;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+
+.tsrTickerWrapper2 {
+    /* background-color: lightcoral; */
+    display: flex;
+    width: fit-content;
+    animation: marquee 35s linear infinite;
+}
+
+.tsrTickerWrapper:hover,
+.tsrTickerWrapper2:hover {
+    animation-play-state: paused;
+    /* User can pause on hover to read */
+}
+
+.tsrTickerContainer {
+    display: flex;
+    align-items: center;
+}
+
+.tsrTickerItem {
+    padding: 0 40px;
+    font-family: sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tsrTickerItem a {
+    color: #333;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.tsrTickerItem a:hover {
+    text-decoration: underline;
+}
+
+.tsrTickerItem p {
+    margin-bottom: 0px;
+}
+
+.tsrTickerItem .tsrTickerPrice {
+    color: #000;
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.tsrTickerPriceNoChg {
+    color: grey;
+}
+
+.tsrTickerPriceChgPos {
+    color: #00a65a;
+    /* Classic Finance Green */
+}
+
+.tsrTickerPriceChgNeg {
+    color: #dd4b39;
+    /* Classic Finance Red */
+}
+
+/* Infinite Scroll Animation */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* INDEX SECTION */
+
+/* CARD */
+.tsrHomeIndexCard {
+    /* background: #f8fafc; */
+    /* OG */
+    /* background: mintcream;  */
+    background: linear-gradient(135deg, #f0f7ff, #e6f0ff);
+    border: 1px solid #d6e4ff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+
+    /* COMBO 1 */
+    /* background: #ffffff;
+    border: 1px solid #e2d1b1; */
+
+    /* COMBO 2 */
+    /* background: #f8fafc;
+    border: 1px solid #000000; */
+
+    /* COMBO 3 */
+    /* background: #FCFAF6;
+    border: 1px solid #E8E1D9; */
+
+    /* COMBO 4 */
+    /* background: #F8FBFF;
+    border: 1px solid #D4E2FF; */
+
+    border-radius: 10px;
+    padding: 1rem;
+    transition: none;
+    min-width: 300px;
+}
+
+/* HEADER */
+.tsrHomeIndexCardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.tsrHomeIndexCardHeader a {
+    font-weight: 600;
+}
+
+
+/* TITLE */
+.tsrHomeIndexCardTitle {
+    /* display: flex;
+                                justify-content: start; */
+    font-size: 20px;
+    /* OG */
+    color: #64748b;
+
+
+    /* COMBO 1 */
+    /* color: #854d0e; */
+
+    /* COMBO 2 */
+    /* color: #000000; */
+
+    /* COMBO 3 */
+    /* color: #7A6F63; */
+
+    /* COMBO 4 */
+    /* color: #3B82F6; */
+
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.3s;
+    text-wrap: nowrap;
+}
+
+/* CHANGE */
+.tsrHomeIndexCardChange {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 2px 6px;
+    text-wrap: nowrap;
+}
+
+/* SUBTLE COLORS */
+.tsrHomeIndexCardChange.positive {
+    color: #16a34a;
+    /* background: rgba(22, 163, 74, 0.08); */
+}
+
+.tsrHomeIndexCardChange.negative {
+    color: #dc2626;
+    /* background: rgba(220, 38, 38, 0.08); */
+}
+
+.tsrHomeIndexCardBody {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tsrHomeIndexCardBodyAdvCont,
+.tsrHomeIndexCardBodyDecCont {
+    display: flex;
+    flex-direction: column;
+}
+
+.tsrHomeIndexCardBodyAdvCont b,
+.tsrHomeIndexCardBodyDecCont b {
+    /* OG */
+    /* color: slategray; */
+
+    /* COMBO 3 */
+    /* color: #A89F94; */
+
+    font-weight: 600;
+}
+
+.tsrHomeIndexCardBody p {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.tsrHomeIndexCardBodyAdvCont p {
+    color: green;
+}
+
+.tsrHomeIndexCardBodyDecCont p {
+    color: red;
+}
+
+@media only screen and (min-width: 992px) {
+    .tsrHomeIndexCard {
+        /* width: 50%; */
+        min-width: 600px;
+        margin: 0 auto;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .tsrHomeIndexCardHeader {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .tsrHomeIndexCardHeader div {
+        margin: 5px 0;
+    }
+
+    .tsrHomeIndexCardBody {
+        margin: 10px 0;
+    }
+}
+
+#highLowPriceBar {
+    /* COMBO 3 */
+    background-color: lightgray !important;
+}
+
+
+/* ---------------------------------HERO SECTION------------------------- */
+
+
+/* ---------------------------------EVERYDAY TOOLS SECTION--------------- */
+
+
+/* Section */
+.tsrHomeEverydayToolsSection {
+    /* background: #f7f9fc; */
+    /* border-radius: 16px; */
+    /* background: #f8f9fa; */
+    background: aliceblue;
+}
+
+/* Card Wrapper */
+.tsrHomeEverydayToolsSection .tsrHomeToolCard {
+    text-decoration: none;
+    display: block;
+    height: 100%;
+    perspective: 1000px;
+}
+
+/* Inner flip container */
+.tsrHomeToolInner {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+}
+
+/* Flip on hover */
+.tsrHomeEverydayToolsSection .tsrHomeToolCard:hover .tsrHomeToolInner {
+    transform: rotateY(180deg);
+}
+
+/* Front & Back */
+.tsrHomeToolFront,
+.tsrHomeToolBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 15px 28px rgba(0, 0, 0, 0.1);
+    backface-visibility: hidden;
+    background: #fff;
+}
+
+/* Front */
+.tsrHomeToolFront {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Back */
+.tsrHomeToolBack {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Icon */
+.tsrHomeToolIcon {
+    font-size: 34px;
+    color: #0441e7;
+    margin-bottom: 12px;
+}
+
+/* Title */
+.tsrHomeToolFront h5,
+.tsrHomeToolBack h5 {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+    text-align: center;
+}
+
+/* Subtitle */
+.tsrHomeToolFront p {
+    color: #6c757d;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Back description */
+.tsrHomeToolBack p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Hover polish */
+.tsrHomeEverydayToolsSection .tsrHomeToolCard:hover .tsrHomeToolFront {
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile fallback (no flip) */
+@media (max-width: 768px) {
+    .tsrHomeToolInner {
+        height: auto;
+        transform: none !important;
+    }
+
+    .tsrHomeToolFront,
+    .tsrHomeToolBack {
+        position: relative;
+        transform: none;
+        margin-bottom: 10px;
+    }
+
+    .tsrHomeToolBack {
+        display: none;
+    }
+}
+
+/* ---------------------------------FIND RIGHT TOOLS SECTION--------------- */
+/* Section Background */
+.tsrHomeFindRightToolsSection {
+    background: #f7f9fc;
+    /* border-radius: 16px; */
+}
+
+/* Selector */
+.tsrHomeToolCatSelector {
+    /* gap: 10px; */
+    background: #e9ecef;
+    padding: 6px;
+    border-radius: 50px;
+    width: fit-content;
+    margin: auto;
+}
+
+.tsrHomeToolCatSelectorPill {
+    border: none;
+    padding: 8px 18px;
+    border-radius: 30px;
+    background: transparent;
+    color: #333;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    text-wrap: nowrap;
+}
+
+.tsrHomeToolCatSelectorPill:hover {
+    background: #dbe7ff;
+}
+
+.tsrHomeToolCatSelectorPill.active {
+    background: linear-gradient(135deg, #0441e7, #3a6cff);
+    color: #fff;
+}
+
+/* Cards */
+.tsrHomeFindRightToolsSection .tsrHomeToolCard {
+    background: #fff;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+    /* margin: 0 5px 0 5px; */
+}
+
+.tsrHomeFindRightToolsSection .tsrHomeToolCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* Title */
+.tsrHomeFindRightToolsSection .tsrHomeToolCard h5 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Description */
+.tsrHomeFindRightToolsSection .tsrHomeToolCard p {
+    font-size: 14px;
+    color: #6c757d;
+    min-height: 40px;
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .tsrHomeFindRightToolsSection .tsrHomeToolCard {
+        padding: 18px;
+    }
+}
+
+/* ---------------------------------CROWN JEWELS / POWER TOOLS SECTION------------------------------- */
+/* Light Theme - Clean & Professional */
+.tsrHomeCrownJewelsSection {
+    /* padding: 40px 0 40px 0; */
+    /* background-color: #f8f9fa; */
+    /* Light grey background */
+    border-top: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+    /* background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%); */
+    background: aliceblue;
+
+    /* background: #fff; */
+    /* border-radius: 20px; */
+    padding: 40px;
+    /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2); */
+}
+
+.tsrHomeCrownJewelsHeader {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.tsrHomeCrownJewelsHeader h2 {
+    margin-top: 15px;
+    font-weight: 600;
+    color: #212529;
+}
+
+.tsrHomeCrownJewelsHeader p {
+    color: #6c757d;
+}
+
+/* Grid Layout */
+.tsrHomeCrownJewelsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.tsrHomeCrownJewelsItem {
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 30px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
+}
+
+.tsrHomeCrownJewelsItem:hover {
+    border-color: #0d6efd;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
+}
+
+.tsrHomeCrownJewelsItem:hover .tsrHomeCrownJewelsIcon {
+    transform: scale(1.12) rotate(3deg);
+}
+
+.tsrHomeCrownJewelsIcon {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+    background: white;
+    color: #0441e7;
+}
+
+.tsrHomeCrownJewelsItem h5 {
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 12px;
+}
+
+.tsrHomeCrownJewelsItem p {
+    font-size: 0.9rem;
+    color: #495057;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* ---------------------------------ABOUT US SECTION--------------------------------- */
+
+.tsrHomeAboutUsSection {
+    background: radial-gradient(circle at 70%, #09124f 0, #090979 30%, #006fbf 100%);
+    padding: 50px 0;
+}
+
+.tsrHomeAboutUsSection .card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.tsrHomeAboutUsSection .card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
+}
+
+.tsrHomeAboutUsSection .card h4 {
+    font-weight: 600;
+}
