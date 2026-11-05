@@ -1,0 +1,559 @@
+
+<!-- code starts here -->
+
+<!-- ========================================== -->
+<!-- 2. PLAN PAGE BANNER (Static Content Block) -->
+<!-- ========================================== -->
+<div id="tsrBannerContainer" class="tsrBannerPlanContainer">
+
+    <svg class="tsrBannerMala" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 24"
+        preserveAspectRatio="none">
+        <path
+            d="M0,0 Q50,24 100,0 Q150,24 200,0 Q250,24 300,0 Q350,24 400,0 Q450,24 500,0 Q550,24 600,0 Q650,24 700,0 Q750,24 800,0 Q850,24 900,0 Q950,24 1000,0"
+            fill="none" stroke="#ffe79a" stroke-width="1.5" opacity="0.4" />
+        <circle class="tsrBannerLight tsrBannerLight1" cx="50" cy="12" r="3.5"
+            fill="#fff5d1" />
+        <circle class="tsrBannerLight tsrBannerLight2" cx="150" cy="12" r="3.5"
+            fill="#fff5d1" />
+        <circle class="tsrBannerLight tsrBannerLight3" cx="250" cy="12" r="3.5"
+            fill="#fff5d1" />
+        <circle class="tsrBannerLight tsrBannerLight1" cx="350" cy="12" r="3.5"
+            fill="#fff5d1" />
+        <circle class="tsrBannerLight tsrBannerLight2" cx="450" cy="12" r="3.5"
+            fill="#fff5d1" />
+        <circle class="tsrBannerLight tsrBannerLight3" cx="550" cy="12" r="3.5"
+            fill="#fff5d1" />
+        <circle class="tsrBannerLight tsrBannerLight1" cx="650" cy="12" r="3.5"
+            fill="#fff5d1" />
+        <circle class="tsrBannerLight tsrBannerLight2" cx="750" cy="12" r="3.5"
+            fill="#fff5d1" />
+        <circle class="tsrBannerLight tsrBannerLight3" cx="850" cy="12" r="3.5"
+            fill="#fff5d1" />
+        <circle class="tsrBannerLight tsrBannerLight1" cx="950" cy="12" r="3.5"
+            fill="#fff5d1" />
+    </svg>
+
+    <!-- Desktop View (>= 992px) -->
+    <div id="tsrBannerPlanDesktop" class="d-none d-lg-block">
+        <div
+            class="d-flex align-items-center justify-content-between position-relative mt-2">
+            <!-- Rocket SVG with Floating Animation -->
+            <svg class="tsrBannerSideGraphic tsrBannerFloat" style="left: 65%;"
+                viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- Red and Gold Rocket Body -->
+                <path
+                    d="M14 50 L24 40 L50 14 C50 14 58 6 58 6 C58 6 50 14 50 14 L24 40 L14 50 Z"
+                    fill="#8a0b1b" />
+                <path d="M58 6 L44 10 L54 20 Z" fill="#f2d06b" />
+                <path d="M24 40 L10 44 L20 54 Z" fill="#f2d06b" />
+                <path class="tsrBannerSpark" d="M14 50 Q6 58 10 62 Q14 66 22 58"
+                    fill="none" stroke="#ffe79a" stroke-width="2.5"
+                    stroke-dasharray="2 2" />
+            </svg>
+            <svg class="tsrBannerDecorativeIcon" viewBox="0 0 64 64"
+                xmlns="http://www.w3.org/2000/svg">
+                <g class="tsrBannerFlame">
+                    <path d="M32 8 C40 22 42 30 32 40 C22 30 24 22 32 8 Z"
+                        fill="#ffe79a" />
+                </g>
+                <!-- Deep Red/Maroon Base -->
+                <path d="M12 40 C12 55 52 55 52 40 Z" fill="#4a0e17" />
+                <path d="M18 42 C18 50 46 50 46 42 Z" fill="#8a0b1b" />
+            </svg>
+            <div class="d-flex flex-column text-center">
+                <span class="tsrBannerHeadline">Sweet Deals on Premium Plans!</span>
+                <span class="tsrBannerSubtext"><b>TSR</b> wishes you a Happy Diwali
+                </span>
+            </div>
+            <div class="tsrBannerOfferStack">
+                <div class="tsrBannerDiscountBadge tsrBannerPopIn">
+                    <span class="tsrBannerDiscountPrefix">Upto</span>
+                    <span class="tsrBannerDiscountValue">60% Off</span>
+                </div>
+                <span class="tsrBannerExpiryTag">
+                    <i class="fas fa-clock" aria-hidden="true"></i>
+                    Offer Ends 12th Nov
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tablet View (576px - 991.98px) -->
+    <div id="tsrBannerPlanTablet" class="d-none d-sm-block d-lg-none">
+        <div class="d-flex align-items-center justify-content-between mt-2">
+            <svg class="tsrBannerDecorativeIcon d-none d-md-block" viewBox="0 0 64 64"
+                xmlns="http://www.w3.org/2000/svg" style="height: 50px; width: 50px;">
+                <g class="tsrBannerFlame">
+                    <path d="M32 8 C40 22 42 30 32 40 C22 30 24 22 32 8 Z"
+                        fill="#ffe79a" />
+                </g>
+                <!-- Deep Red/Maroon Base -->
+                <path d="M12 40 C12 55 52 55 52 40 Z" fill="#4a0e17" />
+                <path d="M18 42 C18 50 46 50 46 42 Z" fill="#8a0b1b" />
+            </svg>
+            <div class="d-flex flex-column text-center">
+                <span class="tsrBannerHeadline" style="font-size: 1.15rem;">Sweet Deals
+                    on Premium Plans!</span>
+                <span class="tsrBannerSubtext"><b>TSR</b> wishes you a Happy Diwali
+                </span>
+            </div>
+            <div class="tsrBannerOfferStack">
+                <div class="tsrBannerDiscountBadge py-1 px-3 tsrBannerPopIn tsrBannerPlanTabletDiscountBadge">
+                    <span class="tsrBannerDiscountPrefix">Upto</span>
+                    <span class="tsrBannerDiscountValue">60% Off</span>
+                </div>
+                <span class="tsrBannerExpiryTag">
+                    <i class="fas fa-clock" aria-hidden="true"></i>
+                    Offer Ends 12th Nov
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile View (< 576px) -->
+    <div id="tsrBannerPlanMobile" class="d-block d-sm-none text-center">
+        <div class="d-flex flex-column align-items-center">
+            <span class="tsrBannerHeadline mb-1">Sweet Deals on Premium Plans!</span>
+            <span class="tsrBannerSubtext mb-2"><b>TSR</b> wishes you a Happy Diwali
+            </span>
+            <div class="tsrBannerOfferStack mt-1">
+                <div class="tsrBannerDiscountBadge tsrBannerPopIn tsrBannerPlanMobileDiscountBadge">
+                    <span class="tsrBannerDiscountPrefix">Upto</span>
+                    <span class="tsrBannerDiscountValue">60% Off</span>
+                </div>
+                <span class="tsrBannerExpiryTag">
+                    <i class="fas fa-clock" aria-hidden="true"></i>
+                    Offer Ends 12th Nov
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    :root {
+        /* Vibrant Dhamaka Sale Extracted Colors */
+        /* --tsrBannerBgGradient: linear-gradient(135deg, #8a0b1b 0%, #e3242b 100%); */
+        --tsrBannerBgGradient: linear-gradient(135deg, #000000 0%, #b8161c 40%,  #680306 90%);
+        /* Deep maroon to bright festive red[cite: 7] */
+        --tsrBannerBorderColor: #f2d06b;
+        /* Warm gold from the button[cite: 7] */
+        --tsrBannerHeadlineColor: #ffe79a;
+        /* Pale yellow from the kurta and text[cite: 7] */
+        --tsrBannerSubtextColor: #ffcd82;
+        /* Soft orange/gold[cite: 7] */
+        --tsrBannerGoldGradient: linear-gradient(135deg, #fff5d1, #f2d06b);
+        /* Bright gold for the badge[cite: 7] */
+        --tsrBannerPrimaryBtn: linear-gradient(135deg, #fce181, #f2d06b);
+        /* Button gold[cite: 7] */
+        --tsrBannerBtnTextColor: #8a0b1b;
+        /* Deep maroon text for high contrast on gold button[cite: 7] */
+        --tsrBannerShadow: 0 14px 28px rgba(138, 11, 27, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .tsrBannerMainContainer,
+    .tsrBannerPlanContainer {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        background: var(--tsrBannerBgGradient);
+        border: 2px solid var(--tsrBannerBorderColor);
+        border-radius: 12px;
+        box-shadow: var(--tsrBannerShadow);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .tsrBannerMainContainer {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        width: 92%;
+        max-width: 900px;
+        z-index: 1050;
+        padding: 12px 24px;
+        transform: translateX(-50%);
+        animation: tsrBannerSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .tsrBannerPlanContainer {
+        width: 100%;
+        max-width: 1140px;
+        margin: 20px auto;
+        padding: 16px 28px;
+        animation: tsrBannerFadeIn 0.8s ease forwards;
+    }
+
+    @media only screen and (max-width: 576px) {
+        .tsrBannerPlanContainer {
+            padding: 12px 28px;
+        }
+    }
+
+    .tsrBannerMala {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 18px;
+        z-index: 0;
+    }
+
+    .tsrBannerCloseBtn {
+        position: absolute;
+        top: -4px;
+        right: -8px;
+        background: transparent;
+        border: none;
+        color: #ffcd82;
+        font-size: 1.1rem;
+        cursor: pointer;
+        z-index: 5;
+        transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .tsrBannerCloseBtn:hover {
+        color: #ffffff;
+        transform: scale(1.1);
+    }
+
+    .tsrBannerDecorativeIcon {
+        /* width: 48px;
+        height: 48px; */
+        width: 64px;
+        height: 64px;
+        z-index: 1;
+    }
+
+    .tsrBannerBgGraphic {
+        position: absolute;
+        width: 140px;
+        opacity: 0.25;
+        z-index: 0;
+    }
+
+    .tsrBannerSideGraphic {
+        position: absolute;
+        width: 60px;
+        opacity: 0.95;
+        z-index: 1;
+    }
+
+    .tsrBannerHeadline {
+        color: var(--tsrBannerHeadlineColor);
+        font-size: 1.4rem;
+        font-weight: 800;
+        line-height: 1.2;
+        z-index: 1;
+        text-shadow: 0 2px 4px rgba(74, 14, 23, 0.5);
+    }
+
+    .tsrBannerSubtext {
+        color: var(--tsrBannerSubtextColor);
+        font-size: 0.95rem;
+        font-weight: 600;
+        z-index: 1;
+    }
+
+    .tsrBannerTabletDiscountText {
+        color: var(--tsrBannerHeadlineColor);
+        font-size: 1.15rem;
+        font-weight: 800;
+    }
+
+    .tsrBannerDiscountBadge {
+        background: var(--tsrBannerGoldGradient);
+        border: 2px solid #ffffff;
+        border-radius: 10px;
+        padding: 6px 26px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        color: var(--tsrBannerBtnTextColor);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    .tsrBannerDiscountPrefix {
+        font-size: 0.85rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        line-height: 1;
+    }
+
+    .tsrBannerDiscountValue {
+        font-size: 1.7rem;
+        font-weight: 900;
+        line-height: 1.1;
+    }
+
+    /* Offer urgency label used on tablet and mobile */
+    .tsrBannerOfferStack {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .tsrBannerExpiryTag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 5px 13px;
+        border: 1px solid #ffe79a;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #e3242b, #b8161c);
+        color: #ffffff;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.25px;
+        line-height: 1.2;
+        white-space: nowrap;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .tsrBannerExpiryTag i {
+        font-size: 0.82rem;
+    }
+
+    .tsrBannerPlanTabletDiscountBadge .tsrBannerDiscountValue {
+        font-size: 1.3rem;
+    }
+
+    .tsrBannerPlanMobileDiscountBadge {
+        padding: 5px 20px;
+    }
+
+    .tsrBannerPlanMobileDiscountBadge .tsrBannerDiscountValue {
+        font-size: 1.3rem;
+    }
+
+    .tsrBannerBtnPrimary {
+        background: var(--tsrBannerPrimaryBtn);
+        color: var(--tsrBannerBtnTextColor) !important;
+        border: none;
+        font-size: 0.9rem;
+        font-weight: 800;
+        padding: 7px 22px;
+        border-radius: 25px;
+        white-space: nowrap;
+        z-index: 1;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .tsrBannerBtnPrimary:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+        background: linear-gradient(135deg, #fff5d1, #fce181);
+    }
+
+    .tsrBannerBtnSecondary {
+        background: transparent;
+        border: 2px solid var(--tsrBannerHeadlineColor);
+        color: var(--tsrBannerHeadlineColor);
+        font-size: 0.9rem;
+        font-weight: 700;
+        padding: 5px 22px;
+        border-radius: 25px;
+        white-space: nowrap;
+        z-index: 1;
+        transition: all 0.25s ease;
+    }
+
+    .tsrBannerBtnSecondary:hover {
+        background: rgba(255, 231, 154, 0.15);
+        color: #ffffff !important;
+        border-color: #ffffff;
+    }
+
+    /* ========================================== */
+    /* ANIMATIONS                                 */
+    /* ========================================== */
+
+    @keyframes tsrBannerSlideUp {
+        0% {
+            bottom: -100px;
+            opacity: 0;
+        }
+
+        100% {
+            bottom: 20px;
+            opacity: 1;
+        }
+    }
+
+    @keyframes tsrBannerFadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Diya Flicker Animation */
+    .tsrBannerFlame {
+        transform-origin: 32px 40px;
+        animation: tsrBannerFlicker 1.8s infinite ease-in-out;
+    }
+
+    @keyframes tsrBannerFlicker {
+
+        0%,
+        100% {
+            transform: scale(1) rotate(0deg);
+            filter: drop-shadow(0 0 4px rgba(255, 231, 154, 0.6));
+        }
+
+        50% {
+            transform: scale(1.15) rotate(2deg);
+            filter: drop-shadow(0 0 10px rgba(255, 231, 154, 0.9));
+        }
+    }
+
+    /* Light Mala (Garland) Pulsing Animation */
+    .tsrBannerLight {
+        animation: tsrBannerLightPulse 1.5s infinite alternate;
+    }
+
+    .tsrBannerLight1 {
+        animation-delay: 0s;
+    }
+
+    .tsrBannerLight2 {
+        animation-delay: 0.4s;
+    }
+
+    .tsrBannerLight3 {
+        animation-delay: 0.8s;
+    }
+
+    @keyframes tsrBannerLightPulse {
+        0% {
+            filter: drop-shadow(0 0 2px rgba(255, 245, 209, 0.4));
+            opacity: 0.7;
+        }
+
+        100% {
+            filter: drop-shadow(0 0 8px rgba(255, 245, 209, 1));
+            opacity: 1;
+            fill: #ffffff;
+        }
+    }
+
+    /* Fireworks Spinning Pulse */
+    .tsrBannerSpinPulse {
+        transform-origin: center;
+        animation: tsrBannerSpin 12s linear infinite;
+    }
+
+    @keyframes tsrBannerSpin {
+        0% {
+            transform: scale(1) rotate(0deg);
+            opacity: 0.2;
+        }
+
+        50% {
+            transform: scale(1.1) rotate(180deg);
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) rotate(360deg);
+            opacity: 0.2;
+        }
+    }
+
+    /* Rocket Floating Animation */
+    .tsrBannerFloat {
+        animation: tsrBannerHover 3s ease-in-out infinite;
+    }
+
+    @keyframes tsrBannerHover {
+
+        0%,
+        100% {
+            transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-8px) rotate(2deg);
+        }
+    }
+
+    .tsrBannerSpark {
+        stroke-dasharray: 2 4;
+        animation: tsrBannerSparkleLine 1s linear infinite;
+    }
+
+    @keyframes tsrBannerSparkleLine {
+        to {
+            stroke-dashoffset: -6;
+        }
+    }
+
+    /* Discount Badge Pop */
+    .tsrBannerPopIn {
+        animation: tsrBannerPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        animation-delay: 0.3s;
+        opacity: 0;
+    }
+
+    @keyframes tsrBannerPop {
+        0% {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    /* Subtle pulse for text */
+    .tsrBannerPulseText {
+        animation: tsrBannerTextGlow 2s infinite alternate;
+    }
+
+    @keyframes tsrBannerTextGlow {
+        0% {
+            text-shadow: 0 0 0 rgba(74, 14, 23, 0);
+        }
+
+        100% {
+            text-shadow: 0 0 8px rgba(74, 14, 23, 0.5);
+        }
+    }
+
+    /* Responsive Overrides */
+    @media (max-width: 575.98px) {
+        .tsrBannerPlanContainer {
+            padding: 12px 18px;
+        }
+
+        .tsrBannerHeadline {
+            font-size: 1.15rem;
+        }
+
+        .tsrBannerExpiryTag {
+            font-size: 0.74rem;
+            padding: 5px 11px;
+        }
+
+        .tsrBannerBtnPrimary,
+        .tsrBannerBtnSecondary {
+            font-size: 0.85rem;
+            padding: 7px 14px;
+        }
+    }
+</style>
+
+<!-- code ends here -->
