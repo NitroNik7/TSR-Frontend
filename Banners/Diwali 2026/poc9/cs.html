@@ -4608,7 +4608,7 @@
         <!-- 1. CS PAGE BANNER (Floating Bottom Bar) -->
         <!-- ========================================== -->
 
-        
+
         <div id="tsrBannerMainContainer" class="tsrBannerMainContainer" style="display: none;">
 
             <!-- Festive Light Mala (Garland) -->
@@ -4667,12 +4667,12 @@
                         <div class="tsrBannerDiscountBadgeContainer">
                             <div class="tsrBannerDiscountBadgeInner">
                                 <div class="tsrBannerDiscountBadge tsrBannerDiscountBadgeFront">
-                                    <span class="tsrBannerDiscountPrefix">Upto</span>
-                                    <span class="tsrBannerDiscountValue">60% Off</span>
-                                </div>
-                                <div class="tsrBannerDiscountBadge tsrBannerDiscountBadgeBack">
                                     <span class="tsrBannerDiscountPrefix">Offer Ends</span>
                                     <span class="tsrBannerDiscountValue">12th Nov</span>
+                                </div>
+                                <div class="tsrBannerDiscountBadge tsrBannerDiscountBadgeBack">
+                                    <span class="tsrBannerDiscountPrefix">Upto</span>
+                                    <span class="tsrBannerDiscountValue">60% Off</span>
                                 </div>
                             </div>
                         </div>
@@ -4716,17 +4716,17 @@
                             <div class="tsrBannerDiscountBadgeInner">
                                 <!-- Single line row for Tablet -->
                                 <div class="tsrBannerDiscountBadge tsrBannerDiscountBadgeFront tsrBannerBadgeRow">
-                                    <!-- <span class="tsrBannerDiscountValue" style="font-size: 1.15rem; white-space: nowrap;">Upto 60% Off</span>
-                              -->
-                                    <span class="tsrBannerTabletDiscountText"
-                                        style="font-size: 1.15rem; white-space: nowrap;">Upto 60%
-                                        Off</span>
-                                </div>
-                                <div class="tsrBannerDiscountBadge tsrBannerDiscountBadgeBack tsrBannerBadgeRow">
                                     <!-- <span class="tsrBannerDiscountValue" style="font-size: 1.15rem; white-space: nowrap;">Ends 12<sup>th</sup> Nov</span> -->
                                     <span class="tsrBannerTabletDiscountText"
                                         style="font-size: 1.15rem; white-space: nowrap;">Ends
                                         12<sup>th</sup> Nov</span>
+                                </div>
+                                <div class="tsrBannerDiscountBadge tsrBannerDiscountBadgeBack tsrBannerBadgeRow">
+                                    <!-- <span class="tsrBannerDiscountValue" style="font-size: 1.15rem; white-space: nowrap;">Upto 60% Off</span>
+                                  -->
+                                    <span class="tsrBannerTabletDiscountText"
+                                        style="font-size: 1.15rem; white-space: nowrap;">Upto 60%
+                                        Off</span>
                                 </div>
                             </div>
                         </div>
@@ -4761,17 +4761,17 @@
                         <div class="tsrBannerDiscountBadgeInner">
                             <!-- Single line row for Mobile -->
                             <div class="tsrBannerDiscountBadge tsrBannerDiscountBadgeFront tsrBannerBadgeRow">
-                                <!-- <span class="tsrBannerDiscountPrefix" style="font-size: 0.8rem;">Upto</span>
-                                                <span class="tsrBannerDiscountValue" style="font-size: 1.2rem;">60% off</span> -->
-                                <span class="tsrBannerTabletDiscountText"
-                                    style="font-size: 1.15rem; white-space: nowrap;">Upto 60% Off</span>
-                            </div>
-                            <div class="tsrBannerDiscountBadge tsrBannerDiscountBadgeBack tsrBannerBadgeRow">
                                 <!-- <span class="tsrBannerDiscountPrefix" style="font-size: 0.8rem;">Ends</span>
-                                                <span class="tsrBannerDiscountValue" style="font-size: 1.2rem;">12<sup>th</sup> Nov</span> -->
+                                    <span class="tsrBannerDiscountValue" style="font-size: 1.2rem;">12<sup>th</sup> Nov</span> -->
                                 <span class="tsrBannerTabletDiscountText"
                                     style="font-size: 1.15rem; white-space: nowrap;">Ends
                                     12<sup>th</sup> Nov</span>
+                            </div>
+                            <div class="tsrBannerDiscountBadge tsrBannerDiscountBadgeBack tsrBannerBadgeRow">
+                                <!-- <span class="tsrBannerDiscountPrefix" style="font-size: 0.8rem;">Upto</span>
+                                                        <span class="tsrBannerDiscountValue" style="font-size: 1.2rem;">60% off</span> -->
+                                <span class="tsrBannerTabletDiscountText"
+                                    style="font-size: 1.15rem; white-space: nowrap;">Upto 60% Off</span>
                             </div>
                         </div>
                     </div>
@@ -5049,8 +5049,10 @@
             /* INLINE URGENCY TAG                         */
             /* ========================================== */
             .tsrBannerUrgencyInline {
-                background: rgba(0, 0, 0, 0.3);
-                color: var(--tsrBannerHeadlineColor);
+                /* background: rgba(0, 0, 0, 0.3); */
+                background: var(--tsrBannerGoldGradient);
+                /* color: var(--tsrBannerHeadlineColor); */
+                color: var(--tsrBannerBtnTextColor);
                 border: 1px dashed var(--tsrBannerBorderColor);
                 padding: 3px 14px;
                 border-radius: 20px;
@@ -5068,7 +5070,8 @@
             }
 
             .tsrBannerUrgencyInline i {
-                color: #f2d06b;
+                /* color: #f2d06b; */
+                color: red;
             }
 
             @keyframes tsrBannerInlineGlow {
