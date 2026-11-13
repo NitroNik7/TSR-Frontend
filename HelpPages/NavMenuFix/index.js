@@ -149,7 +149,7 @@ function addSections(tsrOverviewData, sectionContainer) {
                             subtext += `<br>`;
                             // subtext += `<div style="overflow-y: auto; padding: 20px 0;">`;
                             subtext += `<div style="padding: 10px 0;">`;
-                            subtext += `    <img src="${imgUrl}" class="img-fluid" style="cursor: zoom-in;" onclick="expandImg(this)">`;
+                            subtext += `    <img src="${imgUrl}" class="img-fluid tsrHelpPageImg" onclick="expandImg(this)">`;
                             subtext += `</div>`;
                             // subtext += `</div>`;
                         }
