@@ -140,10 +140,18 @@ function addSections(tsrOverviewData, sectionContainer) {
                         let subtext = cards[cardIdx].subtext
 
                         if (cards[cardIdx].iconImg != null) {
-                            let baseUrl = mintJsUtil.getBaseUrl() + '/static/';
+                            // let baseUrl = mintJsUtil.getBaseUrl() + '/static/';
+                            let baseUrl = "https://www.topstockresearch.com" + '/static';
                             let imgUrl = cards[cardIdx].iconImg.replaceAll("STATIC_HOME", baseUrl);
 
-                            subtext += '<br/> <img src="' + imgUrl + ' ">'
+                            // subtext += '<br/> <img src="' + imgUrl + ' ">'
+                            // ! modified
+                            subtext += `<br>`;
+                            // subtext += `<div style="overflow-y: auto; padding: 20px 0;">`;
+                            subtext += `<div style="padding: 10px 0;">`;
+                            subtext += `    <img src="${imgUrl}" class="img-fluid" style="cursor: zoom-in;" onclick="expandImg(this)">`;
+                            subtext += `</div>`;
+                            // subtext += `</div>`;
                         }
 
                         descP.innerHTML = subtext;
@@ -204,7 +212,7 @@ let windowHeight = window.innerHeight;
 navMenu.style.overflowY = "auto";
 navMenu.style.position = "sticky";
 navMenu.style.top = "100px";
-navMenu.style.height = (windowHeight - 250) + "px";
+navMenu.style.height = (windowHeight - 240) + "px";
 navMenu.style.width = "100%";
 navMenu.style.overscrollBehavior = "contain";
 // navMenu.style.minHeight = "100vh";
@@ -439,11 +447,46 @@ function closeDialog() {
 // ---
 window.onscroll = function (e) {
     let windowHeight = window.innerHeight;
-    if (window.scrollY > 250) {
+    if (window.scrollY > 240) {
         navMenu.style.height = (windowHeight - 110) + "px";
     }
     else {
-        navMenu.style.height = (windowHeight - 250) + "px";
+        navMenu.style.height = (windowHeight - 240) + "px";
     }
 }
 // ---
+
+
+// For solving overflowing images issue 
+function expandImg(img) {
+    let html = "";
+    html += `   <div class="d-flex align-items-center" style="height: 100%;">`;
+    // html += `       <img src="${img.src}">`;
+    // html += `        <button style="position: absolute; right: 0px; top: 0px;" onclick="closeImg()">X</button>`
+    html += `       <span onclick="closeImg()"><i class="fas fa-times"></i></span>`
+    html += `       <img src="${img.src}">`
+    html += `   </div>`;
+
+    imgDialog.innerHTML = html;
+    imgDialog.style.display = "block";
+
+    document.body.addEventListener("keydown", (e) => {
+        if (e.key == "Escape") {
+            closeImg();
+        }
+    })
+
+}
+
+function closeImg() {
+    imgDialog.style.display = "none";
+}
+
+let imgDialog = document.createElement("div");
+imgDialog.id = "tsrHelpPagesImgDialog";
+imgDialog.classList.add("tsrHelpPagesImgDialog");
+// imgDialog.style.cssText = `background: black; z-index: 1000;`;
+
+document.body.appendChild(imgDialog);
+
+// imgDialog.innerHTML = 
